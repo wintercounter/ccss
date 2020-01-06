@@ -1,0 +1,32 @@
+{
+    "name": "mhy-boot-react-simple",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/index.js",
+    "scripts": {
+        "test": "mhy jest",
+        "start": "mhy wds"
+    },
+    "author": "",
+    "license": "MIT",
+    "mhy": {
+        "mhy": {
+            "root": {
+                "ecosystem": {
+                    "$replace": [
+                        "webpack-dev-server",
+                        "jest"
+                    ]
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "core-js": "^2.6.11",
+        "dh-react-circle-loader": "^5.3.0",
+        "dh-react-ui": "^2.0.0",
+        "dh-svg-icons": "^1.26.0",
+        "react-component-benchmark": "0.0.4",
+        "styled-system": "^5.1.4"
+    }
+}

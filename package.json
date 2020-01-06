@@ -1,0 +1,24 @@
+{
+    "name": "ccss",
+    "version": "1.0.0",
+    "description": "<h1 align=\"center\">Welcome to ccss 👋</h1> <p>   <a href=\"https://www.npmjs.com/package/ccss\" target=\"_blank\">     <img alt=\"Version\" src=\"https://img.shields.io/npm/v/ccss.svg\">   </a>   <a href=\"#\" target=\"_blank\">     <img alt=\"License: MIT\" src=\"https://img.shields.io/badge/License-MIT-yellow.svg\" />   </a>   <a href=\"https://twitter.com/wintercounter1\" target=\"_blank\">     <img alt=\"Twitter: wintercounter1\" src=\"https://img.shields.io/twitter/follow/wintercounter1.svg?style=social\" />   </a> </p>",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "mhy jest",
+        "test:watch": "mhy jest --watchAll",
+        "config": "mhy config typescript -io && mhy config eslint prettier",
+        "build": "mhy bb",
+        "build:watch": "mhy bb --watch",
+        "build:prod": "mhy bb --mhy-env=prod"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "homepage": "https://github.com/wintercounter/ccss#readme"
+}
