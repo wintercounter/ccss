@@ -1,5 +1,5 @@
 import { pipe, mapValue, parseMultipart, parseSingle, evaluateCSSProp, noop } from './parsers'
-import { mid, hScroll, pseudo } from './customProps'
+import { mid, hScroll, ps, mq } from './customProps'
 
 /* develblock:start */
 const validateTime = (n, v) =>
@@ -276,7 +276,8 @@ const props = {
     styleText: i => i,
     mid,
     hScroll,
-    ps: pseudo,
+    ps,
+    mq,
 
     // styled's theme prop, don't do anything with it
     theme: noop

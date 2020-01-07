@@ -1,7 +1,8 @@
+import { mediaQuery } from '@w11r/use-breakpoint'
 import generate from './generate'
 import { pseudoMap } from './maps'
 
-export const pseudo = i => {
+export const ps = i => {
     let generated = ''
     for (const k in i) {
         if (Object.prototype.hasOwnProperty.call(i, k)) {
@@ -12,6 +13,10 @@ export const pseudo = i => {
         }
     }
     return generated
+}
+
+export const mq = input => {
+    return mediaQuery(input)
 }
 
 export const hScroll = (input, { maxw = '100vw' }) => `

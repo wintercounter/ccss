@@ -20,5 +20,8 @@
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
     },
-    "homepage": "https://github.com/wintercounter/ccss#readme"
+    "homepage": "https://github.com/wintercounter/ccss#readme",
+    "peerDependencies": {
+        "@w11r/use-breakpoint": "^1.2.0"
+    }
 }
