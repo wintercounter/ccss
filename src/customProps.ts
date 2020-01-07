@@ -2,8 +2,16 @@ import { mediaQuery } from '@w11r/use-breakpoint'
 import generate from './generate'
 import { pseudoMap } from './maps'
 
+/**
+ * PSeudo. It will return a string with the provided input value.
+ *
+ * @example
+ *
+ * ps({ h: { d: 'b' } }) // ':hover{ display: block; }'
+ */
 export const ps = i => {
     let generated = ''
+    // eslint-disable-next-line no-restricted-syntax
     for (const k in i) {
         if (Object.prototype.hasOwnProperty.call(i, k)) {
             generated += `
