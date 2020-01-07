@@ -1,12 +1,18 @@
-import { mergeDeep } from './utils'
+import mergeDeep from './utils'
 
-const context = {
+interface IContext {
+    unit: string
+    formula: (n: string | number) => string
+    gutter: number
+}
+
+const context: IContext = {
     unit: 'var(--px)',
     formula: n => `calc(${n} * ${context.unit})`,
     gutter: 16
 }
 
-export const setContext = c => {
+export const setContext = (c: IContext) => {
     mergeDeep(context, c)
 }
 

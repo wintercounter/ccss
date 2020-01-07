@@ -1,4 +1,4 @@
-import { mergeDeep } from './utils'
+import mergeDeep from './utils'
 
 const aligns = {
     s: 'start',

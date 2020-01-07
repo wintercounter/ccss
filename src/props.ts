@@ -1,5 +1,6 @@
 import { pipe, mapValue, parseMultipart, parseSingle, evaluateCSSProp, noop } from './parsers'
 import { mid, hScroll, ps, mq } from './customProps'
+import ICCSSProps from './types'
 
 /* develblock:start */
 const validateTime = (n, v) =>
@@ -14,7 +15,7 @@ const validatePureNumber = (n, v) =>
     console.warn(`'${n}' with value '${v}' is a not number. You should only use plain number without unit here.`)
 /* develblock:end */
 
-const props = {
+const props: ICCSSProps = {
     // Animation + 3D
     a: v => evaluateCSSProp('animation', v),
     ad: v =>
