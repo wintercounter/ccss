@@ -1,6 +1,6 @@
 <h1 align="center">
     <div><strong>CCSS</strong></div>
-    <div>🔡🔁🎨</div>
+    <div style="padding-bottom: 10px">🔡🔁🎨</div>
 </h1>
 <p>
   <a href="https://www.npmjs.com/package/ccss" target="_blank">
