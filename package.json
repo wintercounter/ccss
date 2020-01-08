@@ -1,7 +1,7 @@
 {
-    "name": "ccss",
-    "version": "1.0.0",
-    "description": "<h1 align=\"center\">Welcome to ccss 👋</h1> <p>   <a href=\"https://www.npmjs.com/package/ccss\" target=\"_blank\">     <img alt=\"Version\" src=\"https://img.shields.io/npm/v/ccss.svg\">   </a>   <a href=\"#\" target=\"_blank\">     <img alt=\"License: MIT\" src=\"https://img.shields.io/badge/License-MIT-yellow.svg\" />   </a>   <a href=\"https://twitter.com/wintercounter1\" target=\"_blank\">     <img alt=\"Twitter: wintercounter1\" src=\"https://img.shields.io/twitter/follow/wintercounter1.svg?style=social\" />   </a> </p>",
+    "name": "cryptic-css",
+    "version": "0.0.1",
+    "description": "",
     "main": "dist/index.js",
     "scripts": {
         "test": "mhy jest",
@@ -23,5 +23,8 @@
     "homepage": "https://github.com/wintercounter/ccss#readme",
     "peerDependencies": {
         "@w11r/use-breakpoint": "^1.2.0"
+    },
+    "devDependencies": {
+        "@types/react": "^16.9.17"
     }
 }
