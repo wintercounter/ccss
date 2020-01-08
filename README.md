@@ -1,5 +1,4 @@
-<h1 align="center">🔡🔁🎨</h1>
-<h1 align="center"><strong>ccss</strong></h1>
+<h1 align="center">🔡🔁🎨<br><strong>CCSS</strong></h1>
 <p>
   <a href="https://www.npmjs.com/package/ccss" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/ccss.svg">
