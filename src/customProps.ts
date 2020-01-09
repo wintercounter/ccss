@@ -1,15 +1,16 @@
 import { mediaQuery } from '@w11r/use-breakpoint'
 import generate from './generate'
 import { pseudoMap } from './maps'
+import { TNestedInput } from './types'
 
 /**
  * PSeudo. It will return a string with the provided input value.
- *
  * @example
- *
+ * ```js
  * ps({ h: { d: 'b' } }) // ':hover{ display: block; }'
+ * ```
  */
-export const ps = i => {
+export const ps = (i: TNestedInput): string => {
     let generated = ''
     // eslint-disable-next-line no-restricted-syntax
     for (const k in i) {
