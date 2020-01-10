@@ -5,10 +5,10 @@ export type TNestedInput = { [key: string]: TNestedInput | string | number }
 export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
 export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
 
-export interface IContext {
+export interface IContext extends Partial<any> {
     unit: string
     valueTransformer: (n: string | number) => string
-    gutter: number
+    gutter?: number
 }
 
 export default interface ICCSSProps {

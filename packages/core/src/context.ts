@@ -3,8 +3,7 @@ import { IContext } from './types'
 
 const context: IContext = {
     unit: 'rem',
-    valueTransformer: n => `calc(${n} * ${context.unit})`,
-    gutter: 16
+    valueTransformer: n => `${n}${context.unit}`
 }
 
 /**

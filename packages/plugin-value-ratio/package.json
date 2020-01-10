@@ -1,9 +1,9 @@
 {
-    "name": "@crypric-css/plugin-prop-ratio",
+    "name": "@crypric-css/plugin-value-ratio",
     "version": "0.0.0",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-prop-ratio#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-value-ratio#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "directories": {
