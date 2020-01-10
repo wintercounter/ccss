@@ -1,4 +1,4 @@
-export { default } from './generate'
+export { default } from './ccss'
 export { setProps } from './props'
 export { setContext } from './context'
 export { setValueMap, setPseudoMap } from './maps'

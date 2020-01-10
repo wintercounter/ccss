@@ -1,5 +1,4 @@
-import { pipe, mapValue, parseMultipart, parseSingle, evaluateCSSProp, noop } from './parsers'
-import { mid, hScroll, ps, mq } from './customProps'
+import { pipe, mapValue, parseMultipart, parseSingle, evaluateCSSProp, child, noop } from './parsers'
 import ICCSSProps from './types'
 
 /* develblock:start */
@@ -275,10 +274,7 @@ const props: ICCSSProps = {
 
     // Customs
     styleText: i => i,
-    mid,
-    hScroll,
-    ps,
-    mq,
+    child,
 
     // styled's theme prop, don't do anything with it
     theme: noop

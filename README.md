@@ -191,6 +191,9 @@ also requires some extra code, you first need to reach the point where
 60-70% approx. This is fairly easy to reach as the compiler itself
 is small.
 
+We were already running a highly dynamic system using values from props,
+**CCSS** does not different in such regards.
+
 ### Won't be this hard to understand?
 
 We think that you need relatively short time to get comfortable with it.

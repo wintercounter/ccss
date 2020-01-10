@@ -1,6 +1,6 @@
 import props from './props'
 
-const generate = v => {
+const ccss = v => {
     let generated = ''
     // eslint-disable-next-line no-restricted-syntax
     for (const k in v) {
@@ -15,4 +15,4 @@ const generate = v => {
     return generated
 }
 
-export default generate
+export default ccss

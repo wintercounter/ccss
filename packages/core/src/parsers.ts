@@ -1,5 +1,6 @@
 import context from './context'
-import { valueMap } from './maps'
+import { valueMap, pseudoMap } from './maps'
+import ccss from './ccss'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
@@ -35,9 +36,9 @@ export const parseSingle = (input, o, gutter = false) => {
         case 'string':
             return isRatio(input) ? getRatioPercent(input) : input
         case 'number':
-            return input === 0 ? 0 : context.formula(gutter ? input * context.gutter : input)
+            return input === 0 ? 0 : context.valueTransformer(gutter ? input * context.gutter : input)
         case 'boolean':
-            return context.formula(context.gutter)
+            return context.valueTransformer(context.gutter)
     }
 }
 
@@ -67,6 +68,32 @@ export const mapValue = (input, prop) => {
 export const pipe = function(...fs) {
     // @ts-ignore
     return (...args) => fs.reduce((args, f) => [f.apply(this, args)], args)[0]
+}
+
+/**
+ * You can pass children to your ccss supporting both pseudo classes and nested selectors
+ *
+ * @example
+ * ```js
+ * child({
+ *   h: { d: 'b' },
+ *   '.childDiv': { p: 10 }
+ * })
+ * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
+ * ```
+ */
+export const child = i => {
+    let generated = ''
+    // eslint-disable-next-line no-restricted-syntax
+    for (const k in i) {
+        if (Object.prototype.hasOwnProperty.call(i, k)) {
+            generated += `
+            ${pseudoMap[k] ? `:${pseudoMap[k]}` : k} {
+                ${ccss(i[k])}
+            }`
+        }
+    }
+    return generated
 }
 
 export const noop = () => ''

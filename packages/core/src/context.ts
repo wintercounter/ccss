@@ -2,7 +2,7 @@ import mergeDeep from './utils'
 
 interface IContext {
     unit: string
-    transformer: (n: string | number) => string
+    valueTransformer: (n: string | number) => string
     gutter: number
 }
 

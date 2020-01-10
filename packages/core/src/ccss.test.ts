@@ -1,6 +1,4 @@
-import ccss from '@'
-
-import { setValueMap } from '@/maps'
+import ccss, { setValueMap } from '@'
 
 setValueMap({
     'border-radius': {
