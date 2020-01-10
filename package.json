@@ -6,10 +6,7 @@
     "scripts": {
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
-        "config": "mhy config typescript -io && mhy config eslint prettier",
-        "build": "mhy bb",
-        "build:watch": "mhy bb --watch",
-        "build:prod": "mhy bb --mhy-env=prod"
+        "config": "mhy config eslint prettier"
     },
     "repository": {
         "type": "git",
@@ -25,6 +22,7 @@
         "@w11r/use-breakpoint": "^1.2.0"
     },
     "devDependencies": {
-        "@types/react": "^16.9.17"
+        "@types/react": "^16.9.17",
+        "lerna": "^3.18.4"
     }
 }

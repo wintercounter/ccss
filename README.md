@@ -95,11 +95,28 @@ regular CSS.
 -   Smaller bundles
 -   Less cluttered codebase
 -   Faster development
+-   Extending with custom functionality
 
 ## Examples
 
 There are already multiple ways to utilize CCSS in your codebase,
-however currently only CSS-in-JS solutions are being covered.
+however currently only CSS-in-JS solutions are being covered. Here are
+a few ways you can use **CCSS**:
+
+### Styled-components
+
+import ccss from '@cryptic-css/core'
+
+```jsx
+// Use this component instead of divs everywhere from now on.
+const View = styled.div(ccss)
+
+const MyCmp = () => (
+    <View w={100} p={10} bg="#000" c="#fff">
+        Hello world!
+    </View>
+)
+```
 
 ## Mission
 
