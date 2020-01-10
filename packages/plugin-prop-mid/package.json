@@ -14,9 +14,12 @@
         "url": "git+https://github.com/wintercounter/ccss.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "test": "echo \"plugin-prop-mid: No tests here yet.\""
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "dependencies": {
+        "@cryptic-css/core": "^0.0.0"
     }
 }

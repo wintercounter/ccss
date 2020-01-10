@@ -1,1604 +1,1562 @@
-export type ICSSPropValue = <T>(v: string, o: T) => string
-export type ICSSSimplePropValue = <T>(v: T) => string | undefined
+export type TCCSSCoreProp = {
+    [key: string]: string | number | TCCSSCoreProp | (string | number | TCCSSCoreProp)[] | undefined
+}
+export type TNestedInput = { [key: string]: TNestedInput | string | number }
+export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
+export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
+
+export interface IContext extends Partial<any> {
+    unit: string
+    valueTransformer: (n: string | number) => string
+    gutter?: number
+}
 
 export default interface ICCSSProps {
     /**
      * animation
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
+     * @description
+     * The flex-wrap property specifies whether the flexible items should wrap or not.
+     *
+     * Note: If the elements are not flexible items, the flex-wrap property has no effect.
      */
-    a?: ICSSPropValue
+    a?: TCSSPropValue
     /**
      * animation-delay
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ad?: ICSSPropValue
+    ad?: TCSSPropValue
     /**
      * animation-direction
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    aDir?: ICSSPropValue
+    aDir?: TCSSPropValue
     /**
      * animation-duration
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    aD?: ICSSPropValue
+    aD?: TCSSPropValue
     /**
      * animation-fill-mode
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    afm?: ICSSPropValue
+    afm?: TCSSPropValue
     /**
      * animation-iteration-count
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    aic?: ICSSPropValue
+    aic?: TCSSPropValue
     /**
      * animation-name
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    an?: ICSSPropValue
+    an?: TCSSPropValue
     /**
      * animation-play-state
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    aps?: ICSSPropValue
+    aps?: TCSSPropValue
     /**
      * animation-timing-function
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ats?: ICSSPropValue
+    ats?: TCSSPropValue
     /**
      * backface-visibility
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bv?: ICSSPropValue
+    bv?: TCSSPropValue
     /**
      * perspective
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    per?: ICSSPropValue
+    per?: TCSSPropValue
     /**
      * perspective-origin
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pero?: ICSSPropValue
+    pero?: TCSSPropValue
     /**
      * transform
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    tf?: ICSSPropValue
+    tf?: TCSSPropValue
     /**
      * transform-origin
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    tfo?: ICSSPropValue
+    tfo?: TCSSPropValue
     /**
      * transform-style
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    tfs?: ICSSPropValue
+    tfs?: TCSSPropValue
     /**
      * transition
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    tr?: ICSSPropValue
+    tr?: TCSSPropValue
     /**
      * transition-delay
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    trD?: ICSSPropValue
+    trD?: TCSSPropValue
     /**
      * transition-duration
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    trd?: ICSSPropValue
+    trd?: TCSSPropValue
     /**
      * transition-property
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    trp?: ICSSPropValue
+    trp?: TCSSPropValue
     /**
      * transition-timing-function
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    trt?: ICSSPropValue
+    trt?: TCSSPropValue
     /**
      * flex-direction
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fd?: ICSSPropValue
+    fd?: TCSSPropValue
     /**
      * flex-wrap
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fw?: ICSSPropValue
+    fw?: TCSSPropValue
     /**
      * flex-basis
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fb?: ICSSPropValue
+    fb?: TCSSPropValue
     /**
      * flex-flow
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ff?: ICSSPropValue
+    ff?: TCSSPropValue
     /**
      * flex-grow
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fg?: ICSSPropValue
+    fg?: TCSSPropValue
     /**
      * flex-shrink
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fs?: ICSSPropValue
+    fs?: TCSSPropValue
     /**
      * align-items
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ai?: ICSSPropValue
+    ai?: TCSSPropValue
     /**
      * align-content
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ac?: ICSSPropValue
+    ac?: TCSSPropValue
     /**
      * justify-items
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ji?: ICSSPropValue
+    ji?: TCSSPropValue
     /**
      * justify-content
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    jc?: ICSSPropValue
+    jc?: TCSSPropValue
     /**
      * align-self
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    aS?: ICSSPropValue
+    aS?: TCSSPropValue
     /**
      * justify-self
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    jS?: ICSSPropValue
+    jS?: TCSSPropValue
     /**
      * font
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ft?: ICSSPropValue
+    ft?: TCSSPropValue
     /**
      * font-family
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftf?: ICSSPropValue
+    ftf?: TCSSPropValue
     /**
      * font-kerning
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftk?: ICSSPropValue
+    ftk?: TCSSPropValue
     /**
      * font-size
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fts?: ICSSPropValue
+    fts?: TCSSPropValue
     /**
      * font-stretch
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftStretch?: ICSSPropValue
+    ftStretch?: TCSSPropValue
     /**
      * font-style
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftStyle?: ICSSPropValue
+    ftStyle?: TCSSPropValue
     /**
      * font-variant
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftv?: ICSSPropValue
+    ftv?: TCSSPropValue
     /**
      * font-weight
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ftw?: ICSSPropValue
+    ftw?: TCSSPropValue
     /**
      * letter-spacing
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ls?: ICSSPropValue
+    ls?: TCSSPropValue
     /**
      * line-height
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    lh?: ICSSPropValue
+    lh?: TCSSPropValue
     /**
      * text-align
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ta?: ICSSPropValue
+    ta?: TCSSPropValue
     /**
      * text-decoration
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    td?: ICSSPropValue
+    td?: TCSSPropValue
     /**
      * text-indent
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ti?: ICSSPropValue
+    ti?: TCSSPropValue
     /**
      * text-overflow
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    to?: ICSSPropValue
+    to?: TCSSPropValue
     /**
      * text-shadow
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ts?: ICSSPropValue
+    ts?: TCSSPropValue
     /**
      * text-transform
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    tt?: ICSSPropValue
+    tt?: TCSSPropValue
     /**
      * vertical-align
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    va?: ICSSPropValue
+    va?: TCSSPropValue
     /**
      * white-space
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ws?: ICSSPropValue
+    ws?: TCSSPropValue
     /**
      * word-break
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    wb?: ICSSPropValue
+    wb?: TCSSPropValue
     /**
      * word-spacing
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    wS?: ICSSPropValue
+    wS?: TCSSPropValue
     /**
      * word-wrap
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ww?: ICSSPropValue
+    ww?: TCSSPropValue
     /**
      * list-style
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    listS?: ICSSPropValue
+    listS?: TCSSPropValue
     /**
      * list-style-image
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    listSI?: ICSSPropValue
+    listSI?: TCSSPropValue
     /**
      * list-style-position
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    listSP?: ICSSPropValue
+    listSP?: TCSSPropValue
     /**
      * list-style-type
-     * @type ICSSPropValue = (v: string, o: T) => string
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    listST?: ICSSPropValue
+    listST?: TCSSPropValue
     /**
      * margin
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    m?: ICSSPropValue
+    m?: TCSSPropValue
     /**
      * margin-top
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    mt?: ICSSPropValue
+    mt?: TCSSPropValue
     /**
      * margin-right
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    mr?: ICSSPropValue
+    mr?: TCSSPropValue
     /**
      * margin-bottom
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    mb?: ICSSPropValue
+    mb?: TCSSPropValue
     /**
      * margin-left
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ml?: ICSSPropValue
+    ml?: TCSSPropValue
     /**
      * padding
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    p?: ICSSPropValue
+    p?: TCSSPropValue
     /**
      * padding-top
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pt?: ICSSPropValue
+    pt?: TCSSPropValue
     /**
      * padding-right
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pr?: ICSSPropValue
+    pr?: TCSSPropValue
     /**
      * padding-bottom
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pb?: ICSSPropValue
+    pb?: TCSSPropValue
     /**
      * padding-left
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pl?: ICSSPropValue
+    pl?: TCSSPropValue
     /**
      * background
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bg?: ICSSPropValue
+    bg?: TCSSPropValue
     /**
      * background-image
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgi?: ICSSPropValue
+    bgi?: TCSSPropValue
     /**
      * background-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgc?: ICSSPropValue
+    bgc?: TCSSPropValue
     /**
      * background-size
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgs?: ICSSPropValue
+    bgs?: TCSSPropValue
     /**
      * background-repeat
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgr?: ICSSPropValue
+    bgr?: TCSSPropValue
     /**
      * background-position
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgp?: ICSSPropValue
+    bgp?: TCSSPropValue
     /**
      * background-attachment
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bga?: ICSSPropValue
+    bga?: TCSSPropValue
     /**
      * background-blend-mode
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgbm?: ICSSPropValue
+    bgbm?: TCSSPropValue
     /**
      * background-clip
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgC?: ICSSPropValue
+    bgC?: TCSSPropValue
     /**
      * background-origin
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bgo?: ICSSPropValue
+    bgo?: TCSSPropValue
     /**
      * width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    w?: ICSSPropValue
+    w?: TCSSPropValue
     /**
      * height
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    h?: ICSSPropValue
+    h?: TCSSPropValue
     /**
      * min-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    minW?: ICSSPropValue
+    minW?: TCSSPropValue
     /**
      * min-height
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    minH?: ICSSPropValue
+    minH?: TCSSPropValue
     /**
      * max-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    maxW?: ICSSPropValue
+    maxW?: TCSSPropValue
     /**
      * max-height
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    maxH?: ICSSPropValue
+    maxH?: TCSSPropValue
     /**
      * grid
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    g?: ICSSPropValue
+    g?: TCSSPropValue
     /**
      * grid-area
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ga?: ICSSPropValue
+    ga?: TCSSPropValue
     /**
      * grid-auto-columns
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gac?: ICSSPropValue
+    gac?: TCSSPropValue
     /**
      * grid-auto-flow
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gaf?: ICSSPropValue
+    gaf?: TCSSPropValue
     /**
      * grid-auto-row
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gar?: ICSSPropValue
+    gar?: TCSSPropValue
     /**
      * grid-column
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gc?: ICSSPropValue
+    gc?: TCSSPropValue
     /**
      * grid-column-end
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gce?: ICSSPropValue
+    gce?: TCSSPropValue
     /**
      * grid-column-gap
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gcg?: ICSSPropValue
+    gcg?: TCSSPropValue
     /**
      * grid-column-start
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gcs?: ICSSPropValue
+    gcs?: TCSSPropValue
     /**
      * grid-gap
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gg?: ICSSPropValue
+    gg?: TCSSPropValue
     /**
      * grid-row
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gr?: ICSSPropValue
+    gr?: TCSSPropValue
     /**
      * grid-row-end
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gre?: ICSSPropValue
+    gre?: TCSSPropValue
     /**
      * grid-row-gap
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    grg?: ICSSPropValue
+    grg?: TCSSPropValue
     /**
      * grid-row-start
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    grs?: ICSSPropValue
+    grs?: TCSSPropValue
     /**
      * grid-template
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gt?: ICSSPropValue
+    gt?: TCSSPropValue
     /**
      * grid-template-areas
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gta?: ICSSPropValue
+    gta?: TCSSPropValue
     /**
      * grid-template-columns
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gtc?: ICSSPropValue
+    gtc?: TCSSPropValue
     /**
      * grid-template-rows
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    gtr?: ICSSPropValue
+    gtr?: TCSSPropValue
     /**
      * border
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    b?: ICSSPropValue
+    b?: TCSSPropValue
     /**
      * border-bottom
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bb?: ICSSPropValue
+    bb?: TCSSPropValue
     /**
      * border-bottom-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bbc?: ICSSPropValue
+    bbc?: TCSSPropValue
     /**
      * border-bottom-left-radius
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bblr?: ICSSPropValue
+    bblr?: TCSSPropValue
     /**
      * border-bottom-right-radius
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bbrr?: ICSSPropValue
+    bbrr?: TCSSPropValue
     /**
      * border-bottom-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bbs?: ICSSPropValue
+    bbs?: TCSSPropValue
     /**
      * border-bottom-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bbw?: ICSSPropValue
+    bbw?: TCSSPropValue
     /**
      * border-collapse
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bC?: ICSSPropValue
+    bC?: TCSSPropValue
     /**
      * border-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bc?: ICSSPropValue
+    bc?: TCSSPropValue
     /**
      * border-image
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bi?: ICSSPropValue
+    bi?: TCSSPropValue
     /**
      * border-image-outset
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bio?: ICSSPropValue
+    bio?: TCSSPropValue
     /**
      * border-image-repeat
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bir?: ICSSPropValue
+    bir?: TCSSPropValue
     /**
      * border-image-slice
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bis?: ICSSPropValue
+    bis?: TCSSPropValue
     /**
      * border-image-source
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    biSrc?: ICSSPropValue
+    biSrc?: TCSSPropValue
     /**
      * border-image-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    biw?: ICSSPropValue
+    biw?: TCSSPropValue
     /**
      * border-left
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bl?: ICSSPropValue
+    bl?: TCSSPropValue
     /**
      * border-left-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    blc?: ICSSPropValue
+    blc?: TCSSPropValue
     /**
      * border-left-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bls?: ICSSPropValue
+    bls?: TCSSPropValue
     /**
      * border-left-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    blw?: ICSSPropValue
+    blw?: TCSSPropValue
     /**
      * border-radius
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    r?: ICSSPropValue
+    r?: TCSSPropValue
     /**
      * border-right
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    br?: ICSSPropValue
+    br?: TCSSPropValue
     /**
      * border-right-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    brc?: ICSSPropValue
+    brc?: TCSSPropValue
     /**
      * border-right-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    brs?: ICSSPropValue
+    brs?: TCSSPropValue
     /**
      * border-right-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    brw?: ICSSPropValue
+    brw?: TCSSPropValue
     /**
      * border-spacing
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bs?: ICSSPropValue
+    bs?: TCSSPropValue
     /**
      * border-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bS?: ICSSPropValue
+    bS?: TCSSPropValue
     /**
      * border-top
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bt?: ICSSPropValue
+    bt?: TCSSPropValue
     /**
      * border-top-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    btc?: ICSSPropValue
+    btc?: TCSSPropValue
     /**
      * border-top-left-radius
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    btlr?: ICSSPropValue
+    btlr?: TCSSPropValue
     /**
      * border-top-right-radius
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    btrr?: ICSSPropValue
+    btrr?: TCSSPropValue
     /**
      * border-top-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bts?: ICSSPropValue
+    bts?: TCSSPropValue
     /**
      * border-top-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    btw?: ICSSPropValue
+    btw?: TCSSPropValue
     /**
      * border-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    bw?: ICSSPropValue
+    bw?: TCSSPropValue
     /**
      * clip
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    clip?: ICSSPropValue
+    clip?: TCSSPropValue
     /**
      * clipPath
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    clipPath?: ICSSPropValue
+    clipPath?: TCSSPropValue
     /**
      * display
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    d?: ICSSPropValue
+    d?: TCSSPropValue
     /**
      * position
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pos?: ICSSPropValue
+    pos?: TCSSPropValue
     /**
      * top
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    T?: ICSSPropValue
+    T?: TCSSPropValue
     /**
      * right
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    R?: ICSSPropValue
+    R?: TCSSPropValue
     /**
      * bottom
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    B?: ICSSPropValue
+    B?: TCSSPropValue
     /**
      * left
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    L?: ICSSPropValue
+    L?: TCSSPropValue
     /**
      * z-index
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    z?: ICSSPropValue
+    z?: TCSSPropValue
     /**
      * color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    c?: ICSSPropValue
+    c?: TCSSPropValue
     /**
      * overflow
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    o?: ICSSPropValue
+    o?: TCSSPropValue
     /**
      * overflow-x
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ox?: ICSSPropValue
+    ox?: TCSSPropValue
     /**
      * overflow-y
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    oy?: ICSSPropValue
+    oy?: TCSSPropValue
     /**
      * float
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fl?: ICSSPropValue
+    fl?: TCSSPropValue
     /**
      * clear
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    clr?: ICSSPropValue
+    clr?: TCSSPropValue
     /**
      * visibility
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    v?: ICSSPropValue
+    v?: TCSSPropValue
     /**
      * columns
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    col?: ICSSPropValue
+    col?: TCSSPropValue
     /**
      * column-count
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cc?: ICSSPropValue
+    cc?: TCSSPropValue
     /**
      * column-fill
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cf?: ICSSPropValue
+    cf?: TCSSPropValue
     /**
      * column-gap
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cg?: ICSSPropValue
+    cg?: TCSSPropValue
     /**
      * column-rule
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cr?: ICSSPropValue
+    cr?: TCSSPropValue
     /**
      * column-rule-color
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    crc?: ICSSPropValue
+    crc?: TCSSPropValue
     /**
      * column-rule-style
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    crs?: ICSSPropValue
+    crs?: TCSSPropValue
     /**
      * column-rule-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    crw?: ICSSPropValue
+    crw?: TCSSPropValue
     /**
      * column-span
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cs?: ICSSPropValue
+    cs?: TCSSPropValue
     /**
      * column-width
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cw?: ICSSPropValue
+    cw?: TCSSPropValue
     /**
      * page-break-after
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pba?: ICSSPropValue
+    pba?: TCSSPropValue
     /**
      * page-break-before
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pbb?: ICSSPropValue
+    pbb?: TCSSPropValue
     /**
      * page-break-inside
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pbi?: ICSSPropValue
+    pbi?: TCSSPropValue
     /**
      * box-shadow
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    shadow?: ICSSPropValue
+    shadow?: TCSSPropValue
     /**
      * box-sizing
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    sizing?: ICSSPropValue
+    sizing?: TCSSPropValue
     /**
      * object-fit
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    of?: ICSSPropValue
+    of?: TCSSPropValue
     /**
      * object-position
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    oP?: ICSSPropValue
+    oP?: TCSSPropValue
     /**
      * opacity
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    op?: ICSSPropValue
+    op?: TCSSPropValue
     /**
      * order
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    or?: ICSSPropValue
+    or?: TCSSPropValue
     /**
      * outline
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ol?: ICSSPropValue
+    ol?: TCSSPropValue
     /**
      * mix-blend-mode
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    mbm?: ICSSPropValue
+    mbm?: TCSSPropValue
     /**
      * content
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    ct?: ICSSPropValue
+    ct?: TCSSPropValue
     /**
      * cursor
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    cur?: ICSSPropValue
+    cur?: TCSSPropValue
     /**
      * pointer-events
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    pe?: ICSSPropValue
+    pe?: TCSSPropValue
     /**
      * filter
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    fil?: ICSSPropValue
+    fil?: TCSSPropValue
     /**
      * scroll-behavior
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    sb?: ICSSPropValue
+    sb?: TCSSPropValue
     /**
      * user-select
-     * @type ICSSPropValue (<T>(v: string, o: T) => string)
+     * @type TCSSPropValue (<T>(v: string, o: T) => string)
      * @example
      * ```js
      * // TO BE DEFINED
      * ```
      */
-    us?: ICSSPropValue
-    styleText?: ICSSPropValue
-    mid?: ICSSPropValue
-    hScroll?: ICSSPropValue
-    ps?: ICSSSimplePropValue
-    mq?: ICSSSimplePropValue
-    theme?: ICSSPropValue
+    us?: TCSSSimplePropValue
+    styleText?: (v: string) => string
+    mid?: TCSSSimplePropValue
+    hScroll?: TCSSSimplePropValue
+    ps?: TCSSSimplePropValue
+    mq?: TCSSSimplePropValue
+    theme?: TCSSSimplePropValue
+    child?: TCSSSimplePropValue
 }

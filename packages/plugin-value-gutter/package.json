@@ -1,9 +1,9 @@
 {
-    "name": "@crypric-css/plugin-value-ratio",
+    "name": "@crypric-css/plugin-value-gutter",
     "version": "0.0.0",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-value-ratio#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-value-gutter#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "directories": {
@@ -21,9 +21,12 @@
         "url": "git+https://github.com/wintercounter/ccss.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "test": "echo \"plugin-value-gutter: No tests here yet.\""
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "dependencies": {
+        "@cryptic-css/core": "^0.0.0"
     }
 }

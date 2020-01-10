@@ -1,6 +1,7 @@
+import { TCCSSCoreProp } from './types'
 import props from './props'
 
-const ccss = v => {
+const ccss = (v: TCCSSCoreProp): string => {
     let generated = ''
     // eslint-disable-next-line no-restricted-syntax
     for (const k in v) {

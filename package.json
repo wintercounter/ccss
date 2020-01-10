@@ -24,5 +24,8 @@
     "devDependencies": {
         "@types/react": "^16.9.17",
         "lerna": "^3.18.4"
+    },
+    "dependencies": {
+        "@lerna/link": "^3.18.5"
     }
 }

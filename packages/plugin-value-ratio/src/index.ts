@@ -11,7 +11,7 @@ export const getRatioPercent = ratio => {
     return (ratioCache[ratio] = `${y / (x / 100)}%`)
 }
 
-const ratio = input => isRatio(input) ? getRatioPercent(input) : input
+const ratio = input => (isRatio(input) ? getRatioPercent(input) : input)
 
 setProps({
     p: pipe(ratio, props.p),
@@ -23,5 +23,5 @@ setProps({
     mt: pipe(ratio, props.mt),
     mr: pipe(ratio, props.mr),
     mb: pipe(ratio, props.mb),
-    ml: pipe(ratio, props.ml),
+    ml: pipe(ratio, props.ml)
 })
