@@ -1,9 +1,9 @@
 {
-    "name": "@crypric-css/plugin-prop-mq",
+    "name": "@crypric-css/core",
     "version": "0.0.0",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-prop-mq#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "directories": {
@@ -21,12 +21,10 @@
         "url": "git+https://github.com/wintercounter/ccss.git"
     },
     "scripts": {
-        "test": "echo \"plugin-prop-mq: No tests here yet.\""
+        "test": "mhy jest",
+        "test:watch": "mhy jest --watchAll"
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
-    },
-    "dependencies": {
-        "@w11r/use-breakpoint": "^1.2.0"
     }
 }
