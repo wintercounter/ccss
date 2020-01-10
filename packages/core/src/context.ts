@@ -1,11 +1,11 @@
-import mergeDeep from './utils'
-import { IContext } from './types'
+import mergeDeep from "./utils";
+import { IContext } from "./types";
 
 const context: IContext = {
-    unit: 'var(--px)',
-    formula: n => `calc(${n} * ${context.unit})`,
-    gutter: 16
-}
+  unit: "rem",
+  valueTransformer: n => `calc(${n} * ${context.unit})`,
+  gutter: 16
+};
 
 /**
  * This function will set the context, based on the default one.
@@ -17,7 +17,7 @@ const context: IContext = {
  * ```
  */
 export const setContext = (c: IContext) => {
-    mergeDeep(context, c)
-}
+  mergeDeep(context, c);
+};
 
-export default context
+export default context;

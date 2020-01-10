@@ -18,20 +18,18 @@ export default function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> 
         return source
     }
 
-    const _target = {}
-
     Object.keys(source).forEach(key => {
         const targetValue = target[key]
         const sourceValue = source[key]
 
         if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
-            _target[key] = targetValue.concat(sourceValue)
+            target[key] = targetValue.concat(sourceValue)
         } else if (isObject(targetValue) && isObject(sourceValue)) {
-            _target[key] = mergeDeep(targetValue, sourceValue)
+            target[key] = mergeDeep(targetValue, sourceValue)
         } else {
-            _target[key] = sourceValue
+            target[key] = sourceValue
         }
     })
 
-    return _target
+    return target
 }

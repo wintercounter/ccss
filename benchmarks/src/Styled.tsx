@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/macro'
 import { position, space, layout, color, compose } from 'styled-system'
 import { UiBox } from 'dh-react-ui'
 import Benchmarked from './Benchmarked'
-import generate from '../../dist'
+import generate, { ICCSSProps } from '../../dist'
 
 const simple = styled.div`
     color: ${({ color }) => color};
 `
 
-const simpleCCSS = styled.div(props => {
+const simpleCCSS: FC<ICCSSProps> = styled.div(props => {
+    return generate(props)
+})
+
+const SimpleCCSS: FC<ICCSSProps> = styled.div(props => {
     return generate(props)
 })
 
@@ -34,6 +38,7 @@ const advancedSS = styled.div(compose(space, layout, color, position))
 const Styled = () => {
     return (
         <>
+            <SimpleCCSS m={} />
             <div
                 style={{
                     display: 'flex'

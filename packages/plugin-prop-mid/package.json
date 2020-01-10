@@ -1,0 +1,22 @@
+{
+    "name": "@crypric-css/plugin-prop-mid",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-prop-mid#readme",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    }
+}
