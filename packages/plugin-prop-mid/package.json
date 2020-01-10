@@ -18,5 +18,8 @@
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "dependencies": {
+        "@cryptic-css/core": "^0.0.0"
     }
 }
