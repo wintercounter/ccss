@@ -10,6 +10,24 @@
 
 This a work in progress project. Not even the npm packages working :)
 
+## Table of contents
+
+-   [Install](#install)
+-   [Usage](#usage)
+-   [API Docs](#api-docs)
+-   [Why?](#why-)
+-   [Possible benefits](#possible-benefits)
+-   [Examples](#examples)
+    -   [Styled-components](#styled-components)
+-   [Mission](#mission)
+-   [FAQ](#faq)
+    -   [Why Cryptic?](#why-cryptic-)
+    -   [What is the approach?](#what-is-the-approach-)
+    -   [How about performance?](#how-about-performance-)
+    -   [How big the size saving is?](#how-big-the-size-saving-is-)
+    -   [Won't be this hard to understand?](#won-t-be-this-hard-to-understand-)
+    -   [Why just not use `styled-system`?](#why-just-not-use--styled-system--)
+
 ## Install
 
 ```sh
