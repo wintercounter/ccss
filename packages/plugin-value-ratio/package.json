@@ -25,8 +25,5 @@
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
-    },
-    "dependencies": {
-        "@w11r/use-breakpoint": "^1.2.0"
     }
 }

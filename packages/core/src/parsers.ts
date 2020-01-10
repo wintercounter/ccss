@@ -4,10 +4,9 @@ import ccss from './ccss'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
-export const isRatio = (r: string) => typeof r === 'string' && r.indexOf(':') > -1
-
 const _evaluateCSSProp = (prop, value, transformer?) =>
     value === undefined ? '' : `${prop}: ${transformer ? transformer(value, prop) : value};`
+
 export const evaluateCSSProp =
     process.env.NODE_ENV === 'production'
         ? _evaluateCSSProp
@@ -22,42 +21,32 @@ export const evaluateCSSProp =
               return _evaluateCSSProp(...args)
           }
 
-const ratioCache = new Map()
-export const getRatioPercent = ratio => {
-    if (!ratioCache.has(ratio)) {
-        const [x, y] = ratio.split(':')
-        ratioCache.set(ratio, `${y / (x / 100)}%`)
-    }
-    return ratioCache.get(ratio)
-}
-
-export const parseSingle = (input, o, gutter = false) => {
+export const parseSingle = input => {
     switch (typeof input) {
-        case 'string':
-            return isRatio(input) ? getRatioPercent(input) : input
         case 'number':
-            return input === 0 ? 0 : context.valueTransformer(gutter ? input * context.gutter : input)
-        case 'boolean':
-            return context.valueTransformer(context.gutter)
+            return input === 0 ? 0 : context.valueTransformer(input)
+        case 'string':
+        default:
+            return input
     }
 }
 
-const applyArray = (input, o) => {
+const applyArray = input => {
     let out = ''
     for (const i of input) {
-        out += `${parseSingle(i, o, true)} `
+        out += `${parseSingle(i)} `
     }
     return out
 }
 
-export const parseMultipart = (v, o) => {
+export const parseArray = input => {
     switch (true) {
-        case Array.isArray(v):
-            return applyArray(v, o)
-        case v:
-            return applyArray([1], o)
+        case Array.isArray(input):
+            return applyArray(input)
+        case input:
+            return applyArray([1])
         default:
-            return parseSingle(v, o)
+            return parseSingle(input)
     }
 }
 

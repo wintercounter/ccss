@@ -1,4 +1,4 @@
-import { pipe, mapValue, parseMultipart, parseSingle, evaluateCSSProp, child, noop } from './parsers'
+import { pipe, mapValue, parseArray, parseSingle, evaluateCSSProp, child, noop } from './parsers'
 import ICCSSProps from './types'
 
 /* develblock:start */
@@ -131,18 +131,18 @@ const props: ICCSSProps = {
     listST: v => evaluateCSSProp('list-style-type', v, mapValue),
 
     // Margin
-    m: v => evaluateCSSProp('margin', v, parseMultipart),
-    mt: v => evaluateCSSProp('margin-top', v, parseMultipart),
-    mr: v => evaluateCSSProp('margin-right', v, parseMultipart),
-    mb: v => evaluateCSSProp('margin-bottom', v, parseMultipart),
-    ml: v => evaluateCSSProp('margin-left', v, parseMultipart),
+    m: v => evaluateCSSProp('margin', v, parseArray),
+    mt: v => evaluateCSSProp('margin-top', v, parseArray),
+    mr: v => evaluateCSSProp('margin-right', v, parseArray),
+    mb: v => evaluateCSSProp('margin-bottom', v, parseArray),
+    ml: v => evaluateCSSProp('margin-left', v, parseArray),
 
     // Padding
-    p: v => evaluateCSSProp('padding', v, parseMultipart),
-    pt: v => evaluateCSSProp('padding-top', v, parseMultipart),
-    pr: v => evaluateCSSProp('padding-right', v, parseMultipart),
-    pb: v => evaluateCSSProp('padding-bottom', v, parseMultipart),
-    pl: v => evaluateCSSProp('padding-left', v, parseMultipart),
+    p: v => evaluateCSSProp('padding', v, parseArray),
+    pt: v => evaluateCSSProp('padding-top', v, parseArray),
+    pr: v => evaluateCSSProp('padding-right', v, parseArray),
+    pb: v => evaluateCSSProp('padding-bottom', v, parseArray),
+    pl: v => evaluateCSSProp('padding-left', v, parseArray),
 
     // Background
     bg: v => evaluateCSSProp('background', v, mapValue),
@@ -172,17 +172,17 @@ const props: ICCSSProps = {
     gar: v => evaluateCSSProp('grid-auto-row', v),
     gc: v => evaluateCSSProp('grid-column', v),
     gce: v => evaluateCSSProp('grid-column-end', v),
-    gcg: v => evaluateCSSProp('grid-column-gap', v, parseMultipart),
+    gcg: v => evaluateCSSProp('grid-column-gap', v, parseArray),
     gcs: v => evaluateCSSProp('grid-column-start', v),
-    gg: v => evaluateCSSProp('grid-gap', v, parseMultipart),
+    gg: v => evaluateCSSProp('grid-gap', v, parseArray),
     gr: v => evaluateCSSProp('grid-row', v),
     gre: v => evaluateCSSProp('grid-row-end', v),
-    grg: v => evaluateCSSProp('grid-row-gap', v, parseMultipart),
+    grg: v => evaluateCSSProp('grid-row-gap', v, parseArray),
     grs: v => evaluateCSSProp('grid-row-start', v),
     gt: v => evaluateCSSProp('grid-template', v),
     gta: v => evaluateCSSProp('grid-template-areas', v),
-    gtc: v => evaluateCSSProp('grid-template-columns', v, parseMultipart),
-    gtr: v => evaluateCSSProp('grid-template-rows', v, parseMultipart),
+    gtc: v => evaluateCSSProp('grid-template-columns', v, parseArray),
+    gtr: v => evaluateCSSProp('grid-template-rows', v, parseArray),
 
     // Border
     b: v => evaluateCSSProp('border', v),
