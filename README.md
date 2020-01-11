@@ -52,7 +52,7 @@ ccss({
 
 ## API Docs
 
-For more details on usage and setup, please read our [API docs](./API.md).
+For more details on usage and setup, please read our [Core documentation](./packages/core/README.md).
 
 ## Why?
 
@@ -70,6 +70,7 @@ One main component was such:
 const UiBox = styled.div`
     display: flex;
     ${({ width }) => width && 'width: ${width}rem;'}
+`
 ```
 
 Of course our component had much more dynamic props and it had a lot of
