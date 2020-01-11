@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/plugin-gutter",
+    "name": "cryptic-css",
     "version": "0.0.1",
-    "description": "Adds support for margin, padding and grid-gap to automatically convert numbers to the multiple of gutter.",
+    "description": "A full version for CrypticCSS including all available official plugins, props and extensions.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-gutter#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "publishConfig": {
@@ -22,8 +22,14 @@
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
     },
-    "peerDependencies": {
-        "@cryptic-css/core": "^0.0.1"
+    "dependencies": {
+        "@cryptic-css/core": "^0.0.1",
+        "@cryptic-css/plugin-gutter": "^0.0.1",
+        "@cryptic-css/plugin-ratio": "^0.0.1",
+        "@cryptic-css/plugin-grid": "^0.0.1",
+        "@cryptic-css/prop-mid": "^0.0.1",
+        "@cryptic-css/prop-mq": "^0.0.1",
+        "@cryptic-css/prop-scroll": "^0.0.1"
     },
     "devDependencies": {
         "@cryptic-css/core": "^0.0.1"

@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/plugin-gutter",
+    "name": "@cryptic-css/prop-scroll",
     "version": "0.0.1",
-    "description": "Adds support for margin, padding and grid-gap to automatically convert numbers to the multiple of gutter.",
+    "description": "Add support for the `scroll` prop to easily create horizontal/vertical/both scrollable elements.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-gutter#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "publishConfig": {

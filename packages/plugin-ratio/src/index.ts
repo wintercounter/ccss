@@ -7,11 +7,11 @@ export const getRatioPercent = ratio => {
     if (ratioCache[ratio] !== undefined) {
         return ratioCache[ratio]
     }
-    const [x, y] = ratio
+    const [x, y] = ratio.split(':')
     return (ratioCache[ratio] = `${y / (x / 100)}%`)
 }
 
-const ratio = input => (isRatio(input) ? getRatioPercent(input) : input)
+const ratio = input => (Array.isArray(input) ? input.map(ratio) : isRatio(input) ? getRatioPercent(input) : input)
 
 setProps({
     p: pipe(ratio, props.p),

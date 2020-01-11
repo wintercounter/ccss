@@ -163,7 +163,7 @@ term. We want to:
 -   Add CCSS support to 3rd party design systems, CSS solutions.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
-what the community builds up here. 😉
+what the community is building up here. 😉
 
 ## FAQ
 
@@ -200,7 +200,7 @@ possible.
 We do not have any case studies in practice. Due to the fact the CCSS
 also requires some extra code, you first need to reach the point where
 `your CCSS + compiler = original CSS`. The savings result should be
-60-70% approx. This is fairly easy to reach as the compiler itself
+50-60% approx. This is fairly easy to reach as the compiler itself
 is small.
 
 We were already running a highly dynamic system using values from props,

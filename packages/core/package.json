@@ -1,18 +1,11 @@
 {
     "name": "@cryptic-css/core",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "> TODO: description",
-    "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
+    "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
     "license": "MIT",
     "main": "dist/index.js",
-    "directories": {
-        "lib": "lib",
-        "test": "__tests__"
-    },
-    "files": [
-        "lib"
-    ],
     "publishConfig": {
         "access": "public"
     },
@@ -22,7 +15,9 @@
     },
     "scripts": {
         "test": "mhy jest",
-        "test:watch": "mhy jest --watchAll"
+        "test:watch": "mhy jest --watchAll",
+        "build": "mhy bb --mhy-env=prod",
+        "config": "mhy config typescript -io"
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"

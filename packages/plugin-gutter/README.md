@@ -1,11 +1,11 @@
-# `@crypric-css/value-ratio`
+# `@cryptic-css/value-ratio`
 
 > TODO: description
 
 ## Usage
 
 ```
-const valueRatio = require('@crypric-css/value-ratio');
+const valueRatio = require('@cryptic-css/value-ratio');
 
 // TODO: DEMONSTRATE API
 ```

@@ -6,7 +6,8 @@
     "scripts": {
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
-        "config": "mhy config eslint prettier"
+        "build": "mhy bb --mhy-env=prod",
+        "config": "mhy config eslint prettier -io && lerna run config"
     },
     "repository": {
         "type": "git",
@@ -18,14 +19,9 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "homepage": "https://github.com/wintercounter/ccss#readme",
-    "peerDependencies": {
-        "@w11r/use-breakpoint": "^1.2.0"
-    },
     "devDependencies": {
         "@types/react": "^16.9.17",
-        "lerna": "^3.18.4"
-    },
-    "dependencies": {
+        "lerna": "^3.18.5",
         "@lerna/link": "^3.18.5"
     }
 }

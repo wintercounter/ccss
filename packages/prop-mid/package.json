@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/plugin-gutter",
+    "name": "@cryptic-css/prop-mid",
     "version": "0.0.1",
-    "description": "Adds support for margin, padding and grid-gap to automatically convert numbers to the multiple of gutter.",
+    "description": "Adds support for the `mid` prop to add styles for centering element on the middle using the classic `top/left 50% + translate -50%` trick.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-gutter#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "publishConfig": {

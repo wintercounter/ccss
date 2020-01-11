@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/plugin-gutter",
+    "name": "@cryptic-css/prop-mq",
     "version": "0.0.1",
-    "description": "Adds support for margin, padding and grid-gap to automatically convert numbers to the multiple of gutter.",
+    "description": "Adds support for the `mq` prop to write media queries using `@w11r/use-breakpoint`.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-gutter#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mq#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "publishConfig": {
@@ -23,7 +23,8 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^0.0.1"
+        "@cryptic-css/core": "^0.0.1",
+        "@w11r/use-breakpoint": "^1.2.0"
     },
     "devDependencies": {
         "@cryptic-css/core": "^0.0.1"

@@ -21,4 +21,4 @@ export const setOptions = (c: IOptions) => {
     mergeDeep(options, c)
 }
 
-export default 
+export default options

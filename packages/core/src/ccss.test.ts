@@ -23,9 +23,6 @@ describe('ccss tests', () => {
             expect(ccss({ m: [1, 2, 3, 4] })).toBe('margin: 1rem 2rem 3rem 4rem ;')
             expect(ccss({ m: [1, '1:3'] })).toBe('margin: 1rem 1:3 ;')
             expect(ccss({ m: 10 })).toBe('margin: 10rem;')
-            expect(ccss({ m: '1:2' })).toBe('margin: 1:2;')
-            expect(ccss({ m: ['1:2'] })).toBe('margin: 1:2 ;')
-            expect(ccss({ mt: '1:2' })).toBe('margin-top: 1:2;')
         })
         it('pipe', () => {
             expect(ccss({ r: 'global' })).toBe('border-radius: 6rem;')
