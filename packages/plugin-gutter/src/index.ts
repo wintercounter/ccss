@@ -1,9 +1,9 @@
-import { setProps, props, pipe, context } from '@cryptic-css/core'
+import { setProps, props, pipe, options } from '@cryptic-css/core'
 
 const DEFAULT = 16
 
 const gutter = input => {
-    const g = context.gutter || DEFAULT
+    const g = options.gutter || DEFAULT
     switch (true) {
         case Array.isArray(input):
             return input.map(gutter)

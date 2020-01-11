@@ -1,6 +1,6 @@
 export { default } from './ccss'
 export { default as props, setProps } from './props'
-export { default as context, setContext } from './context'
+export { default as options, setOptions } from './options'
 export { valueMap, pseudoMap, setValueMap, setPseudoMap } from './maps'
 export { pipe } from './parsers'
 export { default as ICCSSProps } from './types'

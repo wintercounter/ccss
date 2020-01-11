@@ -1,4 +1,4 @@
-import context from './context'
+import options from './options'
 import { valueMap, pseudoMap } from './maps'
 import ccss from './ccss'
 
@@ -24,7 +24,7 @@ export const evaluateCSSProp =
 export const parseSingle = input => {
     switch (typeof input) {
         case 'number':
-            return input === 0 ? 0 : context.valueTransformer(input)
+            return input === 0 ? 0 : options.valueTransformer(input)
         case 'string':
         default:
             return input
