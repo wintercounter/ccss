@@ -34,6 +34,12 @@ This a work in progress project. Not even the npm packages working :)
 npm i @cyptic-css/core
 ```
 
+To install core including all official extras:
+
+```sh
+npm i cyptic-css
+```
+
 ## Usage
 
 ```js
@@ -50,7 +56,7 @@ ccss({
  */
 ```
 
-## API Docs
+## API Docs (core)
 
 For more details on usage and setup, please read our [Core documentation](./packages/core/README.md).
 
@@ -118,15 +124,15 @@ regular CSS.
 
 ## Examples
 
-There are already multiple ways to utilize CCSS in your codebase,
-however currently only CSS-in-JS solutions are being covered. Here are
-a few ways you can use **CCSS**:
+There are already multiple ways to utilize **CCSS** in your codebase,
+however currently only CSS-in-JS solutions are being covered. Please
+note you can also use `emotion`
 
-### Styled-components
-
-import ccss from '@cryptic-css/core'
+### Styled-components + JSX
 
 ```jsx
+import ccss from '@cryptic-css/core'
+
 // Use this component instead of divs everywhere from now on.
 const View = styled.div(ccss)
 
@@ -150,6 +156,24 @@ The code above would generate the following CSS for the `View` component:
 
 A `44%` typing and code reduction.
 
+### Styled-components only
+
+```jsx
+import ccss from '@cryptic-css/core'
+
+const MyDiv = styled.div(ccss({
+    d: 'b',
+    v: 'h'
+}))
+
+const MyCmp = () => (
+    <MyDiv>
+        Hello world!
+    </MyDiv>
+)
+```
+
+
 ## Mission
 
 There are multiple goals we're trying to achieve, both short and long
@@ -158,9 +182,9 @@ term. We want to:
 -   Introduce the concept and get it validated by the community,
     and provide tools for different use cases.
 -   Provide tools later to transform classic CSS
-    strings/objects to CCSS automatically for production builds: a Babel
+    strings/objects to **CCSS** automatically for production builds: a Babel
     Plugin and Webpack Loader for sure.
--   Add CCSS support to 3rd party design systems, CSS solutions.
+-   Add **CCSS** support to 3rd party design systems, CSS solutions.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
 what the community is building up here. 😉
@@ -197,14 +221,15 @@ possible.
 
 ### How big the size saving is?
 
-We do not have any case studies in practice. Due to the fact the CCSS
+We do not have any case studies in practice. Due to the fact the **CCSS**
 also requires some extra code, you first need to reach the point where
-`your CCSS + compiler = original CSS`. The savings result should be
-50-60% approx. This is fairly easy to reach as the compiler itself
-is small.
+`your CCSS + compiler = original CSS`. This is fairly easy to reach as
+the compiler itself is small.
+
+The savings should be _40-60%_ approx.
 
 We were already running a highly dynamic system using values from props,
-**CCSS** does not different in such regards.
+**CCSS** does not different in such regards from any similar solutions.
 
 ### Won't be this hard to understand?
 
@@ -217,7 +242,7 @@ You'll have nice auto-complete and a list of possible options.
 
 It's not our goal to provide a tool to implement design systems nor
 giving such amount of features `styled-system` does. However, the mapping
-approach used by CCSS is making the compiler capable of supporting
+approach used by **CCSS** is making the compiler capable of supporting
 custom properties and custom values. For example, it's easy to define
 such:
 
@@ -233,3 +258,16 @@ ccss({
  * font-size: 32em;
  */
 ```
+
+### What is the difference between plugins, extensions and props?
+
+- **Plugins**: Manipulating values on existing props.
+- **Extensions**: Extending the core with new features.
+- **Props**: Adding support for new custom props.
+
+## Contribution
+
+**CCSS** is trying to be a community effort, we're open to any suggestions.
+However we also sacrificed some features already for the sake of performance
+and simplicity. We are having strict "rules" of what can be added. For most
+cases plugins, extensions and custom props should be enough.

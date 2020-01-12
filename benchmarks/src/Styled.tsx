@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/macro'
 import { position, space, layout, color, compose } from 'styled-system'
-import { UiBox } from 'dh-react-ui'
 import Benchmarked from './Benchmarked'
 import generate, { ICCSSProps } from '../../dist'
 
@@ -59,7 +58,6 @@ const Styled = () => {
                     component={simpleSS}
                     componentProps={{ color: 'transparent' }}
                 />
-                <Benchmarked title="dh-react-ui (simple)" component={UiBox} componentProps={{ color: 'transparent' }} />
             </div>
             <div
                 style={{
@@ -110,18 +108,6 @@ const Styled = () => {
                         right: 1,
                         bottom: 1,
                         left: 1
-                    }}
-                />
-                <Benchmarked
-                    title="dh-react-ui (advanced)"
-                    component={UiBox}
-                    componentProps={{
-                        color: 'transparent',
-                        width: '100%',
-                        height: '100%',
-                        display: 'block',
-                        position: 'absolute',
-                        pad: [1, 2, 3, 4]
                     }}
                 />
             </div>
