@@ -1,5 +1,5 @@
-/dist
-/build
+dist
+build
 logs
 *.log
 npm-debug.log*

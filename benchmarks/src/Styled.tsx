@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/macro'
 import { position, space, layout, color, compose } from 'styled-system'
-import { UiBox } from 'dh-react-ui'
 import Benchmarked from './Benchmarked'
-import generate from '../../dist'
+import generate, { ICCSSProps } from '../../dist'
 
 const simple = styled.div`
     color: ${({ color }) => color};
 `
 
-const simpleCCSS = styled.div(props => {
+const simpleCCSS: FC<ICCSSProps> = styled.div(props => {
+    return generate(props)
+})
+
+const SimpleCCSS: FC<ICCSSProps> = styled.div(props => {
     return generate(props)
 })
 
@@ -34,6 +37,7 @@ const advancedSS = styled.div(compose(space, layout, color, position))
 const Styled = () => {
     return (
         <>
+            <SimpleCCSS m={} />
             <div
                 style={{
                     display: 'flex'
@@ -54,7 +58,6 @@ const Styled = () => {
                     component={simpleSS}
                     componentProps={{ color: 'transparent' }}
                 />
-                <Benchmarked title="dh-react-ui (simple)" component={UiBox} componentProps={{ color: 'transparent' }} />
             </div>
             <div
                 style={{
@@ -105,18 +108,6 @@ const Styled = () => {
                         right: 1,
                         bottom: 1,
                         left: 1
-                    }}
-                />
-                <Benchmarked
-                    title="dh-react-ui (advanced)"
-                    component={UiBox}
-                    componentProps={{
-                        color: 'transparent',
-                        width: '100%',
-                        height: '100%',
-                        display: 'block',
-                        position: 'absolute',
-                        pad: [1, 2, 3, 4]
                     }}
                 />
             </div>

@@ -1,0 +1,32 @@
+{
+    "name": "@cryptic-css/prop-mq",
+    "version": "0.0.1",
+    "description": "Adds support for the `mq` prop to write media queries using `@w11r/use-breakpoint`.",
+    "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mq#readme",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy jest",
+        "test:watch": "mhy jest --watchAll",
+        "build": "mhy bb --mhy-env=prod",
+        "config": "mhy config typescript -io"
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "peerDependencies": {
+        "@cryptic-css/core": "^0.0.1",
+        "@w11r/use-breakpoint": "^1.2.0"
+    },
+    "devDependencies": {
+        "@cryptic-css/core": "^0.0.1"
+    }
+}

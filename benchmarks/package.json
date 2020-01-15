@@ -5,7 +5,8 @@
     "main": "build/index.js",
     "scripts": {
         "test": "mhy jest",
-        "start": "mhy wds"
+        "start": "mhy wds",
+        "config": "mhy config typescript -io"
     },
     "author": "",
     "license": "MIT",
