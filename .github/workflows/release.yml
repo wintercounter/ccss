@@ -1,37 +1,40 @@
 name: Releasing Node App
 on:
-  push:
-    branches: 
-      - master
+    push:
+        branches:
+            - master
 #   WHEN WORKING FINE, CHECK AND FIX/UNCOMMENT LINES BELOW
 # on:
 #   create:
 #     tags:
 #       - v*
 jobs:
-  test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: [11, 12, 13]
-        os: [ubuntu-latest, macOS-latest]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node_version }}
-    
-      - name: install mhy and lerna globally
-        run: npm i -g mhy@latest lerna@latest
+    test:
+        name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                node_version: [11, 12, 13]
+                os: [ubuntu-latest, macOS-latest, windows-latest]
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node_version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node_version }}
 
-      - name: npm install, build and test
-        if: success()
-        run: |
-          lerna bootstrap
-          lerna run test
-          lerna run build
+            - name: install mhy and lerna globally
+              run: npm i -g mhy@latest lerna@latest
+
+            - name: npm install, build and test
+              if: success()
+              run: |
+                  npm install
+                  lerna bootstrap
+                  lerna exec npm i
+                  lerna run build
+                  lerna run test
+
 #
 #   WHEN THE ABOVE PART IS DONE, CHECK AND FIX/UNCOMMENT LINES BELOW
 #
