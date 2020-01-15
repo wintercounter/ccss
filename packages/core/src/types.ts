@@ -1564,7 +1564,7 @@ export default interface ICCSSProps {
     us?: TCSSSimplePropValue
     styleText?: (v: string) => string
     mid?: TCSSSimplePropValue
-    hScroll?: (i?: string, o: TNestedInput) => string
+    hScroll?: (i?: string, o?: TNestedInput) => string
     ps?: TCSSSimplePropValue
     mq?: TMediaQueryFunc
     theme?: TCSSSimplePropValue
