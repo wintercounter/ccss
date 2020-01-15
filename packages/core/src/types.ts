@@ -4,17 +4,8 @@ export type TCCSSCoreProp = {
 export type TNestedInput = { [key: string]: TNestedInput | string | number }
 export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
 export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
-export type TMediaQueryInput = [EBreakpoint | string, string][]
+export type TMediaQueryInput = [any | string, string][]
 export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
-
-export enum EBreakpoint {
-    MICRO = 'micro',
-    MOBILE = 'mobile',
-    TABLET = 'tablet',
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    LARGE = 'large'
-}
 
 export interface IOptions extends Partial<any> {
     unit: string
@@ -1563,10 +1554,6 @@ export default interface ICCSSProps {
      */
     us?: TCSSSimplePropValue
     styleText?: (v: string) => string
-    mid?: TCSSSimplePropValue
-    hScroll?: (i?: string, o?: TNestedInput) => string
-    ps?: TCSSSimplePropValue
-    mq?: TMediaQueryFunc
     theme?: TCSSSimplePropValue
     child?: TCSSSimplePropValue
 }
