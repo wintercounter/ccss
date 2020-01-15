@@ -1,13 +1,13 @@
 name: Releasing Node App
-on:
-    push:
-        branches:
-            - master
-#   WHEN WORKING FINE, CHECK AND FIX/UNCOMMENT LINES BELOW
+#   FOR TESTING PURPOSES ONLY
 # on:
-#   create:
-#     tags:
-#       - v*
+#     push:
+#         branches:
+#             - master
+on:
+    create:
+        tags:
+            - v*
 jobs:
     test:
         name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
@@ -34,30 +34,23 @@ jobs:
                   lerna exec npm i
                   lerna run build
                   lerna run test
+    release:
+        needs: test
+        name: Release on node ${{ matrix.node_version }} and ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                node_version: [12]
+                os: [ubuntu-latest]
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node_version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+                  registry-url: https://registry.npmjs.org/
 
-#
-#   WHEN THE ABOVE PART IS DONE, CHECK AND FIX/UNCOMMENT LINES BELOW
-#
-#   release:
-#     needs: test
-#     name: Release on node ${{ matrix.node_version }} and ${{ matrix.os }}
-#     runs-on: ${{ matrix.os }}
-#     strategy:
-#       matrix:
-#         node_version: [12]
-#         os: [ubuntu-latest]
-#     steps:
-#       - uses: actions/checkout@v1
-#       - name: Use Node.js ${{ matrix.node_version }}
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
-#           registry-url: https://registry.npmjs.org/
-
-#       - name: install mhy globally
-#         run: npm i -g mhy@latest
-
-#       - name: Publishing...
-#         run: npm publish
-#         env:
-#           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+            - name: Publishing...
+              run: lerna publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.npm_token}}
