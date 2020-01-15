@@ -1,6 +1,17 @@
 export type TNestedInput = { [key: string]: TNestedInput | string | number }
 export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
-export type TCSSSimplePropValue = <T>(v: T | TNestedInput) => T | string | undefined
+export type TCSSSimplePropValue = <T>(v?: T | TNestedInput) => T | string | undefined
+export type TMediaQueryInput = [EBreakpoint | string, string][]
+export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
+
+export enum EBreakpoint {
+    MICRO = 'micro',
+    MOBILE = 'mobile',
+    TABLET = 'tablet',
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large'
+}
 
 export interface IContext {
     unit: string
@@ -1549,10 +1560,10 @@ export default interface ICCSSProps {
      * ```
      */
     us?: TCSSSimplePropValue
-    styleText?: TCSSSimplePropValue
+    styleText?: <T>(v: T) => T
     mid?: TCSSSimplePropValue
-    hScroll?: TCSSSimplePropValue
+    hScroll?: (i?: string, o: TNestedInput) => string
     ps?: TCSSSimplePropValue
-    mq?: TCSSSimplePropValue
+    mq?: TMediaQueryFunc
     theme?: TCSSSimplePropValue
 }
