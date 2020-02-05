@@ -227,10 +227,10 @@ term. We want to:
 - Introduce the concept and get it validated by the community,
   and provide tools for different use cases.
 - Provide tools for wider **CCSS** support, regular CSS solutions:
-  -- `babel-plugin` to convert existing `styled-components` to shorthands for production codebase.
-  -- `webpack-loader` to add support for converting regular CSS to CCSS.
-  -- 3rd party CCSS support for `styled-components`, `emotion`, `styled-system` and others.
-  -- Ready to use design systems.
+  - `babel-plugin` to convert existing `styled-components` to shorthands for production codebase.
+  - `webpack-loader` to add support for converting regular CSS to CCSS.
+  - 3rd party CCSS support for `styled-components`, `emotion`, `styled-system` and others.
+  - Ready to use design systems.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
 what the community is building up here. 😉 It's relatively easy to implement
@@ -286,7 +286,7 @@ TypeScript definitions and TSDoc for all props to help your work.
 You'll have nice auto-complete and a list of possible options.
 
 You like the approach but want to use long names? Feel free to create
-your own `long-names-plugin` for example that add aliases.
+your own `long-names-plugin` for example that adds support for aliases.
 
 ### Why just not use `styled-system`?
 
