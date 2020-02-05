@@ -1,0 +1,56 @@
+name: Releasing Node App
+#   FOR TESTING PURPOSES ONLY
+# on:
+#     push:
+#         branches:
+#             - master
+on:
+    create:
+        tags:
+            - v*
+jobs:
+    test:
+        name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                node_version: [11, 12, 13]
+                os: [ubuntu-latest, macOS-latest]
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node_version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node_version }}
+
+            - name: install mhy and lerna globally
+              run: npm i -g mhy@latest lerna@latest
+
+            - name: npm install, build and test
+              if: success()
+              run: |
+                  npm install
+                  lerna bootstrap
+                  lerna exec npm i
+                  lerna run build
+                  lerna run test
+    release:
+        needs: test
+        name: Release on node ${{ matrix.node_version }} and ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                node_version: [12]
+                os: [ubuntu-latest]
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node_version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+                  registry-url: https://registry.npmjs.org/
+
+            - name: Publishing...
+              run: lerna publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.npm_token}}

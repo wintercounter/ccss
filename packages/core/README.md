@@ -1,11 +1,11 @@
-# `core`
+# `@cryptic-css/core`
 
 > TODO: description
 
 ## Usage
 
 ```
-const core = require('core');
+const core = require('@cryptic-css/core');
 
 // TODO: DEMONSTRATE API
 ```

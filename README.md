@@ -34,6 +34,12 @@ This a work in progress project. Not even the npm packages working :)
 npm i @cyptic-css/core
 ```
 
+To install core including all official extras:
+
+```sh
+npm i cyptic-css
+```
+
 ## Usage
 
 ```js
@@ -50,18 +56,18 @@ ccss({
  */
 ```
 
-## API Docs
+## API Docs (core)
 
-For more details on usage and setup, please read our [API docs](./API.md).
+For more details on usage and setup, please read our [Core documentation](./packages/core/README.md).
 
 ## Why?
 
-We are completely aware that it's not easy the justify the existance of
+We are completely aware that it's not easy to justify the existance of
 this solution. It is something that is hard to accept as a professional
 developer.
 
 On a project we started to heavily use a `Grommet` and `styled-system`
-inspired UI System. We ended up relying fully dynamic `styled-components`,
+inspired UI System. We ended up relying on fully dynamic `styled-components`,
 almost completely stopped writing CSS and custom `styled-components`.
 
 One main component was such:
@@ -70,11 +76,12 @@ One main component was such:
 const UiBox = styled.div`
     display: flex;
     ${({ width }) => width && 'width: ${width}rem;'}
+`
 ```
 
 Of course our component had much more dynamic props and it had a lot of
-custom functionality backed in. It's is really comfy and refreshing
-to use such approach, but Our React tree started to look as such
+custom functionality backed in. It's really comfy and refreshing
+to use such approach, but _Our_ React tree started to look as such
 while composing layouts:
 
 ```jsx
@@ -88,14 +95,14 @@ while composing layouts:
     background="dark-3"
     position="relative"
 >
-    <And more, and more />
+    {/* <And more, and more /> */}
 </UiBox>
 ```
 
 It started to look too much, too crowded, too cluttered. This what was
 giving the first glimpse of the idea, we started to joke about using
 letters instead. Actually, why not?! I started to create a sample
-solution and it actually felt good. It is not like using letters as
+solution and it actually felt good. It's not like using letters as
 variable names. It is almost completely the same flow as writing regular
 CSS using auto-complete:
 
@@ -117,15 +124,15 @@ regular CSS.
 
 ## Examples
 
-There are already multiple ways to utilize CCSS in your codebase,
-however currently only CSS-in-JS solutions are being covered. Here are
-a few ways you can use **CCSS**:
+There are already multiple ways to utilize **CCSS** in your codebase,
+however currently only CSS-in-JS solutions are being covered. Please
+note you can also use `emotion`
 
-### Styled-components
-
-import ccss from '@cryptic-css/core'
+### Styled-components + JSX
 
 ```jsx
+import ccss from '@cryptic-css/core'
+
 // Use this component instead of divs everywhere from now on.
 const View = styled.div(ccss)
 
@@ -136,28 +143,57 @@ const MyCmp = () => (
 )
 ```
 
+The code above would generate the following CSS for the `View` component:
+
+```css
+.View__BAgha78 {
+    width: 100px;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+}
+```
+
+A `44%` typing and code reduction.
+
+### Styled-components only
+
+```jsx
+import ccss from '@cryptic-css/core'
+
+const MyDiv = styled.div(ccss({
+    d: 'b',
+    v: 'h'
+}))
+
+const MyCmp = () => (
+    <MyDiv>
+        Hello world!
+    </MyDiv>
+)
+```
+
+
 ## Mission
 
 There are multiple goals we're trying to achieve, both short and long
-term.
+term. We want to:
 
-We want to introduce the concept and get it validated by the community,
-and provide tools for different use cases.
-
-We also want to provide tools later to transform classic CSS
-strings/objects to CCSS automatically for production builds: a Babel
-Plugin and Webpack Loader for sure.
-
-We want to add CCSS support to 3rd party design systems, CSS solutions.
+-   Introduce the concept and get it validated by the community,
+    and provide tools for different use cases.
+-   Provide tools later to transform classic CSS
+    strings/objects to **CCSS** automatically for production builds: a Babel
+    Plugin and Webpack Loader for sure.
+-   Add **CCSS** support to 3rd party design systems, CSS solutions.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
-what the community builds up here.
+what the community is building up here. 😉
 
 ## FAQ
 
 ### Why Cryptic?
 
-Because it is making your CSS/React components/etc. look really _Cryptic_.
+Because it's making your CSS/React components/etc. look really _Cryptic_.
 
 ```js
 ccss({
@@ -178,35 +214,36 @@ emit.
 
 Transforming the shorthands at runtime has performance costs, especially
 if your code is in a hot path (and usually with CSS-in-JS that's true
-for all CSS). However the hit is not more than using dynamic values
+for all CSS). However, the hit is not more than using dynamic values
 in `styled-components` or using `styled-system`. We were also very
 restrictive about the shipped features make the core as primitive as
 possible.
 
 ### How big the size saving is?
 
-We do not have any case studies in practice. Due to the fact the CCSS
+We do not have any case studies in practice. Due to the fact the **CCSS**
 also requires some extra code, you first need to reach the point where
-`your CCSS + compiler = original CSS`. After that the saving should be
-60-70% approx. This is fairly easy to reach as the compiler itself
-is small.
+`your CCSS + compiler = original CSS`. This is fairly easy to reach as
+the compiler itself is small.
+
+The savings should be _40-60%_ approx.
 
 We were already running a highly dynamic system using values from props,
-**CCSS** does not different in such regards.
+**CCSS** does not different in such regards from any similar solutions.
 
 ### Won't be this hard to understand?
 
 We think that you need relatively short time to get comfortable with it.
-However we also have a focus on developer experience. We're providing
+However, we also have a focus on developer experience. We're providing
 TypeScript definitions and TSDoc for all props to help your work.
 You'll have nice auto-complete and a list of possible options.
 
 ### Why just not use `styled-system`?
 
 It's not our goal to provide a tool to implement design systems nor
-giving such amount of features `styled-system` does. However the mapping
-approach used by CCSS is making the compiler capable of supporting
-custom properties and custom values. For example it's easy to define
+giving such amount of features `styled-system` does. However, the mapping
+approach used by **CCSS** is making the compiler capable of supporting
+custom properties and custom values. For example, it's easy to define
 such:
 
 ```js
@@ -221,3 +258,16 @@ ccss({
  * font-size: 32em;
  */
 ```
+
+### What is the difference between plugins, extensions and props?
+
+- **Plugins**: Manipulating values on existing props.
+- **Extensions**: Extending the core with new features.
+- **Props**: Adding support for new custom props.
+
+## Contribution
+
+**CCSS** is trying to be a community effort, we're open to any suggestions.
+However we also sacrificed some features already for the sake of performance
+and simplicity. We are having strict "rules" of what can be added. For most
+cases plugins, extensions and custom props should be enough.
