@@ -1,0 +1,30 @@
+{
+    "name": "@cryptic-css/core",
+    "version": "0.0.1",
+    "description": "> TODO: description",
+    "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy tsc && mhy jest",
+        "jest": "mhy jest",
+        "jest:watch": "mhy jest --watchAll",
+        "build": "mhy bb --mhy-prod",
+        "build:watch": "mhy bb --watch",
+        "config": "mhy config typescript -io",
+        "prop-doc": "mhy node scripts/propDoc",
+        "prop-doc:prod": "npm run prop-doc -- --mhy-env=prod"
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "devDependencies": {
+        "fetch-cheerio-object": "^1.3.0",
+        "turndown": "^5.0.3"
+    }
+}
