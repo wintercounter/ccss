@@ -1,41 +1,27 @@
-import { pipe, mapValue, parseArray, parseSingle, evaluateCSSProp, child, noop } from './parsers'
+import { pipe, mapValue, parseArray, parseSingle, evaluateCSSProp, child } from './parsers'
 import ICCSSProps from './types'
 
-/* develblock:start */
-const validateTime = (n, v) =>
-    v &&
-    !Number.isNaN(v) &&
-    !v.startsWith('var') &&
-    console.warn(`'${n}' with value '${v}' is a number. You didn't specify any unit like 's' or 'ms'.`)
+const IS_DEV = process.env.NODE_ENV !== 'production'
 
-const validatePureNumber = (n, v) =>
-    v &&
-    Number.isNaN(v) &&
-    console.warn(`'${n}' with value '${v}' is a not number. You should only use plain number without unit here.`)
-/* develblock:end */
+if (IS_DEV) {
+    var validateTime = (n, v) =>
+        v &&
+        !Number.isNaN(v) &&
+        !v.startsWith('var') &&
+        console.warn(`'${n}' with value '${v}' is a number. You didn't specify any unit like 's' or 'ms'.`)
+
+    var validatePureNumber = (n, v) =>
+        v &&
+        Number.isNaN(v) &&
+        console.warn(`'${n}' with value '${v}' is a not number. You should only use plain number without unit here.`)
+}
 
 const props: ICCSSProps = {
     // Animation + 3D
     a: v => evaluateCSSProp('animation', v),
-    ad: v =>
-        evaluateCSSProp(
-            'animation-delay',
-            v,
-            mapValue,
-            /* develblock:start */
-            validateTime
-            /* develblock:end */
-        ),
+    ad: v => evaluateCSSProp('animation-delay', v, mapValue, IS_DEV ? validateTime : undefined),
     aDir: v => evaluateCSSProp('animation-direction', v, mapValue),
-    aD: v =>
-        evaluateCSSProp(
-            'animation-duration',
-            v,
-            mapValue,
-            /* develblock:start */
-            validateTime
-            /* develblock:end */
-        ),
+    aD: v => evaluateCSSProp('animation-duration', v, mapValue, IS_DEV ? validateTime : undefined),
     afm: v => evaluateCSSProp('animation-fill-mode', v, mapValue),
     aic: v => evaluateCSSProp('animation-iteration-count', v),
     an: v => evaluateCSSProp('animation-name', v),
@@ -48,24 +34,8 @@ const props: ICCSSProps = {
     tfo: v => evaluateCSSProp('transform-origin', v),
     tfs: v => evaluateCSSProp('transform-style', v),
     tr: v => evaluateCSSProp('transition', v, mapValue),
-    trD: v =>
-        evaluateCSSProp(
-            'transition-delay',
-            v,
-            mapValue,
-            /* develblock:start */
-            validateTime
-            /* develblock:end */
-        ),
-    trd: v =>
-        evaluateCSSProp(
-            'transition-duration',
-            v,
-            mapValue,
-            /* develblock:start */
-            validateTime
-            /* develblock:end */
-        ),
+    trD: v => evaluateCSSProp('transition-delay', v, mapValue, IS_DEV ? validateTime : undefined),
+    trd: v => evaluateCSSProp('transition-duration', v, mapValue, IS_DEV ? validateTime : undefined),
     trp: v => evaluateCSSProp('transition-property', v),
     trt: v => evaluateCSSProp('transition-timing-function', v),
 
@@ -88,28 +58,12 @@ const props: ICCSSProps = {
     ftf: v => evaluateCSSProp('font-family', v, mapValue),
     ftk: v => evaluateCSSProp('font-kerning', v),
     fts: v => evaluateCSSProp('font-size', v, pipe(mapValue, parseSingle)),
-    ftStretch: v => evaluateCSSProp('font-stretch', v, mapValue),
-    ftStyle: v => evaluateCSSProp('font-style', v, mapValue),
+    ftStr: v => evaluateCSSProp('font-stretch', v, mapValue),
+    ftSty: v => evaluateCSSProp('font-style', v, mapValue),
     ftv: v => evaluateCSSProp('font-variant', v, mapValue),
     ftw: v => evaluateCSSProp('font-weight', v, mapValue),
-    ls: v =>
-        evaluateCSSProp(
-            'letter-spacing',
-            v,
-            /* develblock:start */
-            undefined,
-            validatePureNumber
-            /* develblock:end */
-        ),
-    lh: v =>
-        evaluateCSSProp(
-            'line-height',
-            v,
-            /* develblock:start */
-            undefined,
-            validatePureNumber
-            /* develblock:end */
-        ),
+    ls: v => evaluateCSSProp('letter-spacing', v, undefined, IS_DEV ? validatePureNumber : undefined),
+    lh: v => evaluateCSSProp('line-height', v, undefined, IS_DEV ? validatePureNumber : undefined),
 
     ta: v => evaluateCSSProp('text-align', v, mapValue),
     td: v => evaluateCSSProp('text-decoration', v, mapValue),
@@ -125,10 +79,10 @@ const props: ICCSSProps = {
     ww: v => evaluateCSSProp('word-wrap', v, mapValue),
 
     // List
-    listS: v => evaluateCSSProp('list-style', v, mapValue),
-    listSI: v => evaluateCSSProp('list-style-image', v),
-    listSP: v => evaluateCSSProp('list-style-position', v),
-    listST: v => evaluateCSSProp('list-style-type', v, mapValue),
+    lstS: v => evaluateCSSProp('list-style', v, mapValue),
+    lstSI: v => evaluateCSSProp('list-style-image', v),
+    lstSP: v => evaluateCSSProp('list-style-position', v),
+    lstST: v => evaluateCSSProp('list-style-type', v, mapValue),
 
     // Margin
     m: v => evaluateCSSProp('margin', v, parseArray),
@@ -169,7 +123,7 @@ const props: ICCSSProps = {
     ga: v => evaluateCSSProp('grid-area', v),
     gac: v => evaluateCSSProp('grid-auto-columns', v),
     gaf: v => evaluateCSSProp('grid-auto-flow', v),
-    gar: v => evaluateCSSProp('grid-auto-row', v),
+    gar: v => evaluateCSSProp('grid-auto-rows', v),
     gc: v => evaluateCSSProp('grid-column', v),
     gce: v => evaluateCSSProp('grid-column-end', v),
     gcg: v => evaluateCSSProp('grid-column-gap', v, parseArray),
@@ -221,7 +175,7 @@ const props: ICCSSProps = {
 
     // Clip
     clip: v => evaluateCSSProp('clip', v),
-    clipPath: v => evaluateCSSProp('clipPath', v),
+    clipPath: v => evaluateCSSProp('clip-path', v),
 
     // General
     d: v => evaluateCSSProp('display', v, mapValue),
@@ -274,10 +228,7 @@ const props: ICCSSProps = {
 
     // Customs
     styleText: i => i,
-    child,
-
-    // styled's theme prop, don't do anything with it
-    theme: noop
+    child
 }
 
 export const setProps = o => Object.assign(props, o)

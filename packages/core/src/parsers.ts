@@ -84,5 +84,3 @@ export const child = i => {
     }
     return generated
 }
-
-export const noop = () => ''

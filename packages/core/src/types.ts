@@ -14,1546 +14,1613 @@ export interface IOptions extends Partial<any> {
 
 export default interface ICCSSProps {
     /**
-     * animation
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
-     * @description
-     * The flex-wrap property specifies whether the flexible items should wrap or not.
-     *
-     * Note: If the elements are not flexible items, the flex-wrap property has no effect.
+     * @propDocStart
+     * {
+     *     prop: 'animation',
+     *     short: 'a'
+     * }
+     * @propDocEnd
      */
     a?: TCSSPropValue
     /**
-     * animation-delay
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-delay',
+     *     short: 'ad'
+     * }
+     * @propDocEnd
      */
     ad?: TCSSPropValue
     /**
-     * animation-direction
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-direction',
+     *     short: 'aDir'
+     * }
+     * @propDocEnd
      */
     aDir?: TCSSPropValue
     /**
-     * animation-duration
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-duration',
+     *     short: 'aD'
+     * }
+     * @propDocEnd
      */
     aD?: TCSSPropValue
     /**
-     * animation-fill-mode
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-fill-mode',
+     *     short: 'afm'
+     * }
+     * @propDocEnd
      */
     afm?: TCSSPropValue
     /**
-     * animation-iteration-count
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-iteration-count',
+     *     short: 'aic'
+     * }
+     * @propDocEnd
      */
     aic?: TCSSPropValue
     /**
-     * animation-name
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-name',
+     *     short: 'an'
+     * }
+     * @propDocEnd
      */
     an?: TCSSPropValue
     /**
-     * animation-play-state
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-play-state',
+     *     short: 'aps'
+     * }
+     * @propDocEnd
      */
     aps?: TCSSPropValue
     /**
-     * animation-timing-function
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'animation-timing-function',
+     *     short: 'ats'
+     * }
+     * @propDocEnd
      */
     ats?: TCSSPropValue
     /**
-     * backface-visibility
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'backface-visibility',
+     *     short: 'bv'
+     * }
+     * @propDocEnd
      */
     bv?: TCSSPropValue
     /**
-     * perspective
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'perspective',
+     *     short: 'per'
+     * }
+     * @propDocEnd
      */
     per?: TCSSPropValue
     /**
-     * perspective-origin
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'perspective-origin',
+     *     short: 'pero'
+     * }
+     * @propDocEnd
      */
     pero?: TCSSPropValue
     /**
-     * transform
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transform',
+     *     short: 'tf'
+     * }
+     * @propDocEnd
      */
     tf?: TCSSPropValue
     /**
-     * transform-origin
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transform-origin',
+     *     short: 'tfo'
+     * }
+     * @propDocEnd
      */
     tfo?: TCSSPropValue
     /**
-     * transform-style
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transform-style',
+     *     short: 'tfs'
+     * }
+     * @propDocEnd
      */
     tfs?: TCSSPropValue
     /**
-     * transition
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transition',
+     *     short: 'tr'
+     * }
+     * @propDocEnd
      */
     tr?: TCSSPropValue
     /**
-     * transition-delay
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transition-delay',
+     *     short: 'trD'
+     * }
+     * @propDocEnd
      */
     trD?: TCSSPropValue
     /**
-     * transition-duration
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transition-duration',
+     *     short: 'trd'
+     * }
+     * @propDocEnd
      */
     trd?: TCSSPropValue
     /**
-     * transition-property
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transition-property',
+     *     short: 'trp'
+     * }
+     * @propDocEnd
      */
     trp?: TCSSPropValue
     /**
-     * transition-timing-function
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'transition-timing-function',
+     *     short: 'trt'
+     * }
+     * @propDocEnd
      */
     trt?: TCSSPropValue
     /**
-     * flex-direction
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-direction',
+     *     short: 'fd'
+     * }
+     * @propDocEnd
      */
     fd?: TCSSPropValue
     /**
-     * flex-wrap
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-wrap',
+     *     short: 'fw'
+     * }
+     * @propDocEnd
      */
     fw?: TCSSPropValue
     /**
-     * flex-basis
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-basis',
+     *     short: 'fb'
+     * }
+     * @propDocEnd
      */
     fb?: TCSSPropValue
     /**
-     * flex-flow
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-flow',
+     *     short: 'ff'
+     * }
+     * @propDocEnd
      */
     ff?: TCSSPropValue
     /**
-     * flex-grow
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-grow',
+     *     short: 'fg'
+     * }
+     * @propDocEnd
      */
     fg?: TCSSPropValue
     /**
-     * flex-shrink
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'flex-shrink',
+     *     short: 'fs'
+     * }
+     * @propDocEnd
      */
     fs?: TCSSPropValue
     /**
-     * align-items
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'align-items',
+     *     short: 'ai'
+     * }
+     * @propDocEnd
      */
     ai?: TCSSPropValue
     /**
-     * align-content
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'align-content',
+     *     short: 'ac'
+     * }
+     * @propDocEnd
      */
     ac?: TCSSPropValue
     /**
-     * justify-items
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'justify-items',
+     *     short: 'ji'
+     * }
+     * @propDocEnd
      */
     ji?: TCSSPropValue
     /**
-     * justify-content
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'justify-content',
+     *     short: 'jc'
+     * }
+     * @propDocEnd
      */
     jc?: TCSSPropValue
     /**
-     * align-self
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'align-self',
+     *     short: 'aS'
+     * }
+     * @propDocEnd
      */
     aS?: TCSSPropValue
     /**
-     * justify-self
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'justify-self',
+     *     short: 'jS'
+     * }
+     * @propDocEnd
      */
     jS?: TCSSPropValue
     /**
-     * font
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font',
+     *     short: 'ft'
+     * }
+     * @propDocEnd
      */
     ft?: TCSSPropValue
     /**
-     * font-family
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-family',
+     *     short: 'ftf'
+     * }
+     * @propDocEnd
      */
     ftf?: TCSSPropValue
     /**
-     * font-kerning
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-kerning',
+     *     short: 'ftk'
+     * }
+     * @propDocEnd
      */
     ftk?: TCSSPropValue
     /**
-     * font-size
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-size',
+     *     short: 'fts'
+     * }
+     * @propDocEnd
      */
     fts?: TCSSPropValue
     /**
-     * font-stretch
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-stretch',
+     *     short: 'ftStr'
+     * }
+     * @propDocEnd
      */
-    ftStretch?: TCSSPropValue
+    ftStr?: TCSSPropValue
     /**
-     * font-style
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-style',
+     *     short: 'ftSty'
+     * }
+     * @propDocEnd
      */
-    ftStyle?: TCSSPropValue
+    ftSty?: TCSSPropValue
     /**
-     * font-variant
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-variant',
+     *     short: 'ftv'
+     * }
+     * @propDocEnd
      */
     ftv?: TCSSPropValue
     /**
-     * font-weight
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'font-weight',
+     *     short: 'ftw'
+     * }
+     * @propDocEnd
      */
     ftw?: TCSSPropValue
     /**
-     * letter-spacing
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'letter-spacing',
+     *     short: 'ls'
+     * }
+     * @propDocEnd
      */
     ls?: TCSSPropValue
     /**
-     * line-height
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'line-height',
+     *     short: 'lh'
+     * }
+     * @propDocEnd
      */
     lh?: TCSSPropValue
     /**
-     * text-align
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-align',
+     *     short: 'ta'
+     * }
+     * @propDocEnd
      */
     ta?: TCSSPropValue
     /**
-     * text-decoration
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-decoration',
+     *     short: 'td'
+     * }
+     * @propDocEnd
      */
     td?: TCSSPropValue
     /**
-     * text-indent
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-indent',
+     *     short: 'ti'
+     * }
+     * @propDocEnd
      */
     ti?: TCSSPropValue
     /**
-     * text-overflow
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-overflow',
+     *     short: 'to'
+     * }
+     * @propDocEnd
      */
     to?: TCSSPropValue
     /**
-     * text-shadow
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-shadow',
+     *     short: 'ts'
+     * }
+     * @propDocEnd
      */
     ts?: TCSSPropValue
     /**
-     * text-transform
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'text-transform',
+     *     short: 'tt'
+     * }
+     * @propDocEnd
      */
     tt?: TCSSPropValue
     /**
-     * vertical-align
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'vertical-align',
+     *     short: 'va'
+     * }
+     * @propDocEnd
      */
     va?: TCSSPropValue
     /**
-     * white-space
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'white-space',
+     *     short: 'ws'
+     * }
+     * @propDocEnd
      */
     ws?: TCSSPropValue
     /**
-     * word-break
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'word-break',
+     *     short: 'wb'
+     * }
+     * @propDocEnd
      */
     wb?: TCSSPropValue
     /**
-     * word-spacing
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'word-spacing',
+     *     short: 'wS'
+     * }
+     * @propDocEnd
      */
     wS?: TCSSPropValue
     /**
-     * word-wrap
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'word-wrap',
+     *     short: 'ww'
+     * }
+     * @propDocEnd
      */
     ww?: TCSSPropValue
     /**
-     * list-style
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'list-style',
+     *     short: 'lstS'
+     * }
+     * @propDocEnd
      */
-    listS?: TCSSPropValue
+    lstS?: TCSSPropValue
     /**
-     * list-style-image
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'list-style-image',
+     *     short: 'lstSI'
+     * }
+     * @propDocEnd
      */
-    listSI?: TCSSPropValue
+    lstSI?: TCSSPropValue
     /**
-     * list-style-position
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'list-style-position',
+     *     short: 'lstSP'
+     * }
+     * @propDocEnd
      */
-    listSP?: TCSSPropValue
+    lstSP?: TCSSPropValue
     /**
-     * list-style-type
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'list-style-type',
+     *     short: 'lstST'
+     * }
+     * @propDocEnd
      */
-    listST?: TCSSPropValue
+    lstST?: TCSSPropValue
     /**
-     * margin
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'margin',
+     *     short: 'm'
+     * }
+     * @propDocEnd
      */
     m?: TCSSPropValue
     /**
-     * margin-top
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'margin-top',
+     *     short: 'mt'
+     * }
+     * @propDocEnd
      */
     mt?: TCSSPropValue
     /**
-     * margin-right
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'margin-right',
+     *     short: 'mr'
+     * }
+     * @propDocEnd
      */
     mr?: TCSSPropValue
     /**
-     * margin-bottom
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'margin-bottom',
+     *     short: 'mb'
+     * }
+     * @propDocEnd
      */
     mb?: TCSSPropValue
     /**
-     * margin-left
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'margin-left',
+     *     short: 'ml'
+     * }
+     * @propDocEnd
      */
     ml?: TCSSPropValue
     /**
-     * padding
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'padding',
+     *     short: 'p'
+     * }
+     * @propDocEnd
      */
     p?: TCSSPropValue
     /**
-     * padding-top
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'padding-top',
+     *     short: 'pt'
+     * }
+     * @propDocEnd
      */
     pt?: TCSSPropValue
     /**
-     * padding-right
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'padding-right',
+     *     short: 'pr'
+     * }
+     * @propDocEnd
      */
     pr?: TCSSPropValue
     /**
-     * padding-bottom
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'padding-bottom',
+     *     short: 'pb'
+     * }
+     * @propDocEnd
      */
     pb?: TCSSPropValue
     /**
-     * padding-left
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'padding-left',
+     *     short: 'pl'
+     * }
+     * @propDocEnd
      */
     pl?: TCSSPropValue
     /**
-     * background
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background',
+     *     short: 'bg'
+     * }
+     * @propDocEnd
      */
     bg?: TCSSPropValue
     /**
-     * background-image
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-image',
+     *     short: 'bgi'
+     * }
+     * @propDocEnd
      */
     bgi?: TCSSPropValue
     /**
-     * background-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-color',
+     *     short: 'bgc'
+     * }
+     * @propDocEnd
      */
     bgc?: TCSSPropValue
     /**
-     * background-size
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-size',
+     *     short: 'bgs'
+     * }
+     * @propDocEnd
      */
     bgs?: TCSSPropValue
     /**
-     * background-repeat
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-repeat',
+     *     short: 'bgr'
+     * }
+     * @propDocEnd
      */
     bgr?: TCSSPropValue
     /**
-     * background-position
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-position',
+     *     short: 'bgp'
+     * }
+     * @propDocEnd
      */
     bgp?: TCSSPropValue
     /**
-     * background-attachment
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-attachment',
+     *     short: 'bga'
+     * }
+     * @propDocEnd
      */
     bga?: TCSSPropValue
     /**
-     * background-blend-mode
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-blend-mode',
+     *     short: 'bgbm'
+     * }
+     * @propDocEnd
      */
     bgbm?: TCSSPropValue
     /**
-     * background-clip
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-clip',
+     *     short: 'bgC'
+     * }
+     * @propDocEnd
      */
     bgC?: TCSSPropValue
     /**
-     * background-origin
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'background-origin',
+     *     short: 'bgo'
+     * }
+     * @propDocEnd
      */
     bgo?: TCSSPropValue
     /**
-     * width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'width',
+     *     short: 'w'
+     * }
+     * @propDocEnd
      */
     w?: TCSSPropValue
     /**
-     * height
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'height',
+     *     short: 'h'
+     * }
+     * @propDocEnd
      */
     h?: TCSSPropValue
     /**
-     * min-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'min-width',
+     *     short: 'minW'
+     * }
+     * @propDocEnd
      */
     minW?: TCSSPropValue
     /**
-     * min-height
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'min-height',
+     *     short: 'minH'
+     * }
+     * @propDocEnd
      */
     minH?: TCSSPropValue
     /**
-     * max-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'max-width',
+     *     short: 'maxW'
+     * }
+     * @propDocEnd
      */
     maxW?: TCSSPropValue
     /**
-     * max-height
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'max-height',
+     *     short: 'maxH'
+     * }
+     * @propDocEnd
      */
     maxH?: TCSSPropValue
     /**
-     * grid
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid',
+     *     short: 'g'
+     * }
+     * @propDocEnd
      */
     g?: TCSSPropValue
     /**
-     * grid-area
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-area',
+     *     short: 'a'
+     * }
+     * @propDocEnd
      */
     ga?: TCSSPropValue
     /**
-     * grid-auto-columns
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-auto-columns',
+     *     short: 'ga'
+     * }
+     * @propDocEnd
      */
     gac?: TCSSPropValue
     /**
-     * grid-auto-flow
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-auto-flow',
+     *     short: 'gaf'
+     * }
+     * @propDocEnd
      */
     gaf?: TCSSPropValue
     /**
-     * grid-auto-row
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-auto-rows',
+     *     short: 'gar'
+     * }
+     * @propDocEnd
      */
     gar?: TCSSPropValue
     /**
-     * grid-column
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-column',
+     *     short: 'gc'
+     * }
+     * @propDocEnd
      */
     gc?: TCSSPropValue
     /**
-     * grid-column-end
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-column-end',
+     *     short: 'gce'
+     * }
+     * @propDocEnd
      */
     gce?: TCSSPropValue
     /**
-     * grid-column-gap
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-column-gap',
+     *     short: 'gcg'
+     * }
+     * @propDocEnd
      */
     gcg?: TCSSPropValue
     /**
-     * grid-column-start
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-column-start',
+     *     short: 'gcs'
+     * }
+     * @propDocEnd
      */
     gcs?: TCSSPropValue
     /**
-     * grid-gap
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-gap',
+     *     short: 'gg'
+     * }
+     * @propDocEnd
      */
     gg?: TCSSPropValue
     /**
-     * grid-row
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-row',
+     *     short: 'gr'
+     * }
+     * @propDocEnd
      */
     gr?: TCSSPropValue
     /**
-     * grid-row-end
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-row-end',
+     *     short: 'gre'
+     * }
+     * @propDocEnd
      */
     gre?: TCSSPropValue
     /**
-     * grid-row-gap
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-row-gap',
+     *     short: 'grg'
+     * }
+     * @propDocEnd
      */
     grg?: TCSSPropValue
     /**
-     * grid-row-start
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-row-start',
+     *     short: 'grs'
+     * }
+     * @propDocEnd
      */
     grs?: TCSSPropValue
     /**
-     * grid-template
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-template',
+     *     short: 'gt'
+     * }
+     * @propDocEnd
      */
     gt?: TCSSPropValue
     /**
-     * grid-template-areas
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-template-areas',
+     *     short: 'gta'
+     * }
+     * @propDocEnd
      */
     gta?: TCSSPropValue
     /**
-     * grid-template-columns
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-template-columns',
+     *     short: 'gtc'
+     * }
+     * @propDocEnd
      */
     gtc?: TCSSPropValue
     /**
-     * grid-template-rows
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'grid-template-rows',
+     *     short: 'gtr'
+     * }
+     * @propDocEnd
      */
     gtr?: TCSSPropValue
     /**
-     * border
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border',
+     *     short: 'b'
+     * }
+     * @propDocEnd
      */
     b?: TCSSPropValue
     /**
-     * border-bottom
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom',
+     *     short: 'bb'
+     * }
+     * @propDocEnd
      */
     bb?: TCSSPropValue
     /**
-     * border-bottom-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom-color',
+     *     short: 'bbc'
+     * }
+     * @propDocEnd
      */
     bbc?: TCSSPropValue
     /**
-     * border-bottom-left-radius
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom-left-radius',
+     *     short: 'bblr'
+     * }
+     * @propDocEnd
      */
     bblr?: TCSSPropValue
     /**
-     * border-bottom-right-radius
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom-right-radius',
+     *     short: 'bbrr'
+     * }
+     * @propDocEnd
      */
     bbrr?: TCSSPropValue
     /**
-     * border-bottom-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom-style',
+     *     short: 'bbs'
+     * }
+     * @propDocEnd
      */
     bbs?: TCSSPropValue
     /**
-     * border-bottom-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-bottom-width',
+     *     short: 'bbw'
+     * }
+     * @propDocEnd
      */
     bbw?: TCSSPropValue
     /**
-     * border-collapse
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-collapse',
+     *     short: 'bC'
+     * }
+     * @propDocEnd
      */
     bC?: TCSSPropValue
     /**
-     * border-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-color',
+     *     short: 'bc'
+     * }
+     * @propDocEnd
      */
     bc?: TCSSPropValue
     /**
-     * border-image
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image',
+     *     short: 'bi'
+     * }
+     * @propDocEnd
      */
     bi?: TCSSPropValue
     /**
-     * border-image-outset
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image-outset',
+     *     short: 'bio'
+     * }
+     * @propDocEnd
      */
     bio?: TCSSPropValue
     /**
-     * border-image-repeat
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image-repeat',
+     *     short: 'bir'
+     * }
+     * @propDocEnd
      */
     bir?: TCSSPropValue
     /**
-     * border-image-slice
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image-slice',
+     *     short: 'bis'
+     * }
+     * @propDocEnd
      */
     bis?: TCSSPropValue
     /**
-     * border-image-source
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image-source',
+     *     short: 'biSrc'
+     * }
+     * @propDocEnd
      */
     biSrc?: TCSSPropValue
     /**
-     * border-image-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-image-width',
+     *     short: 'biw'
+     * }
+     * @propDocEnd
      */
     biw?: TCSSPropValue
     /**
-     * border-left
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-left',
+     *     short: 'bl'
+     * }
+     * @propDocEnd
      */
     bl?: TCSSPropValue
     /**
-     * border-left-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-left-color',
+     *     short: 'blc'
+     * }
+     * @propDocEnd
      */
     blc?: TCSSPropValue
     /**
-     * border-left-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-left-style',
+     *     short: 'bls'
+     * }
+     * @propDocEnd
      */
     bls?: TCSSPropValue
     /**
-     * border-left-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-left-width',
+     *     short: 'blw'
+     * }
+     * @propDocEnd
      */
     blw?: TCSSPropValue
     /**
-     * border-radius
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-radius',
+     *     short: 'r'
+     * }
+     * @propDocEnd
      */
     r?: TCSSPropValue
     /**
-     * border-right
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-right',
+     *     short: 'br'
+     * }
+     * @propDocEnd
      */
     br?: TCSSPropValue
     /**
-     * border-right-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-right-color',
+     *     short: 'brc'
+     * }
+     * @propDocEnd
      */
     brc?: TCSSPropValue
     /**
-     * border-right-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-right-style',
+     *     short: 'brs'
+     * }
+     * @propDocEnd
      */
     brs?: TCSSPropValue
     /**
-     * border-right-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-right-width',
+     *     short: 'brw'
+     * }
+     * @propDocEnd
      */
     brw?: TCSSPropValue
     /**
-     * border-spacing
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-spacing',
+     *     short: 'bs'
+     * }
+     * @propDocEnd
      */
     bs?: TCSSPropValue
     /**
-     * border-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-style',
+     *     short: 'bS'
+     * }
+     * @propDocEnd
      */
     bS?: TCSSPropValue
     /**
-     * border-top
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top',
+     *     short: 'bt'
+     * }
+     * @propDocEnd
      */
     bt?: TCSSPropValue
     /**
-     * border-top-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top-color',
+     *     short: 'btc'
+     * }
+     * @propDocEnd
      */
     btc?: TCSSPropValue
     /**
-     * border-top-left-radius
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top-left-radius',
+     *     short: 'btlr'
+     * }
+     * @propDocEnd
      */
     btlr?: TCSSPropValue
     /**
-     * border-top-right-radius
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top-right-radius',
+     *     short: 'btrr'
+     * }
+     * @propDocEnd
      */
     btrr?: TCSSPropValue
     /**
-     * border-top-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top-style',
+     *     short: 'bts'
+     * }
+     * @propDocEnd
      */
     bts?: TCSSPropValue
     /**
-     * border-top-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-top-width',
+     *     short: 'btw'
+     * }
+     * @propDocEnd
      */
     btw?: TCSSPropValue
     /**
-     * border-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'border-width',
+     *     short: 'bw'
+     * }
+     * @propDocEnd
      */
     bw?: TCSSPropValue
     /**
-     * clip
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'clip',
+     *     short: 'clip'
+     * }
+     * @propDocEnd
      */
     clip?: TCSSPropValue
     /**
-     * clipPath
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'clip-path',
+     *     short: 'clipPath'
+     * }
+     * @propDocEnd
      */
     clipPath?: TCSSPropValue
     /**
-     * display
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'display',
+     *     short: 'd'
+     * }
+     * @propDocEnd
      */
     d?: TCSSPropValue
     /**
-     * position
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'position',
+     *     short: 'pos'
+     * }
+     * @propDocEnd
      */
     pos?: TCSSPropValue
     /**
-     * top
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'top',
+     *     short: 'T'
+     * }
+     * @propDocEnd
      */
     T?: TCSSPropValue
     /**
-     * right
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'right',
+     *     short: 'R'
+     * }
+     * @propDocEnd
      */
     R?: TCSSPropValue
     /**
-     * bottom
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'bottom',
+     *     short: 'B'
+     * }
+     * @propDocEnd
      */
     B?: TCSSPropValue
     /**
-     * left
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'left',
+     *     short: 'L'
+     * }
+     * @propDocEnd
      */
     L?: TCSSPropValue
     /**
-     * z-index
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'z-index',
+     *     short: 'z'
+     * }
+     * @propDocEnd
      */
     z?: TCSSPropValue
     /**
-     * color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'color',
+     *     short: 'c'
+     * }
+     * @propDocEnd
      */
     c?: TCSSPropValue
     /**
-     * overflow
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'overflow',
+     *     short: 'o'
+     * }
+     * @propDocEnd
      */
     o?: TCSSPropValue
     /**
-     * overflow-x
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'overflow-x',
+     *     short: 'ox'
+     * }
+     * @propDocEnd
      */
     ox?: TCSSPropValue
     /**
-     * overflow-y
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'overflow-y',
+     *     short: 'oy'
+     * }
+     * @propDocEnd
      */
     oy?: TCSSPropValue
     /**
-     * float
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'float',
+     *     short: 'fl'
+     * }
+     * @propDocEnd
      */
     fl?: TCSSPropValue
     /**
-     * clear
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'clear',
+     *     short: 'clr'
+     * }
+     * @propDocEnd
      */
     clr?: TCSSPropValue
     /**
-     * visibility
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'visibility',
+     *     short: 'v'
+     * }
+     * @propDocEnd
      */
     v?: TCSSPropValue
     /**
-     * columns
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'columns',
+     *     short: 'col'
+     * }
+     * @propDocEnd
      */
     col?: TCSSPropValue
     /**
-     * column-count
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-count',
+     *     short: 'cc'
+     * }
+     * @propDocEnd
      */
     cc?: TCSSPropValue
     /**
-     * column-fill
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-fill',
+     *     short: 'cf'
+     * }
+     * @propDocEnd
      */
     cf?: TCSSPropValue
     /**
-     * column-gap
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-gap',
+     *     short: 'cg'
+     * }
+     * @propDocEnd
      */
     cg?: TCSSPropValue
     /**
-     * column-rule
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-rule',
+     *     short: 'cr'
+     * }
+     * @propDocEnd
      */
     cr?: TCSSPropValue
     /**
-     * column-rule-color
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-rule-color',
+     *     short: 'crc'
+     * }
+     * @propDocEnd
      */
     crc?: TCSSPropValue
     /**
-     * column-rule-style
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-rule-style',
+     *     short: 'crs'
+     * }
+     * @propDocEnd
      */
     crs?: TCSSPropValue
     /**
-     * column-rule-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-rule-width',
+     *     short: 'crw'
+     * }
+     * @propDocEnd
      */
     crw?: TCSSPropValue
     /**
-     * column-span
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-span',
+     *     short: 'cs'
+     * }
+     * @propDocEnd
      */
     cs?: TCSSPropValue
     /**
-     * column-width
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'column-width',
+     *     short: 'cw'
+     * }
+     * @propDocEnd
      */
     cw?: TCSSPropValue
     /**
-     * page-break-after
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'page-break-after',
+     *     short: 'pba'
+     * }
+     * @propDocEnd
      */
     pba?: TCSSPropValue
     /**
-     * page-break-before
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'page-break-before',
+     *     short: 'pbb'
+     * }
+     * @propDocEnd
      */
     pbb?: TCSSPropValue
     /**
-     * page-break-inside
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'page-break-inside',
+     *     short: 'pbi'
+     * }
+     * @propDocEnd
      */
     pbi?: TCSSPropValue
     /**
-     * box-shadow
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'box-shadow',
+     *     short: 'shadow'
+     * }
+     * @propDocEnd
      */
     shadow?: TCSSPropValue
     /**
-     * box-sizing
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'box-sizing',
+     *     short: 'sizing'
+     * }
+     * @propDocEnd
      */
     sizing?: TCSSPropValue
     /**
-     * object-fit
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'object-fit',
+     *     short: 'of'
+     * }
+     * @propDocEnd
      */
     of?: TCSSPropValue
     /**
-     * object-position
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'object-position',
+     *     short: 'oP'
+     * }
+     * @propDocEnd
      */
     oP?: TCSSPropValue
     /**
-     * opacity
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'opacity',
+     *     short: 'op'
+     * }
+     * @propDocEnd
      */
     op?: TCSSPropValue
     /**
-     * order
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'order',
+     *     short: 'or'
+     * }
+     * @propDocEnd
      */
     or?: TCSSPropValue
     /**
-     * outline
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'outline',
+     *     short: 'ol'
+     * }
+     * @propDocEnd
      */
     ol?: TCSSPropValue
     /**
-     * mix-blend-mode
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'mix-blend-mode',
+     *     short: 'mbm'
+     * }
+     * @propDocEnd
      */
     mbm?: TCSSPropValue
     /**
-     * content
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'content',
+     *     short: 'ct'
+     * }
+     * @propDocEnd
      */
     ct?: TCSSPropValue
     /**
-     * cursor
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'cursor',
+     *     short: 'cur'
+     * }
+     * @propDocEnd
      */
     cur?: TCSSPropValue
     /**
-     * pointer-events
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'pointer-events',
+     *     short: 'pe'
+     * }
+     * @propDocEnd
      */
     pe?: TCSSPropValue
     /**
-     * filter
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'filter',
+     *     short: 'fil'
+     * }
+     * @propDocEnd
      */
     fil?: TCSSPropValue
     /**
-     * scroll-behavior
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'scroll-behavior',
+     *     short: 'sb'
+     * }
+     * @propDocEnd
      */
     sb?: TCSSPropValue
     /**
-     * user-select
-     * @type TCSSPropValue (<T>(v: string, o: T) => string)
-     * @example
-     * ```js
-     * // TO BE DEFINED
-     * ```
+     * @propDocStart
+     * {
+     *     prop: 'user-select',
+     *     short: 'us'
+     * }
+     * @propDocEnd
      */
     us?: TCSSSimplePropValue
+    /**
+     * Define custom CSS text.
+     */
     styleText?: (v: string) => string
-    theme?: TCSSSimplePropValue
+    /**
+     * You can pass children to your ccss supporting both pseudo classes and nested selectors.
+     *
+     * @example
+     * ```js
+     * child({
+     *   h: { d: 'b' },
+     *   '.childDiv': { p: 10 }
+     * })
+     * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
+     * ```
+     */
     child?: TCSSSimplePropValue
 }
