@@ -85,26 +85,26 @@ For more details on usage and setup, please read our [Core documentation](./pack
     -   Faster development
     -   Less coding
     -   Detailed TypeScript types and TSDoc to help your work.
-    -   Benefits of similar utility first approaches.
+    -   Benefits of similar utility first approach.
     -   Easy setup and usage.
     -   Support development time validators to help your team use your system properly.
-    -   Deep and pseudo selector support.
+    -   Deep and pseudo-selector support.
 
 ### Cons
 
--   Looks and feels weird on first sight.
+-   Looks and feels weird at first sight.
 -   The learning curve isn't so small (I wouldn't say it's big either).
 -   Extra processing compared to static CSS files / non-dynamic `styled-components`.
 -   Size saving makes more sense on bigger projects.
 
 ### Some story
 
-We are completely aware that it's not easy to justify the existance of
+We are completely aware that it's not easy to justify the existence of
 this solution. It is something that is hard to accept as a professional
 developer because it feels it's against the principals you've learned
 so far.
 
-On a project we started to heavily use a `Grommet` and `styled-system`
+On a project, we started to heavily use a `Grommet` and `styled-system`
 inspired UI System. We ended up relying on fully dynamic `styled-components`,
 almost completely stopped writing CSS and custom `styled-components`.
 
@@ -154,7 +154,7 @@ and comfortable with them you can get even more efficient than writing
 regular CSS.
 
 > You don't necessarily need to write CSS such way. It's also a plan to provide
-> tools that helps you use CSS on your existing codebase for
+> tools that help you use CSS on your existing codebase for
 > production builds only for example.
 
 ## Examples
@@ -291,7 +291,7 @@ ccss({
 
 #### Number values
 
-Properties awaiting for numeric values with unit can accept
+Properties awaiting for numeric values with a unit can accept
 pure numbers for built-in automatic `unit` support.
 
 If not a number is given, the value will be used as-is.
@@ -307,7 +307,7 @@ ccss({
 #### Array values
 
 Shorthand properties awaiting numeric values with unit can
-accept array as an input.
+accept an array as an input.
 
 Example:
 
@@ -370,9 +370,9 @@ emit. Nothing exceptional.
 
 ### How about performance?
 
-Transforming at runtime have performance costs, especially
+Transforming at runtime has performance costs, especially
 if your code is in a hot path (and usually with CSS-in-JS that's true
-for all your styles). However the hit isn't more than using dynamic values
+for all your styles). However, the hit isn't more than using dynamic values
 in `styled-components` or using `styled-system`. We were also very
 restrictive about the shipped features to keep the core as primitive as
 possible.
@@ -391,10 +391,10 @@ We were already running a highly dynamic system using values from props,
 
 ### Won't be this hard to understand?
 
-We think that you need relatively short time to get comfortable with it.
-However we also have a focus on developer experience. We're providing
+We think that you need a relatively short time to get comfortable with it.
+However, we also have a focus on developer experience. We're providing
 TypeScript definitions and TSDoc for all props to help your work.
-You'll have nice auto-complete and a list of possible options.
+You'll have nice autocomplete and a list of possible options.
 
 You like the approach but want to use long names? Feel free to create
 your own `long-names-plugin` for example that adds support for aliases.
@@ -429,6 +429,6 @@ ccss({
 ## Contribution
 
 **CCSS** is trying to be a community effort, we're open to any suggestions.
-However we also sacrificed some features already for the sake of performance
+However, we also sacrificed some features already for the sake of performance
 and simplicity. We are having strict "rules" of what can be added. For most
 cases plugins, extensions and custom props should be enough.
