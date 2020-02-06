@@ -1,11 +1,14 @@
-# `@cryptic-css/value-ratio`
+# `@cryptic-css/prop-mid`
 
-> TODO: description
+> Add support for custom prop `mid` which will apply the common middle
+> positioning technique using `top/left: 50%` and `translate`.
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
+```js
+import ccss from 'cryptic-css'
 
-// TODO: DEMONSTRATE API
+ccss({
+    mid: true
+})
 ```

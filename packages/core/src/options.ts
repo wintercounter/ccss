@@ -3,7 +3,7 @@ import { IOptions } from './types'
 
 const options: IOptions = {
     unit: 'rem',
-    valueTransformer: n => `${n}${options.unit}`
+    applyUnit: n => `${n}${options.unit}`
 }
 
 /**
@@ -13,7 +13,7 @@ const options: IOptions = {
  * ```js
  * setOptions({
  *     unit: 'var(--custom)',
- *     valueTransformer: v => `calc(${v} * ${options.unit})`
+ *     applyUnit: v => `calc(${v} * ${options.unit})`
  * })
  * ```
  */

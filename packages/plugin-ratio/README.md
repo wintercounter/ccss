@@ -1,11 +1,25 @@
-# `@cryptic-css/value-ratio`
+# `@cryptic-css/plugin-ratio`
 
-> TODO: description
+> Adds support to use the "padding hack" for keeping aspect-ratios.
+
+## Supported props
+- p
+- pt
+- pr
+- pb
+- pl
+- m
+- mt
+- mr
+- mb
+- ml
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
+```js
+import ccss from 'cryptic-css'
 
-// TODO: DEMONSTRATE API
+ccss({
+    pt: '16:9'
+})
 ```

@@ -1,11 +1,7 @@
-# `@cryptic-css/value-ratio`
+# `cryptic-css`
 
-> TODO: description
+> A full version containing all available extra props and plugins.
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
-
-// TODO: DEMONSTRATE API
-```
+Use the same way as core.

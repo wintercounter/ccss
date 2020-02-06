@@ -9,7 +9,7 @@ export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
 
 export interface IOptions extends Partial<any> {
     unit: string
-    valueTransformer: (n: number) => string
+    applyUnit: (n: number) => string
 }
 
 export default interface ICCSSProps {

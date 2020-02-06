@@ -1,5 +1,6 @@
-import { pipe, mapValue, parseArray, parseSingle, evaluateCSSProp, child } from './parsers'
+import { pipe, mapValue, parseArray, parseSingle, evaluateCSSProp, child, parsePseudo } from './parsers'
 import ICCSSProps from './types'
+import { pseudoMap } from './maps'
 
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
@@ -86,17 +87,17 @@ const props: ICCSSProps = {
 
     // Margin
     m: v => evaluateCSSProp('margin', v, parseArray),
-    mt: v => evaluateCSSProp('margin-top', v, parseArray),
-    mr: v => evaluateCSSProp('margin-right', v, parseArray),
-    mb: v => evaluateCSSProp('margin-bottom', v, parseArray),
-    ml: v => evaluateCSSProp('margin-left', v, parseArray),
+    mt: v => evaluateCSSProp('margin-top', v, parseSingle),
+    mr: v => evaluateCSSProp('margin-right', v, parseSingle),
+    mb: v => evaluateCSSProp('margin-bottom', v, parseSingle),
+    ml: v => evaluateCSSProp('margin-left', v, parseSingle),
 
     // Padding
     p: v => evaluateCSSProp('padding', v, parseArray),
-    pt: v => evaluateCSSProp('padding-top', v, parseArray),
-    pr: v => evaluateCSSProp('padding-right', v, parseArray),
-    pb: v => evaluateCSSProp('padding-bottom', v, parseArray),
-    pl: v => evaluateCSSProp('padding-left', v, parseArray),
+    pt: v => evaluateCSSProp('padding-top', v, parseSingle),
+    pr: v => evaluateCSSProp('padding-right', v, parseSingle),
+    pb: v => evaluateCSSProp('padding-bottom', v, parseSingle),
+    pl: v => evaluateCSSProp('padding-left', v, parseSingle),
 
     // Background
     bg: v => evaluateCSSProp('background', v, mapValue),
@@ -229,6 +230,11 @@ const props: ICCSSProps = {
     // Customs
     styleText: i => i,
     child
+}
+
+// Add pseudos
+for (const k of Object.keys(pseudoMap)) {
+    props[k] = parsePseudo
 }
 
 export const setProps = o => Object.assign(props, o)

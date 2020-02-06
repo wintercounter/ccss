@@ -1,11 +1,20 @@
-# `@cryptic-css/value-ratio`
+# `@cryptic-css/prop-scroll`
 
-> TODO: description
+> Adds support for custom prop `scroll`. It'll apply all necessary CSS to create
+> scrolling boxes.
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
+```js
+import ccss from 'cryptic-css'
 
-// TODO: DEMONSTRATE API
+ccss({
+    scroll: 'x'
+})
 ```
+
+## Available values
+
+- `x`: Enable horizontal scrolling.
+- `y`: Enable vertical scrolling.
+- `true`: Enable scrolling in both directions.

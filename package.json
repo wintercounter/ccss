@@ -7,6 +7,7 @@
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
         "build": "mhy bb --mhy-env=prod",
+        "publish": "lerna run test && lerna run build && lerna publish",
         "config": "mhy config eslint prettier -io && lerna run config"
     },
     "repository": {

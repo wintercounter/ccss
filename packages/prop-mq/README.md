@@ -1,11 +1,21 @@
-# `@cryptic-css/value-ratio`
+# `@cryptic-css/prop-mq`
 
-> TODO: description
+> Adds support to use the viewport sizing system behind `@w11r/use-breakpoint`'s
+> React hook.
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
+```js
+import ccss from 'cryptic-css'
 
-// TODO: DEMONSTRATE API
+ccss({
+    mq: {
+        tablet: {
+            d: 'none'
+        },
+        'small+': {
+            o: 0.5
+        }
+    }
+})
 ```

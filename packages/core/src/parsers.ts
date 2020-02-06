@@ -24,7 +24,7 @@ export const evaluateCSSProp =
 export const parseSingle = input => {
     switch (typeof input) {
         case 'number':
-            return input === 0 ? 0 : options.valueTransformer(input)
+            return input === 0 ? 0 : options.applyUnit(input)
         case 'string':
         default:
             return input
@@ -58,6 +58,12 @@ export const pipe = function(...fs) {
     // @ts-ignore
     return (...args) => fs.reduce((args, f) => [f.apply(this, args)], args)[0]
 }
+
+export const parsePseudo = (input, prop) => `
+    :${pseudoMap[prop]} {
+        ${ccss(input)}
+    }
+`
 
 /**
  * You can pass children to your ccss supporting both pseudo classes and nested selectors

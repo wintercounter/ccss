@@ -1,11 +1,7 @@
-# `@cryptic-css/value-ratio`
+# `@cryptic-css/plugin-grid`
 
-> TODO: description
+> This plugin adds support for automatic fragment values for grid properties.
 
 ## Usage
 
-```
-const valueRatio = require('@cryptic-css/value-ratio');
-
-// TODO: DEMONSTRATE API
-```
+UNDER DEVELOPMENT

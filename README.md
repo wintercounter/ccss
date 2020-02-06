@@ -12,26 +12,34 @@ This a work in progress project.
 
 ## Table of contents
 
-- [Install](#install)
-- [Usage](#usage)
-- [API Docs (core)](#api-docs--core-)
-- [Why?](#why-)
-  - [Pros](#pros)
-  - [Cons](#cons)
-  - [Some story](#some-story)
-- [Examples](#examples)
-  - [Styled-components + JSX](#styled-components---jsx)
-  - [Styled-components only](#styled-components-only)
-- [Mission and the future](#mission-and-the-future)
-- [FAQ](#faq)
-  - [Why Cryptic?](#why-cryptic-)
-  - [What is the approach?](#what-is-the-approach-)
-  - [How about performance?](#how-about-performance-)
-  - [How big the size saving is?](#how-big-the-size-saving-is-)
-  - [Won't be this hard to understand?](#won-t-be-this-hard-to-understand-)
-  - [Why just not use `styled-system`?](#why-just-not-use--styled-system--)
-  - [What is the difference between plugins, extensions and props?](#what-is-the-difference-between-plugins--extensions-and-props-)
-- [Contribution](#contribution)
+-   [Install](#install)
+-   [Usage](#usage)
+-   [API Docs (core)](#api-docs--core-)
+-   [Why?](#why-)
+    -   [Pros](#pros)
+    -   [Cons](#cons)
+    -   [Some story](#some-story)
+-   [Examples](#examples)
+    -   [Styled-components + JSX](#styled-components---jsx)
+    -   [Styled-components only](#styled-components-only)
+    -   [Alternative way: `support-styled-components`](#alternative-way---support-styled-components-)
+    -   [Special props and values](#special-props-and-values)
+        -   [`child`](#-child-)
+        -   [Pseudo selectors/states](#pseudo-selectors-states)
+        -   [`styleText`](#-styletext-)
+        -   [Number values](#number-values)
+        -   [Array values](#array-values)
+-   [Packages](#packages)
+-   [Mission and the future](#mission-and-the-future)
+-   [FAQ](#faq)
+    -   [Why Cryptic?](#why-cryptic-)
+    -   [What is the approach?](#what-is-the-approach-)
+    -   [How about performance?](#how-about-performance-)
+    -   [How big the size saving is?](#how-big-the-size-saving-is-)
+    -   [Won't be this hard to understand?](#won-t-be-this-hard-to-understand-)
+    -   [Why just not use `styled-system`?](#why-just-not-use--styled-system--)
+    -   [What is the difference between plugins, extensions and props?](#what-is-the-difference-between-plugins--extensions-and-props-)
+-   [Contribution](#contribution)
 
 ## Install
 
@@ -46,12 +54,12 @@ npm i @cryptic-css/core
 ## Usage
 
 ```js
-import ccss from "@cryptic-css/core";
+import ccss from '@cryptic-css/core'
 
 ccss({
-  d: "f",
-  ai: "s"
-});
+    d: 'f',
+    ai: 's'
+})
 
 /**
  * Output:
@@ -69,25 +77,25 @@ For more details on usage and setup, please read our [Core documentation](./pack
 
 ### Pros
 
-- **Small**: enables true CSS mangling. The bigger the codebase the more efficient.
-- **Fast**: a lot of efforts were taken to keep performance high.
-- **Design systems**: the implementation makes CCSS capable to create custom design systems.
-- **Extensible**: the core supports custom properties and custom value transformers.
-- **DX**
-  -- Faster development
-  -- Less coding
-  -- Detailed TypeScript types and TSDoc to help your work.
-  -- Benefits of similar utility first approaches.
-  -- Easy setup and usage.
-  -- Support development time validators to help your team use your system properly.
-  -- Deep and pseudo selector support.
+-   **Small**: enables true CSS mangling. The bigger the codebase the more efficient.
+-   **Fast**: a lot of efforts were taken to keep performance high.
+-   **Design systems**: the implementation makes CCSS capable to create custom design systems.
+-   **Extensible**: the core supports custom properties and custom value transformers.
+-   **DX**
+    -- Faster development
+    -- Less coding
+    -- Detailed TypeScript types and TSDoc to help your work.
+    -- Benefits of similar utility first approaches.
+    -- Easy setup and usage.
+    -- Support development time validators to help your team use your system properly.
+    -- Deep and pseudo selector support.
 
 ### Cons
 
-- Looks and feels weird on first sight.
-- The learning curve isn't so small (I wouldn't say it's big either).
-- Extra processing compared to static CSS files / non-dynamic `styled-components`.
-- Size saving makes more sense on bigger projects.
+-   Looks and feels weird on first sight.
+-   The learning curve isn't so small (I wouldn't say it's big either).
+-   Extra processing compared to static CSS files / non-dynamic `styled-components`.
+-   Size saving makes more sense on bigger projects.
 
 ### Some story
 
@@ -104,9 +112,9 @@ A simplified example how such components looked:
 
 ```jsx
 const UiBox = styled.div`
-  display: flex;
-  ${({ width }) => width && "width: ${width}rem;"}
-`;
+    display: flex;
+    ${({ width }) => width && 'width: ${width}rem;'}
+`
 ```
 
 Of course our component had much more dynamic props and it had a lot of
@@ -115,16 +123,16 @@ to use such approach:
 
 ```jsx
 <UiBox
-  pad={5}
-  height={20}
-  width="100%"
-  direction="column"
-  align="center"
-  valign="center"
-  background="dark-3"
-  position="relative"
+    pad={5}
+    height={20}
+    width="100%"
+    direction="column"
+    align="center"
+    valign="center"
+    background="dark-3"
+    position="relative"
 >
-  {/* <And more, and more /> */}
+    {/* <And more, and more /> */}
 </UiBox>
 ```
 
@@ -160,45 +168,45 @@ note you can also use `emotion` or any other solution that requires CSS text.
 Simply replace any divs with this one component:
 
 ```jsx
-import ccss from "cryptic-css";
+import ccss from 'cryptic-css'
 
 // Use this component instead of divs everywhere from now on.
-const View = styled.div(ccss);
+const View = styled.div(ccss)
 
 const MyCmp = () => (
-  <View w={100} p={10} bg="#000" c="#fff">
-    Hello world!
-  </View>
-);
+    <View w={100} p={10} bg="#000" c="#fff">
+        Hello world!
+    </View>
+)
 ```
 
-You can also use the `css` prop approach (`ccss` prop support is planned):
+You can also use the `css` prop approach (automatic `css` prop support is planned):
 
 ```jsx
-import ccss from "cryptic-css";
+import ccss from 'cryptic-css'
 
 const MyCmp = () => (
-  <View
-    css={ccss({
-      w: 100,
-      p: 10,
-      bg: "#000",
-      c: "#fff"
-    })}
-  >
-    Hello world!
-  </View>
-);
+    <View
+        css={ccss({
+            w: 100,
+            p: 10,
+            bg: '#000',
+            c: '#fff'
+        })}
+    >
+        Hello world!
+    </View>
+)
 ```
 
 The codes above would generate the following CSS for the `View` component:
 
 ```css
 .View__BAgha78 {
-  width: 100px;
-  padding: 10px;
-  background: #000;
-  color: #fff;
+    width: 100px;
+    padding: 10px;
+    background: #000;
+    color: #fff;
 }
 ```
 
@@ -207,30 +215,133 @@ A `44%` text and code reduction.
 ### Styled-components only
 
 ```jsx
-import ccss from "@cryptic-css/core";
+import ccss from '@cryptic-css/core'
 
-const MyDiv = styled.div(
-  ccss({
-    d: "b",
-    v: "h"
-  })
-);
+const MyDiv = styled.div(() =>
+    ccss({
+        d: 'b',
+        v: 'h'
+    })
+)
 
-const MyCmp = () => <MyDiv>Hello world!</MyDiv>;
+const MyCmp = () => <MyDiv>Hello world!</MyDiv>
 ```
+
+### Alternative way: `support-styled-components`
+
+The above package will patch `styled-components` for you
+to add support for CCSS automatically.
+
+```jsx
+// Import once in your app
+import '@cryptic-css/support-styled-components'
+
+const Box = styled.div({ d: 'f' })
+const Box2 = styled.div`
+    background: #000;
+`
+
+render(
+    <Box>
+        // It works on any styled component!
+        <Box2 m={2} />
+    </Box>
+)
+```
+
+### Special props and values
+
+#### `child`
+
+Add any child CSS/pseudo definition.
+
+```js
+ccss({
+    c: '#fff',
+    child: {
+        '> h1 a': {
+            c: '#fc0'
+        }
+    }
+})
+```
+
+#### Pseudo selectors/states
+
+Pseudo definitions are also having shorthands, always starting with `:`.
+
+```js
+ccss({
+    c: '#fff',
+    ':h': {
+        c: '#000'
+    }
+})
+```
+
+#### `styleText`
+
+Use to pass custom CSS string.
+
+```js
+ccss({
+    styleText: `background-color: #fff;`
+})
+```
+
+#### Number values
+
+Properties awaiting for numeric values with unit can accept
+pure numbers for built-in automatic `unit` support.
+
+If not a number is given, the value will be used as-is.
+
+Example:
+
+```js
+ccss({
+    w: 100
+})
+```
+
+#### Array values
+
+Shorthand properties awaiting numeric values with unit can
+accept array as an input.
+
+Example:
+
+```js
+ccss({
+    m: [1, 0, 1, 1]
+})
+```
+
+## Packages
+
+Some packages were created to demonstrate how to extend the functionality
+of the core:
+
+-   [Core](./packages/core)
+-   [Plugin: gutter](./packages/plugin-gutter)
+-   [Plugin: ratio](./packages/plugin-ratio)
+-   [Prop: mid](./packages/prop-mid)
+-   [Prop: mq](./packages/prop-mq)
+-   [Prop: Scroll](./packages/prop-scroll)
+-   [Support styled-components](./packages/support-styled-components)
 
 ## Mission and the future
 
 There are multiple goals we're trying to achieve, both short and long
 term. We want to:
 
-- Introduce the concept and get it validated by the community,
-  and provide tools for different use cases.
-- Provide tools for wider **CCSS** support, regular CSS solutions:
-  - `babel-plugin` to convert existing `styled-components` to shorthands for production codebase.
-  - `webpack-loader` to add support for converting regular CSS to CCSS.
-  - 3rd party CCSS support for `styled-components`, `emotion`, `styled-system` and others.
-  - Ready to use design systems.
+-   Introduce the concept and get it validated by the community,
+    and provide tools for different use cases.
+-   Provide tools for wider **CCSS** support, regular CSS solutions:
+    -   `babel-plugin` to convert existing `styled-components` to shorthands for production codebase.
+    -   `webpack-loader` to add support for converting regular CSS to CCSS.
+    -   3rd party CCSS support for `styled-components`, `emotion`, `styled-system` and others.
+    -   Ready to use design systems.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
 what the community is building up here. 😉 It's relatively easy to implement
@@ -244,11 +355,11 @@ Because it's making your CSS/React components/etc. look really _Cryptic_.
 
 ```js
 ccss({
-  d: "b",
-  p: 12,
-  mt: 5,
-  bg: "t"
-});
+    d: 'b',
+    p: 12,
+    mt: 5,
+    bg: 't'
+})
 ```
 
 ### What is the approach?
@@ -298,9 +409,9 @@ design system. For example, it's easy to define such:
 
 ```js
 ccss({
-  c: "dark",
-  size: "large"
-});
+    c: 'dark',
+    size: 'large'
+})
 /**
  * Output:
  *
@@ -311,9 +422,9 @@ ccss({
 
 ### What is the difference between plugins, extensions and props?
 
-- **Plugins**: Manipulating values on existing props.
-- **Extensions**: Extending the core with new features.
-- **Props**: Adding support for new custom props.
+-   **Plugins**: Manipulating values on existing props.
+-   **Extensions**: Extending the core with new features.
+-   **Props**: Adding support for new custom props.
 
 ## Contribution
 

@@ -1,0 +1,33 @@
+{
+    "name": "@cryptic-css/support-styled-components",
+    "version": "0.0.2",
+    "description": "Adds direct CCSS support for styled-components.",
+    "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/support-styled-components#readme",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy jest",
+        "test:watch": "mhy jest --watchAll",
+        "build": "mhy bb --mhy-env=prod",
+        "config": "mhy config typescript -io"
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "peerDependencies": {
+        "@cryptic-css/core": "^0.0.2",
+        "styled-components": "^5.0.1"
+    },
+    "devDependencies": {
+        "@cryptic-css/core": "^0.0.2"
+    },
+    "gitHead": "3a77214e5f1c3e65cd328ebed87556d7452648f1"
+}
