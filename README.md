@@ -82,13 +82,13 @@ For more details on usage and setup, please read our [Core documentation](./pack
 -   **Design systems**: the implementation makes CCSS capable to create custom design systems.
 -   **Extensible**: the core supports custom properties and custom value transformers.
 -   **DX**
-    -- Faster development
-    -- Less coding
-    -- Detailed TypeScript types and TSDoc to help your work.
-    -- Benefits of similar utility first approaches.
-    -- Easy setup and usage.
-    -- Support development time validators to help your team use your system properly.
-    -- Deep and pseudo selector support.
+    -   Faster development
+    -   Less coding
+    -   Detailed TypeScript types and TSDoc to help your work.
+    -   Benefits of similar utility first approaches.
+    -   Easy setup and usage.
+    -   Support development time validators to help your team use your system properly.
+    -   Deep and pseudo selector support.
 
 ### Cons
 
