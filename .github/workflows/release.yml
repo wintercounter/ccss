@@ -29,7 +29,8 @@ jobs:
             - name: npm install, build and test
               if: success()
               run: |
-                  npm run config
+                  mhy config eslint prettier -io
+                  npx lerna run config
                   npx lerna clean -y
                   npm i
                   npx lerna bootstrap
