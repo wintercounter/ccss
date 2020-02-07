@@ -187,11 +187,13 @@ export const valueMap = {
     },
     'list-style': {
         // @ts-ignore
-        [false]: 'none'
+        [false]: 'none',
+        n: 'none'
     },
     'list-style-type': {
         // @ts-ignore
-        [false]: 'none'
+        [false]: 'none',
+        n: 'none'
     },
     'background-size': {
         cr: 'cover',
