@@ -1,6 +1,6 @@
 # `@cryptic-css/support-styled-components`
 
-> This package will add CCSS support for styled-components
+> This package will add CCSS support for styled-components.
 
 ## Install
 
@@ -37,4 +37,8 @@ render(<Header ta="c" />)
 ## Using the `css` prop
 
 Currently there is no way to intercept the `css` function calls so the `css` prop is not supported yet.
-The only way to use CCSS is to have a direct 
+The only way to use CCSS is to have a direct `ccss` call:
+
+```jsx
+<div css={ccss({ m: 0 })} />
+```

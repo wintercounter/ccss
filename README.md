@@ -340,7 +340,7 @@ term. We want to:
 -   Provide tools for wider **CCSS** support, regular CSS solutions:
     -   `babel-plugin` to convert existing `styled-components` to shorthands for production codebase.
     -   `webpack-loader` to add support for converting regular CSS to CCSS.
-    -   3rd party CCSS support for `styled-components`, `emotion`, `styled-system` and others.
+    -   3rd party CCSS support for `styled-components`, `emotion`, `styled-system`, `PostCSS` and others.
     -   Ready to use design systems.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
