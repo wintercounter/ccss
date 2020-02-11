@@ -4,7 +4,7 @@
     <p></p>
 </h1>
 
-> CrypticCSS - An experimental concept of **true** CSS mangling.
+> CrypticCSS - A CSS-in-JS concept that brings you **true CSS mangling** with **design system capabilities**.
 
 ## WARNING!
 
