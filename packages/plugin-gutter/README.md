@@ -41,6 +41,6 @@ The plugin introduces the option key `gutter`. Be default it's: `5`
 import { setOptions } from 'cryptic-css'
 
 setOptions({
-    gutter: 10 // 10rem
+    gutter: 10 // 1 * gutter = 10rem
 })
 ```
