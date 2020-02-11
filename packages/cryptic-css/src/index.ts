@@ -6,3 +6,4 @@ import '@cryptic-css/plugin-gutter'
 import '@cryptic-css/plugin-ratio'
 
 export * from '@cryptic-css/core'
+export { default } from '@cryptic-css/core'

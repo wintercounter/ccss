@@ -11,9 +11,9 @@ export const evaluateCSSProp =
     process.env.NODE_ENV === 'production'
         ? _evaluateCSSProp
         : (...args) => {
-              if (!IS_PROD && args[3]) {
+              if (!IS_PROD) {
                   try {
-                      args[3](args)
+                      args[3] && args[3](args)
                       // eslint-disable-next-line no-empty
                   } catch {}
               }

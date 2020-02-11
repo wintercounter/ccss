@@ -24,9 +24,9 @@
 import ccss from 'cryptic-css'
 
 ccss({
-    p: 2, // margin-left: 32rem;
-    ml: true // margin-left: 16rem;
-    m: [1, 0, 2, 3] // margin: 1rem 0 2rem 3rem;
+    p: 2, // padding: 10rem;
+    ml: true // margin-left: 5rem;
+    m: [1, 0, 2, 3] // margin: 5rem 0 10rem 15rem;
 })
 ```
 
@@ -35,7 +35,7 @@ ccss({
 
 ## Configuration
 
-The plugin introduces the option key `gutter`. Be default it's: `16`
+The plugin introduces the option key `gutter`. Be default it's: `5`
 
 ```js
 import { setOptions } from 'cryptic-css'

@@ -1,6 +1,6 @@
 import { setProps, props, pipe, options } from '@cryptic-css/core'
 
-const DEFAULT = 16
+const DEFAULT = 5
 
 const gutter = input => {
     const g = options.gutter || DEFAULT

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const isObject = o => Object.prototype.toString.call(o) === '[object Object]'
 
 for (const k in styled) {
-    if (styled.hasOwnProperty(k)) {
+    if (Object.prototype.hasOwnProperty.call(styled, k)) {
         const original = styled[k]
         styled[k] = function(...args) {
             args.push(ccss)

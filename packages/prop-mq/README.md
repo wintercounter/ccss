@@ -9,13 +9,10 @@
 import ccss from 'cryptic-css'
 
 ccss({
-    mq: {
-        tablet: {
-            d: 'none'
-        },
-        'small+': {
-            o: 0.5
-        }
-    }
+    m: 1,
+    mq: {[
+        ['mobile', { m: 2 }],
+        ['tablet', { m: 3 }]
+    ]}
 })
 ```
