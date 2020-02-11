@@ -259,7 +259,7 @@ Add any child CSS/pseudo definition.
 ccss({
     c: '#fff',
     child: {
-        '> h1 a': {
+        '> h1 span': {
             c: '#fc0'
         }
     }
