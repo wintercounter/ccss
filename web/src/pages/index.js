@@ -12,28 +12,37 @@ const features = [
         imageUrl: 'img/undraw_docusaurus_mountain.svg',
         description: (
             <>
-                Docusaurus was designed from the ground up to be easily installed and used to get your website up and
-                running quickly.
+                The concept of <strong>CSS mangling</strong> is simple: support a shorter version of all CSS properties
+                and static values. While CSS is not the biggest part of your codebase, you can still achieve valuable
+                size savings. Using together with <em>styled-components</em> will give you the power of mangling{' '}
+                <em>React</em> props used for styling.
             </>
         )
     },
     {
-        title: <>Fully dynamic and extensible</>,
+        title: <>Dynamic, fast and extensible</>,
         imageUrl: 'img/undraw_docusaurus_tree.svg',
         description: (
             <>
-                Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into
-                the <code>docs</code> directory.
+                During the development of <strong>CCSS</strong>
+                strict decision and various micro-optimizations have been made to ensure it won't have serious
+                performance costs. The included features are limited to maintain simplicity. However, it is really easy
+                to extend the core functionality with custom solutions.
             </>
         )
     },
     {
-        title: <>Design system capabilities</>,
+        title: <>A very different DX</>,
         imageUrl: 'img/undraw_docusaurus_react.svg',
         description: (
             <>
-                Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the
-                same header and footer.
+                <strong>CSSS</strong> feels really weird on first sight. However it's not the same thing as using single
+                characters for variable naming. Once you get used with it you will feel it's benefits and you will ❤️
+                the boost it gives you.{' '}
+                <a href="https://tailwindcss.com/docs/utility-first" target="_blank">
+                    Tailwind CSS's docs
+                </a>{' '}
+                summarizes really well the feelings of using such <em>Utility-first</em> approach.
             </>
         )
     }
@@ -89,6 +98,23 @@ function Home() {
                     </section>
                 )}
             </main>
+            <section className="hero">
+                <div className="container">
+                    <h1 className="text--center">Examples</h1>
+                    <div className="row">
+                        <div className="col col--6">
+                            <h2 className="text--center">Pure JS</h2>
+                            Coming soon...
+                        </div>
+                        <div className="col col--6">
+                            <h2 className="text--center">
+                                With <em>styled-components</em>
+                            </h2>
+                            Coming soon...
+                        </div>
+                    </div>
+                </div>
+            </section>
         </Layout>
     )
 }

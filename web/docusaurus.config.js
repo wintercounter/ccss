@@ -8,16 +8,16 @@ module.exports = {
     projectName: 'ccss', // Usually your repo name.
     themeConfig: {
         navbar: {
-            title: 'My Site',
+            title: 'CCSS',
             logo: {
-                alt: 'My Site Logo',
+                alt: 'CrypticCSS Logo',
                 src: 'img/logo.svg'
             },
             links: [
                 { to: 'docs/doc1', label: 'Docs', position: 'left' },
                 { to: 'blog', label: 'Blog', position: 'left' },
                 {
-                    href: 'https://github.com/facebook/docusaurus',
+                    href: 'https://github.com/wintercounter/ccss',
                     label: 'GitHub',
                     position: 'right'
                 }
@@ -40,19 +40,6 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'Community',
-                    items: [
-                        {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/docusaurus'
-                        },
-                        {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/invite/docusaurus'
-                        }
-                    ]
-                },
-                {
                     title: 'Social',
                     items: [
                         {
@@ -61,16 +48,33 @@ module.exports = {
                         },
                         {
                             label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus'
+                            href: 'https://github.com/wintercounter/ccss'
                         },
                         {
                             label: 'Twitter',
-                            href: 'https://twitter.com/docusaurus'
+                            href: 'https://twitter.com/wintercounter1'
+                        }
+                    ]
+                },
+                {
+                    title: 'Inspired by',
+                    items: [
+                        {
+                            label: 'Styled Components',
+                            href: 'https://styled-components.com'
+                        },
+                        {
+                            label: 'Styled System',
+                            href: 'https://styled-system.com'
+                        },
+                        {
+                            label: 'Grommet',
+                            href: 'https://v2.grommet.io'
                         }
                     ]
                 }
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
+            copyright: `Copyright © ${new Date().getFullYear()} - Built with Docusaurus.`
         }
     },
     presets: [
@@ -79,7 +83,7 @@ module.exports = {
             {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/'
+                    editUrl: 'https://github.com/wintercounter/css/edit/master/web/'
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css')
