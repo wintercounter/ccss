@@ -24,10 +24,9 @@ const features = [
         imageUrl: 'img/undraw_docusaurus_tree.svg',
         description: (
             <>
-                During the development of <strong>CCSS</strong>
-                strict decision and various micro-optimizations have been made to ensure it won't have serious
-                performance costs. The included features are limited to maintain simplicity. However, it is really easy
-                to extend the core functionality with custom solutions.
+                During the development of <strong>CCSS</strong> strict decisions and various micro-optimizations have
+                been made to ensure it won't have serious performance costs. The included features are limited to
+                maintain simplicity. However, it is really easy to extend the core functionality with custom solutions.
             </>
         )
     },
@@ -36,7 +35,7 @@ const features = [
         imageUrl: 'img/undraw_docusaurus_react.svg',
         description: (
             <>
-                <strong>CSSS</strong> feels really weird on first sight. However it's not the same thing as using single
+                <strong>CCSS</strong> feels really weird on first sight. However it's not the same thing as using single
                 characters for variable naming. Once you get used with it you will feel it's benefits and you will ❤️
                 the boost it gives you.{' '}
                 <a href="https://tailwindcss.com/docs/utility-first" target="_blank">
@@ -68,10 +67,13 @@ function Home() {
     const { siteConfig = {} } = context
     return (
         <Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
-            <header className={classnames('hero hero--primary', styles.heroBanner)}>
+            <header className={classnames(styles.heroBanner)}>
                 <div className="container">
-                    <h1 className="hero__title">{siteConfig.title}</h1>
-                    <p className="hero__subtitle">{siteConfig.tagline}</p>
+                    <h1>{siteConfig.title}</h1>
+                    <p>{siteConfig.tagline}</p>
+                    <p>
+                        Warning! The concept is in <strong>Alpha</strong> stage. You should expect breaking changes.
+                    </p>
                     <div className={styles.buttons}>
                         <Link
                             className={classnames(
@@ -98,20 +100,16 @@ function Home() {
                     </section>
                 )}
             </main>
-            <section className="hero">
+            <section className="hero demo">
                 <div className="container">
-                    <h1 className="text--center">Examples</h1>
+                    <h1 className="text--center">Try it out!</h1>
                     <div className="row">
-                        <div className="col col--6">
-                            <h2 className="text--center">Pure JS</h2>
-                            Coming soon...
-                        </div>
-                        <div className="col col--6">
-                            <h2 className="text--center">
-                                With <em>styled-components</em>
-                            </h2>
-                            Coming soon...
-                        </div>
+                        <iframe
+                            src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                            title="CCSS Homepage Demo"
+                            allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                        />
                     </div>
                 </div>
             </section>

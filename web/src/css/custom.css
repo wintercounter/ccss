@@ -30,8 +30,9 @@
     padding: 0 var(--ifm-pre-padding);
 }
 
-.footer {
-    background: rgba(255, 255, 255, 0.02) !important;
+html[data-theme='dark'] .footer {
+    background: transparent;
+    border-top: 1px solid var(--ifm-contents-border-color);
 }
 
 .features_src-pages- h3 {
@@ -40,4 +41,25 @@
 
 .features_src-pages- p {
     text-align: justify;
+}
+
+.demo iframe {
+    width: 100%;
+    height: 500px;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+html[data-theme='dark'] .navbar {
+    --ifm-navbar-background-color: var(--ifm-background-color);
+    --ifm-navbar-shadow: 0 1px 0 var(--ifm-contents-border-color);
+}
+
+html[data-theme='dark'] {
+    --ifm-contents-border-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer__col {
+    text-align: center;
 }

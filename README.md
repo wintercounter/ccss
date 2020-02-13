@@ -21,9 +21,7 @@ This a work in progress project.
     -   [Some story](#some-story)
 -   [Examples](#examples)
     -   [Styled-components + JSX](#styled-components---jsx)
-    -   [Styled-components only](#styled-components-only)
-    -   [Alternative way: `support-styled-components`](#alternative-way---support-styled-components-)
-    -   [Special props and values](#special-props-and-values)
+   -    [Special props and values](#special-props-and-values)
         -   [`child`](#-child-)
         -   [Pseudo selectors/states](#pseudo-selectors-states)
         -   [`styleText`](#-styletext-)
@@ -180,20 +178,25 @@ const MyCmp = () => (
 )
 ```
 
-You can also use the `css` prop approach (automatic `css` prop support is planned):
+You can also replace `styled-components` with `@cryptic-css/styled-components`, providing
+_out-of-the-box_ support for **CCSS**.
 
 ```jsx
-import ccss from 'cryptic-css'
+import { Ui, ccssd } from '@cryptic-css/styled-components'
+
+// You can use Ui directly
+const Normal = <Ui w={100} p={10} bg="#000" c="#fff" />
+const WithTagHelper = <Ui.section w={100} p={10} bg="#000" c="#fff" />
+
+// Or you can create prepared components while still supporting dynamic props also.js
+// Tagged helpers also supported (eg: ccssd.ul)
+const View = ccssd({
+     w: 100,
+     p: 10
+})
 
 const MyCmp = () => (
-    <View
-        css={ccss({
-            w: 100,
-            p: 10,
-            bg: '#000',
-            c: '#fff'
-        })}
-    >
+    <View bg="#000" c="#fff">
         Hello world!
     </View>
 )
@@ -202,52 +205,15 @@ const MyCmp = () => (
 The codes above would generate the following CSS for the `View` component:
 
 ```css
-.View__BAgha78 {
-    width: 100px;
-    padding: 10px;
+.BAgha78 {
+    width: 100rem;
+    padding: 10rem;
     background: #000;
     color: #fff;
 }
 ```
 
-A `44%` text and code reduction.
-
-### Styled-components only
-
-```jsx
-import ccss from '@cryptic-css/core'
-
-const MyDiv = styled.div(() =>
-    ccss({
-        d: 'b',
-        v: 'h'
-    })
-)
-
-const MyCmp = () => <MyDiv>Hello world!</MyDiv>
-```
-
-### Alternative way: `support-styled-components`
-
-The above package will patch `styled-components` for you
-to add support for CCSS automatically.
-
-```jsx
-// Import once in your app
-import '@cryptic-css/support-styled-components'
-
-const Box = styled.div({ d: 'f' })
-const Box2 = styled.div`
-    background: #000;
-`
-
-render(
-    <Box>
-        // It works on any styled component!
-        <Box2 m={2} />
-    </Box>
-)
-```
+An ~`44%` text and code reduction.
 
 ### Special props and values
 
@@ -317,6 +283,22 @@ ccss({
 })
 ```
 
+## Base styles
+
+By default **CCSS** uses `rem` units: `10 => 10rem`. To make this work as
+`10px === 10rem`, you need to set the base `font-size` on your
+HTML tag to `6.25%`:
+
+```css
+html {
+    font-size: 6.25%;
+}
+```
+
+Also you might want to reset your elements to be flex by default to avoid having
+`d="f"` on many of your components. You may use [flex-reset.css](https://gist.github.com/wintercounter/5e3f4915c714022a8dd048f55b48908d#file-flex-reset-css) for this purpose
+(which also includes the previously mentioned setup for font-sizes).
+
 ## Packages
 
 Some packages were created to demonstrate how to extend the functionality
@@ -328,7 +310,7 @@ of the core:
 -   [Prop: mid](./packages/prop-mid)
 -   [Prop: mq](./packages/prop-mq)
 -   [Prop: Scroll](./packages/prop-scroll)
--   [Support styled-components](./packages/support-styled-components)
+-   [styled-components](./packages/styled-components)
 
 ## Mission and the future
 

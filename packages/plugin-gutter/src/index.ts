@@ -4,12 +4,13 @@ const DEFAULT = 5
 
 const gutter = input => {
     const g = options.gutter || DEFAULT
+
     switch (true) {
         case Array.isArray(input):
             return input.map(gutter)
         case input:
             return gutter
-        case !isNaN(g):
+        case !isNaN(input):
             return g * input
         default:
             return input
