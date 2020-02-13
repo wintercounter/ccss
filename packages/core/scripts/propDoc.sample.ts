@@ -23,13 +23,16 @@ const x = v => {
 x
 
 /**
- * # hurka
- * The **`animation-duration`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the length of time that an animation takes to complete one cycle.
+ * # animation-play-state (aps)
+ * The **`animation-play-state`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation is running or paused.
  *
- * - `i`: `inline`
- * - `b`: `block`
+ * ---
+ * ## Shorthands
+ * - **p**: `paused`
+ * - **r**: `running`
  *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration
+ * ---
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state
  */
 const y = foo => {
     return 2

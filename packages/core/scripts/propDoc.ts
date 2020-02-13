@@ -37,10 +37,12 @@ const build = async descriptor => {
     debug && console.log(`Fetched description for '${prop}':`, description)
     return `# ${prop} (${short})
  * ${turndownService.turndown(description.replace(/ href="/g, ' href="https://developer.mozilla.org'))}
-${valueMap[prop] ? ' * ## \n * ## Shorthands' : ''}
+${valueMap[prop] ? ' *\n * --- \n * ## Shorthands' : ''}
 ${Object.entries({ ...valueMap[prop] })
     .map(([k, v]) => ` * - **${k}**: \`${v}\``)
     .join('\n')}
+ *
+ * ---
  * @see ${seeURL}
  `.trim()
 }
