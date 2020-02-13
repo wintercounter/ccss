@@ -1,6 +1,6 @@
+import ccss from './ccss'
 import options from './options'
 import { valueMap, pseudoMap } from './maps'
-import ccss from './ccss'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
