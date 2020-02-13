@@ -61,4 +61,11 @@ describe('styled-components', () => {
         expect(div).toHaveStyleRule('color', 'white')
         expect(div).toHaveStyleRule('display', 'flex')
     })
+
+    it('can use child', () => {
+        const wrapper = mount(<Ui child={{ ':h': { d: 'f' } }} />)
+        const div = wrapper.find('div')
+
+        expect(div).toHaveStyleRule('display', 'flex', { modifier: ':hover' })
+    })
 })

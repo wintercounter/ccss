@@ -328,9 +328,11 @@ export const setValueMap = c => {
 }
 
 export const pseudoMap = {
-    ':a': 'active',
+    ':ac': 'active',
+    ':a': 'after',
     ':al': 'any-link',
-    ':b': 'blank',
+    ':b': 'before',
+    ':bl': 'blank',
     ':c': 'checked',
     ':cur': 'current',
     ':def': 'default',

@@ -71,7 +71,7 @@ export const parsePseudo = (input, prop) => `
  * @example
  * ```js
  * child({
- *   h: { d: 'b' },
+ *   ':h': { d: 'b' },
  *   '.childDiv': { p: 10 }
  * })
  * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'

@@ -27,8 +27,16 @@ describe('ccss tests', () => {
         it('pipe', () => {
             expect(ccss({ r: 'global' })).toBe('border-radius: 6rem;')
         })
-        it('undefined', () => {
-            expect(ccss({ a: undefined })).toBe('')
+        it('pseudo/child', () => {
+            expect(
+                ccss({
+                    child: {
+                        ':h': { c: 'white' }
+                    }
+                }).trim()
+            ).toBe(`:hover {
+                color: white;
+            }`)
         })
     })
 })
