@@ -1,5 +1,6 @@
 import React from 'react'
 import scssfmt from 'scssfmt'
+import CodeBlock from '../../node_modules/@docusaurus/theme-live-codeblock/src/theme/CodeBlock/index'
 
 // Extend live code's scope
 import * as ccssAll from 'cryptic-css'
@@ -12,9 +13,9 @@ window.transformCode = (...args) => {
     return ''
 }
 
-React.ccss = (...args) => {
-    const output = scssfmt(ccss(...args))
-    return output
+React.ccss = p => {
+    const output = scssfmt(ccss(p))
+    return p.hasOwnProperty('children') ? output : <CodeBlock className="scss">{output}</CodeBlock>
 }
 
 ccssAll.setOptions({

@@ -30,25 +30,28 @@ import { Ui, ccssd } from '@cryptic-css/styled-components'
 ```
 
 ```jsx live noInline
-// You can use Ui directly
-const Normal = <Ui w={100} p={10} bg="#000" c="#fff" />
-const WithTagHelper = <Ui.section w={100} p={10} bg="#000" c="#fff" />
-
-// Or you can create prepared components while still supporting dynamic props also.
-// Tagged helpers also supported (eg: ccssd.ul)
 const View = ccssd({
-     w: 100,
-     p: 10
+     w: 200,
+     p: 1,
+     m: [1, 0]
 })
 
 render(
-    <View bg="#000" c="#fff">
-        Hello world!
-    </View>
+    <>
+        <View bg="#fc0" c="#000">
+            Prepared component + extra props
+        </View>
+        <Ui w={200} p={1} bg="#fc0" c="#000" m={[1, 0]}>
+            Ui component directly
+        </Ui>
+        <Ui.section w={200} p={1} bg="#fc0" c="#000" m={[1, 0]}>
+            Ui component directly + TAG helper
+        </Ui.section>
+    </>
 )
 ```
 
-> An ~`44%` text and code reduction.
+> An `~44%` text and code reduction.
 
 # Special props and values
 

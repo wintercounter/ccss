@@ -6,8 +6,22 @@
  */
 
 module.exports = {
-  someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
-  },
-};
+    someSidebar: {
+        Introduction: [
+            'introduction/pros-and-cons',
+            'introduction/some-story',
+            'introduction/mission-and-the-future',
+            'introduction/faq'
+        ],
+        Usage: ['usage/getting-started', 'usage/examples', 'usage/base-styles'],
+        'API and Packages': [
+            'api-and-packages/core',
+            'api-and-packages/plugin-gutter',
+            'api-and-packages/plugin-ratio',
+            'api-and-packages/prop-mid',
+            'api-and-packages/prop-mq',
+            'api-and-packages/prop-scroll',
+            'api-and-packages/styled-components'
+        ]
+    }
+}

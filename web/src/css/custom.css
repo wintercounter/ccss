@@ -13,13 +13,23 @@
     --ifm-color-primary-light: #43275a;
     --ifm-color-primary-lighter: #46285e;
     --ifm-color-primary-lightest: #4f2e6b;*/
-    --ifm-color-primary: #f67e7d;
+
+    /*--ifm-color-primary: #f67e7d;
     --ifm-color-primary-dark: #f45c5a;
     --ifm-color-primary-darker: #f24a49;
     --ifm-color-primary-darkest: #ef1715;
     --ifm-color-primary-light: #f8a0a0;
     --ifm-color-primary-lighter: #fab2b1;
-    --ifm-color-primary-lightest: #fde5e5;
+    --ifm-color-primary-lightest: #fde5e5;*/
+
+    --ifm-color-primary: #00cf9b;
+    --ifm-color-primary-dark: #00ba8b;
+    --ifm-color-primary-darker: #00b084;
+    --ifm-color-primary-darkest: #00916c;
+    --ifm-color-primary-light: #00e4aa;
+    --ifm-color-primary-lighter: #00eeb2;
+    --ifm-color-primary-lightest: #0effc2;
+
     --ifm-code-font-size: 95%;
 }
 
@@ -62,4 +72,31 @@ html[data-theme='dark'] {
 
 .footer__col {
     text-align: center;
+}
+
+.playgroundEditorHeader_node_modules-\@docusaurus-theme-live-codeblock-src-theme-Playground- {
+    background: rgb(41, 45, 62) !important;
+}
+
+.playgroundPreview_node_modules-\@docusaurus-theme-live-codeblock-src-theme-Playground- {
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: normal !important;
+}
+
+.playgroundPreview_node_modules-\@docusaurus-theme-live-codeblock-src-theme-Playground- > div {
+    padding: 10px !important;
+    background-color: rgb(32, 35, 42);
+}
+
+.playgroundPreviewHeader_node_modules-\@docusaurus-theme-live-codeblock-src-theme-Playground- {
+    background: rgb(32, 35, 42) !important;
+}
+
+.codeBlock_node_modules-\@docusaurus-theme-live-codeblock-src-theme-CodeBlock- {
+    background-color: rgb(32, 35, 42) !important;
+}
+
+.playgroundPreview_node_modules-\@docusaurus-theme-live-codeblock-src-theme-Playground- pre {
+    margin: -10px !important;
 }

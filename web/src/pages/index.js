@@ -51,12 +51,12 @@ function Feature({ imageUrl, title, description }) {
     const imgUrl = useBaseUrl(imageUrl)
     return (
         <div className={classnames('col col--4', styles.feature)}>
-            {imgUrl && (
+            {/* {imgUrl && (
                 <div className="text--center">
                     <img className={styles.featureImage} src={imgUrl} alt={title} />
                 </div>
-            )}
-            <h3>{title}</h3>
+            )}*/}
+            <h3 className="text--center">{title}</h3>
             <p>{description}</p>
         </div>
     )
@@ -66,13 +66,19 @@ function Home() {
     const context = useDocusaurusContext()
     const { siteConfig = {} } = context
     return (
-        <Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+        <Layout
+            title="CCSS - CrypticCSS"
+            description="A CSS-in-JS concept that brings you true CSS mangling with design system capabilities."
+        >
             <header className={classnames(styles.heroBanner)}>
                 <div className="container">
-                    <h1>{siteConfig.title}</h1>
+                    <h1>
+                        <img src="img/logo.png" alt="CrypticCSS" title="CCSS" />
+                    </h1>
                     <p>{siteConfig.tagline}</p>
                     <p>
-                        Warning! The concept is in <strong>Alpha</strong> stage. You should expect breaking changes.
+                        Warning! The concept (and the website as well) is in <strong>Alpha</strong> stage. You should
+                        expect breaking changes.
                     </p>
                     <div className={styles.buttons}>
                         <Link
@@ -80,9 +86,18 @@ function Home() {
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted
                             )}
-                            to={useBaseUrl('docs/doc1')}
+                            to={useBaseUrl('/docs/usage/getting-started')}
                         >
                             Get Started
+                        </Link>
+                        <Link
+                            className={classnames(
+                                'button button--outline button--secondary button--lg',
+                                styles.getStarted
+                            )}
+                            to={useBaseUrl('/docs/usage/examples')}
+                        >
+                            Examples
                         </Link>
                     </div>
                 </div>

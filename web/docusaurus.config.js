@@ -8,14 +8,14 @@ module.exports = {
     projectName: 'ccss', // Usually your repo name.
     themeConfig: {
         navbar: {
-            title: 'CCSS',
+            title: '',
             logo: {
                 alt: 'CrypticCSS Logo',
-                src: 'img/logo.svg'
+                src: 'img/logo.png'
             },
             links: [
-                { to: 'docs/doc1', label: 'Docs', position: 'left' },
-                { to: 'blog', label: 'Blog', position: 'left' },
+                { to: 'docs/introduction/pros-and-cons', label: 'Docs', position: 'left' },
+                /*{ to: 'blog', label: 'Blog', position: 'left' },*/
                 {
                     href: 'https://github.com/wintercounter/ccss',
                     label: 'GitHub',
@@ -30,12 +30,16 @@ module.exports = {
                     title: 'Docs',
                     items: [
                         {
-                            label: 'Style Guide',
-                            to: 'docs/doc1'
+                            label: 'Introduction',
+                            to: 'docs/introduction/pros-and-cons'
                         },
                         {
-                            label: 'Second Doc',
-                            to: 'docs/doc2'
+                            label: 'Usage',
+                            to: 'docs/usage/getting-started'
+                        },
+                        {
+                            label: 'API and Packages',
+                            to: 'docs/api-and-packages/core'
                         }
                     ]
                 },
@@ -90,5 +94,7 @@ module.exports = {
                 }
             }
         ]
-    ]
+    ],
+    themes: ['@docusaurus/theme-live-codeblock'],
+    plugins: [require.resolve('./src/scope-plugin')]
 }
