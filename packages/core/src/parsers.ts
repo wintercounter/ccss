@@ -1,6 +1,6 @@
-import ccss from './ccss'
 import options from './options'
 import { valueMap, pseudoMap } from './maps'
+import ccss from './ccss'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
@@ -59,7 +59,7 @@ export const pipe = function(...fs) {
     return (...args) => fs.reduce((args, f) => [f.apply(this, args)], args)[0]
 }
 
-export const parsePseudo = (input, prop) => `
+export const parsePseudo = (input, all, prop) => `
     :${pseudoMap[prop]} {
         ${ccss(input)}
     }

@@ -1,6 +1,6 @@
 export { default } from './ccss'
+export { pipe, evaluateCSSProp } from './parsers'
 export { default as props, setProps } from './props'
 export { default as options, setOptions } from './options'
 export { valueMap, pseudoMap, setValueMap, setPseudoMap } from './maps'
-export { pipe, evaluateCSSProp } from './parsers'
 export { default as ICCSSProps } from './types'

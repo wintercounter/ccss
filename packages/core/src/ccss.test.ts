@@ -27,7 +27,16 @@ describe('ccss tests', () => {
         it('pipe', () => {
             expect(ccss({ r: 'global' })).toBe('border-radius: 6rem;')
         })
-        it('pseudo/child', () => {
+        it('pseudo', () => {
+            expect(
+                ccss({
+                    ':b': { d: 'b' }
+                }).trim()
+            ).toBe(`:before {
+        display: block;
+    }`)
+        })
+        it('child/pseudo', () => {
             expect(
                 ccss({
                     child: {

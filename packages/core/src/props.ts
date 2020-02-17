@@ -112,8 +112,8 @@ const props: ICCSSProps = {
     bgo: v => evaluateCSSProp('background-origin', v, mapValue),
 
     // Dimension
-    w: v => evaluateCSSProp('width', v, mapValue),
-    h: v => evaluateCSSProp('height', v, mapValue),
+    w: v => evaluateCSSProp('width', v, pipe(mapValue, parseSingle)),
+    h: v => evaluateCSSProp('height', v, pipe(mapValue, parseSingle)),
     minW: v => evaluateCSSProp('min-width', v, pipe(mapValue, parseSingle)),
     minH: v => evaluateCSSProp('min-height', v, pipe(mapValue, parseSingle)),
     maxW: v => evaluateCSSProp('max-width', v, pipe(mapValue, parseSingle)),
