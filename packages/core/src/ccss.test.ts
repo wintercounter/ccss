@@ -1,9 +1,21 @@
-import ccss, { setValueMap } from '@'
+import ccss, { setValueMap, setProps, pipe, mapValue } from '@'
 
 setValueMap({
     r: {
         global: 6
+    },
+    size: {
+        small: {
+            fts: 10
+        },
+        large: {
+            fts: 32
+        }
     }
+})
+
+setProps({
+    size: pipe(mapValue, ccss)
 })
 
 describe('ccss tests', () => {
@@ -46,6 +58,14 @@ describe('ccss tests', () => {
             ).toBe(`:hover {
                 color: white;
             }`)
+        })
+
+        it('can use custom prop', () => {
+            expect(
+                ccss({
+                    size: 'large'
+                }).trim()
+            ).toBe(`font-size: 32rem;`)
         })
     })
 })

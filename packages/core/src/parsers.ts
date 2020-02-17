@@ -2,11 +2,11 @@ import options from './options'
 import { valueMap, pseudoMap } from './maps'
 import ccss from './ccss'
 
-export const toCSSRule = cssProp => (key, input) => {
+export const toCSSRule = cssProp => input => {
     return input === undefined ? '' : `${cssProp}: ${input};`
 }
 
-export const parseSingle = (prop, input) => {
+export const parseSingle = input => {
     switch (typeof input) {
         case 'number':
             return input === 0 ? 0 : options.applyUnit(input)
@@ -16,39 +16,39 @@ export const parseSingle = (prop, input) => {
     }
 }
 
-const applyArray = (prop, input) => {
+const applyArray = input => {
     let out = ''
     for (const i of input) {
-        out += `${parseSingle(prop, i)} `
+        out += `${parseSingle(i)} `
     }
     return out
 }
 
-export const parseArray = (prop, input) => {
+export const parseArray = input => {
     switch (true) {
         case Array.isArray(input):
-            return applyArray(prop, input)
+            return applyArray(input)
         case input:
-            return applyArray(prop, [1])
+            return parseSingle(1)
         default:
-            return parseSingle(prop, input)
+            return parseSingle(input)
     }
 }
 
-export const mapValue = (prop, input) => {
+export const mapValue = (input, prop) => {
     return valueMap?.[prop]?.[input] || input
 }
 
 export const pipe = function(...fs) {
-    return (prop, input, original) => {
+    return (input, prop, original) => {
         for (const f of fs) {
-            input = f(prop, input, original)
+            input = f(input, prop, original)
         }
         return input
     }
 }
 
-export const parsePseudo = (prop, input) => `
+export const parsePseudo = (input, prop) => `
     :${pseudoMap[prop]} {
         ${ccss(input)}
     }
@@ -66,7 +66,7 @@ export const parsePseudo = (prop, input) => `
  * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
  * ```
  */
-export const child = (prop, input) => {
+export const child = input => {
     let generated = ''
     // eslint-disable-next-line no-restricted-syntax
     for (const k in input) {

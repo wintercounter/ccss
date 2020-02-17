@@ -2,12 +2,12 @@ import { setProps, props, pipe, options } from '@cryptic-css/core'
 
 const DEFAULT = 5
 
-const gutter = (prop, input) => {
+const gutter = input => {
     const g = options.gutter || DEFAULT
 
     switch (true) {
         case Array.isArray(input):
-            return input.map(v => gutter(prop, v))
+            return input.map(gutter)
         case input:
             return g
         case !isNaN(input):

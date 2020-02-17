@@ -12,7 +12,7 @@ const base = `
 `
 
 setProps({
-    scroll(prop, input, { maxw, maxh }) {
+    scroll(input, prop, { maxw, maxh }) {
         switch (input) {
             case 'x':
                 return `
