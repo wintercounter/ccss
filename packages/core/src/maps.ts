@@ -21,13 +21,13 @@ const overflows = {
 }
 
 export const valueMap = {
-    'animation-direction': {
+    aDir: {
         n: 'normal',
         r: 'reverse',
         a: 'alternate',
         ar: 'alternate-reverse'
     },
-    'animation-fill-mode': {
+    afm: {
         n: 'none',
         // @ts-ignore
         [false]: 'none',
@@ -35,36 +35,36 @@ export const valueMap = {
         bwd: 'backwards',
         b: 'both'
     },
-    'animation-play-state': {
+    aps: {
         p: 'paused',
         r: 'running'
     },
-    'backface-visibility': {
+    bv: {
         v: 'visible',
         h: 'hidden'
     },
-    'align-items': aligns,
-    'justify-items': aligns,
-    'justify-content': aligns,
-    'align-content': aligns,
-    'align-self': aligns,
-    'justify-self': aligns,
-    'flex-direction': {
+    ai: aligns,
+    ji: aligns,
+    jc: aligns,
+    ac: aligns,
+    aS: aligns,
+    jS: aligns,
+    fd: {
         r: 'row',
         rr: 'row-reverse',
         c: 'column',
         cr: 'column-reverse'
     },
-    'flex-wrap': {
+    fw: {
         w: 'wrap'
     },
-    position: {
+    pos: {
         a: 'absolute',
         f: 'fixed',
         r: 'relative',
         s: 'sticky'
     },
-    display: {
+    d: {
         // @ts-ignore
         [false]: 'none',
         n: 'none',
@@ -77,17 +77,17 @@ export const valueMap = {
         g: 'grid',
         t: 'table'
     },
-    overflow: overflows,
-    'overflow-x': overflows,
-    'overflow-y': overflows,
-    float: {
+    o: overflows,
+    ox: overflows,
+    oy: overflows,
+    fl: {
         // @ts-ignore
         [false]: 'none',
         n: 'none',
         l: 'left',
         r: 'right'
     },
-    clear: {
+    clr: {
         // @ts-ignore
         [false]: 'none',
         n: 'none',
@@ -97,7 +97,7 @@ export const valueMap = {
         [true]: 'both',
         b: 'both'
     },
-    visibility: {
+    v: {
         // @ts-ignore
         [true]: 'visible',
         v: 'visible',
@@ -106,13 +106,13 @@ export const valueMap = {
         h: 'hidden',
         c: 'collapse'
     },
-    'text-align': {
+    ta: {
         l: 'left',
         c: 'center',
         j: 'justify',
         r: 'right'
     },
-    'text-decoration': {
+    td: {
         n: 'none',
         // @ts-ignore
         [false]: 'none',
@@ -120,11 +120,11 @@ export const valueMap = {
         o: 'overline',
         t: 'line-through'
     },
-    'text-overflow': {
+    to: {
         c: 'clip',
         e: 'ellipsis'
     },
-    'text-transform': {
+    tt: {
         n: 'none',
         // @ts-ignore
         [false]: 'none',
@@ -132,7 +132,7 @@ export const valueMap = {
         u: 'uppercase',
         l: 'lowercase'
     },
-    'vertical-align': {
+    va: {
         b: 'baseline',
         sub: 'sub',
         sup: 'super',
@@ -142,7 +142,7 @@ export const valueMap = {
         bot: 'bottom',
         tb: 'text-bottom'
     },
-    'font-stretch': {
+    ftStr: {
         uc: 'ultra-condensed',
         ec: 'extra-condensed',
         c: 'condensed',
@@ -153,53 +153,53 @@ export const valueMap = {
         ee: 'extra-expanded',
         ue: 'ultra-expanded'
     },
-    'font-style': {
+    ftSty: {
         n: 'normal',
         i: 'italic',
         o: 'oblique'
     },
-    'font-variant': {
+    ftv: {
         n: 'normal',
         sc: 'small-caps'
     },
-    'font-weight': {
+    ftw: {
         n: 'normal',
         b: 'bold',
         br: 'bolder',
         l: 'lighter'
     },
-    'white-space': {
+    ws: {
         n: 'normal',
         nw: 'nowrap',
         p: 'pre',
         pl: 'pre-line',
         pw: 'pre-wrap'
     },
-    'word-break': {
+    wb: {
         n: 'normal',
         ba: 'break-all',
         ka: 'keep-all',
         bw: 'break-word'
     },
-    'word-wrap': {
+    ww: {
         n: 'normal',
         b: 'break-word'
     },
-    'list-style': {
+    lstS: {
         // @ts-ignore
         [false]: 'none',
         n: 'none'
     },
-    'list-style-type': {
+    lstST: {
         // @ts-ignore
         [false]: 'none',
         n: 'none'
     },
-    'background-size': {
+    bgs: {
         cr: 'cover',
         cn: 'contain'
     },
-    'background-repeat': {
+    bgr: {
         // @ts-ignore
         [true]: 'repeat',
         x: 'repeat-x',
@@ -210,15 +210,15 @@ export const valueMap = {
         s: 'space',
         r: 'round'
     },
-    'background-position': {
+    bgp: {
         c: 'center'
     },
-    'background-attachment': {
+    bga: {
         s: 'scroll',
         f: 'fixed',
         l: 'local'
     },
-    'background-blend-mode': {
+    bgbm: {
         n: 'normal',
         m: 'multiply',
         sc: 'screen',
@@ -230,23 +230,23 @@ export const valueMap = {
         c: 'color',
         lu: 'luminosity'
     },
-    background: {
+    bg: {
         t: 'transparent'
     },
-    'background-color': {
+    bgc: {
         t: 'transparent'
     },
-    'background-clip': {
+    bgc: {
         b: 'border-box',
         p: 'padding-box',
         c: 'content-box'
     },
-    'background-origin': {
+    bgo: {
         b: 'border-box',
         p: 'padding-box',
         c: 'content-box'
     },
-    'object-fit': {
+    of: {
         f: 'fill',
         cn: 'contain',
         cr: 'cover',
@@ -255,7 +255,7 @@ export const valueMap = {
         [false]: 'none',
         n: 'none'
     },
-    'mix-blend-mode': {
+    mbm: {
         n: 'normal',
         m: 'multiply',
         scr: 'screen',
@@ -271,7 +271,7 @@ export const valueMap = {
         c: 'color',
         l: 'luminosity'
     },
-    cursor: {
+    cur: {
         al: 'alias',
         all: 'all-scroll',
         a: 'auto',
@@ -309,7 +309,7 @@ export const valueMap = {
         zi: 'zoom-in',
         zo: 'zoom-out'
     },
-    'pointer-events': {
+    pe: {
         // @ts-ignore
         [true]: 'auto',
         a: 'auto',
@@ -317,11 +317,11 @@ export const valueMap = {
         [false]: 'none',
         n: 'none'
     },
-    'scroll-behavior': {
+    sb: {
         a: 'auto',
         s: 'smooth'
     },
-    'user-select': {
+    us: {
         a: 'auto',
         n: 'none',
         t: 'text',

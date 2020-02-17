@@ -2,26 +2,11 @@ import options from './options'
 import { valueMap, pseudoMap } from './maps'
 import ccss from './ccss'
 
-const IS_PROD = process.env.NODE_ENV === 'production'
+export const toCSSRule = cssProp => (key, input) => {
+    return input === undefined ? '' : `${cssProp}: ${input};`
+}
 
-const _evaluateCSSProp = (prop, value, transformer?) =>
-    value === undefined ? '' : `${prop}: ${transformer ? transformer(value, prop) : value};`
-
-export const evaluateCSSProp =
-    process.env.NODE_ENV === 'production'
-        ? _evaluateCSSProp
-        : (...args) => {
-              if (!IS_PROD) {
-                  try {
-                      args[3] && args[3](args)
-                      // eslint-disable-next-line no-empty
-                  } catch {}
-              }
-              // @ts-ignore
-              return _evaluateCSSProp(...args)
-          }
-
-export const parseSingle = input => {
+export const parseSingle = (prop, input) => {
     switch (typeof input) {
         case 'number':
             return input === 0 ? 0 : options.applyUnit(input)
@@ -31,35 +16,39 @@ export const parseSingle = input => {
     }
 }
 
-const applyArray = input => {
+const applyArray = (prop, input) => {
     let out = ''
     for (const i of input) {
-        out += `${parseSingle(i)} `
+        out += `${parseSingle(prop, i)} `
     }
     return out
 }
 
-export const parseArray = input => {
+export const parseArray = (prop, input) => {
     switch (true) {
         case Array.isArray(input):
-            return applyArray(input)
+            return applyArray(prop, input)
         case input:
-            return applyArray([1])
+            return applyArray(prop, [1])
         default:
-            return parseSingle(input)
+            return parseSingle(prop, input)
     }
 }
 
-export const mapValue = (input, prop) => {
+export const mapValue = (prop, input) => {
     return valueMap?.[prop]?.[input] || input
 }
 
 export const pipe = function(...fs) {
-    // @ts-ignore
-    return (...args) => fs.reduce((args, f) => [f.apply(this, args)], args)[0]
+    return (prop, input, original) => {
+        for (const f of fs) {
+            input = f(prop, input, original)
+        }
+        return input
+    }
 }
 
-export const parsePseudo = (input, all, prop) => `
+export const parsePseudo = (prop, input) => `
     :${pseudoMap[prop]} {
         ${ccss(input)}
     }
@@ -77,14 +66,14 @@ export const parsePseudo = (input, all, prop) => `
  * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
  * ```
  */
-export const child = i => {
+export const child = (prop, input) => {
     let generated = ''
     // eslint-disable-next-line no-restricted-syntax
-    for (const k in i) {
-        if (Object.prototype.hasOwnProperty.call(i, k)) {
+    for (const k in input) {
+        if (Object.prototype.hasOwnProperty.call(input, k)) {
             generated += `
             ${pseudoMap[k] ? `:${pseudoMap[k]}` : k} {
-                ${ccss(i[k])}
+                ${ccss(input[k])}
             }`
         }
     }

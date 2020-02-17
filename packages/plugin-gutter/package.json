@@ -23,7 +23,7 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^0.0.1"
+        "@cryptic-css/core": "^0.1.2"
     },
     "devDependencies": {
         "@cryptic-css/core": "^0.1.2"

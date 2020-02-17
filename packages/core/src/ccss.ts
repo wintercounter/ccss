@@ -7,7 +7,7 @@ const ccss = (v: TCCSSCoreProp & any): string => {
     for (const k in v) {
         if (Object.prototype.hasOwnProperty.call(v, k)) {
             if (props[k]) {
-                generated += props[k](v[k], v, k)
+                generated += props[k](k, v[k], v)
             }
         }
     }

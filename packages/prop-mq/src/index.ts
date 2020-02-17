@@ -2,7 +2,7 @@ import ccss, { setProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
 setProps({
-    mq: input => {
+    mq: (prop, input) => {
         if (typeof input[0] === 'string') {
             input = [input]
         }

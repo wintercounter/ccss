@@ -1,7 +1,7 @@
 import ccss, { setValueMap } from '@'
 
 setValueMap({
-    'border-radius': {
+    r: {
         global: 6
     }
 })
