@@ -31,9 +31,9 @@ import { Ui, ccssd } from '@cryptic-css/styled-components'
 
 ```jsx live noInline
 const View = ccssd({
-     w: 200,
-     p: 1,
-     m: [1, 0]
+    w: 200,
+    p: 1,
+    m: [1, 0]
 })
 
 render(

@@ -87,7 +87,7 @@ module.exports = {
             {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
-                    editUrl: 'https://github.com/wintercounter/css/edit/master/web/'
+                    editUrl: 'https://github.com/wintercounter/ccss/edit/master/web/'
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css')

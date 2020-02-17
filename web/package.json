@@ -9,12 +9,12 @@
         "deploy": "docusaurus deploy"
     },
     "dependencies": {
-        "@cryptic-css/styled-components": "0.1.0",
+        "@cryptic-css/styled-components": "0.2.1",
         "@docusaurus/core": "^2.0.0-alpha.40",
         "@docusaurus/preset-classic": "^2.0.0-alpha.40",
         "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
         "classnames": "^2.2.6",
-        "cryptic-css": "0.1.0",
+        "cryptic-css": "0.2.1",
         "css-format": "^1.0.0",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",

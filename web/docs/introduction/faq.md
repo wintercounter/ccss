@@ -7,7 +7,7 @@ title: F.A.Q.
 
 Because it's making your CSS/React components/etc. look really _Cryptic_.
 
-```js
+```js live
 ccss({
     d: 'b',
     p: 12,
@@ -62,23 +62,31 @@ custom properties and custom values which helps you to create your own custom
 design system. For example, it's easy to define such:
 
 ```js live
-// Define once these at setup stage
-setValueMap({
-    color: {
-        dark: '#333'
-    }
-})
+() => {
+    // Define once these at setup stage
+    setValueMap({
+        c: {
+            dark: '#333'
+        },
+        size: {
+            small: {
+                fts: 10
+            },
+            large: {
+                fts: 32
+            }
+        }
+    })
 
-ccss({
-    c: 'dark',
-    size: 'large'
-})
-/**
- * Output:
- *
- * color: #333;
- * font-size: 32em;
- */
+    setProps({
+        size: pipe(mapValue, CCSS)
+    })
+
+    return ccss({
+        c: 'dark',
+        size: 'large'
+    })
+}
 ```
 
 # What is the difference between plugins, extensions and props?
