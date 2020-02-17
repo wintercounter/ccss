@@ -7,7 +7,7 @@ There are already multiple ways to utilize **CCSS** in your codebase,
 however currently only CSS-in-JS solutions are being covered. Please
 note you can also use `emotion` or any other solution that requires CSS text.
 
-# Styled-components + JSX
+## Styled-components + JSX
 
 Simply replace any divs with this one component:
 
@@ -53,9 +53,9 @@ render(
 
 > An `~44%` text and code reduction.
 
-# Special props and values
+## Special props and values
 
-## `child`
+### `child`
 
 Add any child CSS/pseudo definition.
 
@@ -70,7 +70,7 @@ ccss({
 })
 ```
 
-## Pseudo selectors/states
+### Pseudo selectors/states
 
 Pseudo definitions are also having shorthands, always starting with `:`.
 
@@ -83,7 +83,7 @@ ccss({
 })
 ```
 
-## `styleText`
+### `styleText`
 
 Use to pass custom CSS string.
 
@@ -93,7 +93,7 @@ ccss({
 })
 ```
 
-## Number values
+### Number values
 
 Properties awaiting for numeric values with a unit can accept
 pure numbers for built-in automatic `unit` support.
@@ -108,7 +108,7 @@ ccss({
 })
 ```
 
-## Array values
+### Array values
 
 Shorthand properties awaiting numeric values with unit can
 accept an array as an input.

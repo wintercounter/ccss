@@ -3,17 +3,17 @@ id: getting-started
 title: Getting started
 ---
 
-# Installation
+## Installation
 
 ```sh
-# Full (all official plugins and props included)
+#Full (all official plugins and props included)
 npm i cryptic-css
 
 # Only core
 npm i @cryptic-css/core
 ```
 
-# Basic Usage
+## Basic Usage
 
 ```js
 import ccss from 'cryptic-css'

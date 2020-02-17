@@ -3,7 +3,7 @@ id: pros-and-cons
 title: Pros and Cons
 ---
 
-# Pros
+## Pros
 
 -   **Small**: enables true CSS mangling. The bigger the codebase the more efficient.
 -   **Fast**: a lot of efforts were taken to keep performance high.
@@ -18,7 +18,7 @@ title: Pros and Cons
     -   Support development time validators to help your team use your system properly.
     -   Deep and pseudo-selector support.
 
-# Cons
+## Cons
 
 -   Looks and feels weird at first sight.
 -   The learning curve isn't so small (I wouldn't say it's big either).
