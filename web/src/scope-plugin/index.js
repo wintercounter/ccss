@@ -6,6 +6,17 @@ module.exports = function() {
 
         getClientModules() {
             return [path.resolve(__dirname, './scope')]
+        },
+
+        configureWebpack(config, isServer) {
+            if (isServer) {
+                const plugin = config.plugins.find(
+                    ({ constructor: { name } }) => name === 'StaticSiteGeneratorWebpackPlugin'
+                )
+                plugin.globals = {
+                    window: {}
+                }
+            }
         }
     }
 }

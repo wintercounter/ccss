@@ -8,11 +8,6 @@ import styled, { ccssd, Ui } from '@cryptic-css/styled-components'
 
 const { default: ccss, ...rest } = ccssAll
 
-window.transformCode = (...args) => {
-    console.log('t code', args)
-    return ''
-}
-
 React.ccss = p => {
     const output = scssfmt(ccss(p))
     return p.hasOwnProperty('children') ? output : <CodeBlock className="scss">{output}</CodeBlock>
