@@ -230,6 +230,12 @@ export const valueMap = {
         c: 'color',
         lu: 'luminosity'
     },
+    background: {
+        t: 'transparent'
+    },
+    'background-color': {
+        t: 'transparent'
+    },
     'background-clip': {
         b: 'border-box',
         p: 'padding-box',
