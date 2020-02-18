@@ -9,7 +9,7 @@ import styles from './styles.module.css'
 const features = [
     {
         title: <>True CSS Mangling</>,
-        imageUrl: 'img/undraw_docusaurus_mountain.svg',
+        imageUrl: 'img/undraw_fast_loading.svg',
         description: (
             <>
                 The concept of <strong>CSS mangling</strong> is simple: support a shorter version of all CSS properties
@@ -21,7 +21,7 @@ const features = [
     },
     {
         title: <>Dynamic, fast and extensible</>,
-        imageUrl: 'img/undraw_docusaurus_tree.svg',
+        imageUrl: 'img/undraw_speed_test.svg',
         description: (
             <>
                 During the development of <strong>CCSS</strong> strict decisions and various micro-optimizations have
@@ -32,7 +32,7 @@ const features = [
     },
     {
         title: <>A very different DX</>,
-        imageUrl: 'img/undraw_docusaurus_react.svg',
+        imageUrl: 'img/undraw_developer_activity.svg',
         description: (
             <>
                 <strong>CCSS</strong> feels really weird on first sight. However it's not the same thing as using single
@@ -51,11 +51,11 @@ function Feature({ imageUrl, title, description }) {
     const imgUrl = useBaseUrl(imageUrl)
     return (
         <div className={classnames('col col--4', styles.feature)}>
-            {/* {imgUrl && (
+            {imgUrl && (
                 <div className="text--center">
                     <img className={styles.featureImage} src={imgUrl} alt={title} />
                 </div>
-            )}*/}
+            )}
             <h3 className="text--center">{title}</h3>
             <p>{description}</p>
         </div>
