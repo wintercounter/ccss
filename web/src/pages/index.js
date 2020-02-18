@@ -115,6 +115,20 @@ function Home() {
                     </section>
                 )}
             </main>
+            <div className={styles.buttons} style={{ marginBottom: '40px' }}>
+                <a href="https://github.com/wintercounter/ccss">
+                    <img
+                        src="https://flat.badgen.net/github/stars/wintercounter/ccss?scale=1.5&label=Star%20on%20GitHub&color=00cf9b"
+                        alt="CCSS on GitHub"
+                    />
+                </a>
+                <a href="https://twitter.com/wintercounter1">
+                    <img
+                        src="https://flat.badgen.net/twitter/follow/wintercounter1?scale=1.5&label=Follow%20on%20Twitter&color=1dcaff"
+                        alt="wintercounter on Twitter"
+                    />
+                </a>
+            </div>
             <section className="hero demo">
                 <div className="container">
                     <h1 className="text--center">Try it out!</h1>
