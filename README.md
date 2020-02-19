@@ -4,15 +4,14 @@
     <p></p>
 </h1>
 
-<div align="center">
-    <a href="https://ccss.dev">Documentation and Website</a>
-</div>
-
 > CrypticCSS - A CSS-in-JS concept that brings you **true CSS mangling** with **design system capabilities**.
 
 ## WARNING!
 
 This a work in progress project.
+
+## Website, Documentation, Examples
+https://ccss.dev or https://ccss.netlify.com
 
 ## Contribution
 
