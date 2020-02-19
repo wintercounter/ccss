@@ -89,7 +89,7 @@ design system. For example, it's easy to define such:
 }
 ```
 
-## What is the difference between plugins, extensions and props?
+## What is the difference between plugins, extensions, and props?
 
 -   **Plugins**: Manipulating values on existing props.
 -   **Extensions**: Extending the core with new features.
