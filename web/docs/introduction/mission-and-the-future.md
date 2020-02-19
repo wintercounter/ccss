@@ -15,5 +15,5 @@ term. We want to:
     -   Ready to use design systems.
 
 Who knows, a future version of CSS8 might standardize shorthands based on
-what the community is building up here. 😉 It's relatively easy to implement
-and standardize and it actually has great benefits.
+what the community is building up here. 😉 It's relatively easy to implement,
+standardize and it has great benefits.
