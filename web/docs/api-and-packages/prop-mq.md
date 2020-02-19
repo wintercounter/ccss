@@ -3,4 +3,17 @@ id: prop-mq
 title: '@cryptic-css/prop-mq'
 ---
 
-Docs coming here soon. Please check the package's README.md until then on GitHub.
+Adds support to use the viewport sizing system behind
+`@w11r/use-breakpoint`'s React hook.
+
+## Usage
+
+```js live
+ccss({
+    m: 1,
+    mq: [
+        ['mobile', { m: 2 }],
+        ['tablet', { m: 3 }]
+    ]
+})
+```

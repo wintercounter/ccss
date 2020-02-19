@@ -14,19 +14,6 @@
 
 This a work in progress project.
 
-## Additional packages
-
-Some packages were created to demonstrate how to extend the functionality
-of the core:
-
--   [Core](./packages/core)
--   [Plugin: gutter](./packages/plugin-gutter)
--   [Plugin: ratio](./packages/plugin-ratio)
--   [Prop: mid](./packages/prop-mid)
--   [Prop: mq](./packages/prop-mq)
--   [Prop: Scroll](./packages/prop-scroll)
--   [styled-components](./packages/styled-components)
-
 ## Contribution
 
 **CCSS** is trying to be a community effort, we're open to any suggestions.
