@@ -3,7 +3,7 @@
     <div align="center">🔡🔁🎨</div>
     <br />
     <p align="center">
-        <strong>CrypticCSS - A concept/standard that brings you **true CSS mangling** with **design system capabilities**.</strong>
+        <strong>CrypticCSS - A concept/standard that brings you <em>true CSS mangling</em> with <em>design system capabilities</em>.</strong>
     </p>
     <p align="center">
         <a href="https://ccss.dev">Website</a> · <a href="https://ccss.dev/docs/introduction/pros-and-cons">Documentation</a> · <a href="https://ccss.dev/docs/usage/examples">Examples</a>
