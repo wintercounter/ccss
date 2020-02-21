@@ -1,10 +1,11 @@
-<h1 align="center">
-    <div><strong>CCSS</strong></div>
-    <div>🔡🔁🎨</div>
-    <p></p>
-</h1>
-
-> CrypticCSS - A CSS-in-JS concept that brings you **true CSS mangling** with **design system capabilities**.
+<div align="center">
+    <div align="center"><img src="/web/static/img/logo.png" width="200" /></div>
+    <div align="center">🔡🔁🎨</div>
+    <br />
+    <p align="center"><strong>CrypticCSS - A concept that brings you **true CSS mangling** with **design system capabilities**.</strong></p>
+    <br />
+    <p align="center"><a href="https://ccss.dev">Home page</a> · <a href="https://ccss.dev">Home page</a> · <a href="https://ccss.dev">Home page</a></p>
+</div>
 
 ## WARNING!
 
