@@ -2,17 +2,16 @@
     <div align="center"><img src="/web/static/img/logo.png" width="200" /></div>
     <div align="center">🔡🔁🎨</div>
     <br />
-    <p align="center"><strong>CrypticCSS - A concept that brings you **true CSS mangling** with **design system capabilities**.</strong></p>
-    <br />
-    <p align="center"><a href="https://ccss.dev">Home page</a> · <a href="https://ccss.dev">Home page</a> · <a href="https://ccss.dev">Home page</a></p>
+    <p align="center">
+        <strong>CrypticCSS - A concept/standard that brings you **true CSS mangling** with **design system capabilities**.</strong>
+    </p>
+    <p align="center">
+        <a href="https://ccss.dev">Website</a> · <a href="https://ccss.dev/docs/introduction/pros-and-cons">Documentation</a> · <a href="https://ccss.dev/docs/usage/examples">Examples</a>
+    </p>
 </div>
 
-## WARNING!
-
-This a work in progress project.
-
-## Website, Documentation, Examples
-https://ccss.dev or https://ccss.netlify.com
+> WARNING! This a work in progress project and it's not sable yet, use at
+your own risk!
 
 ## Contribution
 
@@ -20,3 +19,6 @@ https://ccss.dev or https://ccss.netlify.com
 However, we also sacrificed some features already for the sake of performance
 and simplicity. We are having strict "rules" of what can be added. For most
 cases plugins, extensions and custom props should be enough.
+
+We also lack of proper documentations, examples, tutorials and such resources.
+In case you interested in such all help welcomed. __Thank you!__
