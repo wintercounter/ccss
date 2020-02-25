@@ -45,7 +45,7 @@ You can customize these options (or add new options).
 This is usually being called on the top level of your app only once.
 
 ```js
-import { setOptions, options } from 'cryptic-css'
+import { setOptions, options } from 'ccss'
 
 setOptions({
     unit: 'var(--px)',
@@ -62,7 +62,7 @@ Awaits a style object and returns a CSS string. Not registered keys are skipped,
 values not existing in a map will be "printed" as-is.
 
 ```js
-import ccss from 'cryptic-css'
+import ccss from 'ccss'
 ```
 
 ```js live
@@ -79,7 +79,7 @@ or override existing ones.
 The return value is pure CSS text.
 
 ```js
-import { ccss, props, setProps, setValueMap, mapValue, pipe } from 'cryptic-css'
+import { ccss, props, setProps, setValueMap, mapValue, pipe } from 'ccss'
 
 setValueMap({
     c: {
@@ -107,7 +107,7 @@ const Cmp = <Ui c="dark" scheme="light" />
 Set custom values/shorthands for a property.
 
 ```js
-import { setValueMap } from 'cryptic-css'
+import { setValueMap } from 'ccss'
 
 setValueMap({
     color: {

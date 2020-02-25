@@ -28,12 +28,11 @@ import styled, { Ui, ccssd, ccss } '@cryptic-css/styled-components'
 ```
 
 ```js
-
 // Ui
 const Normal = <Ui d="f" />
 const WithTagHelper = <Ui.section d="f" />
 const WithExtend = styled(Ui)`
-   custom: css;
+    custom: css;
 `
 
 // ccssd

@@ -3,7 +3,7 @@ import scssfmt from 'scssfmt'
 import CodeBlock from '../../node_modules/@docusaurus/theme-live-codeblock/src/theme/CodeBlock/index'
 
 // Extend live code's scope
-import * as ccssAll from 'cryptic-css'
+import * as ccssAll from 'ccss'
 import styled, { ccssd, Ui } from '@cryptic-css/styled-components'
 
 const { default: ccss, ...rest } = ccssAll

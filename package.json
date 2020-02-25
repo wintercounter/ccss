@@ -1,5 +1,5 @@
 {
-    "name": "cryptic-css",
+    "name": "cryptic-css-monorepo",
     "version": "0.0.1",
     "description": "",
     "main": "dist/index.js",

@@ -7,24 +7,24 @@ Adds support to use predefined gutter values.
 
 ## Supported properties
 
-- p
-- pt
-- pr
-- pb
-- pl
-- m
-- mt
-- mr
-- mb
-- ml
-- gg
-- grg
-- gcg
+-   p
+-   pt
+-   pr
+-   pb
+-   pl
+-   m
+-   mt
+-   mr
+-   mb
+-   ml
+-   gg
+-   grg
+-   gcg
 
 ## Usage
 
 ```js
-import ccss from 'cryptic-css'
+import ccss from 'ccss'
 
 ccss({
     p: 2, // padding: 10rem;
@@ -41,7 +41,7 @@ ccss({
 The plugin introduces the option key `gutter`. Be default it's: `5`
 
 ```js
-import { setOptions } from 'cryptic-css'
+import { setOptions } from 'ccss'
 
 setOptions({
     gutter: 10 // 1 * gutter = 10rem

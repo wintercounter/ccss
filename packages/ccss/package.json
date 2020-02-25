@@ -1,5 +1,5 @@
 {
-    "name": "cryptic-css",
+    "name": "ccss",
     "version": "0.2.1",
     "description": "A full version for CrypticCSS including all available official plugins, props and extensions.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",

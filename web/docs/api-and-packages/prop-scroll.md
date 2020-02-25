@@ -16,6 +16,6 @@ ccss({
 
 ## Available values
 
-- `x`: Enable horizontal scrolling.
-- `y`: Enable vertical scrolling.
-- `true`: Enable scrolling in both directions.
+-   `x`: Enable horizontal scrolling.
+-   `y`: Enable vertical scrolling.
+-   `true`: Enable scrolling in both directions.

@@ -6,15 +6,7 @@ export const toCSSRule = cssProp => input => {
     return input === undefined ? '' : `${cssProp}: ${input};`
 }
 
-export const parseSingle = input => {
-    switch (typeof input) {
-        case 'number':
-            return input === 0 ? 0 : options.applyUnit(input)
-        case 'string':
-        default:
-            return input
-    }
-}
+export const parseSingle = input => (typeof input === 'number' ? (input === 0 ? 0 : options.applyUnit(input)) : input)
 
 const applyArray = input => {
     let out = ''

@@ -46,6 +46,7 @@ We were already running a highly dynamic system using values from props,
 ## Won't be this hard to understand?
 
 We think that you need a relatively short time to get comfortable with it.
+If you know CSS, you know the shorthands also.
 However, we also have a focus on developer experience. We're providing
 TypeScript definitions and TSDoc for all props to help your work.
 You'll have nice autocomplete and a list of possible options.

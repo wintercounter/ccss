@@ -14,7 +14,7 @@
         "@docusaurus/preset-classic": "^2.0.0-alpha.40",
         "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
         "classnames": "^2.2.6",
-        "cryptic-css": "0.2.1",
+        "ccss": "1.0.0",
         "css-format": "^1.0.0",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
