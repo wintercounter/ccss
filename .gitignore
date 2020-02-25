@@ -37,3 +37,4 @@ tsconfig.json
 webpack.config.js
 *.tsbuildinfo
 *.d.ts
+package-lock.json

@@ -1,7 +1,7 @@
-# `cryptic-css`
+# `ccss`
 
-> A full version containing all available extra props and plugins.
+> A full version containing extra props and plugins to deliver a full featured solution.
 
 ## Usage
 
-Use the same way as core.
+Please consult with the documentation about the details: https://ccss.dev
