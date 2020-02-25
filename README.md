@@ -22,3 +22,5 @@ cases plugins, extensions and custom props should be enough.
 
 We also lack of proper documentations, examples, tutorials and such resources.
 In case you interested in such all help welcomed. __Thank you!__
+
+**Special thanks** to [@aeosynth](https://github.com/aeosynth) for the npm name `ccss`!
