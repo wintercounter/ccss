@@ -9,7 +9,7 @@
         "deploy": "docusaurus deploy"
     },
     "dependencies": {
-        "@cryptic-css/styled-components": "0.2.1",
+        "@cryptic-css/styled-components": "1.0.0",
         "@docusaurus/core": "^2.0.0-alpha.40",
         "@docusaurus/preset-classic": "^2.0.0-alpha.40",
         "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",

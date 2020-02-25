@@ -30,8 +30,5 @@
         "@cryptic-css/prop-mid": "^1.0.0",
         "@cryptic-css/prop-mq": "^1.0.0",
         "@cryptic-css/prop-scroll": "^1.0.0"
-    },
-    "devDependencies": {
-        "@cryptic-css/core": "^0.0.1"
     }
 }
