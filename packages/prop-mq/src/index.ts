@@ -1,5 +1,5 @@
 import ccss, { setProps } from '@cryptic-css/core'
-import { mediaQuery } from '@w11r/use-breakpoint'
+import mediaQuery from '@w11r/use-breakpoint/dist/mediaQuery'
 
 setProps({
     mq: input => {
