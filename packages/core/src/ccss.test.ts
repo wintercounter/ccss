@@ -1,6 +1,7 @@
-import ccss, { setValueMap, setProps, pipe, mapValue } from '@'
+import { createCCSS, createOptions, pipe, mapValue, createValueMap, createProps } from '@'
+import { objectOutputTransformer } from './outputTransformers'
 
-setValueMap({
+const valueMap = createValueMap({
     r: {
         global: 6
     },
@@ -13,10 +14,13 @@ setValueMap({
         }
     }
 })
-
-setProps({
-    size: pipe(mapValue, ccss)
+const props = createProps({
+    size: pipe(mapValue, (input, prop, options) => options.__ccss(input))
 })
+const options = createOptions({ props, valueMap })
+const optionsObject = createOptions({ props, valueMap, outputTransformer: objectOutputTransformer })
+const ccss = createCCSS(options)
+const ccssObject = createCCSS(optionsObject)
 
 describe('ccss tests', () => {
     describe('Evaluations', () => {
@@ -25,19 +29,40 @@ describe('ccss tests', () => {
                 'animation: example 5s linear 2s infinite alternate;'
             )
         })
+        it('normal:object', () => {
+            expect(ccssObject({ a: 'example 5s linear 2s infinite alternate' })).toStrictEqual({
+                animation: 'example 5s linear 2s infinite alternate'
+            })
+        })
         it('mapValue', () => {
             expect(ccss({ fd: 'c' })).toBe('flex-direction: column;')
         })
+        it('mapValue:object', () => {
+            expect(ccssObject({ fd: 'c' })).toStrictEqual({
+                flexDirection: 'column'
+            })
+        })
         it('parseSingle', () => {
             expect(ccss({ ti: 2 })).toBe('text-indent: 2rem;')
+        })
+        it('parseSingle:object', () => {
+            expect(ccssObject({ ti: 2 })).toStrictEqual({ textIndent: '2rem' })
         })
         it('parseMultipart', () => {
             expect(ccss({ m: [1, 2, 3, 4] })).toBe('margin: 1rem 2rem 3rem 4rem ;')
             expect(ccss({ m: [1, '1:3'] })).toBe('margin: 1rem 1:3 ;')
             expect(ccss({ m: 10 })).toBe('margin: 10rem;')
         })
+        it('parseMultipart:object', () => {
+            expect(ccssObject({ m: [1, 2, 3, 4] })).toStrictEqual({ margin: '1rem 2rem 3rem 4rem ' })
+            expect(ccssObject({ m: [1, '1:3'] })).toStrictEqual({ margin: '1rem 1:3 ' })
+            expect(ccssObject({ m: 10 })).toStrictEqual({ margin: '10rem' })
+        })
         it('pipe', () => {
             expect(ccss({ r: 'global' })).toBe('border-radius: 6rem;')
+        })
+        it('pipe:object', () => {
+            expect(ccssObject({ r: 'global' })).toStrictEqual({ borderRadius: '6rem' })
         })
         it('pseudo', () => {
             expect(
@@ -48,6 +73,17 @@ describe('ccss tests', () => {
         display: block;
     }`)
         })
+        it('pseudo:object', () => {
+            expect(
+                ccssObject({
+                    ':b': { d: 'b' }
+                })
+            ).toStrictEqual({
+                ':before': {
+                    display: 'block'
+                }
+            })
+        })
         it('child/pseudo', () => {
             expect(
                 ccss({
@@ -56,8 +92,21 @@ describe('ccss tests', () => {
                     }
                 }).trim()
             ).toBe(`:hover {
-                color: white;
-            }`)
+        color: white;
+    }`)
+        })
+        it('child/pseudo:object', () => {
+            expect(
+                ccssObject({
+                    child: {
+                        ':h': { c: 'white' }
+                    }
+                })
+            ).toStrictEqual({
+                ':hover': {
+                    color: 'white'
+                }
+            })
         })
 
         it('can use custom prop', () => {
@@ -66,6 +115,14 @@ describe('ccss tests', () => {
                     size: 'large'
                 }).trim()
             ).toBe(`font-size: 32rem;`)
+        })
+
+        it('can use custom prop:object', () => {
+            expect(
+                ccssObject({
+                    size: 'large'
+                })
+            ).toStrictEqual({ fontSize: '32rem' })
         })
     })
 })

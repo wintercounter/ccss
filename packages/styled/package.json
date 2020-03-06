@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/styled-components",
+    "name": "@cryptic-css/styled",
     "version": "1.0.0",
-    "description": "Adds direct CCSS support for styled-components.",
+    "description": "Re-exports styled-components with CCSS support.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/styled-components#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/styled#readme",
     "license": "MIT",
     "main": "dist/index.js",
     "publishConfig": {

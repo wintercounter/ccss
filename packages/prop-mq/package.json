@@ -23,10 +23,10 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "dependencies": {
-        "@w11r/use-breakpoint": "^1.2.1"
+        "@w11r/use-breakpoint": "^1.4.0"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^0.0.3"
+        "@cryptic-css/core": "^1.0.2"
     },
     "devDependencies": {
         "@cryptic-css/core": "^1.0.0"

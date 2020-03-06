@@ -1,11 +1,8 @@
-import { setProps } from '@cryptic-css/core'
-
-setProps({
-    mid() {
-        return `
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        `
-    }
-})
+export default ({ props }) => {
+    props.mid = (input, prop, options) =>
+        options.__ccss({
+            T: '50%',
+            L: '50%',
+            tf: 'translate(-50%, -50%)'
+        })
+}

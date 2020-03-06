@@ -1,17 +1,27 @@
 import { TCCSSCoreProp } from './types'
-import props from './props'
+import { createOptions } from './createOptions'
 
-const ccss = (v: TCCSSCoreProp & any): string => {
-    let generated = ''
+const generate = (v: TCCSSCoreProp & any, options): string => {
+    let generated = options.outputTransformer.defaultOutput()
     // eslint-disable-next-line no-restricted-syntax
     for (const k in v) {
         if (Object.prototype.hasOwnProperty.call(v, k)) {
-            if (props[k]) {
-                generated += props[k](v[k], k, v)
+            if (options.props[k]) {
+                generated = (options.props[k]
+                    ? options.outputTransformer
+                    : options.outputTransformer.unsupportedHandler)(generated, options.props[k](v[k], k, options, v))
             }
         }
     }
     return generated
 }
 
-export default ccss
+export const defaultOptions = createOptions()
+
+export const createCCSS = (options = defaultOptions) => {
+    const __ccss = ccssProps => generate(ccssProps, options)
+    options.__ccss = __ccss
+    return __ccss
+}
+
+export const ccss = createCCSS()

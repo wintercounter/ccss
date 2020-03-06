@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import ccss from '../ccss'
+import { ccss } from '../ccss'
 
 // Uncomment for testing only
 
