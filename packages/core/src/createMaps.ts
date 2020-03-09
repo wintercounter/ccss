@@ -214,6 +214,7 @@ export const createValueMap = (overrides?) =>
                 n: 'none'
             },
             bgs: {
+                a: 'auto',
                 cr: 'cover',
                 cn: 'contain'
             },
