@@ -30,5 +30,6 @@
         "@cryptic-css/prop-mid": "^2.0.0",
         "@cryptic-css/prop-mq": "^2.0.0",
         "@cryptic-css/prop-scroll": "^2.0.0"
-    }
+    },
+    "gitHead": "d791131dcc71f4e3536e7bb4cd3e85f781a257b9"
 }
