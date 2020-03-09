@@ -253,11 +253,6 @@ export const createValueMap = (overrides?) =>
             bgc: {
                 t: 'transparent'
             },
-            bgc: {
-                b: 'border-box',
-                p: 'padding-box',
-                c: 'content-box'
-            },
             bgo: {
                 b: 'border-box',
                 p: 'padding-box',
