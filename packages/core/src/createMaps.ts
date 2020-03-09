@@ -24,6 +24,18 @@ const getOverflows = () => ({
     a: 'auto'
 })
 
+const getTfoBgpPos = () => ({
+    c: 'center',
+    t: 'top',
+    tr: 'top right',
+    r: 'right',
+    br: 'bottom right',
+    b: 'bottom',
+    bl: 'bottom left',
+    l: 'left',
+    tl: 'top left'
+})
+
 export const createValueMap = (overrides?) =>
     mergeDeep(
         {
@@ -216,9 +228,7 @@ export const createValueMap = (overrides?) =>
                 s: 'space',
                 r: 'round'
             },
-            bgp: {
-                c: 'center'
-            },
+            bgp: getTfoBgpPos,
             bga: {
                 s: 'scroll',
                 f: 'fixed',
@@ -338,7 +348,8 @@ export const createValueMap = (overrides?) =>
             },
             sh: {
                 n: 'none'
-            }
+            },
+            tfo: getTfoBgpPos
         },
         overrides
     )

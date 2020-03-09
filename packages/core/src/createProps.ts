@@ -215,7 +215,12 @@ const getPropTable = () => {
         ['sb', 's-behavior', 'scroll-behavior', mapValue],
         ['sw', 's-width', 'scrollbar-width', mapValue],
         ['sh', 's-height', 'scrollbar-height', mapValue],
-        ['us', 'u-select', 'user-select', mapValue]
+        ['us', 'u-select', 'user-select', mapValue],
+
+        // Helpers
+        /**
+         *
+         */
     ]
 
     for (const [short, light, long, ...modifiers] of table) {
