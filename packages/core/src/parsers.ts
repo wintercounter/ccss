@@ -1,72 +1,61 @@
-import options from './options'
-import { valueMap, pseudoMap } from './maps'
-import ccss from './ccss'
-
-export const toCSSRule = cssProp => input => {
-    return input === undefined ? '' : `${cssProp}: ${input};`
+export const toCSSRule = (cssProp, objectProp) => {
+    return (input, prop, options) => {
+        return options.outputTransformer.toCSSRule(cssProp, objectProp, input, prop, options)
+    }
 }
 
-export const parseSingle = input => (typeof input === 'number' ? (input === 0 ? 0 : options.applyUnit(input)) : input)
+export const parseSingle = (input, prop, options) =>
+    typeof input === 'number' ? (input === 0 ? 0 : options.applyUnit(input)) : input
 
-const applyArray = input => {
+const applyArray = (input, prop, options) => {
     let out = ''
     for (const i of input) {
-        out += `${parseSingle(i)} `
+        out += `${parseSingle(i, prop, options)} `
     }
     return out
 }
 
-export const parseArray = input => {
+export const parseArray = (input, prop, options) => {
     switch (true) {
         case Array.isArray(input):
-            return applyArray(input)
+            return applyArray(input, prop, options)
         case input:
-            return parseSingle(1)
+            return parseSingle(1, prop, options)
         default:
-            return parseSingle(input)
+            return parseSingle(input, prop, options)
     }
 }
 
-export const mapValue = (input, prop) => {
-    return valueMap?.[prop]?.[input] || input
+export const mapValue = (input, prop, options) => {
+    return options.valueMap?.[prop]?.[input] || input
 }
 
 export const pipe = function(...fs) {
-    return (input, prop, original) => {
+    return (input, prop, options, original) => {
         for (const f of fs) {
-            input = f(input, prop, original)
+            input = f(input, prop, options, original)
         }
         return input
     }
 }
 
-export const parsePseudo = (input, prop) => `
-    :${pseudoMap[prop]} {
-        ${ccss(input)}
-    }
-`
+export const parsePseudo = (input, prop, options) => {
+    return options.outputTransformer.toPseudo(input, prop, options)
+}
 
-/**
- * You can pass children to your ccss supporting both pseudo classes and nested selectors
- *
- * @example
- * ```js
- * child({
- *   ':h': { d: 'b' },
- *   '.childDiv': { p: 10 }
- * })
- * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
- * ```
- */
-export const child = input => {
-    let generated = ''
-    // eslint-disable-next-line no-restricted-syntax
+export const child = (input, prop, options, original) => {
+    let generated = options.outputTransformer.defaultOutput()
+
     for (const k in input) {
         if (Object.prototype.hasOwnProperty.call(input, k)) {
-            generated += `
-            ${pseudoMap[k] ? `:${pseudoMap[k]}` : k} {
-                ${ccss(input[k])}
-            }`
+            if (options.props[k]) {
+                generated = options.outputTransformer(generated, options.props[k](input[k], k, options, original))
+            } else {
+                generated = options.outputTransformer(
+                    generated,
+                    options.outputTransformer.toChild(input[k], k, options)
+                )
+            }
         }
     }
     return generated

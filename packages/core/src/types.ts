@@ -12,7 +12,7 @@ export interface IOptions extends Partial<any> {
     applyUnit: (n: number) => string
 }
 
-export default interface ICCSSProps {
+export interface ICCSSProps {
     /**
      * @propDocStart
      * {

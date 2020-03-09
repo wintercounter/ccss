@@ -13,9 +13,9 @@ export const isObject = <T>(obj: T): boolean => obj && typeof obj === 'object'
  * @author inspired by [jhildenbiddle](https://stackoverflow.com/a/48218209).
  * @source [link](https://gist.github.com/ahtcx/0cd94e62691f539160b32ecda18af3d6#gistcomment-2930530)
  */
-export default function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> {
+export function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> {
     if (!isObject(target) || !isObject(source)) {
-        return source
+        return target
     }
 
     Object.keys(source).forEach(key => {
@@ -33,3 +33,5 @@ export default function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> 
 
     return target
 }
+
+export const camelify = t => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())

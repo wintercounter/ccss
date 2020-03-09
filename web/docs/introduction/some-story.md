@@ -8,7 +8,7 @@ this solution. It is hard to accept as a professional
 developer because it feels it's against the principals you've learned
 so far.
 
-On a project, we started to heavily use a `Grommet` and `styled-system`
+On a project, we started to use a `Grommet` and `styled-system`
 inspired UI System. We ended up relying on fully dynamic `styled-components`,
 almost completely stopped writing CSS and custom `styled-components`.
 

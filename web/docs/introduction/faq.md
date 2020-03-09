@@ -33,10 +33,11 @@ possible.
 
 ## How big the size saving is?
 
-We do not have any case studies in practice. Due to the fact the **CCSS**
+We do not have any case studies in practice. Due to the fact that **CCSS**
 also requires some extra code, you first need to reach the point where
-`your CCSS + compiler = original CSS`. This is fairly easy to reach as
-the compiler itself is small.
+`your **CCSS** + compiler = original CSS`. This is fairly easy to reach as
+the compiler itself is small. The bigger your codebase, the bigger the
+savings are.
 
 The savings should be _40-60%_ approx.
 
@@ -64,8 +65,7 @@ design system. For example, it's easy to define such:
 
 ```js live
 () => {
-    // Define once these at setup stage
-    setValueMap({
+    const valueMap = createValueMap({
         c: {
             dark: '#333'
         },
@@ -79,9 +79,16 @@ design system. For example, it's easy to define such:
         }
     })
 
-    setProps({
-        size: pipe(mapValue, CCSS)
+    const props = createProps({
+      size: pipe(mapValue, (input, value, options) => options.__ccss(input))
     })
+
+    const options = createOptions({
+        props,
+        valueMap
+    })
+
+    const ccss = createCCSS(options)
 
     return ccss({
         c: 'dark',
@@ -89,6 +96,8 @@ design system. For example, it's easy to define such:
     })
 }
 ```
+
+Also `styled-system` does not support as much shorthands as we wanted.
 
 ## What is the difference between plugins, extensions, and props?
 

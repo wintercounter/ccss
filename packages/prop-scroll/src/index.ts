@@ -1,39 +1,37 @@
-import { setProps } from '@cryptic-css/core'
-
-const base = `
-    user-select: none;
-    scrollbar-width: none;
-    scrollbar-height: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-        display: none;
+const base = {
+    us: 'n',
+    sw: 'n',
+    sh: 'n',
+    '-ms-overflow-style': 'none',
+    '-webkit-overflow-scrolling': 'touch',
+    '::-webkit-scrollbar': {
+        d: 'n'
     }
-`
+}
 
-setProps({
-    scroll(input, prop, { maxw, maxh }) {
+export default ({ props }) => {
+    props.scroll = (input, prop, options, original) => {
         switch (input) {
             case 'x':
-                return `
-                    ${maxw ? '' : 'max-width: 100vw;'}
-                    overflow-x: auto;
-                    ${base}
-                `
+                return options.__ccss({
+                    ...base,
+                    maxW: original.maxW || '100vw',
+                    ox: 'a'
+                })
             case 'y':
-                return `
-                    ${maxh ? '' : 'max-height: 100vh;'}
-                    overflow-y: auto;
-                    ${base}
-                `
+                return options.__ccss({
+                    ...base,
+                    maxH: original.maxH || '100vh',
+                    oy: 'a'
+                })
             case true:
             default:
-                return `
-                    ${maxw ? '' : 'max-width: 100vw;'}
-                    ${maxh ? '' : 'max-height: 100vh;'}
-                    overflow: auto;
-                    ${base}
-                `
+                return options.__ccss({
+                    ...base,
+                    maxH: original.maxH || '100vh',
+                    maxW: original.maxW || '100vw',
+                    o: 'a'
+                })
         }
     }
-})
+}

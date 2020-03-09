@@ -22,11 +22,11 @@ render(
 )
 ```
 
-You can also replace `styled-components` with `@cryptic-css/styled-components`, providing
+You can also replace `styled-components` with `@cryptic-css/styled`, providing
 _out-of-the-box_ support for **CCSS**.
 
 ```js
-import { Ui, ccssd } from '@cryptic-css/styled-components'
+import { Ui, ccssd } from '@cryptic-css/styled'
 ```
 
 ```jsx live noInline
@@ -83,13 +83,13 @@ ccss({
 })
 ```
 
-### `styleText`
+### `raw`
 
-Use to pass custom CSS string.
+Use to pass raw CSS string / Style object.
 
 ```js live
 ccss({
-    styleText: `background-color: #fff;`
+    raw: `background-color: #fff;`
 })
 ```
 

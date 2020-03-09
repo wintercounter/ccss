@@ -40,3 +40,4 @@ jest.config.js
 tsconfig.json
 webpack.config.js
 *.tsbuildinfo
+sandbox

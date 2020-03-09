@@ -18,7 +18,8 @@ import glob from 'glob'
 import fetch from 'fetch-cheerio-object'
 import TurndownService from 'turndown'
 
-import { valueMap } from '../src/maps'
+import { createValueMap } from '../src/createMaps'
+const valueMap = createValueMap()
 
 const DIST = path.resolve(__dirname, '../dist')
 const REGEXP = /@propDocStart([\s\S]+?)@propDocEnd/gm

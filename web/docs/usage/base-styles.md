@@ -20,7 +20,8 @@ html {
 ## Flex by default
 
 Also you might want to reset your elements to be flex by default to avoid having
-`d="f"` on many of your components. You may use [flex-reset.css](https://gist.github.com/wintercounter/5e3f4915c714022a8dd048f55b48908d#file-flex-reset-css) for this purpose
-(which also includes the previously mentioned setup for font-sizes).
+`d="f"` on many of your components. You may use
+[flex-reset.css](https://gist.github.com/wintercounter/5e3f4915c714022a8dd048f55b48908d#file-flex-reset-css)
+for this purpose.
 
 -   https://developers.google.com/web/updates/2013/10/Flexbox-layout-isn-t-slow

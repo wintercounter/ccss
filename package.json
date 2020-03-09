@@ -8,7 +8,8 @@
         "test:watch": "mhy jest --watchAll",
         "build": "mhy bb --mhy-env=prod",
         "publish": "lerna run test && lerna run build && lerna publish",
-        "config": "mhy config eslint prettier -io && lerna run config"
+        "config": "mhy config eslint prettier -io && lerna run config",
+        "version": "lerna version --conventional-commits"
     },
     "repository": {
         "type": "git",
