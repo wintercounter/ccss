@@ -12,14 +12,13 @@ objectOutputTransformer.toPseudo = (input, prop, options) => {
         [`:${options.pseudoMap[prop]}`]: options.__ccss(input)
     }
 }
-objectOutputTransformer.unsupportedHandler = input => {
-    let generated = objectOutputTransformer.defaultOutput()
-    // eslint-disable-next-line no-restricted-syntax
-    for (const k in input) {
-        if (Object.prototype.hasOwnProperty.call(input, k)) {
-            generated = `${k}: ${input[k]};`
-        }
+objectOutputTransformer.toChild = (input, prop, options) => {
+    return {
+        [prop]: options.__ccss(input)
     }
+}
+objectOutputTransformer.unsupportedHandler = (generated, input, prop) => {
+    generated[prop] = input
     return generated
 }
 
@@ -38,13 +37,13 @@ stringOutputTransformer.toPseudo = (input, prop, options) => {
         ${options.__ccss(input)}
     }`
 }
-stringOutputTransformer.unsupportedHandler = input => {
-    let generated = stringOutputTransformer.defaultOutput()
+stringOutputTransformer.toChild = (input, prop, options) => {
+    return `
+    ${prop} {
+        ${options.__ccss(input)}
+    }`
+}
+stringOutputTransformer.unsupportedHandler = (generated, input, prop) => {
     // eslint-disable-next-line no-restricted-syntax
-    for (const k in input) {
-        if (Object.prototype.hasOwnProperty.call(input, k)) {
-            generated = `${k}: ${input[k]};`
-        }
-    }
-    return generated
+    return generated + `${prop}: ${input};`
 }

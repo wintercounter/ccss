@@ -43,6 +43,20 @@ export const parsePseudo = (input, prop, options) => {
     return options.outputTransformer.toPseudo(input, prop, options)
 }
 
-export const child = (input, prop, options) => {
-    return options.__ccss(input)
+export const child = (input, prop, options, original) => {
+    let generated = options.outputTransformer.defaultOutput()
+
+    for (const k in input) {
+        if (Object.prototype.hasOwnProperty.call(input, k)) {
+            if (options.props[k]) {
+                generated = options.outputTransformer(generated, options.props[k](input[k], k, options, original))
+            } else {
+                generated = options.outputTransformer(
+                    generated,
+                    options.outputTransformer.toChild(input[k], k, options)
+                )
+            }
+        }
+    }
+    return generated
 }

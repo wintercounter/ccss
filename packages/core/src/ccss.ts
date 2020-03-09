@@ -7,9 +7,10 @@ const generate = (v: TCCSSCoreProp & any, options): string => {
     for (const k in v) {
         if (Object.prototype.hasOwnProperty.call(v, k)) {
             if (options.props[k]) {
-                generated = (options.props[k]
-                    ? options.outputTransformer
-                    : options.outputTransformer.unsupportedHandler)(generated, options.props[k](v[k], k, options, v))
+                generated = options.outputTransformer(generated, options.props[k](v[k], k, options, v))
+            }
+            else {
+                generated = options.outputTransformer.unsupportedHandler(generated, v[k], k, options, v)
             }
         }
     }

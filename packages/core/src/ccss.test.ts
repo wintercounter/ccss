@@ -88,23 +88,35 @@ describe('ccss tests', () => {
             expect(
                 ccss({
                     child: {
-                        ':h': { c: 'white' }
+                        ':h': { c: 'white' },
+                        '> div': {
+                            bg: '#fff'
+                        }
                     }
                 }).trim()
             ).toBe(`:hover {
         color: white;
+    }
+    > div {
+        background: #fff;
     }`)
         })
         it('child/pseudo:object', () => {
             expect(
                 ccssObject({
                     child: {
-                        ':h': { c: 'white' }
+                        ':h': { c: 'white' },
+                        '> div': {
+                            bg: '#fff'
+                        }
                     }
                 })
             ).toStrictEqual({
                 ':hover': {
                     color: 'white'
+                },
+                '> div': {
+                    background: '#fff'
                 }
             })
         })
@@ -123,6 +135,22 @@ describe('ccss tests', () => {
                     size: 'large'
                 })
             ).toStrictEqual({ fontSize: '32rem' })
+        })
+
+        it('can handle unsupported props', () => {
+            expect(
+                ccss({
+                    foo: 'bar'
+                }).trim()
+            ).toBe(`foo: bar;`)
+        })
+
+        it('can handle unsupported props:object', () => {
+            expect(
+                ccssObject({
+                    foo: 'bar'
+                })
+            ).toStrictEqual({ foo: 'bar' })
         })
     })
 })
