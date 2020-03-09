@@ -90,10 +90,10 @@ design system. For example, it's easy to define such:
 
     const ccss = createCCSS(options)
 
-    return formatCSS(ccss({
+    return ccss({
         c: 'dark',
         size: 'large'
-    }))
+    })
 }
 ```
 
