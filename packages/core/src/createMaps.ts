@@ -24,7 +24,7 @@ const getOverflows = () => ({
     a: 'auto'
 })
 
-export const createValueMap = overrides =>
+export const createValueMap = (overrides?) =>
     mergeDeep(
         {
             aDir: {

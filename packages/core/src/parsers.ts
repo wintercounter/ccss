@@ -1,14 +1,7 @@
-const camelify = t => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())
-
-export const toCSSRule = (overrides, [light, long]) => {
-    const objectCSSLightProp = camelify(light)
-    const objectCSSLongProp = camelify(long)
-    const fn = (input, prop, options) => {
-        return options.outputTransformer.toCSSRule(long, objectCSSLongProp, input, prop, options)
+export const toCSSRule = (cssProp, objectProp) => {
+    return (input, prop, options) => {
+        return options.outputTransformer.toCSSRule(cssProp, objectProp, input, prop, options)
     }
-    overrides[objectCSSLightProp] = overrides[objectCSSLightProp] || fn
-    overrides[objectCSSLongProp] = overrides[objectCSSLongProp] || fn
-    return fn
 }
 
 export const parseSingle = (input, prop, options) =>

@@ -12,8 +12,7 @@ export const createOptions = (overrides?): Partial<IOptions> => {
         outputTransformer: stringOutputTransformer,
         props: createProps(),
         valueMap: createValueMap(),
-        pseudoMap: createPseudoMap(),
-        aliasLevel: 0
+        pseudoMap: createPseudoMap()
     }
 
     // Add pseudos

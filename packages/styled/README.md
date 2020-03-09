@@ -1,3 +1,3 @@
-# `@cryptic-css/styled-components`
+# `@cryptic-css/styled`
 
-See: https://ccss.dev/docs/api-and-packages/styled-components
+See: https://ccss.dev/docs/api-and-packages/styled

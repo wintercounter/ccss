@@ -33,3 +33,5 @@ export function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> {
 
     return target
 }
+
+export const camelify = t => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())

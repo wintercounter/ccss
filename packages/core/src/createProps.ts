@@ -1,226 +1,243 @@
 import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './parsers'
 import { ICCSSProps } from './types'
-import { mergeDeep } from './utils'
+import { mergeDeep, camelify } from './utils'
+
+const getPropTable = () => {
+    const tableObject = {}
+    const table = [
+        // Animation + 3D
+        ['a', 'anim', 'animation'],
+        ['ad', 'anim-del', 'animation-delay', mapValue],
+        ['aDir', 'anim-dir', 'animation-direction', mapValue],
+        ['aD', 'anim-dur', 'animation-duration', mapValue],
+        ['afm', 'anim-fill', 'animation-fill-mode', mapValue],
+        ['aic', 'anim-count', 'animation-iteration-count'],
+        ['an', 'anim-name', 'animation-name'],
+        ['aps', 'anim-state', 'animation-play-state', mapValue],
+        ['ats', 'anim-timing', 'animation-timing-function', mapValue],
+        ['bv', 'bf-visibility', 'backface-visibility', mapValue],
+        ['per', 'persp', 'perspective'],
+        ['pero', 'persp-org', 'perspective-origin'],
+        ['tf', 'tranf', 'transform'],
+        ['tfo', 'tranf-org', 'transform-origin'],
+        ['tfs', 'tranf-style', 'transform-style'],
+        ['tr', 'trans', 'transition', mapValue],
+        ['trD', 'trans-del', 'transition-delay', mapValue],
+        ['trd', 'trans-dur', 'transition-duration', mapValue],
+        ['trp', 'trans-prop', 'transition-property'],
+        ['trt', 'trans-timing', 'transition-timing-function'],
+
+        // Flex
+        ['f', 'fx', 'flex'],
+        ['fd', 'fx-dir', 'flex-direction', mapValue],
+        ['fw', 'fx-wrap', 'flex-wrap', mapValue],
+        ['fb', 'fx-base', 'flex-basis', parseSingle],
+        ['ff', 'fx-flow', 'flex-flow'],
+        ['fg', 'fx-grow', 'flex-grow'],
+        ['fs', 'fx-shrink', 'flex-shrink'],
+        ['ai', 'al-items', 'align-items', mapValue],
+        ['ac', 'al-content', 'align-content', mapValue],
+        ['ji', 'just-items', 'justify-items', mapValue],
+        ['jc', 'just-content', 'justify-content', mapValue],
+        ['aS', 'al-self', 'align-self', mapValue],
+        ['jS', 'just-self', 'justify-self', mapValue],
+
+        // Font + text related
+        ['ft', 'ft', 'font'],
+        ['ftf', 'ft-family', 'font-family', mapValue],
+        ['ftk', 'ft-kern', 'font-kerning'],
+        ['fts', 'ft-size', 'font-size', mapValue, parseSingle],
+        ['ftStr', 'ft-stretch', 'font-stretch', mapValue],
+        ['ftSty', 'ft-style', 'font-style', mapValue],
+        ['ftv', 'ft-variant', 'font-variant', mapValue],
+        ['ftw', 'ft-weight', 'font-weight', mapValue],
+        ['ls', 'ltr-spacing', 'letter-spacing'],
+        ['lh', 'line-h', 'line-height'],
+
+        ['ta', 'txt-align', 'text-align', mapValue],
+        ['td', 'txt-decor', 'text-decoration', mapValue],
+        ['ti', 'txt-in', 'text-indent', parseSingle],
+        ['to', 'txt-flow', 'text-overflow', mapValue],
+        ['ts', 'txt-shad', 'text-shadow'],
+        ['tt', 'txt-tranf', 'text-transform', mapValue],
+
+        ['va', 'v-align', 'vertical-align', mapValue],
+        ['ws', 'w-space', 'white-space', mapValue],
+        ['wb', 'w-break', 'word-break', mapValue],
+        ['wS', 'w-spacing', 'word-spacing', parseSingle],
+        ['ww', 'w-wrap', 'word-wrap', mapValue],
+
+        // List
+        ['lst', 'list', 'list-style', mapValue],
+        ['lstI', 'list-img', 'list-style-image'],
+        ['lstP', 'list-pos', 'list-style-position'],
+        ['lstT', 'list-type', 'list-style-type', mapValue],
+
+        // Margin
+        ['m', 'mar', 'margin', parseArray],
+        ['mt', 'mar-top', 'margin-top', parseSingle],
+        ['mr', 'mar-right', 'margin-right', parseSingle],
+        ['mb', 'mar-bottom', 'margin-bottom', parseSingle],
+        ['ml', 'mar-left', 'margin-left', parseSingle],
+
+        // Padding
+        ['p', 'pad', 'padding', parseArray],
+        ['pt', 'pad-top', 'padding-top', parseSingle],
+        ['pr', 'pad-right', 'padding-right', parseSingle],
+        ['pb', 'pad-bottom', 'padding-bottom', parseSingle],
+        ['pl', 'pad-left', 'padding-left', parseSingle],
+
+        // Background
+        ['bg', 'bg', 'background', mapValue],
+        ['bgi', 'bg-img', 'background-image', mapValue],
+        ['bgc', 'bg-color', 'background-color', mapValue],
+        ['bgs', 'bg-size', 'background-size', mapValue],
+        ['bgr', 'bg-repeat', 'background-repeat', mapValue],
+        ['bgp', 'bg-pos', 'background-position', mapValue],
+        ['bga', 'bg-attach', 'background-attachment', mapValue],
+        ['bgbm', 'bg-blend', 'background-blend-mode', mapValue],
+        ['bgC', 'bg-clip', 'background-clip', mapValue],
+        ['bgo', 'bg-org', 'background-origin', mapValue],
+
+        // Dimension
+        ['w', 'wid', 'width', mapValue, parseSingle],
+        ['h', 'hei', 'height', mapValue, parseSingle],
+        ['minW', 'min-wid', 'min-width', mapValue, parseSingle],
+        ['minH', 'min-hei', 'min-height', mapValue, parseSingle],
+        ['maxW', 'max-wid', 'max-width', mapValue, parseSingle],
+        ['maxH', 'max-hei', 'max-height', mapValue, parseSingle],
+
+        // Grid
+        ['g', 'gr', 'grid'],
+        ['ga', 'gr-area', 'grid-area'],
+        ['gac', 'gr-auto-cols', 'grid-auto-columns'],
+        ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
+        ['gar', 'gr-auto-rows', 'grid-auto-rows'],
+        ['gc', 'gr-col', 'grid-column'],
+        ['gce', 'gr-col-end', 'grid-column-end'],
+        ['gcg', 'gr-col-gap', 'grid-column-gap', parseSingle],
+        ['gcs', 'gr-col-start', 'grid-column-start'],
+        ['gg', 'gr-gap', 'grid-gap', parseArray],
+        ['gr', 'gr-row', 'grid-row'],
+        ['gre', 'gr-row-end', 'grid-row-end'],
+        ['grg', 'gr-row-gap', 'grid-row-gap', parseSingle],
+        ['grs', 'gr-row-start', 'grid-row-start'],
+        ['gt', 'gr-tmpl', 'grid-template'],
+        ['gta', 'gr-areas', 'grid-template-areas'],
+        ['gtc', 'gr-cols', 'grid-template-columns', parseArray],
+        ['gtr', 'gr-rows', 'grid-template-rows', parseArray],
+
+        // Border
+        ['b', 'br', 'border'],
+        ['bb', 'br-bot', 'border-bottom'],
+        ['bbc', 'br-bot-color', 'border-bottom-color'],
+        ['bblr', 'br-bot-left-radius', 'border-bottom-left-radius', parseSingle],
+        ['bbrr', 'br-bot-right-radius', 'border-bottom-right-radius', parseSingle],
+        ['bbs', 'br-bot-style', 'border-bottom-style'],
+        ['bbw', 'br-bot-wid', 'border-bottom-width', parseSingle],
+        ['bC', 'br-coll', 'border-collapse'],
+        ['bc', 'br-color', 'border-color', mapValue],
+        ['bi', 'br-img', 'border-image', mapValue],
+        ['bio', 'br-img-outset', 'border-image-outset'],
+        ['bir', 'br-img-repeat', 'border-image-repeat'],
+        ['bis', 'br-img-slice', 'border-image-slice'],
+        ['biSrc', 'br-img-src', 'border-image-source'],
+        ['biw', 'br-img-width', 'border-image-width', parseSingle],
+        ['bl', 'br-left', 'border-left'],
+        ['blc', 'br-left-color', 'border-left-color', mapValue],
+        ['bls', 'br-left-style', 'border-left-style'],
+        ['blw', 'br-left-width', 'border-left-width'],
+        ['r', 'br-radius', 'border-radius', mapValue, parseSingle],
+        ['br', 'br-right', 'border-right'],
+        ['brc', 'br-right-color', 'border-right-color', mapValue],
+        ['brs', 'br-right-style', 'border-right-style'],
+        ['brw', 'br-right-width', 'border-right-width', parseSingle],
+        ['bs', 'br-spacing', 'border-spacing'],
+        ['bS', 'br-style', 'border-style'],
+        ['bt', 'br-top', 'border-top'],
+        ['btc', 'br-top-color', 'border-top-color', mapValue],
+        ['btlr', 'br-top-left-radius', 'border-top-left-radius', mapValue, parseSingle],
+        ['btrr', 'br-top-right-radius', 'border-top-right-radius', mapValue, parseSingle],
+        ['bts', 'br-top-style', 'border-top-style'],
+        ['btw', 'br-top-width', 'border-top-width', parseSingle],
+        ['bw', 'br-width', 'border-width', parseSingle],
+
+        // Clip
+        ['clip', 'clip', 'clip'],
+        ['clipPath', 'clip-path', 'clip-path'],
+
+        // General
+        ['d', 'disp', 'display', mapValue],
+        ['pos', 'pos', 'position', mapValue],
+        ['T', 'top', 'top', parseSingle],
+        ['R', 'right', 'right', parseSingle],
+        ['B', 'bottom', 'bottom', parseSingle],
+        ['L', 'left', 'left', parseSingle],
+        ['z', 'z-index', 'z-index'],
+        ['c', 'color', 'color', mapValue],
+        ['o', 'over', 'overflow', mapValue],
+        ['ox', 'over-x', 'overflow-x', mapValue],
+        ['oy', 'over-y', 'overflow-y', mapValue],
+        ['fl', 'float', 'float', mapValue],
+        ['clr', 'clr', 'clear', mapValue],
+        ['v', 'visibility', 'visibility', mapValue],
+
+        // Columns
+        ['col', 'col', 'columns'],
+        ['cc', 'col-count', 'column-count'],
+        ['cf', 'col-fill', 'column-fill'],
+        ['cg', 'col-gap', 'column-gap', parseSingle],
+        ['cr', 'col-rule', 'column-rule'],
+        ['crc', 'col-rule-color', 'column-rule-color', mapValue],
+        ['crs', 'col-rule-style', 'column-rule-style'],
+        ['crw', 'col-rule-width', 'column-rule-width', parseSingle],
+        ['cs', 'col-span', 'column-span'],
+        ['cw', 'col-width', 'column-width', parseSingle],
+        ['pba', 'pb-after', 'page-break-after'],
+        ['pbb', 'pb-before', 'page-break-before'],
+        ['pbi', 'pb-inside', 'page-break-inside'],
+
+        // Box
+        ['shad', 'shadow', 'box-shadow', mapValue],
+        ['siz', 'sizing', 'box-sizing', mapValue],
+
+        // Misc
+        ['of', 'obj-fit', 'object-fit', mapValue],
+        ['oP', 'obj-pos', 'object-position'],
+        ['op', 'opacity', 'opacity', mapValue],
+        ['or', 'order', 'order'],
+        ['ol', 'outline', 'outline'],
+        ['mbm', 'blend-mode', 'mix-blend-mode', mapValue],
+        ['ct', 'content', 'content'],
+        ['cur', 'cur', 'cursor', mapValue],
+        ['pe', 'p-events', 'pointer-events', mapValue],
+        ['fil', 'filter', 'filter'],
+        ['sb', 's-behavior', 'scroll-behavior', mapValue],
+        ['sw', 's-width', 'scrollbar-width', mapValue],
+        ['sh', 's-height', 'scrollbar-height', mapValue],
+        ['us', 'u-select', 'user-select', mapValue]
+    ]
+
+    for (const [short, light, long, ...modifiers] of table) {
+        const longCamel = camelify(long)
+        const lightCamel = camelify(light)
+        tableObject[short] = modifiers.length
+            ? pipe(...modifiers, toCSSRule(long, longCamel))
+            : toCSSRule(long, longCamel)
+        const thatFn = (a, b, c, d, e, f, g, h) => tableObject[short](a, short, c, d, e, f, g, h)
+        tableObject[lightCamel] = tableObject[lightCamel] || thatFn
+        tableObject[longCamel] = tableObject[longCamel] || thatFn
+    }
+
+    return tableObject
+}
 
 export const createProps = (overrides = {}): Partial<ICCSSProps> => {
-    return mergeDeep(
-        {
-            // Animation + 3D
-            a: toCSSRule(overrides, ['anim', 'animation']),
-            ad: pipe(mapValue, toCSSRule(overrides, ['anim-del', 'animation-delay'])),
-            aDir: pipe(mapValue, toCSSRule(overrides, ['anim-dir', 'animation-direction'])),
-            aD: pipe(mapValue, toCSSRule(overrides, ['anim-dur', 'animation-duration'])),
-            afm: pipe(mapValue, toCSSRule(overrides, ['anim-fill', 'animation-fill-mode'])),
-            aic: toCSSRule(overrides, ['anim-count', 'animation-iteration-count']),
-            an: toCSSRule(overrides, ['anim-name', 'animation-name']),
-            aps: pipe(mapValue, toCSSRule(overrides, ['anim-state', 'animation-play-state'])),
-            ats: pipe(mapValue, toCSSRule(overrides, ['anim-timing', 'animation-timing-function'])),
-            bv: pipe(mapValue, toCSSRule(overrides, ['bf-visibility', 'backface-visibility'])),
-            per: toCSSRule(overrides, ['persp', 'perspective']),
-            pero: toCSSRule(overrides, ['persp-org', 'perspective-origin']),
-            tf: toCSSRule(overrides, ['tranf', 'transform']),
-            tfo: toCSSRule(overrides, ['tranf-org', 'transform-origin']),
-            tfs: toCSSRule(overrides, ['tranf-styl', 'transform-style']),
-            tr: pipe(mapValue, toCSSRule(overrides, ['trans', 'transition'])),
-            trD: pipe(mapValue, toCSSRule(overrides, ['trans-del', 'transition-delay'])),
-            trd: pipe(mapValue, toCSSRule(overrides, ['trans-dur', 'transition-duration'])),
-            trp: toCSSRule(overrides, ['trans-prop', 'transition-property']),
-            trt: toCSSRule(overrides, ['trans-timing', 'transition-timing-function']),
-
-            // Flex
-            f: toCSSRule(overrides, ['fx', 'flex']),
-            fd: pipe(mapValue, toCSSRule(overrides, ['fx-dir', 'flex-direction'])),
-            fw: pipe(mapValue, toCSSRule(overrides, ['fx-wrap', 'flex-wrap'])),
-            fb: pipe(parseSingle, toCSSRule(overrides, ['fx-base', 'flex-basis'])),
-            ff: toCSSRule(overrides, ['fx-flow', 'flex-flow']),
-            fg: toCSSRule(overrides, ['fx-grow', 'flex-grow']),
-            fs: toCSSRule(overrides, ['fx-shrink', 'flex-shrink']),
-            ai: pipe(mapValue, toCSSRule(overrides, ['al-items', 'align-items'])),
-            ac: pipe(mapValue, toCSSRule(overrides, ['al-content', 'align-content'])),
-            ji: pipe(mapValue, toCSSRule(overrides, ['just-items', 'justify-items'])),
-            jc: pipe(mapValue, toCSSRule(overrides, ['just-content', 'justify-content'])),
-            aS: pipe(mapValue, toCSSRule(overrides, ['al-self', 'align-self'])),
-            jS: pipe(mapValue, toCSSRule(overrides, ['just-self', 'justify-self'])),
-
-            // Font + text related
-            ft: toCSSRule(overrides, ['ft', 'font']),
-            ftf: pipe(mapValue, toCSSRule(overrides, ['ft-family', 'font-family'])),
-            ftk: toCSSRule(overrides, ['ft-kern', 'font-kerning']),
-            fts: pipe(mapValue, parseSingle, toCSSRule(overrides, ['ft-size', 'font-size'])),
-            ftStr: pipe(mapValue, toCSSRule(overrides, ['ft-stretch', 'font-stretch'])),
-            ftSty: pipe(mapValue, toCSSRule(overrides, ['ft-style', 'font-style'])),
-            ftv: pipe(mapValue, toCSSRule(overrides, ['ft-variant', 'font-variant'])),
-            ftw: pipe(mapValue, toCSSRule(overrides, ['ft-weight', 'font-weight'])),
-            ls: toCSSRule(overrides, ['ltr-spacing', 'letter-spacing']),
-            lh: toCSSRule(overrides, ['line-h', 'line-height']),
-
-            ta: pipe(mapValue, toCSSRule(overrides, ['txt-align', 'text-align'])),
-            td: pipe(mapValue, toCSSRule(overrides, ['txt-decor', 'text-decoration'])),
-            ti: pipe(parseSingle, toCSSRule(overrides, ['txt-in', 'text-indent'])),
-            to: pipe(mapValue, toCSSRule(overrides, ['txt-flow', 'text-overflow'])),
-            ts: toCSSRule(overrides, ['txt-shad', 'text-shadow']),
-            tt: pipe(mapValue, toCSSRule(overrides, ['txt-tranf', 'text-transform'])),
-
-            va: pipe(mapValue, toCSSRule(overrides, ['v-align', 'vertical-align'])),
-            ws: pipe(mapValue, toCSSRule(overrides, ['w-space', 'white-space'])),
-            wb: pipe(mapValue, toCSSRule(overrides, ['w-break', 'word-break'])),
-            wS: pipe(parseSingle, toCSSRule(overrides, ['w-spacing', 'word-spacing'])),
-            ww: pipe(mapValue, toCSSRule(overrides, ['w-wrap', 'word-wrap'])),
-
-            // List
-            lstS: pipe(mapValue, toCSSRule(overrides, ['lst', 'list-style'])),
-            lstSI: toCSSRule(overrides, ['lst-img', 'list-style-image']),
-            lstSP: toCSSRule(overrides, ['lst-pos', 'list-style-position']),
-            lstST: pipe(mapValue, toCSSRule(overrides, ['lst-type', 'list-style-type'])),
-
-            // Margin
-            m: pipe(parseArray, toCSSRule(overrides, ['mar', 'margin'])),
-            mt: pipe(parseSingle, toCSSRule(overrides, ['mar-top', 'margin-top'])),
-            mr: pipe(parseSingle, toCSSRule(overrides, ['mar-right', 'margin-right'])),
-            mb: pipe(parseSingle, toCSSRule(overrides, ['mar-bottom', 'margin-bottom'])),
-            ml: pipe(parseSingle, toCSSRule(overrides, ['mar-left', 'margin-left'])),
-
-            // Padding
-            p: pipe(parseArray, toCSSRule(overrides, ['pad', 'padding'])),
-            pt: pipe(parseSingle, toCSSRule(overrides, ['pad-top', 'padding-top'])),
-            pr: pipe(parseSingle, toCSSRule(overrides, ['pad-right', 'padding-right'])),
-            pb: pipe(parseSingle, toCSSRule(overrides, ['pad-bottom', 'padding-bottom'])),
-            pl: pipe(parseSingle, toCSSRule(overrides, ['pad-left', 'padding-left'])),
-
-            // Background
-            bg: pipe(mapValue, toCSSRule(overrides, ['bg', 'background'])),
-            bgi: pipe(mapValue, toCSSRule(overrides, ['bg-img', 'background-image'])),
-            bgc: pipe(mapValue, toCSSRule(overrides, ['bg-color', 'background-color'])),
-            bgs: pipe(mapValue, toCSSRule(overrides, ['bg-size', 'background-size'])),
-            bgr: pipe(mapValue, toCSSRule(overrides, ['bg-repeat', 'background-repeat'])),
-            bgp: pipe(mapValue, toCSSRule(overrides, ['bg-pos', 'background-position'])),
-            bga: pipe(mapValue, toCSSRule(overrides, ['bg-attach', 'background-attachment'])),
-            bgbm: pipe(mapValue, toCSSRule(overrides, ['bg-blend', 'background-blend-mode'])),
-            bgC: pipe(mapValue, toCSSRule(overrides, ['bg-clip', 'background-clip'])),
-            bgo: pipe(mapValue, toCSSRule(overrides, ['bg-org', 'background-origin'])),
-
-            // Dimension
-            w: pipe(mapValue, parseSingle, toCSSRule(overrides, ['wid', 'width'])),
-            h: pipe(mapValue, parseSingle, toCSSRule(overrides, ['hei', 'height'])),
-            minW: pipe(mapValue, parseSingle, toCSSRule(overrides, ['min-wid', 'min-width'])),
-            minH: pipe(mapValue, parseSingle, toCSSRule(overrides, ['min-hei', 'min-height'])),
-            maxW: pipe(mapValue, parseSingle, toCSSRule(overrides, ['max-wid', 'max-width'])),
-            maxH: pipe(mapValue, parseSingle, toCSSRule(overrides, ['max-hei', 'max-height'])),
-
-            // Grid
-            g: toCSSRule(overrides, ['gr', 'grid']),
-            ga: toCSSRule(overrides, ['gr-area', 'grid-area']),
-            gac: toCSSRule(overrides, ['gr-auto-cols', 'grid-auto-columns']),
-            gaf: toCSSRule(overrides, ['gr-auto-flow', 'grid-auto-flow']),
-            gar: toCSSRule(overrides, ['gr-auto-rows', 'grid-auto-rows']),
-            gc: toCSSRule(overrides, ['gr-col', 'grid-column']),
-            gce: toCSSRule(overrides, ['gr-col-end', 'grid-column-end']),
-            gcg: pipe(parseArray, toCSSRule(overrides, ['gr-col-gap', 'grid-column-gap'])),
-            gcs: toCSSRule(overrides, ['gr-col-start', 'grid-column-start']),
-            gg: pipe(parseArray, toCSSRule(overrides, ['gr-gap', 'grid-gap'])),
-            gr: toCSSRule(overrides, ['gr-row', 'grid-row']),
-            gre: toCSSRule(overrides, ['gr-row-end', 'grid-row-end']),
-            grg: pipe(parseArray, toCSSRule(overrides, ['', 'grid-row-gap'])),
-            grs: toCSSRule(overrides, ['gr-row-start', 'grid-row-start']),
-            gt: toCSSRule(overrides, ['gr-tmpl', 'grid-template']),
-            gta: toCSSRule(overrides, ['gr-areas', 'grid-template-areas']),
-            gtc: pipe(parseArray, toCSSRule(overrides, ['gr-cols', 'grid-template-columns'])),
-            gtr: pipe(parseArray, toCSSRule(overrides, ['gr-rows', 'grid-template-rows'])),
-
-            // Border
-            b: toCSSRule(overrides, ['br', 'border']),
-            bb: toCSSRule(overrides, ['br-bot', 'border-bottom']),
-            bbc: toCSSRule(overrides, ['br-bot-color', 'border-bottom-color']),
-            bblr: pipe(parseSingle, toCSSRule(overrides, ['br-bot-left-radius', 'border-bottom-left-radius'])),
-            bbrr: pipe(parseSingle, toCSSRule(overrides, ['br-bot-right-radius', 'border-bottom-right-radius'])),
-            bbs: toCSSRule(overrides, ['br-bot-style', 'border-bottom-style']),
-            bbw: pipe(parseSingle, toCSSRule(overrides, ['br-bot-wid', 'border-bottom-width'])),
-            bC: toCSSRule(overrides, ['br-coll', 'border-collapse']),
-            bc: pipe(mapValue, toCSSRule(overrides, ['br-color', 'border-color'])),
-            bi: pipe(mapValue, toCSSRule(overrides, ['br-img', 'border-image'])),
-            bio: toCSSRule(overrides, ['br-img-outset', 'border-image-outset']),
-            bir: toCSSRule(overrides, ['br-img-repeat', 'border-image-repeat']),
-            bis: toCSSRule(overrides, ['br-img-slice', 'border-image-slice']),
-            biSrc: toCSSRule(overrides, ['br-img-src', 'border-image-source']),
-            biw: pipe(parseSingle, toCSSRule(overrides, ['br-img-width', 'border-image-width'])),
-            bl: toCSSRule(overrides, ['br-left', 'border-left']),
-            blc: pipe(mapValue, toCSSRule(overrides, ['br-left-color', 'border-left-color'])),
-            bls: toCSSRule(overrides, ['br-left-style', 'border-left-style']),
-            blw: toCSSRule(overrides, ['br-left-width', 'border-left-width']),
-            r: pipe(mapValue, parseSingle, toCSSRule(overrides, ['br-radius', 'border-radius'])),
-            br: toCSSRule(overrides, ['br-right', 'border-right']),
-            brc: pipe(mapValue, toCSSRule(overrides, ['br-right-color', 'border-right-color'])),
-            brs: toCSSRule(overrides, ['br-right-style', 'border-right-style']),
-            brw: pipe(parseSingle, toCSSRule(overrides, ['br-right-width', 'border-right-width'])),
-            bs: toCSSRule(overrides, ['br-spacing', 'border-spacing']),
-            bS: toCSSRule(overrides, ['br-style', 'border-style']),
-            bt: toCSSRule(overrides, ['br-top', 'border-top']),
-            btc: pipe(mapValue, toCSSRule(overrides, ['br-top-color', 'border-top-color'])),
-            btlr: pipe(mapValue, parseSingle, toCSSRule(overrides, ['br-top-left-radius', 'border-top-left-radius'])),
-            btrr: pipe(mapValue, parseSingle, toCSSRule(overrides, ['br-top-right-radius', 'border-top-right-radius'])),
-            bts: toCSSRule(overrides, ['br-top-style', 'border-top-style']),
-            btw: pipe(parseSingle, toCSSRule(overrides, ['br-top-width', 'border-top-width'])),
-            bw: pipe(parseSingle, toCSSRule(overrides, ['br-width', 'border-width'])),
-
-            // Clip
-            clip: toCSSRule(overrides, ['clip', 'clip']),
-            clipPath: toCSSRule(overrides, ['clip-path', 'clip-path']),
-
-            // General
-            d: pipe(mapValue, toCSSRule(overrides, ['disp', 'display'])),
-            pos: pipe(mapValue, toCSSRule(overrides, ['pos', 'position'])),
-            T: pipe(parseSingle, toCSSRule(overrides, ['top', 'top'])),
-            R: pipe(parseSingle, toCSSRule(overrides, ['right', 'right'])),
-            B: pipe(parseSingle, toCSSRule(overrides, ['bottom', 'bottom'])),
-            L: pipe(parseSingle, toCSSRule(overrides, ['left', 'left'])),
-            z: toCSSRule(overrides, ['z-index', 'z-index']),
-            c: pipe(mapValue, toCSSRule(overrides, ['color', 'color'])),
-            o: pipe(mapValue, toCSSRule(overrides, ['over', 'overflow'])),
-            ox: pipe(mapValue, toCSSRule(overrides, ['over-x', 'overflow-x'])),
-            oy: pipe(mapValue, toCSSRule(overrides, ['over-y', 'overflow-y'])),
-            fl: pipe(mapValue, toCSSRule(overrides, ['float', 'float'])),
-            clr: pipe(mapValue, toCSSRule(overrides, ['clr', 'clear'])),
-            v: pipe(mapValue, toCSSRule(overrides, ['visibility', 'visibility'])),
-
-            // Columns
-            col: toCSSRule(overrides, ['col', 'columns']),
-            cc: toCSSRule(overrides, ['col-count', 'column-count']),
-            cf: toCSSRule(overrides, ['col-fill', 'column-fill']),
-            cg: pipe(parseSingle, toCSSRule(overrides, ['col-gap', 'column-gap'])),
-            cr: toCSSRule(overrides, ['col-rule', 'column-rule']),
-            crc: pipe(mapValue, toCSSRule(overrides, ['col-rule-color', 'column-rule-color'])),
-            crs: toCSSRule(overrides, ['col-rule-style', 'column-rule-style']),
-            crw: pipe(parseSingle, toCSSRule(overrides, ['col-rule-width', 'column-rule-width'])),
-            cs: toCSSRule(overrides, ['col-span', 'column-span']),
-            cw: pipe(parseSingle, toCSSRule(overrides, ['col-width', 'column-width'])),
-            pba: toCSSRule(overrides, ['pb-after', 'page-break-after']),
-            pbb: toCSSRule(overrides, ['pb-before', 'page-break-before']),
-            pbi: toCSSRule(overrides, ['pb-inside', 'page-break-inside']),
-
-            // Box
-            shad: pipe(mapValue, toCSSRule(overrides, ['shadow', 'box-shadow'])),
-            siz: toCSSRule(overrides, ['sizing', 'box-sizing']),
-
-            // Misc
-            of: pipe(mapValue, toCSSRule(overrides, ['obj-fit', 'object-fit'])),
-            oP: toCSSRule(overrides, ['obj-pos', 'object-position']),
-            op: pipe(mapValue, toCSSRule(overrides, ['opacity', 'opacity'])),
-            or: toCSSRule(overrides, ['order', 'order']),
-            ol: toCSSRule(overrides, ['outline', 'outline']),
-            mbm: pipe(mapValue, toCSSRule(overrides, ['blend-mode', 'mix-blend-mode'])),
-            ct: toCSSRule(overrides, ['content', 'content']),
-            cur: pipe(mapValue, toCSSRule(overrides, ['cur', 'cursor'])),
-            pe: pipe(mapValue, toCSSRule(overrides, ['p-events', 'pointer-events'])),
-            fil: toCSSRule(overrides, ['filter', 'filter']),
-            sb: pipe(mapValue, toCSSRule(overrides, ['s-behavior', 'scroll-behavior'])),
-            sw: pipe(mapValue, toCSSRule(overrides, ['s-width', 'scrollbar-width'])),
-            sh: pipe(mapValue, toCSSRule(overrides, ['s-height', 'scrollbar-height'])),
-            us: pipe(mapValue, toCSSRule(overrides, ['u-select', 'user-select'])),
-
-            // Customs
-            raw: i => i,
-            child
-        },
-        overrides
-    )
+    const table = getPropTable()
+    // Customs
+    Object.assign(table, {
+        raw: i => i,
+        child
+    })
+    return mergeDeep(table, overrides)
 }

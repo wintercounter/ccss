@@ -1,6 +1,6 @@
 # `ccss`
 
-> An `out-of-the-box`, pre-configured version of CCSS with extra plugins and props
+> An `out-of-the-box`, pre-configured version of **CCSS** with extra plugins and props
 enabled by default. You may use this repo as a sample on how to set-up your own
 CCSS function.
 
