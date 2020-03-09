@@ -11,10 +11,9 @@ export const getRatioPercent = ratio => {
     return (ratioCache[ratio] = `${y / (x / 100)}%`)
 }
 
-const ratio = (input) =>
-    Array.isArray(input) ? input.map(ratio) : isRatio(input) ? getRatioPercent(input) : input
+const ratio = input => (Array.isArray(input) ? input.map(ratio) : isRatio(input) ? getRatioPercent(input) : input)
 
-export default ({props}) => {
+export default ({ props }) => {
     Object.assign(props, {
         p: pipe(ratio, props.p),
         pt: pipe(ratio, props.pt),

@@ -5,3 +5,5 @@ export * from './createOptions'
 export * from './createMaps'
 export * from './outputTransformers'
 export * from './types'
+
+export { ccss as default } from './ccss'
