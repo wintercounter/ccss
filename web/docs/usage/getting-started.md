@@ -6,7 +6,7 @@ title: Getting started
 ## Installation
 
 ```sh
-# Full (all official plugins and props included)
+# Full (extra plugins and props included)
 npm i ccss
 
 # Only core

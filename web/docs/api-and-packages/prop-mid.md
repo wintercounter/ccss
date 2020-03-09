@@ -4,7 +4,13 @@ title: '@cryptic-css/prop-mid'
 ---
 
 Adds support for custom prop `mid` which will apply the common middle
-positioning technique using `top/left: 50%` and `translate`.
+positioning technique:
+
+```css
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+```
 
 ## Usage
 
@@ -12,4 +18,18 @@ positioning technique using `top/left: 50%` and `translate`.
 ccss({
     mid: true
 })
+```
+
+## Configuration
+
+> The plugin is already included in the package `ccss` pre-configured.
+Skip this step if you don't need custom configuration and/or **CCSS** instance.
+
+```js
+import { createCCSS, createOptions } from '@cryptic-css/core'
+import applyPropMid from '@cryptic-css/prop-mid'
+
+const options = createOptions()
+applyPropMid(options)
+const ccss = createCCSS(options)
 ```

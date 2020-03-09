@@ -106,3 +106,12 @@ html[data-theme='dark'] {
     top: 0 !important;
     right: 0 !important;
 }
+
+.home-tabs > div {
+    width: 100%;
+}
+
+.home-tabs ul {
+    display: flex;
+    justify-content: center;
+}

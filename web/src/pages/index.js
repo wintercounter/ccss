@@ -4,6 +4,8 @@ import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
 import styles from './styles.module.css'
 
 const features = [
@@ -132,13 +134,43 @@ function Home() {
             <section className="hero demo">
                 <div className="container">
                     <h1 className="text--center">Try it out!</h1>
-                    <div className="row">
-                        <iframe
-                            src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-                            title="CCSS Homepage Demo"
-                            allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-                            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-                        />
+                    <div className="row home-tabs">
+                        <Tabs
+                            defaultValue="styled"
+                            values={[
+                                { label: 'Styled-components', value: 'styled' },
+                                { label: 'Long names', value: 'long' },
+                                { label: 'Custom props and values', value: 'custom' }
+                            ]}
+                        >
+                            <TabItem value="styled">
+                                <iframe
+                                    loading="lazy"
+                                    src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                                    title="CCSS Homepage Demo"
+                                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                                />
+                            </TabItem>
+                            <TabItem value="long">
+                                <iframe
+                                    loading="lazy"
+                                    src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                                    title="CCSS Homepage Demo"
+                                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                                />
+                            </TabItem>
+                            <TabItem value="custom">
+                                <iframe
+                                    loading="lazy"
+                                    src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                                    title="CCSS Homepage Demo"
+                                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                                />
+                            </TabItem>
+                        </Tabs>
                     </div>
                 </div>
             </section>

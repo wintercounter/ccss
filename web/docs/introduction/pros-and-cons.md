@@ -7,8 +7,9 @@ title: Pros and Cons
 
 -   **Small**: enables true CSS mangling. The bigger the codebase the more efficient.
 -   **Fast**: a lot of efforts were taken to keep performance high.
--   **Design systems**: the implementation makes CCSS capable to create custom design systems.
+-   **Design systems**: the implementation makes **CCSS** capable to create custom design systems.
 -   **Extensible**: the core supports custom properties and custom value transformers.
+-   **Utility-first**: aligns well with such methodologies.
 -   **DX**
     -   Faster development
     -   Less coding

@@ -7,19 +7,19 @@ Adds support to use predefined gutter values.
 
 ## Supported properties
 
--   p
--   pt
--   pr
--   pb
--   pl
--   m
--   mt
--   mr
--   mb
--   ml
--   gg
--   grg
--   gcg
+-   padding (p, pad)
+-   padding-top (pt, pad-top)
+-   padding-right (pr, pad-right)
+-   padding-bottom (pb, pad-bottom)
+-   padding-left (pl, pad-left)
+-   margin (m, mar)
+-   margin-top (mt, mar-top)
+-   margin-right (mar-right)
+-   margin-bottom (mb, mar-bottom)
+-   margin-left (ml, mar-left)
+-   grid-gap (gg, gr-gap)
+-   grid-row-gap (grg, gr-row-gap)
+-   grid-column-gap (gcg, gr-col-gap)
 
 ## Usage
 
@@ -33,17 +33,25 @@ ccss({
 })
 ```
 
-> The defined `gutter` value is multiplied by the given number and the
-> defined unit is being applied to it.
-
 ## Configuration
 
-The plugin introduces the option key `gutter`. Be default it's: `5`
+The plugin introduces the option key `gutter`. Default value is `5`.
+It defines the size of 1 gutter (uses the defined `unit` core option).
+
+> The plugin is already included in the package `ccss` pre-configured.
+Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
-import { setOptions } from 'ccss'
+import { createCCSS, createOptions } from '@cryptic-css/core'
+import applyPluginGutter from '@cryptic-css/plugin-gutter'
 
-setOptions({
-    gutter: 10 // 1 * gutter = 10rem
+const options = createOptions({
+    gutter: 10 // 10 * gutter = 50rem
+})
+applyPluginGutter(options)
+const ccss = createCCSS(options)
+
+ccss({
+   m: 1 // margin: 10rem;
 })
 ```

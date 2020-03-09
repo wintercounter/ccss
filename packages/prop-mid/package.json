@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/prop-mid",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Adds support for the `mid` prop to add styles for centering element on the middle using the classic `top/left 50% + translate -50%` trick.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",
@@ -26,7 +26,7 @@
         "@cryptic-css/core": "^0.0.1"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^1.0.0"
+        "@cryptic-css/core": "^2.0.0"
     },
     "gitHead": "3a77214e5f1c3e65cd328ebed87556d7452648f1"
 }
