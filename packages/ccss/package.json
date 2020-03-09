@@ -1,6 +1,6 @@
 {
     "name": "ccss",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "A full version for CrypticCSS including all available official plugins, props and extensions.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",
@@ -23,13 +23,13 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "dependencies": {
-        "@cryptic-css/core": "^2.0.1",
-        "@cryptic-css/plugin-grid": "^2.0.1",
-        "@cryptic-css/plugin-gutter": "^2.0.1",
-        "@cryptic-css/plugin-ratio": "^2.0.1",
-        "@cryptic-css/prop-mid": "^2.0.1",
-        "@cryptic-css/prop-mq": "^2.0.1",
-        "@cryptic-css/prop-scroll": "^2.0.1"
+        "@cryptic-css/core": "^2.0.3",
+        "@cryptic-css/plugin-grid": "^2.0.3",
+        "@cryptic-css/plugin-gutter": "^2.0.3",
+        "@cryptic-css/plugin-ratio": "^2.0.3",
+        "@cryptic-css/prop-mid": "^2.0.3",
+        "@cryptic-css/prop-mq": "^2.0.3",
+        "@cryptic-css/prop-scroll": "^2.0.3"
     },
     "gitHead": "d791131dcc71f4e3536e7bb4cd3e85f781a257b9"
 }
