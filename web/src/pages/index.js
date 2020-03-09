@@ -156,7 +156,6 @@ function Home() {
                                 <iframe
                                     loading="lazy"
                                     src="https://codesandbox.io/embed/ccss-homepage-demo-longnames-ehyzg?fontsize=14&hidenavigation=1&theme=dark"
-                                    style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
                                     title="CCSS Demo - LongNames"
                                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
@@ -165,8 +164,8 @@ function Home() {
                             <TabItem value="custom">
                                 <iframe
                                     loading="lazy"
-                                    src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-                                    title="CCSS Homepage Demo"
+                                    src="https://codesandbox.io/embed/ccss-demo-custom-props-and-values-1i13q?fontsize=14&hidenavigation=1&theme=dark"
+                                    title="CCSS Demo - Custom Props and Values"
                                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                                 />
