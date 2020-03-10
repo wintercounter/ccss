@@ -136,13 +136,23 @@ function Home() {
                     <h1 className="text--center">Try it out!</h1>
                     <div className="row home-tabs">
                         <Tabs
-                            defaultValue="styled"
+                            defaultValue="vanilla"
                             values={[
-                                { label: 'Styled-components', value: 'styled' },
+                                { label: 'Vanilla JS', value: 'vanilla' },
                                 { label: 'Long names', value: 'long' },
+                                { label: 'Styled-components', value: 'styled' },
                                 { label: 'Custom props and values', value: 'custom' }
                             ]}
                         >
+                            <TabItem value="vanilla">
+                                <iframe
+                                    loading="lazy"
+                                    src="https://codesandbox.io/embed/ccss-demo-vanilla-js-bhw3z?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                                    title="CCSS Demo - Vanilla JS"
+                                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                                />
+                            </TabItem>
                             <TabItem value="styled">
                                 <iframe
                                     loading="lazy"
