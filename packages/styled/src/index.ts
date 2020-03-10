@@ -3,7 +3,13 @@ import styled from 'styled-components'
 
 const s = styled
 
-export const createStyledCCSS = ({ __ccss }) => {
+const noop = () => {}
+
+export const createStyledCCSS = ({ __ccss, props }) => {
+    // Handle React stuff!
+    props.theme = props.theme || noop
+    props.children = props.children || noop
+
     const Ui = s.div(__ccss)
     const tagged = (tag = 'div') => (p: ICCSSProps) => {
         const css = __ccss(p)
