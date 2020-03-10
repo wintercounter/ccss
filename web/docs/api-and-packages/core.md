@@ -101,7 +101,8 @@ const ccss = createCCSS(options)
 #### `ccss` (default)
 
 Awaits a style object and returns a CSS string.
-Not registered keys will be used as-is,
+Not registered keys will be used will be ignores, unless
+you're using the `unsupported` prop,
 values not existing in a map will be "printed" as-is.
 
 ```js
@@ -262,12 +263,48 @@ arrayOutputTransformer.unsupportedHandler = input => {
 }
 ```
 
-### Prop names
+## Special props
+
+### `unsupported`
+
+By default unsupported props (not found in props objects) are ignored.
+However, there edge cases when you need to pass custom stuff. You can
+do that with using a prop name `unsupported` which can be:
+
+- `true`: All unsupported props are processed.
+- Array of prop names supported
+
+```js
+
+// Empty
+ccss({
+  foo: 'bar',
+  bic: 'bac'
+})
+
+// Both foo and bic are in the output
+ccss({
+  foo: 'bar',
+  bic: 'bac',
+  unsupported: true
+})
+
+// Only foo is in the output
+ccss({
+  foo: 'bar',
+  bic: 'bac',
+  unsupported: ['foo']
+})
+```
+
+## Prop names
 
 **CCSS** supports 3 types of namings. These are for those who don't
 really like to use the shorthands and would like to use
 long naming instead.
 
-- Short: default, 1-2-3 letter substitutes of the original version (bgc: background-color)
+`background-color`
+
+- Short: default, 1-2-3 letter substitutes of the original version (bgc)
 - Light: shorter, but still meaningful names (bgColor).
 - Full: full style object names, just like in any other libraries (backgroundColor).
