@@ -5,13 +5,23 @@ const generate = (v: TCCSSCoreProp & any, options): string => {
     let generated = options.outputTransformer.defaultOutput()
     // eslint-disable-next-line no-restricted-syntax
     for (const k in v) {
-        if (Object.prototype.hasOwnProperty.call(v, k)) {
-            if (options.props[k]) {
-                generated = options.outputTransformer(generated, options.props[k](v[k], k, options, v))
+        if (!Object.prototype.hasOwnProperty.call(v, k)) continue
+
+        if (k === 'unsupported') {
+            // skip this key
+        }
+        // Found such prop, process it
+        else if (options.props[k]) {
+            const value = options.props[k](v[k], k, options, v)
+
+            // We don't handle undefined values
+            if (value !== undefined) {
+                generated = options.outputTransformer(generated, value, v[k], k, options, v)
             }
-            else {
-                generated = options.outputTransformer.unsupportedHandler(generated, v[k], k, options, v)
-            }
+        }
+        // Handle unsupported only if key is allowed
+        else if (v.unsupported === true || (Array.isArray(v.unsupported) && v.unsupported.includes(k))) {
+            generated = options.outputTransformer.unsupportedHandler(generated, v[k], k, options, v)
         }
     }
     return generated

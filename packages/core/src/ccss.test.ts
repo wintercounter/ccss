@@ -137,18 +137,56 @@ describe('ccss tests', () => {
             ).toStrictEqual({ fontSize: '32rem' })
         })
 
-        it('can handle unsupported props', () => {
+        it('can handle disabled unsupported props', () => {
             expect(
                 ccss({
                     foo: 'bar'
                 }).trim()
-            ).toBe(`foo: bar;`)
+            ).toBe(``)
         })
 
-        it('can handle unsupported props:object', () => {
+        it('can handle disabled unsupported props:object', () => {
             expect(
                 ccssObject({
                     foo: 'bar'
+                })
+            ).toStrictEqual({})
+        })
+
+        it('can handle enabled unsupported props', () => {
+            expect(
+                ccss({
+                    foo: 'bar',
+                    unsupported: true
+                }).trim()
+            ).toBe(`foo: bar;`)
+        })
+
+        it('can handle enabled unsupported props:object', () => {
+            expect(
+                ccssObject({
+                    foo: 'bar',
+                    unsupported: true
+                })
+            ).toStrictEqual({ foo: 'bar' })
+        })
+
+        it('can handle array enabled unsupported props', () => {
+            expect(
+                ccss({
+                    foo: 'bar',
+                    bic: 'buc',
+                    unsupported: ['foo']
+                }).trim()
+            ).toBe(`foo: bar;`)
+        })
+
+        it('can handle array enabled unsupported props:object', () => {
+            expect(
+                ccssObject({
+                    foo: 'bar',
+                    bic: 'buc',
+                    unsupported: ['foo']
                 })
             ).toStrictEqual({ foo: 'bar' })
         })
