@@ -2,9 +2,8 @@ import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './par
 import { ICCSSProps } from './types'
 import { mergeDeep, camelify } from './utils'
 
-const getPropTable = () => {
-    const tableObject = {}
-    const table = [
+export const getPropTable = () => {
+    return [
         // Animation + 3D
         ['a', 'anim', 'animation'],
         ['ad', 'anim-del', 'animation-delay', mapValue],
@@ -217,6 +216,11 @@ const getPropTable = () => {
         ['sh', 's-height', 'scrollbar-height', mapValue],
         ['us', 'u-select', 'user-select', mapValue]
     ]
+}
+
+const getPropTableObject = () => {
+    const tableObject = {}
+    const table = getPropTable()
 
     for (const [short, light, long, ...modifiers] of table) {
         const longCamel = camelify(long)
@@ -233,7 +237,7 @@ const getPropTable = () => {
 }
 
 export const createProps = (overrides = {}): Partial<ICCSSProps> => {
-    const table = getPropTable()
+    const table = getPropTableObject()
     // Customs
     Object.assign(table, {
         raw: i => i,

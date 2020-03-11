@@ -10,11 +10,14 @@
         "type": "git",
         "url": "git+https://github.com/wintercounter/ccss.git"
     },
+    "bin": {
+        "ccss": "./dist/cjs/cli.js"
+    },
     "scripts": {
         "test": "mhy tsc && mhy jest",
         "jest": "mhy jest",
         "jest:watch": "mhy jest --watchAll",
-        "build": "mhy tsc && mhy bb --mhy-env=prod && npm run prop-doc:prod",
+        "build": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs && npm run prop-doc:prod",
         "build:watch": "mhy bb --watch",
         "config": "mhy config typescript -io",
         "prop-doc": "mhy node scripts/propDoc",
@@ -31,6 +34,48 @@
         "@types/styled-components": "^4.4.2",
         "fetch-cheerio-object": "^1.3.0",
         "turndown": "^5.0.3"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
     },
     "gitHead": "d791131dcc71f4e3536e7bb4cd3e85f781a257b9"
 }

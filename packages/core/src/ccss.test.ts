@@ -2,7 +2,7 @@ import { createCCSS, createOptions, pipe, mapValue, createValueMap, createProps 
 import { objectOutputTransformer } from './outputTransformers'
 
 const valueMap = createValueMap({
-    r: {
+    br: {
         global: 6
     },
     size: {
@@ -59,10 +59,10 @@ describe('ccss tests', () => {
             expect(ccssObject({ m: 10 })).toStrictEqual({ margin: '10rem' })
         })
         it('pipe', () => {
-            expect(ccss({ r: 'global' })).toBe('border-radius: 6rem;')
+            expect(ccss({ br: 'global' })).toBe('border-radius: 6rem;')
         })
         it('pipe:object', () => {
-            expect(ccssObject({ r: 'global' })).toStrictEqual({ borderRadius: '6rem' })
+            expect(ccssObject({ br: 'global' })).toStrictEqual({ borderRadius: '6rem' })
         })
         it('pseudo', () => {
             expect(
