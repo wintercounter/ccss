@@ -8,15 +8,15 @@ Adds support to use predefined gutter values.
 ## Supported properties
 
 -   padding (p, pad)
--   padding-top (pt, pad-top)
--   padding-right (pr, pad-right)
--   padding-bottom (pb, pad-bottom)
--   padding-left (pl, pad-left)
+-   padding-top (pT, pad-top)
+-   padding-right (pR, pad-right)
+-   padding-bottom (pB, pad-bottom)
+-   padding-left (pL, pad-left)
 -   margin (m, mar)
--   margin-top (mt, mar-top)
--   margin-right (mar-right)
--   margin-bottom (mb, mar-bottom)
--   margin-left (ml, mar-left)
+-   margin-top (mT, mar-top)
+-   margin-right (mR, mar-right)
+-   margin-bottom (mB, mar-bottom)
+-   margin-left (mL, mar-left)
 -   grid-gap (gg, gr-gap)
 -   grid-row-gap (grg, gr-row-gap)
 -   grid-column-gap (gcg, gr-col-gap)
@@ -28,7 +28,7 @@ import ccss from 'ccss'
 
 ccss({
     p: 2, // padding: 10rem;
-    ml: true // margin-left: 5rem;
+    mL: true, // margin-left: 5rem;
     m: [1, 0, 2, 3] // margin: 5rem 0 10rem 15rem;
 })
 ```

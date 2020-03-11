@@ -8,15 +8,15 @@ Adds support for the well-known _"padding hack"_ for keeping aspect-ratios.
 ## Supported props
 
 -   padding (p, pad)
--   padding-top (pt, pad-top)
--   padding-right (pr, pad-right)
--   padding-bottom (pb, pad-bottom)
--   padding-left (pl, pad-left)
+-   padding-top (pT, pad-top)
+-   padding-right (pR, pad-right)
+-   padding-bottom (pB, pad-bottom)
+-   padding-left (pL, pad-left)
 -   margin (m, mar)
--   margin-top (mt, mar-top)
--   margin-right (mar-right)
--   margin-bottom (mb, mar-bottom)
--   margin-left (ml, mar-left)
+-   margin-top (mT, mar-top)
+-   margin-right (mR, mar-right)
+-   margin-bottom (mB, mar-bottom)
+-   margin-left (mL, mar-left)
 
 ## Usage
 
@@ -40,6 +40,6 @@ applyPluginRatio(options)
 const ccss = createCCSS(options)
 
 ccss({
-    pt: '16:9'
+    pT: '16:9'
 })
 ```

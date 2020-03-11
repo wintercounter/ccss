@@ -20,15 +20,15 @@ const gutter = (input, prop, options) => {
 export default ({ props }) => {
     Object.assign(props, {
         p: pipe(gutter, props.p),
-        pt: pipe(gutter, props.pt),
-        pr: pipe(gutter, props.pr),
-        pb: pipe(gutter, props.pb),
-        pl: pipe(gutter, props.pl),
+        pT: pipe(gutter, props.pT),
+        pR: pipe(gutter, props.pR),
+        pB: pipe(gutter, props.pB),
+        pL: pipe(gutter, props.pL),
         m: pipe(gutter, props.m),
-        mt: pipe(gutter, props.mt),
-        mr: pipe(gutter, props.mr),
-        mb: pipe(gutter, props.mb),
-        ml: pipe(gutter, props.ml),
+        mT: pipe(gutter, props.mT),
+        mR: pipe(gutter, props.mR),
+        mB: pipe(gutter, props.mB),
+        mL: pipe(gutter, props.mL),
         gg: pipe(gutter, props.gg),
         grg: pipe(gutter, props.grg),
         gcg: pipe(gutter, props.gcg)

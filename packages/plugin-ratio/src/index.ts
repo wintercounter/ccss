@@ -16,14 +16,14 @@ const ratio = input => (Array.isArray(input) ? input.map(ratio) : isRatio(input)
 export default ({ props }) => {
     Object.assign(props, {
         p: pipe(ratio, props.p),
-        pt: pipe(ratio, props.pt),
-        pr: pipe(ratio, props.pr),
-        pb: pipe(ratio, props.pb),
-        pl: pipe(ratio, props.pl),
+        pT: pipe(ratio, props.pT),
+        pR: pipe(ratio, props.pR),
+        pB: pipe(ratio, props.pB),
+        pL: pipe(ratio, props.pL),
         m: pipe(ratio, props.m),
-        mt: pipe(ratio, props.mt),
-        mr: pipe(ratio, props.mr),
-        mb: pipe(ratio, props.mb),
-        ml: pipe(ratio, props.ml)
+        mT: pipe(ratio, props.mT),
+        mR: pipe(ratio, props.mR),
+        mB: pipe(ratio, props.mB),
+        mL: pipe(ratio, props.mL)
     })
 }
