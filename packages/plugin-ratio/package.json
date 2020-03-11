@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/plugin-ratio",
-    "version": "2.0.3",
+    "version": "3.0.0",
     "description": "It add support for margin and padding props to pass ratio value to calculate percentage for the classic `padding hack`.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-ratio#readme",
@@ -26,7 +26,7 @@
         "@cryptic-css/core": "^0.0.1"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^2.0.3"
+        "@cryptic-css/core": "^3.0.0"
     },
     "gitHead": "d791131dcc71f4e3536e7bb4cd3e85f781a257b9"
 }
