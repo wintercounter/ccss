@@ -115,3 +115,11 @@ html[data-theme='dark'] {
     display: flex;
     justify-content: center;
 }
+
+.codeBlock_node_modules-\@docusaurus-theme-live-codeblock-src-theme-CodeBlock- {
+    padding: 10px !important;
+}
+
+.mdxCodeBlock_node_modules-\@docusaurus-theme-classic-src-theme-MDXComponents- {
+    overflow: hidden;
+}
