@@ -123,3 +123,15 @@ html[data-theme='dark'] {
 .mdxCodeBlock_node_modules-\@docusaurus-theme-classic-src-theme-MDXComponents- {
     overflow: hidden;
 }
+
+.markdown>p, .markdown>pre, .markdown>ul {
+    padding: 0 !important;
+}
+
+.prism-code {
+    padding: 10px !important;
+}
+
+[class*=playgroundPreview_] .prism-code {
+    padding: 0 !important;
+}
