@@ -13,7 +13,7 @@ module.exports = {
             'introduction/mission-and-the-future',
             'introduction/faq'
         ],
-        Usage: ['usage/getting-started', 'usage/examples', 'usage/base-styles'],
+        Usage: ['usage/getting-started', 'usage/examples', 'usage/base-styles', 'usage/cli'],
         'API and Packages': [
             'api-and-packages/core',
             'api-and-packages/plugin-gutter',

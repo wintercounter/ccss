@@ -5,6 +5,10 @@ title: CLI
 
 ## Usage
 
+```bash
+ccss [prop-name]
+```
+
 We try to make our best efforts to provide an _out-of-the-box_
 developer experience by providing TypeScript types and TSDoc
 comments for inline documentation, example and help.
@@ -12,7 +16,7 @@ comments for inline documentation, example and help.
 However, in different cases (eg: not using TypeScript) it can come
 handy to have a tool when you're able to search props and their names.
 
-```text
+```bash
 ccss p
 ┌─────────┬───────┬───────┬───────────┐                                                                                                                                                                               ┌─────────┬───────┬───────┬───────────┐
 │ (index) │ short │ light │   long    │
@@ -21,7 +25,7 @@ ccss p
 └─────────┴───────┴───────┴───────────┘
 ```
 
-```text
+```bash
 ccss color
 ┌─────────┬───────┬──────────────────┬───────────────────────┐
 │ (index) │ short │      light       │         long          │
