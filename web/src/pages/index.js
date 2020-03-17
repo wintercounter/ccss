@@ -124,6 +124,12 @@ function Home() {
                         alt="CCSS on GitHub"
                     />
                 </a>
+                <a href="https://github.com/wintercounter/ccss">
+                    <img
+                        src="https://flat.badgen.net/npm/v/ccss?scale=1.5&label=Latest%20Stable%20&color=d11141"
+                        alt="Current stable CCSS version"
+                    />
+                </a>
                 <a href="https://twitter.com/wintercounter1">
                     <img
                         src="https://flat.badgen.net/twitter/follow/wintercounter1?scale=1.5&label=Follow%20on%20Twitter&color=1dcaff"

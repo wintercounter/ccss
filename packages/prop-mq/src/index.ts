@@ -5,9 +5,12 @@ export default ({ props }) => {
         if (typeof input[0] === 'string') {
             input = [input]
         }
-        for (const bpv of input) {
-            bpv[1] = options.__ccss(bpv[1])
+        // We need new array references to avoid mutating the original src
+        const generated: [string, {}][] = []
+        for (let i = 0; i < input.length; i++) {
+            generated[i] = [input[i][0], options.__ccss(input[i][1])]
         }
-        return mediaQuery(input, options.outputTransformer.type)
+
+        return mediaQuery(generated, options.outputTransformer.type)
     }
 }
