@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/wintercounter/ccss/compare/v3.0.0...v3.0.1) (2020-03-17)
+
+
+### Bug Fixes
+
+* **prop-mq:** stop using original reference ([53514b0](https://github.com/wintercounter/ccss/commit/53514b01a92c08421a56922c9c96e24a0b795a8c))
+
+
+
+
+
 # [3.0.0](https://github.com/wintercounter/ccss/compare/v1.0.1...v3.0.0) (2020-03-11)
 
 
