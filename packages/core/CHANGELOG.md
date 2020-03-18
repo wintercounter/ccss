@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/wintercounter/ccss/compare/v3.0.1...v3.0.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* change `pos` to `P` ([4850bab](https://github.com/wintercounter/ccss/commit/4850bab06791d88d2be5014b7d3d0d8022bc704a))
+
+
+
+
+
 ## [3.0.1](https://github.com/wintercounter/ccss/compare/v3.0.0...v3.0.1) (2020-03-17)
 
 **Note:** Version bump only for package @cryptic-css/core
