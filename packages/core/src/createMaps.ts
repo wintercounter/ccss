@@ -76,7 +76,7 @@ export const createValueMap = (overrides?) =>
             fw: {
                 w: 'wrap'
             },
-            pos: {
+            P: {
                 a: 'absolute',
                 f: 'fixed',
                 r: 'relative',
