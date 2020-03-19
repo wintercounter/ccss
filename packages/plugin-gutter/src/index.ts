@@ -7,7 +7,7 @@ const gutter = (input, prop, options) => {
 
     switch (true) {
         case Array.isArray(input):
-            return input.map(gutter)
+            return input.map(i => gutter(i, prop, options))
         case input:
             return g
         case !isNaN(input):
