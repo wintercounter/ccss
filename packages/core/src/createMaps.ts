@@ -229,7 +229,7 @@ export const createValueMap = (overrides?) =>
                 s: 'space',
                 r: 'round'
             },
-            bgp: getTfoBgpPos,
+            bgp: getTfoBgpPos(),
             bga: {
                 s: 'scroll',
                 f: 'fixed',
@@ -345,7 +345,7 @@ export const createValueMap = (overrides?) =>
             sh: {
                 n: 'none'
             },
-            tfo: getTfoBgpPos
+            tfo: getTfoBgpPos()
         },
         overrides
     )
