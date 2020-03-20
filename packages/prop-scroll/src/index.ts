@@ -4,8 +4,10 @@ const base = {
     sh: 'n',
     '-ms-overflow-style': 'none',
     '-webkit-overflow-scrolling': 'touch',
-    '::-webkit-scrollbar': {
-        d: 'n'
+    child: {
+        '::-webkit-scrollbar': {
+            d: 'n'
+        }
     }
 }
 
