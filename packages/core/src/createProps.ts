@@ -228,7 +228,9 @@ const getPropTableObject = () => {
         tableObject[short] = modifiers.length
             ? pipe(...modifiers, toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
-        const thatFn = (a, b, c, d, e, f, g, h) => tableObject[short](a, short, c, d, e, f, g, h)
+        const thatFn = function(a, b, c, d, e, f, g, h) {
+            return this[short](a, short, c, d, e, f, g, h)
+        }
         tableObject[lightCamel] = tableObject[lightCamel] || thatFn
         tableObject[longCamel] = tableObject[longCamel] || thatFn
     }
