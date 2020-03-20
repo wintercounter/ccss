@@ -30,6 +30,8 @@ export const mapValue = (input, prop, options) => {
     return options.valueMap?.[prop]?.[input] || input
 }
 
+export const parseCCSS = (input, prop, options) => options.__ccss(input)
+
 export const pipe = function(...fs) {
     return (input, prop, options, original) => {
         for (const f of fs) {
