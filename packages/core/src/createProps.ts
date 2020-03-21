@@ -50,7 +50,7 @@ export const getPropTable = () => {
         ['ftSty', 'ft-style', 'font-style', mapValue],
         ['ftv', 'ft-variant', 'font-variant', mapValue],
         ['ftw', 'ft-weight', 'font-weight', mapValue],
-        ['ls', 'ltr-spacing', 'letter-spacing'],
+        ['ls', 'ltr-spacing', 'letter-spacing', parseSingle],
         ['lh', 'line-h', 'line-height'],
 
         ['ta', 'txt-align', 'text-align', mapValue],
