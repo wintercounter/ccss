@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/wintercounter/ccss/compare/v3.0.2...v3.1.0) (2020-03-22)
+
+
+### Bug Fixes
+
+* **prop-scroll:** hiding rule for webkit should be a child ([ecfe7cd](https://github.com/wintercounter/ccss/commit/ecfe7cd6fb0f0d89819eb741e63bad692280a666))
+
+
+
+
+
 ## [3.0.2](https://github.com/wintercounter/ccss/compare/v3.0.1...v3.0.2) (2020-03-18)
 
 **Note:** Version bump only for package @cryptic-css/prop-scroll

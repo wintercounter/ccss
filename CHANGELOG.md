@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/wintercounter/ccss/compare/v3.0.2...v3.1.0) (2020-03-22)
+
+
+### Bug Fixes
+
+* **gutter:** array map not passing options ([7139db8](https://github.com/wintercounter/ccss/commit/7139db8d48803d26fea143b268dfdfe84b290458))
+* **letter-spacing:** parse with unit ([96a6497](https://github.com/wintercounter/ccss/commit/96a6497b8005832999d797f0e9397ace0c5d9323))
+* **prop-scroll:** hiding rule for webkit should be a child ([ecfe7cd](https://github.com/wintercounter/ccss/commit/ecfe7cd6fb0f0d89819eb741e63bad692280a666))
+* **props:** call aliases on correct props table, even after deep merge ([521a91a](https://github.com/wintercounter/ccss/commit/521a91ad0a59bbc7c0e6decc914ab95c2d2cdbdf))
+* **valueMap:** call `getTfoBgpPos` ([4ac529d](https://github.com/wintercounter/ccss/commit/4ac529de089de53d13e846316677566cc253543a))
+
+
+### Features
+
+* **parsers:** add `parseCCSS` function to easily deal with mapped CCSS values ([77567e6](https://github.com/wintercounter/ccss/commit/77567e6f45d38495d3e8e7263689c66bde0922ef))
+* **typescript:** add basic types ([4b217e0](https://github.com/wintercounter/ccss/commit/4b217e06e263842b54a183d9257124230e4dad74))
+
+
+
+
+
 ## [3.0.2](https://github.com/wintercounter/ccss/compare/v3.0.1...v3.0.2) (2020-03-18)
 
 
