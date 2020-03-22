@@ -77,5 +77,8 @@
             }
         }
     },
-    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
+    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
+    "dependencies": {
+        "csstype": "^2.6.9"
+    }
 }

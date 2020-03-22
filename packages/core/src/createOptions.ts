@@ -1,12 +1,12 @@
 import { mergeDeep } from './utils'
-import { IOptions } from './types'
+import { CCSSOptions } from './types'
 import { stringOutputTransformer } from './outputTransformers'
 import { createProps } from './createProps'
 import { createPseudoMap, createValueMap } from './createMaps'
 import { parsePseudo } from './parsers'
 
-export const createOptions = (overrides?): Partial<IOptions> => {
-    const options = {
+export const createOptions = (overrides?: Partial<CCSSOptions>): Partial<CCSSOptions> => {
+    const options: CCSSOptions = {
         unit: 'rem',
         applyUnit: n => `${n}${options.unit}`,
         outputTransformer: stringOutputTransformer,
@@ -20,5 +20,5 @@ export const createOptions = (overrides?): Partial<IOptions> => {
         options.props[k] = parsePseudo
     }
 
-    return mergeDeep(options, overrides)
+    return overrides !== undefined ? mergeDeep(options, overrides) : options
 }

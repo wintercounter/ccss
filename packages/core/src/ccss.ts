@@ -1,7 +1,7 @@
-import { TCCSSCoreProp } from './types'
+import { CCSSProps } from './types'
 import { createOptions } from './createOptions'
 
-const generate = (v: TCCSSCoreProp & any, options): string => {
+const generate = (v: Partial<CCSSProps>, options): string => {
     let generated = options.outputTransformer.defaultOutput()
     // eslint-disable-next-line no-restricted-syntax
     for (const k in v) {

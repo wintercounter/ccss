@@ -1,18 +1,63 @@
-export type TCCSSCoreProp = {
-    [key: string]: string | number | TCCSSCoreProp | (string | number | TCCSSCoreProp)[] | undefined
-}
-export type TNestedInput = { [key: string]: TNestedInput | string | number }
-export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
-export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
-export type TMediaQueryInput = [any | string, string][]
-export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
+import { Properties as CSSProperties } from 'csstype'
 
-export interface IOptions extends Partial<any> {
+export type StringTransformer = (generated: string, descriptor: string) => string
+
+export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
+
+export interface CCSSOptions {
+    /**
+     * Unit to use globally for number values.
+     */
     unit: string
-    applyUnit: (n: number) => string
+    /**
+     * Function the applies unit to a value
+     */
+    applyUnit: (value: number) => string
+
+    /**
+     * Tells how to transform the final output
+     */
+    outputTransformer: StringTransformer | ObjectTransformer
+
+    /**
+     * All supported properties
+     */
+    props: Partial<CCSSProps>
+
+    /**
+     * Keys and values to `mapValue` against
+     */
+    valueMap: Partial<CCSSValueMap>
+
+    /**
+     * Map of supported pseudo selectors
+     */
+    pseudoMap: Partial<CCSSPseudoMap>
 }
 
-export interface ICCSSProps {
+export type CCSSInput = any
+
+export type CCSSParser = (input: CCSSInput, string, CCSSOptions, CCSSOriginal?) => CCSSInput
+
+export type CCSSPipe = (...fn: CCSSParser[]) => CCSSInput
+
+export type CCSSValueMap = { [key: string]: any }
+
+export type CCSSPseudoMap = { [key: string]: string }
+
+// TODO Update all keys and values, this is still the old
+// Lets generate it from the prop table instead of hand like this...
+export interface CCSSProps {
+    /**
+     * Tells CCSS should let through unsupported properties in the output.
+     * In an array you can specify a list of a properties should be let through.
+     *
+     * @example -webkit-transform
+     */
+    unsupported: boolean | string[]
+
+    // CSS Props start here
+
     /**
      * @propDocStart
      * {
@@ -1623,4 +1668,20 @@ export interface ICCSSProps {
      * ```
      */
     child?: TCSSSimplePropValue
+}
+
+// OLD
+
+export type TCCSSCoreProp = {
+    [key: string]: string | number | TCCSSCoreProp | (string | number | TCCSSCoreProp)[] | undefined
+}
+export type TNestedInput = { [key: string]: TNestedInput | string | number }
+export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
+export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
+export type TMediaQueryInput = [any | string, string][]
+export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
+
+export interface IOptions extends Partial<any> {
+    unit: string
+    applyUnit: (n: number) => string
 }

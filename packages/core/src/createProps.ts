@@ -1,8 +1,8 @@
 import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './parsers'
-import { ICCSSProps } from './types'
+import { CCSSProps, CCSSParser } from './types'
 import { mergeDeep, camelify } from './utils'
 
-export const getPropTable = () => {
+export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser?][] => {
     return [
         // Animation + 3D
         ['a', 'anim', 'animation'],
@@ -15,11 +15,11 @@ export const getPropTable = () => {
         ['aps', 'anim-state', 'animation-play-state', mapValue],
         ['ats', 'anim-timing', 'animation-timing-function', mapValue],
         ['bv', 'bf-visibility', 'backface-visibility', mapValue],
-        ['per', 'persp', 'perspective'],
-        ['pero', 'persp-org', 'perspective-origin'],
-        ['tf', 'tranf', 'transform'],
-        ['tfo', 'tranf-org', 'transform-origin'],
-        ['tfs', 'tranf-style', 'transform-style'],
+        ['per', 'pers', 'perspective'],
+        ['pero', 'pers-org', 'perspective-origin'],
+        ['tf', 'tran', 'transform'],
+        ['tfo', 'tran-org', 'transform-origin'],
+        ['tfs', 'tran-style', 'transform-style'],
         ['tr', 'trans', 'transition', mapValue],
         ['trD', 'trans-del', 'transition-delay', mapValue],
         ['trd', 'trans-dur', 'transition-duration', mapValue],
@@ -219,16 +219,16 @@ export const getPropTable = () => {
 }
 
 const getPropTableObject = () => {
-    const tableObject = {}
+    const tableObject: CCSSProps = {}
     const table = getPropTable()
 
     for (const [short, light, long, ...modifiers] of table) {
         const longCamel = camelify(long)
         const lightCamel = camelify(light)
         tableObject[short] = modifiers.length
-            ? pipe(...modifiers, toCSSRule(long, longCamel))
+            ? pipe(...modifiers as CCSSParser[], toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
-        const thatFn = function(a, b, c, d, e, f, g, h) {
+        const thatFn = function(this: CCSSProps, a, b, c, d, e, f, g, h) {
             return this[short](a, short, c, d, e, f, g, h)
         }
         tableObject[lightCamel] = tableObject[lightCamel] || thatFn
@@ -238,12 +238,12 @@ const getPropTableObject = () => {
     return tableObject
 }
 
-export const createProps = (overrides = {}): Partial<ICCSSProps> => {
+export const createProps = (overrides?: Partial<CCSSProps>): Partial<CCSSProps> => {
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {
         raw: i => i,
         child
     })
-    return mergeDeep(table, overrides)
+    return overrides !== undefined ? mergeDeep(table, overrides) : table
 }
