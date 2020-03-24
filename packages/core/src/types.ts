@@ -4,6 +4,32 @@ export type StringTransformer = (generated: string, descriptor: string) => strin
 
 export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
 
+export type CCSSInput = any
+
+export type CCSSOriginal = any
+
+export type CCSSAnyFunction = (...args: any[]) => any
+
+export type CCSSToCSSRule = (
+    cssProp: string,
+    objectProp: string,
+    input: CCSSInput,
+    prop: string,
+    options: CCSSOptions
+) => CSSProperties | string
+
+export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
+
+export interface IOutputTransformer {
+    (generated: string, descriptor: string): string
+    (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
+    toCSSRule: CCSSToCSSRule
+    toPseudo: CCSSToPseudoChild
+    defaultOutput: CCSSAnyFunction
+    toChild: CCSSToPseudoChild
+    unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
+}
+
 export interface CCSSOptions {
     /**
      * Unit to use globally for number values.
@@ -17,7 +43,7 @@ export interface CCSSOptions {
     /**
      * Tells how to transform the final output
      */
-    outputTransformer: StringTransformer | ObjectTransformer
+    outputTransformer: IOutputTransformer
 
     /**
      * All supported properties
@@ -33,13 +59,13 @@ export interface CCSSOptions {
      * Map of supported pseudo selectors
      */
     pseudoMap: Partial<CCSSPseudoMap>
+
+    __ccss: CCSSAnyFunction
 }
 
-export type CCSSInput = any
+export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSOriginal) => CCSSInput
 
-export type CCSSParser = (input: CCSSInput, string, CCSSOptions, CCSSOriginal?) => CCSSInput
-
-export type CCSSPipe = (...fn: CCSSParser[]) => CCSSInput
+export type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
 
 export type CCSSValueMap = { [key: string]: any }
 

@@ -5,14 +5,15 @@ import { createProps } from './createProps'
 import { createPseudoMap, createValueMap } from './createMaps'
 import { parsePseudo } from './parsers'
 
-export const createOptions = (overrides?: Partial<CCSSOptions>): Partial<CCSSOptions> => {
+export const createOptions = <T>(overrides?: Partial<T | CCSSOptions>): Partial<T | CCSSOptions> => {
     const options: CCSSOptions = {
         unit: 'rem',
         applyUnit: n => `${n}${options.unit}`,
         outputTransformer: stringOutputTransformer,
         props: createProps(),
         valueMap: createValueMap(),
-        pseudoMap: createPseudoMap()
+        pseudoMap: createPseudoMap(),
+        __ccss: () => null
     }
 
     // Add pseudos

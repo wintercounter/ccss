@@ -1,21 +1,13 @@
-import { CCSSParser, CCSSPipe } from '@/types'
+import { CCSSInput, CCSSParser, CCSSPipe } from '@/types'
 
-export const toCSSRule = (cssProp, objectProp) => {
-    return (input, prop, options) => {
-        return options.outputTransformer.toCSSRule(cssProp, objectProp, input, prop, options)
-    }
-}
+export const toCSSRule = (cssProp: string, objectProp: string): CCSSParser => (input, prop, options) =>
+    options.outputTransformer.toCSSRule(cssProp, objectProp, input, prop, options)
 
-export const parseSingle: CCSSParser = (input, prop, options) =>
+export const parseSingle: CCSSParser = (input, _, options) =>
     typeof input === 'number' ? (input === 0 ? 0 : options.applyUnit(input)) : input
 
-const applyArray: CCSSParser = (input, prop, options) => {
-    let out = ''
-    for (const i of input) {
-        out += `${parseSingle(i, prop, options)} `
-    }
-    return out
-}
+const applyArray: CCSSParser = (input, prop, options) =>
+    input.reduce((acc: string, curr: CCSSInput) => acc.concat(`${parseSingle(curr, prop, options)} `), '')
 
 export const parseArray: CCSSParser = (input, prop, options) => {
     switch (true) {
@@ -28,11 +20,9 @@ export const parseArray: CCSSParser = (input, prop, options) => {
     }
 }
 
-export const mapValue: CCSSParser = (input, prop, options) => {
-    return options.valueMap?.[prop]?.[input] || input
-}
+export const mapValue: CCSSParser = (input, prop, options) => options.valueMap?.[prop]?.[input] || input
 
-export const parseCCSS: CCSSParser = (input, prop, options) => options.__ccss(input)
+export const parseCCSS: CCSSParser = (input, _, options) => options.__ccss(input)
 
 export const pipe: CCSSPipe = function(...fs) {
     return (input, prop, options, original) => {
@@ -43,11 +33,10 @@ export const pipe: CCSSPipe = function(...fs) {
     }
 }
 
-export const parsePseudo: CCSSParser = (input, prop, options) => {
-    return options.outputTransformer.toPseudo(input, prop, options)
-}
+export const parsePseudo: CCSSParser = (input, prop, options) =>
+    options.outputTransformer.toPseudo(input, prop, options)
 
-export const child: CCSSParser = (input, prop, options, original) => {
+export const child: CCSSParser = (input, _, options, original) => {
     let generated = options.outputTransformer.defaultOutput()
 
     for (const k in input) {

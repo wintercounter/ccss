@@ -219,14 +219,14 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 }
 
 const getPropTableObject = () => {
-    const tableObject: CCSSProps = {}
+    const tableObject = {} as CCSSProps
     const table = getPropTable()
 
     for (const [short, light, long, ...modifiers] of table) {
         const longCamel = camelify(long)
         const lightCamel = camelify(light)
         tableObject[short] = modifiers.length
-            ? pipe(...modifiers as CCSSParser[], toCSSRule(long, longCamel))
+            ? pipe(...(modifiers as CCSSParser[]), toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
         const thatFn = function(this: CCSSProps, a, b, c, d, e, f, g, h) {
             return this[short](a, short, c, d, e, f, g, h)
@@ -238,7 +238,7 @@ const getPropTableObject = () => {
     return tableObject
 }
 
-export const createProps = (overrides?: Partial<CCSSProps>): Partial<CCSSProps> => {
+export const createProps = <T>(overrides?: Partial<T | CCSSProps>): Partial<T | CCSSProps> => {
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {

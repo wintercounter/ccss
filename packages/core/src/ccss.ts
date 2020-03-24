@@ -27,7 +27,7 @@ const generate = (v: Partial<CCSSProps>, options): string => {
     return generated
 }
 
-export const defaultOptions = createOptions()
+export const defaultOptions = createOptions<any>()
 
 export const createCCSS = (options = defaultOptions) => {
     const __ccss = ccssProps => generate(ccssProps, options)
