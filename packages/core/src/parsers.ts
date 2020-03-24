@@ -6,8 +6,13 @@ export const toCSSRule = (cssProp: string, objectProp: string): CCSSParser => (i
 export const parseSingle: CCSSParser = (input, _, options) =>
     typeof input === 'number' ? (input === 0 ? 0 : options.applyUnit(input)) : input
 
-const applyArray: CCSSParser = (input, prop, options) =>
-    input.reduce((acc: string, curr: CCSSInput) => acc.concat(`${parseSingle(curr, prop, options)} `), '')
+const applyArray: CCSSParser = (input, prop, options) => {
+    let out = ''
+    for (const i of input) {
+        out += `${parseSingle(i, prop, options)} `
+    }
+    return out
+}
 
 export const parseArray: CCSSParser = (input, prop, options) => {
     switch (true) {
