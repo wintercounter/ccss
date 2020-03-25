@@ -6,7 +6,7 @@ export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProper
 
 export type CCSSInput = any
 
-export type CCSSAnyFunction = (...args: CCSSInput[]) => CCSSInput
+export type CCSSPrivateFunction = (...args: CCSSInput[]) => string
 
 export type CCSSToCSSRule = (
     cssProp: string,
@@ -18,12 +18,17 @@ export type CCSSToCSSRule = (
 
 export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
 
+export interface CCSSDefaultOutputFunction {
+    (): string
+    (): Object
+}
+
 export interface CCSSOutputTransformer {
     (generated: string, descriptor: string): string
     (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
     toCSSRule: CCSSToCSSRule
     toPseudo: CCSSToPseudoChild
-    defaultOutput: CCSSAnyFunction
+    defaultOutput: CCSSDefaultOutputFunction
     toChild: CCSSToPseudoChild
     unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
 }
@@ -58,7 +63,7 @@ export interface CCSSOptions {
      */
     pseudoMap: Partial<CCSSPseudoMap>
 
-    __ccss: CCSSAnyFunction
+    __ccss: CCSSPrivateFunction
 }
 
 export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSInput) => CCSSInput
