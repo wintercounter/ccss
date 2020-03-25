@@ -53,10 +53,11 @@ const createPropDefinition = (acronym: string, short: string, name: string, prop
     ${/[-_\[\]]/g.test(acronym) ? `'${acronym}'` : acronym}?: ${propType}
 `
 
-const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string => {
-    const acronyms = Array.from(new Set([short, light, long]))
-    return acronyms.reduce((acc, curr) => acc.concat(createPropDefinition(curr, short, long)), '')
-}
+const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string =>
+    Array.from(new Set([short, light, long])).reduce(
+        (acc, curr) => acc.concat(createPropDefinition(curr, short, long)),
+        ''
+    )
 
 const generateCCSSProps = (): string =>
     getPropTable().reduce((acc, curr) => acc.concat(generateCCSSPropEntries(curr)), defaultProps)
