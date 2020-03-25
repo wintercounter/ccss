@@ -36,7 +36,7 @@ const warningMessage = `
 /*
  *  ************************** WARNING **************************
  *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateTypes.ts file.
+ *  Please check the scripts/generateCCSSProps.ts file.
  *  ************************** WARNING **************************
  */
 `
@@ -53,17 +53,17 @@ const createPropDefinition = (acronym: string, short: string, name: string, prop
     ${/[-_\[\]]/g.test(acronym) ? `'${acronym}'` : acronym}?: ${propType}
 `
 
-const generateTypeEntries = ([short, light, long]: [string, string, string, ...any[]]): string => {
+const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string => {
     const acronyms = Array.from(new Set([short, light, long]))
     return acronyms.reduce((acc, curr) => acc.concat(createPropDefinition(curr, short, long)), '')
 }
 
-const generateTypes = (): string =>
-    getPropTable().reduce((acc, curr) => acc.concat(generateTypeEntries(curr)), defaultProps)
+const generateCCSSProps = (): string =>
+    getPropTable().reduce((acc, curr) => acc.concat(generateCCSSPropEntries(curr)), defaultProps)
 
 const writeGeneratedPropsOnFile = () => {
     const content = fs.readFileSync(DIST).toString()
-    const generatedPropsContent = `${generateTypes()}}\n${warningMessage}`
+    const generatedPropsContent = `${generateCCSSProps()}}\n${warningMessage}`
 
     const replacement = content.replace(/(?<=export interface CCSSProps \{)(.*)/s, generatedPropsContent)
     fs.writeFileSync(DIST, replacement)

@@ -64,7 +64,7 @@ export interface IOptions extends Partial<any> {
 /*
  *  ************************** WARNING **************************
  *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateTypes.ts file.
+ *  Please check the scripts/generateCCSSProps.ts file.
  *  ************************** WARNING **************************
  */
 export interface CCSSProps {
@@ -5289,6 +5289,6 @@ export interface CCSSProps {
 /*
  *  ************************** WARNING **************************
  *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateTypes.ts file.
+ *  Please check the scripts/generateCCSSProps.ts file.
  *  ************************** WARNING **************************
  */
