@@ -13,7 +13,7 @@ export const isObject = <T>(obj: T): boolean => obj && typeof obj === 'object'
  * @author inspired by [jhildenbiddle](https://stackoverflow.com/a/48218209).
  * @source [link](https://gist.github.com/ahtcx/0cd94e62691f539160b32ecda18af3d6#gistcomment-2930530)
  */
-export function mergeDeep<T>(target: T, source: Partial<T>): T | Partial<T> {
+export function mergeDeep(target, source) {
     if (!isObject(target) || !isObject(source)) {
         return target
     }
@@ -38,8 +38,8 @@ export function mergeDeep<T>(target: T, source: Partial<T>): T | Partial<T> {
  * Will turn any string kebab-case into camel-case.
  *
  * @example
- * camelify('dark-blue') // darkBlue
- * camelify('--color-light-pink') // colorLightPink
- * camelify('yellow') // yellow
+ * toCamelCase('dark-blue') // darkBlue
+ * toCamelCase('--color-light-pink') // colorLightPink
+ * toCamelCase('yellow') // yellow
  */
-export const camelify = (t: string): string => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())
+export const toCamelCase = (t: string): string => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())

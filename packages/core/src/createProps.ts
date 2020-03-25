@@ -1,6 +1,6 @@
 import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './parsers'
 import { CCSSProps, CCSSParser } from './types'
-import { mergeDeep, camelify } from './utils'
+import { mergeDeep, toCamelCase } from './utils'
 
 export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser?][] => {
     return [
@@ -223,8 +223,8 @@ const getPropTableObject = () => {
     const table = getPropTable()
 
     for (const [short, light, long, ...modifiers] of table) {
-        const longCamel = camelify(long)
-        const lightCamel = camelify(light)
+        const longCamel = toCamelCase(long)
+        const lightCamel = toCamelCase(light)
         tableObject[short] = modifiers.length
             ? pipe(...(modifiers as CCSSParser[]), toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
@@ -238,7 +238,7 @@ const getPropTableObject = () => {
     return tableObject
 }
 
-export const createProps = <T>(overrides?: Partial<T | CCSSProps>): Partial<T | CCSSProps> => {
+export const createProps = <T>(overrides?: T): T => {
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {

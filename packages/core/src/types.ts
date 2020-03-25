@@ -6,9 +6,7 @@ export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProper
 
 export type CCSSInput = any
 
-export type CCSSOriginal = any
-
-export type CCSSAnyFunction = (...args: any[]) => any
+export type CCSSAnyFunction = (...args: CCSSInput[]) => CCSSInput
 
 export type CCSSToCSSRule = (
     cssProp: string,
@@ -63,7 +61,7 @@ export interface CCSSOptions {
     __ccss: CCSSAnyFunction
 }
 
-export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSOriginal) => CCSSInput
+export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSInput) => CCSSInput
 
 export type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { getPropTable } from './createProps'
-import { camelify } from './utils'
+import { toCamelCase } from './utils'
 
 const a = process.argv[3] || process.argv[2] || 'not including this lol'
 const table = getPropTable()
@@ -12,13 +12,13 @@ const table = getPropTable()
         return (
             short === a ||
             light.includes(a) ||
-            camelify(light).includes(a) ||
+            toCamelCase(light).includes(a) ||
             long.includes(a) ||
-            camelify(long).includes(a)
+            toCamelCase(long).includes(a)
         )
     })
     .sort(([short, light, long]) => {
-        return [short, light, camelify(light), long, camelify(long)].includes(a) ? -1 : 1
+        return [short, light, toCamelCase(light), long, toCamelCase(long)].includes(a) ? -1 : 1
     })
     .map(([short, light, long]) => ({ short, light, long }))
 
