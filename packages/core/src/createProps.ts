@@ -219,7 +219,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 }
 
 const getPropTableObject = () => {
-    const tableObject = {} as CCSSProps
+    const tableObject = {} as Partial<CCSSProps>
     const table = getPropTable()
 
     for (const [short, light, long, ...modifiers] of table) {
