@@ -107,7 +107,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['maxH', 'max-hei', 'max-height', mapValue, parseSingle],
 
         // Grid
-        ['g', 'gr', 'grid'],
+        ['g', 'grd', 'grid'],
         ['ga', 'gr-area', 'grid-area'],
         ['gac', 'gr-auto-cols', 'grid-auto-columns'],
         ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
@@ -226,7 +226,7 @@ const getPropTableObject = () => {
         const longCamel = camelify(long)
         const lightCamel = camelify(light)
         tableObject[short] = modifiers.length
-            ? pipe(...modifiers as CCSSParser[], toCSSRule(long, longCamel))
+            ? pipe(...(modifiers as CCSSParser[]), toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
         const thatFn = function(this: CCSSProps, a, b, c, d, e, f, g, h) {
             return this[short](a, short, c, d, e, f, g, h)
