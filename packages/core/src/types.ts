@@ -18,7 +18,7 @@ export type CCSSToCSSRule = (
 
 export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
 
-export interface IOutputTransformer {
+export interface CCSSOutputTransformer {
     (generated: string, descriptor: string): string
     (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
     toCSSRule: CCSSToCSSRule
@@ -41,7 +41,7 @@ export interface CCSSOptions {
     /**
      * Tells how to transform the final output
      */
-    outputTransformer: IOutputTransformer
+    outputTransformer: CCSSOutputTransformer
 
     /**
      * All supported properties
