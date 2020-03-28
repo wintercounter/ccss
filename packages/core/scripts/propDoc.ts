@@ -40,7 +40,7 @@ const turndownService = new TurndownService()
 const fetchProperty: (prop: string, baseURL: string) => { description: string; fetchURL: string } = memoize(
     async (prop: string, baseURL: string = 'https://developer.mozilla.org/en-US/docs/Web/CSS/') => {
         const fetchURL = `${baseURL}${prop}`
-        // console.log('Fetching URL:', fetchURL)
+        console.log('Fetching URL:', fetchURL)
         const $ = await fetch(fetchURL)
         const descriptionEl = $('#wikiArticle > p:first-of-type')
         const description = descriptionEl?.html()?.trim() ?? ''
@@ -51,12 +51,7 @@ const fetchProperty: (prop: string, baseURL: string) => { description: string; f
 const build = async descriptor => {
     const { long: prop, short, props: alias } = descriptor
     const { description, fetchURL: seeURL } = await fetchProperty(prop)
-    // const seeURL = `https://developer.mozilla.org/en-US/docs/Web/CSS/${prop}`
-    // console.log('Fetching URL:', seeURL)
-    // const $ = await fetch(seeURL)
-    // const descriptionEl = $('#wikiArticle > p:first-of-type')
-    // const description = descriptionEl?.html()?.trim() ?? ''
-    // debug && console.log(`Fetched description for '${prop}':`, description)
+    debug && console.log(`Fetched description for '${prop}':`, description)
     console.log('valueMap[short]', short, valueMap[short])
     return `# ${prop} (${short})
      * ${turndownService.turndown(description.replace(/ href="/g, ' href="https://developer.mozilla.org'))}
