@@ -24,5197 +24,5716 @@ export interface CCSSProps {
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
      * ```
      */
-    child?: any
+    child?: TCSSSimplePropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
      */
-    a?: any
+    a?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
      */
-    anim?: any
+    anim?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
      */
-    animation?: any
+    animation?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
      */
-    ad?: any
+    ad?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
      */
-    'anim-del'?: any
+    'anim-del'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
      */
-    'animation-delay'?: any
+    'animation-delay'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
      */
-    aDir?: any
+    aDir?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
      */
-    'anim-dir'?: any
+    'anim-dir'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
      */
-    'animation-direction'?: any
+    'animation-direction'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
      */
-    aD?: any
+    aD?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
      */
-    'anim-dur'?: any
+    'anim-dur'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
      */
-    'animation-duration'?: any
+    'animation-duration'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
      */
-    afm?: any
+    afm?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
      */
-    'anim-fill'?: any
+    'anim-fill'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
      */
-    'animation-fill-mode'?: any
+    'animation-fill-mode'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
      */
-    aic?: any
+    aic?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
      */
-    'anim-count'?: any
+    'anim-count'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
      */
-    'animation-iteration-count'?: any
+    'animation-iteration-count'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
      */
-    an?: any
+    an?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
      */
-    'anim-name'?: any
+    'anim-name'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
      */
-    'animation-name'?: any
+    'animation-name'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
      */
-    aps?: any
+    aps?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
      */
-    'anim-state'?: any
+    'anim-state'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
      */
-    'animation-play-state'?: any
+    'animation-play-state'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
      */
-    ats?: any
+    ats?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
      */
-    'anim-timing'?: any
+    'anim-timing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
      */
-    'animation-timing-function'?: any
+    'animation-timing-function'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
      */
-    bv?: any
+    bv?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
      */
-    'bf-visibility'?: any
+    'bf-visibility'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
      */
-    'backface-visibility'?: any
+    'backface-visibility'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
      */
-    per?: any
+    per?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
      */
-    pers?: any
+    pers?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
      */
-    perspective?: any
+    perspective?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
      */
-    pero?: any
+    pero?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
      */
-    'pers-org'?: any
+    'pers-org'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
      */
-    'perspective-origin'?: any
+    'perspective-origin'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
      */
-    tf?: any
+    tf?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
      */
-    tran?: any
+    tran?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
      */
-    transform?: any
+    transform?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
      */
-    tfo?: any
+    tfo?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
      */
-    'tran-org'?: any
+    'tran-org'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
      */
-    'transform-origin'?: any
+    'transform-origin'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
      */
-    tfs?: any
+    tfs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
      */
-    'tran-style'?: any
+    'tran-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
      */
-    'transform-style'?: any
+    'transform-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
      */
-    tr?: any
+    tr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
      */
-    trans?: any
+    trans?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
      */
-    transition?: any
+    transition?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
      */
-    trD?: any
+    trD?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
      */
-    'trans-del'?: any
+    'trans-del'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
      */
-    'transition-delay'?: any
+    'transition-delay'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
      */
-    trd?: any
+    trd?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
      */
-    'trans-dur'?: any
+    'trans-dur'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
      */
-    'transition-duration'?: any
+    'transition-duration'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
      */
-    trp?: any
+    trp?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
      */
-    'trans-prop'?: any
+    'trans-prop'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
      */
-    'transition-property'?: any
+    'transition-property'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
      */
-    trt?: any
+    trt?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
      */
-    'trans-timing'?: any
+    'trans-timing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
      */
-    'transition-timing-function'?: any
+    'transition-timing-function'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
      */
-    f?: any
+    f?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
      */
-    fx?: any
+    fx?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
      */
-    flex?: any
+    flex?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
      */
-    fd?: any
+    fd?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
      */
-    'fx-dir'?: any
+    'fx-dir'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
      */
-    'flex-direction'?: any
+    'flex-direction'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
      */
-    fw?: any
+    fw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
      */
-    'fx-wrap'?: any
+    'fx-wrap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
      */
-    'flex-wrap'?: any
+    'flex-wrap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
      */
-    fb?: any
+    fb?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
      */
-    'fx-base'?: any
+    'fx-base'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
      */
-    'flex-basis'?: any
+    'flex-basis'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
      */
-    ff?: any
+    ff?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
      */
-    'fx-flow'?: any
+    'fx-flow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
      */
-    'flex-flow'?: any
+    'flex-flow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
      */
-    fg?: any
+    fg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
      */
-    'fx-grow'?: any
+    'fx-grow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
      */
-    'flex-grow'?: any
+    'flex-grow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
      */
-    fs?: any
+    fs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
      */
-    'fx-shrink'?: any
+    'fx-shrink'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
      */
-    'flex-shrink'?: any
+    'flex-shrink'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
      */
-    ai?: any
+    ai?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
      */
-    'al-items'?: any
+    'al-items'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
      */
-    'align-items'?: any
+    'align-items'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
      */
-    ac?: any
+    ac?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
      */
-    'al-content'?: any
+    'al-content'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
      */
-    'align-content'?: any
+    'align-content'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
      */
-    ji?: any
+    ji?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
      */
-    'just-items'?: any
+    'just-items'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
      */
-    'justify-items'?: any
+    'justify-items'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
      */
-    jc?: any
+    jc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
      */
-    'just-content'?: any
+    'just-content'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
      */
-    'justify-content'?: any
+    'justify-content'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
      */
-    aS?: any
+    aS?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
      */
-    'al-self'?: any
+    'al-self'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
      */
-    'align-self'?: any
+    'align-self'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
      */
-    jS?: any
+    jS?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
      */
-    'just-self'?: any
+    'just-self'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
      */
-    'justify-self'?: any
+    'justify-self'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font',
+     *     long: 'font',
+     *     props: ['ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
      */
-    ft?: any
+    ft?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font',
+     *     long: 'font',
+     *     props: ['ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
      */
-    font?: any
+    font?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
      */
-    ftf?: any
+    ftf?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
      */
-    'ft-family'?: any
+    'ft-family'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
      */
-    'font-family'?: any
+    'font-family'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
      */
-    ftk?: any
+    ftk?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
      */
-    'ft-kern'?: any
+    'ft-kern'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
      */
-    'font-kerning'?: any
+    'font-kerning'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
      */
-    fts?: any
+    fts?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
      */
-    'ft-size'?: any
+    'ft-size'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
      */
-    'font-size'?: any
+    'font-size'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
      */
-    ftStr?: any
+    ftStr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
      */
-    'ft-stretch'?: any
+    'ft-stretch'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
      */
-    'font-stretch'?: any
+    'font-stretch'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
      */
-    ftSty?: any
+    ftSty?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
      */
-    'ft-style'?: any
+    'ft-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
      */
-    'font-style'?: any
+    'font-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
      */
-    ftv?: any
+    ftv?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
      */
-    'ft-variant'?: any
+    'ft-variant'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
      */
-    'font-variant'?: any
+    'font-variant'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
      */
-    ftw?: any
+    ftw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
      */
-    'ft-weight'?: any
+    'ft-weight'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
      */
-    'font-weight'?: any
+    'font-weight'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
      */
-    ls?: any
+    ls?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
      */
-    'ltr-spacing'?: any
+    'ltr-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
      */
-    'letter-spacing'?: any
+    'letter-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
      */
-    lh?: any
+    lh?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
      */
-    'line-h'?: any
+    'line-h'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
      */
-    'line-height'?: any
+    'line-height'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
      */
-    ta?: any
+    ta?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
      */
-    'txt-align'?: any
+    'txt-align'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
      */
-    'text-align'?: any
+    'text-align'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
      */
-    td?: any
+    td?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
      */
-    'txt-decor'?: any
+    'txt-decor'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
      */
-    'text-decoration'?: any
+    'text-decoration'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
      */
-    ti?: any
+    ti?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
      */
-    'txt-in'?: any
+    'txt-in'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
      */
-    'text-indent'?: any
+    'text-indent'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
      */
-    to?: any
+    to?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
      */
-    'txt-flow'?: any
+    'txt-flow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
      */
-    'text-overflow'?: any
+    'text-overflow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
      */
-    ts?: any
+    ts?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
      */
-    'txt-shad'?: any
+    'txt-shad'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
      */
-    'text-shadow'?: any
+    'text-shadow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
      */
-    tt?: any
+    tt?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
      */
-    'txt-tranf'?: any
+    'txt-tranf'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
      */
-    'text-transform'?: any
+    'text-transform'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
      */
-    va?: any
+    va?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
      */
-    'v-align'?: any
+    'v-align'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
      */
-    'vertical-align'?: any
+    'vertical-align'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
      */
-    ws?: any
+    ws?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
      */
-    'w-space'?: any
+    'w-space'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
      */
-    'white-space'?: any
+    'white-space'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
      */
-    wb?: any
+    wb?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
      */
-    'w-break'?: any
+    'w-break'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
      */
-    'word-break'?: any
+    'word-break'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
      */
-    wS?: any
+    wS?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
      */
-    'w-spacing'?: any
+    'w-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
      */
-    'word-spacing'?: any
+    'word-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
      */
-    ww?: any
+    ww?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
      */
-    'w-wrap'?: any
+    'w-wrap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
      */
-    'word-wrap'?: any
+    'word-wrap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
      */
-    l?: any
+    l?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
      */
-    list?: any
+    list?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
      */
-    'list-style'?: any
+    'list-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
      */
-    li?: any
+    li?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
      */
-    'list-img'?: any
+    'list-img'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
      */
-    'list-style-image'?: any
+    'list-style-image'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
      */
-    lp?: any
+    lp?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
      */
-    'list-pos'?: any
+    'list-pos'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
      */
-    'list-style-position'?: any
+    'list-style-position'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
      */
-    lt?: any
+    lt?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
      */
-    'list-type'?: any
+    'list-type'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
      */
-    'list-style-type'?: any
+    'list-style-type'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
      */
-    m?: any
+    m?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
      */
-    mar?: any
+    mar?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
      */
-    margin?: any
+    margin?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
      */
-    mT?: any
+    mT?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
      */
-    'mar-top'?: any
+    'mar-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
      */
-    'margin-top'?: any
+    'margin-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
      */
-    mR?: any
+    mR?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
      */
-    'mar-right'?: any
+    'mar-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
      */
-    'margin-right'?: any
+    'margin-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
      */
-    mB?: any
+    mB?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
      */
-    'mar-bottom'?: any
+    'mar-bottom'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
      */
-    'margin-bottom'?: any
+    'margin-bottom'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
      */
-    mL?: any
+    mL?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
      */
-    'mar-left'?: any
+    'mar-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
      */
-    'margin-left'?: any
+    'margin-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
      */
-    p?: any
+    p?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
      */
-    pad?: any
+    pad?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
      */
-    padding?: any
+    padding?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
      */
-    pT?: any
+    pT?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
      */
-    'pad-top'?: any
+    'pad-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
      */
-    'padding-top'?: any
+    'padding-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
      */
-    pR?: any
+    pR?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
      */
-    'pad-right'?: any
+    'pad-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
      */
-    'padding-right'?: any
+    'padding-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
      */
-    pB?: any
+    pB?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
      */
-    'pad-bottom'?: any
+    'pad-bottom'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
      */
-    'padding-bottom'?: any
+    'padding-bottom'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
      */
-    pL?: any
+    pL?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
      */
-    'pad-left'?: any
+    'pad-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
      */
-    'padding-left'?: any
+    'padding-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background',
+     *     long: 'background',
+     *     props: ['bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
      */
-    bg?: any
+    bg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background',
+     *     long: 'background',
+     *     props: ['bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
      */
-    background?: any
+    background?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
      */
-    bgi?: any
+    bgi?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
      */
-    'bg-img'?: any
+    'bg-img'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
      */
-    'background-image'?: any
+    'background-image'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
      */
-    bgc?: any
+    bgc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
      */
-    'bg-color'?: any
+    'bg-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
      */
-    'background-color'?: any
+    'background-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
      */
-    bgs?: any
+    bgs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
      */
-    'bg-size'?: any
+    'bg-size'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
      */
-    'background-size'?: any
+    'background-size'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
      */
-    bgr?: any
+    bgr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
      */
-    'bg-repeat'?: any
+    'bg-repeat'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
      */
-    'background-repeat'?: any
+    'background-repeat'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
      */
-    bgp?: any
+    bgp?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
      */
-    'bg-pos'?: any
+    'bg-pos'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
      */
-    'background-position'?: any
+    'background-position'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
      */
-    bga?: any
+    bga?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
      */
-    'bg-attach'?: any
+    'bg-attach'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
      */
-    'background-attachment'?: any
+    'background-attachment'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
      */
-    bgbm?: any
+    bgbm?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
      */
-    'bg-blend'?: any
+    'bg-blend'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
      */
-    'background-blend-mode'?: any
+    'background-blend-mode'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
      */
-    bgC?: any
+    bgC?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
      */
-    'bg-clip'?: any
+    'bg-clip'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
      */
-    'background-clip'?: any
+    'background-clip'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
      */
-    bgo?: any
+    bgo?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
      */
-    'bg-org'?: any
+    'bg-org'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
      */
-    'background-origin'?: any
+    'background-origin'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
      */
-    w?: any
+    w?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
      */
-    wid?: any
+    wid?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
      */
-    width?: any
+    width?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
      */
-    h?: any
+    h?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
      */
-    hei?: any
+    hei?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
      */
-    height?: any
+    height?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
      */
-    minW?: any
+    minW?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
      */
-    'min-wid'?: any
+    'min-wid'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
      */
-    'min-width'?: any
+    'min-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
      */
-    minH?: any
+    minH?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
      */
-    'min-hei'?: any
+    'min-hei'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
      */
-    'min-height'?: any
+    'min-height'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
      */
-    maxW?: any
+    maxW?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
      */
-    'max-wid'?: any
+    'max-wid'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
      */
-    'max-width'?: any
+    'max-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
      */
-    maxH?: any
+    maxH?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
      */
-    'max-hei'?: any
+    'max-hei'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
      */
-    'max-height'?: any
+    'max-height'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
      */
-    g?: any
+    g?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
      */
-    grd?: any
+    grd?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
      */
-    grid?: any
+    grid?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
      */
-    ga?: any
+    ga?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
      */
-    'gr-area'?: any
+    'gr-area'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
      */
-    'grid-area'?: any
+    'grid-area'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
      */
-    gac?: any
+    gac?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
      */
-    'gr-auto-cols'?: any
+    'gr-auto-cols'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
      */
-    'grid-auto-columns'?: any
+    'grid-auto-columns'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
      */
-    gaf?: any
+    gaf?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
      */
-    'gr-auto-flow'?: any
+    'gr-auto-flow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
      */
-    'grid-auto-flow'?: any
+    'grid-auto-flow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
      */
-    gar?: any
+    gar?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
      */
-    'gr-auto-rows'?: any
+    'gr-auto-rows'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
      */
-    'grid-auto-rows'?: any
+    'grid-auto-rows'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
      */
-    gc?: any
+    gc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
      */
-    'gr-col'?: any
+    'gr-col'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
      */
-    'grid-column'?: any
+    'grid-column'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
      */
-    gce?: any
+    gce?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
      */
-    'gr-col-end'?: any
+    'gr-col-end'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
      */
-    'grid-column-end'?: any
+    'grid-column-end'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
      */
-    gcg?: any
+    gcg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
      */
-    'gr-col-gap'?: any
+    'gr-col-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
      */
-    'grid-column-gap'?: any
+    'grid-column-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
      */
-    gcs?: any
+    gcs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
      */
-    'gr-col-start'?: any
+    'gr-col-start'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
      */
-    'grid-column-start'?: any
+    'grid-column-start'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
      */
-    gg?: any
+    gg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
      */
-    'gr-gap'?: any
+    'gr-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
      */
-    'grid-gap'?: any
+    'grid-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
      */
-    gr?: any
+    gr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
      */
-    'gr-row'?: any
+    'gr-row'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
      */
-    'grid-row'?: any
+    'grid-row'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
      */
-    gre?: any
+    gre?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
      */
-    'gr-row-end'?: any
+    'gr-row-end'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
      */
-    'grid-row-end'?: any
+    'grid-row-end'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
      */
-    grg?: any
+    grg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
      */
-    'gr-row-gap'?: any
+    'gr-row-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
      */
-    'grid-row-gap'?: any
+    'grid-row-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
      */
-    grs?: any
+    grs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
      */
-    'gr-row-start'?: any
+    'gr-row-start'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
      */
-    'grid-row-start'?: any
+    'grid-row-start'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
      */
-    gt?: any
+    gt?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
      */
-    'gr-tmpl'?: any
+    'gr-tmpl'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
      */
-    'grid-template'?: any
+    'grid-template'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
      */
-    gta?: any
+    gta?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
      */
-    'gr-areas'?: any
+    'gr-areas'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
      */
-    'grid-template-areas'?: any
+    'grid-template-areas'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
      */
-    gtc?: any
+    gtc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
      */
-    'gr-cols'?: any
+    'gr-cols'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
      */
-    'grid-template-columns'?: any
+    'grid-template-columns'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
      */
-    gtr?: any
+    gtr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
      */
-    'gr-rows'?: any
+    'gr-rows'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
      */
-    'grid-template-rows'?: any
+    'grid-template-rows'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
      */
-    b?: any
+    b?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
      */
-    bd?: any
+    bd?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
      */
-    border?: any
+    border?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
      */
-    bB?: any
+    bB?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
      */
-    'bd-bot'?: any
+    'bd-bot'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
      */
-    'border-bottom'?: any
+    'border-bottom'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
      */
-    bBc?: any
+    bBc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
      */
-    'bd-bot-color'?: any
+    'bd-bot-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
      */
-    'border-bottom-color'?: any
+    'border-bottom-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
      */
-    bBlr?: any
+    bBlr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
      */
-    'bd-bot-left-radius'?: any
+    'bd-bot-left-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
      */
-    'border-bottom-left-radius'?: any
+    'border-bottom-left-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
      */
-    bBrr?: any
+    bBrr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
      */
-    'bd-bot-right-radius'?: any
+    'bd-bot-right-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
      */
-    'border-bottom-right-radius'?: any
+    'border-bottom-right-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
      */
-    bBs?: any
+    bBs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
      */
-    'bd-bot-style'?: any
+    'bd-bot-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
      */
-    'border-bottom-style'?: any
+    'border-bottom-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
      */
-    bBw?: any
+    bBw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
      */
-    'bd-bot-wid'?: any
+    'bd-bot-wid'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
      */
-    'border-bottom-width'?: any
+    'border-bottom-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
      */
-    bC?: any
+    bC?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
      */
-    'bd-coll'?: any
+    'bd-coll'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
      */
-    'border-collapse'?: any
+    'border-collapse'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
      */
-    bc?: any
+    bc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
      */
-    'bd-color'?: any
+    'bd-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
      */
-    'border-color'?: any
+    'border-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
      */
-    bi?: any
+    bi?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
      */
-    'bd-img'?: any
+    'bd-img'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
      */
-    'border-image'?: any
+    'border-image'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
      */
-    bio?: any
+    bio?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
      */
-    'bd-img-outset'?: any
+    'bd-img-outset'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
      */
-    'border-image-outset'?: any
+    'border-image-outset'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
      */
-    bir?: any
+    bir?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
      */
-    'bd-img-repeat'?: any
+    'bd-img-repeat'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
      */
-    'border-image-repeat'?: any
+    'border-image-repeat'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
      */
-    bis?: any
+    bis?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
      */
-    'bd-img-slice'?: any
+    'bd-img-slice'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
      */
-    'border-image-slice'?: any
+    'border-image-slice'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
      */
-    biSrc?: any
+    biSrc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
      */
-    'bd-img-src'?: any
+    'bd-img-src'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
      */
-    'border-image-source'?: any
+    'border-image-source'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
      */
-    biw?: any
+    biw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
      */
-    'bd-img-width'?: any
+    'bd-img-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
      */
-    'border-image-width'?: any
+    'border-image-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
      */
-    bL?: any
+    bL?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
      */
-    'bd-left'?: any
+    'bd-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
      */
-    'border-left'?: any
+    'border-left'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
      */
-    bLc?: any
+    bLc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
      */
-    'bd-left-color'?: any
+    'bd-left-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
      */
-    'border-left-color'?: any
+    'border-left-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
      */
-    bLs?: any
+    bLs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
      */
-    'bd-left-style'?: any
+    'bd-left-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
      */
-    'border-left-style'?: any
+    'border-left-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
      */
-    bLw?: any
+    bLw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
      */
-    'bd-left-width'?: any
+    'bd-left-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
      */
-    'border-left-width'?: any
+    'border-left-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
      */
-    br?: any
+    br?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
      */
-    'bd-radius'?: any
+    'bd-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
      */
-    'border-radius'?: any
+    'border-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
      */
-    bR?: any
+    bR?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
      */
-    'bd-right'?: any
+    'bd-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
      */
-    'border-right'?: any
+    'border-right'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
      */
-    bRc?: any
+    bRc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
      */
-    'bd-right-color'?: any
+    'bd-right-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
      */
-    'border-right-color'?: any
+    'border-right-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
      */
-    bRs?: any
+    bRs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
      */
-    'bd-right-style'?: any
+    'bd-right-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
      */
-    'border-right-style'?: any
+    'border-right-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
      */
-    bRw?: any
+    bRw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
      */
-    'bd-right-width'?: any
+    'bd-right-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
      */
-    'border-right-width'?: any
+    'border-right-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
      */
-    bs?: any
+    bs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
      */
-    'bd-spacing'?: any
+    'bd-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
      */
-    'border-spacing'?: any
+    'border-spacing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
      */
-    bS?: any
+    bS?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
      */
-    'bd-style'?: any
+    'bd-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
      */
-    'border-style'?: any
+    'border-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
      */
-    bT?: any
+    bT?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
      */
-    'bd-top'?: any
+    'bd-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
      */
-    'border-top'?: any
+    'border-top'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
      */
-    bTc?: any
+    bTc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
      */
-    'bd-top-color'?: any
+    'bd-top-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
      */
-    'border-top-color'?: any
+    'border-top-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
      */
-    bTlr?: any
+    bTlr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
      */
-    'bd-top-left-radius'?: any
+    'bd-top-left-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
      */
-    'border-top-left-radius'?: any
+    'border-top-left-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
      */
-    bTrr?: any
+    bTrr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
      */
-    'bd-top-right-radius'?: any
+    'bd-top-right-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
      */
-    'border-top-right-radius'?: any
+    'border-top-right-radius'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
      */
-    bTs?: any
+    bTs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
      */
-    'bd-top-style'?: any
+    'bd-top-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
      */
-    'border-top-style'?: any
+    'border-top-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
      */
-    bTw?: any
+    bTw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
      */
-    'bd-top-width'?: any
+    'bd-top-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
      */
-    'border-top-width'?: any
+    'border-top-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
      */
-    bw?: any
+    bw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
      */
-    'bd-width'?: any
+    'bd-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
      */
-    'border-width'?: any
+    'border-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'clip',
+     *     long: 'clip',
+     *     props: ['clip'],
      *     short: 'clip'
      * }
      * @propDocEnd
      */
-    clip?: any
+    clip?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'clip-path',
+     *     long: 'clip-path',
+     *     props: ['clipPath', 'clip-path'],
      *     short: 'clipPath'
      * }
      * @propDocEnd
      */
-    clipPath?: any
+    clipPath?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'clip-path',
+     *     long: 'clip-path',
+     *     props: ['clipPath', 'clip-path'],
      *     short: 'clipPath'
      * }
      * @propDocEnd
      */
-    'clip-path'?: any
+    'clip-path'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
      */
-    d?: any
+    d?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
      */
-    dsp?: any
+    dsp?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
      */
-    display?: any
+    display?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
      */
-    P?: any
+    P?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
      */
-    pos?: any
+    pos?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
      */
-    position?: any
+    position?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'top',
+     *     long: 'top',
+     *     props: ['T', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
      */
-    T?: any
+    T?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'top',
+     *     long: 'top',
+     *     props: ['T', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
      */
-    top?: any
+    top?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'right',
+     *     long: 'right',
+     *     props: ['R', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
      */
-    R?: any
+    R?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'right',
+     *     long: 'right',
+     *     props: ['R', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
      */
-    right?: any
+    right?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'bottom',
+     *     long: 'bottom',
+     *     props: ['B', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
      */
-    B?: any
+    B?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'bottom',
+     *     long: 'bottom',
+     *     props: ['B', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
      */
-    bottom?: any
+    bottom?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'left',
+     *     long: 'left',
+     *     props: ['L', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
      */
-    L?: any
+    L?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'left',
+     *     long: 'left',
+     *     props: ['L', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
      */
-    left?: any
+    left?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'z-index',
+     *     long: 'z-index',
+     *     props: ['zi', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
      */
-    zi?: any
+    zi?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'z-index',
+     *     long: 'z-index',
+     *     props: ['zi', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
      */
-    'z-index'?: any
+    'z-index'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'color',
+     *     long: 'color',
+     *     props: ['c', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
      */
-    c?: any
+    c?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'color',
+     *     long: 'color',
+     *     props: ['c', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
      */
-    color?: any
+    color?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
      */
-    o?: any
+    o?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
      */
-    over?: any
+    over?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
      */
-    overflow?: any
+    overflow?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
      */
-    ox?: any
+    ox?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
      */
-    'over-x'?: any
+    'over-x'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
      */
-    'overflow-x'?: any
+    'overflow-x'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
      */
-    oy?: any
+    oy?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
      */
-    'over-y'?: any
+    'over-y'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
      */
-    'overflow-y'?: any
+    'overflow-y'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'float',
+     *     long: 'float',
+     *     props: ['fl', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
      */
-    fl?: any
+    fl?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'float',
+     *     long: 'float',
+     *     props: ['fl', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
      */
-    float?: any
+    float?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'clear',
+     *     long: 'clear',
+     *     props: ['clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
      */
-    clr?: any
+    clr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'clear',
+     *     long: 'clear',
+     *     props: ['clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
      */
-    clear?: any
+    clear?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'visibility',
+     *     long: 'visibility',
+     *     props: ['v', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
      */
-    v?: any
+    v?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'visibility',
+     *     long: 'visibility',
+     *     props: ['v', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
      */
-    visibility?: any
+    visibility?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'columns',
+     *     long: 'columns',
+     *     props: ['col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
      */
-    col?: any
+    col?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'columns',
+     *     long: 'columns',
+     *     props: ['col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
      */
-    columns?: any
+    columns?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
      */
-    cc?: any
+    cc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
      */
-    'col-count'?: any
+    'col-count'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
      */
-    'column-count'?: any
+    'column-count'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
      */
-    cf?: any
+    cf?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
      */
-    'col-fill'?: any
+    'col-fill'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
      */
-    'column-fill'?: any
+    'column-fill'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
      */
-    cg?: any
+    cg?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
      */
-    'col-gap'?: any
+    'col-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
      */
-    'column-gap'?: any
+    'column-gap'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
      */
-    cr?: any
+    cr?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
      */
-    'col-rule'?: any
+    'col-rule'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
      */
-    'column-rule'?: any
+    'column-rule'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
      */
-    crc?: any
+    crc?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
      */
-    'col-rule-color'?: any
+    'col-rule-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
      */
-    'column-rule-color'?: any
+    'column-rule-color'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
      */
-    crs?: any
+    crs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
      */
-    'col-rule-style'?: any
+    'col-rule-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
      */
-    'column-rule-style'?: any
+    'column-rule-style'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
      */
-    crw?: any
+    crw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
      */
-    'col-rule-width'?: any
+    'col-rule-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
      */
-    'column-rule-width'?: any
+    'column-rule-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
      */
-    cs?: any
+    cs?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
      */
-    'col-span'?: any
+    'col-span'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
      */
-    'column-span'?: any
+    'column-span'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
      */
-    cw?: any
+    cw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
      */
-    'col-width'?: any
+    'col-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
      */
-    'column-width'?: any
+    'column-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
      */
-    pba?: any
+    pba?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
      */
-    'pb-after'?: any
+    'pb-after'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
      */
-    'page-break-after'?: any
+    'page-break-after'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
      */
-    pbb?: any
+    pbb?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
      */
-    'pb-before'?: any
+    'pb-before'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
      */
-    'page-break-before'?: any
+    'page-break-before'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
      */
-    pbi?: any
+    pbi?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
      */
-    'pb-inside'?: any
+    'pb-inside'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
      */
-    'page-break-inside'?: any
+    'page-break-inside'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
      */
-    shd?: any
+    shd?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
      */
-    shadow?: any
+    shadow?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
      */
-    'box-shadow'?: any
+    'box-shadow'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
      */
-    siz?: any
+    siz?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
      */
-    sizing?: any
+    sizing?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
      */
-    'box-sizing'?: any
+    'box-sizing'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
      */
-    of?: any
+    of?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
      */
-    'obj-fit'?: any
+    'obj-fit'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
      */
-    'object-fit'?: any
+    'object-fit'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
      */
-    oP?: any
+    oP?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
      */
-    'obj-pos'?: any
+    'obj-pos'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
      */
-    'object-position'?: any
+    'object-position'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'opacity',
+     *     long: 'opacity',
+     *     props: ['op', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
      */
-    op?: any
+    op?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'opacity',
+     *     long: 'opacity',
+     *     props: ['op', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
      */
-    opacity?: any
+    opacity?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'order',
+     *     long: 'order',
+     *     props: ['or', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
      */
-    or?: any
+    or?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'order',
+     *     long: 'order',
+     *     props: ['or', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
      */
-    order?: any
+    order?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'outline',
+     *     long: 'outline',
+     *     props: ['ol', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
      */
-    ol?: any
+    ol?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'outline',
+     *     long: 'outline',
+     *     props: ['ol', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
      */
-    outline?: any
+    outline?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
      */
-    mbm?: any
+    mbm?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
      */
-    'blend-mode'?: any
+    'blend-mode'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
      */
-    'mix-blend-mode'?: any
+    'mix-blend-mode'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'content',
+     *     long: 'content',
+     *     props: ['ct', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
      */
-    ct?: any
+    ct?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'content',
+     *     long: 'content',
+     *     props: ['ct', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
      */
-    content?: any
+    content?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'cursor',
+     *     long: 'cursor',
+     *     props: ['cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
      */
-    cur?: any
+    cur?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'cursor',
+     *     long: 'cursor',
+     *     props: ['cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
      */
-    cursor?: any
+    cursor?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
      */
-    pe?: any
+    pe?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
      */
-    'p-events'?: any
+    'p-events'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
      */
-    'pointer-events'?: any
+    'pointer-events'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'filter',
+     *     long: 'filter',
+     *     props: ['fil', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
      */
-    fil?: any
+    fil?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'filter',
+     *     long: 'filter',
+     *     props: ['fil', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
      */
-    filter?: any
+    filter?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
      */
-    sb?: any
+    sb?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
      */
-    's-behavior'?: any
+    's-behavior'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
      */
-    'scroll-behavior'?: any
+    'scroll-behavior'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
      */
-    sw?: any
+    sw?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
      */
-    's-width'?: any
+    's-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
      */
-    'scrollbar-width'?: any
+    'scrollbar-width'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
      */
-    sh?: any
+    sh?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
      */
-    's-height'?: any
+    's-height'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
      */
-    'scrollbar-height'?: any
+    'scrollbar-height'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
      */
-    us?: any
+    us?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
      */
-    'u-select'?: any
+    'u-select'?: TCSSPropValue
 
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
      */
-    'user-select'?: any
+    'user-select'?: TCSSPropValue
 }
 
 /*

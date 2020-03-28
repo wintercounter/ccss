@@ -19,6 +19,7 @@ import fetch from 'fetch-cheerio-object'
 import TurndownService from 'turndown'
 
 import { createValueMap } from '../src/createMaps'
+import { memoize } from '../src/utils'
 const valueMap = createValueMap()
 
 const DIST = path.resolve(__dirname, '../dist')
@@ -28,24 +29,48 @@ const debug = 1
 
 const turndownService = new TurndownService()
 
-const build = async descriptor => {
-    const { prop, short } = descriptor
-    const seeURL = `https://developer.mozilla.org/en-US/docs/Web/CSS/${prop}`
-    console.log('Fetching URL:', seeURL)
-    const $ = await fetch(seeURL)
-    const descriptionEl = $('#wikiArticle > p:first-of-type')
-    const description = descriptionEl.html().trim()
-    debug && console.log(`Fetched description for '${prop}':`, description)
-    return `# ${prop} (${short})
- * ${turndownService.turndown(description.replace(/ href="/g, ' href="https://developer.mozilla.org'))}
-${valueMap[prop] ? ' *\n * --- \n * ## Shorthands' : ''}
-${Object.entries({ ...valueMap[prop] })
-    .map(([k, v]) => ` * - **${k}**: \`${v}\``)
-    .join('\n')}
+/**
+ * Will fetch a property on a given `baseURL`.
+ * This function is memoized to avoid fetching
+ * again a previous fetched property.
  *
- * ---
- * @see ${seeURL}
- `.trim()
+ * @prop prop: string
+ * @prop baseURL: string = 'https://developer.mozilla.org/en-US/docs/Web/CSS/'
+ */
+const fetchProperty: (prop: string, baseURL: string) => { description: string; fetchURL: string } = memoize(
+    async (prop: string, baseURL: string = 'https://developer.mozilla.org/en-US/docs/Web/CSS/') => {
+        const fetchURL = `${baseURL}${prop}`
+        // console.log('Fetching URL:', fetchURL)
+        const $ = await fetch(fetchURL)
+        const descriptionEl = $('#wikiArticle > p:first-of-type')
+        const description = descriptionEl?.html()?.trim() ?? ''
+        return { description, fetchURL }
+    }
+)
+
+const build = async descriptor => {
+    const { long: prop, short, props: alias } = descriptor
+    const { description, fetchURL: seeURL } = await fetchProperty(prop)
+    // const seeURL = `https://developer.mozilla.org/en-US/docs/Web/CSS/${prop}`
+    // console.log('Fetching URL:', seeURL)
+    // const $ = await fetch(seeURL)
+    // const descriptionEl = $('#wikiArticle > p:first-of-type')
+    // const description = descriptionEl?.html()?.trim() ?? ''
+    // debug && console.log(`Fetched description for '${prop}':`, description)
+    console.log('valueMap[short]', short, valueMap[short])
+    return `# ${prop} (${short})
+     * ${turndownService.turndown(description.replace(/ href="/g, ' href="https://developer.mozilla.org'))}
+    ${valueMap[short] ? ' *\n\t * --- \n\t * ## Shorthands' : ''}
+    ${Object.entries({ ...valueMap[short] })
+        .map(([k, v], i) => `${i === 0 ? ' *' : '\t *'}\t- **${k}**: \`${v}\``)
+        .join('\n')}
+     *
+     * ---
+     * ## Aliases
+     ${alias.map((a, i) => `${i === 0 ? '*' : '\t *'}\t- \`${a}\``).join('\n')}
+     * ---
+     * @see ${seeURL}
+    `.trim()
 }
 ;(async () => {
     console.log('Searching for propDocs.')

@@ -17,9 +17,10 @@
         "test": "mhy tsc && mhy jest",
         "jest": "mhy jest",
         "jest:watch": "mhy jest --watchAll",
-        "build": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs && npm run prop-doc:prod",
+        "build": "npm run gen-ccss-props && mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs && npm run prop-doc:prod",
         "build:watch": "mhy bb --watch",
         "config": "mhy config typescript -io",
+        "gen-ccss-props": "mhy node scripts/generateCCSSProps",
         "prop-doc": "mhy node scripts/propDoc",
         "prop-doc:prod": "npm run prop-doc -- --mhy-env=prod"
     },

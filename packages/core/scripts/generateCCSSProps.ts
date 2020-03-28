@@ -41,23 +41,30 @@ const warningMessage = `
  */
 `
 
-const createPropDefinition = (acronym: string, short: string, name: string, propType = 'TCSSPropValue'): string => `
+// const createPropDefinition = (acronym: string, short: string, name: string, propType = 'TCSSPropValue'): string => `
+const createPropDefinition = (
+    propName: string,
+    short: string,
+    long: string,
+    propList: string[],
+    propType = 'TCSSPropValue'
+): string => `
     /**
      * @propDocStart
      * {
-     *     prop: '${name}',
+     *     long: '${long}',
+     *     props: [${propList.map(p => `'${p}'`).join(', ')}],
      *     short: '${short}'
      * }
      * @propDocEnd
      */
-    ${/[-_\[\]]/g.test(acronym) ? `'${acronym}'` : acronym}?: ${propType}
+    ${/[-_\[\]]/g.test(propName) ? `'${propName}'` : propName}?: ${propType}
 `
 
-const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string =>
-    Array.from(new Set([short, light, long])).reduce(
-        (acc, curr) => acc.concat(createPropDefinition(curr, short, long)),
-        ''
-    )
+const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string => {
+    const propList = Array.from(new Set([short, light, long]))
+    return propList.reduce((acc, curr) => acc.concat(createPropDefinition(curr, short, long, propList)), '')
+}
 
 const generateCCSSProps = (): string =>
     getPropTable().reduce((acc, curr) => acc.concat(generateCCSSPropEntries(curr)), defaultProps)

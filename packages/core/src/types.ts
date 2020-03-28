@@ -98,7 +98,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
@@ -108,7 +109,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
@@ -118,7 +120,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation',
+     *     long: 'animation',
+     *     props: ['a', 'anim', 'animation'],
      *     short: 'a'
      * }
      * @propDocEnd
@@ -128,7 +131,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
@@ -138,7 +142,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
@@ -148,7 +153,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-delay',
+     *     long: 'animation-delay',
+     *     props: ['ad', 'anim-del', 'animation-delay'],
      *     short: 'ad'
      * }
      * @propDocEnd
@@ -158,7 +164,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
@@ -168,7 +175,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
@@ -178,7 +186,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-direction',
+     *     long: 'animation-direction',
+     *     props: ['aDir', 'anim-dir', 'animation-direction'],
      *     short: 'aDir'
      * }
      * @propDocEnd
@@ -188,7 +197,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
@@ -198,7 +208,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
@@ -208,7 +219,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-duration',
+     *     long: 'animation-duration',
+     *     props: ['aD', 'anim-dur', 'animation-duration'],
      *     short: 'aD'
      * }
      * @propDocEnd
@@ -218,7 +230,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
@@ -228,7 +241,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
@@ -238,7 +252,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-fill-mode',
+     *     long: 'animation-fill-mode',
+     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
      *     short: 'afm'
      * }
      * @propDocEnd
@@ -248,7 +263,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
@@ -258,7 +274,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
@@ -268,7 +285,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-iteration-count',
+     *     long: 'animation-iteration-count',
+     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
      *     short: 'aic'
      * }
      * @propDocEnd
@@ -278,7 +296,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
@@ -288,7 +307,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
@@ -298,7 +318,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-name',
+     *     long: 'animation-name',
+     *     props: ['an', 'anim-name', 'animation-name'],
      *     short: 'an'
      * }
      * @propDocEnd
@@ -308,7 +329,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
@@ -318,7 +340,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
@@ -328,7 +351,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-play-state',
+     *     long: 'animation-play-state',
+     *     props: ['aps', 'anim-state', 'animation-play-state'],
      *     short: 'aps'
      * }
      * @propDocEnd
@@ -338,7 +362,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
@@ -348,7 +373,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
@@ -358,7 +384,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'animation-timing-function',
+     *     long: 'animation-timing-function',
+     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
      *     short: 'ats'
      * }
      * @propDocEnd
@@ -368,7 +395,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
@@ -378,7 +406,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
@@ -388,7 +417,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'backface-visibility',
+     *     long: 'backface-visibility',
+     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
      *     short: 'bv'
      * }
      * @propDocEnd
@@ -398,7 +428,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
@@ -408,7 +439,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
@@ -418,7 +450,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective',
+     *     long: 'perspective',
+     *     props: ['per', 'pers', 'perspective'],
      *     short: 'per'
      * }
      * @propDocEnd
@@ -428,7 +461,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
@@ -438,7 +472,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
@@ -448,7 +483,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'perspective-origin',
+     *     long: 'perspective-origin',
+     *     props: ['pero', 'pers-org', 'perspective-origin'],
      *     short: 'pero'
      * }
      * @propDocEnd
@@ -458,7 +494,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
@@ -468,7 +505,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
@@ -478,7 +516,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform',
+     *     long: 'transform',
+     *     props: ['tf', 'tran', 'transform'],
      *     short: 'tf'
      * }
      * @propDocEnd
@@ -488,7 +527,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
@@ -498,7 +538,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
@@ -508,7 +549,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-origin',
+     *     long: 'transform-origin',
+     *     props: ['tfo', 'tran-org', 'transform-origin'],
      *     short: 'tfo'
      * }
      * @propDocEnd
@@ -518,7 +560,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
@@ -528,7 +571,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
@@ -538,7 +582,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transform-style',
+     *     long: 'transform-style',
+     *     props: ['tfs', 'tran-style', 'transform-style'],
      *     short: 'tfs'
      * }
      * @propDocEnd
@@ -548,7 +593,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
@@ -558,7 +604,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
@@ -568,7 +615,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition',
+     *     long: 'transition',
+     *     props: ['tr', 'trans', 'transition'],
      *     short: 'tr'
      * }
      * @propDocEnd
@@ -578,7 +626,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
@@ -588,7 +637,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
@@ -598,7 +648,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-delay',
+     *     long: 'transition-delay',
+     *     props: ['trD', 'trans-del', 'transition-delay'],
      *     short: 'trD'
      * }
      * @propDocEnd
@@ -608,7 +659,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
@@ -618,7 +670,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
@@ -628,7 +681,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-duration',
+     *     long: 'transition-duration',
+     *     props: ['trd', 'trans-dur', 'transition-duration'],
      *     short: 'trd'
      * }
      * @propDocEnd
@@ -638,7 +692,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
@@ -648,7 +703,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
@@ -658,7 +714,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-property',
+     *     long: 'transition-property',
+     *     props: ['trp', 'trans-prop', 'transition-property'],
      *     short: 'trp'
      * }
      * @propDocEnd
@@ -668,7 +725,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
@@ -678,7 +736,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
@@ -688,7 +747,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'transition-timing-function',
+     *     long: 'transition-timing-function',
+     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
      *     short: 'trt'
      * }
      * @propDocEnd
@@ -698,7 +758,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
@@ -708,7 +769,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
@@ -718,7 +780,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex',
+     *     long: 'flex',
+     *     props: ['f', 'fx', 'flex'],
      *     short: 'f'
      * }
      * @propDocEnd
@@ -728,7 +791,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
@@ -738,7 +802,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
@@ -748,7 +813,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-direction',
+     *     long: 'flex-direction',
+     *     props: ['fd', 'fx-dir', 'flex-direction'],
      *     short: 'fd'
      * }
      * @propDocEnd
@@ -758,7 +824,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
@@ -768,7 +835,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
@@ -778,7 +846,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-wrap',
+     *     long: 'flex-wrap',
+     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
      *     short: 'fw'
      * }
      * @propDocEnd
@@ -788,7 +857,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
@@ -798,7 +868,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
@@ -808,7 +879,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-basis',
+     *     long: 'flex-basis',
+     *     props: ['fb', 'fx-base', 'flex-basis'],
      *     short: 'fb'
      * }
      * @propDocEnd
@@ -818,7 +890,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
@@ -828,7 +901,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
@@ -838,7 +912,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-flow',
+     *     long: 'flex-flow',
+     *     props: ['ff', 'fx-flow', 'flex-flow'],
      *     short: 'ff'
      * }
      * @propDocEnd
@@ -848,7 +923,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
@@ -858,7 +934,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
@@ -868,7 +945,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-grow',
+     *     long: 'flex-grow',
+     *     props: ['fg', 'fx-grow', 'flex-grow'],
      *     short: 'fg'
      * }
      * @propDocEnd
@@ -878,7 +956,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
@@ -888,7 +967,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
@@ -898,7 +978,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'flex-shrink',
+     *     long: 'flex-shrink',
+     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
      *     short: 'fs'
      * }
      * @propDocEnd
@@ -908,7 +989,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
@@ -918,7 +1000,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
@@ -928,7 +1011,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-items',
+     *     long: 'align-items',
+     *     props: ['ai', 'al-items', 'align-items'],
      *     short: 'ai'
      * }
      * @propDocEnd
@@ -938,7 +1022,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
@@ -948,7 +1033,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
@@ -958,7 +1044,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-content',
+     *     long: 'align-content',
+     *     props: ['ac', 'al-content', 'align-content'],
      *     short: 'ac'
      * }
      * @propDocEnd
@@ -968,7 +1055,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
@@ -978,7 +1066,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
@@ -988,7 +1077,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-items',
+     *     long: 'justify-items',
+     *     props: ['ji', 'just-items', 'justify-items'],
      *     short: 'ji'
      * }
      * @propDocEnd
@@ -998,7 +1088,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
@@ -1008,7 +1099,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
@@ -1018,7 +1110,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-content',
+     *     long: 'justify-content',
+     *     props: ['jc', 'just-content', 'justify-content'],
      *     short: 'jc'
      * }
      * @propDocEnd
@@ -1028,7 +1121,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
@@ -1038,7 +1132,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
@@ -1048,7 +1143,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'align-self',
+     *     long: 'align-self',
+     *     props: ['aS', 'al-self', 'align-self'],
      *     short: 'aS'
      * }
      * @propDocEnd
@@ -1058,7 +1154,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
@@ -1068,7 +1165,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
@@ -1078,7 +1176,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'justify-self',
+     *     long: 'justify-self',
+     *     props: ['jS', 'just-self', 'justify-self'],
      *     short: 'jS'
      * }
      * @propDocEnd
@@ -1088,7 +1187,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font',
+     *     long: 'font',
+     *     props: ['ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
@@ -1098,7 +1198,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font',
+     *     long: 'font',
+     *     props: ['ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
@@ -1108,7 +1209,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
@@ -1118,7 +1220,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
@@ -1128,7 +1231,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-family',
+     *     long: 'font-family',
+     *     props: ['ftf', 'ft-family', 'font-family'],
      *     short: 'ftf'
      * }
      * @propDocEnd
@@ -1138,7 +1242,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
@@ -1148,7 +1253,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
@@ -1158,7 +1264,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-kerning',
+     *     long: 'font-kerning',
+     *     props: ['ftk', 'ft-kern', 'font-kerning'],
      *     short: 'ftk'
      * }
      * @propDocEnd
@@ -1168,7 +1275,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
@@ -1178,7 +1286,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
@@ -1188,7 +1297,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-size',
+     *     long: 'font-size',
+     *     props: ['fts', 'ft-size', 'font-size'],
      *     short: 'fts'
      * }
      * @propDocEnd
@@ -1198,7 +1308,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
@@ -1208,7 +1319,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
@@ -1218,7 +1330,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-stretch',
+     *     long: 'font-stretch',
+     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
      *     short: 'ftStr'
      * }
      * @propDocEnd
@@ -1228,7 +1341,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
@@ -1238,7 +1352,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
@@ -1248,7 +1363,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-style',
+     *     long: 'font-style',
+     *     props: ['ftSty', 'ft-style', 'font-style'],
      *     short: 'ftSty'
      * }
      * @propDocEnd
@@ -1258,7 +1374,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
@@ -1268,7 +1385,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
@@ -1278,7 +1396,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-variant',
+     *     long: 'font-variant',
+     *     props: ['ftv', 'ft-variant', 'font-variant'],
      *     short: 'ftv'
      * }
      * @propDocEnd
@@ -1288,7 +1407,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
@@ -1298,7 +1418,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
@@ -1308,7 +1429,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'font-weight',
+     *     long: 'font-weight',
+     *     props: ['ftw', 'ft-weight', 'font-weight'],
      *     short: 'ftw'
      * }
      * @propDocEnd
@@ -1318,7 +1440,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
@@ -1328,7 +1451,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
@@ -1338,7 +1462,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'letter-spacing',
+     *     long: 'letter-spacing',
+     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
      *     short: 'ls'
      * }
      * @propDocEnd
@@ -1348,7 +1473,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
@@ -1358,7 +1484,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
@@ -1368,7 +1495,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'line-height',
+     *     long: 'line-height',
+     *     props: ['lh', 'line-h', 'line-height'],
      *     short: 'lh'
      * }
      * @propDocEnd
@@ -1378,7 +1506,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
@@ -1388,7 +1517,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
@@ -1398,7 +1528,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-align',
+     *     long: 'text-align',
+     *     props: ['ta', 'txt-align', 'text-align'],
      *     short: 'ta'
      * }
      * @propDocEnd
@@ -1408,7 +1539,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
@@ -1418,7 +1550,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
@@ -1428,7 +1561,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-decoration',
+     *     long: 'text-decoration',
+     *     props: ['td', 'txt-decor', 'text-decoration'],
      *     short: 'td'
      * }
      * @propDocEnd
@@ -1438,7 +1572,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
@@ -1448,7 +1583,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
@@ -1458,7 +1594,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-indent',
+     *     long: 'text-indent',
+     *     props: ['ti', 'txt-in', 'text-indent'],
      *     short: 'ti'
      * }
      * @propDocEnd
@@ -1468,7 +1605,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
@@ -1478,7 +1616,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
@@ -1488,7 +1627,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-overflow',
+     *     long: 'text-overflow',
+     *     props: ['to', 'txt-flow', 'text-overflow'],
      *     short: 'to'
      * }
      * @propDocEnd
@@ -1498,7 +1638,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
@@ -1508,7 +1649,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
@@ -1518,7 +1660,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-shadow',
+     *     long: 'text-shadow',
+     *     props: ['ts', 'txt-shad', 'text-shadow'],
      *     short: 'ts'
      * }
      * @propDocEnd
@@ -1528,7 +1671,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
@@ -1538,7 +1682,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
@@ -1548,7 +1693,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'text-transform',
+     *     long: 'text-transform',
+     *     props: ['tt', 'txt-tranf', 'text-transform'],
      *     short: 'tt'
      * }
      * @propDocEnd
@@ -1558,7 +1704,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
@@ -1568,7 +1715,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
@@ -1578,7 +1726,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'vertical-align',
+     *     long: 'vertical-align',
+     *     props: ['va', 'v-align', 'vertical-align'],
      *     short: 'va'
      * }
      * @propDocEnd
@@ -1588,7 +1737,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
@@ -1598,7 +1748,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
@@ -1608,7 +1759,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'white-space',
+     *     long: 'white-space',
+     *     props: ['ws', 'w-space', 'white-space'],
      *     short: 'ws'
      * }
      * @propDocEnd
@@ -1618,7 +1770,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
@@ -1628,7 +1781,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
@@ -1638,7 +1792,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-break',
+     *     long: 'word-break',
+     *     props: ['wb', 'w-break', 'word-break'],
      *     short: 'wb'
      * }
      * @propDocEnd
@@ -1648,7 +1803,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
@@ -1658,7 +1814,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
@@ -1668,7 +1825,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-spacing',
+     *     long: 'word-spacing',
+     *     props: ['wS', 'w-spacing', 'word-spacing'],
      *     short: 'wS'
      * }
      * @propDocEnd
@@ -1678,7 +1836,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
@@ -1688,7 +1847,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
@@ -1698,7 +1858,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'word-wrap',
+     *     long: 'word-wrap',
+     *     props: ['ww', 'w-wrap', 'word-wrap'],
      *     short: 'ww'
      * }
      * @propDocEnd
@@ -1708,7 +1869,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
@@ -1718,7 +1880,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
@@ -1728,7 +1891,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style',
+     *     long: 'list-style',
+     *     props: ['l', 'list', 'list-style'],
      *     short: 'l'
      * }
      * @propDocEnd
@@ -1738,7 +1902,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
@@ -1748,7 +1913,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
@@ -1758,7 +1924,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-image',
+     *     long: 'list-style-image',
+     *     props: ['li', 'list-img', 'list-style-image'],
      *     short: 'li'
      * }
      * @propDocEnd
@@ -1768,7 +1935,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
@@ -1778,7 +1946,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
@@ -1788,7 +1957,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-position',
+     *     long: 'list-style-position',
+     *     props: ['lp', 'list-pos', 'list-style-position'],
      *     short: 'lp'
      * }
      * @propDocEnd
@@ -1798,7 +1968,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
@@ -1808,7 +1979,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
@@ -1818,7 +1990,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'list-style-type',
+     *     long: 'list-style-type',
+     *     props: ['lt', 'list-type', 'list-style-type'],
      *     short: 'lt'
      * }
      * @propDocEnd
@@ -1828,7 +2001,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
@@ -1838,7 +2012,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
@@ -1848,7 +2023,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin',
+     *     long: 'margin',
+     *     props: ['m', 'mar', 'margin'],
      *     short: 'm'
      * }
      * @propDocEnd
@@ -1858,7 +2034,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
@@ -1868,7 +2045,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
@@ -1878,7 +2056,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-top',
+     *     long: 'margin-top',
+     *     props: ['mT', 'mar-top', 'margin-top'],
      *     short: 'mT'
      * }
      * @propDocEnd
@@ -1888,7 +2067,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
@@ -1898,7 +2078,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
@@ -1908,7 +2089,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-right',
+     *     long: 'margin-right',
+     *     props: ['mR', 'mar-right', 'margin-right'],
      *     short: 'mR'
      * }
      * @propDocEnd
@@ -1918,7 +2100,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
@@ -1928,7 +2111,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
@@ -1938,7 +2122,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-bottom',
+     *     long: 'margin-bottom',
+     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
      *     short: 'mB'
      * }
      * @propDocEnd
@@ -1948,7 +2133,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
@@ -1958,7 +2144,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
@@ -1968,7 +2155,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'margin-left',
+     *     long: 'margin-left',
+     *     props: ['mL', 'mar-left', 'margin-left'],
      *     short: 'mL'
      * }
      * @propDocEnd
@@ -1978,7 +2166,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
@@ -1988,7 +2177,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
@@ -1998,7 +2188,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding',
+     *     long: 'padding',
+     *     props: ['p', 'pad', 'padding'],
      *     short: 'p'
      * }
      * @propDocEnd
@@ -2008,7 +2199,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
@@ -2018,7 +2210,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
@@ -2028,7 +2221,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-top',
+     *     long: 'padding-top',
+     *     props: ['pT', 'pad-top', 'padding-top'],
      *     short: 'pT'
      * }
      * @propDocEnd
@@ -2038,7 +2232,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
@@ -2048,7 +2243,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
@@ -2058,7 +2254,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-right',
+     *     long: 'padding-right',
+     *     props: ['pR', 'pad-right', 'padding-right'],
      *     short: 'pR'
      * }
      * @propDocEnd
@@ -2068,7 +2265,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
@@ -2078,7 +2276,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
@@ -2088,7 +2287,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-bottom',
+     *     long: 'padding-bottom',
+     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
      *     short: 'pB'
      * }
      * @propDocEnd
@@ -2098,7 +2298,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
@@ -2108,7 +2309,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
@@ -2118,7 +2320,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'padding-left',
+     *     long: 'padding-left',
+     *     props: ['pL', 'pad-left', 'padding-left'],
      *     short: 'pL'
      * }
      * @propDocEnd
@@ -2128,7 +2331,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background',
+     *     long: 'background',
+     *     props: ['bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
@@ -2138,7 +2342,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background',
+     *     long: 'background',
+     *     props: ['bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
@@ -2148,7 +2353,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
@@ -2158,7 +2364,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
@@ -2168,7 +2375,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-image',
+     *     long: 'background-image',
+     *     props: ['bgi', 'bg-img', 'background-image'],
      *     short: 'bgi'
      * }
      * @propDocEnd
@@ -2178,7 +2386,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
@@ -2188,7 +2397,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
@@ -2198,7 +2408,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-color',
+     *     long: 'background-color',
+     *     props: ['bgc', 'bg-color', 'background-color'],
      *     short: 'bgc'
      * }
      * @propDocEnd
@@ -2208,7 +2419,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
@@ -2218,7 +2430,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
@@ -2228,7 +2441,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-size',
+     *     long: 'background-size',
+     *     props: ['bgs', 'bg-size', 'background-size'],
      *     short: 'bgs'
      * }
      * @propDocEnd
@@ -2238,7 +2452,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
@@ -2248,7 +2463,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
@@ -2258,7 +2474,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-repeat',
+     *     long: 'background-repeat',
+     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
      *     short: 'bgr'
      * }
      * @propDocEnd
@@ -2268,7 +2485,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
@@ -2278,7 +2496,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
@@ -2288,7 +2507,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-position',
+     *     long: 'background-position',
+     *     props: ['bgp', 'bg-pos', 'background-position'],
      *     short: 'bgp'
      * }
      * @propDocEnd
@@ -2298,7 +2518,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
@@ -2308,7 +2529,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
@@ -2318,7 +2540,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-attachment',
+     *     long: 'background-attachment',
+     *     props: ['bga', 'bg-attach', 'background-attachment'],
      *     short: 'bga'
      * }
      * @propDocEnd
@@ -2328,7 +2551,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
@@ -2338,7 +2562,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
@@ -2348,7 +2573,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-blend-mode',
+     *     long: 'background-blend-mode',
+     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
      *     short: 'bgbm'
      * }
      * @propDocEnd
@@ -2358,7 +2584,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
@@ -2368,7 +2595,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
@@ -2378,7 +2606,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-clip',
+     *     long: 'background-clip',
+     *     props: ['bgC', 'bg-clip', 'background-clip'],
      *     short: 'bgC'
      * }
      * @propDocEnd
@@ -2388,7 +2617,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
@@ -2398,7 +2628,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
@@ -2408,7 +2639,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'background-origin',
+     *     long: 'background-origin',
+     *     props: ['bgo', 'bg-org', 'background-origin'],
      *     short: 'bgo'
      * }
      * @propDocEnd
@@ -2418,7 +2650,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
@@ -2428,7 +2661,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
@@ -2438,7 +2672,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'width',
+     *     long: 'width',
+     *     props: ['w', 'wid', 'width'],
      *     short: 'w'
      * }
      * @propDocEnd
@@ -2448,7 +2683,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
@@ -2458,7 +2694,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
@@ -2468,7 +2705,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'height',
+     *     long: 'height',
+     *     props: ['h', 'hei', 'height'],
      *     short: 'h'
      * }
      * @propDocEnd
@@ -2478,7 +2716,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
@@ -2488,7 +2727,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
@@ -2498,7 +2738,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-width',
+     *     long: 'min-width',
+     *     props: ['minW', 'min-wid', 'min-width'],
      *     short: 'minW'
      * }
      * @propDocEnd
@@ -2508,7 +2749,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
@@ -2518,7 +2760,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
@@ -2528,7 +2771,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'min-height',
+     *     long: 'min-height',
+     *     props: ['minH', 'min-hei', 'min-height'],
      *     short: 'minH'
      * }
      * @propDocEnd
@@ -2538,7 +2782,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
@@ -2548,7 +2793,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
@@ -2558,7 +2804,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-width',
+     *     long: 'max-width',
+     *     props: ['maxW', 'max-wid', 'max-width'],
      *     short: 'maxW'
      * }
      * @propDocEnd
@@ -2568,7 +2815,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
@@ -2578,7 +2826,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
@@ -2588,7 +2837,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'max-height',
+     *     long: 'max-height',
+     *     props: ['maxH', 'max-hei', 'max-height'],
      *     short: 'maxH'
      * }
      * @propDocEnd
@@ -2598,7 +2848,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
@@ -2608,7 +2859,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
@@ -2618,7 +2870,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid',
+     *     long: 'grid',
+     *     props: ['g', 'grd', 'grid'],
      *     short: 'g'
      * }
      * @propDocEnd
@@ -2628,7 +2881,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
@@ -2638,7 +2892,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
@@ -2648,7 +2903,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-area',
+     *     long: 'grid-area',
+     *     props: ['ga', 'gr-area', 'grid-area'],
      *     short: 'ga'
      * }
      * @propDocEnd
@@ -2658,7 +2914,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
@@ -2668,7 +2925,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
@@ -2678,7 +2936,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-columns',
+     *     long: 'grid-auto-columns',
+     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
      *     short: 'gac'
      * }
      * @propDocEnd
@@ -2688,7 +2947,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
@@ -2698,7 +2958,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
@@ -2708,7 +2969,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-flow',
+     *     long: 'grid-auto-flow',
+     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
      *     short: 'gaf'
      * }
      * @propDocEnd
@@ -2718,7 +2980,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
@@ -2728,7 +2991,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
@@ -2738,7 +3002,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-auto-rows',
+     *     long: 'grid-auto-rows',
+     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
      *     short: 'gar'
      * }
      * @propDocEnd
@@ -2748,7 +3013,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
@@ -2758,7 +3024,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
@@ -2768,7 +3035,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column',
+     *     long: 'grid-column',
+     *     props: ['gc', 'gr-col', 'grid-column'],
      *     short: 'gc'
      * }
      * @propDocEnd
@@ -2778,7 +3046,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
@@ -2788,7 +3057,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
@@ -2798,7 +3068,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-end',
+     *     long: 'grid-column-end',
+     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
      *     short: 'gce'
      * }
      * @propDocEnd
@@ -2808,7 +3079,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
@@ -2818,7 +3090,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
@@ -2828,7 +3101,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-gap',
+     *     long: 'grid-column-gap',
+     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
      *     short: 'gcg'
      * }
      * @propDocEnd
@@ -2838,7 +3112,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
@@ -2848,7 +3123,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
@@ -2858,7 +3134,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-column-start',
+     *     long: 'grid-column-start',
+     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
      *     short: 'gcs'
      * }
      * @propDocEnd
@@ -2868,7 +3145,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
@@ -2878,7 +3156,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
@@ -2888,7 +3167,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-gap',
+     *     long: 'grid-gap',
+     *     props: ['gg', 'gr-gap', 'grid-gap'],
      *     short: 'gg'
      * }
      * @propDocEnd
@@ -2898,7 +3178,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
@@ -2908,7 +3189,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
@@ -2918,7 +3200,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row',
+     *     long: 'grid-row',
+     *     props: ['gr', 'gr-row', 'grid-row'],
      *     short: 'gr'
      * }
      * @propDocEnd
@@ -2928,7 +3211,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
@@ -2938,7 +3222,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
@@ -2948,7 +3233,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-end',
+     *     long: 'grid-row-end',
+     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
      *     short: 'gre'
      * }
      * @propDocEnd
@@ -2958,7 +3244,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
@@ -2968,7 +3255,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
@@ -2978,7 +3266,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-gap',
+     *     long: 'grid-row-gap',
+     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
      *     short: 'grg'
      * }
      * @propDocEnd
@@ -2988,7 +3277,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
@@ -2998,7 +3288,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
@@ -3008,7 +3299,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-row-start',
+     *     long: 'grid-row-start',
+     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
      *     short: 'grs'
      * }
      * @propDocEnd
@@ -3018,7 +3310,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
@@ -3028,7 +3321,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
@@ -3038,7 +3332,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template',
+     *     long: 'grid-template',
+     *     props: ['gt', 'gr-tmpl', 'grid-template'],
      *     short: 'gt'
      * }
      * @propDocEnd
@@ -3048,7 +3343,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
@@ -3058,7 +3354,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
@@ -3068,7 +3365,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-areas',
+     *     long: 'grid-template-areas',
+     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
      *     short: 'gta'
      * }
      * @propDocEnd
@@ -3078,7 +3376,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
@@ -3088,7 +3387,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
@@ -3098,7 +3398,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-columns',
+     *     long: 'grid-template-columns',
+     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
      *     short: 'gtc'
      * }
      * @propDocEnd
@@ -3108,7 +3409,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
@@ -3118,7 +3420,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
@@ -3128,7 +3431,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'grid-template-rows',
+     *     long: 'grid-template-rows',
+     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
      *     short: 'gtr'
      * }
      * @propDocEnd
@@ -3138,7 +3442,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
@@ -3148,7 +3453,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
@@ -3158,7 +3464,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border',
+     *     long: 'border',
+     *     props: ['b', 'bd', 'border'],
      *     short: 'b'
      * }
      * @propDocEnd
@@ -3168,7 +3475,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
@@ -3178,7 +3486,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
@@ -3188,7 +3497,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom',
+     *     long: 'border-bottom',
+     *     props: ['bB', 'bd-bot', 'border-bottom'],
      *     short: 'bB'
      * }
      * @propDocEnd
@@ -3198,7 +3508,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
@@ -3208,7 +3519,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
@@ -3218,7 +3530,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-color',
+     *     long: 'border-bottom-color',
+     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
      *     short: 'bBc'
      * }
      * @propDocEnd
@@ -3228,7 +3541,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
@@ -3238,7 +3552,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
@@ -3248,7 +3563,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-left-radius',
+     *     long: 'border-bottom-left-radius',
+     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
      *     short: 'bBlr'
      * }
      * @propDocEnd
@@ -3258,7 +3574,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
@@ -3268,7 +3585,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
@@ -3278,7 +3596,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-right-radius',
+     *     long: 'border-bottom-right-radius',
+     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
      *     short: 'bBrr'
      * }
      * @propDocEnd
@@ -3288,7 +3607,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
@@ -3298,7 +3618,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
@@ -3308,7 +3629,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-style',
+     *     long: 'border-bottom-style',
+     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
      *     short: 'bBs'
      * }
      * @propDocEnd
@@ -3318,7 +3640,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
@@ -3328,7 +3651,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
@@ -3338,7 +3662,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-bottom-width',
+     *     long: 'border-bottom-width',
+     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
      *     short: 'bBw'
      * }
      * @propDocEnd
@@ -3348,7 +3673,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
@@ -3358,7 +3684,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
@@ -3368,7 +3695,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-collapse',
+     *     long: 'border-collapse',
+     *     props: ['bC', 'bd-coll', 'border-collapse'],
      *     short: 'bC'
      * }
      * @propDocEnd
@@ -3378,7 +3706,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
@@ -3388,7 +3717,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
@@ -3398,7 +3728,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-color',
+     *     long: 'border-color',
+     *     props: ['bc', 'bd-color', 'border-color'],
      *     short: 'bc'
      * }
      * @propDocEnd
@@ -3408,7 +3739,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
@@ -3418,7 +3750,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
@@ -3428,7 +3761,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image',
+     *     long: 'border-image',
+     *     props: ['bi', 'bd-img', 'border-image'],
      *     short: 'bi'
      * }
      * @propDocEnd
@@ -3438,7 +3772,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
@@ -3448,7 +3783,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
@@ -3458,7 +3794,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-outset',
+     *     long: 'border-image-outset',
+     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
      *     short: 'bio'
      * }
      * @propDocEnd
@@ -3468,7 +3805,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
@@ -3478,7 +3816,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
@@ -3488,7 +3827,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-repeat',
+     *     long: 'border-image-repeat',
+     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
      *     short: 'bir'
      * }
      * @propDocEnd
@@ -3498,7 +3838,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
@@ -3508,7 +3849,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
@@ -3518,7 +3860,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-slice',
+     *     long: 'border-image-slice',
+     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
      *     short: 'bis'
      * }
      * @propDocEnd
@@ -3528,7 +3871,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
@@ -3538,7 +3882,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
@@ -3548,7 +3893,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-source',
+     *     long: 'border-image-source',
+     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
      *     short: 'biSrc'
      * }
      * @propDocEnd
@@ -3558,7 +3904,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
@@ -3568,7 +3915,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
@@ -3578,7 +3926,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-image-width',
+     *     long: 'border-image-width',
+     *     props: ['biw', 'bd-img-width', 'border-image-width'],
      *     short: 'biw'
      * }
      * @propDocEnd
@@ -3588,7 +3937,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
@@ -3598,7 +3948,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
@@ -3608,7 +3959,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left',
+     *     long: 'border-left',
+     *     props: ['bL', 'bd-left', 'border-left'],
      *     short: 'bL'
      * }
      * @propDocEnd
@@ -3618,7 +3970,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
@@ -3628,7 +3981,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
@@ -3638,7 +3992,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-color',
+     *     long: 'border-left-color',
+     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
      *     short: 'bLc'
      * }
      * @propDocEnd
@@ -3648,7 +4003,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
@@ -3658,7 +4014,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
@@ -3668,7 +4025,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-style',
+     *     long: 'border-left-style',
+     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
      *     short: 'bLs'
      * }
      * @propDocEnd
@@ -3678,7 +4036,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
@@ -3688,7 +4047,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
@@ -3698,7 +4058,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-left-width',
+     *     long: 'border-left-width',
+     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
      *     short: 'bLw'
      * }
      * @propDocEnd
@@ -3708,7 +4069,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
@@ -3718,7 +4080,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
@@ -3728,7 +4091,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-radius',
+     *     long: 'border-radius',
+     *     props: ['br', 'bd-radius', 'border-radius'],
      *     short: 'br'
      * }
      * @propDocEnd
@@ -3738,7 +4102,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
@@ -3748,7 +4113,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
@@ -3758,7 +4124,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right',
+     *     long: 'border-right',
+     *     props: ['bR', 'bd-right', 'border-right'],
      *     short: 'bR'
      * }
      * @propDocEnd
@@ -3768,7 +4135,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
@@ -3778,7 +4146,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
@@ -3788,7 +4157,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-color',
+     *     long: 'border-right-color',
+     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
      *     short: 'bRc'
      * }
      * @propDocEnd
@@ -3798,7 +4168,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
@@ -3808,7 +4179,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
@@ -3818,7 +4190,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-style',
+     *     long: 'border-right-style',
+     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
      *     short: 'bRs'
      * }
      * @propDocEnd
@@ -3828,7 +4201,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
@@ -3838,7 +4212,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
@@ -3848,7 +4223,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-right-width',
+     *     long: 'border-right-width',
+     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
      *     short: 'bRw'
      * }
      * @propDocEnd
@@ -3858,7 +4234,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
@@ -3868,7 +4245,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
@@ -3878,7 +4256,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-spacing',
+     *     long: 'border-spacing',
+     *     props: ['bs', 'bd-spacing', 'border-spacing'],
      *     short: 'bs'
      * }
      * @propDocEnd
@@ -3888,7 +4267,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
@@ -3898,7 +4278,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
@@ -3908,7 +4289,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-style',
+     *     long: 'border-style',
+     *     props: ['bS', 'bd-style', 'border-style'],
      *     short: 'bS'
      * }
      * @propDocEnd
@@ -3918,7 +4300,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
@@ -3928,7 +4311,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
@@ -3938,7 +4322,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top',
+     *     long: 'border-top',
+     *     props: ['bT', 'bd-top', 'border-top'],
      *     short: 'bT'
      * }
      * @propDocEnd
@@ -3948,7 +4333,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
@@ -3958,7 +4344,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
@@ -3968,7 +4355,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-color',
+     *     long: 'border-top-color',
+     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
      *     short: 'bTc'
      * }
      * @propDocEnd
@@ -3978,7 +4366,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
@@ -3988,7 +4377,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
@@ -3998,7 +4388,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-left-radius',
+     *     long: 'border-top-left-radius',
+     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
      *     short: 'bTlr'
      * }
      * @propDocEnd
@@ -4008,7 +4399,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
@@ -4018,7 +4410,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
@@ -4028,7 +4421,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-right-radius',
+     *     long: 'border-top-right-radius',
+     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
      *     short: 'bTrr'
      * }
      * @propDocEnd
@@ -4038,7 +4432,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
@@ -4048,7 +4443,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
@@ -4058,7 +4454,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-style',
+     *     long: 'border-top-style',
+     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
      *     short: 'bTs'
      * }
      * @propDocEnd
@@ -4068,7 +4465,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
@@ -4078,7 +4476,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
@@ -4088,7 +4487,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-top-width',
+     *     long: 'border-top-width',
+     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
      *     short: 'bTw'
      * }
      * @propDocEnd
@@ -4098,7 +4498,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
@@ -4108,7 +4509,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
@@ -4118,7 +4520,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'border-width',
+     *     long: 'border-width',
+     *     props: ['bw', 'bd-width', 'border-width'],
      *     short: 'bw'
      * }
      * @propDocEnd
@@ -4128,7 +4531,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'clip',
+     *     long: 'clip',
+     *     props: ['clip'],
      *     short: 'clip'
      * }
      * @propDocEnd
@@ -4138,7 +4542,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'clip-path',
+     *     long: 'clip-path',
+     *     props: ['clipPath', 'clip-path'],
      *     short: 'clipPath'
      * }
      * @propDocEnd
@@ -4148,7 +4553,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'clip-path',
+     *     long: 'clip-path',
+     *     props: ['clipPath', 'clip-path'],
      *     short: 'clipPath'
      * }
      * @propDocEnd
@@ -4158,7 +4564,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
@@ -4168,7 +4575,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
@@ -4178,7 +4586,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'display',
+     *     long: 'display',
+     *     props: ['d', 'dsp', 'display'],
      *     short: 'd'
      * }
      * @propDocEnd
@@ -4188,7 +4597,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
@@ -4198,7 +4608,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
@@ -4208,7 +4619,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'position',
+     *     long: 'position',
+     *     props: ['P', 'pos', 'position'],
      *     short: 'P'
      * }
      * @propDocEnd
@@ -4218,7 +4630,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'top',
+     *     long: 'top',
+     *     props: ['T', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
@@ -4228,7 +4641,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'top',
+     *     long: 'top',
+     *     props: ['T', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
@@ -4238,7 +4652,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'right',
+     *     long: 'right',
+     *     props: ['R', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
@@ -4248,7 +4663,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'right',
+     *     long: 'right',
+     *     props: ['R', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
@@ -4258,7 +4674,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'bottom',
+     *     long: 'bottom',
+     *     props: ['B', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
@@ -4268,7 +4685,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'bottom',
+     *     long: 'bottom',
+     *     props: ['B', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
@@ -4278,7 +4696,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'left',
+     *     long: 'left',
+     *     props: ['L', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
@@ -4288,7 +4707,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'left',
+     *     long: 'left',
+     *     props: ['L', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
@@ -4298,7 +4718,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'z-index',
+     *     long: 'z-index',
+     *     props: ['zi', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
@@ -4308,7 +4729,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'z-index',
+     *     long: 'z-index',
+     *     props: ['zi', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
@@ -4318,7 +4740,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'color',
+     *     long: 'color',
+     *     props: ['c', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
@@ -4328,7 +4751,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'color',
+     *     long: 'color',
+     *     props: ['c', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
@@ -4338,7 +4762,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
@@ -4348,7 +4773,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
@@ -4358,7 +4784,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow',
+     *     long: 'overflow',
+     *     props: ['o', 'over', 'overflow'],
      *     short: 'o'
      * }
      * @propDocEnd
@@ -4368,7 +4795,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
@@ -4378,7 +4806,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
@@ -4388,7 +4817,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-x',
+     *     long: 'overflow-x',
+     *     props: ['ox', 'over-x', 'overflow-x'],
      *     short: 'ox'
      * }
      * @propDocEnd
@@ -4398,7 +4828,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
@@ -4408,7 +4839,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
@@ -4418,7 +4850,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'overflow-y',
+     *     long: 'overflow-y',
+     *     props: ['oy', 'over-y', 'overflow-y'],
      *     short: 'oy'
      * }
      * @propDocEnd
@@ -4428,7 +4861,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'float',
+     *     long: 'float',
+     *     props: ['fl', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
@@ -4438,7 +4872,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'float',
+     *     long: 'float',
+     *     props: ['fl', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
@@ -4448,7 +4883,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'clear',
+     *     long: 'clear',
+     *     props: ['clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
@@ -4458,7 +4894,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'clear',
+     *     long: 'clear',
+     *     props: ['clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
@@ -4468,7 +4905,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'visibility',
+     *     long: 'visibility',
+     *     props: ['v', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
@@ -4478,7 +4916,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'visibility',
+     *     long: 'visibility',
+     *     props: ['v', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
@@ -4488,7 +4927,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'columns',
+     *     long: 'columns',
+     *     props: ['col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
@@ -4498,7 +4938,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'columns',
+     *     long: 'columns',
+     *     props: ['col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
@@ -4508,7 +4949,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
@@ -4518,7 +4960,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
@@ -4528,7 +4971,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-count',
+     *     long: 'column-count',
+     *     props: ['cc', 'col-count', 'column-count'],
      *     short: 'cc'
      * }
      * @propDocEnd
@@ -4538,7 +4982,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
@@ -4548,7 +4993,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
@@ -4558,7 +5004,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-fill',
+     *     long: 'column-fill',
+     *     props: ['cf', 'col-fill', 'column-fill'],
      *     short: 'cf'
      * }
      * @propDocEnd
@@ -4568,7 +5015,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
@@ -4578,7 +5026,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
@@ -4588,7 +5037,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-gap',
+     *     long: 'column-gap',
+     *     props: ['cg', 'col-gap', 'column-gap'],
      *     short: 'cg'
      * }
      * @propDocEnd
@@ -4598,7 +5048,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
@@ -4608,7 +5059,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
@@ -4618,7 +5070,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule',
+     *     long: 'column-rule',
+     *     props: ['cr', 'col-rule', 'column-rule'],
      *     short: 'cr'
      * }
      * @propDocEnd
@@ -4628,7 +5081,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
@@ -4638,7 +5092,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
@@ -4648,7 +5103,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-color',
+     *     long: 'column-rule-color',
+     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
      *     short: 'crc'
      * }
      * @propDocEnd
@@ -4658,7 +5114,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
@@ -4668,7 +5125,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
@@ -4678,7 +5136,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-style',
+     *     long: 'column-rule-style',
+     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
      *     short: 'crs'
      * }
      * @propDocEnd
@@ -4688,7 +5147,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
@@ -4698,7 +5158,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
@@ -4708,7 +5169,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-rule-width',
+     *     long: 'column-rule-width',
+     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
      *     short: 'crw'
      * }
      * @propDocEnd
@@ -4718,7 +5180,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
@@ -4728,7 +5191,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
@@ -4738,7 +5202,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-span',
+     *     long: 'column-span',
+     *     props: ['cs', 'col-span', 'column-span'],
      *     short: 'cs'
      * }
      * @propDocEnd
@@ -4748,7 +5213,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
@@ -4758,7 +5224,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
@@ -4768,7 +5235,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'column-width',
+     *     long: 'column-width',
+     *     props: ['cw', 'col-width', 'column-width'],
      *     short: 'cw'
      * }
      * @propDocEnd
@@ -4778,7 +5246,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
@@ -4788,7 +5257,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
@@ -4798,7 +5268,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-after',
+     *     long: 'page-break-after',
+     *     props: ['pba', 'pb-after', 'page-break-after'],
      *     short: 'pba'
      * }
      * @propDocEnd
@@ -4808,7 +5279,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
@@ -4818,7 +5290,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
@@ -4828,7 +5301,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-before',
+     *     long: 'page-break-before',
+     *     props: ['pbb', 'pb-before', 'page-break-before'],
      *     short: 'pbb'
      * }
      * @propDocEnd
@@ -4838,7 +5312,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
@@ -4848,7 +5323,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
@@ -4858,7 +5334,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'page-break-inside',
+     *     long: 'page-break-inside',
+     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
      *     short: 'pbi'
      * }
      * @propDocEnd
@@ -4868,7 +5345,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
@@ -4878,7 +5356,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
@@ -4888,7 +5367,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-shadow',
+     *     long: 'box-shadow',
+     *     props: ['shd', 'shadow', 'box-shadow'],
      *     short: 'shd'
      * }
      * @propDocEnd
@@ -4898,7 +5378,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
@@ -4908,7 +5389,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
@@ -4918,7 +5400,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'box-sizing',
+     *     long: 'box-sizing',
+     *     props: ['siz', 'sizing', 'box-sizing'],
      *     short: 'siz'
      * }
      * @propDocEnd
@@ -4928,7 +5411,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
@@ -4938,7 +5422,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
@@ -4948,7 +5433,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-fit',
+     *     long: 'object-fit',
+     *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
      * }
      * @propDocEnd
@@ -4958,7 +5444,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
@@ -4968,7 +5455,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
@@ -4978,7 +5466,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'object-position',
+     *     long: 'object-position',
+     *     props: ['oP', 'obj-pos', 'object-position'],
      *     short: 'oP'
      * }
      * @propDocEnd
@@ -4988,7 +5477,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'opacity',
+     *     long: 'opacity',
+     *     props: ['op', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
@@ -4998,7 +5488,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'opacity',
+     *     long: 'opacity',
+     *     props: ['op', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
@@ -5008,7 +5499,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'order',
+     *     long: 'order',
+     *     props: ['or', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
@@ -5018,7 +5510,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'order',
+     *     long: 'order',
+     *     props: ['or', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
@@ -5028,7 +5521,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'outline',
+     *     long: 'outline',
+     *     props: ['ol', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
@@ -5038,7 +5532,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'outline',
+     *     long: 'outline',
+     *     props: ['ol', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
@@ -5048,7 +5543,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
@@ -5058,7 +5554,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
@@ -5068,7 +5565,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'mix-blend-mode',
+     *     long: 'mix-blend-mode',
+     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
      *     short: 'mbm'
      * }
      * @propDocEnd
@@ -5078,7 +5576,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'content',
+     *     long: 'content',
+     *     props: ['ct', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
@@ -5088,7 +5587,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'content',
+     *     long: 'content',
+     *     props: ['ct', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
@@ -5098,7 +5598,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'cursor',
+     *     long: 'cursor',
+     *     props: ['cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
@@ -5108,7 +5609,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'cursor',
+     *     long: 'cursor',
+     *     props: ['cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
@@ -5118,7 +5620,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
@@ -5128,7 +5631,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
@@ -5138,7 +5642,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'pointer-events',
+     *     long: 'pointer-events',
+     *     props: ['pe', 'p-events', 'pointer-events'],
      *     short: 'pe'
      * }
      * @propDocEnd
@@ -5148,7 +5653,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'filter',
+     *     long: 'filter',
+     *     props: ['fil', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
@@ -5158,7 +5664,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'filter',
+     *     long: 'filter',
+     *     props: ['fil', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
@@ -5168,7 +5675,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
@@ -5178,7 +5686,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
@@ -5188,7 +5697,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scroll-behavior',
+     *     long: 'scroll-behavior',
+     *     props: ['sb', 's-behavior', 'scroll-behavior'],
      *     short: 'sb'
      * }
      * @propDocEnd
@@ -5198,7 +5708,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
@@ -5208,7 +5719,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
@@ -5218,7 +5730,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-width',
+     *     long: 'scrollbar-width',
+     *     props: ['sw', 's-width', 'scrollbar-width'],
      *     short: 'sw'
      * }
      * @propDocEnd
@@ -5228,7 +5741,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
@@ -5238,7 +5752,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
@@ -5248,7 +5763,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'scrollbar-height',
+     *     long: 'scrollbar-height',
+     *     props: ['sh', 's-height', 'scrollbar-height'],
      *     short: 'sh'
      * }
      * @propDocEnd
@@ -5258,7 +5774,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
@@ -5268,7 +5785,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
@@ -5278,7 +5796,8 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
-     *     prop: 'user-select',
+     *     long: 'user-select',
+     *     props: ['us', 'u-select', 'user-select'],
      *     short: 'us'
      * }
      * @propDocEnd
