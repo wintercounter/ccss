@@ -19,8 +19,8 @@ export type CCSSToCSSRule = (
 export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
 
 export interface CCSSDefaultOutputFunction {
-    (): string
     (): Object
+    (): string
 }
 
 export interface CCSSOutputTransformer {

@@ -238,7 +238,7 @@ const getPropTableObject = () => {
     return tableObject
 }
 
-export const createProps = <T>(overrides?: T): T => {
+export const createProps = <T>(overrides?: T): T & Partial<CCSSProps> => {
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {

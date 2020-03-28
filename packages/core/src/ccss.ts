@@ -27,9 +27,9 @@ const generate = (v: Partial<CCSSProps>, options): string => {
     return generated
 }
 
-export const defaultOptions = createOptions<CCSSOptions>()
+export const defaultOptions = createOptions()
 
-export const createCCSS = <T extends CCSSOptions>(options: T = defaultOptions): CCSSPrivateFunction => {
+export const createCCSS = (options: Partial<CCSSOptions> = defaultOptions): CCSSPrivateFunction => {
     const __ccss = (ccssProps: CCSSInput) => generate(ccssProps, options)
     options.__ccss = __ccss
     return __ccss
