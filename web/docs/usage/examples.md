@@ -5,7 +5,7 @@ title: Examples
 
 There are already multiple ways to utilize **CCSS** in your codebase,
 however currently only CSS-in-JS solutions are being covered. Please
-note you can also use `emotion` or any other solution that requires CSS text.
+note you can also use `emotion` or any other `CSS-in-JS` solution.
 
 ## Styled-components + JSX
 
