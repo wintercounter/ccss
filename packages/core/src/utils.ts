@@ -35,3 +35,16 @@ export function mergeDeep<T>(target: T, source: Partial<T>): Partial<T> {
 }
 
 export const camelify = t => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())
+
+export const memoize = (func: typeof Function) => {
+    var memo = {} as any
+    var slice = Array.prototype.slice
+
+    return function() {
+        var args = slice.call(arguments)
+        // @ts-ignore
+        if (args in memo) return memo[args]
+        // @ts-ignore
+        else return (memo[args] = func.apply(this, args))
+    }
+}
