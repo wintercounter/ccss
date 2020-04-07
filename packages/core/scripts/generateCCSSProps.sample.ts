@@ -1,101 +1,3 @@
-import { Properties as CSSProperties } from 'csstype'
-
-export type StringTransformer = (generated: string, descriptor: string) => string
-
-export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
-
-export type CCSSInput = any
-
-export type CCSSPrivateFunction = (...args: CCSSInput[]) => string
-
-export type CCSSToCSSRule = (
-    cssProp: string,
-    objectProp: string,
-    input: CCSSInput,
-    prop: string,
-    options: CCSSOptions
-) => CSSProperties | string
-
-export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
-
-export interface CCSSDefaultOutputFunction {
-    (): Object
-    (): string
-}
-
-export interface CCSSOutputTransformer {
-    (generated: string, descriptor: string): string
-    (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
-    toCSSRule: CCSSToCSSRule
-    toPseudo: CCSSToPseudoChild
-    defaultOutput: CCSSDefaultOutputFunction
-    toChild: CCSSToPseudoChild
-    unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
-}
-
-export interface CCSSOptions {
-    /**
-     * Unit to use globally for number values.
-     */
-    unit: string
-    /**
-     * Function the applies unit to a value
-     */
-    applyUnit: (value: number) => string
-
-    /**
-     * Tells how to transform the final output
-     */
-    outputTransformer: CCSSOutputTransformer
-
-    /**
-     * All supported properties
-     */
-    props: Partial<CCSSProps>
-
-    /**
-     * Keys and values to `mapValue` against
-     */
-    valueMap: Partial<CCSSValueMap>
-
-    /**
-     * Map of supported pseudo selectors
-     */
-    pseudoMap: Partial<CCSSPseudoMap>
-
-    __ccss: CCSSPrivateFunction
-}
-
-export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSInput) => CCSSInput
-
-export type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
-
-export type CCSSValueMap = { [key: string]: any }
-
-export type CCSSPseudoMap = { [key: string]: string }
-
-// TODO: Refactor these Old types and interface
-
-export type TCCSSCoreProp = {
-    [key: string]: string | number | TCCSSCoreProp | (string | number | TCCSSCoreProp)[] | undefined
-}
-export type TNestedInput = { [key: string]: TNestedInput | string | number }
-export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
-export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
-export type TMediaQueryInput = [any | string, string][]
-export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
-
-export interface IOptions extends Partial<any> {
-    unit: string
-    applyUnit: (n: number) => string
-}
-
-/*
- *  ************************** WARNING **************************
- *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateCCSSProps.ts file.
- *  ************************** WARNING **************************
- */
 export interface CCSSProps {
     /**
      * Tells CCSS should let through unsupported properties in the output.
@@ -104,12 +6,12 @@ export interface CCSSProps {
      * @example -webkit-transform
      */
     unsupported: boolean | string[]
-    
+
     /**
      * Define custom CSS text.
      */
     styleText?: (v: string) => string
-    
+
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *

@@ -107,7 +107,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['maxH', 'max-hei', 'max-height', mapValue, parseSingle],
 
         // Grid
-        ['g', 'gr', 'grid'],
+        ['g', 'grd', 'grid'],
         ['ga', 'gr-area', 'grid-area'],
         ['gac', 'gr-auto-cols', 'grid-auto-columns'],
         ['gaf', 'gr-auto-flow', 'grid-auto-flow'],

@@ -37,6 +37,12 @@ const getTfoBgpPos = () => ({
     tl: 'top left'
 })
 
+const getFalseNone = () => ({
+    n: 'none',
+    // @ts-ignore
+    [false]: 'none'
+})
+
 export const createValueMap = (overrides?) =>
     mergeDeep(
         {
@@ -47,9 +53,7 @@ export const createValueMap = (overrides?) =>
                 ar: 'alternate-reverse'
             },
             afm: {
-                n: 'none',
-                // @ts-ignore
-                [false]: 'none',
+                ...getFalseNone(),
                 fwd: 'forwards',
                 bwd: 'backwards',
                 b: 'both'
@@ -84,9 +88,7 @@ export const createValueMap = (overrides?) =>
                 s: 'sticky'
             },
             d: {
-                // @ts-ignore
-                [false]: 'none',
-                n: 'none',
+                ...getFalseNone(),
                 i: 'inline',
                 if: 'inline-flex',
                 ib: 'inline-block',
@@ -100,16 +102,12 @@ export const createValueMap = (overrides?) =>
             ox: getOverflows(),
             oy: getOverflows(),
             fl: {
-                // @ts-ignore
-                [false]: 'none',
-                n: 'none',
+                ...getFalseNone(),
                 l: 'left',
                 r: 'right'
             },
             clr: {
-                // @ts-ignore
-                [false]: 'none',
-                n: 'none',
+                ...getFalseNone(),
                 l: 'left',
                 r: 'right',
                 // @ts-ignore
@@ -132,9 +130,7 @@ export const createValueMap = (overrides?) =>
                 r: 'right'
             },
             td: {
-                n: 'none',
-                // @ts-ignore
-                [false]: 'none',
+                ...getFalseNone(),
                 u: 'underline',
                 o: 'overline',
                 t: 'line-through'
@@ -144,9 +140,7 @@ export const createValueMap = (overrides?) =>
                 e: 'ellipsis'
             },
             tt: {
-                n: 'none',
-                // @ts-ignore
-                [false]: 'none',
+                ...getFalseNone(),
                 c: 'capitalize',
                 u: 'uppercase',
                 l: 'lowercase'
@@ -205,9 +199,7 @@ export const createValueMap = (overrides?) =>
                 b: 'break-word'
             },
             lstS: {
-                // @ts-ignore
-                [false]: 'none',
-                n: 'none'
+                ...getFalseNone()
             },
             lstST: {
                 // @ts-ignore
@@ -326,9 +318,7 @@ export const createValueMap = (overrides?) =>
                 // @ts-ignore
                 [true]: 'auto',
                 a: 'auto',
-                // @ts-ignore
-                [false]: 'none',
-                n: 'none'
+                ...getFalseNone()
             },
             sb: {
                 a: 'auto',
@@ -346,7 +336,10 @@ export const createValueMap = (overrides?) =>
             sh: {
                 n: 'none'
             },
-            tfo: getTfoBgpPos()
+            tfo: getTfoBgpPos(),
+            shd: {
+                ...getFalseNone()
+            }
         },
         overrides
     )
