@@ -17,9 +17,9 @@ import fs from 'fs'
 import glob from 'glob'
 import fetch from 'fetch-cheerio-object'
 import TurndownService from 'turndown'
+import { memoize } from 'lodash'
 
 import { createValueMap } from '../src/createMaps'
-import { memoize } from '../src/utils'
 const valueMap = createValueMap()
 
 const DIST = path.resolve(__dirname, '../dist')
