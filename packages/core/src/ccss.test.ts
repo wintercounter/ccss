@@ -67,7 +67,7 @@ describe('ccss tests', () => {
         it('pseudo', () => {
             expect(
                 ccss({
-                    ':b': { d: 'b' }
+                    '::b': { d: 'b' }
                 }).trim()
             ).toBe(`:before {
         display: block;
@@ -76,7 +76,7 @@ describe('ccss tests', () => {
         it('pseudo:object', () => {
             expect(
                 ccssObject({
-                    ':b': { d: 'b' }
+                    '::b': { d: 'b' }
                 })
             ).toStrictEqual({
                 ':before': {
@@ -189,6 +189,22 @@ describe('ccss tests', () => {
                     unsupported: ['foo']
                 })
             ).toStrictEqual({ foo: 'bar' })
+        })
+
+        it('can handle functions as value', () => {
+            expect(
+                ccssObject({
+                    d: () => 'b'
+                })
+            ).toStrictEqual({ display: 'block' })
+        })
+
+        it('can handle functions as value:object', () => {
+            expect(
+                ccss({
+                    d: () => 'b'
+                })
+            ).toBe(`display: block;`)
         })
     })
 })
