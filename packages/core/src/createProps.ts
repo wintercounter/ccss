@@ -197,7 +197,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['pbi', 'pb-inside', 'page-break-inside'],
 
         // Box
-        ['shd', 'shadow', 'box-shadow', mapValue],
+        ['shd', 'shadow', 'box-shadow', mapValue, parseArray],
         ['siz', 'sizing', 'box-sizing', mapValue],
 
         // Misc

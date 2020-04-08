@@ -12,7 +12,8 @@ const generate = (v: Partial<CCSSProps>, options): string => {
         }
         // Found such prop, process it
         else if (options.props[k]) {
-            const value = options.props[k](v[k], k, options, v)
+            const vk = 'function' === typeof v[k] ? v[k](k, options, v) : v[k]
+            const value = options.props[k](vk, k, options, v)
 
             // We don't handle undefined values
             if (value !== undefined) {
