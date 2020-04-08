@@ -17,8 +17,12 @@ export const createOptions = <T>(overrides?: T | (T & Partial<CCSSOptions>)): T 
 
     // Add pseudos
     if (options.pseudoMap) {
-        for (const k of Object.keys(options.pseudoMap)) {
-            if (options.props) options.props[k] = parsePseudo
+        for (const [k, v] of Object.entries(options.pseudoMap)) {
+            if (options.props) {
+                options.props[k] = parsePseudo
+                options.props[`:${v}`] = parsePseudo
+                options.props[`::${v}`] = parsePseudo
+            }
         }
     }
 

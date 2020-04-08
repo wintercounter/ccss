@@ -346,11 +346,11 @@ export const createValueMap = (overrides?) =>
 
 export const createPseudoMap = (overrides?: Partial<CCSSPseudoMap>): Partial<CCSSPseudoMap> => {
     const pseudoMap = {
-        ':ac': 'active',
-        ':a': 'after',
+        ':a': 'active',
+        '::a': 'after',
         ':al': 'any-link',
-        ':b': 'before',
-        ':bl': 'blank',
+        '::b': 'before',
+        ':b': 'blank',
         ':c': 'checked',
         ':cur': 'current',
         ':def': 'default',
