@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/wintercounter/ccss/compare/v3.1.0...v3.2.0) (2020-04-08)
+
+**Note:** Version bump only for package @cryptic-css/prop-mid
+
+
+
+
+
+
 # [3.1.0](https://github.com/wintercounter/ccss/compare/v3.0.2...v3.1.0) (2020-03-22)
 
 **Note:** Version bump only for package @cryptic-css/prop-mid

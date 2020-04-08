@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/wintercounter/ccss/compare/v3.1.0...v3.2.0) (2020-04-08)
+
+
+### Bug Fixes
+
+* remove custom memoize function in favor of lodash/memoize ([9e557da](https://github.com/wintercounter/ccss/commit/9e557dac2808240ab3b3689a0aea08822ebb3cf2))
+* **types:** correct types. Using `TS type intersections` ([2484730](https://github.com/wintercounter/ccss/commit/2484730e2f677e11c48ae63306ab3a12c54196cb))
+
+
+### Features
+
+* **core:** added some types to most common functions ([d968c1f](https://github.com/wintercounter/ccss/commit/d968c1f45bf4e7add3a7ef1b490ad0301a49482e))
+* **core:** allow passing functions as value ([d71c6aa](https://github.com/wintercounter/ccss/commit/d71c6aa992f8bece06856b4ba1d8439bba7b6b76))
+* **core:** generating types based on `getPropTable` data ([724169f](https://github.com/wintercounter/ccss/commit/724169ff72e2cd3d14e5e4754c1c75fedc09a4d4))
+* **core:** updated scripts to generate `props` and `dts` ([928603a](https://github.com/wintercounter/ccss/commit/928603aa8d5e59eee40428d73d9958fa69d77f75))
+* **props:** `parseArray` added to all values that are supposed to support numeric values inside an expression, eg: `border: [1, 'solid', '[#000](https://github.com/wintercounter/ccss/issues/000)'] ([d7eaa28](https://github.com/wintercounter/ccss/commit/d7eaa286ad50e4e19574c2e445ba633e7ec81b53))
+* **pseudo:** add support for pseudo long names also directly as root props, eg. `ccss({ '::after': { ... } })` ([f857595](https://github.com/wintercounter/ccss/commit/f8575954f1dc6def6ec52eea2b375e0a9903efb0))
+* use prepared object for false/none values ([3a508a1](https://github.com/wintercounter/ccss/commit/3a508a15fb9a1224214f8ea2245ae9e7be5f8073))
+
+
+
+
+
+
 # [3.1.0](https://github.com/wintercounter/ccss/compare/v3.0.2...v3.1.0) (2020-03-22)
 
 

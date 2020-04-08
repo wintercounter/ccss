@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/styled",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "description": "Re-exports styled-components with CCSS support.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/styled#readme",
@@ -27,7 +27,7 @@
         "styled-components": "^5.0.1"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^3.1.0"
+        "@cryptic-css/core": "^3.2.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
 }
