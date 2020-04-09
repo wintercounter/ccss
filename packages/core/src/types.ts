@@ -27,7 +27,6 @@ export interface CCSSOutputTransformer {
     (generated: string, descriptor: string): string
     (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
     toCSSRule: CCSSToCSSRule
-    toPseudo: CCSSToPseudoChild
     defaultOutput: CCSSDefaultOutputFunction
     toChild: CCSSToPseudoChild
     unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
@@ -104,12 +103,12 @@ export interface CCSSProps {
      * @example -webkit-transform
      */
     unsupported: boolean | string[]
-    
+
     /**
      * Define custom CSS text.
      */
     styleText?: (v: string) => string
-    
+
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *

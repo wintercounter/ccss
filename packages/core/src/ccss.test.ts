@@ -69,7 +69,7 @@ describe('ccss tests', () => {
                 ccss({
                     '::b': { d: 'b' }
                 }).trim()
-            ).toBe(`:before {
+            ).toBe(`::before {
         display: block;
     }`)
         })
@@ -79,10 +79,28 @@ describe('ccss tests', () => {
                     '::b': { d: 'b' }
                 })
             ).toStrictEqual({
-                ':before': {
+                '::before': {
                     display: 'block'
                 }
             })
+        })
+        it('pseudo:long', () => {
+            expect(
+                ccss({
+                    '::before': { d: 'b' }
+                }).trim()
+            ).toBe(`::before {
+        display: block;
+    }`)
+        })
+        it('pseudo:long 2', () => {
+            expect(
+                ccss({
+                    ':hover': { d: 'b' }
+                }).trim()
+            ).toBe(`:hover {
+        display: block;
+    }`)
         })
         it('child/pseudo', () => {
             expect(

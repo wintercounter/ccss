@@ -41,8 +41,7 @@ export const pipe: CCSSPipe = function(...fs) {
     }
 }
 
-export const parsePseudo: CCSSParser = (input, prop, options) =>
-    options.outputTransformer.toPseudo(input, prop, options)
+export const parsePseudo: CCSSParser = (input, prop, options) => options.outputTransformer.toChild(input, prop, options)
 
 export const child: CCSSParser = (input, prop, options, original) => {
     let generated = options.outputTransformer.defaultOutput()

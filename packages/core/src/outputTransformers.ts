@@ -7,14 +7,9 @@ objectOutputTransformer.type = Object
 objectOutputTransformer.toCSSRule = (cssProp, objectCSSProp, input) => {
     return input === undefined ? {} : { [objectCSSProp]: input }
 }
-objectOutputTransformer.toPseudo = (input, prop, options) => {
-    return {
-        [`:${options.pseudoMap[prop]}`]: options.__ccss(input)
-    }
-}
 objectOutputTransformer.toChild = (input, prop, options) => {
     return {
-        [prop]: options.__ccss(input)
+        [options.pseudoMap[prop] || prop]: options.__ccss(input)
     }
 }
 objectOutputTransformer.unsupportedHandler = (generated, input, prop) => {
@@ -31,15 +26,9 @@ stringOutputTransformer.type = String
 stringOutputTransformer.toCSSRule = (cssProp, objectCSSProp, input) => {
     return input === undefined ? '' : `${cssProp}: ${input};`
 }
-stringOutputTransformer.toPseudo = (input, prop, options) => {
-    return `
-    :${options.pseudoMap[prop]} {
-        ${options.__ccss(input)}
-    }`
-}
 stringOutputTransformer.toChild = (input, prop, options) => {
     return `
-    ${prop} {
+    ${options.pseudoMap[prop] || prop} {
         ${options.__ccss(input)}
     }`
 }
