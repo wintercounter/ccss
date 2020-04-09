@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/wintercounter/ccss/compare/v3.2.0...v3.2.1) (2020-04-09)
+
+
+### Bug Fixes
+
+* **pseudo:** long names could result in undefined ([a476959](https://github.com/wintercounter/ccss/commit/a47695953c60b80c9bd498764f9917ed1c8ef412))
+
+
+
+
+
 # [3.2.0](https://github.com/wintercounter/ccss/compare/v3.1.0...v3.2.0) (2020-04-08)
 
 
