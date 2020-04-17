@@ -103,12 +103,12 @@ export interface CCSSProps {
      * @example -webkit-transform
      */
     unsupported: boolean | string[]
-
+    
     /**
      * Define custom CSS text.
      */
     styleText?: (v: string) => string
-
+    
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *
@@ -5831,6 +5831,171 @@ export interface CCSSProps {
      * @propDocEnd
      */
     'user-select'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-touch-callout',
+     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
+     *     short: 'wtc'
+     * }
+     * @propDocEnd
+     */
+    wtc?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-touch-callout',
+     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
+     *     short: 'wtc'
+     * }
+     * @propDocEnd
+     */
+    'webkit-touch-callout'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-touch-callout',
+     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
+     *     short: 'wtc'
+     * }
+     * @propDocEnd
+     */
+    '-webkit-touch-callout'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-overflow-scrolling',
+     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
+     *     short: 'wos'
+     * }
+     * @propDocEnd
+     */
+    wos?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-overflow-scrolling',
+     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
+     *     short: 'wos'
+     * }
+     * @propDocEnd
+     */
+    'webkit-overflow-scrolling'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-overflow-scrolling',
+     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
+     *     short: 'wos'
+     * }
+     * @propDocEnd
+     */
+    '-webkit-overflow-scrolling'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-tap-highlight-color',
+     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
+     *     short: 'wthc'
+     * }
+     * @propDocEnd
+     */
+    wthc?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-tap-highlight-color',
+     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
+     *     short: 'wthc'
+     * }
+     * @propDocEnd
+     */
+    'webkit-tap-highlight-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-tap-highlight-color',
+     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
+     *     short: 'wthc'
+     * }
+     * @propDocEnd
+     */
+    '-webkit-tap-highlight-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-text-fill-color',
+     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
+     *     short: 'wtfc'
+     * }
+     * @propDocEnd
+     */
+    wtfc?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-text-fill-color',
+     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
+     *     short: 'wtfc'
+     * }
+     * @propDocEnd
+     */
+    'webkit-text-fill-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-text-fill-color',
+     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
+     *     short: 'wtfc'
+     * }
+     * @propDocEnd
+     */
+    '-webkit-text-fill-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-user-drag',
+     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
+     *     short: 'wud'
+     * }
+     * @propDocEnd
+     */
+    wud?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-user-drag',
+     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
+     *     short: 'wud'
+     * }
+     * @propDocEnd
+     */
+    'webkit-user-drag'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: '-webkit-user-drag',
+     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
+     *     short: 'wud'
+     * }
+     * @propDocEnd
+     */
+    '-webkit-user-drag'?: TCSSPropValue
 }
 
 /*

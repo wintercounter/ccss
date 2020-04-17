@@ -7,7 +7,7 @@
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
         "build": "mhy bb --mhy-env=prod",
-        "publish": "lerna exec \"npm i\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits",
+        "publish": "lerna exec \"npm i\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits --forcePublish",
         "config": "mhy config eslint prettier -io && lerna run config"
     },
     "repository": {
