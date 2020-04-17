@@ -214,7 +214,14 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['sb', 's-behavior', 'scroll-behavior', mapValue],
         ['sw', 's-width', 'scrollbar-width', mapValue],
         ['sh', 's-height', 'scrollbar-height', mapValue],
-        ['us', 'u-select', 'user-select', mapValue]
+        ['us', 'u-select', 'user-select', mapValue],
+
+        // Webkit
+        ['wtc', 'webkit-touch-callout', '-webkit-touch-callout', mapValue],
+        ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling', mapValue],
+        ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color', mapValue],
+        ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color', mapValue],
+        ['wud', 'webkit-user-drag', '-webkit-user-drag', mapValue]
     ]
 }
 
