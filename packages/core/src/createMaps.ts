@@ -339,6 +339,19 @@ export const createValueMap = (overrides?) =>
             tfo: getTfoBgpPos(),
             shd: {
                 ...getFalseNone()
+            },
+            wtc: {
+                d: 'default',
+                n: 'none'
+            },
+            wos: {
+                a: 'auto',
+                t: 'touch'
+            },
+            wud: {
+                a: 'auto',
+                e: 'element',
+                n: 'none'
             }
         },
         overrides
@@ -348,6 +361,7 @@ export const createPseudoMap = (overrides?: Partial<CCSSPseudoMap>): Partial<CCS
     const pseudoMap = {
         ':a': ':active',
         '::a': '::after',
+        '::a, ::b': '::after, ::before',
         ':al': ':any-link',
         '::b': '::before',
         ':b': ':blank',
