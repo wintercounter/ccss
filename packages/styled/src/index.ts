@@ -5,12 +5,13 @@ const s = styled
 
 const noop = () => {}
 
-export const createStyledCCSS = ({ __ccss, props }) => {
+export const createStyledCCSS = ({ __ccss, props, defaultProps }) => {
     // Handle React stuff!
     props.theme = props.theme || noop
     props.children = props.children || noop
 
     const Ui = s.div(__ccss)
+    Ui.defaultProps = defaultProps
     const tagged = (tag = 'div') => (p: ICCSSProps) => {
         const css = __ccss(p)
         return s[tag]<ICCSSProps>(() => css, __ccss)
@@ -22,7 +23,9 @@ export const createStyledCCSS = ({ __ccss, props }) => {
     for (const tag in styled) {
         if (Object.prototype.hasOwnProperty.call(styled, tag)) {
             Ui[tag] = s[tag](__ccss)
+            Ui[tag].defaultProps = defaultProps
             ccssd[tag] = tagged(tag)
+            ccssd[tag].defaultProps = defaultProps
         }
     }
     return {
