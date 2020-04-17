@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/wintercounter/ccss/compare/v3.2.1...v3.3.0) (2020-04-17)
+
+
+### Features
+
+* **prop:** add support boolean value for opacity ([17a4302](https://github.com/wintercounter/ccss/commit/17a4302a9f4d7a12af459b0f2f86fd00252ecb13))
+* **props:** add support for the most popular, non-standard webkit prefixed CSS properties ([3a6e6b3](https://github.com/wintercounter/ccss/commit/3a6e6b361a5425c1266ad822009810f1699dd755))
+* **pseudo:** add support for the popular `::before, ::after` combo together ([624591c](https://github.com/wintercounter/ccss/commit/624591cf1c5cebd923a32b12486655b783899c84))
+
+
+
+
+
 ## [3.2.1](https://github.com/wintercounter/ccss/compare/v3.2.0...v3.2.1) (2020-04-09)
 
 
