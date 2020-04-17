@@ -336,6 +336,12 @@ export const createValueMap = (overrides?) =>
             sh: {
                 n: 'none'
             },
+            op: {
+                // @ts-ignore
+                [true]: 1,
+                // @ts-ignore
+                [false]: 0
+            },
             tfo: getTfoBgpPos(),
             shd: {
                 ...getFalseNone()
