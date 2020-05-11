@@ -201,6 +201,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['siz', 'sizing', 'box-sizing', mapValue],
 
         // Misc
+        ['cn', 'cont', 'contain', mapValue],
         ['of', 'obj-fit', 'object-fit', mapValue],
         ['oP', 'obj-pos', 'object-position'],
         ['op', 'opacity', 'opacity', mapValue],

@@ -358,6 +358,15 @@ export const createValueMap = (overrides?) =>
                 a: 'auto',
                 e: 'element',
                 n: 'none'
+            },
+            cn: {
+                n: 'none',
+                s: 'strict',
+                c: 'content',
+                si: 'size',
+                l: 'layout',
+                st: 'style',
+                p: 'paint'
             }
         },
         overrides
