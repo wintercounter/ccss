@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/wintercounter/ccss/compare/v3.3.0...v3.4.0) (2020-05-11)
+
+
+### Features
+
+* **props:** add support for `contain` property ([ccaeee7](https://github.com/wintercounter/ccss/commit/ccaeee76016bbb0130d443d21c7af5d09c43dc6c))
+
+
+
+
+
 # [3.3.0](https://github.com/wintercounter/ccss/compare/v3.2.1...v3.3.0) (2020-04-17)
 
 
