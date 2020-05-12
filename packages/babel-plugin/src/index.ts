@@ -1,22 +1,17 @@
-import path from 'path'
-
-const supportedAttributes = {
-    display: {
-        long: 'display',
-        short: 'd'
-    },
-    d: {
-        long: 'display',
-        short: 'd'
-    },
-    disp: {
-        long: 'display',
-        short: 'd'
+const getIdentifierByValueType = (value, t) => {
+    if (typeof value === 'string') {
+        return t.stringLiteral(value)
     }
-}
 
-const valueMap = {
-    b: 'block'
+    if (typeof value === 'boolean') {
+        return t.jsxExpressionContainer(t.booleanLiteral(value))
+    }
+
+    if (typeof value === 'number') {
+        return t.jsxExpressionContainer(t.numericLiteral(value))
+    }
+
+    return null
 }
 
 /**
@@ -34,7 +29,8 @@ const valueMap = {
 
 const styles = new Map()
 let charCode = 161
-let ccss
+let ccss, ccssOptions
+const ccssPropMap = {}
 
 export default api => {
     const { types: t } = api
@@ -52,9 +48,18 @@ export default api => {
                 } = {}
             } = state
             ccss = eval(expressions.ccss)
+            ccssOptions = eval(expressions.options)
+            for (const [short, light, long] of ccssOptions.props._propTable) {
+                const camelShort = toCamelCase(short)
+                const camelLight = toCamelCase(light)
+                const camelLong = toCamelCase(long)
+                ccssPropMap[camelShort] = { short, light, long, camelShort, camelLight, camelLong }
+                ccssPropMap[camelLight] = { short, light, long, camelShort, camelLight, camelLong }
+                ccssPropMap[camelLong] = { short, light, long, camelShort, camelLight, camelLong }
+            }
         },
         post(path, state) {
-            console.log(state)
+            //console.log(state)
         },
         visitor: {
             JSXOpeningElement(path, state) {
@@ -68,9 +73,11 @@ export default api => {
                 }
 
                 // Filter will remove unnecessary attributes
-                path.node.attributes = path.node.attributes.filter(attr => {
-                    // Only if it's a CCSS attribute
-                    if (attr?.name?.name && supportedAttributes[attr.name.name]) {
+                path.node.attributes = path.node.attributes
+                    .map(attr => {
+                        // Not supported attr, keep it as is
+                        if (!attr?.name?.name || !ccssPropMap[attr.name.name]) return attr
+
                         const attrName = attr.name.name
 
                         switch (true) {
@@ -86,11 +93,16 @@ export default api => {
 
                                 classNames.push(selector)
                                 return false
-                        }
-                    }
 
-                    return true
-                })
+                            // Not static value
+                            default:
+                                return t.jSXAttribute(
+                                    t.jSXIdentifier(ccssPropMap[attrName].camelShort),
+                                    getIdentifierByValueType(attr.value.expression.value, t)
+                                )
+                        }
+                    })
+                    .filter(x => x)
 
                 if (!classNames) return
 
@@ -105,3 +117,5 @@ export default api => {
         }
     }
 }
+
+const toCamelCase = (t: string): string => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())

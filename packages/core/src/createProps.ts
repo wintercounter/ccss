@@ -228,6 +228,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 const getPropTableObject = () => {
     const tableObject = {} as Partial<CCSSProps>
     const table = getPropTable()
+    tableObject._propTable = table
 
     for (const [short, light, long, ...modifiers] of table) {
         const longCamel = toCamelCase(long)
