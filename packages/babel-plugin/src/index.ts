@@ -1,3 +1,8 @@
+import fs from 'fs'
+import path from 'path'
+
+import * as classNameStrategies from './classNameStrategies'
+
 const getIdentifierByValueType = (value, t) => {
     if (typeof value === 'string') {
         return t.stringLiteral(value)
@@ -28,15 +33,23 @@ const getIdentifierByValueType = (value, t) => {
  */
 
 const styles = new Map()
-let charCode = 161
+
 let ccss, ccssOptions
 const ccssPropMap = {}
+const valueMapTypes = {
+    string: true,
+    object: true,
+    number: true
+}
 
 export default api => {
     const { types: t } = api
 
     return {
         pre(state) {
+            state.opts.generatorOpts.jsescOption = {
+                minimal: true
+            }
             if (ccss) return
 
             const {
@@ -58,17 +71,33 @@ export default api => {
                 ccssPropMap[camelLong] = { short, light, long, camelShort, camelLight, camelLong }
             }
         },
-        post(path, state) {
-            //console.log(state)
+        post(state) {
+            const folderPath = state.opts.generatorOpts.filename.split(path.sep)
+            const filename = folderPath.pop()
+            fs.writeFileSync(
+                `${folderPath.join(path.sep)}${path.sep}__${filename}.css`,
+                [...styles.entries()].reduce(
+                    (acc, [rules, className]) =>
+                        acc +
+                        `.${className}{
+    ${rules}
+}
+`,
+                    ''
+                ),
+                { mode: 0o755 }
+            )
         },
         visitor: {
             JSXOpeningElement(path, state) {
                 const classNames = []
                 const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
-                const { opts: { identifiers } = { identifiers: [] } } = state
+                const {
+                    opts: { identifiers, classNameStrategy } = { identifiers: {}, classNameStrategy: 'unicode' }
+                } = state
 
                 // Not supported JSX tagName
-                if (!identifiers.includes(path.node.name.name)) {
+                if (!identifiers[path.node.name.name]) {
                     return
                 }
 
@@ -87,7 +116,7 @@ export default api => {
                                 let selector = styles.get(css)
 
                                 if (!selector) {
-                                    selector = String.fromCharCode(charCode++)
+                                    selector = classNameStrategies[classNameStrategy](attrName, attr.value.value)
                                     styles.set(css, selector)
                                 }
 
@@ -96,10 +125,11 @@ export default api => {
 
                             // Not static value
                             default:
-                                return t.jSXAttribute(
-                                    t.jSXIdentifier(ccssPropMap[attrName].camelShort),
-                                    getIdentifierByValueType(attr.value.expression.value, t)
-                                )
+                                const v = attr.value.expression.value
+                                const short = ccssPropMap[attrName].camelShort
+                                const vm = ccssOptions.valueMap[short]
+                                const value = valueMapTypes[typeof v] && vm && vm.hasOwnProperty(v) ? vm[v] : v
+                                return t.jSXAttribute(t.jSXIdentifier(short), getIdentifierByValueType(value, t))
                         }
                     })
                     .filter(x => x)

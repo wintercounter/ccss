@@ -2,20 +2,25 @@
  * @jest-environment node
  */
 
+import path from 'path'
 import pluginTester from 'babel-plugin-tester/pure'
-import plugin from '.'
+import plugin from '../'
 
 pluginTester({
     pluginName: 'babel-plugin-ccss',
     plugin,
     pluginOptions: {
-        identifiers: ['Ui']
+        identifiers: {
+            Ui: true
+        },
+        classNameStrategy: 'testing'
     },
     babelOptions: {
         plugins: [require.resolve('mhy_modules/@babel/plugin-syntax-jsx/lib/index.js')]
     },
+    fixtures: path.join(__dirname, '__fixtures__'),
     filename: __filename,
-    tests: [
+    /*tests: [
         {
             title: 'first test',
             // todo with already having classname
@@ -29,5 +34,5 @@ pluginTester({
             code: 'const x = <Ui display="block" fontSize={1} child={{}} gap={gap} />;',
             output: 'const x = <Ui className="d-b fs-1" child={{}} gap={gap} />;'
         }
-    ]
+    ]*/
 })
