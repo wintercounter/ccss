@@ -1,4 +1,6 @@
-const supportedSingleProp = <Ui className="displayblock" />;
-const supportedSinglePropWithExistingClassName = <Ui className="cls displayblock" />;
-const supportedMultiProp = <Ui className="displayblock text_aligncenter" />;
-const supportedMultiPropWithExistingClassName = <Ui className="cls displayblock text_aligncenter" />;
+const supportedSingleProp = <div className="displayblock" />;
+const supportedSinglePropWithExistingClassName = <div className="cls displayblock" />;
+const supportedMultiProp = <div className="displayblock text_aligncenter" />;
+const supportedMultiPropWithExistingClassName = <div className="cls displayblock text_aligncenter" />;
+const tagProperty = <h2 />;
+const keepsOnNonStaticProp = <Ui margin={foo} />;

@@ -2,22 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 import * as classNameStrategies from './classNameStrategies'
-
-const getIdentifierByValueType = (value, t) => {
-    if (typeof value === 'string') {
-        return t.stringLiteral(value)
-    }
-
-    if (typeof value === 'boolean') {
-        return t.jsxExpressionContainer(t.booleanLiteral(value))
-    }
-
-    if (typeof value === 'number') {
-        return t.jsxExpressionContainer(t.numericLiteral(value))
-    }
-
-    return null
-}
+import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType } from '@/helpers'
 
 /**
  * TODO
@@ -72,6 +57,10 @@ export default api => {
             }
         },
         post(state) {
+            // If there is no file, where we should write??? (during simple tests there is no filename)
+            if (!state.opts.generatorOpts.filename) {
+                return
+            }
             const folderPath = state.opts.generatorOpts.filename.split(path.sep)
             const filename = folderPath.pop()
             fs.writeFileSync(
@@ -96,10 +85,12 @@ export default api => {
                     opts: { identifiers, classNameStrategy } = { identifiers: {}, classNameStrategy: 'unicode' }
                 } = state
 
-                // Not supported JSX tagName
-                if (!identifiers[path.node.name.name]) {
-                    return
-                }
+                if (!isCCSSTag(path, state)) return
+
+                const tagName = path.node.name.property?.name || 'div'
+
+                let cssPropCount = 0
+                let staticPropCount = 0
 
                 // Filter will remove unnecessary attributes
                 path.node.attributes = path.node.attributes
@@ -107,11 +98,15 @@ export default api => {
                         // Not supported attr, keep it as is
                         if (!attr?.name?.name || !ccssPropMap[attr.name.name]) return attr
 
+                        cssPropCount++
+
                         const attrName = attr.name.name
 
                         switch (true) {
                             // Simple string
-                            case attr.value && attr.value.type === 'StringLiteral':
+                            case attr.value && t.isStringLiteral(attr.value) /*.type === 'StringLiteral'*/:
+                                staticPropCount++
+
                                 const css = ccss({ [attrName]: attr.value.value })
                                 let selector = styles.get(css)
 
@@ -128,13 +123,30 @@ export default api => {
                                 const v = attr.value.expression.value
                                 const short = ccssPropMap[attrName].camelShort
                                 const vm = ccssOptions.valueMap[short]
+
+                                // No short value, just rename the prop
+                                if (!vm) {
+                                    attr.name.name = short
+                                    return attr
+                                }
+
                                 const value = valueMapTypes[typeof v] && vm && vm.hasOwnProperty(v) ? vm[v] : v
-                                return t.jSXAttribute(t.jSXIdentifier(short), getIdentifierByValueType(value, t))
+                                attr.value = getIdentifierByValueType(value, t)
+                                return attr
+
+                            /* return t.jSXAttribute(t.jSXIdentifier(short)) */
                         }
                     })
                     .filter(x => x)
 
-                if (!classNames) return
+                // All ccss props could be extracted as static
+                // Rename it to htmlTagName
+                if (staticPropCount === cssPropCount) {
+                    // JSXMemberExpression to JSXIdentifier (Ui.h2 to h2)
+                    covertToStringLiteralTag(path, state, tagName)
+                }
+
+                if (!classNames.length) return
 
                 if (classNameNode) {
                     classNameNode.value.value += ` ${classNames.join(' ')}`
@@ -143,6 +155,13 @@ export default api => {
 
                 const newProp = t.jSXAttribute(t.jSXIdentifier('className'), t.stringLiteral(classNames.join(' ')))
                 path.node.attributes.push(newProp)
+            },
+            JSXClosingElement(path, state) {
+                const openingName = path.parent.openingElement.name.name
+                // We only change it to stringLiteral. If not name/nem, it's something else.
+                if (!openingName || !isCCSSTag(path, state)) return
+
+                covertToStringLiteralTag(path, state, openingName)
             }
         }
     }
