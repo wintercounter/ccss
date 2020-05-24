@@ -2,19 +2,24 @@ import fs from 'fs'
 import path from 'path'
 
 import * as classNameStrategies from './classNameStrategies'
-import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType } from '@/helpers'
+import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
 
 /**
  * TODO
- * - If no css, no Ui
- * - If only static props, no Ui
- * - Handle Ui.tagName
- * - Add support for more custom tags
- * - Handle className when className is not a string
- * - Handle cases when it's number
- * - Handle cases when it's non primitive, it has to stay dynamic
- * - Check can we precompile something dynamic?
- * - Handle tagged literal strings
+ * [X] If no css, no Ui
+ * [X] If only static props, no Ui
+ * [X] Handle Ui.tagName
+ * [X] Add support for more custom tags
+ * [X] Handle className when className is not a string
+ * [X] Handle cases when it's number
+ * [X] Handle cases when it's non primitive, it has to stay dynamic
+ * [X] Check if we can precompile something dynamic?
+ * [X] Handle tagged literal strings
+ * [X] Make it static if only HTML attributes are left
+ * [X] Handle array values
+ * [ ] Handle child
+ * [ ] Handle mq
+ * [ ]
  */
 
 const styles = new Map()
@@ -79,11 +84,9 @@ export default api => {
         },
         visitor: {
             JSXOpeningElement(path, state) {
-                const classNames = []
+                const classNames: string[] = []
                 const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
-                const {
-                    opts: { identifiers, classNameStrategy } = { identifiers: {}, classNameStrategy: 'unicode' }
-                } = state
+                const { opts: { classNameStrategy = {}, constants = {} } = {} } = state
 
                 if (!isCCSSTag(path, state)) return
 
@@ -100,42 +103,39 @@ export default api => {
 
                         cssPropCount++
 
-                        const attrName = attr.name.name
+                        const attrDetails = getAttrDetails(attr, state, t)
 
-                        switch (true) {
-                            // Simple string
-                            case attr.value && t.isStringLiteral(attr.value) /*.type === 'StringLiteral'*/:
-                                staticPropCount++
+                        // Fully static prop
+                        if (attrDetails?.isStatic) {
+                            const { name: attrName, value: attrValue } = attrDetails
 
-                                const css = ccss({ [attrName]: attr.value.value })
-                                let selector = styles.get(css)
+                            staticPropCount++
 
-                                if (!selector) {
-                                    selector = classNameStrategies[classNameStrategy](attrName, attr.value.value)
-                                    styles.set(css, selector)
-                                }
+                            const css = ccss({ [attrName]: attrValue })
+                            let selector = styles.get(css)
 
-                                classNames.push(selector)
-                                return false
+                            if (!selector) {
+                                selector = classNameStrategies[classNameStrategy](attrName, attrValue)
+                                styles.set(css, selector)
+                            }
 
-                            // Not static value
-                            default:
-                                const v = attr.value.expression.value
-                                const short = ccssPropMap[attrName].camelShort
-                                const vm = ccssOptions.valueMap[short]
-
-                                // No short value, just rename the prop
-                                if (!vm) {
-                                    attr.name.name = short
-                                    return attr
-                                }
-
-                                const value = valueMapTypes[typeof v] && vm && vm.hasOwnProperty(v) ? vm[v] : v
-                                attr.value = getIdentifierByValueType(value, t)
-                                return attr
-
-                            /* return t.jSXAttribute(t.jSXIdentifier(short)) */
+                            classNames.push(selector)
+                            return false
                         }
+
+                        const v = attr.value.expression.value
+                        const short = ccssPropMap[attr.name.name].camelShort
+                        const vm = ccssOptions.valueMap[short]
+
+                        // No short value, just rename the prop
+                        if (!vm) {
+                            attr.name.name = short
+                            return attr
+                        }
+
+                        const value = valueMapTypes[typeof v] && vm && vm.hasOwnProperty(v) ? vm[v] : v
+                        attr.value = getIdentifierByValueType(value, t)
+                        return attr
                     })
                     .filter(x => x)
 
@@ -149,7 +149,15 @@ export default api => {
                 if (!classNames.length) return
 
                 if (classNameNode) {
-                    classNameNode.value.value += ` ${classNames.join(' ')}`
+                    if (t.isJSXExpressionContainer(classNameNode.value)) {
+                        classNameNode.value.expression = t.binaryExpression(
+                            '+',
+                            t.stringLiteral(`${classNames.join(' ')} `),
+                            classNameNode.value.expression
+                        )
+                    } else {
+                        classNameNode.value.value += ` ${classNames.join(' ')}`
+                    }
                     return
                 }
 

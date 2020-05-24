@@ -1,7 +1,7 @@
 {
-    "name": "@cryptic-css/babel-plugin",
-    "version": "3.3.0",
-    "description": "Add support for the `scroll` prop to easily create horizontal/vertical/both scrollable elements.",
+    "name": "@cryptic-css/babel-plugin-styled",
+    "version": "1.0.0",
+    "description": "Babel plugin for Styled-components with CCSS.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
     "license": "MIT",
