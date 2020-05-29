@@ -149,12 +149,30 @@ pluginTester({
             title: 'handles having both at the same time',
             code: 'const x = <Ui fontSize={foo} margin={1} />;',
             output: 'const x = <Ui fts={foo} className="margin_1" />;'
-        }
-        /*
+        },
         {
-            title: 'handles mq prop',
-            code: 'const x = <Ui margin={[1,2,3,4]} />;',
-            output: 'const x = <div className="font_size__bar" />;'
-        },*/
+            title: 'handles child => static',
+            code: 'const x = <Ui child={{ sel: { margin: 1 }}} />;',
+            output: 'const x = <div className="child' +
+                '___sel____margin__1__" />;'
+        },
+        {
+            title: 'handles child => dynamic',
+            code: 'const x = <Ui child={{ sel: { margin: foo }}} />;',
+            output: `const x = <Ui child={{
+  sel: {
+    margin: foo
+  }
+}} />;`
+        },
+        {
+            title: 'handles child => static+dynamic',
+            code: 'const x = <Ui child={{ sel: { margin: 1, padding: foo }}} />;',
+            output: `const x = <Ui child={{
+  sel: {
+    padding: foo
+  }
+}} className="child___sel____margin__1__" />;`
+        }
     ]
 })

@@ -15,5 +15,13 @@ const replace = x =>
         return '_'
     })
 export const testing = (attr, value) => {
-    return replace(`${replace(attr)} ${replace(Array.isArray(value) ? value.join('-') : value.toString())}`)
+    return replace(
+        `${replace(attr)} ${replace(
+            Array.isArray(value)
+                ? value.join('-')
+                : typeof value === 'object'
+                ? JSON.stringify(value)
+                : value.toString()
+        )}`
+    )
 }
