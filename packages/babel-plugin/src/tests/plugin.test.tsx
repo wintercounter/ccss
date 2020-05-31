@@ -27,7 +27,10 @@ pluginTester({
                 Foo: 'Bar'
             }
         },
-        classNameStrategy: 'testing'
+        classNameStrategy: 'testing',
+        pureProps: ['mq'],
+        impureProps: []
+
     },
     babelOptions: {
         plugins: [require.resolve('mhy_modules/@babel/plugin-syntax-jsx/lib/index.js')]
@@ -123,7 +126,7 @@ pluginTester({
         {
             title: 'handles array values => static',
             code: 'const x = <Ui margin={[1,2,3,4]} />;',
-            output: 'const x = <div className="margin_1_2_3_4" />;'
+            output: 'const x = <div className="margin__1_2_3_4_" />;'
         },
         {
             title: 'handles array values => non-static',
@@ -133,7 +136,7 @@ pluginTester({
         {
             title: 'handles array values => static:resolved',
             code: 'const x = <Ui margin={[1,Ui.FontSize.Small,3,4]} />;',
-            output: 'const x = <div className="margin_1_10_3_4" />;'
+            output: 'const x = <div className="margin__1_10_3_4_" />;'
         },
         {
             title: 'handles non-ccss attributes',
@@ -154,14 +157,14 @@ pluginTester({
             title: 'handles child => static',
             code: 'const x = <Ui child={{ sel: { margin: 1 }}} />;',
             output: 'const x = <div className="child' +
-                '___sel____margin__1__" />;'
+                '___sel____m__1__" />;'
         },
         {
             title: 'handles child => dynamic',
             code: 'const x = <Ui child={{ sel: { margin: foo }}} />;',
             output: `const x = <Ui child={{
   sel: {
-    margin: foo
+    m: foo
   }
 }} />;`
         },
@@ -170,9 +173,37 @@ pluginTester({
             code: 'const x = <Ui child={{ sel: { margin: 1, padding: foo }}} />;',
             output: `const x = <Ui child={{
   sel: {
-    padding: foo
+    p: foo
   }
-}} className="child___sel____margin__1__" />;`
+}} className="child___sel____m__1__" />;`
+        },
+        {
+            title: 'handles mq => static',
+            code: `const x = <Ui mq={['m', { margin: 1 }]} />;`,
+            output: `const x = <div className="mq___m____m__1__" />;`
+        },
+        {
+            title: 'handles mq => dynamic',
+            code: `const x = <Ui mq={['m', { margin: foo }]} />;`,
+            output: `const x = <Ui mq={['m', {
+  m: foo
+}]} />;`
+        },
+        {
+            title: 'handles mq => static and dynamic',
+            code: `const x = <Ui mq={['m', { margin: foo, padding: 1 }]} />;`,
+            output: `const x = <Ui mq={['m', {
+  m: foo
+}]} className="mq___m____p__1__" />;`
+        },
+        {
+            title: 'handles mq => static and dynamic and multilevel',
+            code: `const x = <Ui mq={[['m', { margin: foo, padding: 1 }], ['t', { margin: 2, padding: bar }]]} />;`,
+            output: `const x = <Ui mq={[['m', {
+  m: foo
+}], ['t', {
+  p: bar
+}]]} className="mq____m____p__1_____t____m__2___" />;`
         }
     ]
 })

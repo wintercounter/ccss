@@ -32,7 +32,7 @@ const valueMapTypes = {
     number: true
 }
 
-export default api => {
+export default (api, opts = {}) => {
     const { types: t } = api
 
     return {
@@ -43,22 +43,47 @@ export default api => {
             if (ccss) return
 
             const {
-                opts: {
-                    expressions = {
-                        ccss: `require('ccss').default`,
-                        options: `require('ccss').defaultOptions`
-                    }
-                } = {}
-            } = state
+                expressions = {
+                    ccss: `require('ccss').default`,
+                    options: `require('ccss').defaultOptions`
+                }
+            } = opts
             ccss = eval(expressions.ccss)
             ccssOptions = eval(expressions.options)
             for (const [short, light, long] of ccssOptions.props._propTable) {
                 const camelShort = toCamelCase(short)
                 const camelLight = toCamelCase(light)
                 const camelLong = toCamelCase(long)
-                ccssPropMap[camelShort] = { short, light, long, camelShort, camelLight, camelLong, isCSSProp: true }
-                ccssPropMap[camelLight] = { short, light, long, camelShort, camelLight, camelLong, isCSSProp: true }
-                ccssPropMap[camelLong] = { short, light, long, camelShort, camelLight, camelLong, isCSSProp: true }
+                ccssPropMap[camelShort] = {
+                    short,
+                    light,
+                    long,
+                    camelShort,
+                    camelLight,
+                    camelLong,
+                    isCSSProp: true,
+                    processor: ccssOptions.props[camelShort]
+                }
+                ccssPropMap[camelLight] = {
+                    short,
+                    light,
+                    long,
+                    camelShort,
+                    camelLight,
+                    camelLong,
+                    isCSSProp: true,
+                    processor: ccssOptions.props[camelLight]
+                }
+                ccssPropMap[camelLong] = {
+                    short,
+                    light,
+                    long,
+                    camelShort,
+                    camelLight,
+                    camelLong,
+                    isCSSProp: true,
+                    processor: ccssOptions.props[camelLong]
+                }
             }
             for (const k of Object.keys(ccssOptions.props)) {
                 ccssPropMap[k] = ccssPropMap[k] || {
@@ -68,7 +93,8 @@ export default api => {
                     camelShort: k,
                     camelLight: k,
                     camelLong: k,
-                    isCSSProp: false
+                    isCSSProp: false,
+                    processor: ccssOptions.props[k]
                 }
             }
         },
@@ -97,10 +123,11 @@ export default api => {
             JSXOpeningElement(path, state) {
                 const classNames: string[] = []
                 const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
-                const { opts: { classNameStrategy = {}, constants = {} } = {} } = state
+                const { opts: { classNameStrategy = {} } = {} } = state
 
                 if (!isCCSSTag(path, state)) return
 
+                state.opts.ccssPropMap = ccssPropMap
                 const tagName = path.node.name.property?.name || 'div'
 
                 let cssPropCount = 0
@@ -111,27 +138,28 @@ export default api => {
                     .map(attr => {
                         // Not supported attr, keep it as is
                         if (!attr?.name?.name || !ccssPropMap[attr.name.name]) return attr
-
                         cssPropCount++
-                        attr.isCSSProp = ccssPropMap[attr.name.name].isCSSProp
+                        attr.descriptor = attr.descriptor || ccssPropMap[attr.name.name]
                         const attrDetails = getAttrDetails(attr, state, t)
 
-                        // Fully static or extracted prop
+                        //console.log('attrDetails', attrDetails)
+
+                        // We could extract some values
                         if (
-                            attrDetails?.isStatic ||
-                            (attrDetails?.isExtracted && Object.keys(attrDetails?.value).length)
+                            attrDetails?.pureValue !== undefined &&
+                            (attrDetails?.isStatic || attrDetails?.isExtracted)
                         ) {
-                            const { name: attrName, value: attrValue, isStatic } = attrDetails
+                            const { name, pureValue, ccssValue, isStatic } = attrDetails
 
                             if (isStatic) {
                                 staticPropCount++
                             }
 
-                            const css = ccss({ [attrName]: attrValue })
+                            const css = ccss(ccssValue)
                             let selector = styles.get(css)
 
                             if (!selector) {
-                                selector = classNameStrategies[classNameStrategy](attrName, attrValue)
+                                selector = classNameStrategies[classNameStrategy](name, pureValue)
                                 styles.set(css, selector)
                             }
 
