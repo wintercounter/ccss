@@ -27,10 +27,7 @@ pluginTester({
                 Foo: 'Bar'
             }
         },
-        classNameStrategy: 'testing',
-        pureProps: ['mq'],
-        impureProps: []
-
+        classNameStrategy: 'testing'
     },
     babelOptions: {
         plugins: [require.resolve('mhy_modules/@babel/plugin-syntax-jsx/lib/index.js')]
@@ -156,8 +153,7 @@ pluginTester({
         {
             title: 'handles child => static',
             code: 'const x = <Ui child={{ sel: { margin: 1 }}} />;',
-            output: 'const x = <div className="child' +
-                '___sel____m__1__" />;'
+            output: 'const x = <div className="child' + '___sel____m__1__" />;'
         },
         {
             title: 'handles child => dynamic',
@@ -204,6 +200,78 @@ pluginTester({
 }], ['t', {
   p: bar
 }]]} className="mq____m____p__1_____t____m__2___" />;`
+        },
+        {
+            title: 'handles object-spread',
+            code: `<Ui {...foo} />`,
+            output: `<Ui {...foo} />`
+        },
+        {
+            title: 'handles boolean => true',
+            code: `const x = <Ui mid={true} />;`,
+            output: `const x = <div className="mid_true" />;`
+        },
+        {
+            title: 'handles boolean => false',
+            code: `const x = <Ui mid={false} />;`,
+            output: `const x = <div className="mid_false" />;`
+        },
+        {
+            title: 'handles boolean => null',
+            code: `const x = <Ui mid />;`,
+            output: `const x = <div className="mid_true" />;`
+        },
+        {
+            title: 'ttt',
+            code: `<Ui alignItems="center" data-testid={testid} height={AvatarMeasurement[size] || size} hoverable={hoverable} position="relative" width={AvatarMeasurement[size] || size} child={{
+    'figure > div > div, figure > div img, > svg, .hoverable': {
+      transformOrigin: 'center',
+      transition: 'transform var(--transition-duration) var(--transition-timing)'
+    },
+    ':hover': {
+      child: {
+        '> figure > div > div, > figure > div img, > svg, .hoverable': {
+          transform: hoverable ? \`scale(1.1)\` : 'unset'
+        }
+      }
+    }
+  }}>
+            {pulse && <Pulse alignSelf="center" borderColor="#288" borderWidth={circleLoaderProps.lineWidth / 2} position="absolute" borderRadius="100%" width="100%" height="100%" padding={\`\${circleLoaderProps.lineWidth}rem\`} opacity="0" zIndex={-1} borderStyle="solid" />}
+            <UiAvatar circleLoaderProps={circleLoaderProps} forceLoader={forceLoader} image={image} imageRef={ref} shades={shades} showCircle={!!ringType || ringType === 0} // ringType can be \`0\` (FLAMINGO)
+    status={isLive ? undefined : status} />
+
+            {isLive && <Ui tag={{
+      color: Ui.TagColor.TEAL,
+      state: Ui.TagState.SELECTED,
+      size: tagSize || tagSizeMap[size]
+    }} bottom={circleLoaderProps.lineWidth * -1} left="50%" position="absolute" zIndex={10} transform="translate(-50%)">
+                    LIVE
+                </Ui>}
+            {children}
+        </Ui>`,
+            output: 'kaki'
+        },
+        {
+            title: 'www',
+            code: `<Ui child={{
+    '> a, button': {
+        width: '100%'
+    },
+    button: {
+        flexDirection: 'columns',
+        fontWeight: 'bold',
+        alignItems: 'center',
+        position: 'relative',
+        paddingLeft: 0.5
+    },
+    svg: {
+        margin: [0, 1]
+    },
+    'button > div': {
+        justifyContent: 'center',
+        flexGrow: 1
+    }
+}} />`
         }
     ]
 })

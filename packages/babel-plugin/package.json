@@ -5,7 +5,8 @@
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
     "license": "MIT",
-    "main": "dist/index.js",
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
     "publishConfig": {
         "access": "public"
     },
@@ -16,8 +17,52 @@
     "scripts": {
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
-        "build": "mhy bb --mhy-env=prod",
+        "build": "npm run build:es6 && npm run build:cjs",
+        "build:es6": "mhy bb --mhy-env=prod",
+        "build:cjs": "mhy bb --mhy-env=prod:cjs",
         "config": "mhy config typescript -io"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
     },
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
@@ -27,6 +72,8 @@
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
-        "shortest": "0.0.0"
+        "@babel/template": "^7.10.1",
+        "shortest": "0.0.0",
+        "stylis": "^4.0.1"
     }
 }

@@ -154,12 +154,6 @@ const isValueTreeStatic = (value, t) => {
     return !foundDynamic
 }
 
-const addToExtractedByType = (extracted, value, t) => {
-    if (t.isObjectExpression(value)) {
-        extracted[value.key.name] = value.value
-    }
-}
-
 const extractStaticValuesFromArray = (value, state, t) => {
     const extracted = []
 
@@ -192,19 +186,21 @@ const extractStaticValuesFromObject = (value, state, t) => {
 
     value.properties = value.properties.filter(v => {
         const _value = v.value
+        const _key = v.key.name || v.key.value
         //console.log(state.opts)
         //const ccssProp = undefined
-        const ccssProp = state.opts.ccssPropMap[v.key.name]
+        const ccssProp = state.opts.ccssPropMap[_key]
 
         if (t.isNumericLiteral(_value) || t.isStringLiteral(_value)) {
-            extracted[ccssProp?.camelShort || v.key.name] = v.value.value
+            extracted[ccssProp?.camelShort || _key] = v.value.value
             return false
         } else if (t.isArrayExpression(_value)) {
             if (ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
-                        name: { name: v.key.name },
-                        value: { expression: _value }
+                        name: { name: _key },
+                        value: { expression: _value },
+                        realValue: _value
                     },
                     state,
                     t,
@@ -214,17 +210,17 @@ const extractStaticValuesFromObject = (value, state, t) => {
             } else {
                 const ext = extractStaticValues(_value, state, t)
                 if (ext.length) {
-                    extracted[v.key.name] = ext
+                    extracted[_key] = ext
                 }
-                extracted[ccssProp.camelShort] = _value.value
             }
             return _value.elements.length
         } else if (t.isObjectExpression(_value)) {
             if (ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
-                        name: { name: v.key.name },
-                        value: { expression: _value }
+                        name: { name: _key },
+                        value: { expression: _value },
+                        realValue: _value
                     },
                     state,
                     t,
@@ -234,12 +230,16 @@ const extractStaticValuesFromObject = (value, state, t) => {
             } else {
                 const ext = extractStaticValues(_value, state, t)
                 if (Object.keys(ext).length) {
-                    extracted[v.key.name] = ext
+                    extracted[_key] = ext
                 }
             }
             return _value.properties.length
         } else if (ccssProp) {
-            v.key.name = ccssProp.camelShort
+            if (v.key.name) {
+                v.key.name = ccssProp.camelShort
+            } else {
+                v.key.value = ccssProp.camelShort
+            }
         }
         return true
     })
@@ -250,8 +250,11 @@ const extractStaticValuesFromObject = (value, state, t) => {
 const extractStaticValues = (value, state, t) => {
     if (t.isObjectExpression(value)) {
         return extractStaticValuesFromObject(value, state, t)
+    } else if (t.isArrayExpression(value)) {
+        return extractStaticValuesFromArray(value, state, t)
+    } else {
+        //console.trace('v', value)
     }
-    return extractStaticValuesFromArray(value, state, t)
 }
 
 export const getAttrDetails = (attr, state, t) => {
@@ -259,7 +262,11 @@ export const getAttrDetails = (attr, state, t) => {
     let realValue =
         attr.value?.expression?.type === 'JSXExpressionContainer'
             ? attr.value.expression.value.expression
-            : attr.value.expression || attr.value
+            : attr?.value?.expression || attr.value
+
+    if (realValue === null) {
+        realValue = t.booleanLiteral(true)
+    }
 
     attr.realValue = realValue
 
@@ -309,6 +316,14 @@ export const getAttrDetails = (attr, state, t) => {
             return {
                 name,
                 ...handler(attr, state, t, api)
+            }
+        }
+        case t.isBooleanLiteral(realValue): {
+            return {
+                name,
+                pureValue: realValue.value,
+                ccssValue: { [name]: realValue.value },
+                isStatic: true
             }
         }
 

@@ -9,10 +9,10 @@ export const onlyFullyStatic = (attr, state, t, api) => {
     return hybrid(attr, state, t, api)
 }
 
-export const child = (attr, state, t, api) => {}
-
 export const hybrid = (attr, state, t, api) => {
     const extracted = api.extractStaticValues(attr.realValue, state, t)
+
+    //console.log('attr', attr.name.name, attr.realValue)
 
     return {
         pureValue: extracted,
