@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import template from '@babel/template'
 import { compile, serialize, stringify } from 'stylis'
-import { merge } from 'lodash-es'
+import { merge } from 'lodash'
 
 import * as classNameStrategies from '@/classNameStrategies'
 import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
