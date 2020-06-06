@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/wintercounter/ccss/compare/v3.4.0...v3.6.0) (2020-06-06)
+
+
+### Features
+
+* **babel-plugin:** it can minify supported properties now ([9529938](https://github.com/wintercounter/ccss/commit/95299382d6a667a1a9c142e7cfc9b040a4c0c334))
+* **props:** add support for booleans ([a32fded](https://github.com/wintercounter/ccss/commit/a32fded31d2847b3a5edd94ed9e409e111c838e8))
+
+
+
+
+
+
 # [3.5.0](https://github.com/wintercounter/ccss/compare/v3.3.0...v3.5.0) (2020-06-06)
 
 
