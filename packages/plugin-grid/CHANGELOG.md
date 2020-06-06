@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.4.0](https://github.com/wintercounter/ccss/compare/v3.3.0...v3.4.0) (2020-05-11)
+# [3.5.0](https://github.com/wintercounter/ccss/compare/v3.3.0...v3.5.0) (2020-06-06)
 
-**Note:** Version bump only for package @cryptic-css/plugin-grid
+
+### Features
+
+* **props:** add support for booleans ([a32fded](https://github.com/wintercounter/ccss/commit/a32fded31d2847b3a5edd94ed9e409e111c838e8))
 
 
 
