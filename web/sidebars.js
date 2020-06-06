@@ -21,7 +21,8 @@ module.exports = {
             'api-and-packages/prop-mid',
             'api-and-packages/prop-mq',
             'api-and-packages/prop-scroll',
-            'api-and-packages/styled-components'
+            'api-and-packages/styled-components',
+            'api-and-packages/babel-plugin-styled'
         ]
     }
 }
