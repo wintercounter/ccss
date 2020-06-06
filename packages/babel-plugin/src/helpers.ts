@@ -42,7 +42,8 @@ export const getIdentifierByValueType = (value, t, wrapContainer = true) => {
 export const isAttrValueString = attr => attr.value && attr.value.type === 'StringLiteral'
 export const isAttrValueSingleStringLiteral = attr =>
     attr.value &&
-    attr.value?.expression.type === 'TemplateLiteral' &&
+    attr.value?.expression?.type === 'TemplateLiteral' &&
+    attr.value.expression.expressions.length === 0 &&
     attr.value.expression.quasis.length === 1 &&
     typeof attr.value.expression.quasis?.[0].value.raw === 'string' &&
     attr.value.expression.quasis[0].value.raw === attr.value.expression.quasis[0].value.cooked
@@ -68,8 +69,6 @@ const extractAndFilterObjectExpression = (expression, state, t) => {
             t
         )
 
-        // console.log('propDetails', propDetails, prop)
-
         // Non-static prop
         if (!propDetails || !propDetails.isStatic) {
             return true
@@ -84,7 +83,7 @@ export const resolveConstantExpression = (value, state) => {
     const { constants } = state.opts
 
     // Nothing to resolve...
-    if (!constants) return
+    if (!constants || value.computed) return
 
     let obj = value
     const path = []
@@ -172,7 +171,6 @@ const extractStaticValuesFromArray = (value, state, t) => {
             if (Object.keys(ext).length) {
                 extracted.push(ext)
             }
-            console.log(v)
             return !!v.properties.length
         }
         return true
@@ -252,8 +250,6 @@ const extractStaticValues = (value, state, t) => {
         return extractStaticValuesFromObject(value, state, t)
     } else if (t.isArrayExpression(value)) {
         return extractStaticValuesFromArray(value, state, t)
-    } else {
-        //console.trace('v', value)
     }
 }
 
@@ -270,16 +266,12 @@ export const getAttrDetails = (attr, state, t) => {
 
     attr.realValue = realValue
 
-    //console.log(JSON.stringify(realValue, null, 2))
-
     const resolved = resolveConstantExpression(realValue, state)
     if (resolved) {
         attr.value = attr.realValue = realValue = getIdentifierByValueType(resolved, t)
     } else {
         resolveConstantsInTree(realValue, state, t)
     }
-
-    //console.log(JSON.stringify(realValue, null, 2))
 
     switch (true) {
         case isAttrValueString(attr): {
@@ -324,70 +316,6 @@ export const getAttrDetails = (attr, state, t) => {
                 pureValue: realValue.value,
                 ccssValue: { [name]: realValue.value },
                 isStatic: true
-            }
-        }
-
-        case isAttrArray(attr) && false: {
-            let isStatic = true
-
-            attr.value.expression.elements = attr.value.expression.elements.map(el => {
-                console.log(el)
-                const attrDetails = getAttrDetails(
-                    {
-                        name: { name: undefined },
-                        value: { expression: el }
-                    },
-                    state,
-                    t
-                )
-                console.log(attrDetails)
-                return el
-                const resolved = resolveConstantExpression(el, state)
-                if (resolved) {
-                    el = getIdentifierByValueType(resolved, t, false)
-                }
-                if (!t.isNumericLiteral(el) && !t.isStringLiteral(el)) {
-                    isStatic = false
-                }
-                return el
-            })
-
-            const pureValue = isStatic
-                ? attr.value.expression.elements.map(el => el.value)
-                : attr.value.expression.value
-            return {
-                name,
-                pureValue,
-                ccssValue: { [name]: pureValue },
-                isStatic
-            }
-        }
-        case isAttrObject(attr) && false: {
-            const extracted = {
-                [attr.name]: extractAndFilterObjectExpression(attr.value, state, t)
-            }
-            /*attr.value.expression.properties = attr.value.expression.properties.filter(prop => {
-                const {
-                    key: { name },
-                    value
-                } = prop
-                const ext = extractAndFilterObjectExpression(value, state, t)
-                console.log('ext', ext)
-                const extLength = Object.keys(ext).length
-                // @ts-ignore
-                if (extLength) {
-                    extracted[name] = ext
-                }
-                return !!value.properties.length
-            })*/
-            const isStatic = !attr.value.expression.properties.length
-            return {
-                name,
-                ccssValue: extracted,
-                pureValue: extracted,
-                isStatic,
-                isExtracted: true,
-                hasStatic: !!Object.keys(extracted).length
             }
         }
     }
