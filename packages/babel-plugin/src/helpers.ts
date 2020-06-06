@@ -51,34 +51,6 @@ export const isAttrValueNumeric = attr => attr.value && attr.value?.expression?.
 export const isAttrArray = attr => attr?.value?.expression?.type === 'ArrayExpression'
 export const isAttrObject = attr => attr?.value?.expression?.type === 'ObjectExpression'
 
-const extractAndFilterObjectExpression = (expression, state, t) => {
-    const extracted = {}
-    expression = expression.properties ? expression : expression.expression
-    expression.properties = expression.properties.filter(prop => {
-        const {
-            key: { name },
-            value
-        } = prop
-
-        const propDetails = getAttrDetails(
-            {
-                name: { name },
-                value: { expression: value }
-            },
-            state,
-            t
-        )
-
-        // Non-static prop
-        if (!propDetails || !propDetails.isStatic) {
-            return true
-        }
-
-        extracted[propDetails.name] = propDetails.pureValue
-    })
-    return extracted
-}
-
 export const resolveConstantExpression = (value, state) => {
     const { constants } = state.opts
 
