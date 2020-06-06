@@ -1,7 +1,37 @@
 import { mediaQuery } from '@w11r/use-breakpoint'
 
+const handleMqElem = (value, state, t, api) => {
+    const extracted = api.extractStaticValues(value.elements[1], state, t)
+    if (Object.keys(extracted).length) {
+        return [value.elements[0].value, extracted]
+    }
+}
+
+const babelPluginHandler = (attr, state, t, api) => {
+    let extracted
+    let isStatic
+    if (attr.realValue.elements[0] && !t.isArrayExpression(attr.realValue.elements[0])) {
+        extracted = handleMqElem(attr.realValue, state, t, api)
+        isStatic = !attr.realValue.elements[1].properties.length
+    } else {
+        extracted = []
+        attr.realValue.elements.filter(el => {
+            const ext = handleMqElem(el, state, t, api)
+            ext && extracted.push(ext)
+            return el.elements[1].properties.length
+        })
+        isStatic = !attr.realValue.elements.length
+    }
+    return {
+        pureValue: extracted,
+        ccssValue: { [attr.name.name]: extracted },
+        isStatic,
+        isExtracted: !!extracted
+    }
+}
+
 export default ({ props }) => {
-    props.mq = (input, prop, options) => {
+    const handler = (input, prop, options) => {
         if (typeof input[0] === 'string') {
             input = [input]
         }
@@ -13,4 +43,6 @@ export default ({ props }) => {
 
         return mediaQuery(generated, options.outputTransformer.type)
     }
+    props.mq = handler
+    handler.babelPluginHandler = babelPluginHandler
 }

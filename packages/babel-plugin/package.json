@@ -1,9 +1,9 @@
 {
-    "name": "@cryptic-css/prop-mq",
-    "version": "3.3.0",
-    "description": "Adds support for the `mq` prop to write media queries using `@w11r/use-breakpoint`.",
+    "name": "@cryptic-css/babel-plugin-styled",
+    "version": "1.0.0",
+    "description": "Babel plugin for Styled-components with CCSS.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
-    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mq#readme",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
     "license": "MIT",
     "main": "dist/cjs/index.js",
     "module": "dist/index.js",
@@ -67,14 +67,14 @@
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
     },
-    "dependencies": {
-        "@w11r/use-breakpoint": "^1.4.0"
-    },
-    "peerDependencies": {
-        "@cryptic-css/core": "^3.0.2"
-    },
     "devDependencies": {
-        "@cryptic-css/core": "^3.3.0"
+        "ccss": "^3.3.0"
     },
-    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
+    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
+    "dependencies": {
+        "@babel/template": "^7.10.1",
+        "lodash-es": "^4.17.15",
+        "shortest": "0.0.0",
+        "stylis": "^4.0.1"
+    }
 }

@@ -2,13 +2,58 @@
     "name": "cryptic-css-monorepo",
     "version": "0.0.1",
     "description": "",
-    "main": "dist/index.js",
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
     "scripts": {
         "test": "mhy jest",
         "test:watch": "mhy jest --watchAll",
-        "build": "mhy bb --mhy-env=prod",
+        "build": "npm run build:es6 && npm run build:cjs",
+        "build:es6": "mhy bb --mhy-env=prod",
+        "build:cjs": "mhy bb --mhy-env=prod:cjs",
         "publish": "lerna exec \"npm i\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits --forcePublish",
         "config": "mhy config eslint prettier -io && lerna run config"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
     },
     "repository": {
         "type": "git",
