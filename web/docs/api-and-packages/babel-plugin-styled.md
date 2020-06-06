@@ -142,3 +142,7 @@ You can have your own `babelPluginHandler` attached to your prop handler functio
 `myHandler.babelPluginHandler = function(){}`.
 
 See source code child/mq for examples.
+
+## Know limitations
+
+The plugin currently doesn't handle pre-defined components, such as created using `ccssd`.
