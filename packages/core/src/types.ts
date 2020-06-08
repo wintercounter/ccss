@@ -5439,6 +5439,39 @@ export interface CCSSProps {
     /**
      * @propDocStart
      * {
+     *     long: 'contain',
+     *     props: ['cn', 'cont', 'contain'],
+     *     short: 'cn'
+     * }
+     * @propDocEnd
+     */
+    cn?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'contain',
+     *     props: ['cn', 'cont', 'contain'],
+     *     short: 'cn'
+     * }
+     * @propDocEnd
+     */
+    cont?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'contain',
+     *     props: ['cn', 'cont', 'contain'],
+     *     short: 'cn'
+     * }
+     * @propDocEnd
+     */
+    contain?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
      *     long: 'object-fit',
      *     props: ['of', 'obj-fit', 'object-fit'],
      *     short: 'of'
