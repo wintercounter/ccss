@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import crypto from 'crypto'
 import template from '@babel/template'
 import { compile, serialize, stringify } from 'stylis'
 import { merge } from 'lodash'
@@ -142,8 +143,10 @@ export default (api, opts) => {
                 ),
                 stringify
             )
-            const cssFilename = `__${filename}.css`
+            const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
+            const cssFilename = `__${filename}.${checksum}.css`
             const cssPath = `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
+
             fs.writeFileSync(cssPath, style, { mode: 0o755 })
 
             const buildImport = template(`import './${cssFilename}'`)
