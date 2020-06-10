@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/wintercounter/ccss/compare/v3.6.1...v3.7.0) (2020-06-10)
+
+
+### Features
+
+* **babel-plugin:** add checksum to generated filename for proper versioning ([6ee7faa](https://github.com/wintercounter/ccss/commit/6ee7faab094760d48cff4a9422d210b3563906f1))
+
+
+
+
+
 ## [3.6.1](https://github.com/wintercounter/ccss/compare/v3.6.0...v3.6.1) (2020-06-10)
 
 

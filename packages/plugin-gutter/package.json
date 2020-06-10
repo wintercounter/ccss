@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/plugin-gutter",
-    "version": "3.6.1",
+    "version": "3.7.0",
     "description": "Adds support for margin, padding and grid-gap to automatically convert numbers to the multiple of gutter.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/plugin-gutter#readme",
@@ -71,7 +71,7 @@
         "@cryptic-css/core": "^3.0.2"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^3.6.1"
+        "@cryptic-css/core": "^3.7.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
 }
