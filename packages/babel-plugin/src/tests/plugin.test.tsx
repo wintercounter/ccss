@@ -225,6 +225,30 @@ pluginTester({
             title: 'handles boolean => null',
             code: `<Ui mid />;`,
             output: `<div className="mid_true" />;`
+        },
+        {
+            title: 'handles unary => expression',
+            code: `<Ui margin={-40} />;`,
+            output: `<div className="margin__40" />;`
+        },
+        {
+            title: 'handles unary => array',
+            code: `<Ui margin={[-40, 10, -5]} />;`,
+            output: `<div className="margin___40_10__5_" />;`
+        },
+        {
+            title: 'handles unary => object',
+            code: `<Ui child={{
+    foo: { margin: -1 }
+}} />;`,
+            output: `<div className="child___foo____m___1__" />;`
+        },
+        {
+            title: 'handles unary => object + array',
+            code: `<Ui child={{
+    foo: { margin: [-10, 10, -40] }
+}} />;`,
+            output: `<div className="child___foo____m____10_10__40___" />;`
         }
     ]
 })

@@ -120,7 +120,11 @@ const resolveConstantsInTree = (value, state, t) => {
 const isValueTreeStatic = (value, t) => {
     let foundDynamic = false
     walkTree(value, v => {
-        foundDynamic = foundDynamic || (!t.isNumericLiteral(v) && !t.isStringLiteral(v))
+        foundDynamic =
+            foundDynamic ||
+            (!t.isNumericLiteral(v) &&
+                !t.isStringLiteral(v) &&
+                !(t.isUnaryExpression(v) && t.isNumericLiteral(v.argument)))
     })
     return !foundDynamic
 }
@@ -131,6 +135,9 @@ const extractStaticValuesFromArray = (value, state, t) => {
     value.elements = value.elements.filter(v => {
         if (t.isNumericLiteral(v) || t.isStringLiteral(v)) {
             extracted.push(v.value)
+            return false
+        } else if (t.isUnaryExpression(v) && t.isNumericLiteral(v.argument)) {
+            extracted.push(v.argument.value * -1)
             return false
         } else if (t.isArrayExpression(v)) {
             const ext = extractStaticValues(v, state, t)
@@ -163,6 +170,9 @@ const extractStaticValuesFromObject = (value, state, t) => {
 
         if (t.isNumericLiteral(_value) || t.isStringLiteral(_value)) {
             extracted[ccssProp?.camelShort || _key] = v.value.value
+            return false
+        } else if (t.isUnaryExpression(_value) && t.isNumericLiteral(_value.argument)) {
+            extracted[ccssProp?.camelShort || _key] = v.value.argument.value * -1
             return false
         } else if (t.isArrayExpression(_value)) {
             if (ccssProp) {
@@ -270,6 +280,15 @@ export const getAttrDetails = (attr, state, t) => {
                 name,
                 pureValue,
                 ccssValue: { [name]: pureValue },
+                isStatic: true
+            }
+        }
+        case t.isUnaryExpression(attr.realValue) && t.isNumericLiteral(attr.realValue.argument): {
+            const pureValue = attr.realValue.argument.value
+            return {
+                name,
+                pureValue: pureValue * -1,
+                ccssValue: { [name]: pureValue * -1 },
                 isStatic: true
             }
         }
