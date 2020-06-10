@@ -69,7 +69,7 @@ describe('ccss tests', () => {
                 ccss({
                     '::b': { d: 'b' }
                 }).trim()
-            ).toBe(`::before {
+            ).toBe(`&::before {
         display: block;
     }`)
         })
@@ -79,7 +79,7 @@ describe('ccss tests', () => {
                     '::b': { d: 'b' }
                 })
             ).toStrictEqual({
-                '::before': {
+                '&::before': {
                     display: 'block'
                 }
             })
@@ -89,7 +89,7 @@ describe('ccss tests', () => {
                 ccss({
                     '::before': { d: 'b' }
                 }).trim()
-            ).toBe(`::before {
+            ).toBe(`&::before {
         display: block;
     }`)
         })
@@ -98,7 +98,7 @@ describe('ccss tests', () => {
                 ccss({
                     ':hover': { d: 'b' }
                 }).trim()
-            ).toBe(`:hover {
+            ).toBe(`&:hover {
         display: block;
     }`)
         })
@@ -112,7 +112,7 @@ describe('ccss tests', () => {
                         }
                     }
                 }).trim()
-            ).toBe(`:hover {
+            ).toBe(`&:hover {
         color: white;
     }
     > div {
@@ -130,7 +130,7 @@ describe('ccss tests', () => {
                     }
                 })
             ).toStrictEqual({
-                ':hover': {
+                '&:hover': {
                     color: 'white'
                 },
                 '> div': {

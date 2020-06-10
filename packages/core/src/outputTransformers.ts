@@ -8,8 +8,9 @@ objectOutputTransformer.toCSSRule = (cssProp, objectCSSProp, input) => {
     return input === undefined ? {} : { [objectCSSProp]: input }
 }
 objectOutputTransformer.toChild = (input, prop, options) => {
+    const p = options.pseudoMap[prop] || prop
     return {
-        [options.pseudoMap[prop] || prop]: options.__ccss(input)
+        [p[0] === ':' ? `&${p}` : p]: options.__ccss(input)
     }
 }
 objectOutputTransformer.unsupportedHandler = (generated, input, prop) => {
@@ -27,8 +28,9 @@ stringOutputTransformer.toCSSRule = (cssProp, objectCSSProp, input) => {
     return input === undefined ? '' : `${cssProp}: ${input};`
 }
 stringOutputTransformer.toChild = (input, prop, options) => {
+    const p = options.pseudoMap[prop] || prop
     return `
-    ${options.pseudoMap[prop] || prop} {
+    ${p[0] === ':' ? `&${p}` : p} {
         ${options.__ccss(input)}
     }`
 }
