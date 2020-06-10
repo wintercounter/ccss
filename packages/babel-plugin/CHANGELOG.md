@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/wintercounter/ccss/compare/v3.6.0...v3.6.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **babel-plugin:** handle `UnaryExpression` cases ([0448a23](https://github.com/wintercounter/ccss/commit/0448a2350371288d56821fd2ed741fe10613c1c1))
+
+
+
+
+
 # [3.6.0](https://github.com/wintercounter/ccss/compare/v3.4.0...v3.6.0) (2020-06-06)
 
 
