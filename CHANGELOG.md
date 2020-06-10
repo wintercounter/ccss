@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/wintercounter/ccss/compare/v3.7.0...v3.8.0) (2020-06-10)
+
+
+### Features
+
+* **child:** add `&` reference for pseudo selectors starting with `:` ([0ce481d](https://github.com/wintercounter/ccss/commit/0ce481d914564a8b4c9f582294047c892a24a4ba))
+
+
+
+
+
 # [3.7.0](https://github.com/wintercounter/ccss/compare/v3.6.1...v3.7.0) (2020-06-10)
 
 
