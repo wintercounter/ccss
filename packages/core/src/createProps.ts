@@ -4,6 +4,45 @@ import { mergeDeep, toCamelCase } from './utils'
 
 export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser?][] => {
     return [
+        // SVG presentational attributes
+        ['ab', 'align-b', 'alignment-baseline'],
+        ['bls', 'bl-shift', 'baseline-shift'],
+        ['cpr', 'clip-r', 'clip-rule'],
+        ['cif', 'color-i-f', 'color-interpolation-filters'],
+        ['ci', 'color-i', 'color-interpolation'],
+        ['cpf', 'color-p', 'color-profile'],
+        ['crd', 'color-r', 'color-rendering'],
+        ['db', 'dom-base', 'dominant-baseline'],
+        ['eb', 'enable-bg', 'enable-background'],
+        ['fo', 'fill-op', 'fill-opacity'],
+        ['fr', 'fill-rule', 'fill-rule'],
+        ['fi', 'fill', 'fill', mapValue],
+        ['fdc', 'flood-c', 'flood-color', mapValue],
+        ['fdo', 'flood-o', 'flood-opacity'],
+        ['fsa', 'font-s-a', 'font-size-adjust'],
+        ['goh', 'glyph-o-h', 'glyph-orientation-horizontal'],
+        ['ir', 'img-r', 'image-rendering'],
+        ['k', 'kern', 'kerning'],
+        ['lc', 'l-color', 'lighting-color', mapValue],
+        ['me', 'm-end', 'marker-end'],
+        ['mm', 'm-mid', 'marker-mid'],
+        ['ms', 'm-start', 'marker-start'],
+        ['msk', 'mask', 'mask'],
+        ['sr', 'shape-rdr', 'shape-rendering'],
+        ['sc', 'stop-c', 'stop-color'],
+        ['sda', 'stroke-da', 'stroke-dasharray'],
+        ['sdo', 'stroke-do', 'stroke-dashoffset'],
+        ['slc', 'stroke-lc', 'stroke-linecap'],
+        ['slj', 'stroke-lj', 'stroke-linejoin'],
+        ['sml', 'stroke-ml', 'stroke-miterlimit'],
+        ['sop', 'stroke-o', 'stroke-opacity'],
+        ['swt', 'stroke-w', 'stroke-width'],
+        ['st', 'stroke', 'stroke'],
+        ['txa', 'txt-anchor', 'text-anchor'],
+        ['txr', 'txt-render', 'text-rendering'],
+        ['ub', 'uni-bidi', 'unicode-bidi'],
+        ['wm', 'writing', 'writing-mode'],
+
         // Animation + 3D
         ['a', 'anim', 'animation'],
         ['ad', 'anim-del', 'animation-delay', mapValue],
@@ -202,6 +241,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 
         // Misc
         ['cn', 'cont', 'contain', mapValue],
+        ['dir', 'dir', 'direction', mapValue],
         ['of', 'obj-fit', 'object-fit', mapValue],
         ['oP', 'obj-pos', 'object-position'],
         ['op', 'opacity', 'opacity', mapValue],
@@ -237,7 +277,7 @@ const getPropTableObject = () => {
         tableObject[short] = modifiers.length
             ? pipe(...(modifiers as CCSSParser[]), toCSSRule(long, longCamel))
             : toCSSRule(long, longCamel)
-        const thatFn = function(this: CCSSProps, a, b, c, d, e, f, g, h) {
+        const thatFn = function (this: CCSSProps, a, b, c, d, e, f, g, h) {
             return this[short](a, short, c, d, e, f, g, h)
         }
         tableObject[lightCamel] = tableObject[lightCamel] || thatFn
