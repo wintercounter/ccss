@@ -9,24 +9,6 @@ import * as classNameStrategies from '@/classNameStrategies'
 import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
 import { hybrid, onlyFullyStatic } from '@/handlers'
 
-/**
- * TODO
- * [X] If no css, no Ui
- * [X] If only static props, no Ui
- * [X] Handle Ui.tagName
- * [X] Add support for more custom tags
- * [X] Handle className when className is not a string
- * [X] Handle cases when it's number
- * [X] Handle cases when it's non primitive, it has to stay dynamic
- * [X] Check if we can precompile something dynamic?
- * [X] Handle tagged literal strings
- * [X] Make it static if only HTML attributes are left
- * [X] Handle array values
- * [X] Handle child
- * [X] Handle mq
- * [X] Default options
- */
-
 const defaultOpts = {
     identifiers: {
         Ui: true
@@ -137,7 +119,7 @@ export default (api, opts) => {
             const style = serialize(
                 compile(
                     [...programStyles.entries()].reduce(
-                        (acc, [rules, className]) => acc + `.${className}{ ${rules}}`,
+                        (acc, [rules, className]) => acc + `.${className}{${rules}}`,
                         ''
                     )
                 ),
@@ -165,10 +147,11 @@ export default (api, opts) => {
             JSXOpeningElement(path, state) {
                 const classNames: string[] = []
                 const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
+                const identifier = isCCSSTag(path, state)
                 // Use our own options
                 state.opts = opts
 
-                if (!isCCSSTag(path, state)) return
+                if (!identifier) return
 
                 Stats.data.total++
                 const tagName = path.node.name.property?.name || 'div'
@@ -243,6 +226,15 @@ export default (api, opts) => {
                 if (staticPropCount === cssPropCount && !flaggedAsDynamic) {
                     // JSXMemberExpression to JSXIdentifier (Ui.h2 to h2)
                     covertToStringLiteralTag(path, state, tagName)
+
+                    if (identifier.defaultProps) {
+                        path.node.attributes = path.node.attributes || []
+                        Object.entries(identifier.defaultProps).forEach(([k, v]) => {
+                            path.node.attributes.push(
+                                t.jsxAttribute(t.jsxIdentifier(k), v === true ? null : getIdentifierByValueType(v, t))
+                            )
+                        })
+                    }
                     Stats.data.totalStatic++
                 } else {
                     // Keep original identifier

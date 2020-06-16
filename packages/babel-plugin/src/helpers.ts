@@ -2,7 +2,7 @@ import './handlers'
 
 export const isCCSSTag = (path, state) => {
     const nodeName = path.node.name.object?.name || path.node.name.name
-    const { identifiers = {} } = state.opts
+    const { identifiers } = state.opts
 
     return identifiers[nodeName]
 }

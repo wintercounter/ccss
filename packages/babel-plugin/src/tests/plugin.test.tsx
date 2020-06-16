@@ -2,7 +2,6 @@
  * @jest-environment node
  */
 
-import path from 'path'
 import pluginTester from 'babel-plugin-tester/pure'
 import plugin from '../'
 
@@ -11,7 +10,12 @@ pluginTester({
     plugin,
     pluginOptions: {
         identifiers: {
-            Ui: true
+            Ui: true,
+            DP: {
+                defaultProps: {
+                    'data-ui': true
+                }
+            }
         },
         constants: {
             Ui: {
@@ -249,6 +253,11 @@ pluginTester({
     foo: { margin: [-10, 10, -40] }
 }} />;`,
             output: `<div className="child___foo____m____10_10__40___" />;`
+        },
+        {
+            title: 'handles defaultProps',
+            code: `<DP />;`,
+            output: `<div data-ui />;`
         }
     ]
 })
