@@ -136,6 +136,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['bgbm', 'bg-blend', 'background-blend-mode', mapValue],
         ['bgC', 'bg-clip', 'background-clip', mapValue, parseArray],
         ['bgo', 'bg-org', 'background-origin', mapValue],
+        ['bf', 'bd-filter', 'backdrop-filter'],
 
         // Dimension
         ['w', 'wid', 'width', mapValue, parseSingle],
@@ -262,7 +263,8 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling', mapValue],
         ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color', mapValue],
         ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color', mapValue],
-        ['wud', 'webkit-user-drag', '-webkit-user-drag', mapValue]
+        ['wud', 'webkit-user-drag', '-webkit-user-drag', mapValue],
+        ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter']
     ]
 }
 
