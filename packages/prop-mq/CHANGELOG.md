@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/wintercounter/ccss/compare/v3.8.0...v3.9.0) (2020-06-18)
+
+
+### Bug Fixes
+
+* **mq:** handle immediate dynamic values correctly ([c794192](https://github.com/wintercounter/ccss/commit/c7941928ac2c325622f9e022013974bd31f623e2))
+
+
+
+
+
 # [3.8.0](https://github.com/wintercounter/ccss/compare/v3.7.0...v3.8.0) (2020-06-10)
 
 **Note:** Version bump only for package @cryptic-css/prop-mq

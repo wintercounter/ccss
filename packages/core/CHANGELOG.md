@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/wintercounter/ccss/compare/v3.8.0...v3.9.0) (2020-06-18)
+
+
+### Features
+
+* **props:** add support for `backdrop-filter` ([39bb474](https://github.com/wintercounter/ccss/commit/39bb474806f8fa1dfadb25bcc519a800710605e1))
+* **props:** add support for SVG presentational attributes ([5379528](https://github.com/wintercounter/ccss/commit/53795285734aa4307d3a95df136464b96906d36f))
+
+
+
+
+
 # [3.8.0](https://github.com/wintercounter/ccss/compare/v3.7.0...v3.8.0) (2020-06-10)
 
 
