@@ -73,6 +73,7 @@
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
         "@babel/template": "^7.10.1",
+        "fast-glob": "^3.2.4",
         "lodash": "^4.17.15",
         "shortest": "0.0.0",
         "stylis": "^4.0.1"

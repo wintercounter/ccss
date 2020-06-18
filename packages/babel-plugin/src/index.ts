@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import template from '@babel/template'
 import { compile, serialize, stringify } from 'stylis'
 import { merge } from 'lodash'
+import fg from 'fast-glob'
 
 import * as classNameStrategies from '@/classNameStrategies'
 import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
@@ -128,6 +129,9 @@ export default (api, opts) => {
             const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
             const cssFilename = `__${filename}.${checksum}.css`
             const cssPath = `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
+
+            // Delete old files
+            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach(p => fs.unlinkSync(p))
 
             fs.writeFileSync(cssPath, style, { mode: 0o755 })
 
