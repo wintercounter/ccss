@@ -195,6 +195,11 @@ pluginTester({
 }]} />;`
         },
         {
+            title: 'handles mq => dynamic as variable',
+            code: `<Ui mq={['m', foo]} />;`,
+            output: `<Ui mq={['m', foo]} />;`
+        },
+        {
             title: 'handles mq => static and dynamic',
             code: `<Ui mq={['m', { margin: foo, padding: 1 }]} />;`,
             output: `<Ui mq={['m', {
