@@ -7,6 +7,7 @@ const handleMqElem = (value, state, t, api) => {
     }
 }
 
+/* develblock:start */
 const babelPluginHandler = (attr, state, t, api) => {
     let extracted
     let isStatic
@@ -31,6 +32,7 @@ const babelPluginHandler = (attr, state, t, api) => {
         isExtracted: !!extracted
     }
 }
+/* develblock:end */
 
 export default ({ props }) => {
     const handler = (input, prop, options) => {
@@ -46,5 +48,7 @@ export default ({ props }) => {
         return mediaQuery(generated, options.outputTransformer.type)
     }
     props.mq = handler
+    /* develblock:start */
     handler.babelPluginHandler = babelPluginHandler
+    /* develblock:end */
 }
