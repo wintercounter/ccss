@@ -216,6 +216,11 @@ pluginTester({
 }]]} className="mq____m____p__1_____t____m__2___" />;`
         },
         {
+            title: 'handles mq => empty objects are static',
+            code: `<Ui mq={[['m', { padding: 1 }]]} />;`,
+            output: `<div className="mq____m____p__1___" />;`
+        },
+        {
             title: 'handles object-spread',
             code: `<Ui {...foo} />;`,
             output: `<Ui {...foo} />;`

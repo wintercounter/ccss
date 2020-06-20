@@ -16,13 +16,14 @@ const babelPluginHandler = (attr, state, t, api) => {
         isStatic = !attr.realValue.elements[1]?.properties?.length
     } else {
         extracted = []
-        attr.realValue.elements.filter(el => {
+        attr.realValue.elements = attr.realValue.elements.filter((el) => {
             const ext = handleMqElem(el, state, t, api)
             ext && extracted.push(ext)
             return el.elements[1].properties.length
         })
         isStatic = !attr.realValue.elements.length
     }
+
     return {
         pureValue: extracted,
         ccssValue: { [attr.name.name]: extracted },
