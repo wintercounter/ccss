@@ -1,3 +1,4 @@
+import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
 const handleMqElem = (value, state, t, api) => {
@@ -31,7 +32,9 @@ const babelPluginHandler = (attr, state, t, api) => {
     }
 }
 
-export default ({ props }) => {
+export default (options: Partial<CCSSOptions>) => {
+    const props = options.props as CCSSProps
+
     const handler = (input, prop, options) => {
         if (typeof input[0] === 'string') {
             input = [input]

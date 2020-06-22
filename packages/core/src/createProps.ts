@@ -2,7 +2,9 @@ import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './par
 import { CCSSProps, CCSSParser } from './types'
 import { mergeDeep, toCamelCase } from './utils'
 
-export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser?][] => {
+type PropTable = [string, string, string, CCSSParser?, CCSSParser?][]
+
+export const getPropTable = (): PropTable => {
     return [
         // SVG presentational attributes
         ['ab', 'align-b', 'alignment-baseline'],
@@ -269,7 +271,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 }
 
 const getPropTableObject = () => {
-    const tableObject = {} as Partial<CCSSProps>
+    const tableObject = {} as Partial<CCSSProps & { _propTable: PropTable }>
     const table = getPropTable()
     tableObject._propTable = table
 

@@ -1,4 +1,4 @@
-export interface CCSSProps {
+export interface CCSSProps extends AnyProp {
     /**
      * Tells CCSS should let through unsupported properties in the output.
      * In an array you can specify a list of a properties should be let through.

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import './handlers'
 
 export const isCCSSTag = (path, state) => {

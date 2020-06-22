@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createOptions, createCCSS, objectOutputTransformer } from '@cryptic-css/core'
 import applyPluginRatio from './'
 

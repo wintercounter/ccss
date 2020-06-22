@@ -5,7 +5,7 @@
     "main": "dist/cjs/index.js",
     "module": "dist/index.js",
     "scripts": {
-        "test": "mhy jest",
+        "test": "mhy tsc && mhy jest",
         "test:watch": "mhy jest --watchAll",
         "build": "npm run build:es6 && npm run build:cjs",
         "build:es6": "mhy bb --mhy-env=prod",

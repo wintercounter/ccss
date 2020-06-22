@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createCCSS, createOptions, objectOutputTransformer } from '@cryptic-css/core'
 import applyPluginGutter from './'
 

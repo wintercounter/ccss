@@ -2,6 +2,8 @@
  * @jest-environment node
  */
 
+// @ts-nocheck
+
 import pluginTester from 'babel-plugin-tester/pure'
 import plugin from '../'
 

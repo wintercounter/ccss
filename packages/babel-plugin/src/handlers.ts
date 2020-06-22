@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export const onlyFullyStatic = (attr, state, t, api) => {
     if (!api.isValueTreeStatic(attr.value.expression, t)) {
         return {

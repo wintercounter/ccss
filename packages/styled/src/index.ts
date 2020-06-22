@@ -1,20 +1,25 @@
-import { ICCSSProps, defaultOptions } from '@cryptic-css/core'
+import { CCSSProps, CCSSPrivateFunction, defaultOptions } from '@cryptic-css/core'
 import styled from 'styled-components'
 
 const s = styled
 
 const noop = () => {}
 
-export const createStyledCCSS = ({ __ccss, props, defaultProps }) => {
+export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
+    const __ccss = rest.__ccss as CCSSPrivateFunction
+    const props = rest.props as CCSSProps
+
     // Handle React stuff!
+    // @ts-ignore
     props.theme = props.theme || noop
+    // @ts-ignore
     props.children = props.children || noop
 
     const Ui = s.div(__ccss)
     Ui.defaultProps = defaultProps
-    const tagged = (tag = 'div') => (p: ICCSSProps) => {
+    const tagged = (tag = 'div') => (p: CCSSProps) => {
         const css = __ccss(p)
-        return s[tag]<ICCSSProps>(() => css, __ccss)
+        return s[tag]<CCSSProps>(() => css, __ccss)
     }
     const ccssd = tagged('div')
 
