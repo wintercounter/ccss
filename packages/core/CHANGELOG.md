@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.1](https://github.com/wintercounter/ccss/compare/v3.9.0...v3.9.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* `d.ts` compilation ([aa65c97](https://github.com/wintercounter/ccss/commit/aa65c97d696af73f0611c4814a62bcae3401990c))
+
+
+
+
+
 # [3.9.0](https://github.com/wintercounter/ccss/compare/v3.8.0...v3.9.0) (2020-06-18)
 
 
