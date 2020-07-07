@@ -84,9 +84,11 @@ export const resolveConstantExpression = (value, state) => {
 
 const walkTree = (value, cb, method = 'forEach') => {
     const v = value
+    //console.log('methodman', method, v.type)
     if (v.type === 'ObjectExpression') {
         //console.log(method, typeof value, v.properties)
         const newProps = v.properties[method](v => {
+            //console.log(v)
             const ret = walkTree(v, cb, method)
             //console.log('ret', method, ret, v)
             return ret
@@ -98,7 +100,7 @@ const walkTree = (value, cb, method = 'forEach') => {
         v.elements = (v.elements[method](v => walkTree(v, cb, method)) || v.elements).filter(Boolean)
         return v
     } else if (v.type === 'ObjectProperty') {
-        walkTree(v.value, cb, method)
+        v.value = walkTree(v.value, cb, method) || v.value
         return v
     } else {
         return cb(value)
@@ -249,7 +251,6 @@ export const getAttrDetails = (attr, state, t) => {
     }
 
     attr.realValue = realValue
-
     const resolved = resolveConstantExpression(realValue, state)
     if (resolved) {
         attr.value = attr.realValue = realValue = getIdentifierByValueType(resolved, t)

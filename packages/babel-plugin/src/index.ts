@@ -12,6 +12,8 @@ import * as classNameStrategies from '@/classNameStrategies'
 import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
 import { hybrid, onlyFullyStatic } from '@/handlers'
 
+export { hybrid, onlyFullyStatic } from '@/handlers'
+
 const defaultOpts = {
     identifiers: {
         Ui: true

@@ -5,12 +5,20 @@
 // @ts-nocheck
 
 import pluginTester from 'babel-plugin-tester/pure'
-import plugin from '../'
+import plugin from '.'
+
+const options = require('ccss').defaultOptions
+
+// Custom prop
+options.props.button = () => ''
 
 pluginTester({
     pluginName: 'babel-plugin-ccss',
     plugin,
     pluginOptions: {
+        expressions: {
+            options
+        },
         identifiers: {
             Ui: true,
             DP: {
@@ -25,6 +33,11 @@ pluginTester({
                     Small: 10,
                     Extras: {
                         Foo: 'Bar'
+                    }
+                },
+                Button: {
+                    Size: {
+                        XSmall: 'x-small'
                     }
                 }
             },
@@ -265,6 +278,11 @@ pluginTester({
             title: 'handles defaultProps',
             code: `<DP />;`,
             output: `<div data-ui />;`
+        },
+        {
+            title: 'handles MemberExpressions',
+            code: `<Ui button={{ size: Ui.Button.Size.XSmall }} />;`,
+            output: `<div className="button___size___x_small__" />;`
         }
     ]
 })
