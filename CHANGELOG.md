@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.2](https://github.com/wintercounter/ccss/compare/v3.9.1...v3.9.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* handle recursive member expressions correctly ([35ece89](https://github.com/wintercounter/ccss/commit/35ece89bc374e2eab331cc148de19ee3fd8e1c89))
+
+
+
+
+
 ## [3.9.1](https://github.com/wintercounter/ccss/compare/v3.9.0...v3.9.1) (2020-06-22)
 
 
