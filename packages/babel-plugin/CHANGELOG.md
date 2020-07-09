@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/wintercounter/ccss/compare/v3.9.2...v3.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* make babelPluginHandlers context aware ([2494477](https://github.com/wintercounter/ccss/commit/2494477cec22f1488a7607f49114a08954231bc5))
+
+
+
+
+
 ## [3.9.2](https://github.com/wintercounter/ccss/compare/v3.9.1...v3.9.2) (2020-07-07)
 
 
