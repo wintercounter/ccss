@@ -7107,6 +7107,39 @@ export interface CCSSProps extends AnyProp {
     /**
      * @propDocStart
      * {
+     *     long: 'caret-color',
+     *     props: ['carc', 'car-color', 'caret-color'],
+     *     short: 'carc'
+     * }
+     * @propDocEnd
+     */
+    carc?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'caret-color',
+     *     props: ['carc', 'car-color', 'caret-color'],
+     *     short: 'carc'
+     * }
+     * @propDocEnd
+     */
+    'car-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'caret-color',
+     *     props: ['carc', 'car-color', 'caret-color'],
+     *     short: 'carc'
+     * }
+     * @propDocEnd
+     */
+    'caret-color'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
      *     long: '-webkit-touch-callout',
      *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
      *     short: 'wtc'
