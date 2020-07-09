@@ -177,7 +177,7 @@ const extractStaticValuesFromObject = (value, state, t, isCCSSContext) => {
             extracted[(isCCSSContext && ccssProp?.camelShort) || _key] = v.value.argument.value * -1
             return false
         } else if (t.isArrayExpression(_value)) {
-            if (isCCSSContext) {
+            if (isCCSSContext && ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
                         name: { name: _key },
@@ -197,7 +197,7 @@ const extractStaticValuesFromObject = (value, state, t, isCCSSContext) => {
             }
             return _value.elements.length
         } else if (t.isObjectExpression(_value)) {
-            if (ccssProp) {
+            if (ccssProp && ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
                         name: { name: _key },
@@ -217,7 +217,7 @@ const extractStaticValuesFromObject = (value, state, t, isCCSSContext) => {
                 }
             }
             return _value.properties.length
-        } else if (isCCSSContext) {
+        } else if (isCCSSContext && ccssProp) {
             if (v.key.name) {
                 v.key.name = ccssProp.camelShort
             } else {
