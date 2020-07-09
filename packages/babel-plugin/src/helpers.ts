@@ -133,7 +133,7 @@ const isValueTreeStatic = (value, t) => {
     return !foundDynamic
 }
 
-const extractStaticValuesFromArray = (value, state, t) => {
+const extractStaticValuesFromArray = (value, state, t, isCCSSContext) => {
     const extracted = []
 
     value.elements = value.elements.filter(v => {
@@ -144,13 +144,13 @@ const extractStaticValuesFromArray = (value, state, t) => {
             extracted.push(v.argument.value * -1)
             return false
         } else if (t.isArrayExpression(v)) {
-            const ext = extractStaticValues(v, state, t)
+            const ext = extractStaticValues(v, state, t, isCCSSContext)
             if (ext.length) {
                 extracted.push(ext)
             }
             return !!v.elements.length
         } else if (t.isObjectExpression(v)) {
-            const ext = extractStaticValues(v, state, t)
+            const ext = extractStaticValues(v, state, t, isCCSSContext)
             if (Object.keys(ext).length) {
                 extracted.push(ext)
             }
@@ -162,24 +162,22 @@ const extractStaticValuesFromArray = (value, state, t) => {
     return extracted
 }
 
-const extractStaticValuesFromObject = (value, state, t) => {
+const extractStaticValuesFromObject = (value, state, t, isCCSSContext) => {
     const extracted = {}
 
     value.properties = value.properties.filter(v => {
         const _value = v.value
         const _key = v.key.name || v.key.value
-        //console.log(state.opts)
-        //const ccssProp = undefined
         const ccssProp = state.opts.ccssPropMap[_key]
 
         if (t.isNumericLiteral(_value) || t.isStringLiteral(_value)) {
-            extracted[ccssProp?.camelShort || _key] = v.value.value
+            extracted[(isCCSSContext && ccssProp?.camelShort) || _key] = v.value.value
             return false
         } else if (t.isUnaryExpression(_value) && t.isNumericLiteral(_value.argument)) {
-            extracted[ccssProp?.camelShort || _key] = v.value.argument.value * -1
+            extracted[(isCCSSContext && ccssProp?.camelShort) || _key] = v.value.argument.value * -1
             return false
         } else if (t.isArrayExpression(_value)) {
-            if (ccssProp) {
+            if (isCCSSContext) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
                         name: { name: _key },
@@ -212,13 +210,14 @@ const extractStaticValuesFromObject = (value, state, t) => {
                 )
                 extracted[ccssProp.camelShort] = pureValue
             } else {
-                const ext = extractStaticValues(_value, state, t)
+                // If there is no such ccss prop but this is a ccss context, pass it
+                const ext = extractStaticValues(_value, state, t, isCCSSContext)
                 if (Object.keys(ext).length) {
                     extracted[_key] = ext
                 }
             }
             return _value.properties.length
-        } else if (ccssProp) {
+        } else if (isCCSSContext) {
             if (v.key.name) {
                 v.key.name = ccssProp.camelShort
             } else {
@@ -231,11 +230,11 @@ const extractStaticValuesFromObject = (value, state, t) => {
     return extracted
 }
 
-const extractStaticValues = (value, state, t) => {
+const extractStaticValues = (value, state, t, isCCSSContext) => {
     if (t.isObjectExpression(value)) {
-        return extractStaticValuesFromObject(value, state, t)
+        return extractStaticValuesFromObject(value, state, t, isCCSSContext)
     } else if (t.isArrayExpression(value)) {
-        return extractStaticValuesFromArray(value, state, t)
+        return extractStaticValuesFromArray(value, state, t, isCCSSContext)
     }
 }
 
@@ -301,7 +300,7 @@ export const getAttrDetails = (attr, state, t) => {
 
             return {
                 name,
-                ...handler(attr, state, t, api)
+                ...handler(attr, state, t, api, attr.descriptor.processor.babelPluginCCSSContext)
             }
         }
         case t.isBooleanLiteral(realValue): {

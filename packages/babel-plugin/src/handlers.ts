@@ -1,16 +1,16 @@
 // @ts-nocheck
 
-export const onlyFullyStatic = (attr, state, t, api) => {
+export const onlyFullyStatic = (attr, state, t, api, isCCSSContext) => {
     if (!api.isValueTreeStatic(attr.value.expression, t)) {
         return {
             isStatic: false
         }
     }
-    return hybrid(attr, state, t, api)
+    return hybrid(attr, state, t, api, isCCSSContext)
 }
 
-export const hybrid = (attr, state, t, api) => {
-    const extracted = api.extractStaticValues(attr.realValue, state, t)
+export const hybrid = (attr, state, t, api, isCCSSContext) => {
+    const extracted = api.extractStaticValues(attr.realValue, state, t, isCCSSContext)
 
     return {
         pureValue: extracted,

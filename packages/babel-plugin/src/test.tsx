@@ -283,6 +283,11 @@ pluginTester({
             title: 'handles MemberExpressions',
             code: `<Ui button={{ size: Ui.Button.Size.XSmall }} />;`,
             output: `<div className="button___size___x_small__" />;`
+        },
+        {
+            title: 'handles non-ccss MemberExpressions',
+            code: `<Ui button={{ color: Ui.Button.Size.XSmall }} />;`,
+            output: `<div className="button___color___x_small__" />;`
         }
     ]
 })

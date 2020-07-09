@@ -84,6 +84,9 @@ export default (api, opts) => {
             camelLong,
             processor: ccssOptions.props[camelShort]
         }
+        // Attach default handler
+        ccssPropMap[camelShort].processor.babelPluginHandler =
+            ccssPropMap[camelShort].processor.babelPluginHandler || ((...args) => onlyFullyStatic(...args, true))
     }
     // Add it for 3rd party props also (like mq, child, etc)
     for (const k of Object.keys(ccssOptions.props)) {
@@ -101,7 +104,7 @@ export default (api, opts) => {
         processor.babelPluginHandler = processor.babelPluginHandler || onlyFullyStatic
     }
     // Child needs static handler
-    ccssPropMap.child.processor.babelPluginHandler = hybrid
+    ccssPropMap.child.processor.babelPluginHandler = (attr, state, t, api) => hybrid(attr, state, t, api, true)
 
     opts.ccssPropMap = ccssPropMap
 
