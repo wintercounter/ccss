@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.2](https://github.com/wintercounter/ccss/compare/v3.10.1...v3.10.2) (2020-08-03)
+
+
+### Bug Fixes
+
+* support arrays and objects for predefined values ([6c689f8](https://github.com/wintercounter/ccss/commit/6c689f8e0184f7f461d37748a10e3a25f4475a76))
+
+
+
+
+
 ## [3.10.1](https://github.com/wintercounter/ccss/compare/v3.10.0...v3.10.1) (2020-07-09)
 
 **Note:** Version bump only for package cryptic-css-monorepo
