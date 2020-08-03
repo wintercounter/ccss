@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createCCSS, createOptions, pipe, mapValue, createValueMap, createProps } from '@'
 import { objectOutputTransformer } from './outputTransformers'
 

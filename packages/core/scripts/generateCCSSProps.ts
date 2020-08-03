@@ -73,7 +73,10 @@ const writeGeneratedPropsOnFile = () => {
     const content = fs.readFileSync(DIST).toString()
     const generatedPropsContent = `${generateCCSSProps()}}\n${warningMessage}`
 
-    const replacement = content.replace(/(?<=export interface CCSSProps \{)(.*)/s, generatedPropsContent)
+    const replacement = content.replace(
+        /(?<=export interface CCSSProps extends AnyProp \{)(.*)/s,
+        generatedPropsContent
+    )
     fs.writeFileSync(DIST, replacement)
 }
 

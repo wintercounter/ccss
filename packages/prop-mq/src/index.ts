@@ -1,7 +1,8 @@
+import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
 const handleMqElem = (value, state, t, api) => {
-    const extracted = api.extractStaticValues(value.elements[1], state, t)
+    const extracted = api.extractStaticValues(value.elements[1], state, t, true)
     if (extracted && Object.keys(extracted).length) {
         return [value.elements[0].value, extracted]
     }
@@ -34,7 +35,9 @@ const babelPluginHandler = (attr, state, t, api) => {
 }
 /* develblock:end */
 
-export default ({ props }) => {
+export default (options: Partial<CCSSOptions>) => {
+    const props = options.props as CCSSProps
+
     const handler = (input, prop, options) => {
         if (typeof input[0] === 'string') {
             input = [input]

@@ -1,3 +1,5 @@
+import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
+
 const base = {
     us: 'n',
     sw: 'n',
@@ -11,7 +13,8 @@ const base = {
     }
 }
 
-export default ({ props }) => {
+export default (options: Partial<CCSSOptions>) => {
+    const props = options.props as CCSSProps
     props.scroll = (input, prop, options, original) => {
         switch (input) {
             case 'x':

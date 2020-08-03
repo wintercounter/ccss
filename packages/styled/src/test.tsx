@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react'
 import 'jest-styled-components'
 import styled, { Ui, ccssd, ccss, createCCSS, createStyledCCSS, objectOutputTransformer, createOptions } from '.'

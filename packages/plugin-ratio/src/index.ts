@@ -1,4 +1,4 @@
-import { pipe } from '@cryptic-css/core'
+import { pipe, CCSSOptions, CCSSProps, CCSSParser } from '@cryptic-css/core'
 
 export const isRatio = (r: string) => typeof r === 'string' && r.indexOf(':') > -1
 
@@ -13,17 +13,18 @@ export const getRatioPercent = ratio => {
 
 const ratio = input => (Array.isArray(input) ? input.map(ratio) : isRatio(input) ? getRatioPercent(input) : input)
 
-export default ({ props }) => {
-    Object.assign(props, {
-        p: pipe(ratio, props.p),
-        pT: pipe(ratio, props.pT),
-        pR: pipe(ratio, props.pR),
-        pB: pipe(ratio, props.pB),
-        pL: pipe(ratio, props.pL),
-        m: pipe(ratio, props.m),
-        mT: pipe(ratio, props.mT),
-        mR: pipe(ratio, props.mR),
-        mB: pipe(ratio, props.mB),
-        mL: pipe(ratio, props.mL)
+export default (options: Partial<CCSSOptions>) => {
+    const props = options.props as CCSSProps
+    Object.assign(props as CCSSProps, {
+        p: pipe(ratio, props.p as CCSSParser),
+        pT: pipe(ratio, props.pT as CCSSParser),
+        pR: pipe(ratio, props.pR as CCSSParser),
+        pB: pipe(ratio, props.pB as CCSSParser),
+        pL: pipe(ratio, props.pL as CCSSParser),
+        m: pipe(ratio, props.m as CCSSParser),
+        mT: pipe(ratio, props.mT as CCSSParser),
+        mR: pipe(ratio, props.mR as CCSSParser),
+        mB: pipe(ratio, props.mB as CCSSParser),
+        mL: pipe(ratio, props.mL as CCSSParser)
     })
 }

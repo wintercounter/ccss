@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.2](https://github.com/wintercounter/ccss/compare/v3.10.1...v3.10.2) (2020-08-03)
+
+
+### Bug Fixes
+
+* support arrays and objects for predefined values ([6c689f8](https://github.com/wintercounter/ccss/commit/6c689f8e0184f7f461d37748a10e3a25f4475a76))
+
+
+
+
+
+## [3.10.1](https://github.com/wintercounter/ccss/compare/v3.10.0...v3.10.1) (2020-07-09)
+
+**Note:** Version bump only for package cryptic-css-monorepo
+
+
+
+
+
+# [3.10.0](https://github.com/wintercounter/ccss/compare/v3.9.2...v3.10.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* make babelPluginHandlers context aware ([2494477](https://github.com/wintercounter/ccss/commit/2494477cec22f1488a7607f49114a08954231bc5))
+
+
+### Features
+
+* add support for `caret-color` ([4152e3b](https://github.com/wintercounter/ccss/commit/4152e3b0909e3bfa52e157c8d17209b98ef9d65e))
+
+
+
+
+
+## [3.9.2](https://github.com/wintercounter/ccss/compare/v3.9.1...v3.9.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* handle recursive member expressions correctly ([35ece89](https://github.com/wintercounter/ccss/commit/35ece89bc374e2eab331cc148de19ee3fd8e1c89))
+
+
+
+
+
+## [3.9.1](https://github.com/wintercounter/ccss/compare/v3.9.0...v3.9.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* `d.ts` compilation ([aa65c97](https://github.com/wintercounter/ccss/commit/aa65c97d696af73f0611c4814a62bcae3401990c))
+
+
+
+
+
 # [3.9.0](https://github.com/wintercounter/ccss/compare/v3.8.0...v3.9.0) (2020-06-18)
 
 

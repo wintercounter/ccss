@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import _shortest from 'shortest'
 
 // According to standard, anything above U+00A1 is supported as CSS selector

@@ -5,12 +5,12 @@
     "main": "dist/cjs/index.js",
     "module": "dist/index.js",
     "scripts": {
-        "test": "mhy jest",
+        "test": "mhy tsc && mhy jest",
         "test:watch": "mhy jest --watchAll",
         "build": "npm run build:es6 && npm run build:cjs",
         "build:es6": "mhy bb --mhy-env=prod",
         "build:cjs": "mhy bb --mhy-env=prod:cjs",
-        "publish": "lerna exec \"npm i\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits --forcePublish",
+        "publish": "lerna exec \"rimraf node_modules\" && lerna exec \"npm i --force\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits --forcePublish",
         "config": "mhy config eslint prettier -io && lerna run config"
     },
     "mhy": {

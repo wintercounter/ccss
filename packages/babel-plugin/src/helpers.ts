@@ -1,4 +1,44 @@
+// @ts-nocheck
+
+import * as t from '@babel/types'
+import * as babylon from '@babel/parser'
+import traverse from '@babel/traverse'
 import './handlers'
+
+const objectToAST = <T>(literal: T) => {
+    if (literal === null) {
+        return t.nullLiteral()
+    }
+    switch (typeof literal) {
+        case 'function':
+            const ast = babylon.parse(literal.toString(), {
+                allowReturnOutsideFunction: true,
+                allowSuperOutsideMethod: true
+            })
+            return traverse.removeProperties(ast)
+        case 'number':
+            return t.numericLiteral(literal)
+        case 'string':
+            return t.stringLiteral(literal)
+        case 'boolean':
+            return t.booleanLiteral(literal)
+        case 'undefined':
+            return t.unaryExpression('void', t.numericLiteral(0), true)
+        default:
+            if (Array.isArray(literal)) {
+                return t.arrayExpression(literal.map(objectToAST))
+            }
+            return t.objectExpression(
+                Object.keys(literal)
+                    .filter(k => {
+                        return typeof literal[k] !== 'undefined'
+                    })
+                    .map(k => {
+                        return t.objectProperty(t.stringLiteral(k), objectToAST(literal[k]))
+                    })
+            )
+    }
+}
 
 export const isCCSSTag = (path, state) => {
     const nodeName = path.node.name.object?.name || path.node.name.name
@@ -34,6 +74,14 @@ export const getIdentifierByValueType = (value, t, wrapContainer = true) => {
             return t.jsxExpressionContainer(t.numericLiteral(value))
         }
         return t.numericLiteral(value)
+    }
+
+    if (Array.isArray(value)) {
+        return t.jsxExpressionContainer(t.arrayExpression(value.map(v => getIdentifierByValueType(v, t, false))))
+    }
+
+    if (typeof value === 'object') {
+        return t.jsxExpressionContainer(objectToAST(value))
     }
 
     return value
@@ -82,9 +130,11 @@ export const resolveConstantExpression = (value, state) => {
 
 const walkTree = (value, cb, method = 'forEach') => {
     const v = value
+    //console.log('methodman', method, v.type)
     if (v.type === 'ObjectExpression') {
         //console.log(method, typeof value, v.properties)
         const newProps = v.properties[method](v => {
+            //console.log(v)
             const ret = walkTree(v, cb, method)
             //console.log('ret', method, ret, v)
             return ret
@@ -96,7 +146,7 @@ const walkTree = (value, cb, method = 'forEach') => {
         v.elements = (v.elements[method](v => walkTree(v, cb, method)) || v.elements).filter(Boolean)
         return v
     } else if (v.type === 'ObjectProperty') {
-        walkTree(v.value, cb, method)
+        v.value = walkTree(v.value, cb, method) || v.value
         return v
     } else {
         return cb(value)
@@ -129,7 +179,7 @@ const isValueTreeStatic = (value, t) => {
     return !foundDynamic
 }
 
-const extractStaticValuesFromArray = (value, state, t) => {
+const extractStaticValuesFromArray = (value, state, t, isCCSSContext) => {
     const extracted = []
 
     value.elements = value.elements.filter(v => {
@@ -140,13 +190,13 @@ const extractStaticValuesFromArray = (value, state, t) => {
             extracted.push(v.argument.value * -1)
             return false
         } else if (t.isArrayExpression(v)) {
-            const ext = extractStaticValues(v, state, t)
+            const ext = extractStaticValues(v, state, t, isCCSSContext)
             if (ext.length) {
                 extracted.push(ext)
             }
             return !!v.elements.length
         } else if (t.isObjectExpression(v)) {
-            const ext = extractStaticValues(v, state, t)
+            const ext = extractStaticValues(v, state, t, isCCSSContext)
             if (Object.keys(ext).length) {
                 extracted.push(ext)
             }
@@ -158,24 +208,22 @@ const extractStaticValuesFromArray = (value, state, t) => {
     return extracted
 }
 
-const extractStaticValuesFromObject = (value, state, t) => {
+const extractStaticValuesFromObject = (value, state, t, isCCSSContext) => {
     const extracted = {}
 
     value.properties = value.properties.filter(v => {
         const _value = v.value
         const _key = v.key.name || v.key.value
-        //console.log(state.opts)
-        //const ccssProp = undefined
         const ccssProp = state.opts.ccssPropMap[_key]
 
         if (t.isNumericLiteral(_value) || t.isStringLiteral(_value)) {
-            extracted[ccssProp?.camelShort || _key] = v.value.value
+            extracted[(isCCSSContext && ccssProp?.camelShort) || _key] = v.value.value
             return false
         } else if (t.isUnaryExpression(_value) && t.isNumericLiteral(_value.argument)) {
-            extracted[ccssProp?.camelShort || _key] = v.value.argument.value * -1
+            extracted[(isCCSSContext && ccssProp?.camelShort) || _key] = v.value.argument.value * -1
             return false
         } else if (t.isArrayExpression(_value)) {
-            if (ccssProp) {
+            if (isCCSSContext && ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
                         name: { name: _key },
@@ -195,7 +243,7 @@ const extractStaticValuesFromObject = (value, state, t) => {
             }
             return _value.elements.length
         } else if (t.isObjectExpression(_value)) {
-            if (ccssProp) {
+            if (ccssProp && ccssProp) {
                 const { pureValue } = ccssProp.processor.babelPluginHandler(
                     {
                         name: { name: _key },
@@ -208,13 +256,14 @@ const extractStaticValuesFromObject = (value, state, t) => {
                 )
                 extracted[ccssProp.camelShort] = pureValue
             } else {
-                const ext = extractStaticValues(_value, state, t)
+                // If there is no such ccss prop but this is a ccss context, pass it
+                const ext = extractStaticValues(_value, state, t, isCCSSContext)
                 if (Object.keys(ext).length) {
                     extracted[_key] = ext
                 }
             }
             return _value.properties.length
-        } else if (ccssProp) {
+        } else if (isCCSSContext && ccssProp) {
             if (v.key.name) {
                 v.key.name = ccssProp.camelShort
             } else {
@@ -227,11 +276,11 @@ const extractStaticValuesFromObject = (value, state, t) => {
     return extracted
 }
 
-const extractStaticValues = (value, state, t) => {
+const extractStaticValues = (value, state, t, isCCSSContext) => {
     if (t.isObjectExpression(value)) {
-        return extractStaticValuesFromObject(value, state, t)
+        return extractStaticValuesFromObject(value, state, t, isCCSSContext)
     } else if (t.isArrayExpression(value)) {
-        return extractStaticValuesFromArray(value, state, t)
+        return extractStaticValuesFromArray(value, state, t, isCCSSContext)
     }
 }
 
@@ -247,10 +296,12 @@ export const getAttrDetails = (attr, state, t) => {
     }
 
     attr.realValue = realValue
-
     const resolved = resolveConstantExpression(realValue, state)
+
     if (resolved) {
-        attr.value = attr.realValue = realValue = getIdentifierByValueType(resolved, t)
+        attr.value = getIdentifierByValueType(resolved, t)
+
+        realValue = attr.realValue = attr.value.expression || attr.value
     } else {
         resolveConstantsInTree(realValue, state, t)
     }
@@ -298,7 +349,7 @@ export const getAttrDetails = (attr, state, t) => {
 
             return {
                 name,
-                ...handler(attr, state, t, api)
+                ...handler(attr, state, t, api, attr.descriptor.processor.babelPluginCCSSContext)
             }
         }
         case t.isBooleanLiteral(realValue): {

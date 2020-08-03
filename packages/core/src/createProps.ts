@@ -2,7 +2,9 @@ import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './par
 import { CCSSProps, CCSSParser } from './types'
 import { mergeDeep, toCamelCase } from './utils'
 
-export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser?][] => {
+type PropTable = [string, string, string, CCSSParser?, CCSSParser?][]
+
+export const getPropTable = (): PropTable => {
     return [
         // SVG presentational attributes
         ['ab', 'align-b', 'alignment-baseline'],
@@ -257,6 +259,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
         ['sw', 's-width', 'scrollbar-width', mapValue],
         ['sh', 's-height', 'scrollbar-height', mapValue],
         ['us', 'u-select', 'user-select', mapValue],
+        ['carc', 'car-color', 'caret-color', mapValue],
 
         // Webkit
         ['wtc', 'webkit-touch-callout', '-webkit-touch-callout', mapValue],
@@ -269,7 +272,7 @@ export const getPropTable = (): [string, string, string, CCSSParser?, CCSSParser
 }
 
 const getPropTableObject = () => {
-    const tableObject = {} as Partial<CCSSProps>
+    const tableObject = {} as Partial<CCSSProps & { _propTable: PropTable }>
     const table = getPropTable()
     tableObject._propTable = table
 
