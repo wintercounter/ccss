@@ -39,6 +39,16 @@ pluginTester({
                     Size: {
                         XSmall: 'x-small'
                     }
+                },
+                Theme: {
+                    Foo: {
+                        Bar: {
+                            Baz: {
+                                Array: [0, 0, 0, '#000'],
+                                Object: { foo: 1 }
+                            }
+                        }
+                    }
                 }
             },
             Single: 'single',
@@ -288,6 +298,16 @@ pluginTester({
             title: 'handles non-ccss MemberExpressions',
             code: `<Ui button={{ color: Ui.Button.Size.XSmall }} />;`,
             output: `<div className="button___color___x_small__" />;`
+        },
+        {
+            title: 'handles prepared values => array',
+            code: `<Ui boxShadow={Ui.Theme.Foo.Bar.Baz.Array}>{variable}</Ui>;`,
+            output: `<div className="box_shadow__0_0_0___000__">{variable}</div>;`
+        },
+        {
+            title: 'handles prepared values => object',
+            code: `<Ui boxShadow={Ui.Theme.Foo.Bar.Baz.Object}>{variable}</Ui>;`,
+            output: `<div className="box_shadow___foo__1_">{variable}</div>;`
         }
     ]
 })

@@ -1,6 +1,44 @@
 // @ts-nocheck
 
+import * as t from '@babel/types'
+import * as babylon from '@babel/parser'
+import traverse from '@babel/traverse'
 import './handlers'
+
+const objectToAST = <T>(literal: T) => {
+    if (literal === null) {
+        return t.nullLiteral()
+    }
+    switch (typeof literal) {
+        case 'function':
+            const ast = babylon.parse(literal.toString(), {
+                allowReturnOutsideFunction: true,
+                allowSuperOutsideMethod: true
+            })
+            return traverse.removeProperties(ast)
+        case 'number':
+            return t.numericLiteral(literal)
+        case 'string':
+            return t.stringLiteral(literal)
+        case 'boolean':
+            return t.booleanLiteral(literal)
+        case 'undefined':
+            return t.unaryExpression('void', t.numericLiteral(0), true)
+        default:
+            if (Array.isArray(literal)) {
+                return t.arrayExpression(literal.map(objectToAST))
+            }
+            return t.objectExpression(
+                Object.keys(literal)
+                    .filter(k => {
+                        return typeof literal[k] !== 'undefined'
+                    })
+                    .map(k => {
+                        return t.objectProperty(t.stringLiteral(k), objectToAST(literal[k]))
+                    })
+            )
+    }
+}
 
 export const isCCSSTag = (path, state) => {
     const nodeName = path.node.name.object?.name || path.node.name.name
@@ -36,6 +74,14 @@ export const getIdentifierByValueType = (value, t, wrapContainer = true) => {
             return t.jsxExpressionContainer(t.numericLiteral(value))
         }
         return t.numericLiteral(value)
+    }
+
+    if (Array.isArray(value)) {
+        return t.jsxExpressionContainer(t.arrayExpression(value.map(v => getIdentifierByValueType(v, t, false))))
+    }
+
+    if (typeof value === 'object') {
+        return t.jsxExpressionContainer(objectToAST(value))
     }
 
     return value
@@ -251,8 +297,11 @@ export const getAttrDetails = (attr, state, t) => {
 
     attr.realValue = realValue
     const resolved = resolveConstantExpression(realValue, state)
+
     if (resolved) {
-        attr.value = attr.realValue = realValue = getIdentifierByValueType(resolved, t)
+        attr.value = getIdentifierByValueType(resolved, t)
+
+        realValue = attr.realValue = attr.value.expression || attr.value
     } else {
         resolveConstantsInTree(realValue, state, t)
     }
