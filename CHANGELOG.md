@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.3](https://github.com/wintercounter/ccss/compare/v3.10.2...v3.10.3) (2020-08-04)
+
+
+### Bug Fixes
+
+* support nested arrays and objects for predefined values ([4e9a54d](https://github.com/wintercounter/ccss/commit/4e9a54d76256afc5798a7c7f00fe1031a95d2d6e))
+
+
+
+
+
 ## [3.10.2](https://github.com/wintercounter/ccss/compare/v3.10.1...v3.10.2) (2020-08-03)
 
 
