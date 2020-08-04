@@ -77,11 +77,19 @@ export const getIdentifierByValueType = (value, t, wrapContainer = true) => {
     }
 
     if (Array.isArray(value)) {
-        return t.jsxExpressionContainer(t.arrayExpression(value.map(v => getIdentifierByValueType(v, t, false))))
+        const v = t.arrayExpression(value.map(v => getIdentifierByValueType(v, t, false)))
+        if (wrapContainer) {
+            return t.jsxExpressionContainer(v)
+        }
+        return v
     }
 
     if (typeof value === 'object') {
-        return t.jsxExpressionContainer(objectToAST(value))
+        const v = objectToAST(value)
+        if (wrapContainer) {
+            return t.jsxExpressionContainer(v)
+        }
+        return v
     }
 
     return value
