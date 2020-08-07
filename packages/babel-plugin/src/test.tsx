@@ -313,6 +313,16 @@ pluginTester({
             title: 'handles prepared values => object',
             code: `<Ui boxShadow={Ui.Theme.Foo.Bar.Baz.Object}>{variable}</Ui>;`,
             output: `<div className="box_shadow___foo__1_">{variable}</div>;`
+        },
+        {
+            title: 'handles prepared values inside expression => array',
+            code: `<Ui mq={['mobile', { boxShadow: Ui.Theme.Foo.Bar.Baz.Array }]}>{variable}</Ui>;`,
+            output: `<div className="mq___mobile____shd___0_0_0___000____">{variable}</div>;`
+        },
+        {
+            title: 'handles prepared values inside expression => object',
+            code: `<Ui mq={['mobile', { boxShadow: Ui.Theme.Foo.Bar.Baz.Object }]}>{variable}</Ui>;`,
+            output: `<div className="mq___mobile____shd____foo__1___">{variable}</div>;`
         }
     ]
 })
