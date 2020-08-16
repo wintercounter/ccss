@@ -13,6 +13,7 @@ Simply replace any divs with this one component:
 
 ```jsx live noInline
 // Use this component instead of divs everywhere from now on.
+console.log(this)
 const View = styled.div(ccss)
 
 render(

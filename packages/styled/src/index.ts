@@ -5,6 +5,26 @@ const s = styled
 
 const noop = () => {}
 
+const isNative = (typeof navigator != 'undefined' && navigator.product == 'ReactNative')
+const defaultTag = isNative ? 'View' : 'div'
+
+// Do not use deprecated stuff please
+const skipNativeTags = ['DatePickerIOS', 'DatePickerAndroid']
+
+const isSupportedTag = (s, tag) => {
+    if (!isNative) return true
+    else if (skipNativeTags.includes(tag)) {
+        return false
+    }
+
+    try {
+        s[tag]('')
+        return
+    } catch {
+        return false
+    }
+}
+
 export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
     const __ccss = rest.__ccss as CCSSPrivateFunction
     const props = rest.props as CCSSProps
@@ -15,22 +35,24 @@ export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
     // @ts-ignore
     props.children = props.children || noop
 
-    const Ui = s.div(__ccss)
+    const Ui = s[defaultTag](__ccss)
     Ui.defaultProps = defaultProps
-    const tagged = (tag = 'div') => (p: CCSSProps) => {
+    const tagged = (tag = defaultTag) => (p: CCSSProps) => {
         const css = __ccss(p)
         return s[tag]<CCSSProps>(() => css, __ccss)
     }
-    const ccssd = tagged('div')
+    const ccssd = tagged(defaultTag)
 
     // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
     // eslint-disable-next-line no-restricted-syntax
     for (const tag in styled) {
-        if (Object.prototype.hasOwnProperty.call(styled, tag)) {
-            Ui[tag] = s[tag](__ccss)
-            Ui[tag].defaultProps = defaultProps
-            ccssd[tag] = tagged(tag)
-            ccssd[tag].defaultProps = defaultProps
+        if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(s, tag)) {
+            try {
+                Ui[tag] = s[tag](__ccss)
+                Ui[tag].defaultProps = defaultProps
+                ccssd[tag] = tagged(tag)
+                ccssd[tag].defaultProps = defaultProps
+            }
         }
     }
     return {

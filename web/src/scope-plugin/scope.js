@@ -13,15 +13,15 @@ const options = rest.createOptions({
 rest.createCCSS(options)
 const { ccss, Ui, ccssd } = rest.createStyledCCSS(options)
 
-Object.assign(React, rest)
+Object.assign(window, rest)
 
-React.CCSS = ccss
-React.ccss = p => {
+window.CCSS = ccss
+window.ccss = p => {
     const output = scssfmt(ccss(p))
     return p.hasOwnProperty('children') ? output : <CodeBlock className="scss">{output}</CodeBlock>
 }
 
-Object.assign(React, {
+Object.assign(window, {
     styled,
     ccssd,
     Ui,

@@ -4,15 +4,29 @@
  */
 
 .heroBanner {
-    padding: 4rem 0;
+    padding: 4rem 0 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: var(--color-site-blue);
+}
+
+.heroBanner * {
+    color: #fff;
+}
+
+.heroBanner a {
+    color: #fff !important;
+}
+
+.heroBanner a:hover {
+    color: #000 !important;
 }
 
 .heroBanner img {
     width: 100%;
-    max-width: 230px;
+    max-width: 487px;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
 }
 
 @media screen and (max-width: 966px) {
@@ -34,11 +48,53 @@
 .features {
     display: flex;
     align-items: center;
-    padding: 2rem 0;
     width: 100%;
+    flex-wrap: wrap;
+}
+
+.featuresRow {
+    padding: 5rem 0;
+    width: 100%;
+}
+
+.features h3 {
+    font-size: 32px;
+}
+
+.features p, .p {
+    font-size: 24px;
+}
+
+.features pre {
+    font-size: 18px;
+    background: var(--color-site-blue);
+}
+
+.features pre code {
+    color: #fff;
+}
+
+.features p:last-child {
+    margin-bottom: 0;
+}
+
+.buttons a img {
+    display: block;
 }
 
 .featureImage {
     height: 200px;
     width: 200px;
+}
+
+.tagLine:first-of-type {
+    font-size: 30px;
+}
+
+.tagLine {
+    font-size: 20px;
+}
+
+.getStarted span {
+    font-size: 48px;
 }
