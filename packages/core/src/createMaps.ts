@@ -101,6 +101,10 @@ export const createValueMap = (overrides?) =>
             o: getOverflows(),
             ox: getOverflows(),
             oy: getOverflows(),
+            oa: {
+                ...getFalseNone(),
+                a: 'auto'
+            },
             fl: {
                 ...getFalseNone(),
                 l: 'left',
