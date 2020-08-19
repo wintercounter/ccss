@@ -248,14 +248,16 @@ const features = [
         )
     },
     {
-        title: <>React-Native support</>,
-        imageUrl: 'img/undraw_fast_loading.svg',
+        title: <>And there's more...</>,
+        imageUrl: 'svg/005-bacterium.svg',
         description: (
             <p>
-                The concept of <strong>CSS mangling</strong> is simple: support a shorter version of all CSS properties
-                and static values. While CSS is not the biggest part of your codebase, you can still achieve valuable
-                size savings. Using together with <em>styled-components</em> will give you the power of mangling{' '}
-                <em>React</em> props used for styling.
+                There other tools and feature that helps with your work. <strong>@cryptic-css/styled</strong> comes with{' '}
+                <strong>⚛React-Native</strong> support out of the box, mostly thanks to{' '}
+                <strong>styled-components</strong>. <strong>CCSS</strong> does not only provide TypeScript types, but
+                also helps you with an almost complete CSS reference using Doc comments. This is extremely useful,
+                especially when using short names.
+                <h1>TODO Finalize, add screenshots, text highlights and info about CLI tool</h1>
             </p>
         )
     },
@@ -285,11 +287,6 @@ const features = [
                 summarizes really well the feelings of using such <em>Utility-first</em> approach.
             </p>
         )
-    },
-    {
-        title: <>What problems does it solve?</>,
-        imageUrl: 'img/undraw_developer_activity.svg',
-        description: <p>Inheriting props.</p>
     },
     {
         id: 'sandbox',
@@ -333,7 +330,7 @@ function Home() {
     const context = useDocusaurusContext()
     const { siteConfig = {} } = context
     return (
-        <Layout title="CrypticCSS" description="Your companion to the journey of your next CSS-in-JS solution.">
+        <Layout title="Home" description="Your companion to the journey of your next CSS-in-JS solution.">
             <header className={classnames(styles.heroBanner)}>
                 <div className="container">
                     <h1>

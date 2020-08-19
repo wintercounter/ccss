@@ -9,8 +9,8 @@ module.exports = {
     themeConfig: {
         sidebarCollapsible: false,
         algolia: {
-            apiKey: '978faf96388a51c68c5fc895fdaefba4',
-            indexName: 'YOUR_INDEX_NAME',
+            apiKey: '4fdab68bf474090efe74ceaf220db37e',
+            indexName: 'ccss_dev',
             searchParameters: {} // Optional (if provided by Algolia)
         },
         navbar: {
