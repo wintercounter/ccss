@@ -15,6 +15,11 @@ export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
     // @ts-ignore
     props.children = props.children || noop
 
+    const styledHandler = (props) => {
+        if (typeof props.animationName !== 'string') {
+        }
+    }
+
     const Ui = s.div(__ccss)
     Ui.defaultProps = defaultProps
     const tagged = (tag = 'div') => (p: CCSSProps) => {

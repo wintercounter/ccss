@@ -69,7 +69,6 @@
     },
     "dependencies": {
         "@cryptic-css/core": "^3.11.0",
-        "@cryptic-css/plugin-grid": "^3.10.3",
         "@cryptic-css/plugin-gutter": "^3.11.0",
         "@cryptic-css/plugin-ratio": "^3.11.0",
         "@cryptic-css/prop-keyframes": "^3.11.0",

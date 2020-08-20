@@ -1,42 +1,39 @@
-import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
+import { CCSSOptions } from '@cryptic-css/core'
 
-const base = {
-    us: 'n',
-    sw: 'n',
-    sh: 'n',
-    '-ms-overflow-style': 'none',
-    '-webkit-overflow-scrolling': 'touch',
-    child: {
-        '::-webkit-scrollbar': {
-            d: 'n'
+const cache = new Map()
+let index = 1
+
+const stringOutputHandler = (input, prop, options) => {
+    // Generate CSS string
+    let animation = ''
+    for (const key in input) {
+        if (Object.prototype.hasOwnProperty.call(input, key)) {
+            animation += `${key} {
+    ${options.__ccss(input[key])}
+}
+`
         }
     }
+
+    // It was an empty object
+    if (!animation.length) return
+
+    // Let's reuse the same name for the same string
+    let cachedIndex = cache.get(animation)
+    if (!cachedIndex) {
+        cachedIndex = index++
+        cache.set(animation, cachedIndex)
+    }
+    const animationName = `a${cachedIndex}`
+
+    return `animation-name: ${animationName};
+@keyframes ${animationName} {
+    ${animation}
+}`
 }
 
 export default (options: Partial<CCSSOptions>) => {
-    const props = options.props as CCSSProps
-    props.scroll = (input, prop, options, original) => {
-        switch (input) {
-            case 'x':
-                return options.__ccss({
-                    ...base,
-                    maxW: original.maxW || '100vw',
-                    ox: 'a'
-                })
-            case 'y':
-                return options.__ccss({
-                    ...base,
-                    maxH: original.maxH || '100vh',
-                    oy: 'a'
-                })
-            case true:
-            default:
-                return options.__ccss({
-                    ...base,
-                    maxH: original.maxH || '100vh',
-                    maxW: original.maxW || '100vw',
-                    o: 'a'
-                })
-        }
-    }
+    // TODO: support for object output would be nice also
+    const keyframes = stringOutputHandler
+    Object.assign(options.props, { keyframes })
 }
