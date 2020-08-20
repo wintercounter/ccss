@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/wintercounter/ccss/compare/v3.11.0...v3.12.0) (2020-08-20)
+
+
+### Features
+
+* add support for `keyframes` prop ([cca9ed9](https://github.com/wintercounter/ccss/commit/cca9ed9202b0284c67a39e4c57648421109f322d))
+* escape non-unicode `content` values for `classStrategy` other than `unicode` ([de7ad8c](https://github.com/wintercounter/ccss/commit/de7ad8cb66d4a3376e04645f604729ceb4d846d4))
+
+
+
+
+
 # [3.11.0](https://github.com/wintercounter/ccss/compare/v3.10.3...v3.11.0) (2020-08-20)
 
 
