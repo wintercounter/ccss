@@ -1,4 +1,4 @@
-import { CCSSProps, CCSSPrivateFunction, defaultOptions } from '@cryptic-css/core'
+import { CCSSProps, CCSSFunction, defaultOptions } from '@cryptic-css/core'
 import styled from 'styled-components'
 
 const s = styled
@@ -26,7 +26,7 @@ const isSupportedTag = (s, tag) => {
 }
 
 export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
-    const __ccss = rest.__ccss as CCSSPrivateFunction
+    const __ccss = rest.__ccss as CCSSFunction
     const props = rest.props as CCSSProps
 
     // Handle React stuff!

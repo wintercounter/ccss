@@ -204,8 +204,8 @@ export const getPropTable = (): PropTable => {
         ['bw', 'bd-width', 'border-width', parseArray],
 
         // Clip
-        ['clip', 'clip', 'clip', parseArray],
-        ['clipPath', 'clip-path', 'clip-path'],
+        ['clp', 'clip', 'clip', parseArray],
+        ['clpp', 'clip-path', 'clip-path'],
 
         // General
         ['d', 'dsp', 'display', mapValue],
@@ -297,7 +297,7 @@ export const createProps = <T>(overrides?: T & Partial<CCSSProps>): T & Partial<
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {
-        raw: i => i,
+        raw: (i) => i,
         child
     })
     return overrides !== undefined ? mergeDeep(table, overrides) : table
