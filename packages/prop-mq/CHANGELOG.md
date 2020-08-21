@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/wintercounter/ccss/compare/v3.11.0...v3.12.0) (2020-08-20)
+
+**Note:** Version bump only for package @cryptic-css/prop-mq
+
+
+
+
+
+# [3.11.0](https://github.com/wintercounter/ccss/compare/v3.10.3...v3.11.0) (2020-08-20)
+
+
+### Bug Fixes
+
+* **mq:babel:** remove empty props for sure ([0a7968b](https://github.com/wintercounter/ccss/commit/0a7968b596473277ba3dac501f789a2b18baf5b0))
+
+
+### Features
+
+* **mq:babel:** add support for develblock comments so the user's can get rid of build-time related code ([05f43d0](https://github.com/wintercounter/ccss/commit/05f43d0199048c5e572c5e546186af68a15d9971))
+
+
+
+
+
 ## [3.10.3](https://github.com/wintercounter/ccss/compare/v3.10.2...v3.10.3) (2020-08-04)
 
 **Note:** Version bump only for package @cryptic-css/prop-mq

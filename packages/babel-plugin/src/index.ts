@@ -11,6 +11,7 @@ import fg from 'fast-glob'
 import * as classNameStrategies from '@/classNameStrategies'
 import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
 import { hybrid, onlyFullyStatic } from '@/handlers'
+import { convertCharStr2CSS } from '@/utils'
 
 export { hybrid, onlyFullyStatic } from '@/handlers'
 
@@ -127,7 +128,17 @@ export default (api, opts) => {
             const style = serialize(
                 compile(
                     [...programStyles.entries()].reduce(
-                        (acc, [rules, className]) => acc + `.${className}{${rules}}`,
+                        (acc, [rules, className]) =>
+                            acc +
+                            `.${className}{${
+                                // If it's unicode, we'll keep as is,
+                                // if not, we will convert all character into a safe CSS form
+                                classNameStrategy === 'unicode'
+                                    ? rules
+                                    : rules.replace(/content:.?"([^\\"]+?|.+)"/g, (full, content) => {
+                                          return full.replace(content, convertCharStr2CSS(content))
+                                      })
+                            }}`,
                         ''
                     )
                 ),

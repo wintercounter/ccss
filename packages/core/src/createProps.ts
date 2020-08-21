@@ -219,6 +219,7 @@ export const getPropTable = (): PropTable => {
         ['o', 'over', 'overflow', mapValue],
         ['ox', 'over-x', 'overflow-x', mapValue],
         ['oy', 'over-y', 'overflow-y', mapValue],
+        ['oa', 'over-a', 'overflow-anchor', mapValue],
         ['fl', 'float', 'float', mapValue],
         ['clr', 'clr', 'clear', mapValue],
         ['v', 'visibility', 'visibility', mapValue],

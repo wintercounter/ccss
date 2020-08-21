@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/wintercounter/ccss/compare/v3.11.0...v3.12.0) (2020-08-20)
+
+
+### Features
+
+* add support for `keyframes` prop ([cca9ed9](https://github.com/wintercounter/ccss/commit/cca9ed9202b0284c67a39e4c57648421109f322d))
+* escape non-unicode `content` values for `classStrategy` other than `unicode` ([de7ad8c](https://github.com/wintercounter/ccss/commit/de7ad8cb66d4a3376e04645f604729ceb4d846d4))
+
+
+
+
+
+# [3.11.0](https://github.com/wintercounter/ccss/compare/v3.10.3...v3.11.0) (2020-08-20)
+
+
+### Bug Fixes
+
+* **mq:babel:** remove empty props for sure ([0a7968b](https://github.com/wintercounter/ccss/commit/0a7968b596473277ba3dac501f789a2b18baf5b0))
+
+
+### Features
+
+* **mq:babel:** add support for develblock comments so the user's can get rid of build-time related code ([05f43d0](https://github.com/wintercounter/ccss/commit/05f43d0199048c5e572c5e546186af68a15d9971))
+
+
+
+
+
 ## [3.10.3](https://github.com/wintercounter/ccss/compare/v3.10.2...v3.10.3) (2020-08-04)
 
 

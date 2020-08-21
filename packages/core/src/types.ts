@@ -6106,6 +6106,39 @@ export interface CCSSProps extends AnyProp {
     /**
      * @propDocStart
      * {
+     *     long: 'overflow-anchor',
+     *     props: ['oa', 'over-a', 'overflow-anchor'],
+     *     short: 'oa'
+     * }
+     * @propDocEnd
+     */
+    oa?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'overflow-anchor',
+     *     props: ['oa', 'over-a', 'overflow-anchor'],
+     *     short: 'oa'
+     * }
+     * @propDocEnd
+     */
+    'over-a'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'overflow-anchor',
+     *     props: ['oa', 'over-a', 'overflow-anchor'],
+     *     short: 'oa'
+     * }
+     * @propDocEnd
+     */
+    'overflow-anchor'?: TCSSPropValue
+
+    /**
+     * @propDocStart
+     * {
      *     long: 'float',
      *     props: ['fl', 'float'],
      *     short: 'fl'
