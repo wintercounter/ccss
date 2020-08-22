@@ -1,28 +1,24 @@
 import { Properties as CSSProperties } from 'csstype'
-
-export type StringTransformer = (generated: string, descriptor: string) => string
-
-export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
-
-export type CCSSInput = any
-
-export type CCSSFunction = (input: CCSSProps) => string | CSSProperties
-
-export type CCSSToCSSRule = (
+export declare type StringTransformer = (generated: string, descriptor: string) => string
+export declare type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
+export declare type CCSSInput = any
+export declare type CCSSFunction = (input: CCSSProps) => string | CSSProperties
+export declare type CCSSToCSSRule = (
     cssProp: string,
     objectProp: string,
     input: CCSSInput,
     prop: string,
     options: CCSSOptions
 ) => CSSProperties | string
-
-export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
-
+export declare type CCSSToPseudoChild = (
+    input: CCSSInput,
+    prop: string,
+    options: CCSSOptions
+) => CSSProperties | CCSSInput
 export interface CCSSDefaultOutputFunction {
     (): Object
     (): string
 }
-
 export interface CCSSOutputTransformer {
     (generated: string, descriptor: string): string
     (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
@@ -31,11 +27,8 @@ export interface CCSSOutputTransformer {
     toChild: CCSSToPseudoChild
     unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
 }
-
 export interface CCSSOptions {
-    // Allow other props
     [key: string]: any
-
     /**
      * Unit to use globally for number values.
      */
@@ -44,59 +37,47 @@ export interface CCSSOptions {
      * Function the applies unit to a value
      */
     applyUnit: (value: number) => string
-
     /**
      * Tells how to transform the final output
      */
     outputTransformer: CCSSOutputTransformer
-
     /**
      * All supported properties
      */
     props: Partial<CCSSProps>
-
     /**
      * Keys and values to `mapValue` against
      */
     valueMap: Partial<CCSSValueMap>
-
     /**
      * Map of supported pseudo selectors
      */
     pseudoMap: Partial<CCSSPseudoMap>
-
     __ccss: CCSSFunction
 }
-
-export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSInput) => CCSSInput
-
-export type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
-
-export type CCSSValueMap = { [key: string]: any }
-
-export type CCSSPseudoMap = { [key: string]: string }
-
-export type CCSSPropValue = string | number | boolean | (string | number | boolean)[] | undefined
-
-export type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
-
-export type CCSSProp = CCSSPropValue | CCSSPropFunction
-
+export declare type CCSSParser = (
+    input: CCSSInput,
+    prop: string,
+    options: CCSSOptions,
+    original?: CCSSInput
+) => CCSSInput
+export declare type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
+export declare type CCSSValueMap = {
+    [key: string]: any
+}
+export declare type CCSSPseudoMap = {
+    [key: string]: string
+}
+export declare type CCSSPropValue = string | number | boolean | (string | number | boolean)[] | undefined
+export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
+export declare type CCSSProp = CCSSPropValue | CCSSPropFunction
 export interface IOptions extends Partial<any> {
     unit: string
     applyUnit: (n: number) => string
 }
-
 export interface AnyProp {
     [key: string]: any
 }
-
-/*
- *  ************************** WARNING **************************
- *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateCCSSProps.ts file.
- *  ************************** WARNING **************************
- */
 export interface CCSSProps extends AnyProp {
     /**
      * Tells CCSS should let through unsupported properties in the output.
@@ -105,12 +86,10 @@ export interface CCSSProps extends AnyProp {
      * @example -webkit-transform
      */
     unsupported?: boolean | string[]
-    
     /**
      * Define custom CSS text.
      */
     styleText?: (v: string) => string
-    
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *
@@ -124,7194 +103,10871 @@ export interface CCSSProps extends AnyProp {
      * ```
      */
     child?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'alignment-baseline',
-     *     props: ['ab', 'align-b', 'alignment-baseline'],
-     *     short: 'ab'
-     * }
-     * @propDocEnd
+     * # alignment-baseline (ab)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ab`
+     *	- `align-b`
+     *	- `alignment-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/alignment-baseline
      */
     ab?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'alignment-baseline',
-     *     props: ['ab', 'align-b', 'alignment-baseline'],
-     *     short: 'ab'
-     * }
-     * @propDocEnd
+     * # alignment-baseline (ab)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ab`
+     *	- `align-b`
+     *	- `alignment-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/alignment-baseline
      */
     alignB?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'alignment-baseline',
-     *     props: ['ab', 'align-b', 'alignment-baseline'],
-     *     short: 'ab'
-     * }
-     * @propDocEnd
+     * # alignment-baseline (ab)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ab`
+     *	- `align-b`
+     *	- `alignment-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/alignment-baseline
      */
     alignmentBaseline?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'baseline-shift',
-     *     props: ['bls', 'bl-shift', 'baseline-shift'],
-     *     short: 'bls'
-     * }
-     * @propDocEnd
+     * # baseline-shift (bls)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bls`
+     *	- `bl-shift`
+     *	- `baseline-shift`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/baseline-shift
      */
     bls?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'baseline-shift',
-     *     props: ['bls', 'bl-shift', 'baseline-shift'],
-     *     short: 'bls'
-     * }
-     * @propDocEnd
+     * # baseline-shift (bls)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bls`
+     *	- `bl-shift`
+     *	- `baseline-shift`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/baseline-shift
      */
     blShift?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'baseline-shift',
-     *     props: ['bls', 'bl-shift', 'baseline-shift'],
-     *     short: 'bls'
-     * }
-     * @propDocEnd
+     * # baseline-shift (bls)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bls`
+     *	- `bl-shift`
+     *	- `baseline-shift`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/baseline-shift
      */
     baselineShift?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clip-rule',
-     *     props: ['cpr', 'clip-r', 'clip-rule'],
-     *     short: 'cpr'
-     * }
-     * @propDocEnd
+     * # clip-rule (cpr)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpr`
+     *	- `clip-r`
+     *	- `clip-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-rule
      */
     cpr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clip-rule',
-     *     props: ['cpr', 'clip-r', 'clip-rule'],
-     *     short: 'cpr'
-     * }
-     * @propDocEnd
+     * # clip-rule (cpr)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpr`
+     *	- `clip-r`
+     *	- `clip-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-rule
      */
     clipR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clip-rule',
-     *     props: ['cpr', 'clip-r', 'clip-rule'],
-     *     short: 'cpr'
-     * }
-     * @propDocEnd
+     * # clip-rule (cpr)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpr`
+     *	- `clip-r`
+     *	- `clip-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-rule
      */
     clipRule?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation-filters',
-     *     props: ['cif', 'color-i-f', 'color-interpolation-filters'],
-     *     short: 'cif'
-     * }
-     * @propDocEnd
+     * # color-interpolation-filters (cif)
+     * The **`color-interpolation-filters`** attribute specifies the color space for imaging operations performed via filter effects.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cif`
+     *	- `color-i-f`
+     *	- `color-interpolation-filters`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-filters
      */
     cif?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation-filters',
-     *     props: ['cif', 'color-i-f', 'color-interpolation-filters'],
-     *     short: 'cif'
-     * }
-     * @propDocEnd
+     * # color-interpolation-filters (cif)
+     * The **`color-interpolation-filters`** attribute specifies the color space for imaging operations performed via filter effects.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cif`
+     *	- `color-i-f`
+     *	- `color-interpolation-filters`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-filters
      */
     colorIF?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation-filters',
-     *     props: ['cif', 'color-i-f', 'color-interpolation-filters'],
-     *     short: 'cif'
-     * }
-     * @propDocEnd
+     * # color-interpolation-filters (cif)
+     * The **`color-interpolation-filters`** attribute specifies the color space for imaging operations performed via filter effects.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cif`
+     *	- `color-i-f`
+     *	- `color-interpolation-filters`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation-filters
      */
     colorInterpolationFilters?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation',
-     *     props: ['ci', 'color-i', 'color-interpolation'],
-     *     short: 'ci'
-     * }
-     * @propDocEnd
+     * # color-interpolation (ci)
+     * The **`color-interpolation`** attribute specifies the color space for gradient interpolations, color animations, and alpha compositing.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ci`
+     *	- `color-i`
+     *	- `color-interpolation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation
      */
     ci?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation',
-     *     props: ['ci', 'color-i', 'color-interpolation'],
-     *     short: 'ci'
-     * }
-     * @propDocEnd
+     * # color-interpolation (ci)
+     * The **`color-interpolation`** attribute specifies the color space for gradient interpolations, color animations, and alpha compositing.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ci`
+     *	- `color-i`
+     *	- `color-interpolation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation
      */
     colorI?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-interpolation',
-     *     props: ['ci', 'color-i', 'color-interpolation'],
-     *     short: 'ci'
-     * }
-     * @propDocEnd
+     * # color-interpolation (ci)
+     * The **`color-interpolation`** attribute specifies the color space for gradient interpolations, color animations, and alpha compositing.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ci`
+     *	- `color-i`
+     *	- `color-interpolation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-interpolation
      */
     colorInterpolation?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-profile',
-     *     props: ['cpf', 'color-p', 'color-profile'],
-     *     short: 'cpf'
-     * }
-     * @propDocEnd
+     * # color-profile (cpf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpf`
+     *	- `color-p`
+     *	- `color-profile`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-profile
      */
     cpf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-profile',
-     *     props: ['cpf', 'color-p', 'color-profile'],
-     *     short: 'cpf'
-     * }
-     * @propDocEnd
+     * # color-profile (cpf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpf`
+     *	- `color-p`
+     *	- `color-profile`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-profile
      */
     colorP?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-profile',
-     *     props: ['cpf', 'color-p', 'color-profile'],
-     *     short: 'cpf'
-     * }
-     * @propDocEnd
+     * # color-profile (cpf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cpf`
+     *	- `color-p`
+     *	- `color-profile`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-profile
      */
     colorProfile?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-rendering',
-     *     props: ['crd', 'color-r', 'color-rendering'],
-     *     short: 'crd'
-     * }
-     * @propDocEnd
+     * # color-rendering (crd)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crd`
+     *	- `color-r`
+     *	- `color-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-rendering
      */
     crd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-rendering',
-     *     props: ['crd', 'color-r', 'color-rendering'],
-     *     short: 'crd'
-     * }
-     * @propDocEnd
+     * # color-rendering (crd)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crd`
+     *	- `color-r`
+     *	- `color-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-rendering
      */
     colorR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color-rendering',
-     *     props: ['crd', 'color-r', 'color-rendering'],
-     *     short: 'crd'
-     * }
-     * @propDocEnd
+     * # color-rendering (crd)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crd`
+     *	- `color-r`
+     *	- `color-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color-rendering
      */
     colorRendering?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'dominant-baseline',
-     *     props: ['db', 'dom-base', 'dominant-baseline'],
-     *     short: 'db'
-     * }
-     * @propDocEnd
+     * # dominant-baseline (db)
+     * The **`dominant-baseline`** attribute specifies the dominant baseline, which is the baseline used to align the box’s text and inline-level contents. It also indicates the default alignment baseline of any boxes participating in baseline alignment in the box’s alignment context.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `db`
+     *	- `dom-base`
+     *	- `dominant-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/dominant-baseline
      */
     db?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'dominant-baseline',
-     *     props: ['db', 'dom-base', 'dominant-baseline'],
-     *     short: 'db'
-     * }
-     * @propDocEnd
+     * # dominant-baseline (db)
+     * The **`dominant-baseline`** attribute specifies the dominant baseline, which is the baseline used to align the box’s text and inline-level contents. It also indicates the default alignment baseline of any boxes participating in baseline alignment in the box’s alignment context.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `db`
+     *	- `dom-base`
+     *	- `dominant-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/dominant-baseline
      */
     domBase?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'dominant-baseline',
-     *     props: ['db', 'dom-base', 'dominant-baseline'],
-     *     short: 'db'
-     * }
-     * @propDocEnd
+     * # dominant-baseline (db)
+     * The **`dominant-baseline`** attribute specifies the dominant baseline, which is the baseline used to align the box’s text and inline-level contents. It also indicates the default alignment baseline of any boxes participating in baseline alignment in the box’s alignment context.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `db`
+     *	- `dom-base`
+     *	- `dominant-baseline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/dominant-baseline
      */
     dominantBaseline?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'enable-background',
-     *     props: ['eb', 'enable-bg', 'enable-background'],
-     *     short: 'eb'
-     * }
-     * @propDocEnd
+     * # enable-background (eb)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `eb`
+     *	- `enable-bg`
+     *	- `enable-background`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/enable-background
      */
     eb?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'enable-background',
-     *     props: ['eb', 'enable-bg', 'enable-background'],
-     *     short: 'eb'
-     * }
-     * @propDocEnd
+     * # enable-background (eb)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `eb`
+     *	- `enable-bg`
+     *	- `enable-background`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/enable-background
      */
     enableBg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'enable-background',
-     *     props: ['eb', 'enable-bg', 'enable-background'],
-     *     short: 'eb'
-     * }
-     * @propDocEnd
+     * # enable-background (eb)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `eb`
+     *	- `enable-bg`
+     *	- `enable-background`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/enable-background
      */
     enableBackground?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill-opacity',
-     *     props: ['fo', 'fill-op', 'fill-opacity'],
-     *     short: 'fo'
-     * }
-     * @propDocEnd
+     * # fill-opacity (fo)
+     * The **`fill-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fo`
+     *	- `fill-op`
+     *	- `fill-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill-opacity
      */
     fo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill-opacity',
-     *     props: ['fo', 'fill-op', 'fill-opacity'],
-     *     short: 'fo'
-     * }
-     * @propDocEnd
+     * # fill-opacity (fo)
+     * The **`fill-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fo`
+     *	- `fill-op`
+     *	- `fill-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill-opacity
      */
     fillOp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill-opacity',
-     *     props: ['fo', 'fill-op', 'fill-opacity'],
-     *     short: 'fo'
-     * }
-     * @propDocEnd
+     * # fill-opacity (fo)
+     * The **`fill-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fo`
+     *	- `fill-op`
+     *	- `fill-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill-opacity
      */
     fillOpacity?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill-rule',
-     *     props: ['fr', 'fill-rule', 'fill-rule'],
-     *     short: 'fr'
-     * }
-     * @propDocEnd
+     * # fill-rule (fr)
+     * The **`fill-rule`** attribute is a presentation attribute defining the algorithm to use to determine the _inside_ part of a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fr`
+     *	- `fill-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill-rule
      */
     fr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill-rule',
-     *     props: ['fr', 'fill-rule', 'fill-rule'],
-     *     short: 'fr'
-     * }
-     * @propDocEnd
+     * # fill-rule (fr)
+     * The **`fill-rule`** attribute is a presentation attribute defining the algorithm to use to determine the _inside_ part of a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fr`
+     *	- `fill-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill-rule
      */
     fillRule?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill',
-     *     props: ['fi', 'fill', 'fill'],
-     *     short: 'fi'
-     * }
-     * @propDocEnd
+     * # fill (fi)
+     * The **`fill`** attribute has two different meanings. For shapes and text it's a presentation attribute that defines the color (_or any SVG paint servers like gradients or patterns_) used to paint the element; for animation it defines the final state of the animation.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fi`
+     *	- `fill`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill
      */
     fi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'fill',
-     *     props: ['fi', 'fill', 'fill'],
-     *     short: 'fi'
-     * }
-     * @propDocEnd
+     * # fill (fi)
+     * The **`fill`** attribute has two different meanings. For shapes and text it's a presentation attribute that defines the color (_or any SVG paint servers like gradients or patterns_) used to paint the element; for animation it defines the final state of the animation.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fi`
+     *	- `fill`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/fill
      */
     fill?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-color',
-     *     props: ['fdc', 'flood-c', 'flood-color'],
-     *     short: 'fdc'
-     * }
-     * @propDocEnd
+     * # flood-color (fdc)
+     * The **`flood-color`** attribute indicates what color to use to flood the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdc`
+     *	- `flood-c`
+     *	- `flood-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-color
      */
     fdc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-color',
-     *     props: ['fdc', 'flood-c', 'flood-color'],
-     *     short: 'fdc'
-     * }
-     * @propDocEnd
+     * # flood-color (fdc)
+     * The **`flood-color`** attribute indicates what color to use to flood the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdc`
+     *	- `flood-c`
+     *	- `flood-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-color
      */
     floodC?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-color',
-     *     props: ['fdc', 'flood-c', 'flood-color'],
-     *     short: 'fdc'
-     * }
-     * @propDocEnd
+     * # flood-color (fdc)
+     * The **`flood-color`** attribute indicates what color to use to flood the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdc`
+     *	- `flood-c`
+     *	- `flood-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-color
      */
     floodColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-opacity',
-     *     props: ['fdo', 'flood-o', 'flood-opacity'],
-     *     short: 'fdo'
-     * }
-     * @propDocEnd
+     * # flood-opacity (fdo)
+     * The **`flood-opacity`** attribute indicates the opacity value to use across the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdo`
+     *	- `flood-o`
+     *	- `flood-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-opacity
      */
     fdo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-opacity',
-     *     props: ['fdo', 'flood-o', 'flood-opacity'],
-     *     short: 'fdo'
-     * }
-     * @propDocEnd
+     * # flood-opacity (fdo)
+     * The **`flood-opacity`** attribute indicates the opacity value to use across the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdo`
+     *	- `flood-o`
+     *	- `flood-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-opacity
      */
     floodO?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flood-opacity',
-     *     props: ['fdo', 'flood-o', 'flood-opacity'],
-     *     short: 'fdo'
-     * }
-     * @propDocEnd
+     * # flood-opacity (fdo)
+     * The **`flood-opacity`** attribute indicates the opacity value to use across the current filter primitive subregion.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fdo`
+     *	- `flood-o`
+     *	- `flood-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flood-opacity
      */
     floodOpacity?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size-adjust',
-     *     props: ['fsa', 'font-s-a', 'font-size-adjust'],
-     *     short: 'fsa'
-     * }
-     * @propDocEnd
+     * # font-size-adjust (fsa)
+     * The **`font-size-adjust`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of lower-case letters relative to the current font size (which defines the size of upper-case letters).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fsa`
+     *	- `font-s-a`
+     *	- `font-size-adjust`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust
      */
     fsa?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size-adjust',
-     *     props: ['fsa', 'font-s-a', 'font-size-adjust'],
-     *     short: 'fsa'
-     * }
-     * @propDocEnd
+     * # font-size-adjust (fsa)
+     * The **`font-size-adjust`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of lower-case letters relative to the current font size (which defines the size of upper-case letters).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fsa`
+     *	- `font-s-a`
+     *	- `font-size-adjust`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust
      */
     fontSA?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size-adjust',
-     *     props: ['fsa', 'font-s-a', 'font-size-adjust'],
-     *     short: 'fsa'
-     * }
-     * @propDocEnd
+     * # font-size-adjust (fsa)
+     * The **`font-size-adjust`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of lower-case letters relative to the current font size (which defines the size of upper-case letters).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fsa`
+     *	- `font-s-a`
+     *	- `font-size-adjust`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust
      */
     fontSizeAdjust?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'glyph-orientation-horizontal',
-     *     props: ['goh', 'glyph-o-h', 'glyph-orientation-horizontal'],
-     *     short: 'goh'
-     * }
-     * @propDocEnd
+     * # glyph-orientation-horizontal (goh)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `goh`
+     *	- `glyph-o-h`
+     *	- `glyph-orientation-horizontal`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/glyph-orientation-horizontal
      */
     goh?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'glyph-orientation-horizontal',
-     *     props: ['goh', 'glyph-o-h', 'glyph-orientation-horizontal'],
-     *     short: 'goh'
-     * }
-     * @propDocEnd
+     * # glyph-orientation-horizontal (goh)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `goh`
+     *	- `glyph-o-h`
+     *	- `glyph-orientation-horizontal`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/glyph-orientation-horizontal
      */
     glyphOH?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'glyph-orientation-horizontal',
-     *     props: ['goh', 'glyph-o-h', 'glyph-orientation-horizontal'],
-     *     short: 'goh'
-     * }
-     * @propDocEnd
+     * # glyph-orientation-horizontal (goh)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `goh`
+     *	- `glyph-o-h`
+     *	- `glyph-orientation-horizontal`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/glyph-orientation-horizontal
      */
     glyphOrientationHorizontal?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'image-rendering',
-     *     props: ['ir', 'img-r', 'image-rendering'],
-     *     short: 'ir'
-     * }
-     * @propDocEnd
+     * # image-rendering (ir)
+     * The **`image-rendering`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image scaling algorithm. The property applies to an element itself, to any images set in its other properties, and to its descendants.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ir`
+     *	- `img-r`
+     *	- `image-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
      */
     ir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'image-rendering',
-     *     props: ['ir', 'img-r', 'image-rendering'],
-     *     short: 'ir'
-     * }
-     * @propDocEnd
+     * # image-rendering (ir)
+     * The **`image-rendering`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image scaling algorithm. The property applies to an element itself, to any images set in its other properties, and to its descendants.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ir`
+     *	- `img-r`
+     *	- `image-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
      */
     imgR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'image-rendering',
-     *     props: ['ir', 'img-r', 'image-rendering'],
-     *     short: 'ir'
-     * }
-     * @propDocEnd
+     * # image-rendering (ir)
+     * The **`image-rendering`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image scaling algorithm. The property applies to an element itself, to any images set in its other properties, and to its descendants.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ir`
+     *	- `img-r`
+     *	- `image-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
      */
     imageRendering?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'kerning',
-     *     props: ['k', 'kern', 'kerning'],
-     *     short: 'k'
-     * }
-     * @propDocEnd
+     * # kerning (k)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `k`
+     *	- `kern`
+     *	- `kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/kerning
      */
     k?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'kerning',
-     *     props: ['k', 'kern', 'kerning'],
-     *     short: 'k'
-     * }
-     * @propDocEnd
+     * # kerning (k)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `k`
+     *	- `kern`
+     *	- `kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/kerning
      */
     kern?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'kerning',
-     *     props: ['k', 'kern', 'kerning'],
-     *     short: 'k'
-     * }
-     * @propDocEnd
+     * # kerning (k)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `k`
+     *	- `kern`
+     *	- `kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/kerning
      */
     kerning?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'lighting-color',
-     *     props: ['lc', 'l-color', 'lighting-color'],
-     *     short: 'lc'
-     * }
-     * @propDocEnd
+     * # lighting-color (lc)
+     * The **`lighting-color`** attribute defines the color of the light source for lighting filter primitives.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lc`
+     *	- `l-color`
+     *	- `lighting-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/lighting-color
      */
     lc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'lighting-color',
-     *     props: ['lc', 'l-color', 'lighting-color'],
-     *     short: 'lc'
-     * }
-     * @propDocEnd
+     * # lighting-color (lc)
+     * The **`lighting-color`** attribute defines the color of the light source for lighting filter primitives.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lc`
+     *	- `l-color`
+     *	- `lighting-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/lighting-color
      */
     lColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'lighting-color',
-     *     props: ['lc', 'l-color', 'lighting-color'],
-     *     short: 'lc'
-     * }
-     * @propDocEnd
+     * # lighting-color (lc)
+     * The **`lighting-color`** attribute defines the color of the light source for lighting filter primitives.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lc`
+     *	- `l-color`
+     *	- `lighting-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/lighting-color
      */
     lightingColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-end',
-     *     props: ['me', 'm-end', 'marker-end'],
-     *     short: 'me'
-     * }
-     * @propDocEnd
+     * # marker-end (me)
+     * The **`marker-end`** attribute defines the arrowhead or polymarker that will be drawn at the final vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `me`
+     *	- `m-end`
+     *	- `marker-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-end
      */
     me?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-end',
-     *     props: ['me', 'm-end', 'marker-end'],
-     *     short: 'me'
-     * }
-     * @propDocEnd
+     * # marker-end (me)
+     * The **`marker-end`** attribute defines the arrowhead or polymarker that will be drawn at the final vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `me`
+     *	- `m-end`
+     *	- `marker-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-end
      */
     mEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-end',
-     *     props: ['me', 'm-end', 'marker-end'],
-     *     short: 'me'
-     * }
-     * @propDocEnd
+     * # marker-end (me)
+     * The **`marker-end`** attribute defines the arrowhead or polymarker that will be drawn at the final vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `me`
+     *	- `m-end`
+     *	- `marker-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-end
      */
     markerEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-mid',
-     *     props: ['mm', 'm-mid', 'marker-mid'],
-     *     short: 'mm'
-     * }
-     * @propDocEnd
+     * # marker-mid (mm)
+     * The **`marker-mid`** attribute defines the arrowhead or polymarker that will be drawn at all interior vertices of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mm`
+     *	- `m-mid`
+     *	- `marker-mid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-mid
      */
     mm?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-mid',
-     *     props: ['mm', 'm-mid', 'marker-mid'],
-     *     short: 'mm'
-     * }
-     * @propDocEnd
+     * # marker-mid (mm)
+     * The **`marker-mid`** attribute defines the arrowhead or polymarker that will be drawn at all interior vertices of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mm`
+     *	- `m-mid`
+     *	- `marker-mid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-mid
      */
     mMid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-mid',
-     *     props: ['mm', 'm-mid', 'marker-mid'],
-     *     short: 'mm'
-     * }
-     * @propDocEnd
+     * # marker-mid (mm)
+     * The **`marker-mid`** attribute defines the arrowhead or polymarker that will be drawn at all interior vertices of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mm`
+     *	- `m-mid`
+     *	- `marker-mid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-mid
      */
     markerMid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-start',
-     *     props: ['ms', 'm-start', 'marker-start'],
-     *     short: 'ms'
-     * }
-     * @propDocEnd
+     * # marker-start (ms)
+     * The **`marker-start`** attribute defines the arrowhead or polymarker that will be drawn at the first vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ms`
+     *	- `m-start`
+     *	- `marker-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-start
      */
     ms?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-start',
-     *     props: ['ms', 'm-start', 'marker-start'],
-     *     short: 'ms'
-     * }
-     * @propDocEnd
+     * # marker-start (ms)
+     * The **`marker-start`** attribute defines the arrowhead or polymarker that will be drawn at the first vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ms`
+     *	- `m-start`
+     *	- `marker-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-start
      */
     mStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'marker-start',
-     *     props: ['ms', 'm-start', 'marker-start'],
-     *     short: 'ms'
-     * }
-     * @propDocEnd
+     * # marker-start (ms)
+     * The **`marker-start`** attribute defines the arrowhead or polymarker that will be drawn at the first vertex of the given [shape](https://developer.mozilla.org/en-US/docs/Web/SVG/Element#Shape_elements).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ms`
+     *	- `m-start`
+     *	- `marker-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/marker-start
      */
     markerStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'mask',
-     *     props: ['msk', 'mask', 'mask'],
-     *     short: 'msk'
-     * }
-     * @propDocEnd
+     * # mask (msk)
+     * The **`mask`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) hides an element (partially or fully) by masking or clipping the image at specific points.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `msk`
+     *	- `mask`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
      */
     msk?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'mask',
-     *     props: ['msk', 'mask', 'mask'],
-     *     short: 'msk'
-     * }
-     * @propDocEnd
+     * # mask (msk)
+     * The **`mask`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) hides an element (partially or fully) by masking or clipping the image at specific points.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `msk`
+     *	- `mask`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mask
      */
     mask?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'shape-rendering',
-     *     props: ['sr', 'shape-rdr', 'shape-rendering'],
-     *     short: 'sr'
-     * }
-     * @propDocEnd
+     * # shape-rendering (sr)
+     * The **`shape-rendering`** attribute provides hints to the renderer about what tradeoffs to make when rendering shapes like paths, circles, or rectangles.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sr`
+     *	- `shape-rdr`
+     *	- `shape-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/shape-rendering
      */
     sr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'shape-rendering',
-     *     props: ['sr', 'shape-rdr', 'shape-rendering'],
-     *     short: 'sr'
-     * }
-     * @propDocEnd
+     * # shape-rendering (sr)
+     * The **`shape-rendering`** attribute provides hints to the renderer about what tradeoffs to make when rendering shapes like paths, circles, or rectangles.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sr`
+     *	- `shape-rdr`
+     *	- `shape-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/shape-rendering
      */
     shapeRdr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'shape-rendering',
-     *     props: ['sr', 'shape-rdr', 'shape-rendering'],
-     *     short: 'sr'
-     * }
-     * @propDocEnd
+     * # shape-rendering (sr)
+     * The **`shape-rendering`** attribute provides hints to the renderer about what tradeoffs to make when rendering shapes like paths, circles, or rectangles.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sr`
+     *	- `shape-rdr`
+     *	- `shape-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/shape-rendering
      */
     shapeRendering?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stop-color',
-     *     props: ['sc', 'stop-c', 'stop-color'],
-     *     short: 'sc'
-     * }
-     * @propDocEnd
+     * # stop-color (sc)
+     * The **`stop-color`** attribute indicates what color to use at a gradient stop.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sc`
+     *	- `stop-c`
+     *	- `stop-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stop-color
      */
     sc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stop-color',
-     *     props: ['sc', 'stop-c', 'stop-color'],
-     *     short: 'sc'
-     * }
-     * @propDocEnd
+     * # stop-color (sc)
+     * The **`stop-color`** attribute indicates what color to use at a gradient stop.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sc`
+     *	- `stop-c`
+     *	- `stop-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stop-color
      */
     stopC?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stop-color',
-     *     props: ['sc', 'stop-c', 'stop-color'],
-     *     short: 'sc'
-     * }
-     * @propDocEnd
+     * # stop-color (sc)
+     * The **`stop-color`** attribute indicates what color to use at a gradient stop.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sc`
+     *	- `stop-c`
+     *	- `stop-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stop-color
      */
     stopColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dasharray',
-     *     props: ['sda', 'stroke-da', 'stroke-dasharray'],
-     *     short: 'sda'
-     * }
-     * @propDocEnd
+     * # stroke-dasharray (sda)
+     * The **`stroke-dasharray`** attribute is a presentation attribute defining the pattern of dashes and gaps used to paint the outline of the shape;
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sda`
+     *	- `stroke-da`
+     *	- `stroke-dasharray`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray
      */
     sda?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dasharray',
-     *     props: ['sda', 'stroke-da', 'stroke-dasharray'],
-     *     short: 'sda'
-     * }
-     * @propDocEnd
+     * # stroke-dasharray (sda)
+     * The **`stroke-dasharray`** attribute is a presentation attribute defining the pattern of dashes and gaps used to paint the outline of the shape;
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sda`
+     *	- `stroke-da`
+     *	- `stroke-dasharray`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray
      */
     strokeDa?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dasharray',
-     *     props: ['sda', 'stroke-da', 'stroke-dasharray'],
-     *     short: 'sda'
-     * }
-     * @propDocEnd
+     * # stroke-dasharray (sda)
+     * The **`stroke-dasharray`** attribute is a presentation attribute defining the pattern of dashes and gaps used to paint the outline of the shape;
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sda`
+     *	- `stroke-da`
+     *	- `stroke-dasharray`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray
      */
     strokeDasharray?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dashoffset',
-     *     props: ['sdo', 'stroke-do', 'stroke-dashoffset'],
-     *     short: 'sdo'
-     * }
-     * @propDocEnd
+     * # stroke-dashoffset (sdo)
+     * The **`stroke-dashoffset`** attribute is a presentation attribute defining an offset on the rendering of the associated dash array.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sdo`
+     *	- `stroke-do`
+     *	- `stroke-dashoffset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset
      */
     sdo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dashoffset',
-     *     props: ['sdo', 'stroke-do', 'stroke-dashoffset'],
-     *     short: 'sdo'
-     * }
-     * @propDocEnd
+     * # stroke-dashoffset (sdo)
+     * The **`stroke-dashoffset`** attribute is a presentation attribute defining an offset on the rendering of the associated dash array.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sdo`
+     *	- `stroke-do`
+     *	- `stroke-dashoffset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset
      */
     strokeDo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-dashoffset',
-     *     props: ['sdo', 'stroke-do', 'stroke-dashoffset'],
-     *     short: 'sdo'
-     * }
-     * @propDocEnd
+     * # stroke-dashoffset (sdo)
+     * The **`stroke-dashoffset`** attribute is a presentation attribute defining an offset on the rendering of the associated dash array.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sdo`
+     *	- `stroke-do`
+     *	- `stroke-dashoffset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset
      */
     strokeDashoffset?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linecap',
-     *     props: ['slc', 'stroke-lc', 'stroke-linecap'],
-     *     short: 'slc'
-     * }
-     * @propDocEnd
+     * # stroke-linecap (slc)
+     * The **`stroke-linecap`** attribute is a presentation attribute defining the shape to be used at the end of open subpaths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slc`
+     *	- `stroke-lc`
+     *	- `stroke-linecap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
      */
     slc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linecap',
-     *     props: ['slc', 'stroke-lc', 'stroke-linecap'],
-     *     short: 'slc'
-     * }
-     * @propDocEnd
+     * # stroke-linecap (slc)
+     * The **`stroke-linecap`** attribute is a presentation attribute defining the shape to be used at the end of open subpaths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slc`
+     *	- `stroke-lc`
+     *	- `stroke-linecap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
      */
     strokeLc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linecap',
-     *     props: ['slc', 'stroke-lc', 'stroke-linecap'],
-     *     short: 'slc'
-     * }
-     * @propDocEnd
+     * # stroke-linecap (slc)
+     * The **`stroke-linecap`** attribute is a presentation attribute defining the shape to be used at the end of open subpaths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slc`
+     *	- `stroke-lc`
+     *	- `stroke-linecap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
      */
     strokeLinecap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linejoin',
-     *     props: ['slj', 'stroke-lj', 'stroke-linejoin'],
-     *     short: 'slj'
-     * }
-     * @propDocEnd
+     * # stroke-linejoin (slj)
+     * The **`stroke-linejoin`** attribute is a presentation attribute defining the shape to be used at the corners of paths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slj`
+     *	- `stroke-lj`
+     *	- `stroke-linejoin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linejoin
      */
     slj?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linejoin',
-     *     props: ['slj', 'stroke-lj', 'stroke-linejoin'],
-     *     short: 'slj'
-     * }
-     * @propDocEnd
+     * # stroke-linejoin (slj)
+     * The **`stroke-linejoin`** attribute is a presentation attribute defining the shape to be used at the corners of paths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slj`
+     *	- `stroke-lj`
+     *	- `stroke-linejoin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linejoin
      */
     strokeLj?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-linejoin',
-     *     props: ['slj', 'stroke-lj', 'stroke-linejoin'],
-     *     short: 'slj'
-     * }
-     * @propDocEnd
+     * # stroke-linejoin (slj)
+     * The **`stroke-linejoin`** attribute is a presentation attribute defining the shape to be used at the corners of paths when they are stroked.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `slj`
+     *	- `stroke-lj`
+     *	- `stroke-linejoin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linejoin
      */
     strokeLinejoin?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-miterlimit',
-     *     props: ['sml', 'stroke-ml', 'stroke-miterlimit'],
-     *     short: 'sml'
-     * }
-     * @propDocEnd
+     * # stroke-miterlimit (sml)
+     * The **`stroke-miterlimit`** attribute is a presentation attribute defining a limit on the ratio of the miter length to the `[stroke-width](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width)` used to draw a miter join. When the limit is exceeded, the join is converted from a miter to a bevel.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sml`
+     *	- `stroke-ml`
+     *	- `stroke-miterlimit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-miterlimit
      */
     sml?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-miterlimit',
-     *     props: ['sml', 'stroke-ml', 'stroke-miterlimit'],
-     *     short: 'sml'
-     * }
-     * @propDocEnd
+     * # stroke-miterlimit (sml)
+     * The **`stroke-miterlimit`** attribute is a presentation attribute defining a limit on the ratio of the miter length to the `[stroke-width](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width)` used to draw a miter join. When the limit is exceeded, the join is converted from a miter to a bevel.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sml`
+     *	- `stroke-ml`
+     *	- `stroke-miterlimit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-miterlimit
      */
     strokeMl?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-miterlimit',
-     *     props: ['sml', 'stroke-ml', 'stroke-miterlimit'],
-     *     short: 'sml'
-     * }
-     * @propDocEnd
+     * # stroke-miterlimit (sml)
+     * The **`stroke-miterlimit`** attribute is a presentation attribute defining a limit on the ratio of the miter length to the `[stroke-width](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width)` used to draw a miter join. When the limit is exceeded, the join is converted from a miter to a bevel.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sml`
+     *	- `stroke-ml`
+     *	- `stroke-miterlimit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-miterlimit
      */
     strokeMiterlimit?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-opacity',
-     *     props: ['sop', 'stroke-o', 'stroke-opacity'],
-     *     short: 'sop'
-     * }
-     * @propDocEnd
+     * # stroke-opacity (sop)
+     * The **`stroke-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to the stroke of a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sop`
+     *	- `stroke-o`
+     *	- `stroke-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-opacity
      */
     sop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-opacity',
-     *     props: ['sop', 'stroke-o', 'stroke-opacity'],
-     *     short: 'sop'
-     * }
-     * @propDocEnd
+     * # stroke-opacity (sop)
+     * The **`stroke-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to the stroke of a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sop`
+     *	- `stroke-o`
+     *	- `stroke-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-opacity
      */
     strokeO?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-opacity',
-     *     props: ['sop', 'stroke-o', 'stroke-opacity'],
-     *     short: 'sop'
-     * }
-     * @propDocEnd
+     * # stroke-opacity (sop)
+     * The **`stroke-opacity`** attribute is a presentation attribute defining the opacity of the paint server (_color_, _gradient_, _pattern_, etc) applied to the stroke of a shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `sop`
+     *	- `stroke-o`
+     *	- `stroke-opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-opacity
      */
     strokeOpacity?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-width',
-     *     props: ['swt', 'stroke-w', 'stroke-width'],
-     *     short: 'swt'
-     * }
-     * @propDocEnd
+     * # stroke-width (swt)
+     * The **`stroke-width`** attribute is a presentation attribute defining the width of the stroke to be applied to the shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `swt`
+     *	- `stroke-w`
+     *	- `stroke-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-width
      */
     swt?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-width',
-     *     props: ['swt', 'stroke-w', 'stroke-width'],
-     *     short: 'swt'
-     * }
-     * @propDocEnd
+     * # stroke-width (swt)
+     * The **`stroke-width`** attribute is a presentation attribute defining the width of the stroke to be applied to the shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `swt`
+     *	- `stroke-w`
+     *	- `stroke-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-width
      */
     strokeW?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke-width',
-     *     props: ['swt', 'stroke-w', 'stroke-width'],
-     *     short: 'swt'
-     * }
-     * @propDocEnd
+     * # stroke-width (swt)
+     * The **`stroke-width`** attribute is a presentation attribute defining the width of the stroke to be applied to the shape.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `swt`
+     *	- `stroke-w`
+     *	- `stroke-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-width
      */
     strokeWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke',
-     *     props: ['st', 'stroke', 'stroke'],
-     *     short: 'st'
-     * }
-     * @propDocEnd
+     * # stroke (st)
+     * The **`stroke`** attribute is a presentation attribute defining the color (_or any SVG paint servers like gradients or patterns_) used to paint the outline of the shape;
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `st`
+     *	- `stroke`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke
      */
     st?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'stroke',
-     *     props: ['st', 'stroke', 'stroke'],
-     *     short: 'st'
-     * }
-     * @propDocEnd
+     * # stroke (st)
+     * The **`stroke`** attribute is a presentation attribute defining the color (_or any SVG paint servers like gradients or patterns_) used to paint the outline of the shape;
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `st`
+     *	- `stroke`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/stroke
      */
     stroke?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-anchor',
-     *     props: ['txa', 'txt-anchor', 'text-anchor'],
-     *     short: 'txa'
-     * }
-     * @propDocEnd
+     * # text-anchor (txa)
+     * The **`text-anchor`** attribute is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text where the wrapping area is determined from the `[inline-size](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/inline-size)` property relative to a given point. It is not applicable to other types of auto-wrapped text. For those cases you should use [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of a block element or table-cell box. This means it works like vertical-align but in the horizontal direction."). For multi-line text, the alignment takes place for each line.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txa`
+     *	- `txt-anchor`
+     *	- `text-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-anchor
      */
     txa?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-anchor',
-     *     props: ['txa', 'txt-anchor', 'text-anchor'],
-     *     short: 'txa'
-     * }
-     * @propDocEnd
+     * # text-anchor (txa)
+     * The **`text-anchor`** attribute is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text where the wrapping area is determined from the `[inline-size](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/inline-size)` property relative to a given point. It is not applicable to other types of auto-wrapped text. For those cases you should use [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of a block element or table-cell box. This means it works like vertical-align but in the horizontal direction."). For multi-line text, the alignment takes place for each line.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txa`
+     *	- `txt-anchor`
+     *	- `text-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-anchor
      */
     txtAnchor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-anchor',
-     *     props: ['txa', 'txt-anchor', 'text-anchor'],
-     *     short: 'txa'
-     * }
-     * @propDocEnd
+     * # text-anchor (txa)
+     * The **`text-anchor`** attribute is used to align (start-, middle- or end-alignment) a string of pre-formatted text or auto-wrapped text where the wrapping area is determined from the `[inline-size](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/inline-size)` property relative to a given point. It is not applicable to other types of auto-wrapped text. For those cases you should use [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of a block element or table-cell box. This means it works like vertical-align but in the horizontal direction."). For multi-line text, the alignment takes place for each line.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txa`
+     *	- `txt-anchor`
+     *	- `text-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-anchor
      */
     textAnchor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-rendering',
-     *     props: ['txr', 'txt-render', 'text-rendering'],
-     *     short: 'txr'
-     * }
-     * @propDocEnd
+     * # text-rendering (txr)
+     * The **`text-rendering`** CSS property provides information to the rendering engine about what to optimize for when rendering text.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txr`
+     *	- `txt-render`
+     *	- `text-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering
      */
     txr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-rendering',
-     *     props: ['txr', 'txt-render', 'text-rendering'],
-     *     short: 'txr'
-     * }
-     * @propDocEnd
+     * # text-rendering (txr)
+     * The **`text-rendering`** CSS property provides information to the rendering engine about what to optimize for when rendering text.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txr`
+     *	- `txt-render`
+     *	- `text-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering
      */
     txtRender?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-rendering',
-     *     props: ['txr', 'txt-render', 'text-rendering'],
-     *     short: 'txr'
-     * }
-     * @propDocEnd
+     * # text-rendering (txr)
+     * The **`text-rendering`** CSS property provides information to the rendering engine about what to optimize for when rendering text.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `txr`
+     *	- `txt-render`
+     *	- `text-rendering`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering
      */
     textRendering?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'unicode-bidi',
-     *     props: ['ub', 'uni-bidi', 'unicode-bidi'],
-     *     short: 'ub'
-     * }
-     * @propDocEnd
+     * # unicode-bidi (ub)
+     * The **`unicode-bidi`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property, together with the [`direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/direction "The direction CSS property sets the direction of text, table columns, and horizontal overflow.") property, determines how bidirectional text in a document is handled. For example, if a block of content contains both left-to-right and right-to-left text, the user-agent uses a complex Unicode algorithm to decide how to display the text. The `unicode-bidi` property overrides this algorithm and allows the developer to control the text embedding.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ub`
+     *	- `uni-bidi`
+     *	- `unicode-bidi`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi
      */
     ub?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'unicode-bidi',
-     *     props: ['ub', 'uni-bidi', 'unicode-bidi'],
-     *     short: 'ub'
-     * }
-     * @propDocEnd
+     * # unicode-bidi (ub)
+     * The **`unicode-bidi`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property, together with the [`direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/direction "The direction CSS property sets the direction of text, table columns, and horizontal overflow.") property, determines how bidirectional text in a document is handled. For example, if a block of content contains both left-to-right and right-to-left text, the user-agent uses a complex Unicode algorithm to decide how to display the text. The `unicode-bidi` property overrides this algorithm and allows the developer to control the text embedding.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ub`
+     *	- `uni-bidi`
+     *	- `unicode-bidi`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi
      */
     uniBidi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'unicode-bidi',
-     *     props: ['ub', 'uni-bidi', 'unicode-bidi'],
-     *     short: 'ub'
-     * }
-     * @propDocEnd
+     * # unicode-bidi (ub)
+     * The **`unicode-bidi`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property, together with the [`direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/direction "The direction CSS property sets the direction of text, table columns, and horizontal overflow.") property, determines how bidirectional text in a document is handled. For example, if a block of content contains both left-to-right and right-to-left text, the user-agent uses a complex Unicode algorithm to decide how to display the text. The `unicode-bidi` property overrides this algorithm and allows the developer to control the text embedding.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ub`
+     *	- `uni-bidi`
+     *	- `unicode-bidi`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi
      */
     unicodeBidi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'writing-mode',
-     *     props: ['wm', 'writing', 'writing-mode'],
-     *     short: 'wm'
-     * }
-     * @propDocEnd
+     * # writing-mode (wm)
+     * The **`writing-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether lines of text are laid out horizontally or vertically, as well as the direction in which blocks progress. When set for an entire document, it should be set on the root element (`html` element for HTML documents).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wm`
+     *	- `writing`
+     *	- `writing-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
      */
     wm?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'writing-mode',
-     *     props: ['wm', 'writing', 'writing-mode'],
-     *     short: 'wm'
-     * }
-     * @propDocEnd
+     * # writing-mode (wm)
+     * The **`writing-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether lines of text are laid out horizontally or vertically, as well as the direction in which blocks progress. When set for an entire document, it should be set on the root element (`html` element for HTML documents).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wm`
+     *	- `writing`
+     *	- `writing-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
      */
     writing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'writing-mode',
-     *     props: ['wm', 'writing', 'writing-mode'],
-     *     short: 'wm'
-     * }
-     * @propDocEnd
+     * # writing-mode (wm)
+     * The **`writing-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether lines of text are laid out horizontally or vertically, as well as the direction in which blocks progress. When set for an entire document, it should be set on the root element (`html` element for HTML documents).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wm`
+     *	- `writing`
+     *	- `writing-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
      */
     writingMode?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation',
-     *     props: ['a', 'anim', 'animation'],
-     *     short: 'a'
-     * }
-     * @propDocEnd
+     * # animation (a)
+     * The **`animation`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies an animation between styles. It is a shorthand for [`animation-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name "The animation-name CSS property specifies the names of one or more @keyframes at-rules describing the animation or animations to apply to the element."), [`animation-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration "The animation-duration CSS property sets the length of time that an animation takes to complete one cycle."), [`animation-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function "The animation-timing-function CSS property sets how an animation progresses through the duration of each cycle."), [`animation-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay "The animation-delay CSS property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation."), [`animation-iteration-count`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count "The animation-iteration-count CSS property sets the number of times an animation sequence should be played before stopping."), [`animation-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction "The animation-direction CSS property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward."), [`animation-fill-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode "The animation-fill-mode CSS property sets how a CSS animation applies styles to its target before and after its execution."), and [`animation-play-state`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state "The animation-play-state CSS property sets whether an animation is running or paused.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `a`
+     *	- `anim`
+     *	- `animation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation
      */
     a?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation',
-     *     props: ['a', 'anim', 'animation'],
-     *     short: 'a'
-     * }
-     * @propDocEnd
+     * # animation (a)
+     * The **`animation`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies an animation between styles. It is a shorthand for [`animation-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name "The animation-name CSS property specifies the names of one or more @keyframes at-rules describing the animation or animations to apply to the element."), [`animation-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration "The animation-duration CSS property sets the length of time that an animation takes to complete one cycle."), [`animation-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function "The animation-timing-function CSS property sets how an animation progresses through the duration of each cycle."), [`animation-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay "The animation-delay CSS property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation."), [`animation-iteration-count`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count "The animation-iteration-count CSS property sets the number of times an animation sequence should be played before stopping."), [`animation-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction "The animation-direction CSS property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward."), [`animation-fill-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode "The animation-fill-mode CSS property sets how a CSS animation applies styles to its target before and after its execution."), and [`animation-play-state`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state "The animation-play-state CSS property sets whether an animation is running or paused.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `a`
+     *	- `anim`
+     *	- `animation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation
      */
     anim?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation',
-     *     props: ['a', 'anim', 'animation'],
-     *     short: 'a'
-     * }
-     * @propDocEnd
+     * # animation (a)
+     * The **`animation`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies an animation between styles. It is a shorthand for [`animation-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name "The animation-name CSS property specifies the names of one or more @keyframes at-rules describing the animation or animations to apply to the element."), [`animation-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration "The animation-duration CSS property sets the length of time that an animation takes to complete one cycle."), [`animation-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function "The animation-timing-function CSS property sets how an animation progresses through the duration of each cycle."), [`animation-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay "The animation-delay CSS property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation."), [`animation-iteration-count`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count "The animation-iteration-count CSS property sets the number of times an animation sequence should be played before stopping."), [`animation-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction "The animation-direction CSS property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward."), [`animation-fill-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode "The animation-fill-mode CSS property sets how a CSS animation applies styles to its target before and after its execution."), and [`animation-play-state`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state "The animation-play-state CSS property sets whether an animation is running or paused.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `a`
+     *	- `anim`
+     *	- `animation`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation
      */
     animation?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-delay',
-     *     props: ['ad', 'anim-del', 'animation-delay'],
-     *     short: 'ad'
-     * }
-     * @propDocEnd
+     * # animation-delay (ad)
+     * The **`animation-delay`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation. The animation can start later, immediately from its beginning, or immediately and partway through the animation.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ad`
+     *	- `anim-del`
+     *	- `animation-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay
      */
     ad?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-delay',
-     *     props: ['ad', 'anim-del', 'animation-delay'],
-     *     short: 'ad'
-     * }
-     * @propDocEnd
+     * # animation-delay (ad)
+     * The **`animation-delay`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation. The animation can start later, immediately from its beginning, or immediately and partway through the animation.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ad`
+     *	- `anim-del`
+     *	- `animation-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay
      */
     animDel?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-delay',
-     *     props: ['ad', 'anim-del', 'animation-delay'],
-     *     short: 'ad'
-     * }
-     * @propDocEnd
+     * # animation-delay (ad)
+     * The **`animation-delay`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation. The animation can start later, immediately from its beginning, or immediately and partway through the animation.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ad`
+     *	- `anim-del`
+     *	- `animation-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay
      */
     animationDelay?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-direction',
-     *     props: ['aDir', 'anim-dir', 'animation-direction'],
-     *     short: 'aDir'
-     * }
-     * @propDocEnd
+     * # animation-direction (aDir)
+     * The **`animation-direction`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **r**: `reverse`
+     *	- **a**: `alternate`
+     *	- **ar**: `alternate-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `aDir`
+     *	- `anim-dir`
+     *	- `animation-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction
      */
     aDir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-direction',
-     *     props: ['aDir', 'anim-dir', 'animation-direction'],
-     *     short: 'aDir'
-     * }
-     * @propDocEnd
+     * # animation-direction (aDir)
+     * The **`animation-direction`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **r**: `reverse`
+     *	- **a**: `alternate`
+     *	- **ar**: `alternate-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `aDir`
+     *	- `anim-dir`
+     *	- `animation-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction
      */
     animDir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-direction',
-     *     props: ['aDir', 'anim-dir', 'animation-direction'],
-     *     short: 'aDir'
-     * }
-     * @propDocEnd
+     * # animation-direction (aDir)
+     * The **`animation-direction`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **r**: `reverse`
+     *	- **a**: `alternate`
+     *	- **ar**: `alternate-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `aDir`
+     *	- `anim-dir`
+     *	- `animation-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction
      */
     animationDirection?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-duration',
-     *     props: ['aD', 'anim-dur', 'animation-duration'],
-     *     short: 'aD'
-     * }
-     * @propDocEnd
+     * # animation-duration (aD)
+     * The **`animation-duration`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the length of time that an animation takes to complete one cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aD`
+     *	- `anim-dur`
+     *	- `animation-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration
      */
     aD?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-duration',
-     *     props: ['aD', 'anim-dur', 'animation-duration'],
-     *     short: 'aD'
-     * }
-     * @propDocEnd
+     * # animation-duration (aD)
+     * The **`animation-duration`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the length of time that an animation takes to complete one cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aD`
+     *	- `anim-dur`
+     *	- `animation-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration
      */
     animDur?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-duration',
-     *     props: ['aD', 'anim-dur', 'animation-duration'],
-     *     short: 'aD'
-     * }
-     * @propDocEnd
+     * # animation-duration (aD)
+     * The **`animation-duration`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the length of time that an animation takes to complete one cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aD`
+     *	- `anim-dur`
+     *	- `animation-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration
      */
     animationDuration?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-fill-mode',
-     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
-     *     short: 'afm'
-     * }
-     * @propDocEnd
+     * # animation-fill-mode (afm)
+     * The **`animation-fill-mode`** [CSS](https://developer.mozilla.org/en/CSS) property sets how a CSS animation applies styles to its target before and after its execution.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **fwd**: `forwards`
+     *	- **bwd**: `backwards`
+     *	- **b**: `both`
+     *
+     * ---
+     * ## Aliases
+     *	- `afm`
+     *	- `anim-fill`
+     *	- `animation-fill-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode
      */
     afm?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-fill-mode',
-     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
-     *     short: 'afm'
-     * }
-     * @propDocEnd
+     * # animation-fill-mode (afm)
+     * The **`animation-fill-mode`** [CSS](https://developer.mozilla.org/en/CSS) property sets how a CSS animation applies styles to its target before and after its execution.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **fwd**: `forwards`
+     *	- **bwd**: `backwards`
+     *	- **b**: `both`
+     *
+     * ---
+     * ## Aliases
+     *	- `afm`
+     *	- `anim-fill`
+     *	- `animation-fill-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode
      */
     animFill?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-fill-mode',
-     *     props: ['afm', 'anim-fill', 'animation-fill-mode'],
-     *     short: 'afm'
-     * }
-     * @propDocEnd
+     * # animation-fill-mode (afm)
+     * The **`animation-fill-mode`** [CSS](https://developer.mozilla.org/en/CSS) property sets how a CSS animation applies styles to its target before and after its execution.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **fwd**: `forwards`
+     *	- **bwd**: `backwards`
+     *	- **b**: `both`
+     *
+     * ---
+     * ## Aliases
+     *	- `afm`
+     *	- `anim-fill`
+     *	- `animation-fill-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode
      */
     animationFillMode?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-iteration-count',
-     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
-     *     short: 'aic'
-     * }
-     * @propDocEnd
+     * # animation-iteration-count (aic)
+     * The **`animation-iteration-count`** [CSS](https://developer.mozilla.org/en/CSS) property sets the number of times an animation sequence should be played before stopping.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aic`
+     *	- `anim-count`
+     *	- `animation-iteration-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count
      */
     aic?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-iteration-count',
-     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
-     *     short: 'aic'
-     * }
-     * @propDocEnd
+     * # animation-iteration-count (aic)
+     * The **`animation-iteration-count`** [CSS](https://developer.mozilla.org/en/CSS) property sets the number of times an animation sequence should be played before stopping.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aic`
+     *	- `anim-count`
+     *	- `animation-iteration-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count
      */
     animCount?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-iteration-count',
-     *     props: ['aic', 'anim-count', 'animation-iteration-count'],
-     *     short: 'aic'
-     * }
-     * @propDocEnd
+     * # animation-iteration-count (aic)
+     * The **`animation-iteration-count`** [CSS](https://developer.mozilla.org/en/CSS) property sets the number of times an animation sequence should be played before stopping.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `aic`
+     *	- `anim-count`
+     *	- `animation-iteration-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count
      */
     animationIterationCount?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-name',
-     *     props: ['an', 'anim-name', 'animation-name'],
-     *     short: 'an'
-     * }
-     * @propDocEnd
+     * # animation-name (an)
+     * The **`animation-name`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the names of one or more [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes "The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.") at-rules describing the animation or animations to apply to the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `an`
+     *	- `anim-name`
+     *	- `animation-name`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name
      */
     an?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-name',
-     *     props: ['an', 'anim-name', 'animation-name'],
-     *     short: 'an'
-     * }
-     * @propDocEnd
+     * # animation-name (an)
+     * The **`animation-name`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the names of one or more [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes "The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.") at-rules describing the animation or animations to apply to the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `an`
+     *	- `anim-name`
+     *	- `animation-name`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name
      */
     animName?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-name',
-     *     props: ['an', 'anim-name', 'animation-name'],
-     *     short: 'an'
-     * }
-     * @propDocEnd
+     * # animation-name (an)
+     * The **`animation-name`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property specifies the names of one or more [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes "The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence.") at-rules describing the animation or animations to apply to the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `an`
+     *	- `anim-name`
+     *	- `animation-name`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name
      */
     animationName?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-play-state',
-     *     props: ['aps', 'anim-state', 'animation-play-state'],
-     *     short: 'aps'
-     * }
-     * @propDocEnd
+     * # animation-play-state (aps)
+     * The **`animation-play-state`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation is running or paused.
+     *
+     * ---
+     * ## Shorthands
+     *	- **p**: `paused`
+     *	- **r**: `running`
+     *
+     * ---
+     * ## Aliases
+     *	- `aps`
+     *	- `anim-state`
+     *	- `animation-play-state`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state
      */
     aps?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-play-state',
-     *     props: ['aps', 'anim-state', 'animation-play-state'],
-     *     short: 'aps'
-     * }
-     * @propDocEnd
+     * # animation-play-state (aps)
+     * The **`animation-play-state`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation is running or paused.
+     *
+     * ---
+     * ## Shorthands
+     *	- **p**: `paused`
+     *	- **r**: `running`
+     *
+     * ---
+     * ## Aliases
+     *	- `aps`
+     *	- `anim-state`
+     *	- `animation-play-state`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state
      */
     animState?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-play-state',
-     *     props: ['aps', 'anim-state', 'animation-play-state'],
-     *     short: 'aps'
-     * }
-     * @propDocEnd
+     * # animation-play-state (aps)
+     * The **`animation-play-state`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether an animation is running or paused.
+     *
+     * ---
+     * ## Shorthands
+     *	- **p**: `paused`
+     *	- **r**: `running`
+     *
+     * ---
+     * ## Aliases
+     *	- `aps`
+     *	- `anim-state`
+     *	- `animation-play-state`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state
      */
     animationPlayState?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-timing-function',
-     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
-     *     short: 'ats'
-     * }
-     * @propDocEnd
+     * # animation-timing-function (ats)
+     * The **`animation-timing-function`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an animation progresses through the duration of each cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ats`
+     *	- `anim-timing`
+     *	- `animation-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
      */
     ats?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-timing-function',
-     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
-     *     short: 'ats'
-     * }
-     * @propDocEnd
+     * # animation-timing-function (ats)
+     * The **`animation-timing-function`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an animation progresses through the duration of each cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ats`
+     *	- `anim-timing`
+     *	- `animation-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
      */
     animTiming?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'animation-timing-function',
-     *     props: ['ats', 'anim-timing', 'animation-timing-function'],
-     *     short: 'ats'
-     * }
-     * @propDocEnd
+     * # animation-timing-function (ats)
+     * The **`animation-timing-function`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an animation progresses through the duration of each cycle.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ats`
+     *	- `anim-timing`
+     *	- `animation-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function
      */
     animationTimingFunction?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backface-visibility',
-     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
-     *     short: 'bv'
-     * }
-     * @propDocEnd
+     * # backface-visibility (bv)
+     * The **`backface-visibility`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether the back face of an element is visible when turned towards the user.
+     *
+     * ---
+     * ## Shorthands
+     *	- **v**: `visible`
+     *	- **h**: `hidden`
+     *
+     * ---
+     * ## Aliases
+     *	- `bv`
+     *	- `bf-visibility`
+     *	- `backface-visibility`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility
      */
     bv?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backface-visibility',
-     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
-     *     short: 'bv'
-     * }
-     * @propDocEnd
+     * # backface-visibility (bv)
+     * The **`backface-visibility`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether the back face of an element is visible when turned towards the user.
+     *
+     * ---
+     * ## Shorthands
+     *	- **v**: `visible`
+     *	- **h**: `hidden`
+     *
+     * ---
+     * ## Aliases
+     *	- `bv`
+     *	- `bf-visibility`
+     *	- `backface-visibility`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility
      */
     bfVisibility?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backface-visibility',
-     *     props: ['bv', 'bf-visibility', 'backface-visibility'],
-     *     short: 'bv'
-     * }
-     * @propDocEnd
+     * # backface-visibility (bv)
+     * The **`backface-visibility`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether the back face of an element is visible when turned towards the user.
+     *
+     * ---
+     * ## Shorthands
+     *	- **v**: `visible`
+     *	- **h**: `hidden`
+     *
+     * ---
+     * ## Aliases
+     *	- `bv`
+     *	- `bf-visibility`
+     *	- `backface-visibility`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility
      */
     backfaceVisibility?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective',
-     *     props: ['per', 'pers', 'perspective'],
-     *     short: 'per'
-     * }
-     * @propDocEnd
+     * # perspective (per)
+     * The **`perspective`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `per`
+     *	- `pers`
+     *	- `perspective`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective
      */
     per?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective',
-     *     props: ['per', 'pers', 'perspective'],
-     *     short: 'per'
-     * }
-     * @propDocEnd
+     * # perspective (per)
+     * The **`perspective`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `per`
+     *	- `pers`
+     *	- `perspective`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective
      */
     pers?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective',
-     *     props: ['per', 'pers', 'perspective'],
-     *     short: 'per'
-     * }
-     * @propDocEnd
+     * # perspective (per)
+     * The **`perspective`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `per`
+     *	- `pers`
+     *	- `perspective`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective
      */
     perspective?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective-origin',
-     *     props: ['pero', 'pers-org', 'perspective-origin'],
-     *     short: 'pero'
-     * }
-     * @propDocEnd
+     * # perspective-origin (pero)
+     * The **`perspective-origin`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property determines the position at which the viewer is looking. It is used as the _vanishing point_ by the [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective "The perspective CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.") property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pero`
+     *	- `pers-org`
+     *	- `perspective-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin
      */
     pero?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective-origin',
-     *     props: ['pero', 'pers-org', 'perspective-origin'],
-     *     short: 'pero'
-     * }
-     * @propDocEnd
+     * # perspective-origin (pero)
+     * The **`perspective-origin`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property determines the position at which the viewer is looking. It is used as the _vanishing point_ by the [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective "The perspective CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.") property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pero`
+     *	- `pers-org`
+     *	- `perspective-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin
      */
     persOrg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'perspective-origin',
-     *     props: ['pero', 'pers-org', 'perspective-origin'],
-     *     short: 'pero'
-     * }
-     * @propDocEnd
+     * # perspective-origin (pero)
+     * The **`perspective-origin`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property determines the position at which the viewer is looking. It is used as the _vanishing point_ by the [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective "The perspective CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.") property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pero`
+     *	- `pers-org`
+     *	- `perspective-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin
      */
     perspectiveOrigin?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform',
-     *     props: ['tf', 'tran', 'transform'],
-     *     short: 'tf'
-     * }
-     * @propDocEnd
+     * # transform (tf)
+     * The **`transform`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS [visual formatting model](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tf`
+     *	- `tran`
+     *	- `transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform
      */
     tf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform',
-     *     props: ['tf', 'tran', 'transform'],
-     *     short: 'tf'
-     * }
-     * @propDocEnd
+     * # transform (tf)
+     * The **`transform`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS [visual formatting model](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tf`
+     *	- `tran`
+     *	- `transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform
      */
     tran?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform',
-     *     props: ['tf', 'tran', 'transform'],
-     *     short: 'tf'
-     * }
-     * @propDocEnd
+     * # transform (tf)
+     * The **`transform`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS [visual formatting model](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tf`
+     *	- `tran`
+     *	- `transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform
      */
     transform?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-origin',
-     *     props: ['tfo', 'tran-org', 'transform-origin'],
-     *     short: 'tfo'
-     * }
-     * @propDocEnd
+     * # transform-origin (tfo)
+     * The **`transform-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the origin for an element's transformations.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `tfo`
+     *	- `tran-org`
+     *	- `transform-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
      */
     tfo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-origin',
-     *     props: ['tfo', 'tran-org', 'transform-origin'],
-     *     short: 'tfo'
-     * }
-     * @propDocEnd
+     * # transform-origin (tfo)
+     * The **`transform-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the origin for an element's transformations.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `tfo`
+     *	- `tran-org`
+     *	- `transform-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
      */
     tranOrg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-origin',
-     *     props: ['tfo', 'tran-org', 'transform-origin'],
-     *     short: 'tfo'
-     * }
-     * @propDocEnd
+     * # transform-origin (tfo)
+     * The **`transform-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the origin for an element's transformations.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `tfo`
+     *	- `tran-org`
+     *	- `transform-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin
      */
     transformOrigin?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-style',
-     *     props: ['tfs', 'tran-style', 'transform-style'],
-     *     short: 'tfs'
-     * }
-     * @propDocEnd
+     * # transform-style (tfs)
+     * The **`transform-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tfs`
+     *	- `tran-style`
+     *	- `transform-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style
      */
     tfs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-style',
-     *     props: ['tfs', 'tran-style', 'transform-style'],
-     *     short: 'tfs'
-     * }
-     * @propDocEnd
+     * # transform-style (tfs)
+     * The **`transform-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tfs`
+     *	- `tran-style`
+     *	- `transform-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style
      */
     tranStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transform-style',
-     *     props: ['tfs', 'tran-style', 'transform-style'],
-     *     short: 'tfs'
-     * }
-     * @propDocEnd
+     * # transform-style (tfs)
+     * The **`transform-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tfs`
+     *	- `tran-style`
+     *	- `transform-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style
      */
     transformStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition',
-     *     props: ['tr', 'trans', 'transition'],
-     *     short: 'tr'
-     * }
-     * @propDocEnd
+     * # transition (tr)
+     * The **`transition`** [CSS](https://developer.mozilla.org/en/CSS "CSS") property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties "/en-US/docs/CSS/Shorthand_properties") for [`transition-property`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property "The transition-property CSS property sets the CSS properties to which a transition effect should be applied."), [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration "The transition-duration CSS property sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur."), [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function "The transition-timing-function CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect."), and [`transition-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay "The transition-delay CSS property specifies the duration to wait before starting a property's transition effect when its value changes.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tr`
+     *	- `trans`
+     *	- `transition`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition
      */
     tr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition',
-     *     props: ['tr', 'trans', 'transition'],
-     *     short: 'tr'
-     * }
-     * @propDocEnd
+     * # transition (tr)
+     * The **`transition`** [CSS](https://developer.mozilla.org/en/CSS "CSS") property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties "/en-US/docs/CSS/Shorthand_properties") for [`transition-property`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property "The transition-property CSS property sets the CSS properties to which a transition effect should be applied."), [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration "The transition-duration CSS property sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur."), [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function "The transition-timing-function CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect."), and [`transition-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay "The transition-delay CSS property specifies the duration to wait before starting a property's transition effect when its value changes.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tr`
+     *	- `trans`
+     *	- `transition`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition
      */
     trans?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition',
-     *     props: ['tr', 'trans', 'transition'],
-     *     short: 'tr'
-     * }
-     * @propDocEnd
+     * # transition (tr)
+     * The **`transition`** [CSS](https://developer.mozilla.org/en/CSS "CSS") property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties "/en-US/docs/CSS/Shorthand_properties") for [`transition-property`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property "The transition-property CSS property sets the CSS properties to which a transition effect should be applied."), [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration "The transition-duration CSS property sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur."), [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function "The transition-timing-function CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect."), and [`transition-delay`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay "The transition-delay CSS property specifies the duration to wait before starting a property's transition effect when its value changes.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `tr`
+     *	- `trans`
+     *	- `transition`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition
      */
     transition?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-delay',
-     *     props: ['trD', 'trans-del', 'transition-delay'],
-     *     short: 'trD'
-     * }
-     * @propDocEnd
+     * # transition-delay (trD)
+     * The **`transition-delay`** CSS property specifies the duration to wait before starting a property's [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) when its value changes.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trD`
+     *	- `trans-del`
+     *	- `transition-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay
      */
     trD?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-delay',
-     *     props: ['trD', 'trans-del', 'transition-delay'],
-     *     short: 'trD'
-     * }
-     * @propDocEnd
+     * # transition-delay (trD)
+     * The **`transition-delay`** CSS property specifies the duration to wait before starting a property's [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) when its value changes.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trD`
+     *	- `trans-del`
+     *	- `transition-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay
      */
     transDel?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-delay',
-     *     props: ['trD', 'trans-del', 'transition-delay'],
-     *     short: 'trD'
-     * }
-     * @propDocEnd
+     * # transition-delay (trD)
+     * The **`transition-delay`** CSS property specifies the duration to wait before starting a property's [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) when its value changes.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trD`
+     *	- `trans-del`
+     *	- `transition-delay`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay
      */
     transitionDelay?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-duration',
-     *     props: ['trd', 'trans-dur', 'transition-duration'],
-     *     short: 'trd'
-     * }
-     * @propDocEnd
+     * # transition-duration (trd)
+     * The **`transition-duration`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of time a transition animation should take to complete. By default, the value is `0s`, meaning that no animation will occur.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trd`
+     *	- `trans-dur`
+     *	- `transition-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration
      */
     trd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-duration',
-     *     props: ['trd', 'trans-dur', 'transition-duration'],
-     *     short: 'trd'
-     * }
-     * @propDocEnd
+     * # transition-duration (trd)
+     * The **`transition-duration`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of time a transition animation should take to complete. By default, the value is `0s`, meaning that no animation will occur.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trd`
+     *	- `trans-dur`
+     *	- `transition-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration
      */
     transDur?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-duration',
-     *     props: ['trd', 'trans-dur', 'transition-duration'],
-     *     short: 'trd'
-     * }
-     * @propDocEnd
+     * # transition-duration (trd)
+     * The **`transition-duration`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of time a transition animation should take to complete. By default, the value is `0s`, meaning that no animation will occur.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trd`
+     *	- `trans-dur`
+     *	- `transition-duration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration
      */
     transitionDuration?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-property',
-     *     props: ['trp', 'trans-prop', 'transition-property'],
-     *     short: 'trp'
-     * }
-     * @propDocEnd
+     * # transition-property (trp)
+     * The **`transition-property`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the CSS properties to which a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) should be applied.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trp`
+     *	- `trans-prop`
+     *	- `transition-property`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
      */
     trp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-property',
-     *     props: ['trp', 'trans-prop', 'transition-property'],
-     *     short: 'trp'
-     * }
-     * @propDocEnd
+     * # transition-property (trp)
+     * The **`transition-property`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the CSS properties to which a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) should be applied.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trp`
+     *	- `trans-prop`
+     *	- `transition-property`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
      */
     transProp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-property',
-     *     props: ['trp', 'trans-prop', 'transition-property'],
-     *     short: 'trp'
-     * }
-     * @propDocEnd
+     * # transition-property (trp)
+     * The **`transition-property`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the CSS properties to which a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) should be applied.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trp`
+     *	- `trans-prop`
+     *	- `transition-property`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property
      */
     transitionProperty?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-timing-function',
-     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
-     *     short: 'trt'
-     * }
-     * @propDocEnd
+     * # transition-timing-function (trt)
+     * The **`transition-timing-function`** CSS property sets how intermediate values are calculated for CSS properties being affected by a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trt`
+     *	- `trans-timing`
+     *	- `transition-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
      */
     trt?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-timing-function',
-     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
-     *     short: 'trt'
-     * }
-     * @propDocEnd
+     * # transition-timing-function (trt)
+     * The **`transition-timing-function`** CSS property sets how intermediate values are calculated for CSS properties being affected by a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trt`
+     *	- `trans-timing`
+     *	- `transition-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
      */
     transTiming?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'transition-timing-function',
-     *     props: ['trt', 'trans-timing', 'transition-timing-function'],
-     *     short: 'trt'
-     * }
-     * @propDocEnd
+     * # transition-timing-function (trt)
+     * The **`transition-timing-function`** CSS property sets how intermediate values are calculated for CSS properties being affected by a [transition effect](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `trt`
+     *	- `trans-timing`
+     *	- `transition-timing-function`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
      */
     transitionTimingFunction?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex',
-     *     props: ['f', 'fx', 'flex'],
-     *     short: 'f'
-     * }
-     * @propDocEnd
+     * # flex (f)
+     * The **`flex`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets how a flex _item_ will grow or shrink to fit the space available in its flex container.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `f`
+     *	- `fx`
+     *	- `flex`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex
      */
     f?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex',
-     *     props: ['f', 'fx', 'flex'],
-     *     short: 'f'
-     * }
-     * @propDocEnd
+     * # flex (f)
+     * The **`flex`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets how a flex _item_ will grow or shrink to fit the space available in its flex container.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `f`
+     *	- `fx`
+     *	- `flex`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex
      */
     fx?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex',
-     *     props: ['f', 'fx', 'flex'],
-     *     short: 'f'
-     * }
-     * @propDocEnd
+     * # flex (f)
+     * The **`flex`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets how a flex _item_ will grow or shrink to fit the space available in its flex container.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `f`
+     *	- `fx`
+     *	- `flex`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex
      */
     flex?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-direction',
-     *     props: ['fd', 'fx-dir', 'flex-direction'],
-     *     short: 'fd'
-     * }
-     * @propDocEnd
+     * # flex-direction (fd)
+     * The **`flex-direction`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
+     *
+     * ---
+     * ## Shorthands
+     *	- **r**: `row`
+     *	- **rr**: `row-reverse`
+     *	- **c**: `column`
+     *	- **cr**: `column-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `fd`
+     *	- `fx-dir`
+     *	- `flex-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
      */
     fd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-direction',
-     *     props: ['fd', 'fx-dir', 'flex-direction'],
-     *     short: 'fd'
-     * }
-     * @propDocEnd
+     * # flex-direction (fd)
+     * The **`flex-direction`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
+     *
+     * ---
+     * ## Shorthands
+     *	- **r**: `row`
+     *	- **rr**: `row-reverse`
+     *	- **c**: `column`
+     *	- **cr**: `column-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `fd`
+     *	- `fx-dir`
+     *	- `flex-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
      */
     fxDir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-direction',
-     *     props: ['fd', 'fx-dir', 'flex-direction'],
-     *     short: 'fd'
-     * }
-     * @propDocEnd
+     * # flex-direction (fd)
+     * The **`flex-direction`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
+     *
+     * ---
+     * ## Shorthands
+     *	- **r**: `row`
+     *	- **rr**: `row-reverse`
+     *	- **c**: `column`
+     *	- **cr**: `column-reverse`
+     *
+     * ---
+     * ## Aliases
+     *	- `fd`
+     *	- `fx-dir`
+     *	- `flex-direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
      */
     flexDirection?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-wrap',
-     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
-     *     short: 'fw'
-     * }
-     * @propDocEnd
+     * # flex-wrap (fw)
+     * The **`flex-wrap`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+     *
+     * ---
+     * ## Shorthands
+     *	- **w**: `wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `fw`
+     *	- `fx-wrap`
+     *	- `flex-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
      */
     fw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-wrap',
-     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
-     *     short: 'fw'
-     * }
-     * @propDocEnd
+     * # flex-wrap (fw)
+     * The **`flex-wrap`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+     *
+     * ---
+     * ## Shorthands
+     *	- **w**: `wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `fw`
+     *	- `fx-wrap`
+     *	- `flex-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
      */
     fxWrap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-wrap',
-     *     props: ['fw', 'fx-wrap', 'flex-wrap'],
-     *     short: 'fw'
-     * }
-     * @propDocEnd
+     * # flex-wrap (fw)
+     * The **`flex-wrap`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+     *
+     * ---
+     * ## Shorthands
+     *	- **w**: `wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `fw`
+     *	- `fx-wrap`
+     *	- `flex-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
      */
     flexWrap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-basis',
-     *     props: ['fb', 'fx-base', 'flex-basis'],
-     *     short: 'fb'
-     * }
-     * @propDocEnd
+     * # flex-basis (fb)
+     * The **`flex-basis`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fb`
+     *	- `fx-base`
+     *	- `flex-basis`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
      */
     fb?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-basis',
-     *     props: ['fb', 'fx-base', 'flex-basis'],
-     *     short: 'fb'
-     * }
-     * @propDocEnd
+     * # flex-basis (fb)
+     * The **`flex-basis`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fb`
+     *	- `fx-base`
+     *	- `flex-basis`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
      */
     fxBase?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-basis',
-     *     props: ['fb', 'fx-base', 'flex-basis'],
-     *     short: 'fb'
-     * }
-     * @propDocEnd
+     * # flex-basis (fb)
+     * The **`flex-basis`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fb`
+     *	- `fx-base`
+     *	- `flex-basis`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
      */
     flexBasis?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-flow',
-     *     props: ['ff', 'fx-flow', 'flex-flow'],
-     *     short: 'ff'
-     * }
-     * @propDocEnd
+     * # flex-flow (ff)
+     * The **`flex-flow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies the direction of a flex container, as well as its wrapping behavior.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ff`
+     *	- `fx-flow`
+     *	- `flex-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow
      */
     ff?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-flow',
-     *     props: ['ff', 'fx-flow', 'flex-flow'],
-     *     short: 'ff'
-     * }
-     * @propDocEnd
+     * # flex-flow (ff)
+     * The **`flex-flow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies the direction of a flex container, as well as its wrapping behavior.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ff`
+     *	- `fx-flow`
+     *	- `flex-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow
      */
     fxFlow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-flow',
-     *     props: ['ff', 'fx-flow', 'flex-flow'],
-     *     short: 'ff'
-     * }
-     * @propDocEnd
+     * # flex-flow (ff)
+     * The **`flex-flow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies the direction of a flex container, as well as its wrapping behavior.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ff`
+     *	- `fx-flow`
+     *	- `flex-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow
      */
     flexFlow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-grow',
-     *     props: ['fg', 'fx-grow', 'flex-grow'],
-     *     short: 'fg'
-     * }
-     * @propDocEnd
+     * # flex-grow (fg)
+     * The **`flex-grow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex grow factor of a flex item [main size](https://developer.mozilla.orghttps://www.w3.org/TR/css-flexbox/#main-size).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fg`
+     *	- `fx-grow`
+     *	- `flex-grow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
      */
     fg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-grow',
-     *     props: ['fg', 'fx-grow', 'flex-grow'],
-     *     short: 'fg'
-     * }
-     * @propDocEnd
+     * # flex-grow (fg)
+     * The **`flex-grow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex grow factor of a flex item [main size](https://developer.mozilla.orghttps://www.w3.org/TR/css-flexbox/#main-size).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fg`
+     *	- `fx-grow`
+     *	- `flex-grow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
      */
     fxGrow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-grow',
-     *     props: ['fg', 'fx-grow', 'flex-grow'],
-     *     short: 'fg'
-     * }
-     * @propDocEnd
+     * # flex-grow (fg)
+     * The **`flex-grow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex grow factor of a flex item [main size](https://developer.mozilla.orghttps://www.w3.org/TR/css-flexbox/#main-size).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fg`
+     *	- `fx-grow`
+     *	- `flex-grow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
      */
     flexGrow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-shrink',
-     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
-     *     short: 'fs'
-     * }
-     * @propDocEnd
+     * # flex-shrink (fs)
+     * The **`flex-shrink`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, items shrink to fit according to `flex-shrink`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fs`
+     *	- `fx-shrink`
+     *	- `flex-shrink`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
      */
     fs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-shrink',
-     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
-     *     short: 'fs'
-     * }
-     * @propDocEnd
+     * # flex-shrink (fs)
+     * The **`flex-shrink`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, items shrink to fit according to `flex-shrink`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fs`
+     *	- `fx-shrink`
+     *	- `flex-shrink`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
      */
     fxShrink?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'flex-shrink',
-     *     props: ['fs', 'fx-shrink', 'flex-shrink'],
-     *     short: 'fs'
-     * }
-     * @propDocEnd
+     * # flex-shrink (fs)
+     * The **`flex-shrink`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, items shrink to fit according to `flex-shrink`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fs`
+     *	- `fx-shrink`
+     *	- `flex-shrink`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
      */
     flexShrink?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-items',
-     *     props: ['ai', 'al-items', 'align-items'],
-     *     short: 'ai'
-     * }
-     * @propDocEnd
+     * # align-items (ai)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-items`** property sets the [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self "The align-self CSS property overrides a grid or flex item's align-items value. In Grid, it aligns the item inside the grid area. In Flexbox, it aligns the item on the cross axis.") value on all direct children as a group. In Flexbox, it controls the alignment of items on the [Cross Axis](https://developer.mozilla.org/en-US/docs/Glossary/Cross_Axis). In Grid Layout, it controls the alignment of items on the Block Axis within their [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ai`
+     *	- `al-items`
+     *	- `align-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
      */
     ai?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-items',
-     *     props: ['ai', 'al-items', 'align-items'],
-     *     short: 'ai'
-     * }
-     * @propDocEnd
+     * # align-items (ai)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-items`** property sets the [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self "The align-self CSS property overrides a grid or flex item's align-items value. In Grid, it aligns the item inside the grid area. In Flexbox, it aligns the item on the cross axis.") value on all direct children as a group. In Flexbox, it controls the alignment of items on the [Cross Axis](https://developer.mozilla.org/en-US/docs/Glossary/Cross_Axis). In Grid Layout, it controls the alignment of items on the Block Axis within their [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ai`
+     *	- `al-items`
+     *	- `align-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
      */
     alItems?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-items',
-     *     props: ['ai', 'al-items', 'align-items'],
-     *     short: 'ai'
-     * }
-     * @propDocEnd
+     * # align-items (ai)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-items`** property sets the [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self "The align-self CSS property overrides a grid or flex item's align-items value. In Grid, it aligns the item inside the grid area. In Flexbox, it aligns the item on the cross axis.") value on all direct children as a group. In Flexbox, it controls the alignment of items on the [Cross Axis](https://developer.mozilla.org/en-US/docs/Glossary/Cross_Axis). In Grid Layout, it controls the alignment of items on the Block Axis within their [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ai`
+     *	- `al-items`
+     *	- `align-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
      */
     alignItems?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-content',
-     *     props: ['ac', 'al-content', 'align-content'],
-     *     short: 'ac'
-     * }
-     * @propDocEnd
+     * # align-content (ac)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-content`** property sets the distribution of space between and around content items along a [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)'s cross-axis or a [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)'s block axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ac`
+     *	- `al-content`
+     *	- `align-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
      */
     ac?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-content',
-     *     props: ['ac', 'al-content', 'align-content'],
-     *     short: 'ac'
-     * }
-     * @propDocEnd
+     * # align-content (ac)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-content`** property sets the distribution of space between and around content items along a [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)'s cross-axis or a [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)'s block axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ac`
+     *	- `al-content`
+     *	- `align-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
      */
     alContent?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-content',
-     *     props: ['ac', 'al-content', 'align-content'],
-     *     short: 'ac'
-     * }
-     * @propDocEnd
+     * # align-content (ac)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`align-content`** property sets the distribution of space between and around content items along a [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)'s cross-axis or a [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)'s block axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ac`
+     *	- `al-content`
+     *	- `align-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
      */
     alignContent?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-items',
-     *     props: ['ji', 'just-items', 'justify-items'],
-     *     short: 'ji'
-     * }
-     * @propDocEnd
+     * # justify-items (ji)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-items`** property defines the default [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self "The CSS justify-self property sets the way a box is justified inside its alignment container along the appropriate axis.") for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ji`
+     *	- `just-items`
+     *	- `justify-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
      */
     ji?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-items',
-     *     props: ['ji', 'just-items', 'justify-items'],
-     *     short: 'ji'
-     * }
-     * @propDocEnd
+     * # justify-items (ji)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-items`** property defines the default [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self "The CSS justify-self property sets the way a box is justified inside its alignment container along the appropriate axis.") for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ji`
+     *	- `just-items`
+     *	- `justify-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
      */
     justItems?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-items',
-     *     props: ['ji', 'just-items', 'justify-items'],
-     *     short: 'ji'
-     * }
-     * @propDocEnd
+     * # justify-items (ji)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-items`** property defines the default [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self "The CSS justify-self property sets the way a box is justified inside its alignment container along the appropriate axis.") for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `ji`
+     *	- `just-items`
+     *	- `justify-items`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
      */
     justifyItems?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-content',
-     *     props: ['jc', 'just-content', 'justify-content'],
-     *     short: 'jc'
-     * }
-     * @propDocEnd
+     * # justify-content (jc)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-content`** property defines how the browser distributes space between and around content items along the [main-axis](https://developer.mozilla.org/en-US/docs/Glossary/Main_Axis) of a flex container, and the inline axis of a grid container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jc`
+     *	- `just-content`
+     *	- `justify-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
      */
     jc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-content',
-     *     props: ['jc', 'just-content', 'justify-content'],
-     *     short: 'jc'
-     * }
-     * @propDocEnd
+     * # justify-content (jc)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-content`** property defines how the browser distributes space between and around content items along the [main-axis](https://developer.mozilla.org/en-US/docs/Glossary/Main_Axis) of a flex container, and the inline axis of a grid container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jc`
+     *	- `just-content`
+     *	- `justify-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
      */
     justContent?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-content',
-     *     props: ['jc', 'just-content', 'justify-content'],
-     *     short: 'jc'
-     * }
-     * @propDocEnd
+     * # justify-content (jc)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-content`** property defines how the browser distributes space between and around content items along the [main-axis](https://developer.mozilla.org/en-US/docs/Glossary/Main_Axis) of a flex container, and the inline axis of a grid container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jc`
+     *	- `just-content`
+     *	- `justify-content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
      */
     justifyContent?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-self',
-     *     props: ['aS', 'al-self', 'align-self'],
-     *     short: 'aS'
-     * }
-     * @propDocEnd
+     * # align-self (aS)
+     * The **`align-self`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property overrides a grid or flex item's [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items "The CSS align-items property sets the align-self value on all direct children as a group.") value. In Grid, it aligns the item inside the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas). In Flexbox, it aligns the item on the [cross axis](https://developer.mozilla.org/en-US/docs/Glossary/cross_axis).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `aS`
+     *	- `al-self`
+     *	- `align-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
      */
     aS?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-self',
-     *     props: ['aS', 'al-self', 'align-self'],
-     *     short: 'aS'
-     * }
-     * @propDocEnd
+     * # align-self (aS)
+     * The **`align-self`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property overrides a grid or flex item's [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items "The CSS align-items property sets the align-self value on all direct children as a group.") value. In Grid, it aligns the item inside the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas). In Flexbox, it aligns the item on the [cross axis](https://developer.mozilla.org/en-US/docs/Glossary/cross_axis).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `aS`
+     *	- `al-self`
+     *	- `align-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
      */
     alSelf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'align-self',
-     *     props: ['aS', 'al-self', 'align-self'],
-     *     short: 'aS'
-     * }
-     * @propDocEnd
+     * # align-self (aS)
+     * The **`align-self`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property overrides a grid or flex item's [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items "The CSS align-items property sets the align-self value on all direct children as a group.") value. In Grid, it aligns the item inside the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas). In Flexbox, it aligns the item on the [cross axis](https://developer.mozilla.org/en-US/docs/Glossary/cross_axis).
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `aS`
+     *	- `al-self`
+     *	- `align-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
      */
     alignSelf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-self',
-     *     props: ['jS', 'just-self', 'justify-self'],
-     *     short: 'jS'
-     * }
-     * @propDocEnd
+     * # justify-self (jS)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jS`
+     *	- `just-self`
+     *	- `justify-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
      */
     jS?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-self',
-     *     props: ['jS', 'just-self', 'justify-self'],
-     *     short: 'jS'
-     * }
-     * @propDocEnd
+     * # justify-self (jS)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jS`
+     *	- `just-self`
+     *	- `justify-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
      */
     justSelf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'justify-self',
-     *     props: ['jS', 'just-self', 'justify-self'],
-     *     short: 'jS'
-     * }
-     * @propDocEnd
+     * # justify-self (jS)
+     * The [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) **`justify-self`** property sets the way a box is justified inside its alignment container along the appropriate axis.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `start`
+     *	- **fs**: `flex-start`
+     *	- **e**: `end`
+     *	- **fe**: `flex-end`
+     *	- **st**: `stretch`
+     *	- **c**: `center`
+     *	- **n**: `normal`
+     *	- **sb**: `space-between`
+     *	- **as**: `space-around`
+     *	- **se**: `space-evenly`
+     *
+     * ---
+     * ## Aliases
+     *	- `jS`
+     *	- `just-self`
+     *	- `justify-self`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
      */
     justifySelf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font',
-     *     props: ['ft', 'ft', 'font'],
-     *     short: 'ft'
-     * }
-     * @propDocEnd
+     * # font (ft)
+     * The **`font`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets all the different properties of an element's font. Alternatively, it sets an element's font to a system font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ft`
+     *	- `font`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font
      */
     ft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font',
-     *     props: ['ft', 'ft', 'font'],
-     *     short: 'ft'
-     * }
-     * @propDocEnd
+     * # font (ft)
+     * The **`font`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets all the different properties of an element's font. Alternatively, it sets an element's font to a system font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ft`
+     *	- `font`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font
      */
     font?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-family',
-     *     props: ['ftf', 'ft-family', 'font-family'],
-     *     short: 'ftf'
-     * }
-     * @propDocEnd
+     * # font-family (ftf)
+     * The **`font-family`** CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftf`
+     *	- `ft-family`
+     *	- `font-family`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
      */
     ftf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-family',
-     *     props: ['ftf', 'ft-family', 'font-family'],
-     *     short: 'ftf'
-     * }
-     * @propDocEnd
+     * # font-family (ftf)
+     * The **`font-family`** CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftf`
+     *	- `ft-family`
+     *	- `font-family`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
      */
     ftFamily?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-family',
-     *     props: ['ftf', 'ft-family', 'font-family'],
-     *     short: 'ftf'
-     * }
-     * @propDocEnd
+     * # font-family (ftf)
+     * The **`font-family`** CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftf`
+     *	- `ft-family`
+     *	- `font-family`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
      */
     fontFamily?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-kerning',
-     *     props: ['ftk', 'ft-kern', 'font-kerning'],
-     *     short: 'ftk'
-     * }
-     * @propDocEnd
+     * # font-kerning (ftk)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftk`
+     *	- `ft-kern`
+     *	- `font-kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning
      */
     ftk?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-kerning',
-     *     props: ['ftk', 'ft-kern', 'font-kerning'],
-     *     short: 'ftk'
-     * }
-     * @propDocEnd
+     * # font-kerning (ftk)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftk`
+     *	- `ft-kern`
+     *	- `font-kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning
      */
     ftKern?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-kerning',
-     *     props: ['ftk', 'ft-kern', 'font-kerning'],
-     *     short: 'ftk'
-     * }
-     * @propDocEnd
+     * # font-kerning (ftk)
+     * The **`font-kerning`** CSS property sets the use of the kerning information stored in a font.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ftk`
+     *	- `ft-kern`
+     *	- `font-kerning`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning
      */
     fontKerning?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size',
-     *     props: ['fts', 'ft-size', 'font-size'],
-     *     short: 'fts'
-     * }
-     * @propDocEnd
+     * # font-size (fts)
+     * The **`font-size`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the font. Changing the font size also updates the sizes of the font size-relative [`<length>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length "The <length> CSS data type represents a distance value. Lengths can be used in numerous CSS properties, such as width, height, margin, padding, border-width, font-size, and text-shadow.") units, such as `em`, `ex`, and so forth.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fts`
+     *	- `ft-size`
+     *	- `font-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
      */
     fts?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size',
-     *     props: ['fts', 'ft-size', 'font-size'],
-     *     short: 'fts'
-     * }
-     * @propDocEnd
+     * # font-size (fts)
+     * The **`font-size`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the font. Changing the font size also updates the sizes of the font size-relative [`<length>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length "The <length> CSS data type represents a distance value. Lengths can be used in numerous CSS properties, such as width, height, margin, padding, border-width, font-size, and text-shadow.") units, such as `em`, `ex`, and so forth.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fts`
+     *	- `ft-size`
+     *	- `font-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
      */
     ftSize?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-size',
-     *     props: ['fts', 'ft-size', 'font-size'],
-     *     short: 'fts'
-     * }
-     * @propDocEnd
+     * # font-size (fts)
+     * The **`font-size`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the font. Changing the font size also updates the sizes of the font size-relative [`<length>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length "The <length> CSS data type represents a distance value. Lengths can be used in numerous CSS properties, such as width, height, margin, padding, border-width, font-size, and text-shadow.") units, such as `em`, `ex`, and so forth.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fts`
+     *	- `ft-size`
+     *	- `font-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
      */
     fontSize?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-stretch',
-     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
-     *     short: 'ftStr'
-     * }
-     * @propDocEnd
+     * # font-stretch (ftStr)
+     * The **`font-stretch`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property selects a normal, condensed, or expanded face from a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **uc**: `ultra-condensed`
+     *	- **ec**: `extra-condensed`
+     *	- **c**: `condensed`
+     *	- **sc**: `semi-condensed`
+     *	- **n**: `normal`
+     *	- **se**: `semi-expanded`
+     *	- **e**: `expanded`
+     *	- **ee**: `extra-expanded`
+     *	- **ue**: `ultra-expanded`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftStr`
+     *	- `ft-stretch`
+     *	- `font-stretch`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
      */
     ftStr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-stretch',
-     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
-     *     short: 'ftStr'
-     * }
-     * @propDocEnd
+     * # font-stretch (ftStr)
+     * The **`font-stretch`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property selects a normal, condensed, or expanded face from a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **uc**: `ultra-condensed`
+     *	- **ec**: `extra-condensed`
+     *	- **c**: `condensed`
+     *	- **sc**: `semi-condensed`
+     *	- **n**: `normal`
+     *	- **se**: `semi-expanded`
+     *	- **e**: `expanded`
+     *	- **ee**: `extra-expanded`
+     *	- **ue**: `ultra-expanded`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftStr`
+     *	- `ft-stretch`
+     *	- `font-stretch`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
      */
     ftStretch?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-stretch',
-     *     props: ['ftStr', 'ft-stretch', 'font-stretch'],
-     *     short: 'ftStr'
-     * }
-     * @propDocEnd
+     * # font-stretch (ftStr)
+     * The **`font-stretch`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property selects a normal, condensed, or expanded face from a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **uc**: `ultra-condensed`
+     *	- **ec**: `extra-condensed`
+     *	- **c**: `condensed`
+     *	- **sc**: `semi-condensed`
+     *	- **n**: `normal`
+     *	- **se**: `semi-expanded`
+     *	- **e**: `expanded`
+     *	- **ee**: `extra-expanded`
+     *	- **ue**: `ultra-expanded`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftStr`
+     *	- `ft-stretch`
+     *	- `font-stretch`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
      */
     fontStretch?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-style',
-     *     props: ['ftSty', 'ft-style', 'font-style'],
-     *     short: 'ftSty'
-     * }
-     * @propDocEnd
+     * # font-style (ftSty)
+     * The **`font-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a font should be styled with a normal, italic, or oblique face from its [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **i**: `italic`
+     *	- **o**: `oblique`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftSty`
+     *	- `ft-style`
+     *	- `font-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
      */
     ftSty?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-style',
-     *     props: ['ftSty', 'ft-style', 'font-style'],
-     *     short: 'ftSty'
-     * }
-     * @propDocEnd
+     * # font-style (ftSty)
+     * The **`font-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a font should be styled with a normal, italic, or oblique face from its [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **i**: `italic`
+     *	- **o**: `oblique`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftSty`
+     *	- `ft-style`
+     *	- `font-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
      */
     ftStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-style',
-     *     props: ['ftSty', 'ft-style', 'font-style'],
-     *     short: 'ftSty'
-     * }
-     * @propDocEnd
+     * # font-style (ftSty)
+     * The **`font-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a font should be styled with a normal, italic, or oblique face from its [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **i**: `italic`
+     *	- **o**: `oblique`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftSty`
+     *	- `ft-style`
+     *	- `font-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
      */
     fontStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-variant',
-     *     props: ['ftv', 'ft-variant', 'font-variant'],
-     *     short: 'ftv'
-     * }
-     * @propDocEnd
+     * # font-variant (ftv)
+     * The **font-variant** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you to set all the font variants for a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **sc**: `small-caps`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftv`
+     *	- `ft-variant`
+     *	- `font-variant`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
      */
     ftv?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-variant',
-     *     props: ['ftv', 'ft-variant', 'font-variant'],
-     *     short: 'ftv'
-     * }
-     * @propDocEnd
+     * # font-variant (ftv)
+     * The **font-variant** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you to set all the font variants for a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **sc**: `small-caps`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftv`
+     *	- `ft-variant`
+     *	- `font-variant`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
      */
     ftVariant?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-variant',
-     *     props: ['ftv', 'ft-variant', 'font-variant'],
-     *     short: 'ftv'
-     * }
-     * @propDocEnd
+     * # font-variant (ftv)
+     * The **font-variant** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you to set all the font variants for a font.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **sc**: `small-caps`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftv`
+     *	- `ft-variant`
+     *	- `font-variant`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
      */
     fontVariant?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-weight',
-     *     props: ['ftw', 'ft-weight', 'font-weight'],
-     *     short: 'ftw'
-     * }
-     * @propDocEnd
+     * # font-weight (ftw)
+     * The **`font-weight`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the weight (or boldness) of the font. The weights available depend on the [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.") that is currently set.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `bold`
+     *	- **br**: `bolder`
+     *	- **l**: `lighter`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftw`
+     *	- `ft-weight`
+     *	- `font-weight`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
      */
     ftw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-weight',
-     *     props: ['ftw', 'ft-weight', 'font-weight'],
-     *     short: 'ftw'
-     * }
-     * @propDocEnd
+     * # font-weight (ftw)
+     * The **`font-weight`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the weight (or boldness) of the font. The weights available depend on the [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.") that is currently set.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `bold`
+     *	- **br**: `bolder`
+     *	- **l**: `lighter`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftw`
+     *	- `ft-weight`
+     *	- `font-weight`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
      */
     ftWeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'font-weight',
-     *     props: ['ftw', 'ft-weight', 'font-weight'],
-     *     short: 'ftw'
-     * }
-     * @propDocEnd
+     * # font-weight (ftw)
+     * The **`font-weight`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the weight (or boldness) of the font. The weights available depend on the [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family "The font-family CSS property specifies a prioritized list of one or more font family names and/or generic family names for the selected element.") that is currently set.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `bold`
+     *	- **br**: `bolder`
+     *	- **l**: `lighter`
+     *
+     * ---
+     * ## Aliases
+     *	- `ftw`
+     *	- `ft-weight`
+     *	- `font-weight`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
      */
     fontWeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'letter-spacing',
-     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
-     *     short: 'ls'
-     * }
-     * @propDocEnd
+     * # letter-spacing (ls)
+     * The **`letter-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of `letter-spacing` causes characters to spread farther apart, while negative values of `letter-spacing` bring characters closer together.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ls`
+     *	- `ltr-spacing`
+     *	- `letter-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
      */
     ls?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'letter-spacing',
-     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
-     *     short: 'ls'
-     * }
-     * @propDocEnd
+     * # letter-spacing (ls)
+     * The **`letter-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of `letter-spacing` causes characters to spread farther apart, while negative values of `letter-spacing` bring characters closer together.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ls`
+     *	- `ltr-spacing`
+     *	- `letter-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
      */
     ltrSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'letter-spacing',
-     *     props: ['ls', 'ltr-spacing', 'letter-spacing'],
-     *     short: 'ls'
-     * }
-     * @propDocEnd
+     * # letter-spacing (ls)
+     * The **`letter-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of `letter-spacing` causes characters to spread farther apart, while negative values of `letter-spacing` bring characters closer together.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ls`
+     *	- `ltr-spacing`
+     *	- `letter-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
      */
     letterSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'line-height',
-     *     props: ['lh', 'line-h', 'line-height'],
-     *     short: 'lh'
-     * }
-     * @propDocEnd
+     * # line-height (lh)
+     * The **`line-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of a line box. It's commonly used to set the distance between lines of text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-[replaced](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element) inline elements, it specifies the height that is used to calculate line box height.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lh`
+     *	- `line-h`
+     *	- `line-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
      */
     lh?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'line-height',
-     *     props: ['lh', 'line-h', 'line-height'],
-     *     short: 'lh'
-     * }
-     * @propDocEnd
+     * # line-height (lh)
+     * The **`line-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of a line box. It's commonly used to set the distance between lines of text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-[replaced](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element) inline elements, it specifies the height that is used to calculate line box height.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lh`
+     *	- `line-h`
+     *	- `line-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
      */
     lineH?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'line-height',
-     *     props: ['lh', 'line-h', 'line-height'],
-     *     short: 'lh'
-     * }
-     * @propDocEnd
+     * # line-height (lh)
+     * The **`line-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of a line box. It's commonly used to set the distance between lines of text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-[replaced](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element) inline elements, it specifies the height that is used to calculate line box height.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lh`
+     *	- `line-h`
+     *	- `line-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
      */
     lineHeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-align',
-     *     props: ['ta', 'txt-align', 'text-align'],
-     *     short: 'ta'
-     * }
-     * @propDocEnd
+     * # text-align (ta)
+     * The **`text-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal alignment of a block element or table-cell box. This means it works like [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align "The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box.") but in the horizontal direction.
+     *
+     * ---
+     * ## Shorthands
+     *	- **l**: `left`
+     *	- **c**: `center`
+     *	- **j**: `justify`
+     *	- **r**: `right`
+     *
+     * ---
+     * ## Aliases
+     *	- `ta`
+     *	- `txt-align`
+     *	- `text-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
      */
     ta?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-align',
-     *     props: ['ta', 'txt-align', 'text-align'],
-     *     short: 'ta'
-     * }
-     * @propDocEnd
+     * # text-align (ta)
+     * The **`text-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal alignment of a block element or table-cell box. This means it works like [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align "The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box.") but in the horizontal direction.
+     *
+     * ---
+     * ## Shorthands
+     *	- **l**: `left`
+     *	- **c**: `center`
+     *	- **j**: `justify`
+     *	- **r**: `right`
+     *
+     * ---
+     * ## Aliases
+     *	- `ta`
+     *	- `txt-align`
+     *	- `text-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
      */
     txtAlign?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-align',
-     *     props: ['ta', 'txt-align', 'text-align'],
-     *     short: 'ta'
-     * }
-     * @propDocEnd
+     * # text-align (ta)
+     * The **`text-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the horizontal alignment of a block element or table-cell box. This means it works like [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align "The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box.") but in the horizontal direction.
+     *
+     * ---
+     * ## Shorthands
+     *	- **l**: `left`
+     *	- **c**: `center`
+     *	- **j**: `justify`
+     *	- **r**: `right`
+     *
+     * ---
+     * ## Aliases
+     *	- `ta`
+     *	- `txt-align`
+     *	- `text-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
      */
     textAlign?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-decoration',
-     *     props: ['td', 'txt-decor', 'text-decoration'],
-     *     short: 'td'
-     * }
-     * @propDocEnd
+     * # text-decoration (td)
+     * The **`text-decoration`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the appearance of decorative lines on text. It is a shorthand for [`text-decoration-line`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line "The text-decoration-line CSS property sets the kind of decoration that is used on text in an element, such as an underline or overline."), [`text-decoration-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color "The text-decoration-color CSS property sets the color of decorations added to text by text-decoration-line."), [`text-decoration-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style "The text-decoration-style CSS property sets the style of the lines specified by text-decoration-line. The style applies to all lines that are set with text-decoration-line."), and the newer [`text-decoration-thickness`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness "The text-decoration-thickness CSS property sets the thickness, or width, of the decoration line that is used on text in an element, such as a line-through, underline, or overline.") property.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **u**: `underline`
+     *	- **o**: `overline`
+     *	- **t**: `line-through`
+     *
+     * ---
+     * ## Aliases
+     *	- `td`
+     *	- `txt-decor`
+     *	- `text-decoration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration
      */
     td?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-decoration',
-     *     props: ['td', 'txt-decor', 'text-decoration'],
-     *     short: 'td'
-     * }
-     * @propDocEnd
+     * # text-decoration (td)
+     * The **`text-decoration`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the appearance of decorative lines on text. It is a shorthand for [`text-decoration-line`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line "The text-decoration-line CSS property sets the kind of decoration that is used on text in an element, such as an underline or overline."), [`text-decoration-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color "The text-decoration-color CSS property sets the color of decorations added to text by text-decoration-line."), [`text-decoration-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style "The text-decoration-style CSS property sets the style of the lines specified by text-decoration-line. The style applies to all lines that are set with text-decoration-line."), and the newer [`text-decoration-thickness`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness "The text-decoration-thickness CSS property sets the thickness, or width, of the decoration line that is used on text in an element, such as a line-through, underline, or overline.") property.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **u**: `underline`
+     *	- **o**: `overline`
+     *	- **t**: `line-through`
+     *
+     * ---
+     * ## Aliases
+     *	- `td`
+     *	- `txt-decor`
+     *	- `text-decoration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration
      */
     txtDecor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-decoration',
-     *     props: ['td', 'txt-decor', 'text-decoration'],
-     *     short: 'td'
-     * }
-     * @propDocEnd
+     * # text-decoration (td)
+     * The **`text-decoration`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the appearance of decorative lines on text. It is a shorthand for [`text-decoration-line`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line "The text-decoration-line CSS property sets the kind of decoration that is used on text in an element, such as an underline or overline."), [`text-decoration-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color "The text-decoration-color CSS property sets the color of decorations added to text by text-decoration-line."), [`text-decoration-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style "The text-decoration-style CSS property sets the style of the lines specified by text-decoration-line. The style applies to all lines that are set with text-decoration-line."), and the newer [`text-decoration-thickness`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness "The text-decoration-thickness CSS property sets the thickness, or width, of the decoration line that is used on text in an element, such as a line-through, underline, or overline.") property.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **u**: `underline`
+     *	- **o**: `overline`
+     *	- **t**: `line-through`
+     *
+     * ---
+     * ## Aliases
+     *	- `td`
+     *	- `txt-decor`
+     *	- `text-decoration`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration
      */
     textDecoration?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-indent',
-     *     props: ['ti', 'txt-in', 'text-indent'],
-     *     short: 'ti'
-     * }
-     * @propDocEnd
+     * # text-indent (ti)
+     * The **`text-indent`** CSS property sets the length of empty space (indentation) that is put before lines of text in a block.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ti`
+     *	- `txt-in`
+     *	- `text-indent`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent
      */
     ti?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-indent',
-     *     props: ['ti', 'txt-in', 'text-indent'],
-     *     short: 'ti'
-     * }
-     * @propDocEnd
+     * # text-indent (ti)
+     * The **`text-indent`** CSS property sets the length of empty space (indentation) that is put before lines of text in a block.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ti`
+     *	- `txt-in`
+     *	- `text-indent`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent
      */
     txtIn?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-indent',
-     *     props: ['ti', 'txt-in', 'text-indent'],
-     *     short: 'ti'
-     * }
-     * @propDocEnd
+     * # text-indent (ti)
+     * The **`text-indent`** CSS property sets the length of empty space (indentation) that is put before lines of text in a block.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ti`
+     *	- `txt-in`
+     *	- `text-indent`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent
      */
     textIndent?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-overflow',
-     *     props: ['to', 'txt-flow', 'text-overflow'],
-     *     short: 'to'
-     * }
-     * @propDocEnd
+     * # text-overflow (to)
+     * The **`text-overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how hidden overflow content is signaled to users. It can be clipped, display an ellipsis ('`…`'), or display a custom string.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `clip`
+     *	- **e**: `ellipsis`
+     *
+     * ---
+     * ## Aliases
+     *	- `to`
+     *	- `txt-flow`
+     *	- `text-overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
      */
     to?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-overflow',
-     *     props: ['to', 'txt-flow', 'text-overflow'],
-     *     short: 'to'
-     * }
-     * @propDocEnd
+     * # text-overflow (to)
+     * The **`text-overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how hidden overflow content is signaled to users. It can be clipped, display an ellipsis ('`…`'), or display a custom string.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `clip`
+     *	- **e**: `ellipsis`
+     *
+     * ---
+     * ## Aliases
+     *	- `to`
+     *	- `txt-flow`
+     *	- `text-overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
      */
     txtFlow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-overflow',
-     *     props: ['to', 'txt-flow', 'text-overflow'],
-     *     short: 'to'
-     * }
-     * @propDocEnd
+     * # text-overflow (to)
+     * The **`text-overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how hidden overflow content is signaled to users. It can be clipped, display an ellipsis ('`…`'), or display a custom string.
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `clip`
+     *	- **e**: `ellipsis`
+     *
+     * ---
+     * ## Aliases
+     *	- `to`
+     *	- `txt-flow`
+     *	- `text-overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
      */
     textOverflow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-shadow',
-     *     props: ['ts', 'txt-shad', 'text-shadow'],
-     *     short: 'ts'
-     * }
-     * @propDocEnd
+     * # text-shadow (ts)
+     * The **`text-shadow`** CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its `[decorations](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)`. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ts`
+     *	- `txt-shad`
+     *	- `text-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
      */
     ts?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-shadow',
-     *     props: ['ts', 'txt-shad', 'text-shadow'],
-     *     short: 'ts'
-     * }
-     * @propDocEnd
+     * # text-shadow (ts)
+     * The **`text-shadow`** CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its `[decorations](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)`. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ts`
+     *	- `txt-shad`
+     *	- `text-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
      */
     txtShad?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-shadow',
-     *     props: ['ts', 'txt-shad', 'text-shadow'],
-     *     short: 'ts'
-     * }
-     * @propDocEnd
+     * # text-shadow (ts)
+     * The **`text-shadow`** CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its `[decorations](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)`. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ts`
+     *	- `txt-shad`
+     *	- `text-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
      */
     textShadow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-transform',
-     *     props: ['tt', 'txt-tranf', 'text-transform'],
-     *     short: 'tt'
-     * }
-     * @propDocEnd
+     * # text-transform (tt)
+     * The **`text-transform`** CSS property specifies how to capitalize an element's text. It can be used to make text appear in all-uppercase or all-lowercase, or with each word capitalized. It also can help improve legibility for ruby.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **c**: `capitalize`
+     *	- **u**: `uppercase`
+     *	- **l**: `lowercase`
+     *
+     * ---
+     * ## Aliases
+     *	- `tt`
+     *	- `txt-tranf`
+     *	- `text-transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
      */
     tt?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-transform',
-     *     props: ['tt', 'txt-tranf', 'text-transform'],
-     *     short: 'tt'
-     * }
-     * @propDocEnd
+     * # text-transform (tt)
+     * The **`text-transform`** CSS property specifies how to capitalize an element's text. It can be used to make text appear in all-uppercase or all-lowercase, or with each word capitalized. It also can help improve legibility for ruby.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **c**: `capitalize`
+     *	- **u**: `uppercase`
+     *	- **l**: `lowercase`
+     *
+     * ---
+     * ## Aliases
+     *	- `tt`
+     *	- `txt-tranf`
+     *	- `text-transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
      */
     txtTranf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'text-transform',
-     *     props: ['tt', 'txt-tranf', 'text-transform'],
-     *     short: 'tt'
-     * }
-     * @propDocEnd
+     * # text-transform (tt)
+     * The **`text-transform`** CSS property specifies how to capitalize an element's text. It can be used to make text appear in all-uppercase or all-lowercase, or with each word capitalized. It also can help improve legibility for ruby.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **c**: `capitalize`
+     *	- **u**: `uppercase`
+     *	- **l**: `lowercase`
+     *
+     * ---
+     * ## Aliases
+     *	- `tt`
+     *	- `txt-tranf`
+     *	- `text-transform`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
      */
     textTransform?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'vertical-align',
-     *     props: ['va', 'v-align', 'vertical-align'],
-     *     short: 'va'
-     * }
-     * @propDocEnd
+     * # vertical-align (va)
+     * The **`vertical-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets vertical alignment of an inline, inline-block or table-cell box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `baseline`
+     *	- **sub**: `sub`
+     *	- **sup**: `super`
+     *	- **t**: `top`
+     *	- **tt**: `text-top`
+     *	- **m**: `middle`
+     *	- **bot**: `bottom`
+     *	- **tb**: `text-bottom`
+     *
+     * ---
+     * ## Aliases
+     *	- `va`
+     *	- `v-align`
+     *	- `vertical-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align
      */
     va?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'vertical-align',
-     *     props: ['va', 'v-align', 'vertical-align'],
-     *     short: 'va'
-     * }
-     * @propDocEnd
+     * # vertical-align (va)
+     * The **`vertical-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets vertical alignment of an inline, inline-block or table-cell box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `baseline`
+     *	- **sub**: `sub`
+     *	- **sup**: `super`
+     *	- **t**: `top`
+     *	- **tt**: `text-top`
+     *	- **m**: `middle`
+     *	- **bot**: `bottom`
+     *	- **tb**: `text-bottom`
+     *
+     * ---
+     * ## Aliases
+     *	- `va`
+     *	- `v-align`
+     *	- `vertical-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align
      */
     vAlign?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'vertical-align',
-     *     props: ['va', 'v-align', 'vertical-align'],
-     *     short: 'va'
-     * }
-     * @propDocEnd
+     * # vertical-align (va)
+     * The **`vertical-align`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets vertical alignment of an inline, inline-block or table-cell box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `baseline`
+     *	- **sub**: `sub`
+     *	- **sup**: `super`
+     *	- **t**: `top`
+     *	- **tt**: `text-top`
+     *	- **m**: `middle`
+     *	- **bot**: `bottom`
+     *	- **tb**: `text-bottom`
+     *
+     * ---
+     * ## Aliases
+     *	- `va`
+     *	- `v-align`
+     *	- `vertical-align`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align
      */
     verticalAlign?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'white-space',
-     *     props: ['ws', 'w-space', 'white-space'],
-     *     short: 'ws'
-     * }
-     * @propDocEnd
+     * # white-space (ws)
+     * The **`white-space`** CSS property sets how [white space](https://developer.mozilla.org/en-US/docs/Glossary/whitespace) inside an element is handled.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **nw**: `nowrap`
+     *	- **p**: `pre`
+     *	- **pl**: `pre-line`
+     *	- **pw**: `pre-wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `ws`
+     *	- `w-space`
+     *	- `white-space`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
      */
     ws?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'white-space',
-     *     props: ['ws', 'w-space', 'white-space'],
-     *     short: 'ws'
-     * }
-     * @propDocEnd
+     * # white-space (ws)
+     * The **`white-space`** CSS property sets how [white space](https://developer.mozilla.org/en-US/docs/Glossary/whitespace) inside an element is handled.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **nw**: `nowrap`
+     *	- **p**: `pre`
+     *	- **pl**: `pre-line`
+     *	- **pw**: `pre-wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `ws`
+     *	- `w-space`
+     *	- `white-space`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
      */
     wSpace?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'white-space',
-     *     props: ['ws', 'w-space', 'white-space'],
-     *     short: 'ws'
-     * }
-     * @propDocEnd
+     * # white-space (ws)
+     * The **`white-space`** CSS property sets how [white space](https://developer.mozilla.org/en-US/docs/Glossary/whitespace) inside an element is handled.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **nw**: `nowrap`
+     *	- **p**: `pre`
+     *	- **pl**: `pre-line`
+     *	- **pw**: `pre-wrap`
+     *
+     * ---
+     * ## Aliases
+     *	- `ws`
+     *	- `w-space`
+     *	- `white-space`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
      */
     whiteSpace?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-break',
-     *     props: ['wb', 'w-break', 'word-break'],
-     *     short: 'wb'
-     * }
-     * @propDocEnd
+     * # word-break (wb)
+     * The **`word-break`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether line breaks appear wherever the text would otherwise overflow its content box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **ba**: `break-all`
+     *	- **ka**: `keep-all`
+     *	- **bw**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `wb`
+     *	- `w-break`
+     *	- `word-break`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
      */
     wb?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-break',
-     *     props: ['wb', 'w-break', 'word-break'],
-     *     short: 'wb'
-     * }
-     * @propDocEnd
+     * # word-break (wb)
+     * The **`word-break`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether line breaks appear wherever the text would otherwise overflow its content box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **ba**: `break-all`
+     *	- **ka**: `keep-all`
+     *	- **bw**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `wb`
+     *	- `w-break`
+     *	- `word-break`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
      */
     wBreak?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-break',
-     *     props: ['wb', 'w-break', 'word-break'],
-     *     short: 'wb'
-     * }
-     * @propDocEnd
+     * # word-break (wb)
+     * The **`word-break`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether line breaks appear wherever the text would otherwise overflow its content box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **ba**: `break-all`
+     *	- **ka**: `keep-all`
+     *	- **bw**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `wb`
+     *	- `w-break`
+     *	- `word-break`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
      */
     wordBreak?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-spacing',
-     *     props: ['wS', 'w-spacing', 'word-spacing'],
-     *     short: 'wS'
-     * }
-     * @propDocEnd
+     * # word-spacing (wS)
+     * The **`word-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of space between words and between tags.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wS`
+     *	- `w-spacing`
+     *	- `word-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing
      */
     wS?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-spacing',
-     *     props: ['wS', 'w-spacing', 'word-spacing'],
-     *     short: 'wS'
-     * }
-     * @propDocEnd
+     * # word-spacing (wS)
+     * The **`word-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of space between words and between tags.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wS`
+     *	- `w-spacing`
+     *	- `word-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing
      */
     wSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-spacing',
-     *     props: ['wS', 'w-spacing', 'word-spacing'],
-     *     short: 'wS'
-     * }
-     * @propDocEnd
+     * # word-spacing (wS)
+     * The **`word-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the length of space between words and between tags.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wS`
+     *	- `w-spacing`
+     *	- `word-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing
      */
     wordSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-wrap',
-     *     props: ['ww', 'w-wrap', 'word-wrap'],
-     *     short: 'ww'
-     * }
-     * @propDocEnd
+     * # word-wrap (ww)
+     * The `**overflow-wrap**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies to inline elements, setting whether the browser should insert line breaks within an otherwise unbreakable string to prevent text from overflowing its line box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `ww`
+     *	- `w-wrap`
+     *	- `word-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap
      */
     ww?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-wrap',
-     *     props: ['ww', 'w-wrap', 'word-wrap'],
-     *     short: 'ww'
-     * }
-     * @propDocEnd
+     * # word-wrap (ww)
+     * The `**overflow-wrap**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies to inline elements, setting whether the browser should insert line breaks within an otherwise unbreakable string to prevent text from overflowing its line box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `ww`
+     *	- `w-wrap`
+     *	- `word-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap
      */
     wWrap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'word-wrap',
-     *     props: ['ww', 'w-wrap', 'word-wrap'],
-     *     short: 'ww'
-     * }
-     * @propDocEnd
+     * # word-wrap (ww)
+     * The `**overflow-wrap**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies to inline elements, setting whether the browser should insert line breaks within an otherwise unbreakable string to prevent text from overflowing its line box.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **b**: `break-word`
+     *
+     * ---
+     * ## Aliases
+     *	- `ww`
+     *	- `w-wrap`
+     *	- `word-wrap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap
      */
     wordWrap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style',
-     *     props: ['l', 'list', 'list-style'],
-     *     short: 'l'
-     * }
-     * @propDocEnd
+     * # list-style (l)
+     * The **`list-style`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you set all the list style properties at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `l`
+     *	- `list`
+     *	- `list-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style
      */
     l?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style',
-     *     props: ['l', 'list', 'list-style'],
-     *     short: 'l'
-     * }
-     * @propDocEnd
+     * # list-style (l)
+     * The **`list-style`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you set all the list style properties at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `l`
+     *	- `list`
+     *	- `list-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style
      */
     list?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style',
-     *     props: ['l', 'list', 'list-style'],
-     *     short: 'l'
-     * }
-     * @propDocEnd
+     * # list-style (l)
+     * The **`list-style`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) allows you set all the list style properties at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `l`
+     *	- `list`
+     *	- `list-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style
      */
     listStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-image',
-     *     props: ['li', 'list-img', 'list-style-image'],
-     *     short: 'li'
-     * }
-     * @propDocEnd
+     * # list-style-image (li)
+     * The **`list-style-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image to be used as the list item marker.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `li`
+     *	- `list-img`
+     *	- `list-style-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image
      */
     li?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-image',
-     *     props: ['li', 'list-img', 'list-style-image'],
-     *     short: 'li'
-     * }
-     * @propDocEnd
+     * # list-style-image (li)
+     * The **`list-style-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image to be used as the list item marker.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `li`
+     *	- `list-img`
+     *	- `list-style-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image
      */
     listImg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-image',
-     *     props: ['li', 'list-img', 'list-style-image'],
-     *     short: 'li'
-     * }
-     * @propDocEnd
+     * # list-style-image (li)
+     * The **`list-style-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an image to be used as the list item marker.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `li`
+     *	- `list-img`
+     *	- `list-style-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image
      */
     listStyleImage?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-position',
-     *     props: ['lp', 'list-pos', 'list-style-position'],
-     *     short: 'lp'
-     * }
-     * @propDocEnd
+     * # list-style-position (lp)
+     * The **`list-style-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the position of the [`::marker`](https://developer.mozilla.org/en-US/docs/Web/CSS/::marker "The ::marker CSS pseudo-element selects the marker box of a list item, which typically contains a bullet or number.") relative to a list item.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lp`
+     *	- `list-pos`
+     *	- `list-style-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position
      */
     lp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-position',
-     *     props: ['lp', 'list-pos', 'list-style-position'],
-     *     short: 'lp'
-     * }
-     * @propDocEnd
+     * # list-style-position (lp)
+     * The **`list-style-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the position of the [`::marker`](https://developer.mozilla.org/en-US/docs/Web/CSS/::marker "The ::marker CSS pseudo-element selects the marker box of a list item, which typically contains a bullet or number.") relative to a list item.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lp`
+     *	- `list-pos`
+     *	- `list-style-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position
      */
     listPos?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-position',
-     *     props: ['lp', 'list-pos', 'list-style-position'],
-     *     short: 'lp'
-     * }
-     * @propDocEnd
+     * # list-style-position (lp)
+     * The **`list-style-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the position of the [`::marker`](https://developer.mozilla.org/en-US/docs/Web/CSS/::marker "The ::marker CSS pseudo-element selects the marker box of a list item, which typically contains a bullet or number.") relative to a list item.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lp`
+     *	- `list-pos`
+     *	- `list-style-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position
      */
     listStylePosition?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-type',
-     *     props: ['lt', 'list-type', 'list-style-type'],
-     *     short: 'lt'
-     * }
-     * @propDocEnd
+     * # list-style-type (lt)
+     * The **`list-style-type`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the marker (such as a disc, character, or custom counter style) of a list item element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lt`
+     *	- `list-type`
+     *	- `list-style-type`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type
      */
     lt?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-type',
-     *     props: ['lt', 'list-type', 'list-style-type'],
-     *     short: 'lt'
-     * }
-     * @propDocEnd
+     * # list-style-type (lt)
+     * The **`list-style-type`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the marker (such as a disc, character, or custom counter style) of a list item element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lt`
+     *	- `list-type`
+     *	- `list-style-type`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type
      */
     listType?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'list-style-type',
-     *     props: ['lt', 'list-type', 'list-style-type'],
-     *     short: 'lt'
-     * }
-     * @propDocEnd
+     * # list-style-type (lt)
+     * The **`list-style-type`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the marker (such as a disc, character, or custom counter style) of a list item element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `lt`
+     *	- `list-type`
+     *	- `list-style-type`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type
      */
     listStyleType?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin',
-     *     props: ['m', 'mar', 'margin'],
-     *     short: 'm'
-     * }
-     * @propDocEnd
+     * # margin (m)
+     * The **`margin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on all four sides of an element. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top "The margin-top CSS property sets the margin area on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right "The margin-right CSS property sets the margin area on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom "The margin-bottom CSS property sets the margin area on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), and [`margin-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left "The margin-left CSS property sets the margin area on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `m`
+     *	- `mar`
+     *	- `margin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin
      */
     m?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin',
-     *     props: ['m', 'mar', 'margin'],
-     *     short: 'm'
-     * }
-     * @propDocEnd
+     * # margin (m)
+     * The **`margin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on all four sides of an element. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top "The margin-top CSS property sets the margin area on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right "The margin-right CSS property sets the margin area on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom "The margin-bottom CSS property sets the margin area on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), and [`margin-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left "The margin-left CSS property sets the margin area on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `m`
+     *	- `mar`
+     *	- `margin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin
      */
     mar?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin',
-     *     props: ['m', 'mar', 'margin'],
-     *     short: 'm'
-     * }
-     * @propDocEnd
+     * # margin (m)
+     * The **`margin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on all four sides of an element. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top "The margin-top CSS property sets the margin area on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right "The margin-right CSS property sets the margin area on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), [`margin-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom "The margin-bottom CSS property sets the margin area on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer."), and [`margin-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left "The margin-left CSS property sets the margin area on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `m`
+     *	- `mar`
+     *	- `margin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin
      */
     margin?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-top',
-     *     props: ['mT', 'mar-top', 'margin-top'],
-     *     short: 'mT'
-     * }
-     * @propDocEnd
+     * # margin-top (mT)
+     * The **`margin-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mT`
+     *	- `mar-top`
+     *	- `margin-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top
      */
     mT?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-top',
-     *     props: ['mT', 'mar-top', 'margin-top'],
-     *     short: 'mT'
-     * }
-     * @propDocEnd
+     * # margin-top (mT)
+     * The **`margin-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mT`
+     *	- `mar-top`
+     *	- `margin-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top
      */
     marTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-top',
-     *     props: ['mT', 'mar-top', 'margin-top'],
-     *     short: 'mT'
-     * }
-     * @propDocEnd
+     * # margin-top (mT)
+     * The **`margin-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mT`
+     *	- `mar-top`
+     *	- `margin-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top
      */
     marginTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-right',
-     *     props: ['mR', 'mar-right', 'margin-right'],
-     *     short: 'mR'
-     * }
-     * @propDocEnd
+     * # margin-right (mR)
+     * The **`margin-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mR`
+     *	- `mar-right`
+     *	- `margin-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right
      */
     mR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-right',
-     *     props: ['mR', 'mar-right', 'margin-right'],
-     *     short: 'mR'
-     * }
-     * @propDocEnd
+     * # margin-right (mR)
+     * The **`margin-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mR`
+     *	- `mar-right`
+     *	- `margin-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right
      */
     marRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-right',
-     *     props: ['mR', 'mar-right', 'margin-right'],
-     *     short: 'mR'
-     * }
-     * @propDocEnd
+     * # margin-right (mR)
+     * The **`margin-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mR`
+     *	- `mar-right`
+     *	- `margin-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right
      */
     marginRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-bottom',
-     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
-     *     short: 'mB'
-     * }
-     * @propDocEnd
+     * # margin-bottom (mB)
+     * The **`margin-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mB`
+     *	- `mar-bottom`
+     *	- `margin-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
      */
     mB?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-bottom',
-     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
-     *     short: 'mB'
-     * }
-     * @propDocEnd
+     * # margin-bottom (mB)
+     * The **`margin-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mB`
+     *	- `mar-bottom`
+     *	- `margin-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
      */
     marBottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-bottom',
-     *     props: ['mB', 'mar-bottom', 'margin-bottom'],
-     *     short: 'mB'
-     * }
-     * @propDocEnd
+     * # margin-bottom (mB)
+     * The **`margin-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mB`
+     *	- `mar-bottom`
+     *	- `margin-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
      */
     marginBottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-left',
-     *     props: ['mL', 'mar-left', 'margin-left'],
-     *     short: 'mL'
-     * }
-     * @propDocEnd
+     * # margin-left (mL)
+     * The **`margin-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mL`
+     *	- `mar-left`
+     *	- `margin-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left
      */
     mL?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-left',
-     *     props: ['mL', 'mar-left', 'margin-left'],
-     *     short: 'mL'
-     * }
-     * @propDocEnd
+     * # margin-left (mL)
+     * The **`margin-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mL`
+     *	- `mar-left`
+     *	- `margin-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left
      */
     marLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'margin-left',
-     *     props: ['mL', 'mar-left', 'margin-left'],
-     *     short: 'mL'
-     * }
-     * @propDocEnd
+     * # margin-left (mL)
+     * The **`margin-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the [margin area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `mL`
+     *	- `mar-left`
+     *	- `margin-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left
      */
     marginLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding',
-     *     props: ['p', 'pad', 'padding'],
-     *     short: 'p'
-     * }
-     * @propDocEnd
+     * # padding (p)
+     * The **`padding`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on all four sides of an element at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `p`
+     *	- `pad`
+     *	- `padding`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding
      */
     p?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding',
-     *     props: ['p', 'pad', 'padding'],
-     *     short: 'p'
-     * }
-     * @propDocEnd
+     * # padding (p)
+     * The **`padding`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on all four sides of an element at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `p`
+     *	- `pad`
+     *	- `padding`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding
      */
     pad?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding',
-     *     props: ['p', 'pad', 'padding'],
-     *     short: 'p'
-     * }
-     * @propDocEnd
+     * # padding (p)
+     * The **`padding`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on all four sides of an element at once.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `p`
+     *	- `pad`
+     *	- `padding`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding
      */
     padding?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-top',
-     *     props: ['pT', 'pad-top', 'padding-top'],
-     *     short: 'pT'
-     * }
-     * @propDocEnd
+     * # padding-top (pT)
+     * The **`padding-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the top of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pT`
+     *	- `pad-top`
+     *	- `padding-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
      */
     pT?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-top',
-     *     props: ['pT', 'pad-top', 'padding-top'],
-     *     short: 'pT'
-     * }
-     * @propDocEnd
+     * # padding-top (pT)
+     * The **`padding-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the top of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pT`
+     *	- `pad-top`
+     *	- `padding-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
      */
     padTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-top',
-     *     props: ['pT', 'pad-top', 'padding-top'],
-     *     short: 'pT'
-     * }
-     * @propDocEnd
+     * # padding-top (pT)
+     * The **`padding-top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the top of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pT`
+     *	- `pad-top`
+     *	- `padding-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top
      */
     paddingTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-right',
-     *     props: ['pR', 'pad-right', 'padding-right'],
-     *     short: 'pR'
-     * }
-     * @propDocEnd
+     * # padding-right (pR)
+     * The **`padding-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the right of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pR`
+     *	- `pad-right`
+     *	- `padding-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
      */
     pR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-right',
-     *     props: ['pR', 'pad-right', 'padding-right'],
-     *     short: 'pR'
-     * }
-     * @propDocEnd
+     * # padding-right (pR)
+     * The **`padding-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the right of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pR`
+     *	- `pad-right`
+     *	- `padding-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
      */
     padRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-right',
-     *     props: ['pR', 'pad-right', 'padding-right'],
-     *     short: 'pR'
-     * }
-     * @propDocEnd
+     * # padding-right (pR)
+     * The **`padding-right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the right of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pR`
+     *	- `pad-right`
+     *	- `padding-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right
      */
     paddingRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-bottom',
-     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
-     *     short: 'pB'
-     * }
-     * @propDocEnd
+     * # padding-bottom (pB)
+     * The **`padding-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the bottom of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pB`
+     *	- `pad-bottom`
+     *	- `padding-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
      */
     pB?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-bottom',
-     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
-     *     short: 'pB'
-     * }
-     * @propDocEnd
+     * # padding-bottom (pB)
+     * The **`padding-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the bottom of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pB`
+     *	- `pad-bottom`
+     *	- `padding-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
      */
     padBottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-bottom',
-     *     props: ['pB', 'pad-bottom', 'padding-bottom'],
-     *     short: 'pB'
-     * }
-     * @propDocEnd
+     * # padding-bottom (pB)
+     * The **`padding-bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the height of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) on the bottom of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pB`
+     *	- `pad-bottom`
+     *	- `padding-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom
      */
     paddingBottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-left',
-     *     props: ['pL', 'pad-left', 'padding-left'],
-     *     short: 'pL'
-     * }
-     * @propDocEnd
+     * # padding-left (pL)
+     * The **`padding-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) to the left of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pL`
+     *	- `pad-left`
+     *	- `padding-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
      */
     pL?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-left',
-     *     props: ['pL', 'pad-left', 'padding-left'],
-     *     short: 'pL'
-     * }
-     * @propDocEnd
+     * # padding-left (pL)
+     * The **`padding-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) to the left of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pL`
+     *	- `pad-left`
+     *	- `padding-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
      */
     padLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'padding-left',
-     *     props: ['pL', 'pad-left', 'padding-left'],
-     *     short: 'pL'
-     * }
-     * @propDocEnd
+     * # padding-left (pL)
+     * The **`padding-left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the [padding area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#padding-area) to the left of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pL`
+     *	- `pad-left`
+     *	- `padding-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left
      */
     paddingLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background',
-     *     props: ['bg', 'bg', 'background'],
-     *     short: 'bg'
-     * }
-     * @propDocEnd
+     * # background (bg)
+     * The **`background`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets all background style properties at once, such as color, image, origin and size, or repeat method.
+     *
+     * ---
+     * ## Shorthands
+     *	- **t**: `transparent`
+     *
+     * ---
+     * ## Aliases
+     *	- `bg`
+     *	- `background`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background
      */
     bg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background',
-     *     props: ['bg', 'bg', 'background'],
-     *     short: 'bg'
-     * }
-     * @propDocEnd
+     * # background (bg)
+     * The **`background`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets all background style properties at once, such as color, image, origin and size, or repeat method.
+     *
+     * ---
+     * ## Shorthands
+     *	- **t**: `transparent`
+     *
+     * ---
+     * ## Aliases
+     *	- `bg`
+     *	- `background`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background
      */
     background?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-image',
-     *     props: ['bgi', 'bg-img', 'background-image'],
-     *     short: 'bgi'
-     * }
-     * @propDocEnd
+     * # background-image (bgi)
+     * The **`background-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets one or more background images on an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgi`
+     *	- `bg-img`
+     *	- `background-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     bgi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-image',
-     *     props: ['bgi', 'bg-img', 'background-image'],
-     *     short: 'bgi'
-     * }
-     * @propDocEnd
+     * # background-image (bgi)
+     * The **`background-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets one or more background images on an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgi`
+     *	- `bg-img`
+     *	- `background-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     bgImg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-image',
-     *     props: ['bgi', 'bg-img', 'background-image'],
-     *     short: 'bgi'
-     * }
-     * @propDocEnd
+     * # background-image (bgi)
+     * The **`background-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets one or more background images on an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgi`
+     *	- `bg-img`
+     *	- `background-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     backgroundImage?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-color',
-     *     props: ['bgc', 'bg-color', 'background-color'],
-     *     short: 'bgc'
-     * }
-     * @propDocEnd
+     * # background-color (bgc)
+     * The **`background-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background color of an element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **t**: `transparent`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgc`
+     *	- `bg-color`
+     *	- `background-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
     bgc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-color',
-     *     props: ['bgc', 'bg-color', 'background-color'],
-     *     short: 'bgc'
-     * }
-     * @propDocEnd
+     * # background-color (bgc)
+     * The **`background-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background color of an element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **t**: `transparent`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgc`
+     *	- `bg-color`
+     *	- `background-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
     bgColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-color',
-     *     props: ['bgc', 'bg-color', 'background-color'],
-     *     short: 'bgc'
-     * }
-     * @propDocEnd
+     * # background-color (bgc)
+     * The **`background-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background color of an element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **t**: `transparent`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgc`
+     *	- `bg-color`
+     *	- `background-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
     backgroundColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-size',
-     *     props: ['bgs', 'bg-size', 'background-size'],
-     *     short: 'bgs'
-     * }
-     * @propDocEnd
+     * # background-size (bgs)
+     * The **`background-size`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **cr**: `cover`
+     *	- **cn**: `contain`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgs`
+     *	- `bg-size`
+     *	- `background-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
      */
     bgs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-size',
-     *     props: ['bgs', 'bg-size', 'background-size'],
-     *     short: 'bgs'
-     * }
-     * @propDocEnd
+     * # background-size (bgs)
+     * The **`background-size`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **cr**: `cover`
+     *	- **cn**: `contain`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgs`
+     *	- `bg-size`
+     *	- `background-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
      */
     bgSize?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-size',
-     *     props: ['bgs', 'bg-size', 'background-size'],
-     *     short: 'bgs'
-     * }
-     * @propDocEnd
+     * # background-size (bgs)
+     * The **`background-size`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **cr**: `cover`
+     *	- **cn**: `contain`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgs`
+     *	- `bg-size`
+     *	- `background-size`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
      */
     backgroundSize?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-repeat',
-     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
-     *     short: 'bgr'
-     * }
-     * @propDocEnd
+     * # background-repeat (bgr)
+     * The **`background-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets how background images are repeated. A background image can be repeated along the horizontal and vertical axes, or not repeated at all.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `repeat`
+     *	- **x**: `repeat-x`
+     *	- **y**: `repeat-y`
+     *	- **false**: `no-repeat`
+     *	- **n**: `no-repeat`
+     *	- **s**: `space`
+     *	- **r**: `round`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgr`
+     *	- `bg-repeat`
+     *	- `background-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat
      */
     bgr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-repeat',
-     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
-     *     short: 'bgr'
-     * }
-     * @propDocEnd
+     * # background-repeat (bgr)
+     * The **`background-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets how background images are repeated. A background image can be repeated along the horizontal and vertical axes, or not repeated at all.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `repeat`
+     *	- **x**: `repeat-x`
+     *	- **y**: `repeat-y`
+     *	- **false**: `no-repeat`
+     *	- **n**: `no-repeat`
+     *	- **s**: `space`
+     *	- **r**: `round`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgr`
+     *	- `bg-repeat`
+     *	- `background-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat
      */
     bgRepeat?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-repeat',
-     *     props: ['bgr', 'bg-repeat', 'background-repeat'],
-     *     short: 'bgr'
-     * }
-     * @propDocEnd
+     * # background-repeat (bgr)
+     * The **`background-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property sets how background images are repeated. A background image can be repeated along the horizontal and vertical axes, or not repeated at all.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `repeat`
+     *	- **x**: `repeat-x`
+     *	- **y**: `repeat-y`
+     *	- **false**: `no-repeat`
+     *	- **n**: `no-repeat`
+     *	- **s**: `space`
+     *	- **r**: `round`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgr`
+     *	- `bg-repeat`
+     *	- `background-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat
      */
     backgroundRepeat?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-position',
-     *     props: ['bgp', 'bg-pos', 'background-position'],
-     *     short: 'bgp'
-     * }
-     * @propDocEnd
+     * # background-position (bgp)
+     * The **`background-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial position for each background image. The position is relative to the position layer set by [`background-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin "The background-origin CSS property sets the background's origin: from the border start, inside the border, or inside the padding.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgp`
+     *	- `bg-pos`
+     *	- `background-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
      */
     bgp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-position',
-     *     props: ['bgp', 'bg-pos', 'background-position'],
-     *     short: 'bgp'
-     * }
-     * @propDocEnd
+     * # background-position (bgp)
+     * The **`background-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial position for each background image. The position is relative to the position layer set by [`background-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin "The background-origin CSS property sets the background's origin: from the border start, inside the border, or inside the padding.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgp`
+     *	- `bg-pos`
+     *	- `background-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
      */
     bgPos?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-position',
-     *     props: ['bgp', 'bg-pos', 'background-position'],
-     *     short: 'bgp'
-     * }
-     * @propDocEnd
+     * # background-position (bgp)
+     * The **`background-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the initial position for each background image. The position is relative to the position layer set by [`background-origin`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin "The background-origin CSS property sets the background's origin: from the border start, inside the border, or inside the padding.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **c**: `center`
+     *	- **t**: `top`
+     *	- **tr**: `top right`
+     *	- **r**: `right`
+     *	- **br**: `bottom right`
+     *	- **b**: `bottom`
+     *	- **bl**: `bottom left`
+     *	- **l**: `left`
+     *	- **tl**: `top left`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgp`
+     *	- `bg-pos`
+     *	- `background-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
      */
     backgroundPosition?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-attachment',
-     *     props: ['bga', 'bg-attach', 'background-attachment'],
-     *     short: 'bga'
-     * }
-     * @propDocEnd
+     * # background-attachment (bga)
+     * The **`background-attachment`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a background image's position is fixed within the [viewport](https://developer.mozilla.org/en-US/docs/Glossary/viewport), or scrolls with its containing block.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `scroll`
+     *	- **f**: `fixed`
+     *	- **l**: `local`
+     *
+     * ---
+     * ## Aliases
+     *	- `bga`
+     *	- `bg-attach`
+     *	- `background-attachment`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment
      */
     bga?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-attachment',
-     *     props: ['bga', 'bg-attach', 'background-attachment'],
-     *     short: 'bga'
-     * }
-     * @propDocEnd
+     * # background-attachment (bga)
+     * The **`background-attachment`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a background image's position is fixed within the [viewport](https://developer.mozilla.org/en-US/docs/Glossary/viewport), or scrolls with its containing block.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `scroll`
+     *	- **f**: `fixed`
+     *	- **l**: `local`
+     *
+     * ---
+     * ## Aliases
+     *	- `bga`
+     *	- `bg-attach`
+     *	- `background-attachment`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment
      */
     bgAttach?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-attachment',
-     *     props: ['bga', 'bg-attach', 'background-attachment'],
-     *     short: 'bga'
-     * }
-     * @propDocEnd
+     * # background-attachment (bga)
+     * The **`background-attachment`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether a background image's position is fixed within the [viewport](https://developer.mozilla.org/en-US/docs/Glossary/viewport), or scrolls with its containing block.
+     *
+     * ---
+     * ## Shorthands
+     *	- **s**: `scroll`
+     *	- **f**: `fixed`
+     *	- **l**: `local`
+     *
+     * ---
+     * ## Aliases
+     *	- `bga`
+     *	- `bg-attach`
+     *	- `background-attachment`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment
      */
     backgroundAttachment?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-blend-mode',
-     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
-     *     short: 'bgbm'
-     * }
-     * @propDocEnd
+     * # background-blend-mode (bgbm)
+     * The **`background-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's background images should blend with each other and with the element's background color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **sc**: `screen`
+     *	- **o**: `overlay`
+     *	- **d**: `darken`
+     *	- **li**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **sa**: `saturation`
+     *	- **c**: `color`
+     *	- **lu**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgbm`
+     *	- `bg-blend`
+     *	- `background-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode
      */
     bgbm?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-blend-mode',
-     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
-     *     short: 'bgbm'
-     * }
-     * @propDocEnd
+     * # background-blend-mode (bgbm)
+     * The **`background-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's background images should blend with each other and with the element's background color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **sc**: `screen`
+     *	- **o**: `overlay`
+     *	- **d**: `darken`
+     *	- **li**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **sa**: `saturation`
+     *	- **c**: `color`
+     *	- **lu**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgbm`
+     *	- `bg-blend`
+     *	- `background-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode
      */
     bgBlend?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-blend-mode',
-     *     props: ['bgbm', 'bg-blend', 'background-blend-mode'],
-     *     short: 'bgbm'
-     * }
-     * @propDocEnd
+     * # background-blend-mode (bgbm)
+     * The **`background-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's background images should blend with each other and with the element's background color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **sc**: `screen`
+     *	- **o**: `overlay`
+     *	- **d**: `darken`
+     *	- **li**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **sa**: `saturation`
+     *	- **c**: `color`
+     *	- **lu**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgbm`
+     *	- `bg-blend`
+     *	- `background-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode
      */
     backgroundBlendMode?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-clip',
-     *     props: ['bgC', 'bg-clip', 'background-clip'],
-     *     short: 'bgC'
-     * }
-     * @propDocEnd
+     * # background-clip (bgC)
+     * The **`background-clip`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element's background extends underneath its border box, padding box, or content box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgC`
+     *	- `bg-clip`
+     *	- `background-clip`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
      */
     bgC?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-clip',
-     *     props: ['bgC', 'bg-clip', 'background-clip'],
-     *     short: 'bgC'
-     * }
-     * @propDocEnd
+     * # background-clip (bgC)
+     * The **`background-clip`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element's background extends underneath its border box, padding box, or content box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgC`
+     *	- `bg-clip`
+     *	- `background-clip`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
      */
     bgClip?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-clip',
-     *     props: ['bgC', 'bg-clip', 'background-clip'],
-     *     short: 'bgC'
-     * }
-     * @propDocEnd
+     * # background-clip (bgC)
+     * The **`background-clip`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element's background extends underneath its border box, padding box, or content box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bgC`
+     *	- `bg-clip`
+     *	- `background-clip`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
      */
     backgroundClip?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-origin',
-     *     props: ['bgo', 'bg-org', 'background-origin'],
-     *     short: 'bgo'
-     * }
-     * @propDocEnd
+     * # background-origin (bgo)
+     * The **`background-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background's origin: from the border start, inside the border, or inside the padding.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `border-box`
+     *	- **p**: `padding-box`
+     *	- **c**: `content-box`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgo`
+     *	- `bg-org`
+     *	- `background-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
      */
     bgo?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-origin',
-     *     props: ['bgo', 'bg-org', 'background-origin'],
-     *     short: 'bgo'
-     * }
-     * @propDocEnd
+     * # background-origin (bgo)
+     * The **`background-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background's origin: from the border start, inside the border, or inside the padding.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `border-box`
+     *	- **p**: `padding-box`
+     *	- **c**: `content-box`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgo`
+     *	- `bg-org`
+     *	- `background-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
      */
     bgOrg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'background-origin',
-     *     props: ['bgo', 'bg-org', 'background-origin'],
-     *     short: 'bgo'
-     * }
-     * @propDocEnd
+     * # background-origin (bgo)
+     * The **`background-origin`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the background's origin: from the border start, inside the border, or inside the padding.
+     *
+     * ---
+     * ## Shorthands
+     *	- **b**: `border-box`
+     *	- **p**: `padding-box`
+     *	- **c**: `content-box`
+     *
+     * ---
+     * ## Aliases
+     *	- `bgo`
+     *	- `bg-org`
+     *	- `background-origin`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin
      */
     backgroundOrigin?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backdrop-filter',
-     *     props: ['bf', 'bd-filter', 'backdrop-filter'],
-     *     short: 'bf'
-     * }
-     * @propDocEnd
+     * # backdrop-filter (bf)
+     * The **`backdrop-filter`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you apply graphical effects such as blurring or color shifting to the area behind an element. Because it applies to everything _behind_ the element, to see the effect you must make the element or its background at least partially transparent.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bf`
+     *	- `bd-filter`
+     *	- `backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
      */
     bf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backdrop-filter',
-     *     props: ['bf', 'bd-filter', 'backdrop-filter'],
-     *     short: 'bf'
-     * }
-     * @propDocEnd
+     * # backdrop-filter (bf)
+     * The **`backdrop-filter`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you apply graphical effects such as blurring or color shifting to the area behind an element. Because it applies to everything _behind_ the element, to see the effect you must make the element or its background at least partially transparent.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bf`
+     *	- `bd-filter`
+     *	- `backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
      */
     bdFilter?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'backdrop-filter',
-     *     props: ['bf', 'bd-filter', 'backdrop-filter'],
-     *     short: 'bf'
-     * }
-     * @propDocEnd
+     * # backdrop-filter (bf)
+     * The **`backdrop-filter`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property lets you apply graphical effects such as blurring or color shifting to the area behind an element. Because it applies to everything _behind_ the element, to see the effect you must make the element or its background at least partially transparent.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bf`
+     *	- `bd-filter`
+     *	- `backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
      */
     backdropFilter?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'width',
-     *     props: ['w', 'wid', 'width'],
-     *     short: 'w'
-     * }
-     * @propDocEnd
+     * # width (w)
+     * The **`width`** CSS property sets an element's width. By default, it sets the width of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area), but if [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, it sets the width of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `w`
+     *	- `wid`
+     *	- `width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/width
      */
     w?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'width',
-     *     props: ['w', 'wid', 'width'],
-     *     short: 'w'
-     * }
-     * @propDocEnd
+     * # width (w)
+     * The **`width`** CSS property sets an element's width. By default, it sets the width of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area), but if [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, it sets the width of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `w`
+     *	- `wid`
+     *	- `width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/width
      */
     wid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'width',
-     *     props: ['w', 'wid', 'width'],
-     *     short: 'w'
-     * }
-     * @propDocEnd
+     * # width (w)
+     * The **`width`** CSS property sets an element's width. By default, it sets the width of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area), but if [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, it sets the width of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `w`
+     *	- `wid`
+     *	- `width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/width
      */
     width?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'height',
-     *     props: ['h', 'hei', 'height'],
-     *     short: 'h'
-     * }
-     * @propDocEnd
+     * # height (h)
+     * The **`height`** CSS property specifies the height of an element. By default, the property defines the height of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area). If [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, however, it instead determines the height of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `h`
+     *	- `hei`
+     *	- `height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/height
      */
     h?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'height',
-     *     props: ['h', 'hei', 'height'],
-     *     short: 'h'
-     * }
-     * @propDocEnd
+     * # height (h)
+     * The **`height`** CSS property specifies the height of an element. By default, the property defines the height of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area). If [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, however, it instead determines the height of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `h`
+     *	- `hei`
+     *	- `height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/height
      */
     hei?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'height',
-     *     props: ['h', 'hei', 'height'],
-     *     short: 'h'
-     * }
-     * @propDocEnd
+     * # height (h)
+     * The **`height`** CSS property specifies the height of an element. By default, the property defines the height of the [content area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#content-area). If [`box-sizing`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing "The box-sizing CSS property sets how the total width and height of an element is calculated.") is set to `border-box`, however, it instead determines the height of the [border area](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model#border-area).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `h`
+     *	- `hei`
+     *	- `height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/height
      */
     height?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-width',
-     *     props: ['minW', 'min-wid', 'min-width'],
-     *     short: 'minW'
-     * }
-     * @propDocEnd
+     * # min-width (minW)
+     * The **`min-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming smaller than the value specified for `min-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minW`
+     *	- `min-wid`
+     *	- `min-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-width
      */
     minW?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-width',
-     *     props: ['minW', 'min-wid', 'min-width'],
-     *     short: 'minW'
-     * }
-     * @propDocEnd
+     * # min-width (minW)
+     * The **`min-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming smaller than the value specified for `min-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minW`
+     *	- `min-wid`
+     *	- `min-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-width
      */
     minWid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-width',
-     *     props: ['minW', 'min-wid', 'min-width'],
-     *     short: 'minW'
-     * }
-     * @propDocEnd
+     * # min-width (minW)
+     * The **`min-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming smaller than the value specified for `min-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minW`
+     *	- `min-wid`
+     *	- `min-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-width
      */
     minWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-height',
-     *     props: ['minH', 'min-hei', 'min-height'],
-     *     short: 'minH'
-     * }
-     * @propDocEnd
+     * # min-height (minH)
+     * The **`min-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming smaller than the value specified for `min-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minH`
+     *	- `min-hei`
+     *	- `min-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
      */
     minH?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-height',
-     *     props: ['minH', 'min-hei', 'min-height'],
-     *     short: 'minH'
-     * }
-     * @propDocEnd
+     * # min-height (minH)
+     * The **`min-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming smaller than the value specified for `min-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minH`
+     *	- `min-hei`
+     *	- `min-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
      */
     minHei?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'min-height',
-     *     props: ['minH', 'min-hei', 'min-height'],
-     *     short: 'minH'
-     * }
-     * @propDocEnd
+     * # min-height (minH)
+     * The **`min-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the minimum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming smaller than the value specified for `min-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `minH`
+     *	- `min-hei`
+     *	- `min-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-height
      */
     minHeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-width',
-     *     props: ['maxW', 'max-wid', 'max-width'],
-     *     short: 'maxW'
-     * }
-     * @propDocEnd
+     * # max-width (maxW)
+     * The **`max-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming larger than the value specified by `max-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxW`
+     *	- `max-wid`
+     *	- `max-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
      */
     maxW?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-width',
-     *     props: ['maxW', 'max-wid', 'max-width'],
-     *     short: 'maxW'
-     * }
-     * @propDocEnd
+     * # max-width (maxW)
+     * The **`max-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming larger than the value specified by `max-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxW`
+     *	- `max-wid`
+     *	- `max-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
      */
     maxWid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-width',
-     *     props: ['maxW', 'max-wid', 'max-width'],
-     *     short: 'maxW'
-     * }
-     * @propDocEnd
+     * # max-width (maxW)
+     * The **`max-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum width of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element's width. By default, it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") property from becoming larger than the value specified by `max-width`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxW`
+     *	- `max-wid`
+     *	- `max-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
      */
     maxWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-height',
-     *     props: ['maxH', 'max-hei', 'max-height'],
-     *     short: 'maxH'
-     * }
-     * @propDocEnd
+     * # max-height (maxH)
+     * The **`max-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming larger than the value specified for `max-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxH`
+     *	- `max-hei`
+     *	- `max-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-height
      */
     maxH?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-height',
-     *     props: ['maxH', 'max-hei', 'max-height'],
-     *     short: 'maxH'
-     * }
-     * @propDocEnd
+     * # max-height (maxH)
+     * The **`max-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming larger than the value specified for `max-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxH`
+     *	- `max-hei`
+     *	- `max-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-height
      */
     maxHei?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'max-height',
-     *     props: ['maxH', 'max-hei', 'max-height'],
-     *     short: 'maxH'
-     * }
-     * @propDocEnd
+     * # max-height (maxH)
+     * The **`max-height`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the maximum height of an element. It prevents the [used value](https://developer.mozilla.org/en-US/docs/Web/CSS/used_value) of the [`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height "The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area.") property from becoming larger than the value specified for `max-height`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `maxH`
+     *	- `max-hei`
+     *	- `max-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-height
      */
     maxHeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid',
-     *     props: ['g', 'grd', 'grid'],
-     *     short: 'g'
-     * }
-     * @propDocEnd
+     * # grid (g)
+     * The **`grid`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) that sets all of the explicit and implicit grid properties in a single declaration.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `g`
+     *	- `grd`
+     *	- `grid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid
      */
     g?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid',
-     *     props: ['g', 'grd', 'grid'],
-     *     short: 'g'
-     * }
-     * @propDocEnd
+     * # grid (g)
+     * The **`grid`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) that sets all of the explicit and implicit grid properties in a single declaration.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `g`
+     *	- `grd`
+     *	- `grid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid
      */
     grd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid',
-     *     props: ['g', 'grd', 'grid'],
-     *     short: 'g'
-     * }
-     * @propDocEnd
+     * # grid (g)
+     * The **`grid`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) that sets all of the explicit and implicit grid properties in a single declaration.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `g`
+     *	- `grd`
+     *	- `grid`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid
      */
     grid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-area',
-     *     props: ['ga', 'gr-area', 'grid-area'],
-     *     short: 'ga'
-     * }
-     * @propDocEnd
+     * # grid-area (ga)
+     * The **`grid-area`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within a [grid](https://developer.mozilla.org/en-US/docs/Glossary/grid) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ga`
+     *	- `gr-area`
+     *	- `grid-area`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
      */
     ga?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-area',
-     *     props: ['ga', 'gr-area', 'grid-area'],
-     *     short: 'ga'
-     * }
-     * @propDocEnd
+     * # grid-area (ga)
+     * The **`grid-area`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within a [grid](https://developer.mozilla.org/en-US/docs/Glossary/grid) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ga`
+     *	- `gr-area`
+     *	- `grid-area`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
      */
     grArea?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-area',
-     *     props: ['ga', 'gr-area', 'grid-area'],
-     *     short: 'ga'
-     * }
-     * @propDocEnd
+     * # grid-area (ga)
+     * The **`grid-area`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within a [grid](https://developer.mozilla.org/en-US/docs/Glossary/grid) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ga`
+     *	- `gr-area`
+     *	- `grid-area`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area
      */
     gridArea?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-columns',
-     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
-     *     short: 'gac'
-     * }
-     * @propDocEnd
+     * # grid-auto-columns (gac)
+     * The **`grid-auto-columns`** CSS property specifies the size of an implicitly-created grid column [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gac`
+     *	- `gr-auto-cols`
+     *	- `grid-auto-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns
      */
     gac?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-columns',
-     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
-     *     short: 'gac'
-     * }
-     * @propDocEnd
+     * # grid-auto-columns (gac)
+     * The **`grid-auto-columns`** CSS property specifies the size of an implicitly-created grid column [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gac`
+     *	- `gr-auto-cols`
+     *	- `grid-auto-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns
      */
     grAutoCols?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-columns',
-     *     props: ['gac', 'gr-auto-cols', 'grid-auto-columns'],
-     *     short: 'gac'
-     * }
-     * @propDocEnd
+     * # grid-auto-columns (gac)
+     * The **`grid-auto-columns`** CSS property specifies the size of an implicitly-created grid column [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gac`
+     *	- `gr-auto-cols`
+     *	- `grid-auto-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns
      */
     gridAutoColumns?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-flow',
-     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
-     *     short: 'gaf'
-     * }
-     * @propDocEnd
+     * # grid-auto-flow (gaf)
+     * The **`grid-auto-flow`** CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gaf`
+     *	- `gr-auto-flow`
+     *	- `grid-auto-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
      */
     gaf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-flow',
-     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
-     *     short: 'gaf'
-     * }
-     * @propDocEnd
+     * # grid-auto-flow (gaf)
+     * The **`grid-auto-flow`** CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gaf`
+     *	- `gr-auto-flow`
+     *	- `grid-auto-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
      */
     grAutoFlow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-flow',
-     *     props: ['gaf', 'gr-auto-flow', 'grid-auto-flow'],
-     *     short: 'gaf'
-     * }
-     * @propDocEnd
+     * # grid-auto-flow (gaf)
+     * The **`grid-auto-flow`** CSS property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gaf`
+     *	- `gr-auto-flow`
+     *	- `grid-auto-flow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
      */
     gridAutoFlow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-rows',
-     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
-     *     short: 'gar'
-     * }
-     * @propDocEnd
+     * # grid-auto-rows (gar)
+     * The **`grid-auto-rows`** CSS property specifies the size of an implicitly-created grid row [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gar`
+     *	- `gr-auto-rows`
+     *	- `grid-auto-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows
      */
     gar?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-rows',
-     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
-     *     short: 'gar'
-     * }
-     * @propDocEnd
+     * # grid-auto-rows (gar)
+     * The **`grid-auto-rows`** CSS property specifies the size of an implicitly-created grid row [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gar`
+     *	- `gr-auto-rows`
+     *	- `grid-auto-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows
      */
     grAutoRows?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-auto-rows',
-     *     props: ['gar', 'gr-auto-rows', 'grid-auto-rows'],
-     *     short: 'gar'
-     * }
-     * @propDocEnd
+     * # grid-auto-rows (gar)
+     * The **`grid-auto-rows`** CSS property specifies the size of an implicitly-created grid row [track](https://developer.mozilla.org/en-US/docs/Glossary/grid_tracks) or pattern of tracks.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gar`
+     *	- `gr-auto-rows`
+     *	- `grid-auto-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows
      */
     gridAutoRows?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column',
-     *     props: ['gc', 'gr-col', 'grid-column'],
-     *     short: 'gc'
-     * }
-     * @propDocEnd
+     * # grid-column (gc)
+     * The **`grid-column`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item's size and location within a [grid column](https://developer.mozilla.org/en-US/docs/Glossary/grid_column) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gc`
+     *	- `gr-col`
+     *	- `grid-column`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
      */
     gc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column',
-     *     props: ['gc', 'gr-col', 'grid-column'],
-     *     short: 'gc'
-     * }
-     * @propDocEnd
+     * # grid-column (gc)
+     * The **`grid-column`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item's size and location within a [grid column](https://developer.mozilla.org/en-US/docs/Glossary/grid_column) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gc`
+     *	- `gr-col`
+     *	- `grid-column`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
      */
     grCol?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column',
-     *     props: ['gc', 'gr-col', 'grid-column'],
-     *     short: 'gc'
-     * }
-     * @propDocEnd
+     * # grid-column (gc)
+     * The **`grid-column`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item's size and location within a [grid column](https://developer.mozilla.org/en-US/docs/Glossary/grid_column) by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gc`
+     *	- `gr-col`
+     *	- `grid-column`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
      */
     gridColumn?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-end',
-     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
-     *     short: 'gce'
-     * }
-     * @propDocEnd
+     * # grid-column-end (gce)
+     * The **`grid-column-end`** CSS property specifies a grid item’s end position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the block-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gce`
+     *	- `gr-col-end`
+     *	- `grid-column-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end
      */
     gce?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-end',
-     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
-     *     short: 'gce'
-     * }
-     * @propDocEnd
+     * # grid-column-end (gce)
+     * The **`grid-column-end`** CSS property specifies a grid item’s end position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the block-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gce`
+     *	- `gr-col-end`
+     *	- `grid-column-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end
      */
     grColEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-end',
-     *     props: ['gce', 'gr-col-end', 'grid-column-end'],
-     *     short: 'gce'
-     * }
-     * @propDocEnd
+     * # grid-column-end (gce)
+     * The **`grid-column-end`** CSS property specifies a grid item’s end position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the block-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gce`
+     *	- `gr-col-end`
+     *	- `grid-column-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end
      */
     gridColumnEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-gap',
-     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
-     *     short: 'gcg'
-     * }
-     * @propDocEnd
+     * # grid-column-gap (gcg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcg`
+     *	- `gr-col-gap`
+     *	- `grid-column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-gap
      */
     gcg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-gap',
-     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
-     *     short: 'gcg'
-     * }
-     * @propDocEnd
+     * # grid-column-gap (gcg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcg`
+     *	- `gr-col-gap`
+     *	- `grid-column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-gap
      */
     grColGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-gap',
-     *     props: ['gcg', 'gr-col-gap', 'grid-column-gap'],
-     *     short: 'gcg'
-     * }
-     * @propDocEnd
+     * # grid-column-gap (gcg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcg`
+     *	- `gr-col-gap`
+     *	- `grid-column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-gap
      */
     gridColumnGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-start',
-     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
-     *     short: 'gcs'
-     * }
-     * @propDocEnd
+     * # grid-column-start (gcs)
+     * The **`grid-column-start`** CSS property specifies a grid item’s start position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement. This start position defines the block-start edge of the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcs`
+     *	- `gr-col-start`
+     *	- `grid-column-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start
      */
     gcs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-start',
-     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
-     *     short: 'gcs'
-     * }
-     * @propDocEnd
+     * # grid-column-start (gcs)
+     * The **`grid-column-start`** CSS property specifies a grid item’s start position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement. This start position defines the block-start edge of the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcs`
+     *	- `gr-col-start`
+     *	- `grid-column-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start
      */
     grColStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-column-start',
-     *     props: ['gcs', 'gr-col-start', 'grid-column-start'],
-     *     short: 'gcs'
-     * }
-     * @propDocEnd
+     * # grid-column-start (gcs)
+     * The **`grid-column-start`** CSS property specifies a grid item’s start position within the grid column by contributing a line, a span, or nothing (automatic) to its grid placement. This start position defines the block-start edge of the [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gcs`
+     *	- `gr-col-start`
+     *	- `grid-column-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start
      */
     gridColumnStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-gap',
-     *     props: ['gg', 'gr-gap', 'grid-gap'],
-     *     short: 'gg'
-     * }
-     * @propDocEnd
+     * # grid-gap (gg)
+     * The **`gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the gaps ([gutters](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between rows and columns. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`row-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap "The row-gap CSS property sets the size of the gap (gutter) between an element's grid rows.") and [`column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap "The column-gap CSS property sets the size of the gap (gutter) between an element's columns.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gg`
+     *	- `gr-gap`
+     *	- `grid-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-gap
      */
     gg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-gap',
-     *     props: ['gg', 'gr-gap', 'grid-gap'],
-     *     short: 'gg'
-     * }
-     * @propDocEnd
+     * # grid-gap (gg)
+     * The **`gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the gaps ([gutters](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between rows and columns. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`row-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap "The row-gap CSS property sets the size of the gap (gutter) between an element's grid rows.") and [`column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap "The column-gap CSS property sets the size of the gap (gutter) between an element's columns.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gg`
+     *	- `gr-gap`
+     *	- `grid-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-gap
      */
     grGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-gap',
-     *     props: ['gg', 'gr-gap', 'grid-gap'],
-     *     short: 'gg'
-     * }
-     * @propDocEnd
+     * # grid-gap (gg)
+     * The **`gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the gaps ([gutters](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between rows and columns. It is a [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for [`row-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap "The row-gap CSS property sets the size of the gap (gutter) between an element's grid rows.") and [`column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap "The column-gap CSS property sets the size of the gap (gutter) between an element's columns.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gg`
+     *	- `gr-gap`
+     *	- `grid-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-gap
      */
     gridGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row',
-     *     props: ['gr', 'gr-row', 'grid-row'],
-     *     short: 'gr'
-     * }
-     * @propDocEnd
+     * # grid-row (gr)
+     * The **`grid-row`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gr`
+     *	- `gr-row`
+     *	- `grid-row`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
      */
     gr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row',
-     *     props: ['gr', 'gr-row', 'grid-row'],
-     *     short: 'gr'
-     * }
-     * @propDocEnd
+     * # grid-row (gr)
+     * The **`grid-row`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gr`
+     *	- `gr-row`
+     *	- `grid-row`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
      */
     grRow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row',
-     *     props: ['gr', 'gr-row', 'grid-row'],
-     *     short: 'gr'
-     * }
-     * @propDocEnd
+     * # grid-row (gr)
+     * The **`grid-row`** CSS [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) specifies a grid item’s size and location within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gr`
+     *	- `gr-row`
+     *	- `grid-row`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
      */
     gridRow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-end',
-     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
-     *     short: 'gre'
-     * }
-     * @propDocEnd
+     * # grid-row-end (gre)
+     * The **`grid-row-end`** CSS property specifies a grid item’s end position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gre`
+     *	- `gr-row-end`
+     *	- `grid-row-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end
      */
     gre?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-end',
-     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
-     *     short: 'gre'
-     * }
-     * @propDocEnd
+     * # grid-row-end (gre)
+     * The **`grid-row-end`** CSS property specifies a grid item’s end position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gre`
+     *	- `gr-row-end`
+     *	- `grid-row-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end
      */
     grRowEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-end',
-     *     props: ['gre', 'gr-row-end', 'grid-row-end'],
-     *     short: 'gre'
-     * }
-     * @propDocEnd
+     * # grid-row-end (gre)
+     * The **`grid-row-end`** CSS property specifies a grid item’s end position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-end edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gre`
+     *	- `gr-row-end`
+     *	- `grid-row-end`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end
      */
     gridRowEnd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-gap',
-     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
-     *     short: 'grg'
-     * }
-     * @propDocEnd
+     * # grid-row-gap (grg)
+     * The **`row-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between an element's grid rows.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grg`
+     *	- `gr-row-gap`
+     *	- `grid-row-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-gap
      */
     grg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-gap',
-     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
-     *     short: 'grg'
-     * }
-     * @propDocEnd
+     * # grid-row-gap (grg)
+     * The **`row-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between an element's grid rows.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grg`
+     *	- `gr-row-gap`
+     *	- `grid-row-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-gap
      */
     grRowGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-gap',
-     *     props: ['grg', 'gr-row-gap', 'grid-row-gap'],
-     *     short: 'grg'
-     * }
-     * @propDocEnd
+     * # grid-row-gap (grg)
+     * The **`row-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/gutters)) between an element's grid rows.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grg`
+     *	- `gr-row-gap`
+     *	- `grid-row-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-gap
      */
     gridRowGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-start',
-     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
-     *     short: 'grs'
-     * }
-     * @propDocEnd
+     * # grid-row-start (grs)
+     * The **`grid-row-start`** CSS property specifies a grid item’s start position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grs`
+     *	- `gr-row-start`
+     *	- `grid-row-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start
      */
     grs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-start',
-     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
-     *     short: 'grs'
-     * }
-     * @propDocEnd
+     * # grid-row-start (grs)
+     * The **`grid-row-start`** CSS property specifies a grid item’s start position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grs`
+     *	- `gr-row-start`
+     *	- `grid-row-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start
      */
     grRowStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-row-start',
-     *     props: ['grs', 'gr-row-start', 'grid-row-start'],
-     *     short: 'grs'
-     * }
-     * @propDocEnd
+     * # grid-row-start (grs)
+     * The **`grid-row-start`** CSS property specifies a grid item’s start position within the grid row by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start edge of its [grid area](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `grs`
+     *	- `gr-row-start`
+     *	- `grid-row-start`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start
      */
     gridRowStart?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template',
-     *     props: ['gt', 'gr-tmpl', 'grid-template'],
-     *     short: 'gt'
-     * }
-     * @propDocEnd
+     * # grid-template (gt)
+     * The **`grid-template`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for defining [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column), [rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows), and [areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gt`
+     *	- `gr-tmpl`
+     *	- `grid-template`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template
      */
     gt?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template',
-     *     props: ['gt', 'gr-tmpl', 'grid-template'],
-     *     short: 'gt'
-     * }
-     * @propDocEnd
+     * # grid-template (gt)
+     * The **`grid-template`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for defining [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column), [rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows), and [areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gt`
+     *	- `gr-tmpl`
+     *	- `grid-template`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template
      */
     grTmpl?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template',
-     *     props: ['gt', 'gr-tmpl', 'grid-template'],
-     *     short: 'gt'
-     * }
-     * @propDocEnd
+     * # grid-template (gt)
+     * The **`grid-template`** CSS property is a [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) for defining [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column), [rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows), and [areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gt`
+     *	- `gr-tmpl`
+     *	- `grid-template`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template
      */
     gridTemplate?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-areas',
-     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
-     *     short: 'gta'
-     * }
-     * @propDocEnd
+     * # grid-template-areas (gta)
+     * The **`grid-template-areas`** CSS property specifies named [grid areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas), establishing the cells in the grid and assigning them names.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gta`
+     *	- `gr-areas`
+     *	- `grid-template-areas`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
      */
     gta?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-areas',
-     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
-     *     short: 'gta'
-     * }
-     * @propDocEnd
+     * # grid-template-areas (gta)
+     * The **`grid-template-areas`** CSS property specifies named [grid areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas), establishing the cells in the grid and assigning them names.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gta`
+     *	- `gr-areas`
+     *	- `grid-template-areas`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
      */
     grAreas?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-areas',
-     *     props: ['gta', 'gr-areas', 'grid-template-areas'],
-     *     short: 'gta'
-     * }
-     * @propDocEnd
+     * # grid-template-areas (gta)
+     * The **`grid-template-areas`** CSS property specifies named [grid areas](https://developer.mozilla.org/en-US/docs/Glossary/grid_areas), establishing the cells in the grid and assigning them names.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gta`
+     *	- `gr-areas`
+     *	- `grid-template-areas`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
      */
     gridTemplateAreas?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-columns',
-     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
-     *     short: 'gtc'
-     * }
-     * @propDocEnd
+     * # grid-template-columns (gtc)
+     * The **`grid-template-columns`** CSS property defines the line names and track sizing functions of the [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtc`
+     *	- `gr-cols`
+     *	- `grid-template-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
      */
     gtc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-columns',
-     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
-     *     short: 'gtc'
-     * }
-     * @propDocEnd
+     * # grid-template-columns (gtc)
+     * The **`grid-template-columns`** CSS property defines the line names and track sizing functions of the [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtc`
+     *	- `gr-cols`
+     *	- `grid-template-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
      */
     grCols?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-columns',
-     *     props: ['gtc', 'gr-cols', 'grid-template-columns'],
-     *     short: 'gtc'
-     * }
-     * @propDocEnd
+     * # grid-template-columns (gtc)
+     * The **`grid-template-columns`** CSS property defines the line names and track sizing functions of the [grid columns](https://developer.mozilla.org/en-US/docs/Glossary/grid_column).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtc`
+     *	- `gr-cols`
+     *	- `grid-template-columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
      */
     gridTemplateColumns?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-rows',
-     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
-     *     short: 'gtr'
-     * }
-     * @propDocEnd
+     * # grid-template-rows (gtr)
+     * The **`grid-template-rows`** CSS property defines the line names and track sizing functions of the [grid rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtr`
+     *	- `gr-rows`
+     *	- `grid-template-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
      */
     gtr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-rows',
-     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
-     *     short: 'gtr'
-     * }
-     * @propDocEnd
+     * # grid-template-rows (gtr)
+     * The **`grid-template-rows`** CSS property defines the line names and track sizing functions of the [grid rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtr`
+     *	- `gr-rows`
+     *	- `grid-template-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
      */
     grRows?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'grid-template-rows',
-     *     props: ['gtr', 'gr-rows', 'grid-template-rows'],
-     *     short: 'gtr'
-     * }
-     * @propDocEnd
+     * # grid-template-rows (gtr)
+     * The **`grid-template-rows`** CSS property defines the line names and track sizing functions of the [grid rows](https://developer.mozilla.org/en-US/docs/Glossary/grid_rows).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `gtr`
+     *	- `gr-rows`
+     *	- `grid-template-rows`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
      */
     gridTemplateRows?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border',
-     *     props: ['b', 'bd', 'border'],
-     *     short: 'b'
-     * }
-     * @propDocEnd
+     * # border (b)
+     * The **`border`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's border. It sets the values of [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width "The border-width shorthand CSS property sets the width of an element's border."), [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style "The border-style shorthand CSS property sets the line style for all four sides of an element's border."), and [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `b`
+     *	- `bd`
+     *	- `border`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border
      */
     b?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border',
-     *     props: ['b', 'bd', 'border'],
-     *     short: 'b'
-     * }
-     * @propDocEnd
+     * # border (b)
+     * The **`border`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's border. It sets the values of [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width "The border-width shorthand CSS property sets the width of an element's border."), [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style "The border-style shorthand CSS property sets the line style for all four sides of an element's border."), and [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `b`
+     *	- `bd`
+     *	- `border`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border
      */
     bd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border',
-     *     props: ['b', 'bd', 'border'],
-     *     short: 'b'
-     * }
-     * @propDocEnd
+     * # border (b)
+     * The **`border`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's border. It sets the values of [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width "The border-width shorthand CSS property sets the width of an element's border."), [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style "The border-style shorthand CSS property sets the line style for all four sides of an element's border."), and [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `b`
+     *	- `bd`
+     *	- `border`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border
      */
     border?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom',
-     *     props: ['bB', 'bd-bot', 'border-bottom'],
-     *     short: 'bB'
-     * }
-     * @propDocEnd
+     * # border-bottom (bB)
+     * The **`border-bottom`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It sets the values of [`border-bottom-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width "The border-bottom-width CSS property sets the width of the bottom border of an element."), [`border-bottom-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style "The border-bottom-style CSS property sets the line style of an element's bottom border.") and [`border-bottom-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color "The border-bottom-color CSS property sets the color of an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bB`
+     *	- `bd-bot`
+     *	- `border-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom
      */
     bB?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom',
-     *     props: ['bB', 'bd-bot', 'border-bottom'],
-     *     short: 'bB'
-     * }
-     * @propDocEnd
+     * # border-bottom (bB)
+     * The **`border-bottom`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It sets the values of [`border-bottom-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width "The border-bottom-width CSS property sets the width of the bottom border of an element."), [`border-bottom-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style "The border-bottom-style CSS property sets the line style of an element's bottom border.") and [`border-bottom-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color "The border-bottom-color CSS property sets the color of an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bB`
+     *	- `bd-bot`
+     *	- `border-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom
      */
     bdBot?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom',
-     *     props: ['bB', 'bd-bot', 'border-bottom'],
-     *     short: 'bB'
-     * }
-     * @propDocEnd
+     * # border-bottom (bB)
+     * The **`border-bottom`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It sets the values of [`border-bottom-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width "The border-bottom-width CSS property sets the width of the bottom border of an element."), [`border-bottom-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style "The border-bottom-style CSS property sets the line style of an element's bottom border.") and [`border-bottom-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color "The border-bottom-color CSS property sets the color of an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bB`
+     *	- `bd-bot`
+     *	- `border-bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom
      */
     borderBottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-color',
-     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
-     *     short: 'bBc'
-     * }
-     * @propDocEnd
+     * # border-bottom-color (bBc)
+     * The **`border-bottom-color`** CSS property sets the color of an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom "The border-bottom shorthand CSS property sets an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBc`
+     *	- `bd-bot-color`
+     *	- `border-bottom-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color
      */
     bBc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-color',
-     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
-     *     short: 'bBc'
-     * }
-     * @propDocEnd
+     * # border-bottom-color (bBc)
+     * The **`border-bottom-color`** CSS property sets the color of an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom "The border-bottom shorthand CSS property sets an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBc`
+     *	- `bd-bot-color`
+     *	- `border-bottom-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color
      */
     bdBotColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-color',
-     *     props: ['bBc', 'bd-bot-color', 'border-bottom-color'],
-     *     short: 'bBc'
-     * }
-     * @propDocEnd
+     * # border-bottom-color (bBc)
+     * The **`border-bottom-color`** CSS property sets the color of an element's bottom [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom "The border-bottom shorthand CSS property sets an element's bottom border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBc`
+     *	- `bd-bot-color`
+     *	- `border-bottom-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-color
      */
     borderBottomColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-left-radius',
-     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
-     *     short: 'bBlr'
-     * }
-     * @propDocEnd
+     * # border-bottom-left-radius (bBlr)
+     * The **`border-bottom-left-radius`** CSS property rounds the bottom-left corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBlr`
+     *	- `bd-bot-left-radius`
+     *	- `border-bottom-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
      */
     bBlr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-left-radius',
-     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
-     *     short: 'bBlr'
-     * }
-     * @propDocEnd
+     * # border-bottom-left-radius (bBlr)
+     * The **`border-bottom-left-radius`** CSS property rounds the bottom-left corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBlr`
+     *	- `bd-bot-left-radius`
+     *	- `border-bottom-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
      */
     bdBotLeftRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-left-radius',
-     *     props: ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius'],
-     *     short: 'bBlr'
-     * }
-     * @propDocEnd
+     * # border-bottom-left-radius (bBlr)
+     * The **`border-bottom-left-radius`** CSS property rounds the bottom-left corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBlr`
+     *	- `bd-bot-left-radius`
+     *	- `border-bottom-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius
      */
     borderBottomLeftRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-right-radius',
-     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
-     *     short: 'bBrr'
-     * }
-     * @propDocEnd
+     * # border-bottom-right-radius (bBrr)
+     * The **`border-bottom-right-radius`** CSS property rounds the bottom-right corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBrr`
+     *	- `bd-bot-right-radius`
+     *	- `border-bottom-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
      */
     bBrr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-right-radius',
-     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
-     *     short: 'bBrr'
-     * }
-     * @propDocEnd
+     * # border-bottom-right-radius (bBrr)
+     * The **`border-bottom-right-radius`** CSS property rounds the bottom-right corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBrr`
+     *	- `bd-bot-right-radius`
+     *	- `border-bottom-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
      */
     bdBotRightRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-right-radius',
-     *     props: ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius'],
-     *     short: 'bBrr'
-     * }
-     * @propDocEnd
+     * # border-bottom-right-radius (bBrr)
+     * The **`border-bottom-right-radius`** CSS property rounds the bottom-right corner of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBrr`
+     *	- `bd-bot-right-radius`
+     *	- `border-bottom-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius
      */
     borderBottomRightRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-style',
-     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
-     *     short: 'bBs'
-     * }
-     * @propDocEnd
+     * # border-bottom-style (bBs)
+     * The **`border-bottom-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's bottom [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBs`
+     *	- `bd-bot-style`
+     *	- `border-bottom-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style
      */
     bBs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-style',
-     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
-     *     short: 'bBs'
-     * }
-     * @propDocEnd
+     * # border-bottom-style (bBs)
+     * The **`border-bottom-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's bottom [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBs`
+     *	- `bd-bot-style`
+     *	- `border-bottom-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style
      */
     bdBotStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-style',
-     *     props: ['bBs', 'bd-bot-style', 'border-bottom-style'],
-     *     short: 'bBs'
-     * }
-     * @propDocEnd
+     * # border-bottom-style (bBs)
+     * The **`border-bottom-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's bottom [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBs`
+     *	- `bd-bot-style`
+     *	- `border-bottom-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-style
      */
     borderBottomStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-width',
-     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
-     *     short: 'bBw'
-     * }
-     * @propDocEnd
+     * # border-bottom-width (bBw)
+     * The **`border-bottom-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the bottom border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBw`
+     *	- `bd-bot-wid`
+     *	- `border-bottom-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width
      */
     bBw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-width',
-     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
-     *     short: 'bBw'
-     * }
-     * @propDocEnd
+     * # border-bottom-width (bBw)
+     * The **`border-bottom-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the bottom border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBw`
+     *	- `bd-bot-wid`
+     *	- `border-bottom-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width
      */
     bdBotWid?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-bottom-width',
-     *     props: ['bBw', 'bd-bot-wid', 'border-bottom-width'],
-     *     short: 'bBw'
-     * }
-     * @propDocEnd
+     * # border-bottom-width (bBw)
+     * The **`border-bottom-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the bottom border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bBw`
+     *	- `bd-bot-wid`
+     *	- `border-bottom-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width
      */
     borderBottomWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-collapse',
-     *     props: ['bC', 'bd-coll', 'border-collapse'],
-     *     short: 'bC'
-     * }
-     * @propDocEnd
+     * # border-collapse (bC)
+     * The **`border-collapse`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether cells inside a [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") have shared or separate borders.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bC`
+     *	- `bd-coll`
+     *	- `border-collapse`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse
      */
     bC?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-collapse',
-     *     props: ['bC', 'bd-coll', 'border-collapse'],
-     *     short: 'bC'
-     * }
-     * @propDocEnd
+     * # border-collapse (bC)
+     * The **`border-collapse`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether cells inside a [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") have shared or separate borders.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bC`
+     *	- `bd-coll`
+     *	- `border-collapse`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse
      */
     bdColl?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-collapse',
-     *     props: ['bC', 'bd-coll', 'border-collapse'],
-     *     short: 'bC'
-     * }
-     * @propDocEnd
+     * # border-collapse (bC)
+     * The **`border-collapse`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether cells inside a [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") have shared or separate borders.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bC`
+     *	- `bd-coll`
+     *	- `border-collapse`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse
      */
     borderCollapse?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-color',
-     *     props: ['bc', 'bd-color', 'border-color'],
-     *     short: 'bc'
-     * }
-     * @propDocEnd
+     * # border-color (bc)
+     * The **`border-color`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bc`
+     *	- `bd-color`
+     *	- `border-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
      */
     bc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-color',
-     *     props: ['bc', 'bd-color', 'border-color'],
-     *     short: 'bc'
-     * }
-     * @propDocEnd
+     * # border-color (bc)
+     * The **`border-color`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bc`
+     *	- `bd-color`
+     *	- `border-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
      */
     bdColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-color',
-     *     props: ['bc', 'bd-color', 'border-color'],
-     *     short: 'bc'
-     * }
-     * @propDocEnd
+     * # border-color (bc)
+     * The **`border-color`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bc`
+     *	- `bd-color`
+     *	- `border-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
      */
     borderColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image',
-     *     props: ['bi', 'bd-img', 'border-image'],
-     *     short: 'bi'
-     * }
-     * @propDocEnd
+     * # border-image (bi)
+     * The **`border-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property draws an image around a given element. It replaces the element's regular [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bi`
+     *	- `bd-img`
+     *	- `border-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image
      */
     bi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image',
-     *     props: ['bi', 'bd-img', 'border-image'],
-     *     short: 'bi'
-     * }
-     * @propDocEnd
+     * # border-image (bi)
+     * The **`border-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property draws an image around a given element. It replaces the element's regular [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bi`
+     *	- `bd-img`
+     *	- `border-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image
      */
     bdImg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image',
-     *     props: ['bi', 'bd-img', 'border-image'],
-     *     short: 'bi'
-     * }
-     * @propDocEnd
+     * # border-image (bi)
+     * The **`border-image`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property draws an image around a given element. It replaces the element's regular [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bi`
+     *	- `bd-img`
+     *	- `border-image`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image
      */
     borderImage?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-outset',
-     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
-     *     short: 'bio'
-     * }
-     * @propDocEnd
+     * # border-image-outset (bio)
+     * The **`border-image-outset`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance by which an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image) is set out from its border box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bio`
+     *	- `bd-img-outset`
+     *	- `border-image-outset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset
      */
     bio?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-outset',
-     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
-     *     short: 'bio'
-     * }
-     * @propDocEnd
+     * # border-image-outset (bio)
+     * The **`border-image-outset`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance by which an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image) is set out from its border box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bio`
+     *	- `bd-img-outset`
+     *	- `border-image-outset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset
      */
     bdImgOutset?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-outset',
-     *     props: ['bio', 'bd-img-outset', 'border-image-outset'],
-     *     short: 'bio'
-     * }
-     * @propDocEnd
+     * # border-image-outset (bio)
+     * The **`border-image-outset`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance by which an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image) is set out from its border box.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bio`
+     *	- `bd-img-outset`
+     *	- `border-image-outset`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset
      */
     borderImageOutset?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-repeat',
-     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
-     *     short: 'bir'
-     * }
-     * @propDocEnd
+     * # border-image-repeat (bir)
+     * The **`border-image-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property defines how the [edge regions](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice#edge-regions) of a source image are adjusted to fit the dimensions of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bir`
+     *	- `bd-img-repeat`
+     *	- `border-image-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-repeat
      */
     bir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-repeat',
-     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
-     *     short: 'bir'
-     * }
-     * @propDocEnd
+     * # border-image-repeat (bir)
+     * The **`border-image-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property defines how the [edge regions](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice#edge-regions) of a source image are adjusted to fit the dimensions of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bir`
+     *	- `bd-img-repeat`
+     *	- `border-image-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-repeat
      */
     bdImgRepeat?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-repeat',
-     *     props: ['bir', 'bd-img-repeat', 'border-image-repeat'],
-     *     short: 'bir'
-     * }
-     * @propDocEnd
+     * # border-image-repeat (bir)
+     * The **`border-image-repeat`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property defines how the [edge regions](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice#edge-regions) of a source image are adjusted to fit the dimensions of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bir`
+     *	- `bd-img-repeat`
+     *	- `border-image-repeat`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-repeat
      */
     borderImageRepeat?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-slice',
-     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
-     *     short: 'bis'
-     * }
-     * @propDocEnd
+     * # border-image-slice (bis)
+     * The **`border-image-slice`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property divides the image specified by [`border-image-source`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source "The border-image-source CSS property sets the source image used to create an element's border image.") into regions. These regions form the components of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bis`
+     *	- `bd-img-slice`
+     *	- `border-image-slice`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice
      */
     bis?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-slice',
-     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
-     *     short: 'bis'
-     * }
-     * @propDocEnd
+     * # border-image-slice (bis)
+     * The **`border-image-slice`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property divides the image specified by [`border-image-source`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source "The border-image-source CSS property sets the source image used to create an element's border image.") into regions. These regions form the components of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bis`
+     *	- `bd-img-slice`
+     *	- `border-image-slice`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice
      */
     bdImgSlice?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-slice',
-     *     props: ['bis', 'bd-img-slice', 'border-image-slice'],
-     *     short: 'bis'
-     * }
-     * @propDocEnd
+     * # border-image-slice (bis)
+     * The **`border-image-slice`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property divides the image specified by [`border-image-source`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source "The border-image-source CSS property sets the source image used to create an element's border image.") into regions. These regions form the components of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bis`
+     *	- `bd-img-slice`
+     *	- `border-image-slice`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice
      */
     borderImageSlice?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-source',
-     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
-     *     short: 'biSrc'
-     * }
-     * @propDocEnd
+     * # border-image-source (biSrc)
+     * The **`border-image-source`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the source image used to create an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biSrc`
+     *	- `bd-img-src`
+     *	- `border-image-source`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source
      */
     biSrc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-source',
-     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
-     *     short: 'biSrc'
-     * }
-     * @propDocEnd
+     * # border-image-source (biSrc)
+     * The **`border-image-source`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the source image used to create an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biSrc`
+     *	- `bd-img-src`
+     *	- `border-image-source`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source
      */
     bdImgSrc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-source',
-     *     props: ['biSrc', 'bd-img-src', 'border-image-source'],
-     *     short: 'biSrc'
-     * }
-     * @propDocEnd
+     * # border-image-source (biSrc)
+     * The **`border-image-source`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the source image used to create an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biSrc`
+     *	- `bd-img-src`
+     *	- `border-image-source`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-source
      */
     borderImageSource?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-width',
-     *     props: ['biw', 'bd-img-width', 'border-image-width'],
-     *     short: 'biw'
-     * }
-     * @propDocEnd
+     * # border-image-width (biw)
+     * The **`border-image-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biw`
+     *	- `bd-img-width`
+     *	- `border-image-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width
      */
     biw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-width',
-     *     props: ['biw', 'bd-img-width', 'border-image-width'],
-     *     short: 'biw'
-     * }
-     * @propDocEnd
+     * # border-image-width (biw)
+     * The **`border-image-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biw`
+     *	- `bd-img-width`
+     *	- `border-image-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width
      */
     bdImgWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-image-width',
-     *     props: ['biw', 'bd-img-width', 'border-image-width'],
-     *     short: 'biw'
-     * }
-     * @propDocEnd
+     * # border-image-width (biw)
+     * The **`border-image-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's [border image](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `biw`
+     *	- `bd-img-width`
+     *	- `border-image-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width
      */
     borderImageWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left',
-     *     props: ['bL', 'bd-left', 'border-left'],
-     *     short: 'bL'
-     * }
-     * @propDocEnd
+     * # border-left (bL)
+     * The **`border-left`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property set an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bL`
+     *	- `bd-left`
+     *	- `border-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left
      */
     bL?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left',
-     *     props: ['bL', 'bd-left', 'border-left'],
-     *     short: 'bL'
-     * }
-     * @propDocEnd
+     * # border-left (bL)
+     * The **`border-left`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property set an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bL`
+     *	- `bd-left`
+     *	- `border-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left
      */
     bdLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left',
-     *     props: ['bL', 'bd-left', 'border-left'],
-     *     short: 'bL'
-     * }
-     * @propDocEnd
+     * # border-left (bL)
+     * The **`border-left`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property set an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bL`
+     *	- `bd-left`
+     *	- `border-left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left
      */
     borderLeft?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-color',
-     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
-     *     short: 'bLc'
-     * }
-     * @propDocEnd
+     * # border-left-color (bLc)
+     * The **`border-left-color`** CSS property sets the color of an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left "The border-left shorthand CSS property set an element's left border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLc`
+     *	- `bd-left-color`
+     *	- `border-left-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color
      */
     bLc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-color',
-     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
-     *     short: 'bLc'
-     * }
-     * @propDocEnd
+     * # border-left-color (bLc)
+     * The **`border-left-color`** CSS property sets the color of an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left "The border-left shorthand CSS property set an element's left border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLc`
+     *	- `bd-left-color`
+     *	- `border-left-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color
      */
     bdLeftColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-color',
-     *     props: ['bLc', 'bd-left-color', 'border-left-color'],
-     *     short: 'bLc'
-     * }
-     * @propDocEnd
+     * # border-left-color (bLc)
+     * The **`border-left-color`** CSS property sets the color of an element's left [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left "The border-left shorthand CSS property set an element's left border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLc`
+     *	- `bd-left-color`
+     *	- `border-left-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-color
      */
     borderLeftColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-style',
-     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
-     *     short: 'bLs'
-     * }
-     * @propDocEnd
+     * # border-left-style (bLs)
+     * The **`border-left-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's left [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLs`
+     *	- `bd-left-style`
+     *	- `border-left-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-style
      */
     bLs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-style',
-     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
-     *     short: 'bLs'
-     * }
-     * @propDocEnd
+     * # border-left-style (bLs)
+     * The **`border-left-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's left [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLs`
+     *	- `bd-left-style`
+     *	- `border-left-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-style
      */
     bdLeftStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-style',
-     *     props: ['bLs', 'bd-left-style', 'border-left-style'],
-     *     short: 'bLs'
-     * }
-     * @propDocEnd
+     * # border-left-style (bLs)
+     * The **`border-left-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's left [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLs`
+     *	- `bd-left-style`
+     *	- `border-left-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-style
      */
     borderLeftStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-width',
-     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
-     *     short: 'bLw'
-     * }
-     * @propDocEnd
+     * # border-left-width (bLw)
+     * The **`border-left-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the left border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLw`
+     *	- `bd-left-width`
+     *	- `border-left-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width
      */
     bLw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-width',
-     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
-     *     short: 'bLw'
-     * }
-     * @propDocEnd
+     * # border-left-width (bLw)
+     * The **`border-left-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the left border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLw`
+     *	- `bd-left-width`
+     *	- `border-left-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width
      */
     bdLeftWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-left-width',
-     *     props: ['bLw', 'bd-left-width', 'border-left-width'],
-     *     short: 'bLw'
-     * }
-     * @propDocEnd
+     * # border-left-width (bLw)
+     * The **`border-left-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the left border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bLw`
+     *	- `bd-left-width`
+     *	- `border-left-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width
      */
     borderLeftWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-radius',
-     *     props: ['br', 'bd-radius', 'border-radius'],
-     *     short: 'br'
-     * }
-     * @propDocEnd
+     * # border-radius (br)
+     * The **`border-radius`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `br`
+     *	- `bd-radius`
+     *	- `border-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
      */
     br?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-radius',
-     *     props: ['br', 'bd-radius', 'border-radius'],
-     *     short: 'br'
-     * }
-     * @propDocEnd
+     * # border-radius (br)
+     * The **`border-radius`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `br`
+     *	- `bd-radius`
+     *	- `border-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
      */
     bdRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-radius',
-     *     props: ['br', 'bd-radius', 'border-radius'],
-     *     short: 'br'
-     * }
-     * @propDocEnd
+     * # border-radius (br)
+     * The **`border-radius`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `br`
+     *	- `bd-radius`
+     *	- `border-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
      */
     borderRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right',
-     *     props: ['bR', 'bd-right', 'border-right'],
-     *     short: 'bR'
-     * }
-     * @propDocEnd
+     * # border-right (bR)
+     * The **`border-right`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the properties of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bR`
+     *	- `bd-right`
+     *	- `border-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right
      */
     bR?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right',
-     *     props: ['bR', 'bd-right', 'border-right'],
-     *     short: 'bR'
-     * }
-     * @propDocEnd
+     * # border-right (bR)
+     * The **`border-right`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the properties of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bR`
+     *	- `bd-right`
+     *	- `border-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right
      */
     bdRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right',
-     *     props: ['bR', 'bd-right', 'border-right'],
-     *     short: 'bR'
-     * }
-     * @propDocEnd
+     * # border-right (bR)
+     * The **`border-right`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the properties of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bR`
+     *	- `bd-right`
+     *	- `border-right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right
      */
     borderRight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-color',
-     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
-     *     short: 'bRc'
-     * }
-     * @propDocEnd
+     * # border-right-color (bRc)
+     * The **`border-right-color`** CSS property sets the color of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right "The border-right shorthand CSS property sets the properties of an element's right border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRc`
+     *	- `bd-right-color`
+     *	- `border-right-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color
      */
     bRc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-color',
-     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
-     *     short: 'bRc'
-     * }
-     * @propDocEnd
+     * # border-right-color (bRc)
+     * The **`border-right-color`** CSS property sets the color of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right "The border-right shorthand CSS property sets the properties of an element's right border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRc`
+     *	- `bd-right-color`
+     *	- `border-right-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color
      */
     bdRightColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-color',
-     *     props: ['bRc', 'bd-right-color', 'border-right-color'],
-     *     short: 'bRc'
-     * }
-     * @propDocEnd
+     * # border-right-color (bRc)
+     * The **`border-right-color`** CSS property sets the color of an element's right [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right "The border-right shorthand CSS property sets the properties of an element's right border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRc`
+     *	- `bd-right-color`
+     *	- `border-right-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color
      */
     borderRightColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-style',
-     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
-     *     short: 'bRs'
-     * }
-     * @propDocEnd
+     * # border-right-style (bRs)
+     * The **`border-right-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's right [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRs`
+     *	- `bd-right-style`
+     *	- `border-right-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-style
      */
     bRs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-style',
-     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
-     *     short: 'bRs'
-     * }
-     * @propDocEnd
+     * # border-right-style (bRs)
+     * The **`border-right-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's right [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRs`
+     *	- `bd-right-style`
+     *	- `border-right-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-style
      */
     bdRightStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-style',
-     *     props: ['bRs', 'bd-right-style', 'border-right-style'],
-     *     short: 'bRs'
-     * }
-     * @propDocEnd
+     * # border-right-style (bRs)
+     * The **`border-right-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's right [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRs`
+     *	- `bd-right-style`
+     *	- `border-right-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-style
      */
     borderRightStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-width',
-     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
-     *     short: 'bRw'
-     * }
-     * @propDocEnd
+     * # border-right-width (bRw)
+     * The **`border-right-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the right border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRw`
+     *	- `bd-right-width`
+     *	- `border-right-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width
      */
     bRw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-width',
-     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
-     *     short: 'bRw'
-     * }
-     * @propDocEnd
+     * # border-right-width (bRw)
+     * The **`border-right-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the right border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRw`
+     *	- `bd-right-width`
+     *	- `border-right-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width
      */
     bdRightWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-right-width',
-     *     props: ['bRw', 'bd-right-width', 'border-right-width'],
-     *     short: 'bRw'
-     * }
-     * @propDocEnd
+     * # border-right-width (bRw)
+     * The **`border-right-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the right border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bRw`
+     *	- `bd-right-width`
+     *	- `border-right-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width
      */
     borderRightWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-spacing',
-     *     props: ['bs', 'bd-spacing', 'border-spacing'],
-     *     short: 'bs'
-     * }
-     * @propDocEnd
+     * # border-spacing (bs)
+     * The **`border-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance between the borders of adjacent [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") cells. This property applies only when [`border-collapse`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse "The border-collapse CSS property sets whether cells inside a <table> have shared or separate borders.") is `separate`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bs`
+     *	- `bd-spacing`
+     *	- `border-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing
      */
     bs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-spacing',
-     *     props: ['bs', 'bd-spacing', 'border-spacing'],
-     *     short: 'bs'
-     * }
-     * @propDocEnd
+     * # border-spacing (bs)
+     * The **`border-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance between the borders of adjacent [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") cells. This property applies only when [`border-collapse`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse "The border-collapse CSS property sets whether cells inside a <table> have shared or separate borders.") is `separate`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bs`
+     *	- `bd-spacing`
+     *	- `border-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing
      */
     bdSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-spacing',
-     *     props: ['bs', 'bd-spacing', 'border-spacing'],
-     *     short: 'bs'
-     * }
-     * @propDocEnd
+     * # border-spacing (bs)
+     * The **`border-spacing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the distance between the borders of adjacent [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") cells. This property applies only when [`border-collapse`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse "The border-collapse CSS property sets whether cells inside a <table> have shared or separate borders.") is `separate`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bs`
+     *	- `bd-spacing`
+     *	- `border-spacing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing
      */
     borderSpacing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-style',
-     *     props: ['bS', 'bd-style', 'border-style'],
-     *     short: 'bS'
-     * }
-     * @propDocEnd
+     * # border-style (bS)
+     * The **`border-style`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en/CSS "CSS") property sets the line style for all four sides of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bS`
+     *	- `bd-style`
+     *	- `border-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
      */
     bS?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-style',
-     *     props: ['bS', 'bd-style', 'border-style'],
-     *     short: 'bS'
-     * }
-     * @propDocEnd
+     * # border-style (bS)
+     * The **`border-style`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en/CSS "CSS") property sets the line style for all four sides of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bS`
+     *	- `bd-style`
+     *	- `border-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
      */
     bdStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-style',
-     *     props: ['bS', 'bd-style', 'border-style'],
-     *     short: 'bS'
-     * }
-     * @propDocEnd
+     * # border-style (bS)
+     * The **`border-style`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en/CSS "CSS") property sets the line style for all four sides of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bS`
+     *	- `bd-style`
+     *	- `border-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-style
      */
     borderStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top',
-     *     props: ['bT', 'bd-top', 'border-top'],
-     *     short: 'bT'
-     * }
-     * @propDocEnd
+     * # border-top (bT)
+     * The **`border-top`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets all the properties of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bT`
+     *	- `bd-top`
+     *	- `border-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top
      */
     bT?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top',
-     *     props: ['bT', 'bd-top', 'border-top'],
-     *     short: 'bT'
-     * }
-     * @propDocEnd
+     * # border-top (bT)
+     * The **`border-top`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets all the properties of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bT`
+     *	- `bd-top`
+     *	- `border-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top
      */
     bdTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top',
-     *     props: ['bT', 'bd-top', 'border-top'],
-     *     short: 'bT'
-     * }
-     * @propDocEnd
+     * # border-top (bT)
+     * The **`border-top`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets all the properties of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bT`
+     *	- `bd-top`
+     *	- `border-top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top
      */
     borderTop?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-color',
-     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
-     *     short: 'bTc'
-     * }
-     * @propDocEnd
+     * # border-top-color (bTc)
+     * The **`border-top-color`** CSS property sets the color of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top "The border-top shorthand CSS property sets all the properties of an element's top border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTc`
+     *	- `bd-top-color`
+     *	- `border-top-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color
      */
     bTc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-color',
-     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
-     *     short: 'bTc'
-     * }
-     * @propDocEnd
+     * # border-top-color (bTc)
+     * The **`border-top-color`** CSS property sets the color of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top "The border-top shorthand CSS property sets all the properties of an element's top border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTc`
+     *	- `bd-top-color`
+     *	- `border-top-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color
      */
     bdTopColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-color',
-     *     props: ['bTc', 'bd-top-color', 'border-top-color'],
-     *     short: 'bTc'
-     * }
-     * @propDocEnd
+     * # border-top-color (bTc)
+     * The **`border-top-color`** CSS property sets the color of an element's top [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). It can also be set with the shorthand CSS properties [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.") or [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top "The border-top shorthand CSS property sets all the properties of an element's top border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTc`
+     *	- `bd-top-color`
+     *	- `border-top-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-color
      */
     borderTopColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-left-radius',
-     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
-     *     short: 'bTlr'
-     * }
-     * @propDocEnd
+     * # border-top-left-radius (bTlr)
+     * The **`border-top-left-radius`** CSS property rounds the top-left corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTlr`
+     *	- `bd-top-left-radius`
+     *	- `border-top-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
      */
     bTlr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-left-radius',
-     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
-     *     short: 'bTlr'
-     * }
-     * @propDocEnd
+     * # border-top-left-radius (bTlr)
+     * The **`border-top-left-radius`** CSS property rounds the top-left corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTlr`
+     *	- `bd-top-left-radius`
+     *	- `border-top-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
      */
     bdTopLeftRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-left-radius',
-     *     props: ['bTlr', 'bd-top-left-radius', 'border-top-left-radius'],
-     *     short: 'bTlr'
-     * }
-     * @propDocEnd
+     * # border-top-left-radius (bTlr)
+     * The **`border-top-left-radius`** CSS property rounds the top-left corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTlr`
+     *	- `bd-top-left-radius`
+     *	- `border-top-left-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius
      */
     borderTopLeftRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-right-radius',
-     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
-     *     short: 'bTrr'
-     * }
-     * @propDocEnd
+     * # border-top-right-radius (bTrr)
+     * The **`border-top-right-radius`** CSS property rounds the top-right corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTrr`
+     *	- `bd-top-right-radius`
+     *	- `border-top-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
      */
     bTrr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-right-radius',
-     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
-     *     short: 'bTrr'
-     * }
-     * @propDocEnd
+     * # border-top-right-radius (bTrr)
+     * The **`border-top-right-radius`** CSS property rounds the top-right corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTrr`
+     *	- `bd-top-right-radius`
+     *	- `border-top-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
      */
     bdTopRightRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-right-radius',
-     *     props: ['bTrr', 'bd-top-right-radius', 'border-top-right-radius'],
-     *     short: 'bTrr'
-     * }
-     * @propDocEnd
+     * # border-top-right-radius (bTrr)
+     * The **`border-top-right-radius`** CSS property rounds the top-right corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTrr`
+     *	- `bd-top-right-radius`
+     *	- `border-top-right-radius`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius
      */
     borderTopRightRadius?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-style',
-     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
-     *     short: 'bTs'
-     * }
-     * @propDocEnd
+     * # border-top-style (bTs)
+     * The **`border-top-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's top [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTs`
+     *	- `bd-top-style`
+     *	- `border-top-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-style
      */
     bTs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-style',
-     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
-     *     short: 'bTs'
-     * }
-     * @propDocEnd
+     * # border-top-style (bTs)
+     * The **`border-top-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's top [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTs`
+     *	- `bd-top-style`
+     *	- `border-top-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-style
      */
     bdTopStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-style',
-     *     props: ['bTs', 'bd-top-style', 'border-top-style'],
-     *     short: 'bTs'
-     * }
-     * @propDocEnd
+     * # border-top-style (bTs)
+     * The **`border-top-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the line style of an element's top [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border "The border shorthand CSS property sets an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTs`
+     *	- `bd-top-style`
+     *	- `border-top-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-style
      */
     borderTopStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-width',
-     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
-     *     short: 'bTw'
-     * }
-     * @propDocEnd
+     * # border-top-width (bTw)
+     * The **`border-top-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the top border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTw`
+     *	- `bd-top-width`
+     *	- `border-top-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width
      */
     bTw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-width',
-     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
-     *     short: 'bTw'
-     * }
-     * @propDocEnd
+     * # border-top-width (bTw)
+     * The **`border-top-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the top border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTw`
+     *	- `bd-top-width`
+     *	- `border-top-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width
      */
     bdTopWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-top-width',
-     *     props: ['bTw', 'bd-top-width', 'border-top-width'],
-     *     short: 'bTw'
-     * }
-     * @propDocEnd
+     * # border-top-width (bTw)
+     * The **`border-top-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the top border of an element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bTw`
+     *	- `bd-top-width`
+     *	- `border-top-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width
      */
     borderTopWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-width',
-     *     props: ['bw', 'bd-width', 'border-width'],
-     *     short: 'bw'
-     * }
-     * @propDocEnd
+     * # border-width (bw)
+     * The **`border-width`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bw`
+     *	- `bd-width`
+     *	- `border-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-width
      */
     bw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-width',
-     *     props: ['bw', 'bd-width', 'border-width'],
-     *     short: 'bw'
-     * }
-     * @propDocEnd
+     * # border-width (bw)
+     * The **`border-width`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bw`
+     *	- `bd-width`
+     *	- `border-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-width
      */
     bdWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'border-width',
-     *     props: ['bw', 'bd-width', 'border-width'],
-     *     short: 'bw'
-     * }
-     * @propDocEnd
+     * # border-width (bw)
+     * The **`border-width`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of an element's border.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `bw`
+     *	- `bd-width`
+     *	- `border-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/border-width
      */
     borderWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clip',
-     *     props: ['clp', 'clip', 'clip'],
-     *     short: 'clp'
-     * }
-     * @propDocEnd
-     */
-    clp?: CCSSProp
+     * # clip (clip)
+     * The **`clip`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property defines a visible portion of an element. The `clip` property applies only to absolutely positioned elements — that is, elements with [`position:absolute`](https://developer.mozilla.org/en-US/docs/Web/CSS/position "The documentation about this has not yet been written; please consider contributing!") or [`position:fixed`](https://developer.mozilla.org/en-US/docs/Web/CSS/position "The documentation about this has not yet been written; please consider contributing!").
 
-    /**
-     * @propDocStart
-     * {
-     *     long: 'clip',
-     *     props: ['clp', 'clip', 'clip'],
-     *     short: 'clp'
-     * }
-     * @propDocEnd
+
+     *
+     * ---
+     * ## Aliases
+     *	- `clip`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip
      */
     clip?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clip-path',
-     *     props: ['clpp', 'clip-path', 'clip-path'],
-     *     short: 'clpp'
-     * }
-     * @propDocEnd
-     */
-    clpp?: CCSSProp
+     * # clip-path (clipPath)
+     * The `**clip-path**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden.
 
-    /**
-     * @propDocStart
-     * {
-     *     long: 'clip-path',
-     *     props: ['clpp', 'clip-path', 'clip-path'],
-     *     short: 'clpp'
-     * }
-     * @propDocEnd
+
+     *
+     * ---
+     * ## Aliases
+     *	- `clipPath`
+     *	- `clip-path`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
      */
     clipPath?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'display',
-     *     props: ['d', 'dsp', 'display'],
-     *     short: 'd'
-     * }
-     * @propDocEnd
+     * # clip-path (clipPath)
+     * The `**clip-path**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `clipPath`
+     *	- `clip-path`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
+     */
+    clipPath?: CCSSProp
+    /**
+     * # display (d)
+     * The **`display`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element is treated as a [block or inline element](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout) and the layout used for its children, such as [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout), [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) or [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout).
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **i**: `inline`
+     *	- **if**: `inline-flex`
+     *	- **ib**: `inline-block`
+     *	- **ig**: `inline-grid`
+     *	- **b**: `block`
+     *	- **f**: `flex`
+     *	- **g**: `grid`
+     *	- **t**: `table`
+     *
+     * ---
+     * ## Aliases
+     *	- `d`
+     *	- `dsp`
+     *	- `display`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
      */
     d?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'display',
-     *     props: ['d', 'dsp', 'display'],
-     *     short: 'd'
-     * }
-     * @propDocEnd
+     * # display (d)
+     * The **`display`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element is treated as a [block or inline element](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout) and the layout used for its children, such as [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout), [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) or [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout).
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **i**: `inline`
+     *	- **if**: `inline-flex`
+     *	- **ib**: `inline-block`
+     *	- **ig**: `inline-grid`
+     *	- **b**: `block`
+     *	- **f**: `flex`
+     *	- **g**: `grid`
+     *	- **t**: `table`
+     *
+     * ---
+     * ## Aliases
+     *	- `d`
+     *	- `dsp`
+     *	- `display`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
      */
     dsp?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'display',
-     *     props: ['d', 'dsp', 'display'],
-     *     short: 'd'
-     * }
-     * @propDocEnd
+     * # display (d)
+     * The **`display`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element is treated as a [block or inline element](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout) and the layout used for its children, such as [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout), [grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) or [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout).
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **i**: `inline`
+     *	- **if**: `inline-flex`
+     *	- **ib**: `inline-block`
+     *	- **ig**: `inline-grid`
+     *	- **b**: `block`
+     *	- **f**: `flex`
+     *	- **g**: `grid`
+     *	- **t**: `table`
+     *
+     * ---
+     * ## Aliases
+     *	- `d`
+     *	- `dsp`
+     *	- `display`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
      */
     display?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'position',
-     *     props: ['P', 'pos', 'position'],
-     *     short: 'P'
-     * }
-     * @propDocEnd
+     * # position (P)
+     * The **`position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property sets how an element is positioned in a document. The [`top`](https://developer.mozilla.org/en-US/docs/Web/CSS/top "The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements."), [`right`](https://developer.mozilla.org/en-US/docs/Web/CSS/right "The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements."), [`bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom "The bottom CSS property participates in setting the vertical position of a positioned element. It has no effect on non-positioned elements."), and [`left`](https://developer.mozilla.org/en-US/docs/Web/CSS/left "The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.") properties determine the final location of positioned elements.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `absolute`
+     *	- **f**: `fixed`
+     *	- **r**: `relative`
+     *	- **s**: `sticky`
+     *
+     * ---
+     * ## Aliases
+     *	- `P`
+     *	- `pos`
+     *	- `position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/position
      */
     P?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'position',
-     *     props: ['P', 'pos', 'position'],
-     *     short: 'P'
-     * }
-     * @propDocEnd
+     * # position (P)
+     * The **`position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property sets how an element is positioned in a document. The [`top`](https://developer.mozilla.org/en-US/docs/Web/CSS/top "The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements."), [`right`](https://developer.mozilla.org/en-US/docs/Web/CSS/right "The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements."), [`bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom "The bottom CSS property participates in setting the vertical position of a positioned element. It has no effect on non-positioned elements."), and [`left`](https://developer.mozilla.org/en-US/docs/Web/CSS/left "The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.") properties determine the final location of positioned elements.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `absolute`
+     *	- **f**: `fixed`
+     *	- **r**: `relative`
+     *	- **s**: `sticky`
+     *
+     * ---
+     * ## Aliases
+     *	- `P`
+     *	- `pos`
+     *	- `position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/position
      */
     pos?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'position',
-     *     props: ['P', 'pos', 'position'],
-     *     short: 'P'
-     * }
-     * @propDocEnd
+     * # position (P)
+     * The **`position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property sets how an element is positioned in a document. The [`top`](https://developer.mozilla.org/en-US/docs/Web/CSS/top "The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements."), [`right`](https://developer.mozilla.org/en-US/docs/Web/CSS/right "The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements."), [`bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom "The bottom CSS property participates in setting the vertical position of a positioned element. It has no effect on non-positioned elements."), and [`left`](https://developer.mozilla.org/en-US/docs/Web/CSS/left "The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements.") properties determine the final location of positioned elements.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `absolute`
+     *	- **f**: `fixed`
+     *	- **r**: `relative`
+     *	- **s**: `sticky`
+     *
+     * ---
+     * ## Aliases
+     *	- `P`
+     *	- `pos`
+     *	- `position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/position
      */
     position?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'top',
-     *     props: ['T', 'top', 'top'],
-     *     short: 'T'
-     * }
-     * @propDocEnd
+     * # top (T)
+     * The **`top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the vertical position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `T`
+     *	- `top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/top
      */
     T?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'top',
-     *     props: ['T', 'top', 'top'],
-     *     short: 'T'
-     * }
-     * @propDocEnd
+     * # top (T)
+     * The **`top`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the vertical position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `T`
+     *	- `top`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/top
      */
     top?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'right',
-     *     props: ['R', 'right', 'right'],
-     *     short: 'R'
-     * }
-     * @propDocEnd
+     * # right (R)
+     * The **`right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the horizontal position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `R`
+     *	- `right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/right
      */
     R?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'right',
-     *     props: ['R', 'right', 'right'],
-     *     short: 'R'
-     * }
-     * @propDocEnd
+     * # right (R)
+     * The **`right`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the horizontal position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `R`
+     *	- `right`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/right
      */
     right?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'bottom',
-     *     props: ['B', 'bottom', 'bottom'],
-     *     short: 'B'
-     * }
-     * @propDocEnd
+     * # bottom (B)
+     * The **`bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property participates in setting the vertical position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `B`
+     *	- `bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
      */
     B?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'bottom',
-     *     props: ['B', 'bottom', 'bottom'],
-     *     short: 'B'
-     * }
-     * @propDocEnd
+     * # bottom (B)
+     * The **`bottom`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property participates in setting the vertical position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `B`
+     *	- `bottom`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/bottom
      */
     bottom?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'left',
-     *     props: ['L', 'left', 'left'],
-     *     short: 'L'
-     * }
-     * @propDocEnd
+     * # left (L)
+     * The **`left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the horizontal position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `L`
+     *	- `left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/left
      */
     L?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'left',
-     *     props: ['L', 'left', 'left'],
-     *     short: 'L'
-     * }
-     * @propDocEnd
+     * # left (L)
+     * The **`left`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") property participates in specifying the horizontal position of a [positioned element](https://developer.mozilla.org/en-US/docs/Web/CSS/position). It has no effect on non-positioned elements.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `L`
+     *	- `left`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/left
      */
     left?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'z-index',
-     *     props: ['zi', 'z-index', 'z-index'],
-     *     short: 'zi'
-     * }
-     * @propDocEnd
+     * # z-index (zi)
+     * The **`z-index`** CSS property sets the z-order of a [positioned](https://developer.mozilla.org/en-US/docs/Web/CSS/position) element and its descendants or flex items. Overlapping elements with a larger z-index cover those with a smaller one.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `zi`
+     *	- `z-index`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
      */
     zi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'z-index',
-     *     props: ['zi', 'z-index', 'z-index'],
-     *     short: 'zi'
-     * }
-     * @propDocEnd
+     * # z-index (zi)
+     * The **`z-index`** CSS property sets the z-order of a [positioned](https://developer.mozilla.org/en-US/docs/Web/CSS/position) element and its descendants or flex items. Overlapping elements with a larger z-index cover those with a smaller one.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `zi`
+     *	- `z-index`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
      */
     zIndex?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color',
-     *     props: ['c', 'color', 'color'],
-     *     short: 'c'
-     * }
-     * @propDocEnd
+     * # color (c)
+     * The **`color`** CSS property sets the foreground [color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) of an element's text and [text decorations](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration), and sets the [`currentcolor`](https://developer.mozilla.org/en-US/docs/Web/CSS/currentcolor "REDIRECT https://wiki.developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword") value. `currentcolor` may be used as an indirect value on _other_ properties and is the default for other color properties, such as [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `c`
+     *	- `color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color
      */
     c?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'color',
-     *     props: ['c', 'color', 'color'],
-     *     short: 'c'
-     * }
-     * @propDocEnd
+     * # color (c)
+     * The **`color`** CSS property sets the foreground [color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) of an element's text and [text decorations](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration), and sets the [`currentcolor`](https://developer.mozilla.org/en-US/docs/Web/CSS/currentcolor "REDIRECT https://wiki.developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword") value. `currentcolor` may be used as an indirect value on _other_ properties and is the default for other color properties, such as [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color "The border-color shorthand CSS property sets the color of an element's border.").
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `c`
+     *	- `color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color
      */
     color?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow',
-     *     props: ['o', 'over', 'overflow'],
-     *     short: 'o'
-     * }
-     * @propDocEnd
+     * # overflow (o)
+     * The **`overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the desired behavior for an element's overflow — i.e. when an element's content is too big to fit in its [block formatting context](https://developer.mozilla.org/en-US/docs/CSS/block_formatting_context) — in both directions.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `o`
+     *	- `over`
+     *	- `overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
      */
     o?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow',
-     *     props: ['o', 'over', 'overflow'],
-     *     short: 'o'
-     * }
-     * @propDocEnd
+     * # overflow (o)
+     * The **`overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the desired behavior for an element's overflow — i.e. when an element's content is too big to fit in its [block formatting context](https://developer.mozilla.org/en-US/docs/CSS/block_formatting_context) — in both directions.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `o`
+     *	- `over`
+     *	- `overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
      */
     over?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow',
-     *     props: ['o', 'over', 'overflow'],
-     *     short: 'o'
-     * }
-     * @propDocEnd
+     * # overflow (o)
+     * The **`overflow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) sets the desired behavior for an element's overflow — i.e. when an element's content is too big to fit in its [block formatting context](https://developer.mozilla.org/en-US/docs/CSS/block_formatting_context) — in both directions.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `o`
+     *	- `over`
+     *	- `overflow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
      */
     overflow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-x',
-     *     props: ['ox', 'over-x', 'overflow-x'],
-     *     short: 'ox'
-     * }
-     * @propDocEnd
+     * # overflow-x (ox)
+     * The **`overflow-x`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's left and right edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `ox`
+     *	- `over-x`
+     *	- `overflow-x`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x
      */
     ox?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-x',
-     *     props: ['ox', 'over-x', 'overflow-x'],
-     *     short: 'ox'
-     * }
-     * @propDocEnd
+     * # overflow-x (ox)
+     * The **`overflow-x`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's left and right edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `ox`
+     *	- `over-x`
+     *	- `overflow-x`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x
      */
     overX?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-x',
-     *     props: ['ox', 'over-x', 'overflow-x'],
-     *     short: 'ox'
-     * }
-     * @propDocEnd
+     * # overflow-x (ox)
+     * The **`overflow-x`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's left and right edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `ox`
+     *	- `over-x`
+     *	- `overflow-x`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x
      */
     overflowX?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-y',
-     *     props: ['oy', 'over-y', 'overflow-y'],
-     *     short: 'oy'
-     * }
-     * @propDocEnd
+     * # overflow-y (oy)
+     * The **`overflow-y`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's top and bottom edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oy`
+     *	- `over-y`
+     *	- `overflow-y`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y
      */
     oy?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-y',
-     *     props: ['oy', 'over-y', 'overflow-y'],
-     *     short: 'oy'
-     * }
-     * @propDocEnd
+     * # overflow-y (oy)
+     * The **`overflow-y`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's top and bottom edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oy`
+     *	- `over-y`
+     *	- `overflow-y`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y
      */
     overY?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-y',
-     *     props: ['oy', 'over-y', 'overflow-y'],
-     *     short: 'oy'
-     * }
-     * @propDocEnd
+     * # overflow-y (oy)
+     * The **`overflow-y`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets what shows when content overflows a block-level element's top and bottom edges. This may be nothing, a scroll bar, or the overflow content.
+     *
+     * ---
+     * ## Shorthands
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **s**: `scroll`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oy`
+     *	- `over-y`
+     *	- `overflow-y`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y
      */
     overflowY?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-anchor',
-     *     props: ['oa', 'over-a', 'overflow-anchor'],
-     *     short: 'oa'
-     * }
-     * @propDocEnd
+     * # overflow-anchor (oa)
+     * The **`overflow-anchor`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property provides a way to opt out of the browser's scroll anchoring behavior, which adjusts scroll position to minimize content shifts.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oa`
+     *	- `over-a`
+     *	- `overflow-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor
      */
     oa?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-anchor',
-     *     props: ['oa', 'over-a', 'overflow-anchor'],
-     *     short: 'oa'
-     * }
-     * @propDocEnd
+     * # overflow-anchor (oa)
+     * The **`overflow-anchor`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property provides a way to opt out of the browser's scroll anchoring behavior, which adjusts scroll position to minimize content shifts.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oa`
+     *	- `over-a`
+     *	- `overflow-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor
      */
     overA?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'overflow-anchor',
-     *     props: ['oa', 'over-a', 'overflow-anchor'],
-     *     short: 'oa'
-     * }
-     * @propDocEnd
+     * # overflow-anchor (oa)
+     * The **`overflow-anchor`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property provides a way to opt out of the browser's scroll anchoring behavior, which adjusts scroll position to minimize content shifts.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **a**: `auto`
+     *
+     * ---
+     * ## Aliases
+     *	- `oa`
+     *	- `over-a`
+     *	- `overflow-anchor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor
      */
     overflowAnchor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'float',
-     *     props: ['fl', 'float', 'float'],
-     *     short: 'fl'
-     * }
-     * @propDocEnd
+     * # float (fl)
+     * The **`float`** CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the page, though still remaining a part of the flow (in contrast to [absolute positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position#Absolute_positioning)).
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **l**: `left`
+     *	- **r**: `right`
+     *
+     * ---
+     * ## Aliases
+     *	- `fl`
+     *	- `float`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/float
      */
     fl?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'float',
-     *     props: ['fl', 'float', 'float'],
-     *     short: 'fl'
-     * }
-     * @propDocEnd
+     * # float (fl)
+     * The **`float`** CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the page, though still remaining a part of the flow (in contrast to [absolute positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/position#Absolute_positioning)).
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **l**: `left`
+     *	- **r**: `right`
+     *
+     * ---
+     * ## Aliases
+     *	- `fl`
+     *	- `float`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/float
      */
     float?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clear',
-     *     props: ['clr', 'clr', 'clear'],
-     *     short: 'clr'
-     * }
-     * @propDocEnd
+     * # clear (clr)
+     * The **`clear`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element must be moved below (cleared) [floating](https://developer.mozilla.org/en-US/docs/Web/CSS/float) elements that precede it. The `clear` property applies to floating and non-floating elements.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **l**: `left`
+     *	- **r**: `right`
+     *	- **true**: `both`
+     *	- **b**: `both`
+     *
+     * ---
+     * ## Aliases
+     *	- `clr`
+     *	- `clear`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clear
      */
     clr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'clear',
-     *     props: ['clr', 'clr', 'clear'],
-     *     short: 'clr'
-     * }
-     * @propDocEnd
+     * # clear (clr)
+     * The **`clear`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets whether an element must be moved below (cleared) [floating](https://developer.mozilla.org/en-US/docs/Web/CSS/float) elements that precede it. The `clear` property applies to floating and non-floating elements.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *	- **l**: `left`
+     *	- **r**: `right`
+     *	- **true**: `both`
+     *	- **b**: `both`
+     *
+     * ---
+     * ## Aliases
+     *	- `clr`
+     *	- `clear`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/clear
      */
     clear?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'visibility',
-     *     props: ['v', 'visibility', 'visibility'],
-     *     short: 'v'
-     * }
-     * @propDocEnd
+     * # visibility (v)
+     * The **`visibility`** CSS property shows or hides an element without changing the layout of a document. The property can also hide rows or columns in a [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **c**: `collapse`
+     *
+     * ---
+     * ## Aliases
+     *	- `v`
+     *	- `visibility`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/visibility
      */
     v?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'visibility',
-     *     props: ['v', 'visibility', 'visibility'],
-     *     short: 'v'
-     * }
-     * @propDocEnd
+     * # visibility (v)
+     * The **`visibility`** CSS property shows or hides an element without changing the layout of a document. The property can also hide rows or columns in a [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.").
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `visible`
+     *	- **v**: `visible`
+     *	- **false**: `hidden`
+     *	- **h**: `hidden`
+     *	- **c**: `collapse`
+     *
+     * ---
+     * ## Aliases
+     *	- `v`
+     *	- `visibility`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/visibility
      */
     visibility?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'columns',
-     *     props: ['col', 'col', 'columns'],
-     *     short: 'col'
-     * }
-     * @propDocEnd
+     * # columns (col)
+     * The **`columns`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) shorthand property sets the number of columns to use when drawing an element's contents, as well as those columns' widths.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `col`
+     *	- `columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/columns
      */
     col?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'columns',
-     *     props: ['col', 'col', 'columns'],
-     *     short: 'col'
-     * }
-     * @propDocEnd
+     * # columns (col)
+     * The **`columns`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) shorthand property sets the number of columns to use when drawing an element's contents, as well as those columns' widths.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `col`
+     *	- `columns`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/columns
      */
     columns?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-count',
-     *     props: ['cc', 'col-count', 'column-count'],
-     *     short: 'cc'
-     * }
-     * @propDocEnd
+     * # column-count (cc)
+     * The **`column-count`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property breaks an element's content into the specified number of columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cc`
+     *	- `col-count`
+     *	- `column-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-count
      */
     cc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-count',
-     *     props: ['cc', 'col-count', 'column-count'],
-     *     short: 'cc'
-     * }
-     * @propDocEnd
+     * # column-count (cc)
+     * The **`column-count`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property breaks an element's content into the specified number of columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cc`
+     *	- `col-count`
+     *	- `column-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-count
      */
     colCount?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-count',
-     *     props: ['cc', 'col-count', 'column-count'],
-     *     short: 'cc'
-     * }
-     * @propDocEnd
+     * # column-count (cc)
+     * The **`column-count`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property breaks an element's content into the specified number of columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cc`
+     *	- `col-count`
+     *	- `column-count`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-count
      */
     columnCount?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-fill',
-     *     props: ['cf', 'col-fill', 'column-fill'],
-     *     short: 'cf'
-     * }
-     * @propDocEnd
+     * # column-fill (cf)
+     * The **`column-fill`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls how an element's contents are balanced when broken into columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cf`
+     *	- `col-fill`
+     *	- `column-fill`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-fill
      */
     cf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-fill',
-     *     props: ['cf', 'col-fill', 'column-fill'],
-     *     short: 'cf'
-     * }
-     * @propDocEnd
+     * # column-fill (cf)
+     * The **`column-fill`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls how an element's contents are balanced when broken into columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cf`
+     *	- `col-fill`
+     *	- `column-fill`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-fill
      */
     colFill?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-fill',
-     *     props: ['cf', 'col-fill', 'column-fill'],
-     *     short: 'cf'
-     * }
-     * @propDocEnd
+     * # column-fill (cf)
+     * The **`column-fill`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls how an element's contents are balanced when broken into columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cf`
+     *	- `col-fill`
+     *	- `column-fill`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-fill
      */
     columnFill?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-gap',
-     *     props: ['cg', 'col-gap', 'column-gap'],
-     *     short: 'cg'
-     * }
-     * @propDocEnd
+     * # column-gap (cg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cg`
+     *	- `col-gap`
+     *	- `column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
      */
     cg?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-gap',
-     *     props: ['cg', 'col-gap', 'column-gap'],
-     *     short: 'cg'
-     * }
-     * @propDocEnd
+     * # column-gap (cg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cg`
+     *	- `col-gap`
+     *	- `column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
      */
     colGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-gap',
-     *     props: ['cg', 'col-gap', 'column-gap'],
-     *     short: 'cg'
-     * }
-     * @propDocEnd
+     * # column-gap (cg)
+     * The **`column-gap`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the size of the gap ([gutter](https://developer.mozilla.org/en-US/docs/Glossary/Gutters)) between an element's columns.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cg`
+     *	- `col-gap`
+     *	- `column-gap`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
      */
     columnGap?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule',
-     *     props: ['cr', 'col-rule', 'column-rule'],
-     *     short: 'cr'
-     * }
-     * @propDocEnd
+     * # column-rule (cr)
+     * The **`column-rule`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width, style, and color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cr`
+     *	- `col-rule`
+     *	- `column-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
      */
     cr?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule',
-     *     props: ['cr', 'col-rule', 'column-rule'],
-     *     short: 'cr'
-     * }
-     * @propDocEnd
+     * # column-rule (cr)
+     * The **`column-rule`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width, style, and color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cr`
+     *	- `col-rule`
+     *	- `column-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
      */
     colRule?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule',
-     *     props: ['cr', 'col-rule', 'column-rule'],
-     *     short: 'cr'
-     * }
-     * @propDocEnd
+     * # column-rule (cr)
+     * The **`column-rule`** [shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width, style, and color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cr`
+     *	- `col-rule`
+     *	- `column-rule`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
      */
     columnRule?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-color',
-     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
-     *     short: 'crc'
-     * }
-     * @propDocEnd
+     * # column-rule-color (crc)
+     * The **`column-rule-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crc`
+     *	- `col-rule-color`
+     *	- `column-rule-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color
      */
     crc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-color',
-     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
-     *     short: 'crc'
-     * }
-     * @propDocEnd
+     * # column-rule-color (crc)
+     * The **`column-rule-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crc`
+     *	- `col-rule-color`
+     *	- `column-rule-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color
      */
     colRuleColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-color',
-     *     props: ['crc', 'col-rule-color', 'column-rule-color'],
-     *     short: 'crc'
-     * }
-     * @propDocEnd
+     * # column-rule-color (crc)
+     * The **`column-rule-color`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the color of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crc`
+     *	- `col-rule-color`
+     *	- `column-rule-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color
      */
     columnRuleColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-style',
-     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
-     *     short: 'crs'
-     * }
-     * @propDocEnd
+     * # column-rule-style (crs)
+     * The **`column-rule-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the style of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crs`
+     *	- `col-rule-style`
+     *	- `column-rule-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style
      */
     crs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-style',
-     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
-     *     short: 'crs'
-     * }
-     * @propDocEnd
+     * # column-rule-style (crs)
+     * The **`column-rule-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the style of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crs`
+     *	- `col-rule-style`
+     *	- `column-rule-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style
      */
     colRuleStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-style',
-     *     props: ['crs', 'col-rule-style', 'column-rule-style'],
-     *     short: 'crs'
-     * }
-     * @propDocEnd
+     * # column-rule-style (crs)
+     * The **`column-rule-style`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the style of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crs`
+     *	- `col-rule-style`
+     *	- `column-rule-style`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style
      */
     columnRuleStyle?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-width',
-     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
-     *     short: 'crw'
-     * }
-     * @propDocEnd
+     * # column-rule-width (crw)
+     * The **`column-rule-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crw`
+     *	- `col-rule-width`
+     *	- `column-rule-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width
      */
     crw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-width',
-     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
-     *     short: 'crw'
-     * }
-     * @propDocEnd
+     * # column-rule-width (crw)
+     * The **`column-rule-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crw`
+     *	- `col-rule-width`
+     *	- `column-rule-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width
      */
     colRuleWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-rule-width',
-     *     props: ['crw', 'col-rule-width', 'column-rule-width'],
-     *     short: 'crw'
-     * }
-     * @propDocEnd
+     * # column-rule-width (crw)
+     * The **`column-rule-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the width of the line drawn between columns in a multi-column layout.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `crw`
+     *	- `col-rule-width`
+     *	- `column-rule-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width
      */
     columnRuleWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-span',
-     *     props: ['cs', 'col-span', 'column-span'],
-     *     short: 'cs'
-     * }
-     * @propDocEnd
+     * # column-span (cs)
+     * The **`column-span`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property makes it possible for an element to span across all columns when its value is set to `all`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cs`
+     *	- `col-span`
+     *	- `column-span`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-span
      */
     cs?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-span',
-     *     props: ['cs', 'col-span', 'column-span'],
-     *     short: 'cs'
-     * }
-     * @propDocEnd
+     * # column-span (cs)
+     * The **`column-span`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property makes it possible for an element to span across all columns when its value is set to `all`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cs`
+     *	- `col-span`
+     *	- `column-span`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-span
      */
     colSpan?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-span',
-     *     props: ['cs', 'col-span', 'column-span'],
-     *     short: 'cs'
-     * }
-     * @propDocEnd
+     * # column-span (cs)
+     * The **`column-span`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property makes it possible for an element to span across all columns when its value is set to `all`.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cs`
+     *	- `col-span`
+     *	- `column-span`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-span
      */
     columnSpan?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-width',
-     *     props: ['cw', 'col-width', 'column-width'],
-     *     short: 'cw'
-     * }
-     * @propDocEnd
+     * # column-width (cw)
+     * The **`column-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cw`
+     *	- `col-width`
+     *	- `column-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
      */
     cw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-width',
-     *     props: ['cw', 'col-width', 'column-width'],
-     *     short: 'cw'
-     * }
-     * @propDocEnd
+     * # column-width (cw)
+     * The **`column-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cw`
+     *	- `col-width`
+     *	- `column-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
      */
     colWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'column-width',
-     *     props: ['cw', 'col-width', 'column-width'],
-     *     short: 'cw'
-     * }
-     * @propDocEnd
+     * # column-width (cw)
+     * The **`column-width`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the `column-width` value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `cw`
+     *	- `col-width`
+     *	- `column-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
      */
     columnWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-after',
-     *     props: ['pba', 'pb-after', 'page-break-after'],
-     *     short: 'pba'
-     * }
-     * @propDocEnd
+     * # page-break-after (pba)
+     * The **`page-break-after`** CSS property adjusts page breaks _after_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pba`
+     *	- `pb-after`
+     *	- `page-break-after`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after
      */
     pba?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-after',
-     *     props: ['pba', 'pb-after', 'page-break-after'],
-     *     short: 'pba'
-     * }
-     * @propDocEnd
+     * # page-break-after (pba)
+     * The **`page-break-after`** CSS property adjusts page breaks _after_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pba`
+     *	- `pb-after`
+     *	- `page-break-after`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after
      */
     pbAfter?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-after',
-     *     props: ['pba', 'pb-after', 'page-break-after'],
-     *     short: 'pba'
-     * }
-     * @propDocEnd
+     * # page-break-after (pba)
+     * The **`page-break-after`** CSS property adjusts page breaks _after_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pba`
+     *	- `pb-after`
+     *	- `page-break-after`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after
      */
     pageBreakAfter?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-before',
-     *     props: ['pbb', 'pb-before', 'page-break-before'],
-     *     short: 'pbb'
-     * }
-     * @propDocEnd
+     * # page-break-before (pbb)
+     * The **`page-break-before`** CSS property adjusts page breaks _before_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbb`
+     *	- `pb-before`
+     *	- `page-break-before`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before
      */
     pbb?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-before',
-     *     props: ['pbb', 'pb-before', 'page-break-before'],
-     *     short: 'pbb'
-     * }
-     * @propDocEnd
+     * # page-break-before (pbb)
+     * The **`page-break-before`** CSS property adjusts page breaks _before_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbb`
+     *	- `pb-before`
+     *	- `page-break-before`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before
      */
     pbBefore?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-before',
-     *     props: ['pbb', 'pb-before', 'page-break-before'],
-     *     short: 'pbb'
-     * }
-     * @propDocEnd
+     * # page-break-before (pbb)
+     * The **`page-break-before`** CSS property adjusts page breaks _before_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbb`
+     *	- `pb-before`
+     *	- `page-break-before`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before
      */
     pageBreakBefore?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-inside',
-     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
-     *     short: 'pbi'
-     * }
-     * @propDocEnd
+     * # page-break-inside (pbi)
+     * The **`page-break-inside`** CSS property adjusts page breaks _inside_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbi`
+     *	- `pb-inside`
+     *	- `page-break-inside`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside
      */
     pbi?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-inside',
-     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
-     *     short: 'pbi'
-     * }
-     * @propDocEnd
+     * # page-break-inside (pbi)
+     * The **`page-break-inside`** CSS property adjusts page breaks _inside_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbi`
+     *	- `pb-inside`
+     *	- `page-break-inside`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside
      */
     pbInside?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'page-break-inside',
-     *     props: ['pbi', 'pb-inside', 'page-break-inside'],
-     *     short: 'pbi'
-     * }
-     * @propDocEnd
+     * # page-break-inside (pbi)
+     * The **`page-break-inside`** CSS property adjusts page breaks _inside_ the current element.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `pbi`
+     *	- `pb-inside`
+     *	- `page-break-inside`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside
      */
     pageBreakInside?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-shadow',
-     *     props: ['shd', 'shadow', 'box-shadow'],
-     *     short: 'shd'
-     * }
-     * @propDocEnd
+     * # box-shadow (shd)
+     * The **`box-shadow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property adds shadow effects around an element's frame. You can set multiple effects separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `shd`
+     *	- `shadow`
+     *	- `box-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
      */
     shd?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-shadow',
-     *     props: ['shd', 'shadow', 'box-shadow'],
-     *     short: 'shd'
-     * }
-     * @propDocEnd
+     * # box-shadow (shd)
+     * The **`box-shadow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property adds shadow effects around an element's frame. You can set multiple effects separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `shd`
+     *	- `shadow`
+     *	- `box-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
      */
     shadow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-shadow',
-     *     props: ['shd', 'shadow', 'box-shadow'],
-     *     short: 'shd'
-     * }
-     * @propDocEnd
+     * # box-shadow (shd)
+     * The **`box-shadow`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property adds shadow effects around an element's frame. You can set multiple effects separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `shd`
+     *	- `shadow`
+     *	- `box-shadow`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
      */
     boxShadow?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-sizing',
-     *     props: ['siz', 'sizing', 'box-sizing'],
-     *     short: 'siz'
-     * }
-     * @propDocEnd
+     * # box-sizing (siz)
+     * The **`box-sizing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the total width and height of an element is calculated.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `siz`
+     *	- `sizing`
+     *	- `box-sizing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
      */
     siz?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-sizing',
-     *     props: ['siz', 'sizing', 'box-sizing'],
-     *     short: 'siz'
-     * }
-     * @propDocEnd
+     * # box-sizing (siz)
+     * The **`box-sizing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the total width and height of an element is calculated.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `siz`
+     *	- `sizing`
+     *	- `box-sizing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
      */
     sizing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'box-sizing',
-     *     props: ['siz', 'sizing', 'box-sizing'],
-     *     short: 'siz'
-     * }
-     * @propDocEnd
+     * # box-sizing (siz)
+     * The **`box-sizing`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the total width and height of an element is calculated.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `siz`
+     *	- `sizing`
+     *	- `box-sizing`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
      */
     boxSizing?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'contain',
-     *     props: ['cn', 'cont', 'contain'],
-     *     short: 'cn'
-     * }
-     * @propDocEnd
+     * # contain (cn)
+     * The **`contain`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property allows an author to indicate that an element and its contents are, as much as possible, _independent_ of the rest of the document tree. This allows the browser to recalculate layout, style, paint, size, or any combination of them for a limited area of the DOM and not the entire page, leading to obvious performance benefits.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **s**: `strict`
+     *	- **c**: `content`
+     *	- **si**: `size`
+     *	- **l**: `layout`
+     *	- **st**: `style`
+     *	- **p**: `paint`
+     *
+     * ---
+     * ## Aliases
+     *	- `cn`
+     *	- `cont`
+     *	- `contain`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/contain
      */
     cn?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'contain',
-     *     props: ['cn', 'cont', 'contain'],
-     *     short: 'cn'
-     * }
-     * @propDocEnd
+     * # contain (cn)
+     * The **`contain`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property allows an author to indicate that an element and its contents are, as much as possible, _independent_ of the rest of the document tree. This allows the browser to recalculate layout, style, paint, size, or any combination of them for a limited area of the DOM and not the entire page, leading to obvious performance benefits.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **s**: `strict`
+     *	- **c**: `content`
+     *	- **si**: `size`
+     *	- **l**: `layout`
+     *	- **st**: `style`
+     *	- **p**: `paint`
+     *
+     * ---
+     * ## Aliases
+     *	- `cn`
+     *	- `cont`
+     *	- `contain`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/contain
      */
     cont?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'contain',
-     *     props: ['cn', 'cont', 'contain'],
-     *     short: 'cn'
-     * }
-     * @propDocEnd
+     * # contain (cn)
+     * The **`contain`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property allows an author to indicate that an element and its contents are, as much as possible, _independent_ of the rest of the document tree. This allows the browser to recalculate layout, style, paint, size, or any combination of them for a limited area of the DOM and not the entire page, leading to obvious performance benefits.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *	- **s**: `strict`
+     *	- **c**: `content`
+     *	- **si**: `size`
+     *	- **l**: `layout`
+     *	- **st**: `style`
+     *	- **p**: `paint`
+     *
+     * ---
+     * ## Aliases
+     *	- `cn`
+     *	- `cont`
+     *	- `contain`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/contain
      */
     contain?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'direction',
-     *     props: ['dir', 'dir', 'direction'],
-     *     short: 'dir'
-     * }
-     * @propDocEnd
+     * # direction (dir)
+     * The **`direction`** CSS property sets the direction of text, table columns, and horizontal overflow. Use `rtl` for languages written from right to left (like Hebrew or Arabic), and `ltr` for those written from left to right (like English and most other languages).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `dir`
+     *	- `direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/direction
      */
     dir?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'direction',
-     *     props: ['dir', 'dir', 'direction'],
-     *     short: 'dir'
-     * }
-     * @propDocEnd
+     * # direction (dir)
+     * The **`direction`** CSS property sets the direction of text, table columns, and horizontal overflow. Use `rtl` for languages written from right to left (like Hebrew or Arabic), and `ltr` for those written from left to right (like English and most other languages).
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `dir`
+     *	- `direction`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/direction
      */
     direction?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-fit',
-     *     props: ['of', 'obj-fit', 'object-fit'],
-     *     short: 'of'
-     * }
-     * @propDocEnd
+     * # object-fit (of)
+     * The **`object-fit`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the content of a [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element), such as an [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img "The HTML <img> element embeds an image into the document.") or [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video "The HTML Video element (<video>) embeds a media player which supports video playback into the document. You can use <video> for audio content as well, but the <audio> element may provide a more appropriate user experience."), should be resized to fit its container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **f**: `fill`
+     *	- **cn**: `contain`
+     *	- **cr**: `cover`
+     *	- **sd**: `scale-down`
+     *	- **false**: `none`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `of`
+     *	- `obj-fit`
+     *	- `object-fit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
      */
     of?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-fit',
-     *     props: ['of', 'obj-fit', 'object-fit'],
-     *     short: 'of'
-     * }
-     * @propDocEnd
+     * # object-fit (of)
+     * The **`object-fit`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the content of a [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element), such as an [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img "The HTML <img> element embeds an image into the document.") or [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video "The HTML Video element (<video>) embeds a media player which supports video playback into the document. You can use <video> for audio content as well, but the <audio> element may provide a more appropriate user experience."), should be resized to fit its container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **f**: `fill`
+     *	- **cn**: `contain`
+     *	- **cr**: `cover`
+     *	- **sd**: `scale-down`
+     *	- **false**: `none`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `of`
+     *	- `obj-fit`
+     *	- `object-fit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
      */
     objFit?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-fit',
-     *     props: ['of', 'obj-fit', 'object-fit'],
-     *     short: 'of'
-     * }
-     * @propDocEnd
+     * # object-fit (of)
+     * The **`object-fit`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how the content of a [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element), such as an [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img "The HTML <img> element embeds an image into the document.") or [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video "The HTML Video element (<video>) embeds a media player which supports video playback into the document. You can use <video> for audio content as well, but the <audio> element may provide a more appropriate user experience."), should be resized to fit its container.
+     *
+     * ---
+     * ## Shorthands
+     *	- **f**: `fill`
+     *	- **cn**: `contain`
+     *	- **cr**: `cover`
+     *	- **sd**: `scale-down`
+     *	- **false**: `none`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `of`
+     *	- `obj-fit`
+     *	- `object-fit`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
      */
     objectFit?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-position',
-     *     props: ['oP', 'obj-pos', 'object-position'],
-     *     short: 'oP'
-     * }
-     * @propDocEnd
+     * # object-position (oP)
+     * The **`object-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property specifies the alignment of the selected [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)'s contents within the element's box. Areas of the box which aren't covered by the replaced element's object will show the element's background.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `oP`
+     *	- `obj-pos`
+     *	- `object-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-position
      */
     oP?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-position',
-     *     props: ['oP', 'obj-pos', 'object-position'],
-     *     short: 'oP'
-     * }
-     * @propDocEnd
+     * # object-position (oP)
+     * The **`object-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property specifies the alignment of the selected [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)'s contents within the element's box. Areas of the box which aren't covered by the replaced element's object will show the element's background.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `oP`
+     *	- `obj-pos`
+     *	- `object-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-position
      */
     objPos?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'object-position',
-     *     props: ['oP', 'obj-pos', 'object-position'],
-     *     short: 'oP'
-     * }
-     * @propDocEnd
+     * # object-position (oP)
+     * The **`object-position`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property specifies the alignment of the selected [replaced element](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)'s contents within the element's box. Areas of the box which aren't covered by the replaced element's object will show the element's background.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `oP`
+     *	- `obj-pos`
+     *	- `object-position`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-position
      */
     objectPosition?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'opacity',
-     *     props: ['op', 'opacity', 'opacity'],
-     *     short: 'op'
-     * }
-     * @propDocEnd
+     * # opacity (op)
+     * The **`opacity`** CSS property sets the opacity of an element. Opacity is the degree to which content behind an element is hidden, and is the opposite of transparency.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `1`
+     *	- **false**: `0`
+     *
+     * ---
+     * ## Aliases
+     *	- `op`
+     *	- `opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
      */
     op?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'opacity',
-     *     props: ['op', 'opacity', 'opacity'],
-     *     short: 'op'
-     * }
-     * @propDocEnd
+     * # opacity (op)
+     * The **`opacity`** CSS property sets the opacity of an element. Opacity is the degree to which content behind an element is hidden, and is the opposite of transparency.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `1`
+     *	- **false**: `0`
+     *
+     * ---
+     * ## Aliases
+     *	- `op`
+     *	- `opacity`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
      */
     opacity?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'order',
-     *     props: ['or', 'order', 'order'],
-     *     short: 'or'
-     * }
-     * @propDocEnd
+     * # order (or)
+     * The **`order`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending `order` value and then by their source code order.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `or`
+     *	- `order`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/order
      */
     or?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'order',
-     *     props: ['or', 'order', 'order'],
-     *     short: 'or'
-     * }
-     * @propDocEnd
+     * # order (or)
+     * The **`order`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending `order` value and then by their source code order.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `or`
+     *	- `order`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/order
      */
     order?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'outline',
-     *     props: ['ol', 'outline', 'outline'],
-     *     short: 'ol'
-     * }
-     * @propDocEnd
+     * # outline (ol)
+     * The **`outline`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) set all the outline properties in a single declaration.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ol`
+     *	- `outline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/outline
      */
     ol?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'outline',
-     *     props: ['ol', 'outline', 'outline'],
-     *     short: 'ol'
-     * }
-     * @propDocEnd
+     * # outline (ol)
+     * The **`outline`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) set all the outline properties in a single declaration.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ol`
+     *	- `outline`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/outline
      */
     outline?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'mix-blend-mode',
-     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
-     *     short: 'mbm'
-     * }
-     * @propDocEnd
+     * # mix-blend-mode (mbm)
+     * The **`mix-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's content should blend with the content of the element's parent and the element's background.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **scr**: `screen`
+     *	- **o**: `overlay`
+     *	- **dn**: `darken`
+     *	- **ln**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **cb**: `color-burn`
+     *	- **de**: `difference`
+     *	- **e**: `exclusion`
+     *	- **h**: `hue`
+     *	- **sat**: `saturation`
+     *	- **c**: `color`
+     *	- **l**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `mbm`
+     *	- `blend-mode`
+     *	- `mix-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode
      */
     mbm?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'mix-blend-mode',
-     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
-     *     short: 'mbm'
-     * }
-     * @propDocEnd
+     * # mix-blend-mode (mbm)
+     * The **`mix-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's content should blend with the content of the element's parent and the element's background.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **scr**: `screen`
+     *	- **o**: `overlay`
+     *	- **dn**: `darken`
+     *	- **ln**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **cb**: `color-burn`
+     *	- **de**: `difference`
+     *	- **e**: `exclusion`
+     *	- **h**: `hue`
+     *	- **sat**: `saturation`
+     *	- **c**: `color`
+     *	- **l**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `mbm`
+     *	- `blend-mode`
+     *	- `mix-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode
      */
     blendMode?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'mix-blend-mode',
-     *     props: ['mbm', 'blend-mode', 'mix-blend-mode'],
-     *     short: 'mbm'
-     * }
-     * @propDocEnd
+     * # mix-blend-mode (mbm)
+     * The **`mix-blend-mode`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets how an element's content should blend with the content of the element's parent and the element's background.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `normal`
+     *	- **m**: `multiply`
+     *	- **scr**: `screen`
+     *	- **o**: `overlay`
+     *	- **dn**: `darken`
+     *	- **ln**: `lighten`
+     *	- **cd**: `color-dodge`
+     *	- **cb**: `color-burn`
+     *	- **de**: `difference`
+     *	- **e**: `exclusion`
+     *	- **h**: `hue`
+     *	- **sat**: `saturation`
+     *	- **c**: `color`
+     *	- **l**: `luminosity`
+     *
+     * ---
+     * ## Aliases
+     *	- `mbm`
+     *	- `blend-mode`
+     *	- `mix-blend-mode`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode
      */
     mixBlendMode?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'content',
-     *     props: ['ct', 'content', 'content'],
-     *     short: 'ct'
-     * }
-     * @propDocEnd
+     * # content (ct)
+     * The **`content`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property replaces an element with a generated value. Objects inserted using the `content` property are **anonymous [replaced elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)**_._
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ct`
+     *	- `content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/content
      */
     ct?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'content',
-     *     props: ['ct', 'content', 'content'],
-     *     short: 'ct'
-     * }
-     * @propDocEnd
+     * # content (ct)
+     * The **`content`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property replaces an element with a generated value. Objects inserted using the `content` property are **anonymous [replaced elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)**_._
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `ct`
+     *	- `content`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/content
      */
     content?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'cursor',
-     *     props: ['cur', 'cur', 'cursor'],
-     *     short: 'cur'
-     * }
-     * @propDocEnd
+     * # cursor (cur)
+     * The **`cursor`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the type of mouse cursor, if any, to show when the mouse pointer is over an element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **al**: `alias`
+     *	- **all**: `all-scroll`
+     *	- **a**: `auto`
+     *	- **cl**: `cell`
+     *	- **cm**: `context-menu`
+     *	- **cr**: `col-resize`
+     *	- **c**: `copy`
+     *	- **ch**: `crosshair`
+     *	- **d**: `default`
+     *	- **er**: `e-resize`
+     *	- **ewr**: `ew-resize`
+     *	- **g**: `grab`
+     *	- **gb**: `grabbing`
+     *	- **h**: `help`
+     *	- **m**: `move`
+     *	- **nr**: `n-resize`
+     *	- **ner**: `ne-resize`
+     *	- **neswr**: `nesw-resize`
+     *	- **nsr**: `ns-resize`
+     *	- **nwr**: `nw-resize`
+     *	- **nwser**: `nwse-resize`
+     *	- **nd**: `no-drop`
+     *	- **n**: `none`
+     *	- **na**: `not-allowed`
+     *	- **p**: `pointer`
+     *	- **pr**: `progress`
+     *	- **rr**: `row-resize`
+     *	- **sr**: `s-resize`
+     *	- **ser**: `se-resize`
+     *	- **swr**: `sw-resize`
+     *	- **t**: `text`
+     *	- **vt**: `vertical-text`
+     *	- **wr**: `w-resize`
+     *	- **w**: `wait`
+     *	- **zi**: `zoom-in`
+     *	- **zo**: `zoom-out`
+     *
+     * ---
+     * ## Aliases
+     *	- `cur`
+     *	- `cursor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
      */
     cur?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'cursor',
-     *     props: ['cur', 'cur', 'cursor'],
-     *     short: 'cur'
-     * }
-     * @propDocEnd
+     * # cursor (cur)
+     * The **`cursor`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the type of mouse cursor, if any, to show when the mouse pointer is over an element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **al**: `alias`
+     *	- **all**: `all-scroll`
+     *	- **a**: `auto`
+     *	- **cl**: `cell`
+     *	- **cm**: `context-menu`
+     *	- **cr**: `col-resize`
+     *	- **c**: `copy`
+     *	- **ch**: `crosshair`
+     *	- **d**: `default`
+     *	- **er**: `e-resize`
+     *	- **ewr**: `ew-resize`
+     *	- **g**: `grab`
+     *	- **gb**: `grabbing`
+     *	- **h**: `help`
+     *	- **m**: `move`
+     *	- **nr**: `n-resize`
+     *	- **ner**: `ne-resize`
+     *	- **neswr**: `nesw-resize`
+     *	- **nsr**: `ns-resize`
+     *	- **nwr**: `nw-resize`
+     *	- **nwser**: `nwse-resize`
+     *	- **nd**: `no-drop`
+     *	- **n**: `none`
+     *	- **na**: `not-allowed`
+     *	- **p**: `pointer`
+     *	- **pr**: `progress`
+     *	- **rr**: `row-resize`
+     *	- **sr**: `s-resize`
+     *	- **ser**: `se-resize`
+     *	- **swr**: `sw-resize`
+     *	- **t**: `text`
+     *	- **vt**: `vertical-text`
+     *	- **wr**: `w-resize`
+     *	- **w**: `wait`
+     *	- **zi**: `zoom-in`
+     *	- **zo**: `zoom-out`
+     *
+     * ---
+     * ## Aliases
+     *	- `cur`
+     *	- `cursor`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
      */
     cursor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'pointer-events',
-     *     props: ['pe', 'p-events', 'pointer-events'],
-     *     short: 'pe'
-     * }
-     * @propDocEnd
+     * # pointer-events (pe)
+     * The **`pointer-events`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets under what circumstances (if any) a particular graphic element can become the [target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) of pointer events.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `auto`
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `pe`
+     *	- `p-events`
+     *	- `pointer-events`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
      */
     pe?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'pointer-events',
-     *     props: ['pe', 'p-events', 'pointer-events'],
-     *     short: 'pe'
-     * }
-     * @propDocEnd
+     * # pointer-events (pe)
+     * The **`pointer-events`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets under what circumstances (if any) a particular graphic element can become the [target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) of pointer events.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `auto`
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `pe`
+     *	- `p-events`
+     *	- `pointer-events`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
      */
     pEvents?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'pointer-events',
-     *     props: ['pe', 'p-events', 'pointer-events'],
-     *     short: 'pe'
-     * }
-     * @propDocEnd
+     * # pointer-events (pe)
+     * The **`pointer-events`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets under what circumstances (if any) a particular graphic element can become the [target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) of pointer events.
+     *
+     * ---
+     * ## Shorthands
+     *	- **true**: `auto`
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **false**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `pe`
+     *	- `p-events`
+     *	- `pointer-events`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
      */
     pointerEvents?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'filter',
-     *     props: ['fil', 'filter', 'filter'],
-     *     short: 'fil'
-     * }
-     * @propDocEnd
+     * # filter (fil)
+     * The **`filter`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies graphical effects like blur or color shift to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fil`
+     *	- `filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/filter
      */
     fil?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'filter',
-     *     props: ['fil', 'filter', 'filter'],
-     *     short: 'fil'
-     * }
-     * @propDocEnd
+     * # filter (fil)
+     * The **`filter`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property applies graphical effects like blur or color shift to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `fil`
+     *	- `filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/filter
      */
     filter?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scroll-behavior',
-     *     props: ['sb', 's-behavior', 'scroll-behavior'],
-     *     short: 'sb'
-     * }
-     * @propDocEnd
+     * # scroll-behavior (sb)
+     * The **`scroll-behavior`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **s**: `smooth`
+     *
+     * ---
+     * ## Aliases
+     *	- `sb`
+     *	- `s-behavior`
+     *	- `scroll-behavior`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior
      */
     sb?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scroll-behavior',
-     *     props: ['sb', 's-behavior', 'scroll-behavior'],
-     *     short: 'sb'
-     * }
-     * @propDocEnd
+     * # scroll-behavior (sb)
+     * The **`scroll-behavior`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **s**: `smooth`
+     *
+     * ---
+     * ## Aliases
+     *	- `sb`
+     *	- `s-behavior`
+     *	- `scroll-behavior`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior
      */
     sBehavior?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scroll-behavior',
-     *     props: ['sb', 's-behavior', 'scroll-behavior'],
-     *     short: 'sb'
-     * }
-     * @propDocEnd
+     * # scroll-behavior (sb)
+     * The **`scroll-behavior`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **s**: `smooth`
+     *
+     * ---
+     * ## Aliases
+     *	- `sb`
+     *	- `s-behavior`
+     *	- `scroll-behavior`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior
      */
     scrollBehavior?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-width',
-     *     props: ['sw', 's-width', 'scrollbar-width'],
-     *     short: 'sw'
-     * }
-     * @propDocEnd
+     * # scrollbar-width (sw)
+     * The **`scrollbar-width`** property allows the author to set the maximum thickness of an element’s scrollbars when they are shown.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sw`
+     *	- `s-width`
+     *	- `scrollbar-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width
      */
     sw?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-width',
-     *     props: ['sw', 's-width', 'scrollbar-width'],
-     *     short: 'sw'
-     * }
-     * @propDocEnd
+     * # scrollbar-width (sw)
+     * The **`scrollbar-width`** property allows the author to set the maximum thickness of an element’s scrollbars when they are shown.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sw`
+     *	- `s-width`
+     *	- `scrollbar-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width
      */
     sWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-width',
-     *     props: ['sw', 's-width', 'scrollbar-width'],
-     *     short: 'sw'
-     * }
-     * @propDocEnd
+     * # scrollbar-width (sw)
+     * The **`scrollbar-width`** property allows the author to set the maximum thickness of an element’s scrollbars when they are shown.
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sw`
+     *	- `s-width`
+     *	- `scrollbar-width`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width
      */
     scrollbarWidth?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-height',
-     *     props: ['sh', 's-height', 'scrollbar-height'],
-     *     short: 'sh'
-     * }
-     * @propDocEnd
+     * # scrollbar-height (sh)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sh`
+     *	- `s-height`
+     *	- `scrollbar-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-height
      */
     sh?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-height',
-     *     props: ['sh', 's-height', 'scrollbar-height'],
-     *     short: 'sh'
-     * }
-     * @propDocEnd
+     * # scrollbar-height (sh)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sh`
+     *	- `s-height`
+     *	- `scrollbar-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-height
      */
     sHeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'scrollbar-height',
-     *     props: ['sh', 's-height', 'scrollbar-height'],
-     *     short: 'sh'
-     * }
-     * @propDocEnd
+     * # scrollbar-height (sh)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `sh`
+     *	- `s-height`
+     *	- `scrollbar-height`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-height
      */
     scrollbarHeight?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'user-select',
-     *     props: ['us', 'u-select', 'user-select'],
-     *     short: 'us'
-     * }
-     * @propDocEnd
+     * # user-select (us)
+     * The `**user-select**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether the user can select text. This doesn't have any effect on content loaded as [chrome](https://developer.mozilla.org/en-US/docs/Glossary/Chrome), except in textboxes.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **t**: `text`
+     *	- **all**: `all`
+     *
+     * ---
+     * ## Aliases
+     *	- `us`
+     *	- `u-select`
+     *	- `user-select`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/user-select
      */
     us?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'user-select',
-     *     props: ['us', 'u-select', 'user-select'],
-     *     short: 'us'
-     * }
-     * @propDocEnd
+     * # user-select (us)
+     * The `**user-select**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether the user can select text. This doesn't have any effect on content loaded as [chrome](https://developer.mozilla.org/en-US/docs/Glossary/Chrome), except in textboxes.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **t**: `text`
+     *	- **all**: `all`
+     *
+     * ---
+     * ## Aliases
+     *	- `us`
+     *	- `u-select`
+     *	- `user-select`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/user-select
      */
     uSelect?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'user-select',
-     *     props: ['us', 'u-select', 'user-select'],
-     *     short: 'us'
-     * }
-     * @propDocEnd
+     * # user-select (us)
+     * The `**user-select**` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether the user can select text. This doesn't have any effect on content loaded as [chrome](https://developer.mozilla.org/en-US/docs/Glossary/Chrome), except in textboxes.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **n**: `none`
+     *	- **t**: `text`
+     *	- **all**: `all`
+     *
+     * ---
+     * ## Aliases
+     *	- `us`
+     *	- `u-select`
+     *	- `user-select`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/user-select
      */
     userSelect?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'caret-color',
-     *     props: ['carc', 'car-color', 'caret-color'],
-     *     short: 'carc'
-     * }
-     * @propDocEnd
+     * # caret-color (carc)
+     * The **`caret-color`** CSS property sets the color of the **insertion caret**, the visible marker where the next character typed will be inserted. This is sometimes referred to as the **text input cursor**. The caret appears in elements such as [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ") or those with the `[contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-contenteditable)` attribute. The caret is typically a thin vertical line that flashes to help make it more noticeable. By default, it is black, but its color can be altered with this property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `carc`
+     *	- `car-color`
+     *	- `caret-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color
      */
     carc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'caret-color',
-     *     props: ['carc', 'car-color', 'caret-color'],
-     *     short: 'carc'
-     * }
-     * @propDocEnd
+     * # caret-color (carc)
+     * The **`caret-color`** CSS property sets the color of the **insertion caret**, the visible marker where the next character typed will be inserted. This is sometimes referred to as the **text input cursor**. The caret appears in elements such as [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ") or those with the `[contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-contenteditable)` attribute. The caret is typically a thin vertical line that flashes to help make it more noticeable. By default, it is black, but its color can be altered with this property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `carc`
+     *	- `car-color`
+     *	- `caret-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color
      */
     carColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: 'caret-color',
-     *     props: ['carc', 'car-color', 'caret-color'],
-     *     short: 'carc'
-     * }
-     * @propDocEnd
+     * # caret-color (carc)
+     * The **`caret-color`** CSS property sets the color of the **insertion caret**, the visible marker where the next character typed will be inserted. This is sometimes referred to as the **text input cursor**. The caret appears in elements such as [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent. ") or those with the `[contenteditable](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-contenteditable)` attribute. The caret is typically a thin vertical line that flashes to help make it more noticeable. By default, it is black, but its color can be altered with this property.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `carc`
+     *	- `car-color`
+     *	- `caret-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color
      */
     caretColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-touch-callout',
-     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
-     *     short: 'wtc'
-     * }
-     * @propDocEnd
+     * # -webkit-touch-callout (wtc)
+     * The `-webkit-touch-callout` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls the display of the default callout shown when you touch and hold a touch target.
+     *
+     * ---
+     * ## Shorthands
+     *	- **d**: `default`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wtc`
+     *	- `webkit-touch-callout`
+     *	- `-webkit-touch-callout`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-touch-callout
      */
     wtc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-touch-callout',
-     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
-     *     short: 'wtc'
-     * }
-     * @propDocEnd
+     * # -webkit-touch-callout (wtc)
+     * The `-webkit-touch-callout` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls the display of the default callout shown when you touch and hold a touch target.
+     *
+     * ---
+     * ## Shorthands
+     *	- **d**: `default`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wtc`
+     *	- `webkit-touch-callout`
+     *	- `-webkit-touch-callout`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-touch-callout
      */
     webkitTouchCallout?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-overflow-scrolling',
-     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
-     *     short: 'wos'
-     * }
-     * @propDocEnd
+     * # -webkit-touch-callout (wtc)
+     * The `-webkit-touch-callout` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls the display of the default callout shown when you touch and hold a touch target.
+     *
+     * ---
+     * ## Shorthands
+     *	- **d**: `default`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wtc`
+     *	- `webkit-touch-callout`
+     *	- `-webkit-touch-callout`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-touch-callout
+     */
+    webkitTouchCallout?: CCSSProp
+    /**
+     * # -webkit-overflow-scrolling (wos)
+     * The `-webkit-overflow-scrolling` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether or not touch devices use momentum-based scrolling for a given element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **t**: `touch`
+     *
+     * ---
+     * ## Aliases
+     *	- `wos`
+     *	- `webkit-overflow-scrolling`
+     *	- `-webkit-overflow-scrolling`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
      */
     wos?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-overflow-scrolling',
-     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
-     *     short: 'wos'
-     * }
-     * @propDocEnd
+     * # -webkit-overflow-scrolling (wos)
+     * The `-webkit-overflow-scrolling` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether or not touch devices use momentum-based scrolling for a given element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **t**: `touch`
+     *
+     * ---
+     * ## Aliases
+     *	- `wos`
+     *	- `webkit-overflow-scrolling`
+     *	- `-webkit-overflow-scrolling`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
      */
     webkitOverflowScrolling?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-tap-highlight-color',
-     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
-     *     short: 'wthc'
-     * }
-     * @propDocEnd
+     * # -webkit-overflow-scrolling (wos)
+     * The `-webkit-overflow-scrolling` [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) property controls whether or not touch devices use momentum-based scrolling for a given element.
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **t**: `touch`
+     *
+     * ---
+     * ## Aliases
+     *	- `wos`
+     *	- `webkit-overflow-scrolling`
+     *	- `-webkit-overflow-scrolling`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
+     */
+    webkitOverflowScrolling?: CCSSProp
+    /**
+     * # -webkit-tap-highlight-color (wthc)
+     * **`-webkit-tap-highlight-color`** is a non-standard CSS property that sets the color of the highlight that appears over a link while it's being tapped. The highlighting indicates to the user that their tap is being successfully recognized, and indicates which element they're tapping on.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wthc`
+     *	- `webkit-tap-highlight-color`
+     *	- `-webkit-tap-highlight-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color
      */
     wthc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-tap-highlight-color',
-     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
-     *     short: 'wthc'
-     * }
-     * @propDocEnd
+     * # -webkit-tap-highlight-color (wthc)
+     * **`-webkit-tap-highlight-color`** is a non-standard CSS property that sets the color of the highlight that appears over a link while it's being tapped. The highlighting indicates to the user that their tap is being successfully recognized, and indicates which element they're tapping on.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wthc`
+     *	- `webkit-tap-highlight-color`
+     *	- `-webkit-tap-highlight-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color
      */
     webkitTapHighlightColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-text-fill-color',
-     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
-     *     short: 'wtfc'
-     * }
-     * @propDocEnd
+     * # -webkit-tap-highlight-color (wthc)
+     * **`-webkit-tap-highlight-color`** is a non-standard CSS property that sets the color of the highlight that appears over a link while it's being tapped. The highlighting indicates to the user that their tap is being successfully recognized, and indicates which element they're tapping on.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wthc`
+     *	- `webkit-tap-highlight-color`
+     *	- `-webkit-tap-highlight-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color
+     */
+    webkitTapHighlightColor?: CCSSProp
+    /**
+     * # -webkit-text-fill-color (wtfc)
+     * The **`-webkit-text-fill-color`** CSS property specifies the fill [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) of characters of text. If this property is not set, the value of the [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.") property is used.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wtfc`
+     *	- `webkit-text-fill-color`
+     *	- `-webkit-text-fill-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-fill-color
      */
     wtfc?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-text-fill-color',
-     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
-     *     short: 'wtfc'
-     * }
-     * @propDocEnd
+     * # -webkit-text-fill-color (wtfc)
+     * The **`-webkit-text-fill-color`** CSS property specifies the fill [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) of characters of text. If this property is not set, the value of the [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.") property is used.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wtfc`
+     *	- `webkit-text-fill-color`
+     *	- `-webkit-text-fill-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-fill-color
      */
     webkitTextFillColor?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-user-drag',
-     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
-     *     short: 'wud'
-     * }
-     * @propDocEnd
+     * # -webkit-text-fill-color (wtfc)
+     * The **`-webkit-text-fill-color`** CSS property specifies the fill [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) of characters of text. If this property is not set, the value of the [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value.") property is used.
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wtfc`
+     *	- `webkit-text-fill-color`
+     *	- `-webkit-text-fill-color`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-fill-color
+     */
+    webkitTextFillColor?: CCSSProp
+    /**
+     * # -webkit-user-drag (wud)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **e**: `element`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wud`
+     *	- `webkit-user-drag`
+     *	- `-webkit-user-drag`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-user-drag
      */
     wud?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-user-drag',
-     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
-     *     short: 'wud'
-     * }
-     * @propDocEnd
+     * # -webkit-user-drag (wud)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **e**: `element`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wud`
+     *	- `webkit-user-drag`
+     *	- `-webkit-user-drag`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-user-drag
      */
     webkitUserDrag?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-backdrop-filter',
-     *     props: ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter'],
-     *     short: 'wbf'
-     * }
-     * @propDocEnd
+     * # -webkit-user-drag (wud)
+     *
+     *
+     * ---
+     * ## Shorthands
+     *	- **a**: `auto`
+     *	- **e**: `element`
+     *	- **n**: `none`
+     *
+     * ---
+     * ## Aliases
+     *	- `wud`
+     *	- `webkit-user-drag`
+     *	- `-webkit-user-drag`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-user-drag
+     */
+    webkitUserDrag?: CCSSProp
+    /**
+     * # -webkit-backdrop-filter (wbf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wbf`
+     *	- `webkit-backdrop-filter`
+     *	- `-webkit-backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-backdrop-filter
      */
     wbf?: CCSSProp
-
     /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-backdrop-filter',
-     *     props: ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter'],
-     *     short: 'wbf'
-     * }
-     * @propDocEnd
+     * # -webkit-backdrop-filter (wbf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wbf`
+     *	- `webkit-backdrop-filter`
+     *	- `-webkit-backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-backdrop-filter
+     */
+    webkitBackdropFilter?: CCSSProp
+    /**
+     * # -webkit-backdrop-filter (wbf)
+     *
+
+
+     *
+     * ---
+     * ## Aliases
+     *	- `wbf`
+     *	- `webkit-backdrop-filter`
+     *	- `-webkit-backdrop-filter`
+     * ---
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-backdrop-filter
      */
     webkitBackdropFilter?: CCSSProp
 }
-
-/*
- *  ************************** WARNING **************************
- *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateCCSSProps.ts file.
- *  ************************** WARNING **************************
- */

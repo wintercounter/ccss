@@ -22,14 +22,14 @@ ccss({
 
 ## Configuration
 
-> The plugin is already included in the package `ccss` pre-configured.
+> The plugin included in the package `ccss` pre-configured.
 Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
 import { createCCSS, createOptions } from '@cryptic-css/core'
-import applyPropMQ from '@cryptic-css/prop-scroll'
+import applyPropScroll from '@cryptic-css/prop-scroll'
 
 const options = createOptions()
-applyPropMQ(options)
+applyPropScroll(options)
 const ccss = createCCSS(options)
 ```

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export interface CCSSProps extends AnyProp {
     /**
      * Tells CCSS should let through unsupported properties in the output.

@@ -35,14 +35,25 @@
     }
 }
 
-.buttons {
+.buttons,
+.socialButtons {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.buttons a {
+.buttons a,
+.socialButtons a {
     margin: 10px;
+}
+
+.socialButtons {
+    min-height: 56px;
+}
+
+.socialButtons img {
+    filter: invert(1);
+    border-radius: var(--ifm-pre-border-radius);
 }
 
 .features {
@@ -97,4 +108,8 @@
 
 .getStarted span {
     font-size: 48px;
+}
+
+.contentImg {
+    border-radius: var(--ifm-pre-border-radius);
 }

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import classnames from 'classnames'
+import { useInView } from 'react-intersection-observer'
 import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -15,9 +16,9 @@ const Sandbox = () => (
                 <Tabs
                     defaultValue="vanilla"
                     values={[
-                        { label: 'Vanilla JS', value: 'vanilla' },
+                        { label: 'Short names', value: 'vanilla' },
                         { label: 'Long names', value: 'long' },
-                        { label: 'Styled-components', value: 'styled' },
+                        { label: 'CCSS + Styled-components', value: 'styled' },
                         { label: 'Custom props and values', value: 'custom' }
                     ]}
                 >
@@ -106,15 +107,36 @@ const features = [
                     of <code>display="block"</code>.
                 </p>
                 <p>
-                    There were 2 goals with this approach:
+                    There were 3 goals with this approach:
                     <ul>
                         <li>to be able to define styles in a single row of a component;</li>
                         <li>
-                            to achieve <strong>true CSS mangling</strong> to optimize file size.
+                            to achieve <strong>true CSS mangling</strong> to optimize file size;
                         </li>
+                        <li>to speed up development.</li>
                     </ul>
                     This makes our code look a bit... err... <em>Cryptic</em>, but it's optional to use short names.
                 </p>
+                <h4>Using the CCSS function</h4>
+                <div className="row">
+                    <div className="col col--6">
+                        <pre>
+                            <code>
+                                {`ccss({
+    display: 'flex',
+    width: '100%',
+    backgroundColor: '#fff'
+})`}
+                            </code>
+                        </pre>
+                    </div>
+                    <div className="col col--6">
+                        <pre>
+                            <code>{`ccss({ d: 'f', w: '100%', bgc: '#fff' })`}</code>
+                        </pre>
+                    </div>
+                </div>
+                <h4>Using the @cryptic-css/styled</h4>
                 <div className="row">
                     <div className="col col--6">
                         <pre>
@@ -131,9 +153,11 @@ const features = [
                     </div>
                     <div className="col col--6">
                         <pre>
-                            <code>{`<Ui d="f" w="100%" bgc="#fff">
+                            <code>
+                                {`<Ui d="f" w="100%" bgc="#fff">
     My Content
-</Ui>`}</code>
+</Ui>`}
+                            </code>
                         </pre>
                     </div>
                 </div>
@@ -229,16 +253,16 @@ const features = [
                     A highly oversimplified performance comparison between different solutions:
                     <ul>
                         <li>
-                            🐢 <progress max={100} value={25} /> dynamic styled-components: slow
+                            🐢 <progress max={100} value={25} /> Dynamic styled-components: slow
                         </li>
                         <li>
-                            🐢 <progress max={100} value={25} /> ccss + styled-components: slow
+                            🐢 <progress max={100} value={25} /> CCSS + styled-components: slow
                         </li>
                         <li>
-                            🐒 <progress max={100} value={50} /> static styled-components: normal
+                            🐒 <progress max={100} value={50} /> Static styled-components: normal
                         </li>
                         <li>
-                            🐇 <progress max={100} value={100} /> ccss + styled-components + babel-plugin: fast
+                            🐇 <progress max={100} value={100} /> CCSS + styled-components + Babel plugin: fast
                         </li>
                     </ul>
                     On a production codebase we managed to save <em>800-1200ms</em> in average on our initial rendering
@@ -251,41 +275,32 @@ const features = [
         title: <>And there's more...</>,
         imageUrl: 'svg/005-bacterium.svg',
         description: (
-            <p>
-                There other tools and feature that helps with your work. <strong>@cryptic-css/styled</strong> comes with{' '}
-                <strong>⚛React-Native</strong> support out of the box, mostly thanks to{' '}
-                <strong>styled-components</strong>. <strong>CCSS</strong> does not only provide TypeScript types, but
-                also helps you with an almost complete CSS reference using Doc comments. This is extremely useful,
-                especially when using short names.
-                <h1>TODO Finalize, add screenshots, text highlights and info about CLI tool</h1>
-            </p>
-        )
-    },
-    {
-        title: <>True CSS Mangling</>,
-        imageUrl: 'img/undraw_fast_loading.svg',
-        description: (
-            <p>
-                The concept of <strong>CSS mangling</strong> is simple: support a shorter version of all CSS properties
-                and static values. While CSS is not the biggest part of your codebase, you can still achieve valuable
-                size savings. Using together with <em>styled-components</em> will give you the power of mangling{' '}
-                <em>React</em> props used for styling.
-            </p>
-        )
-    },
-    {
-        title: <>Design system capabilities</>,
-        imageUrl: 'img/undraw_developer_activity.svg',
-        description: (
-            <p>
-                <strong>CCSS</strong> feels really weird on first sight. However it's not the same thing as using single
-                characters for variable naming. Once you get used with it you will feel it's benefits and you will ❤️
-                the boost it gives you.{' '}
-                <a href="https://tailwindcss.com/docs/utility-first" target="_blank">
-                    Tailwind CSS's docs
-                </a>{' '}
-                summarizes really well the feelings of using such <em>Utility-first</em> approach.
-            </p>
+            <>
+                <p>
+                    There are other tools and features helping your work. <strong>@cryptic-css/styled</strong> comes
+                    with <strong>⚛React-Native</strong> support out of the box, mostly thanks to{' '}
+                    <strong>styled-components</strong>.
+                </p>
+                <p>
+                    <strong>CCSS</strong> does not only provide TypeScript types, but also helps you with an almost
+                    complete <em>CSS reference</em> using Doc comments. This is extremely useful, especially when using
+                    short names.
+                </p>
+                <div className="row">
+                    <div className="col col--6">
+                        <img
+                            className={styles.contentImg}
+                            src="img/marginDocBlock.png"
+                            alt="CrypticCSS - DocBlock"
+                            title="Showcasing DocBlock using CCSS in WebStorm"
+                        />
+                    </div>
+                    <div className="col col--6">
+                        <img className={styles.contentImg} src="img/marginDocBlock.png" alt="CrypticCSS" title="CCSS" />
+                    </div>
+                    <h1>TODO: Second image should be with Ui (styled)</h1>
+                </div>
+            </>
         )
     },
     {
@@ -298,9 +313,25 @@ const features = [
 
 function Feature({ id, imageUrl, title, description, icon, i }) {
     const imgUrl = useBaseUrl(imageUrl)
+    const [ref, inView] = useInView({ triggerOnce: true, rootMargin: '0px 0px -350px 0px' })
+    const imgRef = useRef()
+    const contentRef = useRef()
+    useEffect(() => {
+        if (imgRef.current && inView) {
+            Object.assign(imgRef.current.style, {
+                opacity: 1,
+                transform: 'translateY(0) rotate(0)'
+            })
+            Object.assign(contentRef.current.style, {
+                opacity: 1,
+                transform: 'translateY(0)'
+            })
+        }
+    }, [inView])
     return (
         <>
             <div
+                ref={ref}
                 id={id || `feature${i}`}
                 className={styles.featuresRow}
                 style={{ background: i % 2 ? '#f8f8f8' : '#fff' }}
@@ -310,10 +341,28 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                         <div className={classnames('col col--12', styles.feature)}>
                             <div className="row">
                                 <div className="col col--2">
-                                    {imageUrl && <img className={styles.featureImage} src={imgUrl} alt={title} />}
-                                    {icon}
+                                    <div
+                                        ref={imgRef}
+                                        style={{
+                                            transition: 'all .3s ease-out',
+                                            opacity: 0,
+                                            transform: 'translateX(-200px) rotate(-180deg)',
+                                            transformOrigin: '50% 50%'
+                                        }}
+                                    >
+                                        {imageUrl && <img className={styles.featureImage} src={imgUrl} alt={title} />}
+                                        {icon}
+                                    </div>
                                 </div>
-                                <div className="col col--10">
+                                <div
+                                    className="col col--10"
+                                    ref={contentRef}
+                                    style={{
+                                        transition: 'all .3s ease-out',
+                                        opacity: 0,
+                                        transform: 'translateX(200px)'
+                                    }}
+                                >
                                     <h3>{title}</h3>
                                     {description}
                                 </div>
@@ -376,23 +425,17 @@ function Home() {
                             Playground
                         </Link>
                     </div>
-                    <div className={styles.buttons} style={{ marginTop: '1rem', marginBottom: 0 }}>
+                    <div className={styles.socialButtons} style={{ marginTop: '1rem', marginBottom: 0 }}>
+                        <a href="https://github.com/wintercounter/ccss">
+                            <img
+                                src="https://flat.badgen.net/npm/v/ccss?scale=1.5&label=Latest%Version%20&color=d11141"
+                                alt="Current stable CCSS version"
+                            />
+                        </a>
                         <a href="https://github.com/wintercounter/ccss">
                             <img
                                 src="https://flat.badgen.net/github/stars/wintercounter/ccss?scale=1.5&label=Star%20on%20GitHub&color=00cf9b"
                                 alt="CCSS on GitHub"
-                            />
-                        </a>
-                        <a href="https://github.com/wintercounter/ccss">
-                            <img
-                                src="https://flat.badgen.net/npm/v/ccss?scale=1.5&label=Latest%20Stable%20&color=d11141"
-                                alt="Current stable CCSS version"
-                            />
-                        </a>
-                        <a href="https://twitter.com/wintercounter1">
-                            <img
-                                src="https://flat.badgen.net/twitter/follow/wintercounter1?scale=1.5&label=Follow%20on%20Twitter&color=1dcaff"
-                                alt="wintercounter on Twitter"
                             />
                         </a>
                     </div>

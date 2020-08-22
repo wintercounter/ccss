@@ -129,7 +129,7 @@ html[data-theme='dark'] {
     overflow: hidden;
 }
 
-.markdown>p, .markdown>pre, .markdown>ul {
+.markdown>p, .markdown>pre {
     padding: 0 !important;
 }
 

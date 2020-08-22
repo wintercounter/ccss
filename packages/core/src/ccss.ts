@@ -38,8 +38,3 @@ export const createCCSS = (options: Partial<CCSSOptions> = defaultOptions): CCSS
 
 export const ccss = createCCSS()
 
-ccss({
-    margin: 20,
-    borderLeft: 40,
-    backgroundImage: 2
-})

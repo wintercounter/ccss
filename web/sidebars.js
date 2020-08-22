@@ -18,6 +18,7 @@ module.exports = {
             'api-and-packages/core',
             'api-and-packages/plugin-gutter',
             'api-and-packages/plugin-ratio',
+            'api-and-packages/prop-keyframes',
             'api-and-packages/prop-mid',
             'api-and-packages/prop-mq',
             'api-and-packages/prop-scroll',
