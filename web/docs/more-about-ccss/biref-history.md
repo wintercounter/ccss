@@ -1,18 +1,18 @@
 ---
-id: some-story
-title: Some story
+id: brief-history
+title: Brief history
 ---
 
-We are completely aware that it's not easy to justify the existence of
+We are completely aware it's not easy to justify the existence of
 this solution. It is hard to accept as a professional
-developer because it feels it's against the principals you've learned
+developer because it feels it's against the principles you've learned
 so far.
 
 On a project, we started to use a `Grommet` and `styled-system`
 inspired UI System. We ended up relying on fully dynamic `styled-components`,
-almost completely stopped writing CSS and custom `styled-components`.
+almost completely stopped writing CSS and custom `styled-components` in the regular way.
 
-A simplified example how such components looked:
+A simplified example how such components did look:
 
 ```jsx
 const UiBox = styled.div`
@@ -21,7 +21,7 @@ const UiBox = styled.div`
 `
 ```
 
-Of course, our component had much more dynamic props and it had a lot of
+Of course, our component had much more dynamic props, and it had a lot of
 custom functionality backed in. It's comfy and refreshing
 to use such approach:
 
@@ -40,10 +40,9 @@ to use such approach:
 </UiBox>
 ```
 
-It started to look too much, too crowded, too cluttered.
+It started to look too much, too crowded, too cluttered, and all props had to be handled individually.
 This gave the first glimpse of the idea, we started to joke about using
-letters instead. Actually, why not?! I started to create a sample
-solution and it felt good.
+letters instead. Actually, why not?! I started to create a sample PoC, and it felt amazing.
 
 **It's not the same as using letters for variable naming!** It is almost
 completely the same flow as writing regular CSS using auto-complete:
@@ -56,7 +55,3 @@ completely the same flow as writing regular CSS using auto-complete:
 The letters are a shorthand and once you get more familiar
 and comfortable with them, you can get even more efficient than writing
 regular CSS.
-
-> You don't necessarily need to write CSS such a way. It's also a plan to provide
-> tools that helps you use CSS in your existing codebase for
-> production builds only for example.

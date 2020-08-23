@@ -5,7 +5,7 @@ title: Base styles
 
 ## Reset CSS
 
-By default **CCSS** uses `rem` units: `10 => 10rem`. To make this work as
+By default, **CCSS** uses `rem` units: `10 => 10rem`. To make this work as
 `10px === 10rem`, you need to set the base `font-size` on your
 HTML tag to `6.25%`:
 

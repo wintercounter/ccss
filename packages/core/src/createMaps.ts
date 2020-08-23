@@ -10,7 +10,7 @@ const getAligns = () => ({
     c: 'center',
     n: 'normal',
     sb: 'space-between',
-    as: 'space-around',
+    sa: 'space-around',
     se: 'space-evenly'
 })
 

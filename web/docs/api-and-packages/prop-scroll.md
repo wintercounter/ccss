@@ -22,8 +22,8 @@ ccss({
 
 ## Configuration
 
-> The plugin included in the package `ccss` pre-configured.
-Skip this step if you don't need custom configuration and/or **CCSS** instance.
+> The plugin included in the `ccss` package pre-configured.
+> Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
 import { createCCSS, createOptions } from '@cryptic-css/core'

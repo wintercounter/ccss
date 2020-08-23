@@ -37,5 +37,6 @@ Object.assign(window, {
     styled,
     ccssd,
     Ui,
-    options
+    options,
+    formatCSS: scssfmt
 })
