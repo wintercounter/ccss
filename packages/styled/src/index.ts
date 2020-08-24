@@ -1,6 +1,10 @@
 import { CCSSProps, CCSSFunction, defaultOptions } from '@cryptic-css/core'
 import styled from 'styled-components'
 
+export interface IUi extends CCSSProps {
+    (props: CCSSProps): CCSSProps
+}
+
 const s = styled
 
 const noop = () => {}
@@ -25,7 +29,11 @@ const isSupportedTag = (s, tag) => {
     }
 }
 
-export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
+export const createStyledCCSS = ({ defaultProps = undefined, ...rest }): {
+    Ui: IUi,
+    ccssd: any,
+    ccss: any
+} => {
     const __ccss = rest.__ccss as CCSSFunction
     const props = rest.props as CCSSProps
 
@@ -49,18 +57,23 @@ export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(s, tag)) {
             try {
                 Ui[tag] = s[tag](__ccss)
+                // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
                 ccssd[tag].defaultProps = defaultProps
+            } catch(e) {
+                console.log(e)
             }
         }
     }
+
     return {
         Ui,
         ccssd,
         ccss: __ccss
     }
 }
+
 
 const defaultStyled = createStyledCCSS(defaultOptions)
 
