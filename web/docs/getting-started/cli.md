@@ -5,8 +5,15 @@ title: CLI
 
 ## Usage
 
+You either install **CCSS** globally or use `npx` to run the command line tool
+in your project directory.
+
 ```bash
 ccss [prop-name]
+
+# or
+
+npx ccss [prop-name]
 ```
 
 We try to make our best efforts to provide an _out-of-the-box_

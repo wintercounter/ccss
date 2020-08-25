@@ -37,14 +37,14 @@ const View = ccssd({
 })
 
 render(
-    <Ui d="f" jc="sa" w="100%">
-        <View bg="#fc0" c="#000">
+    <Ui d="f" jc="sa" w="100%" m={[2, 0]} child={{ '> *': { br: 6, ta: 'c' } }}>
+        <View bg="#4035f3" c="#000">
             Prepared component + extra props
         </View>
-        <Ui w={200} p={1} bg="#4035f3" c="#fff" m={[1, 0]}>
+        <Ui w={200} p={1} bg="#4035f3" c="#fff">
             Ui component directly
         </Ui>
-        <Ui.section w={200} p={1} bg="#fc0" c="#000" m={[1, 0]}>
+        <Ui.section w={200} p={1} bg="#4035f3" c="#000">
             Ui component directly + TAG helper
         </Ui.section>
     </Ui>

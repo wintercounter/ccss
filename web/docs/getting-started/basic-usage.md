@@ -36,7 +36,7 @@ domElement.innerHTML = `
 `
 ```
 
-Or you can use it within your existing CSS-in-JS solution:
+Or you can compose it within your existing CSS-in-JS solution, the same way as `styled-system`:
 
 ```js
 const MyContent = styled.div`

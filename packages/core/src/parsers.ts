@@ -1,4 +1,4 @@
-import { CCSSInput, CCSSParser, CCSSPipe } from '@/types'
+import { CCSSParser, CCSSPipe } from '@/types'
 
 export const toCSSRule = (cssProp, objectProp) => {
     return (input, prop, options) => {
