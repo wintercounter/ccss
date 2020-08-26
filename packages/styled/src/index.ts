@@ -1,9 +1,19 @@
 import { CCSSProps, CCSSFunction, defaultOptions } from '@cryptic-css/core'
 import styled from 'styled-components'
 
-export interface IUi extends CCSSProps {
-    (props: CCSSProps): CCSSProps
+// "Default" FunctionComponent interface
+export interface IUiConstructor {
+    (props: CCSSProps): any | null;
+    propTypes?: CCSSProps;
+    defaultProps?: Partial<CCSSProps>;
+    displayName?: string;
 }
+
+export interface IUi extends IUiConstructor {
+    figure?: IUiConstructor
+    img?: IUiConstructor
+}
+
 
 const s = styled
 
