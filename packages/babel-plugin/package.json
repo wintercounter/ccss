@@ -72,10 +72,10 @@
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
-        "@babel/template": "^7.10.1",
+        "@babel/template": "^7.10.4",
         "fast-glob": "^3.2.4",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.20",
         "shortest": "0.0.0",
-        "stylis": "^4.0.1"
+        "stylis": "^4.0.2"
     }
 }
