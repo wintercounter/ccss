@@ -340,7 +340,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                     <div className="row">
                         <div className={classnames('col col--12', styles.feature)}>
                             <div className="row">
-                                <div className="col col--2">
+                                <div className={`col col--2 ${styles.paragraphImage}`}>
                                     <div
                                         ref={imgRef}
                                         style={{
@@ -355,7 +355,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                     </div>
                                 </div>
                                 <div
-                                    className="col col--10"
+                                    className={`col col--10 ${styles.paragraph}`}
                                     ref={contentRef}
                                     style={{
                                         transition: 'all .3s ease-out',

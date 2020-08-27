@@ -28,7 +28,6 @@ module.exports = {
         Guides: [
             'guides/quick-examples',
             'guides/base-styles',
-            'guides/static-extraction',
             'guides/create-a-color-map',
             'guides/custom-props-for-sharing-styles',
             'guides/tips-and-tricks'

@@ -27,7 +27,7 @@ module.exports = {
                 /*{ to: 'blog', label: 'Blog', position: 'left' },*/
                 {
                     href: 'https://github.com/wintercounter/ccss',
-                    label: 'View source on GitHub',
+                    label: 'GitHub',
                     position: 'right'
                 }
             ]

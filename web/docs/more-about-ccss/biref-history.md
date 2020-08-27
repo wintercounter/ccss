@@ -8,8 +8,10 @@ this solution. It is hard to accept as a professional
 developer because it feels it's against the principles you've learned
 so far.
 
+## UiBox
+
 On a project, we started to use a `Grommet` and `styled-system`
-inspired UI System. We ended up relying on fully dynamic `styled-components`,
+inspired UI System. We ended up relying on fully dynamic `styled-c1omponents`,
 almost completely stopped writing CSS and custom `styled-components` in the regular way.
 
 A simplified example how such components did look:
@@ -55,3 +57,22 @@ completely the same flow as writing regular CSS using auto-complete:
 The letters are a shorthand and once you get more familiar
 and comfortable with them, you can get even more efficient than writing
 regular CSS.
+
+## UiBox => Ui
+
+During the usage of `<UiBox>` we came across the need several times of being able to add additional styles or being
+able to use UiBox's styling logic on other elements.
+
+The options we had:
+
+-   Use inline style
+-   Extend UiBox as `const MyExtendedComponent = styled(UiBox)`
+-   Implement support for a new CSS prop in UiBox
+
+The result was sometimes this, sometimes that, by different team members based on different needs.
+
+After a while we realized we actually need to twist this logic and look at the problem from another angle:
+
+**We just need one component simply supporting CSS.**
+
+We created CCSS and based on it the `<Ui />` component born, which is basically our **single component Ui kit**.
