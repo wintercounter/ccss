@@ -261,6 +261,7 @@ export const getPropTable = (): PropTable => {
         ['sh', 's-height', 'scrollbar-height', mapValue, parseSingle],
         ['us', 'u-select', 'user-select', mapValue],
         ['carc', 'car-color', 'caret-color', mapValue],
+        ['rs', 'res', 'resize', mapValue],
 
         // Webkit
         ['wtc', 'webkit-touch-callout', '-webkit-touch-callout', mapValue],
