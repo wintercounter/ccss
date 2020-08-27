@@ -1,11 +1,21 @@
 import { CCSSProps, CCSSFunction, defaultOptions } from '@cryptic-css/core'
 import styled from 'styled-components'
+// @ts-ignore
+import { StyledComponent, StyledProps } from '@types/styled-components'
+
+export type UiProps = StyledProps<CCSSProps>
+export type UiComponent = StyledComponent<'div', any, UiProps>
+export type UiComponentFactories = {
+    [TTag in keyof JSX.IntrinsicElements]: StyledComponent<TTag, any, UiProps>
+}
+
+export type UiType = UiComponent & UiComponentFactories
 
 const s = styled
 
 const noop = () => {}
 
-const isNative = (typeof navigator != 'undefined' && navigator.product == 'ReactNative')
+const isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative'
 const defaultTag = isNative ? 'View' : 'div'
 
 // Do not use deprecated stuff please
@@ -25,7 +35,14 @@ const isSupportedTag = (s, tag) => {
     }
 }
 
-export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
+export const createStyledCCSS = ({
+    defaultProps = undefined,
+    ...rest
+}): {
+    Ui: UiType
+    ccssd: (props: CCSSProps) => UiType
+    ccss: any
+} => {
     const __ccss = rest.__ccss as CCSSFunction
     const props = rest.props as CCSSProps
 
@@ -49,12 +66,14 @@ export const createStyledCCSS = ({ defaultProps = undefined, ...rest }) => {
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(s, tag)) {
             try {
                 Ui[tag] = s[tag](__ccss)
+                // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
                 ccssd[tag].defaultProps = defaultProps
-            }
+            } catch () {}
         }
     }
+
     return {
         Ui,
         ccssd,
