@@ -70,7 +70,7 @@ export const createStyledCCSS = ({
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
                 ccssd[tag].defaultProps = defaultProps
-            } catch () {}
+            } catch {}
         }
     }
 
