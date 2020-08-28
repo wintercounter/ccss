@@ -396,7 +396,7 @@ function Home() {
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted
                             )}
-                            to={useBaseUrl('/docs/usage/getting-started')}
+                            to={useBaseUrl('/docs/guides/quick-examples')}
                         >
                             <span>🎌</span>
                             <br />
@@ -407,7 +407,7 @@ function Home() {
                                 'button button--outline button--secondary button--lg',
                                 styles.getStarted
                             )}
-                            to={useBaseUrl('/docs/usage/examples')}
+                            to={useBaseUrl('/docs/getting-started/basic-usage')}
                         >
                             <span>📚</span>
                             <br />

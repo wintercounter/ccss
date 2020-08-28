@@ -36,23 +36,6 @@ module.exports = {
             style: 'dark',
             links: [
                 {
-                    title: 'Documentation',
-                    items: [
-                        {
-                            label: 'Introduction',
-                            to: 'docs/introduction/pros-and-cons'
-                        },
-                        {
-                            label: 'Usage',
-                            to: 'docs/usage/getting-started'
-                        },
-                        {
-                            label: 'API and Packages',
-                            to: 'docs/api-and-packages/core'
-                        }
-                    ]
-                },
-                {
                     title: 'Social',
                     items: [
                         /*{
@@ -130,5 +113,5 @@ module.exports = {
         ]
     ],
     themes: ['@docusaurus/theme-live-codeblock'],
-    plugins: [require.resolve('./src/scope-plugin'), require.resolve('./src/js')]
+    plugins: [require.resolve('./src/js')]
 }
