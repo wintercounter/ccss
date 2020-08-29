@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](https://github.com/wintercounter/ccss/compare/v3.12.0...v3.13.0) (2020-08-29)
+
+
+### Bug Fixes
+
+* **TS:** css function type ([f891940](https://github.com/wintercounter/ccss/commit/f8919407f919ff5a885bd3a4a4c9a991c80e9e9b))
+* **typescript:** correct autocomplete ([23beb62](https://github.com/wintercounter/ccss/commit/23beb620d45ac2d8413fe06dcfcca71edc92e0dd))
+
+
+
+
+
 # [3.12.0](https://github.com/wintercounter/ccss/compare/v3.11.0...v3.12.0) (2020-08-20)
 
 
