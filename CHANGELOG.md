@@ -5,21 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [3.13.0](https://github.com/wintercounter/ccss/compare/v3.12.0...v3.13.0) (2020-08-29)
 
-
-### Bug Fixes
-
-* **styled:** better interfaces. Current Ui component has props ([34b00f9](https://github.com/wintercounter/ccss/commit/34b00f97bf8c14e60a4ab30cf7372ace4fe4e64a))
-* **styles:** better types and final `UiType` created ([80aff3a](https://github.com/wintercounter/ccss/commit/80aff3aec398f6770a407f31f0cb0bffd5bec855))
-* **TS:** css function type ([f891940](https://github.com/wintercounter/ccss/commit/f8919407f919ff5a885bd3a4a4c9a991c80e9e9b))
-
-
 ### Features
 
-* better shapped Ui interface ([711a8b8](https://github.com/wintercounter/ccss/commit/711a8b83b71b7fac8938159ae9d108811080e874))
-
-
-
-
+* fix TypeScript types for autocompletion and DocBlock rendering
+* experimental React Native support
 
 # [3.12.0](https://github.com/wintercounter/ccss/compare/v3.11.0...v3.12.0) (2020-08-20)
 

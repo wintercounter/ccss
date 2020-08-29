@@ -295,10 +295,9 @@ const features = [
                             title="Showcasing DocBlock using CCSS in WebStorm"
                         />
                     </div>
-                    <div className="col col--6">
+                    {/*<div className="col col--6">
                         <img className={styles.contentImg} src="img/marginDocBlock.png" alt="CrypticCSS" title="CCSS" />
-                    </div>
-                    <h1>TODO: Second image should be with Ui (styled)</h1>
+                    </div>*/}
                 </div>
             </>
         )
