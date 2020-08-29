@@ -1,5 +1,6 @@
 <div align="center">
-    <div align="center"><img src="/web/static/img/logo.png" width="200" /></div>
+    <div>&nbsp;</div>
+    <div align="center"><img src="/web/static/img/logo.png" width="300" /></div>
     <div align="center">🔡🔁🎨</div>
     <br />
     <p align="center">
