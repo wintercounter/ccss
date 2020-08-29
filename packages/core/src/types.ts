@@ -70,7 +70,7 @@ export declare type CCSSPseudoMap = {
 }
 export declare type CCSSPropValue = string | number | boolean | (string | number | boolean)[] | undefined
 export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
-export declare type CCSSProp = CCSSPropValue | CCSSPropFunction
+export declare type CCSSProp = CCSSPropValue | CCSSPropFunction | CCSSParser
 export interface IOptions extends Partial<any> {
     unit: string
     applyUnit: (n: number) => string
@@ -83,12 +83,12 @@ export interface CCSSProps {
      * @example -webkit-transform
      */
     unsupported?: boolean | string[]
-    
+
     /**
      * Define custom CSS text.
      */
-    styleText?: (v: string) => string
-    
+    raw?: <T>(v: T) => string | object
+
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *
@@ -101,7 +101,9 @@ export interface CCSSProps {
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
      * ```
      */
-    child?: CCSSProp
+    child?: {
+        [key: string]: CCSSProps
+    }
 
     /**
      * @propDocStart

@@ -1,4 +1,17 @@
-import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
+import { CCSSOptions, CCSSProps, CCSSProp } from '@cryptic-css/core'
+
+declare module '@cryptic-css/core' {
+    interface CCSSProps {
+        /**
+         * # scroll
+         *
+         * Shorthand to create scrollable elements.
+         *
+         * @see https://ccss.dev/docs/api-and-packages/prop-scroll
+         */
+        scroll?: CCSSProp
+    }
+}
 
 const base = {
     us: 'n',
