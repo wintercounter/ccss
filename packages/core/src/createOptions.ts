@@ -7,8 +7,8 @@ import { parsePseudo } from './parsers'
 
 export const createOptions = <T>(overrides?: T | (T & Partial<CCSSOptions>)): T & Partial<CCSSOptions> => {
     const options: Partial<CCSSOptions> = {
-        unit: 'rem',
-        applyUnit: n => `${n}${options.unit}`,
+        unit: typeof navigator != 'undefined' && navigator.product === 'ReactNative' ? 'px' : 'rem',
+        applyUnit: (n) => `${n}${options.unit}`,
         outputTransformer: stringOutputTransformer,
         props: createProps(),
         valueMap: createValueMap(),

@@ -1,10 +1,10 @@
 ---
-id: examples
-title: Examples
+id: quick-examples
+title: Quick examples
 ---
 
 There are already multiple ways to utilize **CCSS** in your codebase,
-however currently only CSS-in-JS solutions are being covered. Please
+however currently only CSS-in-JS solutions covered. Please
 note you can also use `emotion` or any other `CSS-in-JS` solution.
 
 ## Styled-components + JSX
@@ -16,7 +16,7 @@ Simply replace any divs with this one component:
 const View = styled.div(ccss)
 
 render(
-    <View w={100} p={2} bg="#fc0" c="#000">
+    <View w={100} p={2} m={[2, 'auto']} bg="#4035f3" c="#fff" ta="c" br={6}>
         Hello world!
     </View>
 )
@@ -37,21 +37,21 @@ const View = ccssd({
 })
 
 render(
-    <>
-        <View bg="#fc0" c="#000">
+    <Ui d="f" jc="sa" w="100%" m={[2, 0]} child={{ '> *': { br: 6, ta: 'c' } }}>
+        <View bg="#4035f3" c="#000">
             Prepared component + extra props
         </View>
-        <Ui w={200} p={1} bg="#fc0" c="#000" m={[1, 0]}>
+        <Ui w={200} p={1} bg="#4035f3" c="#fff">
             Ui component directly
         </Ui>
-        <Ui.section w={200} p={1} bg="#fc0" c="#000" m={[1, 0]}>
+        <Ui.section w={200} p={1} bg="#4035f3" c="#000">
             Ui component directly + TAG helper
         </Ui.section>
-    </>
+    </Ui>
 )
 ```
 
-> An `~44%` text and code reduction.
+> An `~44%` text and code size reduction.
 
 ## Special props and values
 
@@ -85,7 +85,7 @@ ccss({
 
 ### `raw`
 
-Use to pass raw CSS string / Style object.
+Use it to pass raw CSS string / Style object.
 
 ```js live
 ccss({
@@ -95,16 +95,17 @@ ccss({
 
 ### Number values
 
-Properties awaiting for numeric values with a unit can accept
-pure numbers for built-in automatic `unit` support.
+Properties waiting for numeric values with a unit can accept
+pure numbers for built-in automatic `unit` conversion.
 
-If not a number is given, the value will be used as-is.
+If not a number given, the value will be used as-is.
 
 Example:
 
 ```js live
 ccss({
-    w: 100
+    w: 100,
+    h: '100px'
 })
 ```
 

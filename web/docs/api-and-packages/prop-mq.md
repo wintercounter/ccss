@@ -28,7 +28,7 @@ ccss({
 
 ## Configuration
 
-> The plugin is already included in the package `ccss` pre-configured.
+> The plugin included in the `ccss` package pre-configured.
 Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js

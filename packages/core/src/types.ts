@@ -1,28 +1,24 @@
 import { Properties as CSSProperties } from 'csstype'
-
-export type StringTransformer = (generated: string, descriptor: string) => string
-
-export type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
-
-export type CCSSInput = any
-
-export type CCSSPrivateFunction = (...args: CCSSInput[]) => string
-
-export type CCSSToCSSRule = (
+export declare type StringTransformer = (generated: string, descriptor: string) => string
+export declare type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
+export declare type CCSSInput = any
+export declare type CCSSFunction = (input: CCSSProps) => string | CSSProperties
+export declare type CCSSToCSSRule = (
     cssProp: string,
     objectProp: string,
     input: CCSSInput,
     prop: string,
     options: CCSSOptions
 ) => CSSProperties | string
-
-export type CCSSToPseudoChild = (input: CCSSInput, prop: string, options: CCSSOptions) => CSSProperties | CCSSInput
-
+export declare type CCSSToPseudoChild = (
+    input: CCSSInput,
+    prop: string,
+    options: CCSSOptions
+) => CSSProperties | CCSSInput
 export interface CCSSDefaultOutputFunction {
     (): Object
     (): string
 }
-
 export interface CCSSOutputTransformer {
     (generated: string, descriptor: string): string
     (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
@@ -31,11 +27,8 @@ export interface CCSSOutputTransformer {
     toChild: CCSSToPseudoChild
     unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
 }
-
 export interface CCSSOptions {
-    // Allow other props
     [key: string]: any
-
     /**
      * Unit to use globally for number values.
      */
@@ -44,78 +37,58 @@ export interface CCSSOptions {
      * Function the applies unit to a value
      */
     applyUnit: (value: number) => string
-
     /**
      * Tells how to transform the final output
      */
     outputTransformer: CCSSOutputTransformer
-
     /**
      * All supported properties
      */
     props: Partial<CCSSProps>
-
     /**
      * Keys and values to `mapValue` against
      */
     valueMap: Partial<CCSSValueMap>
-
     /**
      * Map of supported pseudo selectors
      */
     pseudoMap: Partial<CCSSPseudoMap>
-
-    __ccss: CCSSPrivateFunction
+    __ccss: CCSSFunction
 }
-
-export type CCSSParser = (input: CCSSInput, prop: string, options: CCSSOptions, original?: CCSSInput) => CCSSInput
-
-export type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
-
-export type CCSSValueMap = { [key: string]: any }
-
-export type CCSSPseudoMap = { [key: string]: string }
-
-// TODO: Refactor these Old types and interface
-
-export type TCCSSCoreProp = {
-    [key: string]: string | number | TCCSSCoreProp | (string | number | TCCSSCoreProp)[] | undefined
+export declare type CCSSParser = (
+    input: CCSSInput,
+    prop: string,
+    options: CCSSOptions,
+    original?: CCSSInput
+) => CCSSInput
+export declare type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
+export declare type CCSSValueMap = {
+    [key: string]: any
 }
-export type TNestedInput = { [key: string]: TNestedInput | string | number }
-export type TCSSPropValue = <T>(v: string | string[] | TNestedInput[] | TNestedInput, o?: T) => string
-export type TCSSSimplePropValue = <T>(v?: T | TNestedInput | string) => T | string | undefined
-export type TMediaQueryInput = [any | string, string][]
-export type TMediaQueryFunc = (input: TMediaQueryInput) => string | undefined
-
+export declare type CCSSPseudoMap = {
+    [key: string]: string
+}
+export declare type CCSSPropValue = string | number | boolean | (string | number | boolean)[] | undefined
+export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
+export declare type CCSSProp = CCSSPropValue | CCSSPropFunction | CCSSParser
 export interface IOptions extends Partial<any> {
     unit: string
     applyUnit: (n: number) => string
 }
-
-export interface AnyProp {
-    [key: string]: any
-}
-
-/*
- *  ************************** WARNING **************************
- *  Please **DO NOT** add anything after this comment on this file
- *  Please check the scripts/generateCCSSProps.ts file.
- *  ************************** WARNING **************************
- */
-export interface CCSSProps extends AnyProp {
+export interface CCSSProps {
     /**
      * Tells CCSS should let through unsupported properties in the output.
      * In an array you can specify a list of a properties should be let through.
      *
      * @example -webkit-transform
      */
-    unsupported: boolean | string[]
-    
+    unsupported?: boolean | string[]
+
     /**
      * Define custom CSS text.
      */
-    styleText?: (v: string) => string
-    
+    raw?: <T>(v: T) => string | object
+
     /**
      * You can pass children to your ccss supporting both pseudo classes and nested selectors.
      *
@@ -128,7 +101,9 @@ export interface CCSSProps extends AnyProp {
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
      * ```
      */
-    child?: TCSSSimplePropValue
+    child?: {
+        [key: string]: CCSSProps
+    }
 
     /**
      * @propDocStart
@@ -139,7 +114,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ab?: TCSSPropValue
+    ab?: CCSSProp
 
     /**
      * @propDocStart
@@ -150,7 +125,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'align-b'?: TCSSPropValue
+    alignB?: CCSSProp
 
     /**
      * @propDocStart
@@ -161,7 +136,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'alignment-baseline'?: TCSSPropValue
+    alignmentBaseline?: CCSSProp
 
     /**
      * @propDocStart
@@ -172,7 +147,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bls?: TCSSPropValue
+    bls?: CCSSProp
 
     /**
      * @propDocStart
@@ -183,7 +158,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bl-shift'?: TCSSPropValue
+    blShift?: CCSSProp
 
     /**
      * @propDocStart
@@ -194,7 +169,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'baseline-shift'?: TCSSPropValue
+    baselineShift?: CCSSProp
 
     /**
      * @propDocStart
@@ -205,7 +180,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cpr?: TCSSPropValue
+    cpr?: CCSSProp
 
     /**
      * @propDocStart
@@ -216,7 +191,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'clip-r'?: TCSSPropValue
+    clipR?: CCSSProp
 
     /**
      * @propDocStart
@@ -227,7 +202,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'clip-rule'?: TCSSPropValue
+    clipRule?: CCSSProp
 
     /**
      * @propDocStart
@@ -238,7 +213,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cif?: TCSSPropValue
+    cif?: CCSSProp
 
     /**
      * @propDocStart
@@ -249,7 +224,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-i-f'?: TCSSPropValue
+    colorIF?: CCSSProp
 
     /**
      * @propDocStart
@@ -260,7 +235,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-interpolation-filters'?: TCSSPropValue
+    colorInterpolationFilters?: CCSSProp
 
     /**
      * @propDocStart
@@ -271,7 +246,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ci?: TCSSPropValue
+    ci?: CCSSProp
 
     /**
      * @propDocStart
@@ -282,7 +257,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-i'?: TCSSPropValue
+    colorI?: CCSSProp
 
     /**
      * @propDocStart
@@ -293,7 +268,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-interpolation'?: TCSSPropValue
+    colorInterpolation?: CCSSProp
 
     /**
      * @propDocStart
@@ -304,7 +279,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cpf?: TCSSPropValue
+    cpf?: CCSSProp
 
     /**
      * @propDocStart
@@ -315,7 +290,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-p'?: TCSSPropValue
+    colorP?: CCSSProp
 
     /**
      * @propDocStart
@@ -326,7 +301,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-profile'?: TCSSPropValue
+    colorProfile?: CCSSProp
 
     /**
      * @propDocStart
@@ -337,7 +312,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    crd?: TCSSPropValue
+    crd?: CCSSProp
 
     /**
      * @propDocStart
@@ -348,7 +323,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-r'?: TCSSPropValue
+    colorR?: CCSSProp
 
     /**
      * @propDocStart
@@ -359,7 +334,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'color-rendering'?: TCSSPropValue
+    colorRendering?: CCSSProp
 
     /**
      * @propDocStart
@@ -370,7 +345,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    db?: TCSSPropValue
+    db?: CCSSProp
 
     /**
      * @propDocStart
@@ -381,7 +356,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'dom-base'?: TCSSPropValue
+    domBase?: CCSSProp
 
     /**
      * @propDocStart
@@ -392,7 +367,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'dominant-baseline'?: TCSSPropValue
+    dominantBaseline?: CCSSProp
 
     /**
      * @propDocStart
@@ -403,7 +378,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    eb?: TCSSPropValue
+    eb?: CCSSProp
 
     /**
      * @propDocStart
@@ -414,7 +389,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'enable-bg'?: TCSSPropValue
+    enableBg?: CCSSProp
 
     /**
      * @propDocStart
@@ -425,7 +400,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'enable-background'?: TCSSPropValue
+    enableBackground?: CCSSProp
 
     /**
      * @propDocStart
@@ -436,7 +411,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fo?: TCSSPropValue
+    fo?: CCSSProp
 
     /**
      * @propDocStart
@@ -447,7 +422,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fill-op'?: TCSSPropValue
+    fillOp?: CCSSProp
 
     /**
      * @propDocStart
@@ -458,51 +433,51 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fill-opacity'?: TCSSPropValue
+    fillOpacity?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'fill-rule',
-     *     props: ['fr', 'fill-rule'],
+     *     props: ['fr', 'fill-rule', 'fill-rule'],
      *     short: 'fr'
      * }
      * @propDocEnd
      */
-    fr?: TCSSPropValue
+    fr?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'fill-rule',
-     *     props: ['fr', 'fill-rule'],
+     *     props: ['fr', 'fill-rule', 'fill-rule'],
      *     short: 'fr'
      * }
      * @propDocEnd
      */
-    'fill-rule'?: TCSSPropValue
+    fillRule?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'fill',
-     *     props: ['fi', 'fill'],
+     *     props: ['fi', 'fill', 'fill'],
      *     short: 'fi'
      * }
      * @propDocEnd
      */
-    fi?: TCSSPropValue
+    fi?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'fill',
-     *     props: ['fi', 'fill'],
+     *     props: ['fi', 'fill', 'fill'],
      *     short: 'fi'
      * }
      * @propDocEnd
      */
-    fill?: TCSSPropValue
+    fill?: CCSSProp
 
     /**
      * @propDocStart
@@ -513,7 +488,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fdc?: TCSSPropValue
+    fdc?: CCSSProp
 
     /**
      * @propDocStart
@@ -524,7 +499,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flood-c'?: TCSSPropValue
+    floodC?: CCSSProp
 
     /**
      * @propDocStart
@@ -535,7 +510,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flood-color'?: TCSSPropValue
+    floodColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -546,7 +521,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fdo?: TCSSPropValue
+    fdo?: CCSSProp
 
     /**
      * @propDocStart
@@ -557,7 +532,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flood-o'?: TCSSPropValue
+    floodO?: CCSSProp
 
     /**
      * @propDocStart
@@ -568,7 +543,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flood-opacity'?: TCSSPropValue
+    floodOpacity?: CCSSProp
 
     /**
      * @propDocStart
@@ -579,7 +554,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fsa?: TCSSPropValue
+    fsa?: CCSSProp
 
     /**
      * @propDocStart
@@ -590,7 +565,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-s-a'?: TCSSPropValue
+    fontSA?: CCSSProp
 
     /**
      * @propDocStart
@@ -601,7 +576,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-size-adjust'?: TCSSPropValue
+    fontSizeAdjust?: CCSSProp
 
     /**
      * @propDocStart
@@ -612,7 +587,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    goh?: TCSSPropValue
+    goh?: CCSSProp
 
     /**
      * @propDocStart
@@ -623,7 +598,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'glyph-o-h'?: TCSSPropValue
+    glyphOH?: CCSSProp
 
     /**
      * @propDocStart
@@ -634,7 +609,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'glyph-orientation-horizontal'?: TCSSPropValue
+    glyphOrientationHorizontal?: CCSSProp
 
     /**
      * @propDocStart
@@ -645,7 +620,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ir?: TCSSPropValue
+    ir?: CCSSProp
 
     /**
      * @propDocStart
@@ -656,7 +631,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'img-r'?: TCSSPropValue
+    imgR?: CCSSProp
 
     /**
      * @propDocStart
@@ -667,7 +642,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'image-rendering'?: TCSSPropValue
+    imageRendering?: CCSSProp
 
     /**
      * @propDocStart
@@ -678,7 +653,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    k?: TCSSPropValue
+    k?: CCSSProp
 
     /**
      * @propDocStart
@@ -689,7 +664,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    kern?: TCSSPropValue
+    kern?: CCSSProp
 
     /**
      * @propDocStart
@@ -700,7 +675,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    kerning?: TCSSPropValue
+    kerning?: CCSSProp
 
     /**
      * @propDocStart
@@ -711,7 +686,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    lc?: TCSSPropValue
+    lc?: CCSSProp
 
     /**
      * @propDocStart
@@ -722,7 +697,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'l-color'?: TCSSPropValue
+    lColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -733,7 +708,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'lighting-color'?: TCSSPropValue
+    lightingColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -744,7 +719,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    me?: TCSSPropValue
+    me?: CCSSProp
 
     /**
      * @propDocStart
@@ -755,7 +730,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'm-end'?: TCSSPropValue
+    mEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -766,7 +741,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'marker-end'?: TCSSPropValue
+    markerEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -777,7 +752,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mm?: TCSSPropValue
+    mm?: CCSSProp
 
     /**
      * @propDocStart
@@ -788,7 +763,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'm-mid'?: TCSSPropValue
+    mMid?: CCSSProp
 
     /**
      * @propDocStart
@@ -799,7 +774,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'marker-mid'?: TCSSPropValue
+    markerMid?: CCSSProp
 
     /**
      * @propDocStart
@@ -810,7 +785,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ms?: TCSSPropValue
+    ms?: CCSSProp
 
     /**
      * @propDocStart
@@ -821,7 +796,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'm-start'?: TCSSPropValue
+    mStart?: CCSSProp
 
     /**
      * @propDocStart
@@ -832,29 +807,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'marker-start'?: TCSSPropValue
+    markerStart?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'mask',
-     *     props: ['msk', 'mask'],
+     *     props: ['msk', 'mask', 'mask'],
      *     short: 'msk'
      * }
      * @propDocEnd
      */
-    msk?: TCSSPropValue
+    msk?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'mask',
-     *     props: ['msk', 'mask'],
+     *     props: ['msk', 'mask', 'mask'],
      *     short: 'msk'
      * }
      * @propDocEnd
      */
-    mask?: TCSSPropValue
+    mask?: CCSSProp
 
     /**
      * @propDocStart
@@ -865,7 +840,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sr?: TCSSPropValue
+    sr?: CCSSProp
 
     /**
      * @propDocStart
@@ -876,7 +851,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'shape-rdr'?: TCSSPropValue
+    shapeRdr?: CCSSProp
 
     /**
      * @propDocStart
@@ -887,7 +862,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'shape-rendering'?: TCSSPropValue
+    shapeRendering?: CCSSProp
 
     /**
      * @propDocStart
@@ -898,7 +873,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sc?: TCSSPropValue
+    sc?: CCSSProp
 
     /**
      * @propDocStart
@@ -909,7 +884,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stop-c'?: TCSSPropValue
+    stopC?: CCSSProp
 
     /**
      * @propDocStart
@@ -920,7 +895,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stop-color'?: TCSSPropValue
+    stopColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -931,7 +906,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sda?: TCSSPropValue
+    sda?: CCSSProp
 
     /**
      * @propDocStart
@@ -942,7 +917,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-da'?: TCSSPropValue
+    strokeDa?: CCSSProp
 
     /**
      * @propDocStart
@@ -953,7 +928,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-dasharray'?: TCSSPropValue
+    strokeDasharray?: CCSSProp
 
     /**
      * @propDocStart
@@ -964,7 +939,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sdo?: TCSSPropValue
+    sdo?: CCSSProp
 
     /**
      * @propDocStart
@@ -975,7 +950,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-do'?: TCSSPropValue
+    strokeDo?: CCSSProp
 
     /**
      * @propDocStart
@@ -986,7 +961,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-dashoffset'?: TCSSPropValue
+    strokeDashoffset?: CCSSProp
 
     /**
      * @propDocStart
@@ -997,7 +972,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    slc?: TCSSPropValue
+    slc?: CCSSProp
 
     /**
      * @propDocStart
@@ -1008,7 +983,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-lc'?: TCSSPropValue
+    strokeLc?: CCSSProp
 
     /**
      * @propDocStart
@@ -1019,7 +994,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-linecap'?: TCSSPropValue
+    strokeLinecap?: CCSSProp
 
     /**
      * @propDocStart
@@ -1030,7 +1005,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    slj?: TCSSPropValue
+    slj?: CCSSProp
 
     /**
      * @propDocStart
@@ -1041,7 +1016,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-lj'?: TCSSPropValue
+    strokeLj?: CCSSProp
 
     /**
      * @propDocStart
@@ -1052,7 +1027,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-linejoin'?: TCSSPropValue
+    strokeLinejoin?: CCSSProp
 
     /**
      * @propDocStart
@@ -1063,7 +1038,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sml?: TCSSPropValue
+    sml?: CCSSProp
 
     /**
      * @propDocStart
@@ -1074,7 +1049,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-ml'?: TCSSPropValue
+    strokeMl?: CCSSProp
 
     /**
      * @propDocStart
@@ -1085,7 +1060,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-miterlimit'?: TCSSPropValue
+    strokeMiterlimit?: CCSSProp
 
     /**
      * @propDocStart
@@ -1096,7 +1071,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sop?: TCSSPropValue
+    sop?: CCSSProp
 
     /**
      * @propDocStart
@@ -1107,7 +1082,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-o'?: TCSSPropValue
+    strokeO?: CCSSProp
 
     /**
      * @propDocStart
@@ -1118,7 +1093,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-opacity'?: TCSSPropValue
+    strokeOpacity?: CCSSProp
 
     /**
      * @propDocStart
@@ -1129,7 +1104,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    swt?: TCSSPropValue
+    swt?: CCSSProp
 
     /**
      * @propDocStart
@@ -1140,7 +1115,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-w'?: TCSSPropValue
+    strokeW?: CCSSProp
 
     /**
      * @propDocStart
@@ -1151,29 +1126,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'stroke-width'?: TCSSPropValue
+    strokeWidth?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'stroke',
-     *     props: ['st', 'stroke'],
+     *     props: ['st', 'stroke', 'stroke'],
      *     short: 'st'
      * }
      * @propDocEnd
      */
-    st?: TCSSPropValue
+    st?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'stroke',
-     *     props: ['st', 'stroke'],
+     *     props: ['st', 'stroke', 'stroke'],
      *     short: 'st'
      * }
      * @propDocEnd
      */
-    stroke?: TCSSPropValue
+    stroke?: CCSSProp
 
     /**
      * @propDocStart
@@ -1184,7 +1159,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    txa?: TCSSPropValue
+    txa?: CCSSProp
 
     /**
      * @propDocStart
@@ -1195,7 +1170,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-anchor'?: TCSSPropValue
+    txtAnchor?: CCSSProp
 
     /**
      * @propDocStart
@@ -1206,7 +1181,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-anchor'?: TCSSPropValue
+    textAnchor?: CCSSProp
 
     /**
      * @propDocStart
@@ -1217,7 +1192,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    txr?: TCSSPropValue
+    txr?: CCSSProp
 
     /**
      * @propDocStart
@@ -1228,7 +1203,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-render'?: TCSSPropValue
+    txtRender?: CCSSProp
 
     /**
      * @propDocStart
@@ -1239,7 +1214,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-rendering'?: TCSSPropValue
+    textRendering?: CCSSProp
 
     /**
      * @propDocStart
@@ -1250,7 +1225,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ub?: TCSSPropValue
+    ub?: CCSSProp
 
     /**
      * @propDocStart
@@ -1261,7 +1236,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'uni-bidi'?: TCSSPropValue
+    uniBidi?: CCSSProp
 
     /**
      * @propDocStart
@@ -1272,7 +1247,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'unicode-bidi'?: TCSSPropValue
+    unicodeBidi?: CCSSProp
 
     /**
      * @propDocStart
@@ -1283,7 +1258,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wm?: TCSSPropValue
+    wm?: CCSSProp
 
     /**
      * @propDocStart
@@ -1294,7 +1269,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    writing?: TCSSPropValue
+    writing?: CCSSProp
 
     /**
      * @propDocStart
@@ -1305,7 +1280,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'writing-mode'?: TCSSPropValue
+    writingMode?: CCSSProp
 
     /**
      * @propDocStart
@@ -1316,7 +1291,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    a?: TCSSPropValue
+    a?: CCSSProp
 
     /**
      * @propDocStart
@@ -1327,7 +1302,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    anim?: TCSSPropValue
+    anim?: CCSSProp
 
     /**
      * @propDocStart
@@ -1338,7 +1313,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    animation?: TCSSPropValue
+    animation?: CCSSProp
 
     /**
      * @propDocStart
@@ -1349,7 +1324,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ad?: TCSSPropValue
+    ad?: CCSSProp
 
     /**
      * @propDocStart
@@ -1360,7 +1335,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-del'?: TCSSPropValue
+    animDel?: CCSSProp
 
     /**
      * @propDocStart
@@ -1371,7 +1346,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-delay'?: TCSSPropValue
+    animationDelay?: CCSSProp
 
     /**
      * @propDocStart
@@ -1382,7 +1357,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    aDir?: TCSSPropValue
+    aDir?: CCSSProp
 
     /**
      * @propDocStart
@@ -1393,7 +1368,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-dir'?: TCSSPropValue
+    animDir?: CCSSProp
 
     /**
      * @propDocStart
@@ -1404,7 +1379,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-direction'?: TCSSPropValue
+    animationDirection?: CCSSProp
 
     /**
      * @propDocStart
@@ -1415,7 +1390,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    aD?: TCSSPropValue
+    aD?: CCSSProp
 
     /**
      * @propDocStart
@@ -1426,7 +1401,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-dur'?: TCSSPropValue
+    animDur?: CCSSProp
 
     /**
      * @propDocStart
@@ -1437,7 +1412,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-duration'?: TCSSPropValue
+    animationDuration?: CCSSProp
 
     /**
      * @propDocStart
@@ -1448,7 +1423,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    afm?: TCSSPropValue
+    afm?: CCSSProp
 
     /**
      * @propDocStart
@@ -1459,7 +1434,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-fill'?: TCSSPropValue
+    animFill?: CCSSProp
 
     /**
      * @propDocStart
@@ -1470,7 +1445,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-fill-mode'?: TCSSPropValue
+    animationFillMode?: CCSSProp
 
     /**
      * @propDocStart
@@ -1481,7 +1456,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    aic?: TCSSPropValue
+    aic?: CCSSProp
 
     /**
      * @propDocStart
@@ -1492,7 +1467,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-count'?: TCSSPropValue
+    animCount?: CCSSProp
 
     /**
      * @propDocStart
@@ -1503,7 +1478,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-iteration-count'?: TCSSPropValue
+    animationIterationCount?: CCSSProp
 
     /**
      * @propDocStart
@@ -1514,7 +1489,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    an?: TCSSPropValue
+    an?: CCSSProp
 
     /**
      * @propDocStart
@@ -1525,7 +1500,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-name'?: TCSSPropValue
+    animName?: CCSSProp
 
     /**
      * @propDocStart
@@ -1536,7 +1511,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-name'?: TCSSPropValue
+    animationName?: CCSSProp
 
     /**
      * @propDocStart
@@ -1547,7 +1522,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    aps?: TCSSPropValue
+    aps?: CCSSProp
 
     /**
      * @propDocStart
@@ -1558,7 +1533,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-state'?: TCSSPropValue
+    animState?: CCSSProp
 
     /**
      * @propDocStart
@@ -1569,7 +1544,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-play-state'?: TCSSPropValue
+    animationPlayState?: CCSSProp
 
     /**
      * @propDocStart
@@ -1580,7 +1555,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ats?: TCSSPropValue
+    ats?: CCSSProp
 
     /**
      * @propDocStart
@@ -1591,7 +1566,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'anim-timing'?: TCSSPropValue
+    animTiming?: CCSSProp
 
     /**
      * @propDocStart
@@ -1602,7 +1577,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'animation-timing-function'?: TCSSPropValue
+    animationTimingFunction?: CCSSProp
 
     /**
      * @propDocStart
@@ -1613,7 +1588,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bv?: TCSSPropValue
+    bv?: CCSSProp
 
     /**
      * @propDocStart
@@ -1624,7 +1599,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bf-visibility'?: TCSSPropValue
+    bfVisibility?: CCSSProp
 
     /**
      * @propDocStart
@@ -1635,7 +1610,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'backface-visibility'?: TCSSPropValue
+    backfaceVisibility?: CCSSProp
 
     /**
      * @propDocStart
@@ -1646,7 +1621,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    per?: TCSSPropValue
+    per?: CCSSProp
 
     /**
      * @propDocStart
@@ -1657,7 +1632,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pers?: TCSSPropValue
+    pers?: CCSSProp
 
     /**
      * @propDocStart
@@ -1668,7 +1643,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    perspective?: TCSSPropValue
+    perspective?: CCSSProp
 
     /**
      * @propDocStart
@@ -1679,7 +1654,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pero?: TCSSPropValue
+    pero?: CCSSProp
 
     /**
      * @propDocStart
@@ -1690,7 +1665,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pers-org'?: TCSSPropValue
+    persOrg?: CCSSProp
 
     /**
      * @propDocStart
@@ -1701,7 +1676,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'perspective-origin'?: TCSSPropValue
+    perspectiveOrigin?: CCSSProp
 
     /**
      * @propDocStart
@@ -1712,7 +1687,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tf?: TCSSPropValue
+    tf?: CCSSProp
 
     /**
      * @propDocStart
@@ -1723,7 +1698,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tran?: TCSSPropValue
+    tran?: CCSSProp
 
     /**
      * @propDocStart
@@ -1734,7 +1709,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    transform?: TCSSPropValue
+    transform?: CCSSProp
 
     /**
      * @propDocStart
@@ -1745,7 +1720,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tfo?: TCSSPropValue
+    tfo?: CCSSProp
 
     /**
      * @propDocStart
@@ -1756,7 +1731,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'tran-org'?: TCSSPropValue
+    tranOrg?: CCSSProp
 
     /**
      * @propDocStart
@@ -1767,7 +1742,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transform-origin'?: TCSSPropValue
+    transformOrigin?: CCSSProp
 
     /**
      * @propDocStart
@@ -1778,7 +1753,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tfs?: TCSSPropValue
+    tfs?: CCSSProp
 
     /**
      * @propDocStart
@@ -1789,7 +1764,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'tran-style'?: TCSSPropValue
+    tranStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -1800,7 +1775,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transform-style'?: TCSSPropValue
+    transformStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -1811,7 +1786,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tr?: TCSSPropValue
+    tr?: CCSSProp
 
     /**
      * @propDocStart
@@ -1822,7 +1797,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    trans?: TCSSPropValue
+    trans?: CCSSProp
 
     /**
      * @propDocStart
@@ -1833,7 +1808,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    transition?: TCSSPropValue
+    transition?: CCSSProp
 
     /**
      * @propDocStart
@@ -1844,7 +1819,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    trD?: TCSSPropValue
+    trD?: CCSSProp
 
     /**
      * @propDocStart
@@ -1855,7 +1830,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'trans-del'?: TCSSPropValue
+    transDel?: CCSSProp
 
     /**
      * @propDocStart
@@ -1866,7 +1841,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transition-delay'?: TCSSPropValue
+    transitionDelay?: CCSSProp
 
     /**
      * @propDocStart
@@ -1877,7 +1852,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    trd?: TCSSPropValue
+    trd?: CCSSProp
 
     /**
      * @propDocStart
@@ -1888,7 +1863,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'trans-dur'?: TCSSPropValue
+    transDur?: CCSSProp
 
     /**
      * @propDocStart
@@ -1899,7 +1874,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transition-duration'?: TCSSPropValue
+    transitionDuration?: CCSSProp
 
     /**
      * @propDocStart
@@ -1910,7 +1885,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    trp?: TCSSPropValue
+    trp?: CCSSProp
 
     /**
      * @propDocStart
@@ -1921,7 +1896,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'trans-prop'?: TCSSPropValue
+    transProp?: CCSSProp
 
     /**
      * @propDocStart
@@ -1932,7 +1907,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transition-property'?: TCSSPropValue
+    transitionProperty?: CCSSProp
 
     /**
      * @propDocStart
@@ -1943,7 +1918,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    trt?: TCSSPropValue
+    trt?: CCSSProp
 
     /**
      * @propDocStart
@@ -1954,7 +1929,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'trans-timing'?: TCSSPropValue
+    transTiming?: CCSSProp
 
     /**
      * @propDocStart
@@ -1965,7 +1940,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'transition-timing-function'?: TCSSPropValue
+    transitionTimingFunction?: CCSSProp
 
     /**
      * @propDocStart
@@ -1976,7 +1951,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    f?: TCSSPropValue
+    f?: CCSSProp
 
     /**
      * @propDocStart
@@ -1987,7 +1962,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fx?: TCSSPropValue
+    fx?: CCSSProp
 
     /**
      * @propDocStart
@@ -1998,7 +1973,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    flex?: TCSSPropValue
+    flex?: CCSSProp
 
     /**
      * @propDocStart
@@ -2009,7 +1984,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fd?: TCSSPropValue
+    fd?: CCSSProp
 
     /**
      * @propDocStart
@@ -2020,7 +1995,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-dir'?: TCSSPropValue
+    fxDir?: CCSSProp
 
     /**
      * @propDocStart
@@ -2031,7 +2006,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-direction'?: TCSSPropValue
+    flexDirection?: CCSSProp
 
     /**
      * @propDocStart
@@ -2042,7 +2017,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fw?: TCSSPropValue
+    fw?: CCSSProp
 
     /**
      * @propDocStart
@@ -2053,7 +2028,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-wrap'?: TCSSPropValue
+    fxWrap?: CCSSProp
 
     /**
      * @propDocStart
@@ -2064,7 +2039,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-wrap'?: TCSSPropValue
+    flexWrap?: CCSSProp
 
     /**
      * @propDocStart
@@ -2075,7 +2050,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fb?: TCSSPropValue
+    fb?: CCSSProp
 
     /**
      * @propDocStart
@@ -2086,7 +2061,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-base'?: TCSSPropValue
+    fxBase?: CCSSProp
 
     /**
      * @propDocStart
@@ -2097,7 +2072,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-basis'?: TCSSPropValue
+    flexBasis?: CCSSProp
 
     /**
      * @propDocStart
@@ -2108,7 +2083,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ff?: TCSSPropValue
+    ff?: CCSSProp
 
     /**
      * @propDocStart
@@ -2119,7 +2094,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-flow'?: TCSSPropValue
+    fxFlow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2130,7 +2105,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-flow'?: TCSSPropValue
+    flexFlow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2141,7 +2116,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fg?: TCSSPropValue
+    fg?: CCSSProp
 
     /**
      * @propDocStart
@@ -2152,7 +2127,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-grow'?: TCSSPropValue
+    fxGrow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2163,7 +2138,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-grow'?: TCSSPropValue
+    flexGrow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2174,7 +2149,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fs?: TCSSPropValue
+    fs?: CCSSProp
 
     /**
      * @propDocStart
@@ -2185,7 +2160,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'fx-shrink'?: TCSSPropValue
+    fxShrink?: CCSSProp
 
     /**
      * @propDocStart
@@ -2196,7 +2171,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'flex-shrink'?: TCSSPropValue
+    flexShrink?: CCSSProp
 
     /**
      * @propDocStart
@@ -2207,7 +2182,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ai?: TCSSPropValue
+    ai?: CCSSProp
 
     /**
      * @propDocStart
@@ -2218,7 +2193,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'al-items'?: TCSSPropValue
+    alItems?: CCSSProp
 
     /**
      * @propDocStart
@@ -2229,7 +2204,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'align-items'?: TCSSPropValue
+    alignItems?: CCSSProp
 
     /**
      * @propDocStart
@@ -2240,7 +2215,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ac?: TCSSPropValue
+    ac?: CCSSProp
 
     /**
      * @propDocStart
@@ -2251,7 +2226,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'al-content'?: TCSSPropValue
+    alContent?: CCSSProp
 
     /**
      * @propDocStart
@@ -2262,7 +2237,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'align-content'?: TCSSPropValue
+    alignContent?: CCSSProp
 
     /**
      * @propDocStart
@@ -2273,7 +2248,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ji?: TCSSPropValue
+    ji?: CCSSProp
 
     /**
      * @propDocStart
@@ -2284,7 +2259,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'just-items'?: TCSSPropValue
+    justItems?: CCSSProp
 
     /**
      * @propDocStart
@@ -2295,7 +2270,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'justify-items'?: TCSSPropValue
+    justifyItems?: CCSSProp
 
     /**
      * @propDocStart
@@ -2306,7 +2281,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    jc?: TCSSPropValue
+    jc?: CCSSProp
 
     /**
      * @propDocStart
@@ -2317,7 +2292,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'just-content'?: TCSSPropValue
+    justContent?: CCSSProp
 
     /**
      * @propDocStart
@@ -2328,7 +2303,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'justify-content'?: TCSSPropValue
+    justifyContent?: CCSSProp
 
     /**
      * @propDocStart
@@ -2339,7 +2314,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    aS?: TCSSPropValue
+    aS?: CCSSProp
 
     /**
      * @propDocStart
@@ -2350,7 +2325,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'al-self'?: TCSSPropValue
+    alSelf?: CCSSProp
 
     /**
      * @propDocStart
@@ -2361,7 +2336,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'align-self'?: TCSSPropValue
+    alignSelf?: CCSSProp
 
     /**
      * @propDocStart
@@ -2372,7 +2347,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    jS?: TCSSPropValue
+    jS?: CCSSProp
 
     /**
      * @propDocStart
@@ -2383,7 +2358,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'just-self'?: TCSSPropValue
+    justSelf?: CCSSProp
 
     /**
      * @propDocStart
@@ -2394,29 +2369,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'justify-self'?: TCSSPropValue
+    justifySelf?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'font',
-     *     props: ['ft', 'font'],
+     *     props: ['ft', 'ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
      */
-    ft?: TCSSPropValue
+    ft?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'font',
-     *     props: ['ft', 'font'],
+     *     props: ['ft', 'ft', 'font'],
      *     short: 'ft'
      * }
      * @propDocEnd
      */
-    font?: TCSSPropValue
+    font?: CCSSProp
 
     /**
      * @propDocStart
@@ -2427,7 +2402,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftf?: TCSSPropValue
+    ftf?: CCSSProp
 
     /**
      * @propDocStart
@@ -2438,7 +2413,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-family'?: TCSSPropValue
+    ftFamily?: CCSSProp
 
     /**
      * @propDocStart
@@ -2449,7 +2424,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-family'?: TCSSPropValue
+    fontFamily?: CCSSProp
 
     /**
      * @propDocStart
@@ -2460,7 +2435,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftk?: TCSSPropValue
+    ftk?: CCSSProp
 
     /**
      * @propDocStart
@@ -2471,7 +2446,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-kern'?: TCSSPropValue
+    ftKern?: CCSSProp
 
     /**
      * @propDocStart
@@ -2482,7 +2457,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-kerning'?: TCSSPropValue
+    fontKerning?: CCSSProp
 
     /**
      * @propDocStart
@@ -2493,7 +2468,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    fts?: TCSSPropValue
+    fts?: CCSSProp
 
     /**
      * @propDocStart
@@ -2504,7 +2479,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-size'?: TCSSPropValue
+    ftSize?: CCSSProp
 
     /**
      * @propDocStart
@@ -2515,7 +2490,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-size'?: TCSSPropValue
+    fontSize?: CCSSProp
 
     /**
      * @propDocStart
@@ -2526,7 +2501,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftStr?: TCSSPropValue
+    ftStr?: CCSSProp
 
     /**
      * @propDocStart
@@ -2537,7 +2512,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-stretch'?: TCSSPropValue
+    ftStretch?: CCSSProp
 
     /**
      * @propDocStart
@@ -2548,7 +2523,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-stretch'?: TCSSPropValue
+    fontStretch?: CCSSProp
 
     /**
      * @propDocStart
@@ -2559,7 +2534,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftSty?: TCSSPropValue
+    ftSty?: CCSSProp
 
     /**
      * @propDocStart
@@ -2570,7 +2545,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-style'?: TCSSPropValue
+    ftStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -2581,7 +2556,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-style'?: TCSSPropValue
+    fontStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -2592,7 +2567,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftv?: TCSSPropValue
+    ftv?: CCSSProp
 
     /**
      * @propDocStart
@@ -2603,7 +2578,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-variant'?: TCSSPropValue
+    ftVariant?: CCSSProp
 
     /**
      * @propDocStart
@@ -2614,7 +2589,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-variant'?: TCSSPropValue
+    fontVariant?: CCSSProp
 
     /**
      * @propDocStart
@@ -2625,7 +2600,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ftw?: TCSSPropValue
+    ftw?: CCSSProp
 
     /**
      * @propDocStart
@@ -2636,7 +2611,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ft-weight'?: TCSSPropValue
+    ftWeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -2647,7 +2622,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'font-weight'?: TCSSPropValue
+    fontWeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -2658,7 +2633,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ls?: TCSSPropValue
+    ls?: CCSSProp
 
     /**
      * @propDocStart
@@ -2669,7 +2644,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'ltr-spacing'?: TCSSPropValue
+    ltrSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -2680,7 +2655,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'letter-spacing'?: TCSSPropValue
+    letterSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -2691,7 +2666,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    lh?: TCSSPropValue
+    lh?: CCSSProp
 
     /**
      * @propDocStart
@@ -2702,7 +2677,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'line-h'?: TCSSPropValue
+    lineH?: CCSSProp
 
     /**
      * @propDocStart
@@ -2713,7 +2688,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'line-height'?: TCSSPropValue
+    lineHeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -2724,7 +2699,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ta?: TCSSPropValue
+    ta?: CCSSProp
 
     /**
      * @propDocStart
@@ -2735,7 +2710,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-align'?: TCSSPropValue
+    txtAlign?: CCSSProp
 
     /**
      * @propDocStart
@@ -2746,7 +2721,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-align'?: TCSSPropValue
+    textAlign?: CCSSProp
 
     /**
      * @propDocStart
@@ -2757,7 +2732,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    td?: TCSSPropValue
+    td?: CCSSProp
 
     /**
      * @propDocStart
@@ -2768,7 +2743,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-decor'?: TCSSPropValue
+    txtDecor?: CCSSProp
 
     /**
      * @propDocStart
@@ -2779,7 +2754,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-decoration'?: TCSSPropValue
+    textDecoration?: CCSSProp
 
     /**
      * @propDocStart
@@ -2790,7 +2765,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ti?: TCSSPropValue
+    ti?: CCSSProp
 
     /**
      * @propDocStart
@@ -2801,7 +2776,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-in'?: TCSSPropValue
+    txtIn?: CCSSProp
 
     /**
      * @propDocStart
@@ -2812,7 +2787,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-indent'?: TCSSPropValue
+    textIndent?: CCSSProp
 
     /**
      * @propDocStart
@@ -2823,7 +2798,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    to?: TCSSPropValue
+    to?: CCSSProp
 
     /**
      * @propDocStart
@@ -2834,7 +2809,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-flow'?: TCSSPropValue
+    txtFlow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2845,7 +2820,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-overflow'?: TCSSPropValue
+    textOverflow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2856,7 +2831,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ts?: TCSSPropValue
+    ts?: CCSSProp
 
     /**
      * @propDocStart
@@ -2867,7 +2842,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-shad'?: TCSSPropValue
+    txtShad?: CCSSProp
 
     /**
      * @propDocStart
@@ -2878,7 +2853,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-shadow'?: TCSSPropValue
+    textShadow?: CCSSProp
 
     /**
      * @propDocStart
@@ -2889,7 +2864,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    tt?: TCSSPropValue
+    tt?: CCSSProp
 
     /**
      * @propDocStart
@@ -2900,7 +2875,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'txt-tranf'?: TCSSPropValue
+    txtTranf?: CCSSProp
 
     /**
      * @propDocStart
@@ -2911,7 +2886,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'text-transform'?: TCSSPropValue
+    textTransform?: CCSSProp
 
     /**
      * @propDocStart
@@ -2922,7 +2897,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    va?: TCSSPropValue
+    va?: CCSSProp
 
     /**
      * @propDocStart
@@ -2933,7 +2908,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'v-align'?: TCSSPropValue
+    vAlign?: CCSSProp
 
     /**
      * @propDocStart
@@ -2944,7 +2919,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'vertical-align'?: TCSSPropValue
+    verticalAlign?: CCSSProp
 
     /**
      * @propDocStart
@@ -2955,7 +2930,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ws?: TCSSPropValue
+    ws?: CCSSProp
 
     /**
      * @propDocStart
@@ -2966,7 +2941,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'w-space'?: TCSSPropValue
+    wSpace?: CCSSProp
 
     /**
      * @propDocStart
@@ -2977,7 +2952,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'white-space'?: TCSSPropValue
+    whiteSpace?: CCSSProp
 
     /**
      * @propDocStart
@@ -2988,7 +2963,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wb?: TCSSPropValue
+    wb?: CCSSProp
 
     /**
      * @propDocStart
@@ -2999,7 +2974,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'w-break'?: TCSSPropValue
+    wBreak?: CCSSProp
 
     /**
      * @propDocStart
@@ -3010,7 +2985,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'word-break'?: TCSSPropValue
+    wordBreak?: CCSSProp
 
     /**
      * @propDocStart
@@ -3021,7 +2996,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wS?: TCSSPropValue
+    wS?: CCSSProp
 
     /**
      * @propDocStart
@@ -3032,7 +3007,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'w-spacing'?: TCSSPropValue
+    wSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -3043,7 +3018,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'word-spacing'?: TCSSPropValue
+    wordSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -3054,7 +3029,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ww?: TCSSPropValue
+    ww?: CCSSProp
 
     /**
      * @propDocStart
@@ -3065,7 +3040,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'w-wrap'?: TCSSPropValue
+    wWrap?: CCSSProp
 
     /**
      * @propDocStart
@@ -3076,7 +3051,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'word-wrap'?: TCSSPropValue
+    wordWrap?: CCSSProp
 
     /**
      * @propDocStart
@@ -3087,7 +3062,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    l?: TCSSPropValue
+    l?: CCSSProp
 
     /**
      * @propDocStart
@@ -3098,7 +3073,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    list?: TCSSPropValue
+    list?: CCSSProp
 
     /**
      * @propDocStart
@@ -3109,7 +3084,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-style'?: TCSSPropValue
+    listStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -3120,7 +3095,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    li?: TCSSPropValue
+    li?: CCSSProp
 
     /**
      * @propDocStart
@@ -3131,7 +3106,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-img'?: TCSSPropValue
+    listImg?: CCSSProp
 
     /**
      * @propDocStart
@@ -3142,7 +3117,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-style-image'?: TCSSPropValue
+    listStyleImage?: CCSSProp
 
     /**
      * @propDocStart
@@ -3153,7 +3128,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    lp?: TCSSPropValue
+    lp?: CCSSProp
 
     /**
      * @propDocStart
@@ -3164,7 +3139,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-pos'?: TCSSPropValue
+    listPos?: CCSSProp
 
     /**
      * @propDocStart
@@ -3175,7 +3150,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-style-position'?: TCSSPropValue
+    listStylePosition?: CCSSProp
 
     /**
      * @propDocStart
@@ -3186,7 +3161,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    lt?: TCSSPropValue
+    lt?: CCSSProp
 
     /**
      * @propDocStart
@@ -3197,7 +3172,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-type'?: TCSSPropValue
+    listType?: CCSSProp
 
     /**
      * @propDocStart
@@ -3208,7 +3183,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'list-style-type'?: TCSSPropValue
+    listStyleType?: CCSSProp
 
     /**
      * @propDocStart
@@ -3219,7 +3194,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    m?: TCSSPropValue
+    m?: CCSSProp
 
     /**
      * @propDocStart
@@ -3230,7 +3205,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mar?: TCSSPropValue
+    mar?: CCSSProp
 
     /**
      * @propDocStart
@@ -3241,7 +3216,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    margin?: TCSSPropValue
+    margin?: CCSSProp
 
     /**
      * @propDocStart
@@ -3252,7 +3227,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mT?: TCSSPropValue
+    mT?: CCSSProp
 
     /**
      * @propDocStart
@@ -3263,7 +3238,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'mar-top'?: TCSSPropValue
+    marTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -3274,7 +3249,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'margin-top'?: TCSSPropValue
+    marginTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -3285,7 +3260,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mR?: TCSSPropValue
+    mR?: CCSSProp
 
     /**
      * @propDocStart
@@ -3296,7 +3271,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'mar-right'?: TCSSPropValue
+    marRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -3307,7 +3282,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'margin-right'?: TCSSPropValue
+    marginRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -3318,7 +3293,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mB?: TCSSPropValue
+    mB?: CCSSProp
 
     /**
      * @propDocStart
@@ -3329,7 +3304,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'mar-bottom'?: TCSSPropValue
+    marBottom?: CCSSProp
 
     /**
      * @propDocStart
@@ -3340,7 +3315,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'margin-bottom'?: TCSSPropValue
+    marginBottom?: CCSSProp
 
     /**
      * @propDocStart
@@ -3351,7 +3326,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mL?: TCSSPropValue
+    mL?: CCSSProp
 
     /**
      * @propDocStart
@@ -3362,7 +3337,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'mar-left'?: TCSSPropValue
+    marLeft?: CCSSProp
 
     /**
      * @propDocStart
@@ -3373,7 +3348,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'margin-left'?: TCSSPropValue
+    marginLeft?: CCSSProp
 
     /**
      * @propDocStart
@@ -3384,7 +3359,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    p?: TCSSPropValue
+    p?: CCSSProp
 
     /**
      * @propDocStart
@@ -3395,7 +3370,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pad?: TCSSPropValue
+    pad?: CCSSProp
 
     /**
      * @propDocStart
@@ -3406,7 +3381,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    padding?: TCSSPropValue
+    padding?: CCSSProp
 
     /**
      * @propDocStart
@@ -3417,7 +3392,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pT?: TCSSPropValue
+    pT?: CCSSProp
 
     /**
      * @propDocStart
@@ -3428,7 +3403,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pad-top'?: TCSSPropValue
+    padTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -3439,7 +3414,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'padding-top'?: TCSSPropValue
+    paddingTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -3450,7 +3425,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pR?: TCSSPropValue
+    pR?: CCSSProp
 
     /**
      * @propDocStart
@@ -3461,7 +3436,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pad-right'?: TCSSPropValue
+    padRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -3472,7 +3447,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'padding-right'?: TCSSPropValue
+    paddingRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -3483,7 +3458,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pB?: TCSSPropValue
+    pB?: CCSSProp
 
     /**
      * @propDocStart
@@ -3494,7 +3469,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pad-bottom'?: TCSSPropValue
+    padBottom?: CCSSProp
 
     /**
      * @propDocStart
@@ -3505,7 +3480,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'padding-bottom'?: TCSSPropValue
+    paddingBottom?: CCSSProp
 
     /**
      * @propDocStart
@@ -3516,7 +3491,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pL?: TCSSPropValue
+    pL?: CCSSProp
 
     /**
      * @propDocStart
@@ -3527,7 +3502,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pad-left'?: TCSSPropValue
+    padLeft?: CCSSProp
 
     /**
      * @propDocStart
@@ -3538,29 +3513,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'padding-left'?: TCSSPropValue
+    paddingLeft?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'background',
-     *     props: ['bg', 'background'],
+     *     props: ['bg', 'bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
      */
-    bg?: TCSSPropValue
+    bg?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'background',
-     *     props: ['bg', 'background'],
+     *     props: ['bg', 'bg', 'background'],
      *     short: 'bg'
      * }
      * @propDocEnd
      */
-    background?: TCSSPropValue
+    background?: CCSSProp
 
     /**
      * @propDocStart
@@ -3571,7 +3546,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgi?: TCSSPropValue
+    bgi?: CCSSProp
 
     /**
      * @propDocStart
@@ -3582,7 +3557,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-img'?: TCSSPropValue
+    bgImg?: CCSSProp
 
     /**
      * @propDocStart
@@ -3593,7 +3568,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-image'?: TCSSPropValue
+    backgroundImage?: CCSSProp
 
     /**
      * @propDocStart
@@ -3604,7 +3579,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgc?: TCSSPropValue
+    bgc?: CCSSProp
 
     /**
      * @propDocStart
@@ -3615,7 +3590,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-color'?: TCSSPropValue
+    bgColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -3626,7 +3601,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-color'?: TCSSPropValue
+    backgroundColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -3637,7 +3612,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgs?: TCSSPropValue
+    bgs?: CCSSProp
 
     /**
      * @propDocStart
@@ -3648,7 +3623,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-size'?: TCSSPropValue
+    bgSize?: CCSSProp
 
     /**
      * @propDocStart
@@ -3659,7 +3634,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-size'?: TCSSPropValue
+    backgroundSize?: CCSSProp
 
     /**
      * @propDocStart
@@ -3670,7 +3645,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgr?: TCSSPropValue
+    bgr?: CCSSProp
 
     /**
      * @propDocStart
@@ -3681,7 +3656,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-repeat'?: TCSSPropValue
+    bgRepeat?: CCSSProp
 
     /**
      * @propDocStart
@@ -3692,7 +3667,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-repeat'?: TCSSPropValue
+    backgroundRepeat?: CCSSProp
 
     /**
      * @propDocStart
@@ -3703,7 +3678,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgp?: TCSSPropValue
+    bgp?: CCSSProp
 
     /**
      * @propDocStart
@@ -3714,7 +3689,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-pos'?: TCSSPropValue
+    bgPos?: CCSSProp
 
     /**
      * @propDocStart
@@ -3725,7 +3700,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-position'?: TCSSPropValue
+    backgroundPosition?: CCSSProp
 
     /**
      * @propDocStart
@@ -3736,7 +3711,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bga?: TCSSPropValue
+    bga?: CCSSProp
 
     /**
      * @propDocStart
@@ -3747,7 +3722,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-attach'?: TCSSPropValue
+    bgAttach?: CCSSProp
 
     /**
      * @propDocStart
@@ -3758,7 +3733,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-attachment'?: TCSSPropValue
+    backgroundAttachment?: CCSSProp
 
     /**
      * @propDocStart
@@ -3769,7 +3744,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgbm?: TCSSPropValue
+    bgbm?: CCSSProp
 
     /**
      * @propDocStart
@@ -3780,7 +3755,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-blend'?: TCSSPropValue
+    bgBlend?: CCSSProp
 
     /**
      * @propDocStart
@@ -3791,7 +3766,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-blend-mode'?: TCSSPropValue
+    backgroundBlendMode?: CCSSProp
 
     /**
      * @propDocStart
@@ -3802,7 +3777,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgC?: TCSSPropValue
+    bgC?: CCSSProp
 
     /**
      * @propDocStart
@@ -3813,7 +3788,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-clip'?: TCSSPropValue
+    bgClip?: CCSSProp
 
     /**
      * @propDocStart
@@ -3824,7 +3799,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-clip'?: TCSSPropValue
+    backgroundClip?: CCSSProp
 
     /**
      * @propDocStart
@@ -3835,7 +3810,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bgo?: TCSSPropValue
+    bgo?: CCSSProp
 
     /**
      * @propDocStart
@@ -3846,7 +3821,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bg-org'?: TCSSPropValue
+    bgOrg?: CCSSProp
 
     /**
      * @propDocStart
@@ -3857,7 +3832,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'background-origin'?: TCSSPropValue
+    backgroundOrigin?: CCSSProp
 
     /**
      * @propDocStart
@@ -3868,7 +3843,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bf?: TCSSPropValue
+    bf?: CCSSProp
 
     /**
      * @propDocStart
@@ -3879,7 +3854,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-filter'?: TCSSPropValue
+    bdFilter?: CCSSProp
 
     /**
      * @propDocStart
@@ -3890,7 +3865,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'backdrop-filter'?: TCSSPropValue
+    backdropFilter?: CCSSProp
 
     /**
      * @propDocStart
@@ -3901,7 +3876,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    w?: TCSSPropValue
+    w?: CCSSProp
 
     /**
      * @propDocStart
@@ -3912,7 +3887,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wid?: TCSSPropValue
+    wid?: CCSSProp
 
     /**
      * @propDocStart
@@ -3923,7 +3898,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    width?: TCSSPropValue
+    width?: CCSSProp
 
     /**
      * @propDocStart
@@ -3934,7 +3909,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    h?: TCSSPropValue
+    h?: CCSSProp
 
     /**
      * @propDocStart
@@ -3945,7 +3920,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    hei?: TCSSPropValue
+    hei?: CCSSProp
 
     /**
      * @propDocStart
@@ -3956,7 +3931,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    height?: TCSSPropValue
+    height?: CCSSProp
 
     /**
      * @propDocStart
@@ -3967,7 +3942,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    minW?: TCSSPropValue
+    minW?: CCSSProp
 
     /**
      * @propDocStart
@@ -3978,7 +3953,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'min-wid'?: TCSSPropValue
+    minWid?: CCSSProp
 
     /**
      * @propDocStart
@@ -3989,7 +3964,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'min-width'?: TCSSPropValue
+    minWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -4000,7 +3975,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    minH?: TCSSPropValue
+    minH?: CCSSProp
 
     /**
      * @propDocStart
@@ -4011,7 +3986,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'min-hei'?: TCSSPropValue
+    minHei?: CCSSProp
 
     /**
      * @propDocStart
@@ -4022,7 +3997,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'min-height'?: TCSSPropValue
+    minHeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -4033,7 +4008,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    maxW?: TCSSPropValue
+    maxW?: CCSSProp
 
     /**
      * @propDocStart
@@ -4044,7 +4019,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'max-wid'?: TCSSPropValue
+    maxWid?: CCSSProp
 
     /**
      * @propDocStart
@@ -4055,7 +4030,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'max-width'?: TCSSPropValue
+    maxWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -4066,7 +4041,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    maxH?: TCSSPropValue
+    maxH?: CCSSProp
 
     /**
      * @propDocStart
@@ -4077,7 +4052,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'max-hei'?: TCSSPropValue
+    maxHei?: CCSSProp
 
     /**
      * @propDocStart
@@ -4088,7 +4063,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'max-height'?: TCSSPropValue
+    maxHeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -4099,7 +4074,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    g?: TCSSPropValue
+    g?: CCSSProp
 
     /**
      * @propDocStart
@@ -4110,7 +4085,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    grd?: TCSSPropValue
+    grd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4121,7 +4096,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    grid?: TCSSPropValue
+    grid?: CCSSProp
 
     /**
      * @propDocStart
@@ -4132,7 +4107,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ga?: TCSSPropValue
+    ga?: CCSSProp
 
     /**
      * @propDocStart
@@ -4143,7 +4118,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-area'?: TCSSPropValue
+    grArea?: CCSSProp
 
     /**
      * @propDocStart
@@ -4154,7 +4129,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-area'?: TCSSPropValue
+    gridArea?: CCSSProp
 
     /**
      * @propDocStart
@@ -4165,7 +4140,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gac?: TCSSPropValue
+    gac?: CCSSProp
 
     /**
      * @propDocStart
@@ -4176,7 +4151,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-auto-cols'?: TCSSPropValue
+    grAutoCols?: CCSSProp
 
     /**
      * @propDocStart
@@ -4187,7 +4162,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-auto-columns'?: TCSSPropValue
+    gridAutoColumns?: CCSSProp
 
     /**
      * @propDocStart
@@ -4198,7 +4173,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gaf?: TCSSPropValue
+    gaf?: CCSSProp
 
     /**
      * @propDocStart
@@ -4209,7 +4184,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-auto-flow'?: TCSSPropValue
+    grAutoFlow?: CCSSProp
 
     /**
      * @propDocStart
@@ -4220,7 +4195,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-auto-flow'?: TCSSPropValue
+    gridAutoFlow?: CCSSProp
 
     /**
      * @propDocStart
@@ -4231,7 +4206,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gar?: TCSSPropValue
+    gar?: CCSSProp
 
     /**
      * @propDocStart
@@ -4242,7 +4217,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-auto-rows'?: TCSSPropValue
+    grAutoRows?: CCSSProp
 
     /**
      * @propDocStart
@@ -4253,7 +4228,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-auto-rows'?: TCSSPropValue
+    gridAutoRows?: CCSSProp
 
     /**
      * @propDocStart
@@ -4264,7 +4239,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gc?: TCSSPropValue
+    gc?: CCSSProp
 
     /**
      * @propDocStart
@@ -4275,7 +4250,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-col'?: TCSSPropValue
+    grCol?: CCSSProp
 
     /**
      * @propDocStart
@@ -4286,7 +4261,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-column'?: TCSSPropValue
+    gridColumn?: CCSSProp
 
     /**
      * @propDocStart
@@ -4297,7 +4272,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gce?: TCSSPropValue
+    gce?: CCSSProp
 
     /**
      * @propDocStart
@@ -4308,7 +4283,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-col-end'?: TCSSPropValue
+    grColEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4319,7 +4294,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-column-end'?: TCSSPropValue
+    gridColumnEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4330,7 +4305,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gcg?: TCSSPropValue
+    gcg?: CCSSProp
 
     /**
      * @propDocStart
@@ -4341,7 +4316,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-col-gap'?: TCSSPropValue
+    grColGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4352,7 +4327,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-column-gap'?: TCSSPropValue
+    gridColumnGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4363,7 +4338,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gcs?: TCSSPropValue
+    gcs?: CCSSProp
 
     /**
      * @propDocStart
@@ -4374,7 +4349,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-col-start'?: TCSSPropValue
+    grColStart?: CCSSProp
 
     /**
      * @propDocStart
@@ -4385,7 +4360,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-column-start'?: TCSSPropValue
+    gridColumnStart?: CCSSProp
 
     /**
      * @propDocStart
@@ -4396,7 +4371,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gg?: TCSSPropValue
+    gg?: CCSSProp
 
     /**
      * @propDocStart
@@ -4407,7 +4382,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-gap'?: TCSSPropValue
+    grGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4418,7 +4393,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-gap'?: TCSSPropValue
+    gridGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4429,7 +4404,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gr?: TCSSPropValue
+    gr?: CCSSProp
 
     /**
      * @propDocStart
@@ -4440,7 +4415,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-row'?: TCSSPropValue
+    grRow?: CCSSProp
 
     /**
      * @propDocStart
@@ -4451,7 +4426,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-row'?: TCSSPropValue
+    gridRow?: CCSSProp
 
     /**
      * @propDocStart
@@ -4462,7 +4437,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gre?: TCSSPropValue
+    gre?: CCSSProp
 
     /**
      * @propDocStart
@@ -4473,7 +4448,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-row-end'?: TCSSPropValue
+    grRowEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4484,7 +4459,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-row-end'?: TCSSPropValue
+    gridRowEnd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4495,7 +4470,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    grg?: TCSSPropValue
+    grg?: CCSSProp
 
     /**
      * @propDocStart
@@ -4506,7 +4481,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-row-gap'?: TCSSPropValue
+    grRowGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4517,7 +4492,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-row-gap'?: TCSSPropValue
+    gridRowGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -4528,7 +4503,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    grs?: TCSSPropValue
+    grs?: CCSSProp
 
     /**
      * @propDocStart
@@ -4539,7 +4514,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-row-start'?: TCSSPropValue
+    grRowStart?: CCSSProp
 
     /**
      * @propDocStart
@@ -4550,7 +4525,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-row-start'?: TCSSPropValue
+    gridRowStart?: CCSSProp
 
     /**
      * @propDocStart
@@ -4561,7 +4536,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gt?: TCSSPropValue
+    gt?: CCSSProp
 
     /**
      * @propDocStart
@@ -4572,7 +4547,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-tmpl'?: TCSSPropValue
+    grTmpl?: CCSSProp
 
     /**
      * @propDocStart
@@ -4583,7 +4558,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-template'?: TCSSPropValue
+    gridTemplate?: CCSSProp
 
     /**
      * @propDocStart
@@ -4594,7 +4569,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gta?: TCSSPropValue
+    gta?: CCSSProp
 
     /**
      * @propDocStart
@@ -4605,7 +4580,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-areas'?: TCSSPropValue
+    grAreas?: CCSSProp
 
     /**
      * @propDocStart
@@ -4616,7 +4591,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-template-areas'?: TCSSPropValue
+    gridTemplateAreas?: CCSSProp
 
     /**
      * @propDocStart
@@ -4627,7 +4602,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gtc?: TCSSPropValue
+    gtc?: CCSSProp
 
     /**
      * @propDocStart
@@ -4638,7 +4613,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-cols'?: TCSSPropValue
+    grCols?: CCSSProp
 
     /**
      * @propDocStart
@@ -4649,7 +4624,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-template-columns'?: TCSSPropValue
+    gridTemplateColumns?: CCSSProp
 
     /**
      * @propDocStart
@@ -4660,7 +4635,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    gtr?: TCSSPropValue
+    gtr?: CCSSProp
 
     /**
      * @propDocStart
@@ -4671,7 +4646,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'gr-rows'?: TCSSPropValue
+    grRows?: CCSSProp
 
     /**
      * @propDocStart
@@ -4682,7 +4657,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'grid-template-rows'?: TCSSPropValue
+    gridTemplateRows?: CCSSProp
 
     /**
      * @propDocStart
@@ -4693,7 +4668,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    b?: TCSSPropValue
+    b?: CCSSProp
 
     /**
      * @propDocStart
@@ -4704,7 +4679,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bd?: TCSSPropValue
+    bd?: CCSSProp
 
     /**
      * @propDocStart
@@ -4715,7 +4690,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    border?: TCSSPropValue
+    border?: CCSSProp
 
     /**
      * @propDocStart
@@ -4726,7 +4701,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bB?: TCSSPropValue
+    bB?: CCSSProp
 
     /**
      * @propDocStart
@@ -4737,7 +4712,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot'?: TCSSPropValue
+    bdBot?: CCSSProp
 
     /**
      * @propDocStart
@@ -4748,7 +4723,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom'?: TCSSPropValue
+    borderBottom?: CCSSProp
 
     /**
      * @propDocStart
@@ -4759,7 +4734,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bBc?: TCSSPropValue
+    bBc?: CCSSProp
 
     /**
      * @propDocStart
@@ -4770,7 +4745,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot-color'?: TCSSPropValue
+    bdBotColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -4781,7 +4756,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom-color'?: TCSSPropValue
+    borderBottomColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -4792,7 +4767,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bBlr?: TCSSPropValue
+    bBlr?: CCSSProp
 
     /**
      * @propDocStart
@@ -4803,7 +4778,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot-left-radius'?: TCSSPropValue
+    bdBotLeftRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -4814,7 +4789,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom-left-radius'?: TCSSPropValue
+    borderBottomLeftRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -4825,7 +4800,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bBrr?: TCSSPropValue
+    bBrr?: CCSSProp
 
     /**
      * @propDocStart
@@ -4836,7 +4811,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot-right-radius'?: TCSSPropValue
+    bdBotRightRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -4847,7 +4822,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom-right-radius'?: TCSSPropValue
+    borderBottomRightRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -4858,7 +4833,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bBs?: TCSSPropValue
+    bBs?: CCSSProp
 
     /**
      * @propDocStart
@@ -4869,7 +4844,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot-style'?: TCSSPropValue
+    bdBotStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -4880,7 +4855,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom-style'?: TCSSPropValue
+    borderBottomStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -4891,7 +4866,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bBw?: TCSSPropValue
+    bBw?: CCSSProp
 
     /**
      * @propDocStart
@@ -4902,7 +4877,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-bot-wid'?: TCSSPropValue
+    bdBotWid?: CCSSProp
 
     /**
      * @propDocStart
@@ -4913,7 +4888,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-bottom-width'?: TCSSPropValue
+    borderBottomWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -4924,7 +4899,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bC?: TCSSPropValue
+    bC?: CCSSProp
 
     /**
      * @propDocStart
@@ -4935,7 +4910,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-coll'?: TCSSPropValue
+    bdColl?: CCSSProp
 
     /**
      * @propDocStart
@@ -4946,7 +4921,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-collapse'?: TCSSPropValue
+    borderCollapse?: CCSSProp
 
     /**
      * @propDocStart
@@ -4957,7 +4932,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bc?: TCSSPropValue
+    bc?: CCSSProp
 
     /**
      * @propDocStart
@@ -4968,7 +4943,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-color'?: TCSSPropValue
+    bdColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -4979,7 +4954,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-color'?: TCSSPropValue
+    borderColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -4990,7 +4965,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bi?: TCSSPropValue
+    bi?: CCSSProp
 
     /**
      * @propDocStart
@@ -5001,7 +4976,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img'?: TCSSPropValue
+    bdImg?: CCSSProp
 
     /**
      * @propDocStart
@@ -5012,7 +4987,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image'?: TCSSPropValue
+    borderImage?: CCSSProp
 
     /**
      * @propDocStart
@@ -5023,7 +4998,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bio?: TCSSPropValue
+    bio?: CCSSProp
 
     /**
      * @propDocStart
@@ -5034,7 +5009,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img-outset'?: TCSSPropValue
+    bdImgOutset?: CCSSProp
 
     /**
      * @propDocStart
@@ -5045,7 +5020,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image-outset'?: TCSSPropValue
+    borderImageOutset?: CCSSProp
 
     /**
      * @propDocStart
@@ -5056,7 +5031,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bir?: TCSSPropValue
+    bir?: CCSSProp
 
     /**
      * @propDocStart
@@ -5067,7 +5042,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img-repeat'?: TCSSPropValue
+    bdImgRepeat?: CCSSProp
 
     /**
      * @propDocStart
@@ -5078,7 +5053,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image-repeat'?: TCSSPropValue
+    borderImageRepeat?: CCSSProp
 
     /**
      * @propDocStart
@@ -5089,7 +5064,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bis?: TCSSPropValue
+    bis?: CCSSProp
 
     /**
      * @propDocStart
@@ -5100,7 +5075,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img-slice'?: TCSSPropValue
+    bdImgSlice?: CCSSProp
 
     /**
      * @propDocStart
@@ -5111,7 +5086,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image-slice'?: TCSSPropValue
+    borderImageSlice?: CCSSProp
 
     /**
      * @propDocStart
@@ -5122,7 +5097,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    biSrc?: TCSSPropValue
+    biSrc?: CCSSProp
 
     /**
      * @propDocStart
@@ -5133,7 +5108,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img-src'?: TCSSPropValue
+    bdImgSrc?: CCSSProp
 
     /**
      * @propDocStart
@@ -5144,7 +5119,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image-source'?: TCSSPropValue
+    borderImageSource?: CCSSProp
 
     /**
      * @propDocStart
@@ -5155,7 +5130,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    biw?: TCSSPropValue
+    biw?: CCSSProp
 
     /**
      * @propDocStart
@@ -5166,7 +5141,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-img-width'?: TCSSPropValue
+    bdImgWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5177,7 +5152,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-image-width'?: TCSSPropValue
+    borderImageWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5188,7 +5163,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bL?: TCSSPropValue
+    bL?: CCSSProp
 
     /**
      * @propDocStart
@@ -5199,7 +5174,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-left'?: TCSSPropValue
+    bdLeft?: CCSSProp
 
     /**
      * @propDocStart
@@ -5210,7 +5185,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-left'?: TCSSPropValue
+    borderLeft?: CCSSProp
 
     /**
      * @propDocStart
@@ -5221,7 +5196,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bLc?: TCSSPropValue
+    bLc?: CCSSProp
 
     /**
      * @propDocStart
@@ -5232,7 +5207,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-left-color'?: TCSSPropValue
+    bdLeftColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5243,7 +5218,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-left-color'?: TCSSPropValue
+    borderLeftColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5254,7 +5229,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bLs?: TCSSPropValue
+    bLs?: CCSSProp
 
     /**
      * @propDocStart
@@ -5265,7 +5240,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-left-style'?: TCSSPropValue
+    bdLeftStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5276,7 +5251,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-left-style'?: TCSSPropValue
+    borderLeftStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5287,7 +5262,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bLw?: TCSSPropValue
+    bLw?: CCSSProp
 
     /**
      * @propDocStart
@@ -5298,7 +5273,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-left-width'?: TCSSPropValue
+    bdLeftWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5309,7 +5284,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-left-width'?: TCSSPropValue
+    borderLeftWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5320,7 +5295,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    br?: TCSSPropValue
+    br?: CCSSProp
 
     /**
      * @propDocStart
@@ -5331,7 +5306,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-radius'?: TCSSPropValue
+    bdRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5342,7 +5317,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-radius'?: TCSSPropValue
+    borderRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5353,7 +5328,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bR?: TCSSPropValue
+    bR?: CCSSProp
 
     /**
      * @propDocStart
@@ -5364,7 +5339,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-right'?: TCSSPropValue
+    bdRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -5375,7 +5350,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-right'?: TCSSPropValue
+    borderRight?: CCSSProp
 
     /**
      * @propDocStart
@@ -5386,7 +5361,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bRc?: TCSSPropValue
+    bRc?: CCSSProp
 
     /**
      * @propDocStart
@@ -5397,7 +5372,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-right-color'?: TCSSPropValue
+    bdRightColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5408,7 +5383,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-right-color'?: TCSSPropValue
+    borderRightColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5419,7 +5394,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bRs?: TCSSPropValue
+    bRs?: CCSSProp
 
     /**
      * @propDocStart
@@ -5430,7 +5405,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-right-style'?: TCSSPropValue
+    bdRightStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5441,7 +5416,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-right-style'?: TCSSPropValue
+    borderRightStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5452,7 +5427,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bRw?: TCSSPropValue
+    bRw?: CCSSProp
 
     /**
      * @propDocStart
@@ -5463,7 +5438,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-right-width'?: TCSSPropValue
+    bdRightWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5474,7 +5449,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-right-width'?: TCSSPropValue
+    borderRightWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5485,7 +5460,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bs?: TCSSPropValue
+    bs?: CCSSProp
 
     /**
      * @propDocStart
@@ -5496,7 +5471,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-spacing'?: TCSSPropValue
+    bdSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -5507,7 +5482,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-spacing'?: TCSSPropValue
+    borderSpacing?: CCSSProp
 
     /**
      * @propDocStart
@@ -5518,7 +5493,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bS?: TCSSPropValue
+    bS?: CCSSProp
 
     /**
      * @propDocStart
@@ -5529,7 +5504,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-style'?: TCSSPropValue
+    bdStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5540,7 +5515,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-style'?: TCSSPropValue
+    borderStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5551,7 +5526,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bT?: TCSSPropValue
+    bT?: CCSSProp
 
     /**
      * @propDocStart
@@ -5562,7 +5537,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top'?: TCSSPropValue
+    bdTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -5573,7 +5548,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top'?: TCSSPropValue
+    borderTop?: CCSSProp
 
     /**
      * @propDocStart
@@ -5584,7 +5559,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bTc?: TCSSPropValue
+    bTc?: CCSSProp
 
     /**
      * @propDocStart
@@ -5595,7 +5570,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top-color'?: TCSSPropValue
+    bdTopColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5606,7 +5581,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top-color'?: TCSSPropValue
+    borderTopColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -5617,7 +5592,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bTlr?: TCSSPropValue
+    bTlr?: CCSSProp
 
     /**
      * @propDocStart
@@ -5628,7 +5603,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top-left-radius'?: TCSSPropValue
+    bdTopLeftRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5639,7 +5614,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top-left-radius'?: TCSSPropValue
+    borderTopLeftRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5650,7 +5625,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bTrr?: TCSSPropValue
+    bTrr?: CCSSProp
 
     /**
      * @propDocStart
@@ -5661,7 +5636,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top-right-radius'?: TCSSPropValue
+    bdTopRightRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5672,7 +5647,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top-right-radius'?: TCSSPropValue
+    borderTopRightRadius?: CCSSProp
 
     /**
      * @propDocStart
@@ -5683,7 +5658,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bTs?: TCSSPropValue
+    bTs?: CCSSProp
 
     /**
      * @propDocStart
@@ -5694,7 +5669,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top-style'?: TCSSPropValue
+    bdTopStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5705,7 +5680,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top-style'?: TCSSPropValue
+    borderTopStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -5716,7 +5691,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bTw?: TCSSPropValue
+    bTw?: CCSSProp
 
     /**
      * @propDocStart
@@ -5727,7 +5702,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-top-width'?: TCSSPropValue
+    bdTopWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5738,7 +5713,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-top-width'?: TCSSPropValue
+    borderTopWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5749,7 +5724,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    bw?: TCSSPropValue
+    bw?: CCSSProp
 
     /**
      * @propDocStart
@@ -5760,7 +5735,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'bd-width'?: TCSSPropValue
+    bdWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -5771,40 +5746,51 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'border-width'?: TCSSPropValue
+    borderWidth?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'clip',
-     *     props: ['clip'],
-     *     short: 'clip'
+     *     props: ['clp', 'clip', 'clip'],
+     *     short: 'clp'
      * }
      * @propDocEnd
      */
-    clip?: TCSSPropValue
+    clp?: CCSSProp
+
+    /**
+     * @propDocStart
+     * {
+     *     long: 'clip',
+     *     props: ['clp', 'clip', 'clip'],
+     *     short: 'clp'
+     * }
+     * @propDocEnd
+     */
+    clip?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'clip-path',
-     *     props: ['clipPath', 'clip-path'],
-     *     short: 'clipPath'
+     *     props: ['clpp', 'clip-path', 'clip-path'],
+     *     short: 'clpp'
      * }
      * @propDocEnd
      */
-    clipPath?: TCSSPropValue
+    clpp?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'clip-path',
-     *     props: ['clipPath', 'clip-path'],
-     *     short: 'clipPath'
+     *     props: ['clpp', 'clip-path', 'clip-path'],
+     *     short: 'clpp'
      * }
      * @propDocEnd
      */
-    'clip-path'?: TCSSPropValue
+    clipPath?: CCSSProp
 
     /**
      * @propDocStart
@@ -5815,7 +5801,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    d?: TCSSPropValue
+    d?: CCSSProp
 
     /**
      * @propDocStart
@@ -5826,7 +5812,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    dsp?: TCSSPropValue
+    dsp?: CCSSProp
 
     /**
      * @propDocStart
@@ -5837,7 +5823,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    display?: TCSSPropValue
+    display?: CCSSProp
 
     /**
      * @propDocStart
@@ -5848,7 +5834,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    P?: TCSSPropValue
+    P?: CCSSProp
 
     /**
      * @propDocStart
@@ -5859,7 +5845,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pos?: TCSSPropValue
+    pos?: CCSSProp
 
     /**
      * @propDocStart
@@ -5870,139 +5856,139 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    position?: TCSSPropValue
+    position?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'top',
-     *     props: ['T', 'top'],
+     *     props: ['T', 'top', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
      */
-    T?: TCSSPropValue
+    T?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'top',
-     *     props: ['T', 'top'],
+     *     props: ['T', 'top', 'top'],
      *     short: 'T'
      * }
      * @propDocEnd
      */
-    top?: TCSSPropValue
+    top?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'right',
-     *     props: ['R', 'right'],
+     *     props: ['R', 'right', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
      */
-    R?: TCSSPropValue
+    R?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'right',
-     *     props: ['R', 'right'],
+     *     props: ['R', 'right', 'right'],
      *     short: 'R'
      * }
      * @propDocEnd
      */
-    right?: TCSSPropValue
+    right?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'bottom',
-     *     props: ['B', 'bottom'],
+     *     props: ['B', 'bottom', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
      */
-    B?: TCSSPropValue
+    B?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'bottom',
-     *     props: ['B', 'bottom'],
+     *     props: ['B', 'bottom', 'bottom'],
      *     short: 'B'
      * }
      * @propDocEnd
      */
-    bottom?: TCSSPropValue
+    bottom?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'left',
-     *     props: ['L', 'left'],
+     *     props: ['L', 'left', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
      */
-    L?: TCSSPropValue
+    L?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'left',
-     *     props: ['L', 'left'],
+     *     props: ['L', 'left', 'left'],
      *     short: 'L'
      * }
      * @propDocEnd
      */
-    left?: TCSSPropValue
+    left?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'z-index',
-     *     props: ['zi', 'z-index'],
+     *     props: ['zi', 'z-index', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
      */
-    zi?: TCSSPropValue
+    zi?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'z-index',
-     *     props: ['zi', 'z-index'],
+     *     props: ['zi', 'z-index', 'z-index'],
      *     short: 'zi'
      * }
      * @propDocEnd
      */
-    'z-index'?: TCSSPropValue
+    zIndex?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'color',
-     *     props: ['c', 'color'],
+     *     props: ['c', 'color', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
      */
-    c?: TCSSPropValue
+    c?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'color',
-     *     props: ['c', 'color'],
+     *     props: ['c', 'color', 'color'],
      *     short: 'c'
      * }
      * @propDocEnd
      */
-    color?: TCSSPropValue
+    color?: CCSSProp
 
     /**
      * @propDocStart
@@ -6013,7 +5999,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    o?: TCSSPropValue
+    o?: CCSSProp
 
     /**
      * @propDocStart
@@ -6024,7 +6010,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    over?: TCSSPropValue
+    over?: CCSSProp
 
     /**
      * @propDocStart
@@ -6035,7 +6021,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    overflow?: TCSSPropValue
+    overflow?: CCSSProp
 
     /**
      * @propDocStart
@@ -6046,7 +6032,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    ox?: TCSSPropValue
+    ox?: CCSSProp
 
     /**
      * @propDocStart
@@ -6057,7 +6043,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'over-x'?: TCSSPropValue
+    overX?: CCSSProp
 
     /**
      * @propDocStart
@@ -6068,7 +6054,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'overflow-x'?: TCSSPropValue
+    overflowX?: CCSSProp
 
     /**
      * @propDocStart
@@ -6079,7 +6065,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    oy?: TCSSPropValue
+    oy?: CCSSProp
 
     /**
      * @propDocStart
@@ -6090,7 +6076,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'over-y'?: TCSSPropValue
+    overY?: CCSSProp
 
     /**
      * @propDocStart
@@ -6101,7 +6087,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'overflow-y'?: TCSSPropValue
+    overflowY?: CCSSProp
 
     /**
      * @propDocStart
@@ -6112,7 +6098,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    oa?: TCSSPropValue
+    oa?: CCSSProp
 
     /**
      * @propDocStart
@@ -6123,7 +6109,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'over-a'?: TCSSPropValue
+    overA?: CCSSProp
 
     /**
      * @propDocStart
@@ -6134,95 +6120,95 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'overflow-anchor'?: TCSSPropValue
+    overflowAnchor?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'float',
-     *     props: ['fl', 'float'],
+     *     props: ['fl', 'float', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
      */
-    fl?: TCSSPropValue
+    fl?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'float',
-     *     props: ['fl', 'float'],
+     *     props: ['fl', 'float', 'float'],
      *     short: 'fl'
      * }
      * @propDocEnd
      */
-    float?: TCSSPropValue
+    float?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'clear',
-     *     props: ['clr', 'clear'],
+     *     props: ['clr', 'clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
      */
-    clr?: TCSSPropValue
+    clr?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'clear',
-     *     props: ['clr', 'clear'],
+     *     props: ['clr', 'clr', 'clear'],
      *     short: 'clr'
      * }
      * @propDocEnd
      */
-    clear?: TCSSPropValue
+    clear?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'visibility',
-     *     props: ['v', 'visibility'],
+     *     props: ['v', 'visibility', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
      */
-    v?: TCSSPropValue
+    v?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'visibility',
-     *     props: ['v', 'visibility'],
+     *     props: ['v', 'visibility', 'visibility'],
      *     short: 'v'
      * }
      * @propDocEnd
      */
-    visibility?: TCSSPropValue
+    visibility?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'columns',
-     *     props: ['col', 'columns'],
+     *     props: ['col', 'col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
      */
-    col?: TCSSPropValue
+    col?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'columns',
-     *     props: ['col', 'columns'],
+     *     props: ['col', 'col', 'columns'],
      *     short: 'col'
      * }
      * @propDocEnd
      */
-    columns?: TCSSPropValue
+    columns?: CCSSProp
 
     /**
      * @propDocStart
@@ -6233,7 +6219,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cc?: TCSSPropValue
+    cc?: CCSSProp
 
     /**
      * @propDocStart
@@ -6244,7 +6230,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-count'?: TCSSPropValue
+    colCount?: CCSSProp
 
     /**
      * @propDocStart
@@ -6255,7 +6241,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-count'?: TCSSPropValue
+    columnCount?: CCSSProp
 
     /**
      * @propDocStart
@@ -6266,7 +6252,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cf?: TCSSPropValue
+    cf?: CCSSProp
 
     /**
      * @propDocStart
@@ -6277,7 +6263,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-fill'?: TCSSPropValue
+    colFill?: CCSSProp
 
     /**
      * @propDocStart
@@ -6288,7 +6274,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-fill'?: TCSSPropValue
+    columnFill?: CCSSProp
 
     /**
      * @propDocStart
@@ -6299,7 +6285,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cg?: TCSSPropValue
+    cg?: CCSSProp
 
     /**
      * @propDocStart
@@ -6310,7 +6296,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-gap'?: TCSSPropValue
+    colGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -6321,7 +6307,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-gap'?: TCSSPropValue
+    columnGap?: CCSSProp
 
     /**
      * @propDocStart
@@ -6332,7 +6318,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cr?: TCSSPropValue
+    cr?: CCSSProp
 
     /**
      * @propDocStart
@@ -6343,7 +6329,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-rule'?: TCSSPropValue
+    colRule?: CCSSProp
 
     /**
      * @propDocStart
@@ -6354,7 +6340,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-rule'?: TCSSPropValue
+    columnRule?: CCSSProp
 
     /**
      * @propDocStart
@@ -6365,7 +6351,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    crc?: TCSSPropValue
+    crc?: CCSSProp
 
     /**
      * @propDocStart
@@ -6376,7 +6362,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-rule-color'?: TCSSPropValue
+    colRuleColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -6387,7 +6373,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-rule-color'?: TCSSPropValue
+    columnRuleColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -6398,7 +6384,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    crs?: TCSSPropValue
+    crs?: CCSSProp
 
     /**
      * @propDocStart
@@ -6409,7 +6395,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-rule-style'?: TCSSPropValue
+    colRuleStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -6420,7 +6406,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-rule-style'?: TCSSPropValue
+    columnRuleStyle?: CCSSProp
 
     /**
      * @propDocStart
@@ -6431,7 +6417,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    crw?: TCSSPropValue
+    crw?: CCSSProp
 
     /**
      * @propDocStart
@@ -6442,7 +6428,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-rule-width'?: TCSSPropValue
+    colRuleWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -6453,7 +6439,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-rule-width'?: TCSSPropValue
+    columnRuleWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -6464,7 +6450,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cs?: TCSSPropValue
+    cs?: CCSSProp
 
     /**
      * @propDocStart
@@ -6475,7 +6461,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-span'?: TCSSPropValue
+    colSpan?: CCSSProp
 
     /**
      * @propDocStart
@@ -6486,7 +6472,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-span'?: TCSSPropValue
+    columnSpan?: CCSSProp
 
     /**
      * @propDocStart
@@ -6497,7 +6483,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cw?: TCSSPropValue
+    cw?: CCSSProp
 
     /**
      * @propDocStart
@@ -6508,7 +6494,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'col-width'?: TCSSPropValue
+    colWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -6519,7 +6505,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'column-width'?: TCSSPropValue
+    columnWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -6530,7 +6516,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pba?: TCSSPropValue
+    pba?: CCSSProp
 
     /**
      * @propDocStart
@@ -6541,7 +6527,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pb-after'?: TCSSPropValue
+    pbAfter?: CCSSProp
 
     /**
      * @propDocStart
@@ -6552,7 +6538,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'page-break-after'?: TCSSPropValue
+    pageBreakAfter?: CCSSProp
 
     /**
      * @propDocStart
@@ -6563,7 +6549,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pbb?: TCSSPropValue
+    pbb?: CCSSProp
 
     /**
      * @propDocStart
@@ -6574,7 +6560,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pb-before'?: TCSSPropValue
+    pbBefore?: CCSSProp
 
     /**
      * @propDocStart
@@ -6585,7 +6571,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'page-break-before'?: TCSSPropValue
+    pageBreakBefore?: CCSSProp
 
     /**
      * @propDocStart
@@ -6596,7 +6582,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pbi?: TCSSPropValue
+    pbi?: CCSSProp
 
     /**
      * @propDocStart
@@ -6607,7 +6593,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pb-inside'?: TCSSPropValue
+    pbInside?: CCSSProp
 
     /**
      * @propDocStart
@@ -6618,7 +6604,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'page-break-inside'?: TCSSPropValue
+    pageBreakInside?: CCSSProp
 
     /**
      * @propDocStart
@@ -6629,7 +6615,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    shd?: TCSSPropValue
+    shd?: CCSSProp
 
     /**
      * @propDocStart
@@ -6640,7 +6626,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    shadow?: TCSSPropValue
+    shadow?: CCSSProp
 
     /**
      * @propDocStart
@@ -6651,7 +6637,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'box-shadow'?: TCSSPropValue
+    boxShadow?: CCSSProp
 
     /**
      * @propDocStart
@@ -6662,7 +6648,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    siz?: TCSSPropValue
+    siz?: CCSSProp
 
     /**
      * @propDocStart
@@ -6673,7 +6659,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sizing?: TCSSPropValue
+    sizing?: CCSSProp
 
     /**
      * @propDocStart
@@ -6684,7 +6670,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'box-sizing'?: TCSSPropValue
+    boxSizing?: CCSSProp
 
     /**
      * @propDocStart
@@ -6695,7 +6681,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cn?: TCSSPropValue
+    cn?: CCSSProp
 
     /**
      * @propDocStart
@@ -6706,7 +6692,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    cont?: TCSSPropValue
+    cont?: CCSSProp
 
     /**
      * @propDocStart
@@ -6717,29 +6703,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    contain?: TCSSPropValue
+    contain?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'direction',
-     *     props: ['dir', 'direction'],
+     *     props: ['dir', 'dir', 'direction'],
      *     short: 'dir'
      * }
      * @propDocEnd
      */
-    dir?: TCSSPropValue
+    dir?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'direction',
-     *     props: ['dir', 'direction'],
+     *     props: ['dir', 'dir', 'direction'],
      *     short: 'dir'
      * }
      * @propDocEnd
      */
-    direction?: TCSSPropValue
+    direction?: CCSSProp
 
     /**
      * @propDocStart
@@ -6750,7 +6736,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    of?: TCSSPropValue
+    of?: CCSSProp
 
     /**
      * @propDocStart
@@ -6761,7 +6747,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'obj-fit'?: TCSSPropValue
+    objFit?: CCSSProp
 
     /**
      * @propDocStart
@@ -6772,7 +6758,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'object-fit'?: TCSSPropValue
+    objectFit?: CCSSProp
 
     /**
      * @propDocStart
@@ -6783,7 +6769,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    oP?: TCSSPropValue
+    oP?: CCSSProp
 
     /**
      * @propDocStart
@@ -6794,7 +6780,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'obj-pos'?: TCSSPropValue
+    objPos?: CCSSProp
 
     /**
      * @propDocStart
@@ -6805,73 +6791,73 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'object-position'?: TCSSPropValue
+    objectPosition?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'opacity',
-     *     props: ['op', 'opacity'],
+     *     props: ['op', 'opacity', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
      */
-    op?: TCSSPropValue
+    op?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'opacity',
-     *     props: ['op', 'opacity'],
+     *     props: ['op', 'opacity', 'opacity'],
      *     short: 'op'
      * }
      * @propDocEnd
      */
-    opacity?: TCSSPropValue
+    opacity?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'order',
-     *     props: ['or', 'order'],
+     *     props: ['or', 'order', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
      */
-    or?: TCSSPropValue
+    or?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'order',
-     *     props: ['or', 'order'],
+     *     props: ['or', 'order', 'order'],
      *     short: 'or'
      * }
      * @propDocEnd
      */
-    order?: TCSSPropValue
+    order?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'outline',
-     *     props: ['ol', 'outline'],
+     *     props: ['ol', 'outline', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
      */
-    ol?: TCSSPropValue
+    ol?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'outline',
-     *     props: ['ol', 'outline'],
+     *     props: ['ol', 'outline', 'outline'],
      *     short: 'ol'
      * }
      * @propDocEnd
      */
-    outline?: TCSSPropValue
+    outline?: CCSSProp
 
     /**
      * @propDocStart
@@ -6882,7 +6868,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    mbm?: TCSSPropValue
+    mbm?: CCSSProp
 
     /**
      * @propDocStart
@@ -6893,7 +6879,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'blend-mode'?: TCSSPropValue
+    blendMode?: CCSSProp
 
     /**
      * @propDocStart
@@ -6904,51 +6890,51 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'mix-blend-mode'?: TCSSPropValue
+    mixBlendMode?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'content',
-     *     props: ['ct', 'content'],
+     *     props: ['ct', 'content', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
      */
-    ct?: TCSSPropValue
+    ct?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'content',
-     *     props: ['ct', 'content'],
+     *     props: ['ct', 'content', 'content'],
      *     short: 'ct'
      * }
      * @propDocEnd
      */
-    content?: TCSSPropValue
+    content?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'cursor',
-     *     props: ['cur', 'cursor'],
+     *     props: ['cur', 'cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
      */
-    cur?: TCSSPropValue
+    cur?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'cursor',
-     *     props: ['cur', 'cursor'],
+     *     props: ['cur', 'cur', 'cursor'],
      *     short: 'cur'
      * }
      * @propDocEnd
      */
-    cursor?: TCSSPropValue
+    cursor?: CCSSProp
 
     /**
      * @propDocStart
@@ -6959,7 +6945,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    pe?: TCSSPropValue
+    pe?: CCSSProp
 
     /**
      * @propDocStart
@@ -6970,7 +6956,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'p-events'?: TCSSPropValue
+    pEvents?: CCSSProp
 
     /**
      * @propDocStart
@@ -6981,29 +6967,29 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'pointer-events'?: TCSSPropValue
+    pointerEvents?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'filter',
-     *     props: ['fil', 'filter'],
+     *     props: ['fil', 'filter', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
      */
-    fil?: TCSSPropValue
+    fil?: CCSSProp
 
     /**
      * @propDocStart
      * {
      *     long: 'filter',
-     *     props: ['fil', 'filter'],
+     *     props: ['fil', 'filter', 'filter'],
      *     short: 'fil'
      * }
      * @propDocEnd
      */
-    filter?: TCSSPropValue
+    filter?: CCSSProp
 
     /**
      * @propDocStart
@@ -7014,7 +7000,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sb?: TCSSPropValue
+    sb?: CCSSProp
 
     /**
      * @propDocStart
@@ -7025,7 +7011,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    's-behavior'?: TCSSPropValue
+    sBehavior?: CCSSProp
 
     /**
      * @propDocStart
@@ -7036,7 +7022,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'scroll-behavior'?: TCSSPropValue
+    scrollBehavior?: CCSSProp
 
     /**
      * @propDocStart
@@ -7047,7 +7033,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sw?: TCSSPropValue
+    sw?: CCSSProp
 
     /**
      * @propDocStart
@@ -7058,7 +7044,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    's-width'?: TCSSPropValue
+    sWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -7069,7 +7055,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'scrollbar-width'?: TCSSPropValue
+    scrollbarWidth?: CCSSProp
 
     /**
      * @propDocStart
@@ -7080,7 +7066,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    sh?: TCSSPropValue
+    sh?: CCSSProp
 
     /**
      * @propDocStart
@@ -7091,7 +7077,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    's-height'?: TCSSPropValue
+    sHeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -7102,7 +7088,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'scrollbar-height'?: TCSSPropValue
+    scrollbarHeight?: CCSSProp
 
     /**
      * @propDocStart
@@ -7113,7 +7099,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    us?: TCSSPropValue
+    us?: CCSSProp
 
     /**
      * @propDocStart
@@ -7124,7 +7110,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'u-select'?: TCSSPropValue
+    uSelect?: CCSSProp
 
     /**
      * @propDocStart
@@ -7135,7 +7121,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'user-select'?: TCSSPropValue
+    userSelect?: CCSSProp
 
     /**
      * @propDocStart
@@ -7146,7 +7132,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    carc?: TCSSPropValue
+    carc?: CCSSProp
 
     /**
      * @propDocStart
@@ -7157,7 +7143,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'car-color'?: TCSSPropValue
+    carColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -7168,7 +7154,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'caret-color'?: TCSSPropValue
+    caretColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -7179,7 +7165,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wtc?: TCSSPropValue
+    wtc?: CCSSProp
 
     /**
      * @propDocStart
@@ -7190,18 +7176,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-touch-callout'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-touch-callout',
-     *     props: ['wtc', 'webkit-touch-callout', '-webkit-touch-callout'],
-     *     short: 'wtc'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-touch-callout'?: TCSSPropValue
+    webkitTouchCallout?: CCSSProp
 
     /**
      * @propDocStart
@@ -7212,7 +7187,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wos?: TCSSPropValue
+    wos?: CCSSProp
 
     /**
      * @propDocStart
@@ -7223,18 +7198,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-overflow-scrolling'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-overflow-scrolling',
-     *     props: ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
-     *     short: 'wos'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-overflow-scrolling'?: TCSSPropValue
+    webkitOverflowScrolling?: CCSSProp
 
     /**
      * @propDocStart
@@ -7245,7 +7209,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wthc?: TCSSPropValue
+    wthc?: CCSSProp
 
     /**
      * @propDocStart
@@ -7256,18 +7220,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-tap-highlight-color'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-tap-highlight-color',
-     *     props: ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'],
-     *     short: 'wthc'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-tap-highlight-color'?: TCSSPropValue
+    webkitTapHighlightColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -7278,7 +7231,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wtfc?: TCSSPropValue
+    wtfc?: CCSSProp
 
     /**
      * @propDocStart
@@ -7289,18 +7242,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-text-fill-color'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-text-fill-color',
-     *     props: ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'],
-     *     short: 'wtfc'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-text-fill-color'?: TCSSPropValue
+    webkitTextFillColor?: CCSSProp
 
     /**
      * @propDocStart
@@ -7311,7 +7253,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wud?: TCSSPropValue
+    wud?: CCSSProp
 
     /**
      * @propDocStart
@@ -7322,18 +7264,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-user-drag'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-user-drag',
-     *     props: ['wud', 'webkit-user-drag', '-webkit-user-drag'],
-     *     short: 'wud'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-user-drag'?: TCSSPropValue
+    webkitUserDrag?: CCSSProp
 
     /**
      * @propDocStart
@@ -7344,7 +7275,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    wbf?: TCSSPropValue
+    wbf?: CCSSProp
 
     /**
      * @propDocStart
@@ -7355,18 +7286,7 @@ export interface CCSSProps extends AnyProp {
      * }
      * @propDocEnd
      */
-    'webkit-backdrop-filter'?: TCSSPropValue
-
-    /**
-     * @propDocStart
-     * {
-     *     long: '-webkit-backdrop-filter',
-     *     props: ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter'],
-     *     short: 'wbf'
-     * }
-     * @propDocEnd
-     */
-    '-webkit-backdrop-filter'?: TCSSPropValue
+    webkitBackdropFilter?: CCSSProp
 }
 
 /*

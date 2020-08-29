@@ -7,22 +7,31 @@
 
 module.exports = {
     someSidebar: {
-        Introduction: [
-            'introduction/pros-and-cons',
-            'introduction/some-story',
-            'introduction/mission-and-the-future',
-            'introduction/faq'
+        'Getting started': [
+            'getting-started/installation',
+            'getting-started/configuration',
+            'getting-started/basic-usage',
+            'getting-started/cli',
+            'getting-started/faq'
         ],
-        Usage: ['usage/getting-started', 'usage/examples', 'usage/base-styles', 'usage/cli'],
         'API and Packages': [
             'api-and-packages/core',
             'api-and-packages/plugin-gutter',
             'api-and-packages/plugin-ratio',
+            'api-and-packages/prop-keyframes',
             'api-and-packages/prop-mid',
             'api-and-packages/prop-mq',
             'api-and-packages/prop-scroll',
-            'api-and-packages/styled-components',
+            'api-and-packages/styled',
             'api-and-packages/babel-plugin-styled'
-        ]
+        ],
+        Guides: [
+            'guides/quick-examples',
+            'guides/base-styles',
+            'guides/create-a-color-map',
+            'guides/custom-props-for-sharing-styles',
+            'guides/tips-and-tricks'
+        ],
+        'More about CCSS': ['more-about-ccss/brief-history', 'more-about-ccss/plans-and-missions']
     }
 }

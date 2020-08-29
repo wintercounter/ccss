@@ -138,7 +138,7 @@ export const getPropTable = (): PropTable => {
         ['bgbm', 'bg-blend', 'background-blend-mode', mapValue],
         ['bgC', 'bg-clip', 'background-clip', mapValue, parseArray],
         ['bgo', 'bg-org', 'background-origin', mapValue],
-        ['bf', 'bd-filter', 'backdrop-filter'],
+        ['bf', 'bd-filter', 'backdrop-filter', parseArray],
 
         // Dimension
         ['w', 'wid', 'width', mapValue, parseSingle],
@@ -171,7 +171,7 @@ export const getPropTable = (): PropTable => {
         // Border
         ['b', 'bd', 'border', parseArray],
         ['bB', 'bd-bot', 'border-bottom', parseArray],
-        ['bBc', 'bd-bot-color', 'border-bottom-color'],
+        ['bBc', 'bd-bot-color', 'border-bottom-color', mapValue],
         ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius', parseSingle],
         ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius', parseSingle],
         ['bBs', 'bd-bot-style', 'border-bottom-style'],
@@ -193,7 +193,7 @@ export const getPropTable = (): PropTable => {
         ['bRc', 'bd-right-color', 'border-right-color', mapValue],
         ['bRs', 'bd-right-style', 'border-right-style'],
         ['bRw', 'bd-right-width', 'border-right-width', parseSingle],
-        ['bs', 'bd-spacing', 'border-spacing'],
+        ['bs', 'bd-spacing', 'border-spacing', parseSingle],
         ['bS', 'bd-style', 'border-style'],
         ['bT', 'bd-top', 'border-top', parseArray],
         ['bTc', 'bd-top-color', 'border-top-color', mapValue],
@@ -204,8 +204,8 @@ export const getPropTable = (): PropTable => {
         ['bw', 'bd-width', 'border-width', parseArray],
 
         // Clip
-        ['clip', 'clip', 'clip', parseArray],
-        ['clipPath', 'clip-path', 'clip-path'],
+        ['clp', 'clip', 'clip', parseArray],
+        ['clpp', 'clip-path', 'clip-path'],
 
         // General
         ['d', 'dsp', 'display', mapValue],
@@ -255,12 +255,13 @@ export const getPropTable = (): PropTable => {
         ['ct', 'content', 'content'],
         ['cur', 'cur', 'cursor', mapValue],
         ['pe', 'p-events', 'pointer-events', mapValue],
-        ['fil', 'filter', 'filter'],
+        ['fil', 'filter', 'filter', parseArray],
         ['sb', 's-behavior', 'scroll-behavior', mapValue],
-        ['sw', 's-width', 'scrollbar-width', mapValue],
-        ['sh', 's-height', 'scrollbar-height', mapValue],
+        ['sw', 's-width', 'scrollbar-width', mapValue, parseSingle],
+        ['sh', 's-height', 'scrollbar-height', mapValue, parseSingle],
         ['us', 'u-select', 'user-select', mapValue],
         ['carc', 'car-color', 'caret-color', mapValue],
+        ['rs', 'res', 'resize', mapValue],
 
         // Webkit
         ['wtc', 'webkit-touch-callout', '-webkit-touch-callout', mapValue],
@@ -268,7 +269,7 @@ export const getPropTable = (): PropTable => {
         ['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color', mapValue],
         ['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color', mapValue],
         ['wud', 'webkit-user-drag', '-webkit-user-drag', mapValue],
-        ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter']
+        ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter', parseArray]
     ]
 }
 
@@ -297,7 +298,7 @@ export const createProps = <T>(overrides?: T & Partial<CCSSProps>): T & Partial<
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {
-        raw: i => i,
+        raw: (i) => i,
         child
     })
     return overrides !== undefined ? mergeDeep(table, overrides) : table

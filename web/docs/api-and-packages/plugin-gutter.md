@@ -38,7 +38,7 @@ ccss({
 The plugin introduces the option key `gutter`. Default value is `5`.
 It defines the size of 1 gutter (uses the defined `unit` core option).
 
-> The plugin is already included in the package `ccss` pre-configured.
+> The plugin included in the `ccss` package pre-configured.
 Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js

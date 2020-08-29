@@ -1,20 +1,29 @@
 module.exports = {
     title: 'CCSS',
-    tagline: 'CrypticCSS - A CSS-in-JS concept that brings you true CSS mangling with design system capabilities.',
+    tagline: 'A companion on the journey to your next CSS-in-JS and/or design system solution.',
     url: 'https://ccss.dev',
     baseUrl: '/',
     favicon: 'img/favicon.ico',
     organizationName: 'wintercounter', // Usually your GitHub org/user name.
     projectName: 'ccss', // Usually your repo name.
     themeConfig: {
+        sidebarCollapsible: false,
+        algolia: {
+            apiKey: '4fdab68bf474090efe74ceaf220db37e',
+            indexName: 'ccss_dev',
+            searchParameters: {} // Optional (if provided by Algolia)
+        },
         navbar: {
             title: '',
             logo: {
                 alt: 'CrypticCSS Logo',
                 src: 'img/logo.png'
             },
-            links: [
-                { to: 'docs/introduction/pros-and-cons', label: 'Docs', position: 'left' },
+            items: [
+                { to: 'docs/getting-started/installation', label: 'Getting started', position: 'left' },
+                { to: 'docs/api-and-packages/core', label: 'API and Packages', position: 'left' },
+                { to: 'docs/guides/quick-examples', label: 'Guides', position: 'left' },
+                { to: 'docs/more-about-ccss/brief-history', label: 'More about CCSS', position: 'left' },
                 /*{ to: 'blog', label: 'Blog', position: 'left' },*/
                 {
                     href: 'https://github.com/wintercounter/ccss',
@@ -26,23 +35,6 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [
-                {
-                    title: 'Docs',
-                    items: [
-                        {
-                            label: 'Introduction',
-                            to: 'docs/introduction/pros-and-cons'
-                        },
-                        {
-                            label: 'Usage',
-                            to: 'docs/usage/getting-started'
-                        },
-                        {
-                            label: 'API and Packages',
-                            to: 'docs/api-and-packages/core'
-                        }
-                    ]
-                },
                 {
                     title: 'Social',
                     items: [
@@ -76,9 +68,34 @@ module.exports = {
                             href: 'https://v2.grommet.io'
                         }
                     ]
+                },
+                {
+                    title: 'Icons made by',
+                    items: [
+                        {
+                            label: 'Freepik',
+                            href: 'https://www.flaticon.com/authors/freepik'
+                        },
+                        {
+                            label: 'www.flaticon.com',
+                            href: 'https://www.flaticon.com'
+                        }
+                    ]
                 }
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} - Built with Docusaurus.`
+            copyright: `Copyright © ${new Date().getFullYear()} - Built with ❤ and Docusaurus.`
+        },
+        colorMode: {
+            // "light" | "dark"
+            defaultMode: 'light',
+
+            // Hides the switch in the navbar
+            // Useful if you want to support a single color mode
+            disableSwitch: true,
+
+            // Should we use the prefers-color-scheme media-query,
+            // using user system preferences, instead of the hardcoded defaultMode
+            respectPrefersColorScheme: false
         }
     },
     presets: [
@@ -96,5 +113,5 @@ module.exports = {
         ]
     ],
     themes: ['@docusaurus/theme-live-codeblock'],
-    plugins: [require.resolve('./src/scope-plugin')]
+    plugins: [require.resolve('./src/js')]
 }

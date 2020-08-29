@@ -3,7 +3,7 @@ id: plugin-ratio
 title: '@cryptic-css/plugin-ratio'
 ---
 
-Adds support for the well-known _"padding hack"_ for keeping aspect-ratios.
+Adds support for the well-known _"padding hack"_ for keeping aspect ratio.
 
 ## Supported props
 
@@ -22,13 +22,13 @@ Adds support for the well-known _"padding hack"_ for keeping aspect-ratios.
 
 ```js live
 ccss({
-    pt: '16:9'
+    pT: '16:9'
 })
 ```
 
 ## Configuration
 
-> The plugin is already included in the package `ccss` pre-configured.
+> The plugin included in the `ccss` package pre-configured.
 Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js

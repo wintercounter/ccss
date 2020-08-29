@@ -1,4 +1,4 @@
-import { CCSSPrivateFunction, CCSSInput, CCSSProps, CCSSOptions } from './types'
+import { CCSSFunction, CCSSInput, CCSSProps, CCSSOptions } from './types'
 import { createOptions } from './createOptions'
 
 const generate = (v: Partial<CCSSProps>, options): string => {
@@ -30,10 +30,11 @@ const generate = (v: Partial<CCSSProps>, options): string => {
 
 export const defaultOptions = createOptions()
 
-export const createCCSS = (options: Partial<CCSSOptions> = defaultOptions): CCSSPrivateFunction => {
+export const createCCSS = (options: Partial<CCSSOptions> = defaultOptions): CCSSFunction => {
     const __ccss = (ccssProps: CCSSInput) => generate(ccssProps, options)
     options.__ccss = __ccss
     return __ccss
 }
 
 export const ccss = createCCSS()
+

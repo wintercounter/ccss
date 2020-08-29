@@ -1,8 +1,30 @@
-import { CCSSOptions, CCSSProps } from '@cryptic-css/core'
+import { CCSSProp, CCSSOptions, CCSSProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
+
+declare module '@cryptic-css/core' {
+    interface CCSSProps {
+        /**
+         * # mediaQuery (mb)
+         *
+         * Helps you to apply CCSS rules based on screen sizes.
+         *
+         * @see https://ccss.dev/docs/api-and-packages/prop-mq
+         */
+        mq?: CCSSProp
+        /**
+         * # mediaQuery (mb)
+         *
+         * Helps you to apply CCSS rules based on screen sizes.
+         *
+         * @see https://ccss.dev/docs/api-and-packages/prop-mq
+         */
+        mediaQuery?: CCSSProp
+    }
+}
 
 const handleMqElem = (value, state, t, api) => {
     const extracted = api.extractStaticValues(value.elements[1], state, t, true)
+
     if (extracted && Object.keys(extracted).length) {
         return [value.elements[0].value, extracted]
     }
@@ -38,7 +60,7 @@ const babelPluginHandler = (attr, state, t, api) => {
 export default (options: Partial<CCSSOptions>) => {
     const props = options.props as CCSSProps
 
-    const handler = (input, prop, options) => {
+    const handler = (input, prop, options): string => {
         if (typeof input[0] === 'string') {
             input = [input]
         }
@@ -48,9 +70,9 @@ export default (options: Partial<CCSSOptions>) => {
             generated[i] = [input[i][0], options.__ccss(input[i][1])]
         }
 
-        return mediaQuery(generated, options.outputTransformer.type)
+        return mediaQuery(generated, options.outputTransformer.type) as string
     }
-    props.mq = handler
+    props.mq = props.mediaQuery = handler
     /* develblock:start */
     handler.babelPluginHandler = babelPluginHandler
     /* develblock:end */

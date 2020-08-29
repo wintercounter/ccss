@@ -1,7 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 
-import { getPropTable } from '../src/createProps'
+import { getPropTable } from '@/createProps'
+import { toCamelCase } from '@/utils'
 
 const DIST = path.resolve(__dirname, '../src/types.ts')
 const defaultProps = `
@@ -11,7 +12,7 @@ const defaultProps = `
      *
      * @example -webkit-transform
      */
-    unsupported: boolean | string[]
+    unsupported?: boolean | string[]
     
     /**
      * Define custom CSS text.
@@ -30,7 +31,7 @@ const defaultProps = `
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
      * \`\`\`
      */
-    child?: TCSSSimplePropValue
+    child?: CCSSProp
 `
 const warningMessage = `
 /*
@@ -41,33 +42,52 @@ const warningMessage = `
  */
 `
 
-// const createPropDefinition = (acronym: string, short: string, name: string, propType = 'TCSSPropValue'): string => `
+// const createPropDefinition = (acronym: string, short: string, name: string, propType = 'CCSSProp'): string => `
 const createPropDefinition = (
     propName: string,
     short: string,
     long: string,
     propList: string[],
-    propType = 'TCSSPropValue'
+    propType = 'CCSSProp'
 ): string => `
     /**
      * @propDocStart
      * {
      *     long: '${long}',
-     *     props: [${propList.map(p => `'${p}'`).join(', ')}],
+     *     props: [${propList.map((p) => `'${p}'`).join(', ')}],
      *     short: '${short}'
      * }
      * @propDocEnd
      */
-    ${/[-_\[\]]/g.test(propName) ? `'${propName}'` : propName}?: ${propType}
+    ${toCamelCase(propName)}?: ${propType}
 `
 
+const done = new Set()
 const generateCCSSPropEntries = ([short, light, long]: [string, string, string, ...any[]]): string => {
-    const propList = Array.from(new Set([short, light, long]))
-    return propList.reduce((acc, curr) => acc.concat(createPropDefinition(curr, short, long, propList)), '')
+    const list = [short, light, long]
+    // Any of these already exists, skip
+    if (list.some((a) => done.has(a) || done.has(toCamelCase(a)))) return ''
+
+    return list.reduce((acc, curr) => {
+        // This already exists, skip
+        if (done.has(curr)) return acc
+
+        // Mark as done
+        done.add(curr)
+        done.add(toCamelCase(curr))
+
+        // It starts with -, skip it
+        if (curr[0] === '-') return acc
+
+        return acc.concat(createPropDefinition(curr, list[0], list[2], list))
+    }, '')
 }
 
-const generateCCSSProps = (): string =>
-    getPropTable().reduce((acc, curr) => acc.concat(generateCCSSPropEntries(curr)), defaultProps)
+const generateCCSSProps = (): string => {
+    return getPropTable().reduce((acc, curr) => {
+        return acc.concat(generateCCSSPropEntries(curr))
+    }, defaultProps)
+}
 
 const writeGeneratedPropsOnFile = () => {
     const content = fs.readFileSync(DIST).toString()

@@ -11,7 +11,7 @@ A `babel-plugin` that is capable of:
 -   Converting prop names to short version;
 -   Converting values to short version.
 
-All-in-all it is a huge performance boost to your application and a significant amount of size savings.
+All-in-all, it is a huge performance boost to your application, and a significant size saving.
 
 ## Usage
 
@@ -19,10 +19,7 @@ Add `@cryptic-css/babel-plugin-styled` to your Babel config in the plugins secti
 
 ```json
 {
-    "plugins" : [
-        "@cryptic-css/babel-plugin-styled"
-        "..."
-    ]
+    "plugins": ["@cryptic-css/babel-plugin-styled", "..."]
 }
 ```
 
@@ -96,7 +93,7 @@ Available values:
 
 In order to make the plugin able to compile CCSS, you need to provide a CCSS instance and its options object.
 
-By default the plugin will load the default's from the `ccss` package. In case you have your own custom props,
+By default, the plugin will load the default's from the `ccss` package. In case you have your own custom props,
 short values, etc., you need to provide your own instance. You can do this 2 ways:
 
 -   Provide a `string` as value, this will be evaluated (see default).
@@ -125,7 +122,7 @@ Steps:
 6. Generate `__{filename}.css` files next to the source file.
 7. Add `import '__{filename}.css` at the top of the file.
 
-By default all props are extracted only if values are fully static. However the plugin is also able to separate
+By default, all props are extracted only if values are fully static. However the plugin is also able to separate
 static expressions in some other cases, like the `child` or `mq` prop.
 
 Input
@@ -157,7 +154,7 @@ Output
 ## How to handle custom props?
 
 You can have your own `babelPluginHandler` attached to your prop handler function. Simply add
-`myHandler.babelPluginHandler = function(){}`.
+`myHandler.babelPluginHandler = function(){}`. However, all fully static props extracted by default.
 
 See source code child/mq for examples.
 
