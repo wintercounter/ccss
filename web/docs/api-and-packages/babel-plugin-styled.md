@@ -11,7 +11,8 @@ A `babel-plugin` that is capable of:
 -   Converting prop names to short version;
 -   Converting values to short version.
 
-All-in-all, it is a huge performance boost to your application, and a significant size saving.
+All-in-all, it is a huge performance boost to your application, and a significant size saving,
+especially on long-term thanks to the extreme level of AtomicCSS extraction.
 
 ## Usage
 

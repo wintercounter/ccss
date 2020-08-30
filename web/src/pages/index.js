@@ -232,8 +232,8 @@ const features = [
                         single character selectors for <strong>smaller CSS and JS output</strong>;
                     </li>
                     <li>
-                        have an output based on <strong>utility-first</strong> approaches where you only have the code
-                        in your bundle what you actually do use.
+                        have an output based on <strong>Utility-first</strong> and <strong>AtomicCSS</strong>{' '}
+                        principles where you only have tp ship code in your bundle what you actually use.
                     </li>
                 </ul>
             </div>
