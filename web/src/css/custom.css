@@ -38,7 +38,7 @@
     scroll-behavior: smooth;
 }
 
-body {
+.main-wrapper {
     overflow-x: hidden;
 }
 
