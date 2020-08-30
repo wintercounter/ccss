@@ -8,6 +8,7 @@ module.exports = {
     projectName: 'ccss', // Usually your repo name.
     themeConfig: {
         sidebarCollapsible: false,
+        disableDarkTheme: true,
         algolia: {
             apiKey: '4fdab68bf474090efe74ceaf220db37e',
             indexName: 'ccss_dev',
