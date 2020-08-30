@@ -38,6 +38,10 @@
     scroll-behavior: smooth;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .footer--dark {
     --ifm-footer-background-color: var(--color-site-blue);
 }
