@@ -89,6 +89,8 @@ Available values:
 
 -   `unicode`: generate a single character unicode selector.
 -   `shorthest`: use the shortest possible selector generating from a pre-defined list of letters.
+-   `MurmurHash2`: using the `MurmurHash2` hashing algorithm it'll generate a deterministic selector based on the
+CSS content. This is useful when working on shared packages.
 
 #### `expressions`
 
