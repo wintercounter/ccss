@@ -54,6 +54,9 @@ pluginTester({
             Single: 'single',
             Duo: {
                 Foo: 'Bar'
+            },
+            Colors: {
+                Dark: '#000'
             }
         },
         classNameStrategy: 'testing'
@@ -323,6 +326,11 @@ pluginTester({
             title: 'handles prepared values inside expression => object',
             code: `<Ui mq={['mobile', { boxShadow: Ui.Theme.Foo.Bar.Baz.Object }]}>{variable}</Ui>;`,
             output: `<div className="mq___mobile____shd____foo__1___">{variable}</div>;`
+        },
+        {
+            title: 'cssvars',
+            code: '<Ui color={Colors.Dark} />;',
+            output: '<div className="color_var____colors__dark_" />;'
         }
     ]
 })

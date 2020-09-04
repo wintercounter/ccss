@@ -9,7 +9,7 @@ import { merge } from 'lodash'
 import fg from 'fast-glob'
 
 import * as classNameStrategies from '@/classNameStrategies'
-import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
+import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails, collectColors } from '@/helpers'
 import { hybrid, onlyFullyStatic } from '@/handlers'
 import { convertCharStr2CSS } from '@/utils'
 
@@ -25,7 +25,8 @@ const defaultOpts = {
         ccss: `require('ccss').default || require('ccss')`,
         options: `require('ccss').defaultOptions`
     },
-    stats: false
+    stats: false,
+    colorConstantsToCSSVars: true
 }
 
 const valueMapTypes = {
@@ -70,6 +71,25 @@ export default (api, opts) => {
     const ccssPropMap = {}
     let programStyles
     let currentProgram
+
+    if (opts.colorConstantsToCSSVars) {
+        collectColors(opts.constants).forEach(([path, color]) => {
+            Object.defineProperty(
+                path.slice(0, path.length - 1).reduce((acc, p) => {
+                    acc = acc[p]
+                    return acc
+                }, opts.constants),
+                path[path.length - 1],
+                {
+                    get: function () {
+                        const cssVarName = `--${path.join('-')}`
+                        programStyles.set(`:root { --${cssVarName}: ${color} }`, ':root')
+                        return `var(${cssVarName})`
+                    }
+                }
+            )
+        })
+    }
 
     // Create prop map for all props in CCSS Prop table
     for (const [short, light, long] of ccssOptions.props._propTable) {
@@ -130,7 +150,7 @@ export default (api, opts) => {
                     [...programStyles.entries()].reduce(
                         (acc, [rules, className]) =>
                             acc +
-                            `.${className}{${
+                            `${className.startsWith(':') ? className : `.${className}`}{${
                                 // If it's unicode, we'll keep as is,
                                 // if not, we will convert all character into a safe CSS form
                                 classNameStrategy === 'unicode'
