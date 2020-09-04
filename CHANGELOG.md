@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.14.0](https://github.com/wintercounter/ccss/compare/v3.13.0...v3.14.0) (2020-09-04)
+
+
+### Features
+
+* **babel-plugin:** add `MurmurHash2` as `classNameStrategy` for deterministic selector generation ([cef1f80](https://github.com/wintercounter/ccss/commit/cef1f8031d477cd7cab9012120c1b147d7acb9f8))
+
+
+
+
+
+
 # [3.13.0](https://github.com/wintercounter/ccss/compare/v3.12.0...v3.13.0) (2020-08-29)
 
 ### Features
