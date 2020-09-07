@@ -26,7 +26,7 @@ const defaultOpts = {
         options: `require('ccss').defaultOptions`
     },
     stats: false,
-    colorConstantsToCSSVars: true
+    colorConstantsToCSSVars: false
 }
 
 const valueMapTypes = {
@@ -70,6 +70,7 @@ export default (api, opts) => {
     const styles = new Map()
     const ccssPropMap = {}
     let programStyles
+    let extraStyles
     let currentProgram
 
     if (opts.colorConstantsToCSSVars) {
@@ -83,7 +84,7 @@ export default (api, opts) => {
                 {
                     get: function () {
                         const cssVarName = `--${path.join('-')}`
-                        programStyles.set(`:root { --${cssVarName}: ${color} }`, ':root')
+                        extraStyles.push(`:root { ${cssVarName}: ${color}; }`)
                         return `var(${cssVarName})`
                     }
                 }
@@ -150,7 +151,7 @@ export default (api, opts) => {
                     [...programStyles.entries()].reduce(
                         (acc, [rules, className]) =>
                             acc +
-                            `${className.startsWith(':') ? className : `.${className}`}{${
+                            `.${className}{${
                                 // If it's unicode, we'll keep as is,
                                 // if not, we will convert all character into a safe CSS form
                                 classNameStrategy === 'unicode'
@@ -159,7 +160,7 @@ export default (api, opts) => {
                                           return full.replace(content, convertCharStr2CSS(content))
                                       })
                             }}`,
-                        ''
+                        extraStyles.join('')
                     )
                 ),
                 stringify
@@ -184,6 +185,7 @@ export default (api, opts) => {
         visitor: {
             Program(path) {
                 programStyles = new Map()
+                extraStyles = []
                 currentProgram = path
             },
             JSXOpeningElement(path, state) {

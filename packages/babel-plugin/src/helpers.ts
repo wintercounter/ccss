@@ -12,7 +12,7 @@ export const collectColors = (input, path = [], all = []) => {
         const i = input[key]
         if (isColor(i)) {
             all.push([[...path, key], i])
-        } else if (!Array.isArray(i) && typeof i === 'object') {
+        } else if (!Array.isArray(i) && typeof i === 'object' && i !== null) {
             collectColors(i, [...path, key], all)
         }
     }
