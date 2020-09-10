@@ -56,7 +56,9 @@ export const createStyledCCSS = ({
     Ui.defaultProps = defaultProps
     const tagged = (tag = defaultTag) => (p: CCSSProps) => {
         const css = __ccss(p)
-        return s[tag]<CCSSProps>(() => css, __ccss)
+        const cmp = s[tag]<CCSSProps>(() => css, __ccss)
+        cmp.defaultProps = defaultProps
+        return cmp
     }
     const ccssd = tagged(defaultTag)
 
@@ -69,7 +71,6 @@ export const createStyledCCSS = ({
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
-                ccssd[tag].defaultProps = defaultProps
             } catch {}
         }
     }
