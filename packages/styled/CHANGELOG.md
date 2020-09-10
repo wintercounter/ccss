@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://github.com/wintercounter/ccss/compare/v3.14.0...v3.15.0) (2020-09-10)
+
+
+### Bug Fixes
+
+* **babel-plugin-styled:** `defaultProps` for `ccssd` based components ([a861990](https://github.com/wintercounter/ccss/commit/a861990fa55925a77a8789ce47cc474a3d06f854))
+
+
+
+
+
 # [3.14.0](https://github.com/wintercounter/ccss/compare/v3.13.0...v3.14.0) (2020-09-04)
 
 **Note:** Version bump only for package @cryptic-css/styled

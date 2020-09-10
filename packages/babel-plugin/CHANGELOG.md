@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://github.com/wintercounter/ccss/compare/v3.14.0...v3.15.0) (2020-09-10)
+
+
+### Features
+
+* **babel-plugin-styled:** add `colorConstantsToCSSVars` option which enables automatics CSS Variable conversion ([fff8625](https://github.com/wintercounter/ccss/commit/fff862554170934e07a204a167f1f0aeb2a9a9cd))
+
+
+
+
+
 # [3.14.0](https://github.com/wintercounter/ccss/compare/v3.13.0...v3.14.0) (2020-09-04)
 
 
