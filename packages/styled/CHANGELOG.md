@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.16.0](https://github.com/wintercounter/ccss/compare/v3.15.0...v3.16.0) (2020-09-20)
+
+
+### Features
+
+* **styled:** add support for expo-like environments; both RN + Web at once. ([2ab2a82](https://github.com/wintercounter/ccss/commit/2ab2a8230ff10a48123b35067f0de5043b687a7f))
+* **styled:** add support for expo-like environments; both RN + Web at once. ([138f46f](https://github.com/wintercounter/ccss/commit/138f46f32897643de7d0901b26efb9ee46a04e4b))
+
+
+
+
+
 # [3.15.0](https://github.com/wintercounter/ccss/compare/v3.14.0...v3.15.0) (2020-09-10)
 
 
