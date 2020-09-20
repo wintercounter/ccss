@@ -1,0 +1,6 @@
+{
+  "name": "@cryptic-css/styled/native",
+  "private": true,
+  "main": "../dist/cjs/native.js",
+  "module": "../dist/native.js"
+}
