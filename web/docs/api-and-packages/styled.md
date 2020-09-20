@@ -46,4 +46,7 @@ createCCSS(options)
 const { ccss, Ui, ccssd } = createStyledCCSS(options)
 ```
 
-createStyledCCSS
+## React Native
+
+Just simply use the same as `styled-components`, eg: `Ui.View`. In case you use `Expo`,
+you can import `@cryptic-css/styled/native`.
