@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/prop-scroll",
-    "version": "3.14.0",
+    "version": "3.15.0",
     "description": "Add support for the `scroll` prop to easily create horizontal/vertical/both scrollable elements.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
@@ -71,7 +71,7 @@
         "@cryptic-css/core": "^3.12.0"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^3.14.0"
+        "@cryptic-css/core": "^3.15.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
 }

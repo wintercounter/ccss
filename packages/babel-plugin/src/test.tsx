@@ -54,6 +54,9 @@ pluginTester({
             Single: 'single',
             Duo: {
                 Foo: 'Bar'
+            },
+            Colors: {
+                Dark: '#000'
             }
         },
         classNameStrategy: 'testing'

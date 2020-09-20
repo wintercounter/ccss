@@ -9,7 +9,7 @@ import { merge } from 'lodash'
 import fg from 'fast-glob'
 
 import * as classNameStrategies from '@/classNameStrategies'
-import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails } from '@/helpers'
+import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails, collectColors } from '@/helpers'
 import { hybrid, onlyFullyStatic } from '@/handlers'
 import { convertCharStr2CSS } from '@/utils'
 
@@ -25,7 +25,8 @@ const defaultOpts = {
         ccss: `require('ccss').default || require('ccss')`,
         options: `require('ccss').defaultOptions`
     },
-    stats: false
+    stats: false,
+    colorConstantsToCSSVars: false
 }
 
 const valueMapTypes = {
@@ -69,7 +70,27 @@ export default (api, opts) => {
     const styles = new Map()
     const ccssPropMap = {}
     let programStyles
+    let extraStyles
     let currentProgram
+
+    if (opts.colorConstantsToCSSVars) {
+        collectColors(opts.constants).forEach(([path, color]) => {
+            Object.defineProperty(
+                path.slice(0, path.length - 1).reduce((acc, p) => {
+                    acc = acc[p]
+                    return acc
+                }, opts.constants),
+                path[path.length - 1],
+                {
+                    get: function () {
+                        const cssVarName = `--${path.join('-')}`
+                        extraStyles.push(`:root { ${cssVarName}: ${color}; }`)
+                        return `var(${cssVarName})`
+                    }
+                }
+            )
+        })
+    }
 
     // Create prop map for all props in CCSS Prop table
     for (const [short, light, long] of ccssOptions.props._propTable) {
@@ -139,7 +160,7 @@ export default (api, opts) => {
                                           return full.replace(content, convertCharStr2CSS(content))
                                       })
                             }}`,
-                        ''
+                        extraStyles.join('')
                     )
                 ),
                 stringify
@@ -149,7 +170,7 @@ export default (api, opts) => {
             const cssPath = `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
 
             // Delete old files
-            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach((p) => fs.unlinkSync(p))
+            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach(p => fs.unlinkSync(p))
 
             fs.writeFileSync(cssPath, style, { mode: 0o755 })
 
@@ -164,11 +185,12 @@ export default (api, opts) => {
         visitor: {
             Program(path) {
                 programStyles = new Map()
+                extraStyles = []
                 currentProgram = path
             },
             JSXOpeningElement(path, state) {
                 const classNames: string[] = []
-                const classNameNode = path.node.attributes.find((node) => node.name && node.name.name === 'className')
+                const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
                 const identifier = isCCSSTag(path, state)
                 // Use our own options
                 state.opts = opts
@@ -184,7 +206,7 @@ export default (api, opts) => {
 
                 // Filter will remove unnecessary attributes
                 path.node.attributes = path.node.attributes
-                    .map((attr) => {
+                    .map(attr => {
                         // Not supported attr, keep it as is
                         if (!attr?.name?.name || !ccssPropMap[attr.name.name]) {
                             // We don't know what will be there...
@@ -214,7 +236,7 @@ export default (api, opts) => {
                             let selector = styles.get(css)
 
                             if (!selector) {
-                                selector = classNameStrategies[classNameStrategy](name, pureValue)
+                                selector = classNameStrategies[classNameStrategy](name, pureValue, css)
                                 styles.set(css, selector)
                             }
                             if (!programStyles.get(css)) {

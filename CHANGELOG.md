@@ -3,12 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.14.0](https://github.com/wintercounter/ccss/compare/v3.13.0...v3.14.0) (2020-09-20)
+# [3.15.0](https://github.com/wintercounter/ccss/compare/v3.14.0...v3.15.0) (2020-09-10)
+
+
+### Bug Fixes
+
+* **babel-plugin-styled:** `defaultProps` for `ccssd` based components ([a861990](https://github.com/wintercounter/ccss/commit/a861990fa55925a77a8789ce47cc474a3d06f854))
 
 
 ### Features
 
-* **styled:** add support for expo-like environments; both RN + Web at once. ([138f46f](https://github.com/wintercounter/ccss/commit/138f46f32897643de7d0901b26efb9ee46a04e4b))
+* **babel-plugin-styled:** add `colorConstantsToCSSVars` option which enables automatics CSS Variable conversion ([fff8625](https://github.com/wintercounter/ccss/commit/fff862554170934e07a204a167f1f0aeb2a9a9cd))
+
+
+
+
+
+# [3.14.0](https://github.com/wintercounter/ccss/compare/v3.13.0...v3.14.0) (2020-09-04)
+
+
+### Features
+
+* **babel-plugin:** add `MurmurHash2` as `classNameStrategy` for deterministic selector generation ([cef1f80](https://github.com/wintercounter/ccss/commit/cef1f8031d477cd7cab9012120c1b147d7acb9f8))
+
 
 
 

@@ -5,6 +5,20 @@ import * as babylon from '@babel/parser'
 import traverse from '@babel/traverse'
 import './handlers'
 
+const colorRegExp = /^#(?:[0-9a-f]{2}){2,4}$|(#[0-9a-f]{3}$)|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d.]+%?\)/g
+const isColor = v => typeof v === 'string' && colorRegExp.test(v)
+export const collectColors = (input, path = [], all = []) => {
+    for (const key of Object.keys(input)) {
+        const i = input[key]
+        if (isColor(i)) {
+            all.push([[...path, key], i])
+        } else if (!Array.isArray(i) && typeof i === 'object' && i !== null) {
+            collectColors(i, [...path, key], all)
+        }
+    }
+    return all
+}
+
 const objectToAST = <T>(literal: T) => {
     if (literal === null) {
         return t.nullLiteral()

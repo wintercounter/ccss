@@ -89,6 +89,8 @@ Available values:
 
 -   `unicode`: generate a single character unicode selector.
 -   `shorthest`: use the shortest possible selector generating from a pre-defined list of letters.
+-   `MurmurHash2`: using the `MurmurHash2` hashing algorithm it'll generate a deterministic selector based on the
+CSS content. This is useful when working on shared packages.
 
 #### `expressions`
 
@@ -101,7 +103,9 @@ short values, etc., you need to provide your own instance. You can do this 2 way
 -   Use a JavaScript file as your Babel config where you can import/require your own instance and options, and provide
     those.
 
-#### `stats`
+#### `stats` boolean
+
+Default: `false`
 
 The plugin is able to provide you some stats, such as:
 
@@ -110,6 +114,13 @@ The plugin is able to provide you some stats, such as:
 -   `nonStatic`: an array of original source codes that couldn't not be transformed fully static.
 
 A file called `babelPluginStyledCcssStats.json` will be created where you run your compilation process.
+
+#### `colorConstantsToCSSVars` boolean
+
+Default: `false`
+
+The plugin is able to automatically search for color values in the provided constants, replacing them with
+CSS variables to enable theming of static extreacted components.
 
 ## How it works?
 
