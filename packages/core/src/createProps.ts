@@ -1,4 +1,4 @@
-import { pipe, mapValue, parseArray, parseSingle, toCSSRule, child } from './parsers'
+import { pipe, mapValue, parseArray, toCSSRule, child } from './parsers'
 import { CCSSProps, CCSSParser } from './types'
 import { mergeDeep, toCamelCase } from './utils'
 
@@ -71,7 +71,7 @@ export const getPropTable = (): PropTable => {
         ['f', 'fx', 'flex'],
         ['fd', 'fx-dir', 'flex-direction', mapValue],
         ['fw', 'fx-wrap', 'flex-wrap', mapValue],
-        ['fb', 'fx-base', 'flex-basis', parseSingle],
+        ['fb', 'fx-base', 'flex-basis', parseArray],
         ['ff', 'fx-flow', 'flex-flow'],
         ['fg', 'fx-grow', 'flex-grow'],
         ['fs', 'fx-shrink', 'flex-shrink'],
@@ -86,17 +86,17 @@ export const getPropTable = (): PropTable => {
         ['ft', 'ft', 'font'],
         ['ftf', 'ft-family', 'font-family', mapValue],
         ['ftk', 'ft-kern', 'font-kerning'],
-        ['fts', 'ft-size', 'font-size', mapValue, parseSingle],
+        ['fts', 'ft-size', 'font-size', mapValue, parseArray],
         ['ftStr', 'ft-stretch', 'font-stretch', mapValue],
         ['ftSty', 'ft-style', 'font-style', mapValue],
         ['ftv', 'ft-variant', 'font-variant', mapValue],
         ['ftw', 'ft-weight', 'font-weight', mapValue],
-        ['ls', 'ltr-spacing', 'letter-spacing', parseSingle],
+        ['ls', 'ltr-spacing', 'letter-spacing', parseArray],
         ['lh', 'line-h', 'line-height'],
 
         ['ta', 'txt-align', 'text-align', mapValue],
         ['td', 'txt-decor', 'text-decoration', mapValue],
-        ['ti', 'txt-in', 'text-indent', parseSingle],
+        ['ti', 'txt-in', 'text-indent', parseArray],
         ['to', 'txt-flow', 'text-overflow', mapValue],
         ['ts', 'txt-shad', 'text-shadow'],
         ['tt', 'txt-tranf', 'text-transform', mapValue],
@@ -104,7 +104,7 @@ export const getPropTable = (): PropTable => {
         ['va', 'v-align', 'vertical-align', mapValue],
         ['ws', 'w-space', 'white-space', mapValue],
         ['wb', 'w-break', 'word-break', mapValue],
-        ['wS', 'w-spacing', 'word-spacing', parseSingle],
+        ['wS', 'w-spacing', 'word-spacing', parseArray],
         ['ww', 'w-wrap', 'word-wrap', mapValue],
 
         // List
@@ -115,17 +115,17 @@ export const getPropTable = (): PropTable => {
 
         // Margin
         ['m', 'mar', 'margin', parseArray],
-        ['mT', 'mar-top', 'margin-top', parseSingle],
-        ['mR', 'mar-right', 'margin-right', parseSingle],
-        ['mB', 'mar-bottom', 'margin-bottom', parseSingle],
-        ['mL', 'mar-left', 'margin-left', parseSingle],
+        ['mT', 'mar-top', 'margin-top', parseArray],
+        ['mR', 'mar-right', 'margin-right', parseArray],
+        ['mB', 'mar-bottom', 'margin-bottom', parseArray],
+        ['mL', 'mar-left', 'margin-left', parseArray],
 
         // Padding
         ['p', 'pad', 'padding', parseArray],
-        ['pT', 'pad-top', 'padding-top', parseSingle],
-        ['pR', 'pad-right', 'padding-right', parseSingle],
-        ['pB', 'pad-bottom', 'padding-bottom', parseSingle],
-        ['pL', 'pad-left', 'padding-left', parseSingle],
+        ['pT', 'pad-top', 'padding-top', parseArray],
+        ['pR', 'pad-right', 'padding-right', parseArray],
+        ['pB', 'pad-bottom', 'padding-bottom', parseArray],
+        ['pL', 'pad-left', 'padding-left', parseArray],
 
         // Background
         ['bg', 'bg', 'background', mapValue, parseArray],
@@ -141,12 +141,12 @@ export const getPropTable = (): PropTable => {
         ['bf', 'bd-filter', 'backdrop-filter', parseArray],
 
         // Dimension
-        ['w', 'wid', 'width', mapValue, parseSingle],
-        ['h', 'hei', 'height', mapValue, parseSingle],
-        ['minW', 'min-wid', 'min-width', mapValue, parseSingle],
-        ['minH', 'min-hei', 'min-height', mapValue, parseSingle],
-        ['maxW', 'max-wid', 'max-width', mapValue, parseSingle],
-        ['maxH', 'max-hei', 'max-height', mapValue, parseSingle],
+        ['w', 'wid', 'width', mapValue, parseArray],
+        ['h', 'hei', 'height', mapValue, parseArray],
+        ['minW', 'min-wid', 'min-width', mapValue, parseArray],
+        ['minH', 'min-hei', 'min-height', mapValue, parseArray],
+        ['maxW', 'max-wid', 'max-width', mapValue, parseArray],
+        ['maxH', 'max-hei', 'max-height', mapValue, parseArray],
 
         // Grid
         ['g', 'grd', 'grid'],
@@ -156,12 +156,12 @@ export const getPropTable = (): PropTable => {
         ['gar', 'gr-auto-rows', 'grid-auto-rows', parseArray],
         ['gc', 'gr-col', 'grid-column', parseArray],
         ['gce', 'gr-col-end', 'grid-column-end'],
-        ['gcg', 'gr-col-gap', 'grid-column-gap', parseSingle],
+        ['gcg', 'gr-col-gap', 'grid-column-gap', parseArray],
         ['gcs', 'gr-col-start', 'grid-column-start'],
         ['gg', 'gr-gap', 'grid-gap', parseArray],
         ['gr', 'gr-row', 'grid-row', parseArray],
         ['gre', 'gr-row-end', 'grid-row-end'],
-        ['grg', 'gr-row-gap', 'grid-row-gap', parseSingle],
+        ['grg', 'gr-row-gap', 'grid-row-gap', parseArray],
         ['grs', 'gr-row-start', 'grid-row-start'],
         ['gt', 'gr-tmpl', 'grid-template'],
         ['gta', 'gr-areas', 'grid-template-areas'],
@@ -172,10 +172,10 @@ export const getPropTable = (): PropTable => {
         ['b', 'bd', 'border', parseArray],
         ['bB', 'bd-bot', 'border-bottom', parseArray],
         ['bBc', 'bd-bot-color', 'border-bottom-color', mapValue],
-        ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius', parseSingle],
-        ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius', parseSingle],
+        ['bBlr', 'bd-bot-left-radius', 'border-bottom-left-radius', parseArray],
+        ['bBrr', 'bd-bot-right-radius', 'border-bottom-right-radius', parseArray],
         ['bBs', 'bd-bot-style', 'border-bottom-style'],
-        ['bBw', 'bd-bot-wid', 'border-bottom-width', parseSingle],
+        ['bBw', 'bd-bot-wid', 'border-bottom-width', parseArray],
         ['bC', 'bd-coll', 'border-collapse'],
         ['bc', 'bd-color', 'border-color', mapValue],
         ['bi', 'bd-img', 'border-image', mapValue],
@@ -183,24 +183,24 @@ export const getPropTable = (): PropTable => {
         ['bir', 'bd-img-repeat', 'border-image-repeat'],
         ['bis', 'bd-img-slice', 'border-image-slice'],
         ['biSrc', 'bd-img-src', 'border-image-source'],
-        ['biw', 'bd-img-width', 'border-image-width', parseSingle],
+        ['biw', 'bd-img-width', 'border-image-width', parseArray],
         ['bL', 'bd-left', 'border-left', parseArray],
         ['bLc', 'bd-left-color', 'border-left-color', mapValue],
         ['bLs', 'bd-left-style', 'border-left-style'],
-        ['bLw', 'bd-left-width', 'border-left-width', parseSingle],
+        ['bLw', 'bd-left-width', 'border-left-width', parseArray],
         ['br', 'bd-radius', 'border-radius', mapValue, parseArray],
         ['bR', 'bd-right', 'border-right', parseArray],
         ['bRc', 'bd-right-color', 'border-right-color', mapValue],
         ['bRs', 'bd-right-style', 'border-right-style'],
-        ['bRw', 'bd-right-width', 'border-right-width', parseSingle],
-        ['bs', 'bd-spacing', 'border-spacing', parseSingle],
+        ['bRw', 'bd-right-width', 'border-right-width', parseArray],
+        ['bs', 'bd-spacing', 'border-spacing', parseArray],
         ['bS', 'bd-style', 'border-style'],
         ['bT', 'bd-top', 'border-top', parseArray],
         ['bTc', 'bd-top-color', 'border-top-color', mapValue],
-        ['bTlr', 'bd-top-left-radius', 'border-top-left-radius', mapValue, parseSingle],
-        ['bTrr', 'bd-top-right-radius', 'border-top-right-radius', mapValue, parseSingle],
+        ['bTlr', 'bd-top-left-radius', 'border-top-left-radius', mapValue, parseArray],
+        ['bTrr', 'bd-top-right-radius', 'border-top-right-radius', mapValue, parseArray],
         ['bTs', 'bd-top-style', 'border-top-style'],
-        ['bTw', 'bd-top-width', 'border-top-width', parseSingle],
+        ['bTw', 'bd-top-width', 'border-top-width', parseArray],
         ['bw', 'bd-width', 'border-width', parseArray],
 
         // Clip
@@ -210,10 +210,10 @@ export const getPropTable = (): PropTable => {
         // General
         ['d', 'dsp', 'display', mapValue],
         ['P', 'pos', 'position', mapValue],
-        ['T', 'top', 'top', parseSingle],
-        ['R', 'right', 'right', parseSingle],
-        ['B', 'bottom', 'bottom', parseSingle],
-        ['L', 'left', 'left', parseSingle],
+        ['T', 'top', 'top', parseArray],
+        ['R', 'right', 'right', parseArray],
+        ['B', 'bottom', 'bottom', parseArray],
+        ['L', 'left', 'left', parseArray],
         ['zi', 'z-index', 'z-index'],
         ['c', 'color', 'color', mapValue],
         ['o', 'over', 'overflow', mapValue],
@@ -228,13 +228,13 @@ export const getPropTable = (): PropTable => {
         ['col', 'col', 'columns'],
         ['cc', 'col-count', 'column-count'],
         ['cf', 'col-fill', 'column-fill'],
-        ['cg', 'col-gap', 'column-gap', parseSingle],
+        ['cg', 'col-gap', 'column-gap', parseArray],
         ['cr', 'col-rule', 'column-rule'],
         ['crc', 'col-rule-color', 'column-rule-color', mapValue],
         ['crs', 'col-rule-style', 'column-rule-style'],
-        ['crw', 'col-rule-width', 'column-rule-width', parseSingle],
+        ['crw', 'col-rule-width', 'column-rule-width', parseArray],
         ['cs', 'col-span', 'column-span'],
-        ['cw', 'col-width', 'column-width', parseSingle],
+        ['cw', 'col-width', 'column-width', parseArray],
         ['pba', 'pb-after', 'page-break-after'],
         ['pbb', 'pb-before', 'page-break-before'],
         ['pbi', 'pb-inside', 'page-break-inside'],
@@ -257,8 +257,8 @@ export const getPropTable = (): PropTable => {
         ['pe', 'p-events', 'pointer-events', mapValue],
         ['fil', 'filter', 'filter', parseArray],
         ['sb', 's-behavior', 'scroll-behavior', mapValue],
-        ['sw', 's-width', 'scrollbar-width', mapValue, parseSingle],
-        ['sh', 's-height', 'scrollbar-height', mapValue, parseSingle],
+        ['sw', 's-width', 'scrollbar-width', mapValue, parseArray],
+        ['sh', 's-height', 'scrollbar-height', mapValue, parseArray],
         ['us', 'u-select', 'user-select', mapValue],
         ['carc', 'car-color', 'caret-color', mapValue],
         ['rs', 'res', 'resize', mapValue],
@@ -298,7 +298,7 @@ export const createProps = <T>(overrides?: T & Partial<CCSSProps>): T & Partial<
     const table = getPropTableObject()
     // Customs
     Object.assign(table, {
-        raw: (i) => i,
+        raw: i => i,
         child
     })
     return overrides !== undefined ? mergeDeep(table, overrides) : table

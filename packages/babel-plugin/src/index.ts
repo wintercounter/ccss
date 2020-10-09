@@ -5,7 +5,7 @@ import path from 'path'
 import crypto from 'crypto'
 import template from '@babel/template'
 import { compile, serialize, stringify } from 'stylis'
-import { merge } from 'lodash'
+import { merge } from 'lodash-es'
 import fg from 'fast-glob'
 
 import * as classNameStrategies from '@/classNameStrategies'
