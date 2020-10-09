@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.17.0](https://github.com/wintercounter/ccss/compare/v3.16.0...v3.17.0) (2020-10-09)
+
+
+### Features
+
+* switch every parseSingle call to parseArray call for complete array resultion support ([b32ad5c](https://github.com/wintercounter/ccss/commit/b32ad5cbcee98b4d9a188a152a092a7c4d1c5147))
+
+
+
+
+
+
 # [3.16.0](https://github.com/wintercounter/ccss/compare/v3.15.0...v3.16.0) (2020-09-20)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/babel-plugin-styled",
-    "version": "3.16.0",
+    "version": "3.17.0",
     "description": "Babel plugin for Styled-components with CCSS.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
@@ -68,7 +68,7 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "devDependencies": {
-        "ccss": "^3.16.0"
+        "ccss": "^3.17.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
