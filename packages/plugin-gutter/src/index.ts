@@ -10,6 +10,9 @@ const gutter = (input, prop, options) => {
             return input.map(i => gutter(i, prop, options))
         case input:
             return g
+        // @ts-ignore
+        case typeof input === 'string' && +input == input:
+            return +input
         case !isNaN(input):
             return g * input
         default:

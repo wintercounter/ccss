@@ -33,13 +33,25 @@ ccss({
 })
 ```
 
+### Opt-out
+
+Sometimes you still want to use the supported props with gutter support.
+For such cases simply pass your value as string.
+
+```js live
+ccss({
+    paddingTop: 10,
+    marginTop: '10'
+})
+```
+
 ## Configuration
 
 The plugin introduces the option key `gutter`. Default value is `5`.
 It defines the size of 1 gutter (uses the defined `unit` core option).
 
 > The plugin included in the `ccss` package pre-configured.
-Skip this step if you don't need custom configuration and/or **CCSS** instance.
+> Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
 import { createCCSS, createOptions } from '@cryptic-css/core'
@@ -52,6 +64,6 @@ applyPluginGutter(options)
 const ccss = createCCSS(options)
 
 ccss({
-   m: 1 // margin: 10rem;
+    m: 1 // margin: 10rem;
 })
 ```

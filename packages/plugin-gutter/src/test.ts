@@ -24,4 +24,12 @@ describe('gutter-plugin', () => {
     it('can use none numeric values:object', () => {
         expect(ccssObject({ m: ['15rem', 2] })).toStrictEqual({ margin: '15rem 10rem ' })
     })
+
+    it('can use numeric values as string => no unit', () => {
+        expect(ccss({ m: ['15', 2] })).toBe('margin: 15rem 10rem ;')
+    })
+
+    it('can use numeric values as string => no unit:object', () => {
+        expect(ccssObject({ m: ['15', 2] })).toStrictEqual({ margin: '15rem 10rem ' })
+    })
 })
