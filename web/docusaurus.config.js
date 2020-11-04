@@ -9,6 +9,9 @@ module.exports = {
     themeConfig: {
         sidebarCollapsible: false,
         disableDarkTheme: true,
+        googleAnalytics: {
+            trackingID: 'UA-141789564-1'
+        },
         algolia: {
             apiKey: '4fdab68bf474090efe74ceaf220db37e',
             indexName: 'ccss_dev',
@@ -114,5 +117,5 @@ module.exports = {
         ]
     ],
     themes: ['@docusaurus/theme-live-codeblock'],
-    plugins: [require.resolve('./src/js')]
+    plugins: ['@docusaurus/plugin-google-analytics', require.resolve('./src/js')]
 }
