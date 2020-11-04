@@ -57,7 +57,8 @@ pluginTester({
             },
             Colors: {
                 Dark: '#000'
-            }
+            },
+            Calc: ['calc(', 4, ')']
         },
         classNameStrategy: 'testing'
     },
@@ -326,6 +327,11 @@ pluginTester({
             title: 'handles prepared values inside expression => object',
             code: `<Ui mq={['mobile', { boxShadow: Ui.Theme.Foo.Bar.Baz.Object }]}>{variable}</Ui>;`,
             output: `<div className="mq___mobile____shd____foo__1___">{variable}</div>;`
+        },
+        {
+            title: 'handles concatenated array value correctly',
+            code: `<Ui width={Calc} />;`,
+            output: `<div className="width___calc___4_____" />;`
         }
     ]
 })

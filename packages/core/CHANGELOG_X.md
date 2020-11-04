@@ -1,0 +1,10 @@
+-   new Map structure => performance
+-   removed mid names
+    -   not used
+    -   much smaller code
+-   faster boot
+    -   no extra instance creation => use default
+    -   no extra prop creation through loops
+    -   no more deep merge
+    -   simplified property construction
+-   reduced size

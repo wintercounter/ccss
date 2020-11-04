@@ -1,28 +1,30 @@
 // @ts-nocheck
 
-import { createCCSS, createOptions, pipe, mapValue, createValueMap, createProps } from '@'
-import { objectOutputTransformer } from './outputTransformers'
+import { createCCSS } from '@'
+import { stringOutputTransformer, objectOutputTransformer } from './outputTransformers'
 
-const valueMap = createValueMap({
-    br: {
-        global: 6
-    },
-    size: {
-        small: {
-            fts: 10
+const props = [
+    [
+        ['size'],
+        {
+            small: {
+                fts: 10
+            },
+            large: {
+                fts: 32
+            }
         },
-        large: {
-            fts: 32
-        }
-    }
-})
-const props = createProps({
-    size: pipe(mapValue, (input, prop, options) => options.__ccss(input))
-})
-const options = createOptions({ props, valueMap })
-const optionsObject = createOptions({ props, valueMap, outputTransformer: objectOutputTransformer })
-const ccss = createCCSS(options)
-const ccssObject = createCCSS(optionsObject)
+        [
+            (input, prop, transformedFn) => {
+                return transformedFn(input)
+            }
+        ]
+    ],
+    [['br'], { global: 6 }]
+]
+
+const ccss = createCCSS().setProps(props)
+const ccssObject = createCCSS({ outputTransformer: objectOutputTransformer }).setProps(props)
 
 describe('ccss tests', () => {
     describe('Evaluations', () => {
@@ -65,6 +67,9 @@ describe('ccss tests', () => {
         })
         it('pipe:object', () => {
             expect(ccssObject({ br: 'global' })).toStrictEqual({ borderRadius: '6rem' })
+        })
+        it('pipe:object with long name', () => {
+            expect(ccssObject({ borderRadius: 'global' })).toStrictEqual({ borderRadius: '6rem' })
         })
         it('pseudo', () => {
             expect(
