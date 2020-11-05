@@ -79,8 +79,10 @@ export default function transformed() {
             // Let's just use existing keys if already exists
             const _keys = existing?.keys || __keys
             const keys = options.autoCamelCase
-                ? _keys.reduce((acc, k, i) => {
+                ? // Convert to camel case if needed
+                  _keys.reduce((acc, k, i) => {
                       let cc = toCamelCase(k)
+                      // Only store keys that are different when it's converted
                       if (cc !== k) {
                           if (options.outputTransformer.camelCaseReducer) {
                               acc = options.outputTransformer.camelCaseReducer(acc, cc, i)
