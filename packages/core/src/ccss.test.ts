@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { createCCSS } from '@'
-import { stringOutputTransformer, objectOutputTransformer } from './outputTransformers'
+import { objectOutputTransformer } from './outputTransformers'
 
 const props = [
     [
