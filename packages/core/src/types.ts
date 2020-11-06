@@ -61,7 +61,6 @@ export declare type CCSSParser = (
     options: CCSSOptions,
     original?: CCSSInput
 ) => CCSSInput
-export declare type CCSSPipe = (...fn: CCSSParser[]) => CCSSParser
 export declare type CCSSValueMap = {
     [key: string]: any
 }

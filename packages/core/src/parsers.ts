@@ -24,31 +24,30 @@ export const parseArray: CCSSParser = (input, prop, transformedFn) => {
 
 export const toCSSRule = (input, prop, transformedFn, inputObject, definition) => {
     const cssProp = definition ? definition.keys[definition.keys.length - 1] : prop
-    return transformedFn.options.outputTransformer.toCSSRule(cssProp, input, prop, transformedFn)
+    return transformedFn.outputTransformer.toCSSRule(cssProp, input, prop, transformedFn)
 }
 
 export const parseCCSS: CCSSParser = (input, prop, transformedFn) => transformedFn(input)
 
 export const parsePseudo: CCSSParser = (input, prop, transformedFn, inputObject, definition) => {
-    return transformedFn.options.outputTransformer.toChild(input, prop, transformedFn, definition)
+    return transformedFn.outputTransformer.toChild(input, prop, transformedFn, definition)
 }
 
 export const child: CCSSParser = (input, prop, transformedFn, original) => {
-    const options = transformedFn.options
-    let generated = options.outputTransformer.defaultOutput()
+    let generated = transformedFn.outputTransformer.defaultOutput()
 
     for (const k in input) {
         if (Object.prototype.hasOwnProperty.call(input, k)) {
-            const definition = options.props.get(k)
+            const definition = transformedFn.registry.get(k)
             if (definition) {
-                generated = options.outputTransformer(
+                generated = transformedFn.outputTransformer(
                     generated,
                     definition.fn(input[k], k, transformedFn, original, definition)
                 )
             } else {
-                generated = options.outputTransformer(
+                generated = transformedFn.outputTransformer(
                     generated,
-                    options.outputTransformer.toChild(input[k], k, transformedFn)
+                    transformedFn.outputTransformer.toChild(input[k], k, transformedFn)
                 )
             }
         }
