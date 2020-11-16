@@ -1,6 +1,41 @@
 import { Properties as CSSProperties } from 'csstype'
-export declare type StringTransformer = (generated: string, descriptor: string) => string
-export declare type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties
+import { TransformedFn, Options, OutputTransformer, Whatever, Parser, InputObject, Definition } from 'transformed'
+
+/*export declare type StringTransformer = (generated: string, descriptor: string) => string
+export declare type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties*/
+
+export interface CCSSOutputTransformer extends OutputTransformer {
+    type: typeof Object | typeof String
+    toCSSRule: CCSSToCSSRule
+    defaultOutput: () => Whatever
+    toChild: Parser
+}
+
+export declare interface CCSSOptions extends Options {
+    /**
+     * Unit to use globally for number values.
+     */
+    unit: string
+    /**
+     * Function the applies unit to a value
+     */
+    applyUnit: (value: number) => string
+}
+export declare interface CCSSTransformedFn extends TransformedFn {
+    options: CCSSOptions
+    outputTransformer: CCSSOutputTransformer
+}
+
+export interface CCSSParser extends Parser {
+    (
+        value: unknown,
+        prop: string,
+        transformedFn?: CCSSTransformedFn,
+        inputObject?: InputObject,
+        definition?: Definition
+    ): unknown
+}
+
 export declare type CCSSInput = any
 export declare type CCSSFunction = (input: CCSSProps) => string | CSSProperties
 export declare type CCSSToCSSRule = (
@@ -19,48 +54,8 @@ export interface CCSSDefaultOutputFunction {
     (): Object
     (): string
 }
-export interface CCSSOutputTransformer {
-    (generated: string, descriptor: string): string
-    (generated: CSSProperties, descriptor: CSSProperties): CSSProperties
-    toCSSRule: CCSSToCSSRule
-    defaultOutput: CCSSDefaultOutputFunction
-    toChild: CCSSToPseudoChild
-    unsupportedHandler: (generated: any, input: any, prop: any) => Object | string
-}
-export interface CCSSOptions {
-    [key: string]: any
-    /**
-     * Unit to use globally for number values.
-     */
-    unit: string
-    /**
-     * Function the applies unit to a value
-     */
-    applyUnit: (value: number) => string
-    /**
-     * Tells how to transform the final output
-     */
-    outputTransformer: CCSSOutputTransformer
-    /**
-     * All supported properties
-     */
-    props: Partial<CCSSProps>
-    /**
-     * Keys and values to `mapValue` against
-     */
-    valueMap: Partial<CCSSValueMap>
-    /**
-     * Map of supported pseudo selectors
-     */
-    pseudoMap: Partial<CCSSPseudoMap>
-    __ccss: CCSSFunction
-}
-export declare type CCSSParser = (
-    input: CCSSInput,
-    prop: string,
-    options: CCSSOptions,
-    original?: CCSSInput
-) => CCSSInput
+export interface CCSSOptions {}
+
 export declare type CCSSValueMap = {
     [key: string]: any
 }

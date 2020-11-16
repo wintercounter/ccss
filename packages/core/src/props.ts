@@ -1,3 +1,4 @@
+import { Props } from 'transformed'
 import { parseArray, child, parsePseudo, toCSSRule } from './parsers'
 
 const getAligns = () => ({
@@ -42,7 +43,7 @@ const getFalseNone = () => ({
     [false]: 'none'
 })
 
-const defaultProps = () => [
+const defaultProps = (): Props => [
     // SVG presentational attributes
     [['ab', 'alignment-baseline'], null, [toCSSRule]],
     [['bls', 'baseline-shift'], null, [toCSSRule]],
@@ -701,7 +702,7 @@ const defaultProps = () => [
     ],
     [['cac', 'caret-color'], null, [toCSSRule]],
     [['rs', 'resize'], null, [toCSSRule]],
-    [['raw'], null, [i => i]],
+    [['raw'], null, [(i) => i]],
     [['child'], null, [child]],
 
     // Webkit

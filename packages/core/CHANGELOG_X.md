@@ -8,3 +8,4 @@
     -   no more deep merge
     -   simplified property construction
 -   reduced size
+-   `pipe` renamed to `compose`

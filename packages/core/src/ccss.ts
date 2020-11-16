@@ -1,4 +1,3 @@
-import { CCSSFunction, CCSSInput, CCSSProps, CCSSOptions } from './types'
 import transformed from 'transformed'
 import { stringOutputTransformer } from './outputTransformers'
 import defaultProps from './props'
