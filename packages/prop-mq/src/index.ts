@@ -1,4 +1,4 @@
-import { CCSSProp, CCSSOptions, CCSSProps } from '@cryptic-css/core'
+import { CCSSProp } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
 declare module '@cryptic-css/core' {
@@ -22,6 +22,20 @@ declare module '@cryptic-css/core' {
     }
 }
 
+const handler = (input, prop, transformedFn): string => {
+    if (typeof input[0] === 'string') {
+        input = [input]
+    }
+    // We need new array references to avoid mutating the original src
+    const generated: [string, {}][] = []
+    for (let i = 0; i < input.length; i++) {
+        generated[i] = [input[i][0], transformedFn(input[i][1])]
+    }
+
+    return mediaQuery(generated, transformedFn.outputTransformer.type) as string
+}
+
+/* develblock:start */
 const handleMqElem = (value, state, t, api) => {
     const extracted = api.extractStaticValues(value.elements[1], state, t, true)
 
@@ -30,7 +44,6 @@ const handleMqElem = (value, state, t, api) => {
     }
 }
 
-/* develblock:start */
 const babelPluginHandler = (attr, state, t, api) => {
     let extracted
     let isStatic
@@ -40,7 +53,7 @@ const babelPluginHandler = (attr, state, t, api) => {
         isStatic = !attr.realValue.elements[1]?.properties?.length
     } else {
         extracted = []
-        attr.realValue.elements = attr.realValue.elements.filter((el) => {
+        attr.realValue.elements = attr.realValue.elements.filter(el => {
             const ext = handleMqElem(el, state, t, api)
             ext && extracted.push(ext)
             return el.elements[1].properties.length
@@ -55,25 +68,11 @@ const babelPluginHandler = (attr, state, t, api) => {
         isExtracted: !!extracted
     }
 }
+handler.babelPluginHandler = babelPluginHandler
 /* develblock:end */
 
-export default (options: Partial<CCSSOptions>) => {
-    const props = options.props as CCSSProps
-
-    const handler = (input, prop, options): string => {
-        if (typeof input[0] === 'string') {
-            input = [input]
-        }
-        // We need new array references to avoid mutating the original src
-        const generated: [string, {}][] = []
-        for (let i = 0; i < input.length; i++) {
-            generated[i] = [input[i][0], options.__ccss(input[i][1])]
-        }
-
-        return mediaQuery(generated, options.outputTransformer.type) as string
-    }
-    props.mq = props.mediaQuery = handler
-    /* develblock:start */
-    handler.babelPluginHandler = babelPluginHandler
-    /* develblock:end */
+const useProp = transformedFn => {
+    transformedFn.setProps(['mq', 'mediaQuery'].map(prop => [[prop], null, [handler]]))
 }
+
+export default useProp

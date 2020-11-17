@@ -1,4 +1,4 @@
-import { CCSSOptions, CCSSProps, CCSSProp } from '@cryptic-css/core'
+import { CCSSProp } from '@cryptic-css/core'
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
@@ -26,30 +26,33 @@ const base = {
     }
 }
 
-export default (options: Partial<CCSSOptions>) => {
-    const props = options.props as CCSSProps
-    props.scroll = (input, prop, options, original) => {
-        switch (input) {
-            case 'x':
-                return options.__ccss({
-                    ...base,
-                    maxW: original.maxW || '100vw',
-                    ox: 'a'
-                })
-            case 'y':
-                return options.__ccss({
-                    ...base,
-                    maxH: original.maxH || '100vh',
-                    oy: 'a'
-                })
-            case true:
-            default:
-                return options.__ccss({
-                    ...base,
-                    maxH: original.maxH || '100vh',
-                    maxW: original.maxW || '100vw',
-                    o: 'a'
-                })
-        }
+const parser = (input, prop, transformedFn, inputObject) => {
+    switch (input) {
+        case 'x':
+            return transformedFn({
+                ...base,
+                maxW: inputObject.maxW || inputObject.maxWidth || '100vw',
+                ox: 'a'
+            })
+        case 'y':
+            return transformedFn({
+                ...base,
+                maxH: inputObject.maxH || inputObject.maxHeight || '100vh',
+                oy: 'a'
+            })
+        case true:
+        default:
+            return transformedFn({
+                ...base,
+                maxH: inputObject.maxW || inputObject.maxWidth || '100vh',
+                maxW: inputObject.maxH || inputObject.maxHeight || '100vw',
+                o: 'a'
+            })
     }
 }
+
+const useProp = transformedFn => {
+    transformedFn.setProps(['scroll'].map(prop => [[prop], null, [parser]]))
+}
+
+export default useProp

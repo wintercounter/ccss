@@ -1,12 +1,13 @@
 // @ts-nocheck
 
-import { createCCSS, createOptions, objectOutputTransformer } from '@cryptic-css/core'
-import applyPluginGutter from './'
+import { createCCSS, objectOutputTransformer } from '@cryptic-css/core'
+import useGutterPlugin from './'
 
-const options = createOptions()
-applyPluginGutter(options)
-const ccss = createCCSS(options)
-const ccssObject = createCCSS({ ...options, outputTransformer: objectOutputTransformer })
+const ccss = createCCSS()
+const ccssObject = createCCSS({ outputTransformer: objectOutputTransformer })
+
+useGutterPlugin(ccss)
+useGutterPlugin(ccssObject)
 
 describe('gutter-plugin', () => {
     it('can use numeric values', () => {

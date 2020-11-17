@@ -1,9 +1,6 @@
 import { Properties as CSSProperties } from 'csstype'
 import { TransformedFn, Options, OutputTransformer, Whatever, Parser, InputObject, Definition } from 'transformed'
 
-/*export declare type StringTransformer = (generated: string, descriptor: string) => string
-export declare type ObjectTransformer = (generated: CSSProperties, descriptor: CSSProperties) => CSSProperties*/
-
 export interface CCSSOutputTransformer extends OutputTransformer {
     type: typeof Object | typeof String
     toCSSRule: CCSSToCSSRule

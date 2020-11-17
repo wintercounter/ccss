@@ -24,13 +24,13 @@ declare module '@cryptic-css/core' {
 const cache = new Map()
 let index = 1
 
-const stringOutputHandler = (input, prop, options) => {
+const stringOutputHandler = (input, prop, transformedFn) => {
     // Generate CSS string
     let animation = ''
     for (const key in input) {
         if (Object.prototype.hasOwnProperty.call(input, key)) {
             animation += `${key} {
-    ${options.__ccss(input[key])}
+    ${transformedFn(input[key])}
 }
 `
         }
@@ -53,8 +53,10 @@ const stringOutputHandler = (input, prop, options) => {
 }`
 }
 
-export default (options: Partial<CCSSOptions>) => {
+const useProp = transformedFn => {
     // TODO: support for object output would be nice also
     const keyframes = stringOutputHandler
-    Object.assign(options.props, { keyframes, kf: keyframes })
+    transformedFn.setProps(['kf', 'keyframes'].map(prop => [[prop], null, [keyframes]]))
 }
+
+export default useProp

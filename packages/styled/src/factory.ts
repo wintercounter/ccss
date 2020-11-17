@@ -1,4 +1,4 @@
-import { CCSSProps, CCSSFunction, CCSSOptions } from '@cryptic-css/core'
+import { CCSSProps, CCSSTransformedFn } from '@cryptic-css/core'
 // @ts-ignore
 import { StyledComponent, StyledProps, StyledInterface } from '@types/styled-components'
 
@@ -36,7 +36,7 @@ type StyledCCSS = {
     ccss: any
 }
 
-type CreateStyledCCSS = (options: Partial<CCSSOptions>) => StyledCCSS
+type CreateStyledCCSS = (transformedFn: CCSSTransformedFn) => StyledCCSS
 
 interface CreateCreator {
     (styled: StyledInterface, isNative?: boolean): CreateStyledCCSS
@@ -45,22 +45,19 @@ interface CreateCreator {
 export const createCreator: CreateCreator = (
     styled,
     isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative'
-) => ({ defaultProps = undefined, ...rest }) => {
-    const __ccss = rest.__ccss as CCSSFunction
-    const props = rest.props as CCSSProps
+) => (transformedFn: CCSSTransformedFn) => {
+    const { defaultProps = undefined } = transformedFn.options
     const defaultTag = isNative ? 'View' : 'div'
 
-    // Handle React stuff!
-    // @ts-ignore
-    props.theme = props.theme || noop
-    // @ts-ignore
-    props.children = props.children || noop
+    // Just don't do anything with styled stuff
+    transformedFn.setProps([[['theme', 'children'], null, [noop]]])
 
-    const Ui = styled[defaultTag](__ccss)
+    const Ui = styled[defaultTag](transformedFn)
     Ui.defaultProps = defaultProps
+
     const tagged = (tag = defaultTag) => (p: CCSSProps) => {
-        const css = __ccss(p)
-        const cmp = styled[tag]<CCSSProps>(() => css, __ccss)
+        const css = transformedFn(p)
+        const cmp = styled[tag]<CCSSProps>(() => css, transformedFn)
         cmp.defaultProps = defaultProps
         return cmp
     }
@@ -71,7 +68,7 @@ export const createCreator: CreateCreator = (
     for (const tag in styled) {
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
             try {
-                Ui[tag] = styled[tag](__ccss)
+                Ui[tag] = styled[tag](transformedFn)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
@@ -82,6 +79,6 @@ export const createCreator: CreateCreator = (
     return {
         Ui,
         ccssd,
-        ccss: __ccss
+        ccss: transformedFn
     }
 }

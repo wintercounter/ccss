@@ -1,11 +1,10 @@
 // @ts-nocheck
 
-import { createOptions, createCCSS } from '@cryptic-css/core'
-import applyPropKeyframes from './'
+import { createCCSS } from '@cryptic-css/core'
+import usePropKeyframes from './'
 
-const options = createOptions()
-applyPropKeyframes(options)
-const ccss = createCCSS(options)
+const ccss = createCCSS()
+usePropKeyframes(ccss)
 
 describe('prop-keyframes tests', () => {
     describe('Evaluations', () => {

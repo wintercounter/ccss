@@ -9,3 +9,5 @@
     -   simplified property construction
 -   reduced size
 -   `pipe` renamed to `compose`
+-   no auto apply plugins for default, apply your own (use\*Plugin)
+-   prop-mid removed

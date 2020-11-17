@@ -2,13 +2,12 @@
 
 import React from 'react'
 import 'jest-styled-components'
-import styled, { Ui, ccssd, ccss, createCCSS, createStyledCCSS, objectOutputTransformer, createOptions } from '.'
+import styled, { Ui, ccssd, ccss, createCCSS, createStyledCCSS, objectOutputTransformer } from '.'
 
-const styledOptions = createOptions({
+const ccssObject = createCCSS({
     outputTransformer: objectOutputTransformer
 })
-createCCSS(styledOptions)
-const objectStyled = createStyledCCSS(styledOptions)
+const objectStyled = createStyledCCSS(ccssObject)
 
 export const objectCcss = objectStyled.ccss
 export const ObjectUi = objectStyled.Ui

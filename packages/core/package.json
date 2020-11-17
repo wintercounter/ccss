@@ -18,7 +18,8 @@
         "test": "mhy tsc && mhy jest",
         "jest": "mhy jest",
         "jest:watch": "mhy jest --watchAll",
-        "build": "npm run gen:props && mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs && npm run prop-doc:prod",
+        "build": "npm run gen:props && npm run build:pure && npm run prop-doc:prod",
+        "build:pure": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs",
         "build:watch": "mhy bb --watch",
         "config": "mhy config typescript -io",
         "gen:props": "mhy node scripts/generateCCSSProps",
@@ -82,6 +83,6 @@
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
         "csstype": "^3.0.3",
-        "transformed": "0.0.2"
+        "transformed": "0.0.3"
     }
 }
