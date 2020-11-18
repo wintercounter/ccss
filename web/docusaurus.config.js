@@ -27,6 +27,7 @@ module.exports = {
                 { to: 'docs/getting-started/installation', label: 'Getting started', position: 'left' },
                 { to: 'docs/api-and-packages/core', label: 'API and Packages', position: 'left' },
                 { to: 'docs/guides/quick-examples', label: 'Guides', position: 'left' },
+                { to: 'tailwind/getting-started/introduction', label: 'TailwindCCSS', position: 'left' },
                 { to: 'docs/more-about-ccss/brief-history', label: 'More about CCSS', position: 'left' },
                 /*{ to: 'blog', label: 'Blog', position: 'left' },*/
                 {
@@ -117,5 +118,19 @@ module.exports = {
         ]
     ],
     themes: ['@docusaurus/theme-live-codeblock'],
-    plugins: ['@docusaurus/plugin-google-analytics', require.resolve('./src/js')]
+    plugins: [
+        '@docusaurus/plugin-google-analytics',
+        require.resolve('./src/js'),
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'tailwind',
+                path: 'tailwind',
+                routeBasePath: 'tailwind',
+                sidebarPath: require.resolve('./sidebars.tailwind.js'),
+                showLastUpdateAuthor: true,
+                showLastUpdateTime: true
+            }
+        ]
+    ]
 }

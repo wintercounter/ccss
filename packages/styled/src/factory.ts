@@ -32,8 +32,7 @@ const isSupportedTag = (styled, tag, isNative) => {
 
 type StyledCCSS = {
     Ui: UiType
-    ccssd: (props: CCSSProps) => UiType
-    ccss: any
+    ccss: CCSSTransformedFn
 }
 
 type CreateStyledCCSS = (transformedFn: CCSSTransformedFn) => StyledCCSS
@@ -55,14 +54,6 @@ export const createCreator: CreateCreator = (
     const Ui = styled[defaultTag](transformedFn)
     Ui.defaultProps = defaultProps
 
-    const tagged = (tag = defaultTag) => (p: CCSSProps) => {
-        const css = transformedFn(p)
-        const cmp = styled[tag]<CCSSProps>(() => css, transformedFn)
-        cmp.defaultProps = defaultProps
-        return cmp
-    }
-    const ccssd = tagged(defaultTag)
-
     // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
     // eslint-disable-next-line no-restricted-syntax
     for (const tag in styled) {
@@ -71,14 +62,12 @@ export const createCreator: CreateCreator = (
                 Ui[tag] = styled[tag](transformedFn)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
-                ccssd[tag] = tagged(tag)
             } catch {}
         }
     }
 
     return {
         Ui,
-        ccssd,
         ccss: transformedFn
     }
 }

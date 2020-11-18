@@ -1,5 +1,3 @@
-import { merge } from 'lodash-es'
-
 const opacities = {
     '0': '0',
     '25': '0.25',
@@ -14,7 +12,6 @@ const spacing = {
 }
 
 const colors = Object.entries({
-    transparent: 'transparent',
     current: 'currentColor',
 
     black: '#000',
@@ -139,17 +136,19 @@ const colors = Object.entries({
     } else {
         acc[key] = colorValues
     }
+    return acc
 }, {})
+
+const screens = {
+    sm: [0, 640],
+    md: [641, 768],
+    lg: [769, 1024],
+    xl: [1025, 1280]
+}
 
 // @ts-ignore
 const theme = {
-    screens: {
-        sm: [0, 640],
-        md: [641, 768],
-        lg: [769, 1024],
-        xl: [1025, 1280]
-    },
-    colors,
+    color: colors,
     // TODO, gradient prop
     backgroundImage: {
         none: 'none',
@@ -192,11 +191,11 @@ const theme = {
         none: 'none'
     },
     // TODO
-    divideColor: (theme) => theme('borderColor'),
+    //divideColor: theme => theme('borderColor'),
     // TODO
-    divideOpacity: (theme) => theme('borderOpacity'),
+    //divideOpacity: theme => theme('borderOpacity'),
     // TODO
-    divideWidth: (theme) => theme('borderWidth'),
+    //divideWidth: theme => theme('borderWidth'),
     fontFamily: {
         sans: [
             'system-ui',
@@ -271,7 +270,7 @@ const theme = {
         full: '100%',
         screen: '100vh'
     },
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: {
         none: 'none',
         xs: '20rem',
         sm: '24rem',
@@ -284,10 +283,10 @@ const theme = {
         '5xl': '64rem',
         '6xl': '72rem',
         full: '100%',
-        screen: '100vw',
+        screen: '100vw'
         // TODO decide if needed
-        ...breakpoints(theme('screens'))
-    }),
+        //...breakpoints(theme('screens'))
+    },
     minHeight: {
         full: '100%',
         screen: '100vh'
@@ -528,6 +527,6 @@ const theme = {
     }
 }
 
-export const createTailwindCCSS = (options, overrides = {}) => {
-    const config = merge({}, defaults, overrides)
+export default transformedFn => {
+    transformedFn.setProps(theme)
 }

@@ -66,8 +66,8 @@
     },
     "homepage": "https://github.com/wintercounter/ccss#readme",
     "devDependencies": {
+        "@lerna/link": "^3.18.5",
         "@types/react": "^16.9.17",
-        "lerna": "^3.18.5",
-        "@lerna/link": "^3.18.5"
+        "lerna": "^3.18.5"
     }
 }
