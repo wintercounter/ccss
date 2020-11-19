@@ -16,7 +16,8 @@ module.exports = {
         'Core Concepts': [
             'core-concepts/utilityfirst',
             'core-concepts/responsive-design',
-            'core-concepts/pseudoclass-variants',
+            'core-concepts/hover-focus-other-states',
+            'core-concepts/dark-mode',
             'core-concepts/adding-base-styles',
             'core-concepts/extracting-components',
             'core-concepts/adding-new-utilities',
@@ -29,7 +30,7 @@ module.exports = {
             'customization/colors',
             'customization/spacing',
             'customization/variants',
-            'customization/writing-plugins'
+            'customization/plugins'
         ],
         'Base Styles': ['base-styles/preflight'],
         Layout: [
@@ -103,6 +104,7 @@ module.exports = {
             'typography/text-opacity',
             'typography/text-decoration',
             'typography/text-transform',
+            'typography/text-overflow',
             'typography/vertical-align',
             'typography/whitespace',
             'typography/word-break'
@@ -127,10 +129,15 @@ module.exports = {
             'borders/divide-width',
             'borders/divide-color',
             'borders/divide-opacity',
-            'borders/divide-style'
+            'borders/divide-style',
+            'borders/ring-width',
+            'borders/ring-color',
+            'borders/ring-opacity',
+            'borders/ring-offset-width',
+            'borders/ring-offset-color'
         ],
-        Tables: ['tables/border-collapse', 'tables/table-layout'],
         Effects: ['effects/box-shadow', 'effects/opacity'],
+        Tables: ['tables/border-collapse', 'tables/table-layout'],
         'Transitions and Animation': [
             'transitions-and-animation/transition-property',
             'transitions-and-animation/transition-duration',
@@ -139,11 +146,12 @@ module.exports = {
             'transitions-and-animation/animation'
         ],
         Transforms: [
+            'transforms/transform',
+            'transforms/transform-origin',
             'transforms/scale',
             'transforms/rotate',
             'transforms/translate',
-            'transforms/skew',
-            'transforms/transform-origin'
+            'transforms/skew'
         ],
         Interactivity: [
             'interactivity/appearance',

@@ -169,7 +169,7 @@ arrayOutputTransformer.toPseudo = (input, prop, options) => {
 }
 
 // Tells what do when an unsupported prop arrives (doesn't exist on `props`)
-arrayOutputTransformer.unsupportedHandler = (input) => {
+arrayOutputTransformer.unsupportedHandler = input => {
     return null
 }
 ```

@@ -26,7 +26,7 @@
 .heroBanner img {
     width: 100%;
     max-width: 487px;
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
 }
 
 @media screen and (max-width: 966px) {
@@ -70,13 +70,15 @@
 .featuresRow {
     padding: 5rem 0;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .features h3 {
     font-size: 32px;
 }
 
-.features p, .p {
+.features p,
+.p {
     font-size: 24px;
 }
 
@@ -132,19 +134,20 @@
 }
 
 @media screen and (max-width: 996px) {
-    .paragraph h3{
+    .paragraph h3 {
         text-align: center;
         margin-bottom: 30px;
     }
-    .paragraphImage > div{
+    .paragraphImage > div {
         width: fit-content;
         margin: 0 auto;
     }
-    .paragraph p, .p {
+    .paragraph p,
+    .p {
         font-size: 20px;
     }
     .features pre {
-        font-size: 15px
+        font-size: 15px;
     }
     .contentImg {
         margin: 0 auto 20px;

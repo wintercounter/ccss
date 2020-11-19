@@ -1,6 +1,7 @@
 module.exports = {
     title: 'CCSS',
-    tagline: 'A companion on the journey to your next CSS-in-JS and/or design system solution.',
+    tagline:
+        'Swiss-army knife for your custom CSS-in-JS needs. Shorthands, custom props, value maps and static extraction.',
     url: 'https://ccss.dev',
     baseUrl: '/',
     favicon: 'img/favicon.ico',
@@ -29,12 +30,17 @@ module.exports = {
                 { to: 'docs/guides/quick-examples', label: 'Guides', position: 'left' },
                 { to: 'tailwind/getting-started/introduction', label: 'TailwindCCSS', position: 'left' },
                 { to: 'docs/more-about-ccss/brief-history', label: 'More about CCSS', position: 'left' },
-                /*{ to: 'blog', label: 'Blog', position: 'left' },*/
                 {
                     href: 'https://github.com/wintercounter/ccss',
                     label: 'GitHub',
-                    position: 'right'
+                    position: 'left'
                 }
+                /*{ to: 'blog', label: 'Blog', position: 'left' },*/
+                /*{
+                    href: 'https://github.com/wintercounter/ccss',
+                    label: 'GitHub',
+                    position: 'right'
+                }*/
             ]
         },
         footer: {

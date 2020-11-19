@@ -4,6 +4,8 @@
  * work well for content-centric websites.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&family=Roboto+Mono:ital@0;1&display=swap');
+
 /* You can override the default Infima variables here. */
 :root {
     /*--ifm-color-primary: #3d2352;
@@ -31,15 +33,19 @@
     --ifm-color-primary-lightest: #0effc2;
 
     --ifm-code-font-size: 95%;
-
+    --ifm-border-radius: 4px;
 
     --color-site-blue: #4035f3;
+    --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+        sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol';
+    --ifm-font-family-monospace: 'Roboto Mono', monospace;
+    --ifm-font-color-base: #6b7280;
+    --ifm-line-height-base: 1.75;
+    --ifm-code-border-radius: 4px;
+    --ifm-global-radius: 4px;
 
     scroll-behavior: smooth;
-}
-
-.main-wrapper {
-    overflow-x: hidden;
 }
 
 .footer--dark {
@@ -102,18 +108,13 @@ html[data-theme='dark'] {
     background-color: rgb(32, 35, 42) !important;
 }
 
-[class^="codeBlockContent"] {
+[class^='codeBlockContent'] {
     width: 100%;
 }
 
 [class*='playgroundPreview_'] pre {
     padding: 0 3px;
     box-sizing: border-box;
-}
-
-[class*='copyButton_'] {
-    top: 0 !important;
-    right: 0 !important;
 }
 
 .home-tabs > div {
@@ -130,12 +131,14 @@ html[data-theme='dark'] {
     margin-right: 5px;
 }
 
-[class^=mdxCodeBlock]{
+[class^='mdxCodeBlock'] {
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 4px;
+    position: relative;
 }
 
-.markdown>p, .markdown>pre {
+.markdown > p,
+.markdown > pre {
     padding: 0 !important;
 }
 
@@ -144,11 +147,185 @@ html[data-theme='dark'] {
     width: 100%;
 }
 
-[class*=playgroundPreview_] .prism-code {
+[class*='playgroundPreview_'] .prism-code {
     padding: 0 !important;
 }
 
-[class^=playgroundHeader] {
-    background: rgb(54 59 79) !important;
-    color: #fff !important;
+[class*='playgroundEditorHeader_'] {
+    font-size: 0 !important;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+}
+
+[class*='playgroundPreviewHeader_'] {
+    display: none;
+}
+
+[class*='playgroundEditorHeader_']::after {
+    content: '✏️ live editor';
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+[class^='playgroundEditor_'],
+[class^='codeBlockLines_'] {
+    font-size: 14px !important;
+}
+
+[class^='codeBlockLines_'] {
+    background: #33374e !important;
+}
+
+[class^='copyButton_'] {
+    top: 10px;
+    right: 10px;
+}
+
+.menu__link:not([href]) {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-top: 30px;
+    color: rgb(17, 24, 39);
+}
+
+.menu__link[href] {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    left: calc(var(--ifm-menu-link-padding-horizontal) * -1);
+    transition: all 0.15s ease-out;
+}
+
+.menu__link--active[href] {
+    font-weight: bold;
+    background-color: #d9fff6;
+}
+
+.menu__list .menu__list {
+    overflow: visible !important;
+}
+
+[class^='docMainContainer'] {
+    flex-grow: 0 !important;
+}
+
+[class^='docPage'] h1,
+[class^='docPage'] h2,
+[class^='docPage'] h3,
+[class^='docPage'] h4,
+[class^='docPage'] h5,
+[class^='docPage'] h6 {
+    color: rgb(17, 24, 39);
+}
+
+[class^='docPage'] {
+    justify-content: center;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar__inner {
+    max-width: 1398px;
+    margin: 0 auto;
+}
+
+code {
+    background-color: #efefff;
+    color: #a39eff;
+    padding: 0 0.3em 0.06em;
+}
+
+thin-scrollbar::-webkit-scrollbar {
+    width: var(--ifm-scrollbar-size);
+    height: var(--ifm-scrollbar-size);
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+}
+.thin-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: #f2f2f2;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+[class^='docSidebarContainer'] {
+    border: 0 !important;
+}
+
+[class*=' docItemCol_'] {
+    padding: 0 35px;
+}
+
+[class^='tableOfContents_'] ul {
+    border: 0 !important;
+}
+
+button.DocSearch {
+    width: 100%;
+    max-width: 230px;
+    border-radius: 0;
+    box-shadow: none !important;
+    background: transparent;
+    position: relative;
+    padding: 0;
+}
+
+button.DocSearch::after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    width: 100%;
+    transform: translateX(100%) scale(0);
+    height: 2px;
+    background: #05cf9b;
+    opacity: 0;
+    transition: all 0.15s ease-out;
+    border-radius: 4px;
+}
+
+button.DocSearch:hover::after {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.DocSearch-Button-Placeholder {
+    flex-grow: 1;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-weight: bold;
+    color: #6c7482;
+    font-size: 14px;
+}
+
+[class^='docPage_']::after {
+    content: '';
+    position: fixed;
+    height: 0;
+    width: 100vw;
+    box-shadow: 0 5px 30px 30px #fff;
+    top: var(--ifm-navbar-height);
+    z-index: 4;
+    background: #fff;
+}
+
+.DocSearch-Search-Icon {
+    stroke-width: 2px;
+    width: 25px;
+    color: #cbcbcb !important;
+    margin-right: 5px;
 }

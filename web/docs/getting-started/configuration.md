@@ -34,7 +34,7 @@ the system will use the passed `options` object's reference.
 ```js
 import { createOptions, createProps, createCCSS, createValueMap } from '@cryptic-css/core'
 
-const props = createProps({ customProp: (input) => input })
+const props = createProps({ customProp: input => input })
 const valueMap = createValueMap({ c: { dark: '#000' } })
 const options = createOptions({ unit: 'px', props, valueMap })
 const ccss = createCCSS(options)
