@@ -125,7 +125,7 @@ module.exports = {
     ],
     themes: ['@docusaurus/theme-live-codeblock'],
     plugins: [
-        '@docusaurus/plugin-google-analytics',
+        //'@docusaurus/plugin-google-analytics',
         require.resolve('./src/js'),
         [
             '@docusaurus/plugin-content-docs',
