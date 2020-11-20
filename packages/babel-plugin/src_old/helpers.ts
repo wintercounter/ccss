@@ -5,6 +5,19 @@ import * as babylon from '@babel/parser'
 import traverse from '@babel/traverse'
 import './handlers'
 
+const isReactCreateElement = node =>
+    t.isCallExpression(node) &&
+    t.isMemberExpression(node.callee) &&
+    t.isIdentifier(node.callee.object, { name: 'React' }) &&
+    t.isIdentifier(node.callee.property, { name: 'createElement' }) &&
+    !node.callee.computed
+
+CallExpression(path) {
+    const node = getJSXNode(path.node)
+    if (node === null) return null
+    path.replaceWith(node)
+}
+
 const colorRegExp = /^#(?:[0-9a-f]{2}){2,4}$|(#[0-9a-f]{3}$)|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d.]+%?\)/g
 const isColor = v => typeof v === 'string' && colorRegExp.test(v)
 export const collectColors = (input, path = [], all = []) => {

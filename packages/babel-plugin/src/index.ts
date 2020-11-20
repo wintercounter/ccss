@@ -1,321 +1,70 @@
 // @ts-nocheck
 
-import fs from 'fs'
-import path from 'path'
-import crypto from 'crypto'
+import traverse from '@babel/traverse'
 import template from '@babel/template'
-import { compile, serialize, stringify } from 'stylis'
-import { merge } from 'lodash-es'
-import fg from 'fast-glob'
-
-import * as classNameStrategies from '@/classNameStrategies'
-import { isCCSSTag, covertToStringLiteralTag, getIdentifierByValueType, getAttrDetails, collectColors } from '@/helpers'
-import { hybrid, onlyFullyStatic } from '@/handlers'
-import { convertCharStr2CSS } from '@/utils'
-
-export { hybrid, onlyFullyStatic } from '@/handlers'
+import merge from 'lodash/merge'
+import Processor from '@/processor'
+import { getIdentifierByValueType } from '@/utils'
 
 const defaultOpts = {
-    identifiers: {
+    pragmas: ['React.createElement', '_jsx', '_jsxs'],
+    components: {
         Ui: true
     },
     constants: {},
-    classNameStrategy: 'unicode',
-    expressions: {
-        ccss: `require('ccss').default || require('ccss')`,
-        options: `require('ccss').defaultOptions`
+    classNameStrategy: 'MurmurHash2',
+    resolveConstants: true,
+    shortify: true,
+    ccss: `require('@cryptic-css/core').default || require('@cryptic-css/core')`,
+    extract: {
+        outputFormat: 'ccss'
     },
-    stats: false,
-    colorConstantsToCSSVars: false
+    stats: false
 }
 
-const valueMapTypes = {
-    string: true,
-    object: true,
-    number: true
-}
-
-const statsFileName = 'babelPluginStyledCcssStats.json'
-
-function getSourceCode(source, { start, end }) {
-    const startLine = start.line
-    const endLine = end.line
-    const startColumn = start.column
-    const endColumn = end.column
-
-    let sourceLines = source.split('\n').slice(startLine - 1, endLine)
-    sourceLines[0] = sourceLines[0].slice(startColumn)
-    sourceLines[sourceLines.length - 1] = sourceLines[sourceLines.length - 1].slice(0, endColumn)
-    return sourceLines.join('\n')
-}
-
-export default (api, opts) => {
+export default (api, pluginOptions) => {
     const { types: t } = api
-    const Stats = {
-        data: {
-            total: 0,
-            totalStatic: 0,
-            nonStatic: []
-        },
-        write() {
-            fs.writeFileSync(path.resolve(process.cwd(), statsFileName), JSON.stringify(this.data, null, 2), {
-                mode: 0o755
-            })
-        }
-    }
-    opts = merge(defaultOpts, opts)
-    const { expressions, stats, classNameStrategy } = opts
-    const ccss = typeof expressions.ccss === 'string' ? eval(expressions.ccss) : expressions.ccss
-    const ccssOptions = typeof expressions.options === 'string' ? eval(expressions.options) : expressions.options
-    const styles = new Map()
-    const ccssPropMap = {}
-    let programStyles
-    let extraStyles
-    let currentProgram
-
-    if (opts.colorConstantsToCSSVars) {
-        collectColors(opts.constants).forEach(([path, color]) => {
-            Object.defineProperty(
-                path.slice(0, path.length - 1).reduce((acc, p) => {
-                    acc = acc[p]
-                    return acc
-                }, opts.constants),
-                path[path.length - 1],
-                {
-                    get: function () {
-                        const cssVarName = `--${path.join('-')}`
-                        extraStyles.push(`:root { ${cssVarName}: ${color}; }`)
-                        return `var(${cssVarName})`
-                    }
-                }
-            )
-        })
-    }
-
-    // Create prop map for all props in CCSS Prop table
-    for (const [short, light, long] of ccssOptions.props._propTable) {
-        const camelShort = toCamelCase(short)
-        const camelLight = toCamelCase(light)
-        const camelLong = toCamelCase(long)
-        ccssPropMap[camelShort] = ccssPropMap[camelLight] = ccssPropMap[camelLong] = {
-            short,
-            light,
-            long,
-            camelShort,
-            camelLight,
-            camelLong,
-            processor: ccssOptions.props[camelShort]
-        }
-        // Attach default handler
-        ccssPropMap[camelShort].processor.babelPluginHandler =
-            ccssPropMap[camelShort].processor.babelPluginHandler || ((...args) => onlyFullyStatic(...args, true))
-    }
-    // Add it for 3rd party props also (like mq, child, etc)
-    for (const k of Object.keys(ccssOptions.props)) {
-        const processor = ccssOptions.props[k]
-        ccssPropMap[k] = ccssPropMap[k] || {
-            short: k,
-            light: k,
-            long: k,
-            camelShort: k,
-            camelLight: k,
-            camelLong: k,
-            processor
-        }
-        // Attach default handler
-        processor.babelPluginHandler = processor.babelPluginHandler || onlyFullyStatic
-    }
-    // Child needs static handler
-    ccssPropMap.child.processor.babelPluginHandler = (attr, state, t, api) => hybrid(attr, state, t, api, true)
-
-    opts.ccssPropMap = ccssPropMap
+    const options = merge({}, defaultOpts, pluginOptions)
+    options.constantNames = Object.keys(options.constants)
 
     return {
-        pre(state) {
-            if (classNameStrategy === 'unicode') {
-                // This will stop converting unicode characters to entities
-                state.opts.generatorOpts.jsescOption = {
-                    minimal: true
-                }
-            }
-        },
-        post(state) {
-            // If there is no file, where we should write??? (during simple tests there is no filename)
-            if (!state.opts.generatorOpts.filename || !programStyles.size) {
-                return
-            }
-            const folderPath = state.opts.generatorOpts.filename.split(path.sep)
-            const filename = folderPath.pop()
-            const style = serialize(
-                compile(
-                    [...programStyles.entries()].reduce(
-                        (acc, [rules, className]) =>
-                            acc +
-                            `.${className}{${
-                                // If it's unicode, we'll keep as is,
-                                // if not, we will convert all character into a safe CSS form
-                                classNameStrategy === 'unicode'
-                                    ? rules
-                                    : rules.replace(/content:.?"([^\\"]+?|.+)"/g, (full, content) => {
-                                          return full.replace(content, convertCharStr2CSS(content))
-                                      })
-                            }}`,
-                        extraStyles.join('')
-                    )
-                ),
-                stringify
-            )
-            const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
-            const cssFilename = `__${filename}.${checksum}.css`
-            const cssPath = `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
-
-            // Delete old files
-            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach(p => fs.unlinkSync(p))
-
-            fs.writeFileSync(cssPath, style, { mode: 0o755 })
-
-            const buildImport = template(`import './${cssFilename}'`)
-            currentProgram.unshiftContainer('body', buildImport())
-
-            // Handle stats
-            if (stats) {
-                Stats.write()
-            }
-        },
         visitor: {
-            Program(path) {
-                programStyles = new Map()
-                extraStyles = []
-                currentProgram = path
-            },
-            JSXOpeningElement(path, state) {
-                const classNames: string[] = []
-                const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
-                const identifier = isCCSSTag(path, state)
-                // Use our own options
-                state.opts = opts
+            MemberExpression(path) {
+                // Let's resolve constants
 
-                if (!identifier) return
+                // It's a constant
+                const o = path.get('object')
+                if (options.constantNames.includes(o.node.name)) {
+                    let value = options.constants[o.node.name]
+                    let parent = o
+                    let prevParent = o
 
-                Stats.data.total++
-                const tagName = path.node.name.property?.name || 'div'
+                    while (true) {
+                        parent = parent.parentPath
 
-                let cssPropCount = 0
-                let staticPropCount = 0
-                let flaggedAsDynamic = false
-
-                // Filter will remove unnecessary attributes
-                path.node.attributes = path.node.attributes
-                    .map(attr => {
-                        // Not supported attr, keep it as is
-                        if (!attr?.name?.name || !ccssPropMap[attr.name.name]) {
-                            // We don't know what will be there...
-                            if (t.isJSXSpreadAttribute(attr)) {
-                                flaggedAsDynamic = true
-                            }
-                            return attr
+                        const tmp = value?.[parent.node?.property?.name]
+                        if (tmp !== undefined) {
+                            value = tmp
+                            prevParent = parent
+                        } else {
+                            break
                         }
-                        cssPropCount++
-                        attr.descriptor = attr.descriptor || ccssPropMap[attr.name.name]
-                        const attrDetails = getAttrDetails(attr, state, t)
-
-                        //console.log('attrDetails', attrDetails)
-
-                        // We could extract some values
-                        if (
-                            attrDetails?.pureValue !== undefined &&
-                            (attrDetails?.isStatic || attrDetails?.isExtracted)
-                        ) {
-                            const { name, pureValue, ccssValue, isStatic } = attrDetails
-
-                            if (isStatic) {
-                                staticPropCount++
-                            }
-
-                            const css = ccss(ccssValue)
-                            let selector = styles.get(css)
-
-                            if (!selector) {
-                                selector = classNameStrategies[classNameStrategy](name, pureValue, css)
-                                styles.set(css, selector)
-                            }
-                            if (!programStyles.get(css)) {
-                                programStyles.set(css, selector)
-                            }
-                            classNames.push(selector)
-
-                            if (isStatic) {
-                                return false
-                            }
-                        }
-
-                        const v = attr.value.expression.value
-                        const short = ccssPropMap[attr.name.name].camelShort
-                        const vm = ccssOptions.valueMap[short]
-
-                        // No short value, just rename the prop
-                        if (!vm) {
-                            attr.name.name = short
-                            return attr
-                        }
-
-                        const value = valueMapTypes[typeof v] && vm && vm.hasOwnProperty(v) ? vm[v] : v
-                        attr.value = getIdentifierByValueType(value, t) || attr.value
-                        return attr
-                    })
-                    .filter(Boolean)
-
-                // All ccss props could be extracted as static
-                // Rename it to htmlTagName
-                if (staticPropCount === cssPropCount && !flaggedAsDynamic) {
-                    // JSXMemberExpression to JSXIdentifier (Ui.h2 to h2)
-                    covertToStringLiteralTag(path, state, tagName)
-
-                    if (identifier.defaultProps) {
-                        path.node.attributes = path.node.attributes || []
-                        Object.entries(identifier.defaultProps).forEach(([k, v]) => {
-                            path.node.attributes.push(
-                                t.jsxAttribute(t.jsxIdentifier(k), v === true ? null : getIdentifierByValueType(v, t))
-                            )
-                        })
                     }
-                    Stats.data.totalStatic++
-                } else {
-                    // Keep original identifier
-                    Stats.data.nonStatic.push({
-                        file: this.file.opts.generatorOpts.filename,
-                        code: getSourceCode(this.file.code, path.node.loc)
-                    })
-                }
-
-                if (!classNames.length) return
-
-                // Use existing className attr
-                if (classNameNode) {
-                    if (t.isJSXExpressionContainer(classNameNode.value)) {
-                        classNameNode.value.expression = t.binaryExpression(
-                            '+',
-                            t.stringLiteral(`${classNames.join(' ')} `),
-                            classNameNode.value.expression
-                        )
-                    } else {
-                        classNameNode.value.value += ` ${classNames.join(' ')}`
-                    }
-                } else {
-                    // Create className attr
-                    const newProp = t.jSXAttribute(t.jSXIdentifier('className'), t.stringLiteral(classNames.join(' ')))
-                    path.node.attributes.push(newProp)
+                    // Const we replace to
+                    prevParent.replaceWith(getIdentifierByValueType(value))
                 }
             },
-            JSXClosingElement(path, state) {
-                const openingName = path.parent.openingElement.name.name
-                // We only change it to stringLiteral. If not name/nem, it's something else.
-                if (!openingName || !isCCSSTag(path, state)) return
+            CallExpression(path) {
+                const processor = new Processor({ options, api, path })
 
-                covertToStringLiteralTag(path, state, openingName)
+                // Handle CCSS components
+                if (!processor.isCCSSElement()) return
+
+                // Start with shortifying
+                if (options.shortify) {
+                    processor.shortifyProps()
+                }
             }
         }
     }
 }
-
-const toCamelCase = (t: string): string => t.replace(/^-+/, '').replace(/-./g, ([, l]) => l.toUpperCase())

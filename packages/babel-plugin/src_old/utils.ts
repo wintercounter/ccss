@@ -1,5 +1,3 @@
-import * as t from '@babel/types'
-
 // Source: https://github.com/r12a/app-conversion/blob/gh-pages/conversionfunctions.js#L1488
 
 /* eslint-disable */
@@ -58,30 +56,4 @@ export function convertCharStr2CSS(str) {
         }
     }
     return outputString
-}
-
-export const getIdentifierByValueType = value => {
-    if (typeof value === 'string') {
-        return t.stringLiteral(value)
-    }
-
-    if (typeof value === 'boolean') {
-        return t.booleanLiteral(value)
-    }
-
-    if (typeof value === 'number') {
-        return t.numericLiteral(value)
-    }
-
-    if (Array.isArray(value)) {
-        const v = t.arrayExpression(value.map(v => getIdentifierByValueType(v, t)))
-        return v
-    }
-
-    /*if (typeof value === 'object') {
-        const v = objectToAST(value)
-        return v
-    }*/
-
-    return value
 }

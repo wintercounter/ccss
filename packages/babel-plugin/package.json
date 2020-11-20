@@ -67,8 +67,12 @@
     "bugs": {
         "url": "https://github.com/wintercounter/ccss/issues"
     },
+    "peerDependencies": {
+        "@cryptic-css/core": "^3.12.0"
+    },
     "devDependencies": {
-        "ccss": "^3.18.0"
+        "ccss": "^3.18.0",
+        "@cryptic-css/core": "^3.12.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
