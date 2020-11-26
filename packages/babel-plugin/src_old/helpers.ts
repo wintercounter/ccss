@@ -32,41 +32,6 @@ export const collectColors = (input, path = [], all = []) => {
     return all
 }
 
-const objectToAST = <T>(literal: T) => {
-    if (literal === null) {
-        return t.nullLiteral()
-    }
-    switch (typeof literal) {
-        case 'function':
-            const ast = babylon.parse(literal.toString(), {
-                allowReturnOutsideFunction: true,
-                allowSuperOutsideMethod: true
-            })
-            return traverse.removeProperties(ast)
-        case 'number':
-            return t.numericLiteral(literal)
-        case 'string':
-            return t.stringLiteral(literal)
-        case 'boolean':
-            return t.booleanLiteral(literal)
-        case 'undefined':
-            return t.unaryExpression('void', t.numericLiteral(0), true)
-        default:
-            if (Array.isArray(literal)) {
-                return t.arrayExpression(literal.map(objectToAST))
-            }
-            return t.objectExpression(
-                Object.keys(literal)
-                    .filter(k => {
-                        return typeof literal[k] !== 'undefined'
-                    })
-                    .map(k => {
-                        return t.objectProperty(t.stringLiteral(k), objectToAST(literal[k]))
-                    })
-            )
-    }
-}
-
 export const isCCSSTag = (path, state) => {
     const nodeName = path.node.name.object?.name || path.node.name.name
     const { identifiers } = state.opts
@@ -121,18 +86,6 @@ export const getIdentifierByValueType = (value, t, wrapContainer = true) => {
 
     return value
 }
-
-export const isAttrValueString = attr => attr.value && attr.value.type === 'StringLiteral'
-export const isAttrValueSingleStringLiteral = attr =>
-    attr.value &&
-    attr.value?.expression?.type === 'TemplateLiteral' &&
-    attr.value.expression.expressions.length === 0 &&
-    attr.value.expression.quasis.length === 1 &&
-    typeof attr.value.expression.quasis?.[0].value.raw === 'string' &&
-    attr.value.expression.quasis[0].value.raw === attr.value.expression.quasis[0].value.cooked
-export const isAttrValueNumeric = attr => attr.value && attr.value?.expression?.type === 'NumericLiteral'
-export const isAttrArray = attr => attr?.value?.expression?.type === 'ArrayExpression'
-export const isAttrObject = attr => attr?.value?.expression?.type === 'ObjectExpression'
 
 export const resolveConstantExpression = (value, state) => {
     const { constants } = state.opts

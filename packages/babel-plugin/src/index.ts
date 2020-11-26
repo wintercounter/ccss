@@ -1,9 +1,8 @@
 // @ts-nocheck
 
-import traverse from '@babel/traverse'
-import template from '@babel/template'
 import merge from 'lodash/merge'
 import Processor from '@/processor'
+import * as extractors from '@/extractors'
 import { getIdentifierByValueType } from '@/utils'
 
 const defaultOpts = {
@@ -12,28 +11,41 @@ const defaultOpts = {
         Ui: true
     },
     constants: {},
-    classNameStrategy: 'MurmurHash2',
-    resolveConstants: true,
     shortify: true,
     ccss: `require('@cryptic-css/core').default || require('@cryptic-css/core')`,
     extract: {
-        outputFormat: 'ccss'
+        outputFormat: 'ccss',
+        classNameStrategy: 'MurmurHash2'
     },
-    stats: false
+    stats: false,
+    // TODO: implement
+    strict: false
 }
 
 export default (api, pluginOptions) => {
     const { types: t } = api
     const options = merge({}, defaultOpts, pluginOptions)
     options.constantNames = Object.keys(options.constants)
+    let extractor
+    if (options.extract) {
+        extractor = new extractors[options.extract.outputFormat](options.extract)
+    }
 
     return {
         visitor: {
+            ObjectProperty(path) {
+                if (
+                    path.node.value.type === 'Identifier' &&
+                    options.constantNames.includes(path.node.value.name) &&
+                    // Skip react createClass calls, this is maybe our component, not a constant to resolve
+                    path.parentPath.type !== 'CallExpression'
+                ) {
+                    path.node.value = getIdentifierByValueType(options.constants[path.node.value.name])
+                }
+            },
             MemberExpression(path) {
-                // Let's resolve constants
-
-                // It's a constant
                 const o = path.get('object')
+                // Resolve constants
                 if (options.constantNames.includes(o.node.name)) {
                     let value = options.constants[o.node.name]
                     let parent = o
@@ -63,6 +75,11 @@ export default (api, pluginOptions) => {
                 // Start with shortifying
                 if (options.shortify) {
                     processor.shortifyProps()
+                }
+
+                // Do extraction
+                if (options.extract) {
+                    extractor.onCallFound(processor)
                 }
             }
         }

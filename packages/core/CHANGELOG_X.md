@@ -13,3 +13,13 @@
 -   prop-mid removed
 -   faster and improved TypeScript types completely based on `csstype` supporting CCSS shorthands and CCSS shorthand values
 -   `ccssd` got removed => switch to function wrapper
+
+babel-plugin:
+
+-   new config structure
+-   individually use features
+-   default hashing: MurMur2
+-   ccss format
+-   complete rewrite
+-   strict mode
+-   extracting dynamic values

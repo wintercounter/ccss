@@ -16,7 +16,7 @@ export const unicode = () => {
 
 export const shortest = _shortest('cCsSxyzXYZwqWQ'.split(''))
 
-export const MurmurHash2 = (name, pureValue, css) => {
+export const MurmurHash2 = (css) => {
     return hash(css)
 }
 

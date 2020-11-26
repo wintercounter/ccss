@@ -1,4 +1,6 @@
 import * as t from '@babel/types'
+import * as babylon from '@babel/parser'
+import traverse from '@babel/traverse'
 
 // Source: https://github.com/r12a/app-conversion/blob/gh-pages/conversionfunctions.js#L1488
 
@@ -78,10 +80,66 @@ export const getIdentifierByValueType = value => {
         return v
     }
 
-    /*if (typeof value === 'object') {
-        const v = objectToAST(value)
-        return v
-    }*/
+    if (typeof value === 'object') {
+        return objectToAST(value)
+    }
 
     return value
 }
+
+const objectToAST = <T>(literal: T) => {
+    if (literal === null) {
+        return t.nullLiteral()
+    }
+    switch (typeof literal) {
+        case 'function':
+            const ast = babylon.parse(literal.toString(), {
+                allowReturnOutsideFunction: true,
+                allowSuperOutsideMethod: true
+            })
+            return traverse.removeProperties(ast)
+        case 'number':
+            return t.numericLiteral(literal)
+        case 'string':
+            return t.stringLiteral(literal)
+        case 'boolean':
+            return t.booleanLiteral(literal)
+        case 'undefined':
+            return t.unaryExpression('void', t.numericLiteral(0), true)
+        default:
+            if (Array.isArray(literal)) {
+                return t.arrayExpression(literal.map(objectToAST))
+            }
+            return t.objectExpression(
+                Object.keys(literal)
+                    .filter(k => {
+                        return typeof literal[k] !== 'undefined'
+                    })
+                    .map(k => {
+                        return t.objectProperty(t.stringLiteral(k), objectToAST(literal[k]))
+                    })
+            )
+    }
+}
+
+export const covertToStringLiteralTag = (path, state, tagName) => {
+    if (path.node.name?.object?.name) {
+        const o = path.node.name.object
+        delete path.node.name.object
+        delete path.node.name.property
+        Object.assign(path.node.name, o)
+    }
+    path.node.name.name = tagName
+}
+
+export const isPropValueString = prop => prop.value && prop.value.type === 'StringLiteral'
+export const isPropValueSingleStringLiteral = prop =>
+    prop.value &&
+    prop.value?.expression?.type === 'TemplateLiteral' &&
+    prop.value.expression.expressions.length === 0 &&
+    prop.value.expression.quasis.length === 1 &&
+    typeof prop.value.expression.quasis?.[0].value.raw === 'string' &&
+    prop.value.expression.quasis[0].value.raw === prop.value.expression.quasis[0].value.cooked
+export const isPropValueNumeric = prop => prop.value && prop.value.type === 'NumericLiteral'
+export const isPropArray = prop => prop?.value?.expression?.type === 'ArrayExpression'
+export const isPropObject = prop => prop?.value?.expression?.type === 'ObjectExpression'
