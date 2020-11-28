@@ -19,8 +19,8 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 if (!processor.isCCSSProp(propName)) return true
 
                 const { isComputed, ccssString, pureValue, cssVarName } = processor.getPropDescriptor(prop, () => {
-                    const cssVarName = this.getCSSVar()
-                    const cssVar = `var(--${cssVarName})`
+                    const cssVarName = this.getCSSVar(prop)
+                    const cssVar = `var(${cssVarName})`
                     return {
                         cssVar,
                         cssVarName,
@@ -36,7 +36,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 if (!isComputed) return
 
                 // Computed, move value into variable and assign it to a CSS variable
-                const variableId = processor.createVariable(prop.value)
+                const variableId = processor.createVariable(prop)
                 styleProps.push([cssVarName, variableId])
             })
 

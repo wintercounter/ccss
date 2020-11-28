@@ -1,8 +1,7 @@
 // @ts-nocheck
 
 import * as t from '@babel/types'
-import * as babylon from '@babel/parser'
-import traverse from '@babel/traverse'
+import template from '@babel/template'
 import {
     getIdentifierByValueType,
     isPropArray,
@@ -11,6 +10,10 @@ import {
     isPropValueSingleStringLiteral,
     isPropValueString
 } from '@/utils'
+
+const createCCSSToValueCallExpression = template(`
+    globalThis.__ccss.toValue(%%name%%, %%value%%)
+`)
 
 let ccssInstance
 
@@ -164,8 +167,9 @@ export default class Processor {
             }
         }
     }
-    createVariable(value) {
+    createVariable(prop) {
         const { path } = this
+        const { value } = prop
         let body = path.scope.block.body
 
         if (t.isArrowFunctionExpression(path.scope.block)) {
@@ -179,8 +183,8 @@ export default class Processor {
 
         const nodeIndex = body.indexOf(path.container)
         const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id)
-
-        body.splice(nodeIndex, 0, t.variableDeclaration('const', [t.variableDeclarator(id, value)]))
+        const { expression } = createCCSSToValueCallExpression({ name: t.stringLiteral(prop.key.name), value })
+        body.splice(nodeIndex, 0, t.variableDeclaration('const', [t.variableDeclarator(id, expression)]))
 
         return id
     }
