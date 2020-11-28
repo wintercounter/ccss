@@ -45,7 +45,7 @@ React.createElement("aside", null, "X");`
             code: '<Ui fontSize={1} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  "className": "${MurmurHash2(`font-size: 1rem;`)}"
+  "className": " ${MurmurHash2(`font-size: 1rem;`)}"
 });`
         },
         {

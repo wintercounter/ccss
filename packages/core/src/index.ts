@@ -1,3 +1,4 @@
+import '@ungap/global-this'
 export * from 'transformed'
 
 export * from './ccss'

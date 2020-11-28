@@ -8,7 +8,12 @@ export const createCCSS = ({
     outputTransformer = stringOutputTransformer,
     options = defaultOptions(),
     props = defaultProps()
-} = {}) =>
-    transformed().setOutputTransformer(outputTransformer).setOptions(options).setProps(props) as CCSSTransformedFn
-
+} = {}) => {
+    const fn = transformed()
+        .setOutputTransformer(outputTransformer)
+        .setOptions(options)
+        .setProps(props) as CCSSTransformedFn
+    globalThis.__ccss = fn
+    return fn
+}
 export const ccss = createCCSS()

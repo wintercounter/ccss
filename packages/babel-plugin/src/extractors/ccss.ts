@@ -1,57 +1,53 @@
 import * as t from '@babel/types'
 import ExtractorAbstract from './abstract'
+import Processor from '@/processor'
 
 export default class CCSSExtractor extends ExtractorAbstract {
-    onCallFound(processor) {
-        const classNames = []
-        let classNameProp
-        const propArg = processor.path.node.arguments[1]
+    onCallExpression(processor: Processor) {
+        super.onCallExpression(processor)
+
+        const classNames: string[] = []
+        const styleProps: [string, string][] = []
 
         // Only loop of it has props
-        if (processor.path.node.arguments[1].properties) {
-            propArg.properties = propArg.properties.filter(prop => {
+        if (processor.properties) {
+            // Filter and remove CCSS Props
+            processor.properties = processor.properties.filter((prop) => {
                 const propName = prop.key.name
-                if (propName === 'className') {
-                    classNameProp = prop
-                }
 
                 // Not a CCSSProp, we need to keep it for sure
                 if (!processor.isCCSSProp(propName)) return true
 
-                const { isComputed, ccssString, pureValue } = processor.getPropDescriptor(prop)
+                const { isComputed, ccssString, pureValue, cssVarName } = processor.getPropDescriptor(prop, () => {
+                    const cssVarName = this.getCSSVar()
+                    const cssVar = `var(--${cssVarName})`
+                    return {
+                        cssVar,
+                        cssVarName,
+                        pureValue: cssVar,
+                        ccssValue: { [propName]: cssVar },
+                        ccssString: processor.ccss.toValue(propName, cssVar)
+                    }
+                })
+                const className = this.getClassName(propName, pureValue, ccssString)
+                classNames.push(className)
 
-                // Not computed, we can remove it
-                if (!isComputed) {
-                    const className = this.getClassName(propName, pureValue, ccssString)
-                    classNames.push(className)
-                    return false
-                }
+                // Not computed, we're done
+                if (!isComputed) return
+
+                // Computed, move value into variable and assign it to a CSS variable
+                const variableId = processor.createVariable(prop.value)
+                styleProps.push([cssVarName, variableId])
             })
+
+            // Save classNames
+            classNames.length && this.addClassNames(classNames)
+            // Save style props
+            styleProps.length && this.addStyleProps(styleProps)
         }
 
-        if (classNames.length) {
-            const classNamePropIndex = propArg.properties.indexOf(classNameProp)
-
-            if (classNamePropIndex > -1) {
-                const classNameNode = propArg.properties[classNamePropIndex]
-                if (t.isStringLiteral(classNameNode.value)) {
-                    classNameNode.value.value += ` ${classNames.join(' ')}`
-                } else {
-                    classNameNode.value = t.binaryExpression(
-                        '+',
-                        t.stringLiteral(`${classNames.join(' ')} `),
-                        classNameNode.value
-                    )
-                }
-            } else {
-                // Create className attr
-                const newProp = t.objectProperty(t.stringLiteral('className'), t.stringLiteral(classNames.join(' ')))
-                propArg.properties.push(newProp)
-            }
-        }
-
+        // Convert from component to DOM element
         if (!processor.path.isComputed) {
-            // Convert from component to DOM element
             this.toDOM(processor)
         }
     }

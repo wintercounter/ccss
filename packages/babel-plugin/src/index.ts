@@ -14,6 +14,7 @@ const defaultOpts = {
     shortify: true,
     ccss: `require('@cryptic-css/core').default || require('@cryptic-css/core')`,
     extract: {
+        output: '__css.[contenthash].css',
         outputFormat: 'ccss',
         classNameStrategy: 'MurmurHash2'
     },
@@ -79,7 +80,7 @@ export default (api, pluginOptions) => {
 
                 // Do extraction
                 if (options.extract) {
-                    extractor.onCallFound(processor)
+                    extractor.onCallExpression(processor)
                 }
             }
         }

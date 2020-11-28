@@ -28,6 +28,13 @@ export default class Processor {
         this.path = path
     }
 
+    get properties() {
+        return this.path.node.arguments?.[1]?.properties
+    }
+    set properties(v) {
+        this.path.node.arguments[1].properties = v
+    }
+
     isCCSSElement = () => {
         const { node } = this.path
         return (
@@ -36,13 +43,13 @@ export default class Processor {
             t.isIdentifier(node.callee.object, { name: 'React' }) &&
             t.isIdentifier(node.callee.property, { name: 'createElement' }) &&
             this.componentNames.some(
-                name => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
+                (name) => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
             ) &&
             !node.callee.computed
         )
     }
 
-    isCCSSProp = prop => {
+    isCCSSProp = (prop) => {
         return !!this.ccss.registry.get(prop)
     }
 
@@ -52,7 +59,7 @@ export default class Processor {
             return ObjectExpression
         }
 
-        ObjectExpression.properties = ObjectExpression.properties.map(prop => {
+        ObjectExpression.properties = ObjectExpression.properties.map((prop) => {
             // Do nothing if prop key is not an identifier (computed prop name)
             if (!t.isIdentifier(prop.key)) return prop
 
@@ -82,7 +89,7 @@ export default class Processor {
         }
     }
 
-    getPropDescriptor(prop) {
+    getPropDescriptor(prop, computedValue) {
         const name = prop.key.name
         const ccssDescriptor = this.ccss.registry.get(prop.key.name)
 
@@ -145,6 +152,48 @@ export default class Processor {
                     isComputed: false
                 }
             }
+            default: {
+                return {
+                    name,
+                    pureValue: null,
+                    ccssValue: null,
+                    ccssString: null,
+                    isComputed: true,
+                    ...computedValue(prop)
+                }
+            }
         }
+    }
+    createVariable(value) {
+        const { path } = this
+        let body = path.scope.block.body
+
+        if (t.isArrowFunctionExpression(path.scope.block)) {
+            if (t.isBlockStatement(path.scope.block.body)) {
+                body = path.scope.block.body.body
+            } else {
+                path.scope.block.body = t.blockStatement([t.returnStatement(path.scope.block.body)])
+                body = path.scope.block.body.body
+            }
+        }
+
+        const nodeIndex = body.indexOf(path.container)
+        const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id)
+
+        body.splice(nodeIndex, 0, t.variableDeclaration('const', [t.variableDeclarator(id, value)]))
+
+        return id
+    }
+    getProp(name, defaultValue) {
+        const existingIndex = (this.properties || []).findIndex((prop) => prop.key.name === name)
+
+        // Let's create one and add
+        if (existingIndex === -1 && defaultValue !== undefined) {
+            const newProp = t.objectProperty(t.stringLiteral(name), getIdentifierByValueType(defaultValue))
+            this.properties.push(newProp)
+            return newProp
+        }
+
+        return this.properties[existingIndex]
     }
 }
