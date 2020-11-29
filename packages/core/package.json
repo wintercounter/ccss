@@ -84,6 +84,6 @@
     "dependencies": {
         "@ungap/global-this": "^0.4.1",
         "csstype": "^3.0.3",
-        "transformed": "0.0.5"
+        "transformed": "0.0.6"
     }
 }

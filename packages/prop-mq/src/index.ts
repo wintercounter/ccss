@@ -35,6 +35,8 @@ const handler = (input, prop, transformedFn): string => {
     return mediaQuery(generated, transformedFn.outputTransformer.type) as string
 }
 
+const descriptorOptions = {}
+
 /* develblock:start */
 const handleMqElem = (value, state, t, api) => {
     const extracted = api.extractStaticValues(value.elements[1], state, t, true)
@@ -53,7 +55,7 @@ const babelPluginHandler = (attr, state, t, api) => {
         isStatic = !attr.realValue.elements[1]?.properties?.length
     } else {
         extracted = []
-        attr.realValue.elements = attr.realValue.elements.filter(el => {
+        attr.realValue.elements = attr.realValue.elements.filter((el) => {
             const ext = handleMqElem(el, state, t, api)
             ext && extracted.push(ext)
             return el.elements[1].properties.length
@@ -68,11 +70,12 @@ const babelPluginHandler = (attr, state, t, api) => {
         isExtracted: !!extracted
     }
 }
-handler.babelPluginHandler = babelPluginHandler
+// @ts-ignore
+descriptorOptions.babelPluginHandler = babelPluginHandler
 /* develblock:end */
 
-const useProp = transformedFn => {
-    transformedFn.setProps(['mq', 'mediaQuery'].map(prop => [[prop], null, [handler]]))
+const useProp = (transformedFn) => {
+    transformedFn.setProps(['mq', 'mediaQuery'].map((prop) => [[prop], null, [handler], descriptorOptions]))
 }
 
 export default useProp

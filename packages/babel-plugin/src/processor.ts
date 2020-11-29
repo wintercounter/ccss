@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import * as t from '@babel/types'
 import template from '@babel/template'
 import {
@@ -10,6 +8,7 @@ import {
     isPropValueSingleStringLiteral,
     isPropValueString
 } from '@/utils'
+import { handleHybrid, handleOnlyFullyNotComputed } from '@/handlers'
 
 const createCCSSToValueCallExpression = template(`
     globalThis.__ccss.toValue(%%name%%, %%value%%)
@@ -29,6 +28,8 @@ export default class Processor {
         // Cache for later use, we don't want to eval always
         ccssInstance = this.ccss
         this.path = path
+        // Set `child`'s hybrid handler
+        ccssInstance.setProps([[['child'], null, undefined, { babelPluginHandler: handleHybrid, isCCSSContext: true }]])
     }
 
     get properties() {
@@ -108,7 +109,7 @@ export default class Processor {
                 }
             }
             case isPropValueSingleStringLiteral(prop): {
-                const pureValue = prop.value.expression.quasis[0].value.cooked
+                const pureValue = prop.value.quasis[0].value.cooked
                 return {
                     name,
                     pureValue,
@@ -139,11 +140,11 @@ export default class Processor {
             }
             case isPropObject(prop):
             case isPropArray(prop): {
-                const handler = prop.descriptor.processor.babelPluginHandler
+                const handler = ccssDescriptor.babelPluginHandler || handleOnlyFullyNotComputed
 
                 return {
                     name,
-                    ...handler(prop, state, t, api, prop.descriptor.processor.babelPluginCCSSContext)
+                    ...handler(this, prop, ccssDescriptor)
                 }
             }
             case t.isBooleanLiteral(prop.value): {
@@ -199,5 +200,113 @@ export default class Processor {
         }
 
         return this.properties[existingIndex]
+    }
+    isValueTreeStatic = (prop) => {
+        let foundDynamic = false
+        this.walkTree(prop.value, (v) => {
+            foundDynamic =
+                foundDynamic ||
+                (!t.isNumericLiteral(v) &&
+                    !t.isStringLiteral(v) &&
+                    !(t.isUnaryExpression(v) && t.isNumericLiteral(v.argument)))
+        })
+        return !foundDynamic
+    }
+    walkTree = (value, cb, method = 'forEach') => {
+        const v = value
+        if (v.type === 'ObjectExpression') {
+            const newProps = v.properties[method]((v) => {
+                const ret = this.walkTree(v, cb, method)
+                return ret
+            })
+            v.properties = (newProps || v.properties).filter(Boolean)
+            return v
+        } else if (v.type === 'ArrayExpression') {
+            v.elements = (v.elements[method]((v) => this.walkTree(v, cb, method)) || v.elements).filter(Boolean)
+            return v
+        } else if (v.type === 'ObjectProperty') {
+            v.value = this.walkTree(v.value, cb, method) || v.value
+            return v
+        } else {
+            return cb(value)
+        }
+    }
+    extractStaticValues = (value, prop) => {
+        if (t.isObjectExpression(value)) {
+            return this.extractStaticValuesFromObject(value, prop)
+        } else if (t.isArrayExpression(value)) {
+            return this.extractStaticValuesFromArray(value, prop)
+        }
+    }
+    extractStaticValuesFromArray = (value, prop) => {
+        const extracted = []
+
+        value.elements = value.elements.filter((v) => {
+            if (t.isNumericLiteral(v) || t.isStringLiteral(v)) {
+                extracted.push(v.value)
+                return false
+            } else if (t.isUnaryExpression(v) && t.isNumericLiteral(v.argument)) {
+                extracted.push(v.argument.value * -1)
+                return false
+            } else if (t.isArrayExpression(v)) {
+                const ext = this.extractStaticValues(v, prop)
+                if (ext.length) {
+                    extracted.push(ext)
+                }
+                return !!v.elements.length
+            } else if (t.isObjectExpression(v)) {
+                const ext = extractStaticValues(v, prop)
+                if (Object.keys(ext).length) {
+                    extracted.push(ext)
+                }
+                return !!v.properties.length
+            }
+            return true
+        })
+
+        return extracted
+    }
+    extractStaticValuesFromObject = (value, prop) => {
+        const extracted = {}
+
+        value.properties = value.properties.filter((v) => {
+            const _value = v.value
+            const _key = v.key.name || v.key.value
+
+            if (t.isNumericLiteral(_value) || t.isStringLiteral(_value)) {
+                extracted[_key] = v.value.value
+                return false
+            } else if (t.isUnaryExpression(_value) && t.isNumericLiteral(_value.argument)) {
+                extracted[_key] = v.value.argument.value * -1
+                return false
+            } else if (t.isArrayExpression(_value)) {
+                if (this.isCCSSProp(_key)) {
+                    const descriptor = this.ccss.registry.get(_key)
+                    const { pureValue } = descriptor.babelPluginHandler(this, prop, descriptor)
+                    extracted[_key] = pureValue
+                } else {
+                    const ext = this.extractStaticValues(_value, prop)
+                    if (ext.length) {
+                        extracted[_key] = ext
+                    }
+                }
+                return _value.elements.length
+            } else if (t.isObjectExpression(_value)) {
+                if (this.isCCSSProp(_key)) {
+                    const descriptor = this.ccss.registry.get(_key)
+                    const { pureValue } = descriptor.babelPluginHandler(this, prop, descriptor)
+                    extracted[_key] = pureValue
+                } else {
+                    // If there is no such ccss prop but this is a ccss context, pass it
+                    const ext = this.extractStaticValues(_value, prop)
+                    if (Object.keys(ext).length) {
+                        extracted[_key] = ext
+                    }
+                }
+                return _value.properties.length
+            }
+        })
+
+        return extracted
     }
 }

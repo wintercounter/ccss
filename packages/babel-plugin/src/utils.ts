@@ -62,7 +62,7 @@ export function convertCharStr2CSS(str) {
     return outputString
 }
 
-export const getIdentifierByValueType = value => {
+export const getIdentifierByValueType = (value) => {
     if (typeof value === 'string') {
         return t.stringLiteral(value)
     }
@@ -76,8 +76,7 @@ export const getIdentifierByValueType = value => {
     }
 
     if (Array.isArray(value)) {
-        const v = t.arrayExpression(value.map(v => getIdentifierByValueType(v, t)))
-        return v
+        return t.arrayExpression(value.map((v) => getIdentifierByValueType(v)))
     }
 
     if (typeof value === 'object') {
@@ -112,10 +111,10 @@ const objectToAST = <T>(literal: T) => {
             }
             return t.objectExpression(
                 Object.keys(literal)
-                    .filter(k => {
+                    .filter((k) => {
                         return typeof literal[k] !== 'undefined'
                     })
-                    .map(k => {
+                    .map((k) => {
                         return t.objectProperty(t.stringLiteral(k), objectToAST(literal[k]))
                     })
             )
@@ -132,14 +131,14 @@ export const covertToStringLiteralTag = (path, state, tagName) => {
     path.node.name.name = tagName
 }
 
-export const isPropValueString = prop => prop.value && prop.value.type === 'StringLiteral'
-export const isPropValueSingleStringLiteral = prop =>
+export const isPropValueString = (prop) => prop.value && prop.value.type === 'StringLiteral'
+export const isPropValueSingleStringLiteral = (prop) =>
     prop.value &&
-    prop.value?.expression?.type === 'TemplateLiteral' &&
-    prop.value.expression.expressions.length === 0 &&
-    prop.value.expression.quasis.length === 1 &&
-    typeof prop.value.expression.quasis?.[0].value.raw === 'string' &&
-    prop.value.expression.quasis[0].value.raw === prop.value.expression.quasis[0].value.cooked
-export const isPropValueNumeric = prop => prop.value && prop.value.type === 'NumericLiteral'
-export const isPropArray = prop => prop?.value?.expression?.type === 'ArrayExpression'
-export const isPropObject = prop => prop?.value?.expression?.type === 'ObjectExpression'
+    prop.value?.type === 'TemplateLiteral' &&
+    prop.value.expressions.length === 0 &&
+    prop.value.quasis.length === 1 &&
+    typeof prop.value.quasis?.[0].value.raw === 'string' &&
+    prop.value.quasis[0].value.raw === prop.value.quasis[0].value.cooked
+export const isPropValueNumeric = (prop) => prop.value && prop.value.type === 'NumericLiteral'
+export const isPropArray = (prop) => prop?.value?.type === 'ArrayExpression'
+export const isPropObject = (prop) => prop?.value?.type === 'ObjectExpression'

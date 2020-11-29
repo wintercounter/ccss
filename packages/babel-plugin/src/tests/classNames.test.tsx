@@ -8,6 +8,8 @@ import pluginTester from 'babel-plugin-tester/pure'
 import plugin from '@'
 import { MurmurHash2 } from '@/classNameStrategies'
 
+process.env.TEST = 1
+
 pluginTester({
     pluginName: 'babel-plugin-ccss',
     plugin,
@@ -57,11 +59,75 @@ React.createElement("div", {
 });`
         },
         {
-            title: 'can extract prop with existing computed className',
+            title: 'can extract prop with existing, computed className',
             code: '<Ui fontSize={1} className={foo} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
   className: "${MurmurHash2(`font-size: 1rem;`)} " + foo
+});`
+        },
+        {
+            title: 'can extract prop with existing, computed, logical expression className',
+            code: '<Ui fontSize={1} className={foo || bar} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  className: "${MurmurHash2(`font-size: 1rem;`)} " + (foo || bar)
+});`
+        },
+        {
+            title: 'can extract prop with existing, computed, logical expression className',
+            code: '<Ui fontSize={1} className={`hur${ka}`} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  className: "${MurmurHash2(`font-size: 1rem;`)} " + \`hur\${ka}\`
+});`
+        },
+        {
+            title: 'can extract multiple props',
+            code: '<Ui fontSize={1} width={100} className={foo} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  className: "${MurmurHash2(`font-size: 1rem;`)} ${MurmurHash2(`width: 100rem;`)} " + foo
+});`
+        },
+        {
+            title: 'can extract string only literal',
+            code: '<Ui display={`block`} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`display: block;`)}"
+});`
+        },
+        {
+            title: 'can extract computed literal',
+            code: '<Ui display={`blo${ck}`} />;',
+            output: `const _ref = globalThis.__ccss.toValue("d", \`blo\${ck}\`);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`display: var(--v-d);`)}",
+  "style": {
+    "--v-d": _ref
+  }
+});`
+        },
+        {
+            title: 'can extract non-computed arrays',
+            code: '<Ui margin={[1,2,3,4]} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`margin: 1rem 2rem 3rem 4rem ;`)}"
+});`
+        },
+        {
+            title: 'can extract non-computed objects',
+            code: '<Ui child={{ div: { fontSize: 1 } }} />;',
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`
+    div {
+        font-size: 1rem;
+    }`)}"
 });`
         }
     ]

@@ -1,21 +1,21 @@
-// @ts-nocheck
-
-export const onlyFullyStatic = (attr, state, t, api, isCCSSContext) => {
-    if (!api.isValueTreeStatic(attr.value.expression, t)) {
+export const handleOnlyFullyNotComputed = (processor, prop, ccssDescriptor) => {
+    // No variables, no expressions, just extract
+    if (!processor.isValueTreeStatic(prop)) {
         return {
-            isStatic: false
+            isComputed: true
         }
     }
-    return hybrid(attr, state, t, api, isCCSSContext)
+    return handleHybrid(processor, prop, ccssDescriptor)
 }
 
-export const hybrid = (attr, state, t, api, isCCSSContext) => {
-    const extracted = api.extractStaticValues(attr.realValue, state, t, isCCSSContext)
+export const handleHybrid = (processor, prop, ccssDescriptor) => {
+    const extracted = processor.extractStaticValues(prop.value, prop)
 
     return {
         pureValue: extracted,
-        ccssValue: { [attr.name.name]: extracted },
-        isStatic: !(attr.realValue.elements || attr.realValue.properties).length,
+        ccssValue: { [prop.key.name]: extracted },
+        ccssString: processor.ccss.toValue(prop.key.name, extracted),
+        isComputed: !!(prop.value.elements || prop.value.properties).length,
         isExtracted: !!Object.keys(extracted).length
     }
 }
