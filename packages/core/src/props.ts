@@ -43,49 +43,55 @@ const getFalseNone = () => ({
     [false]: 'none'
 })
 
+// Minify and optimize
+const toCSSRuleHandler = [toCSSRule]
+const fromArrayToCSSRuleHandler = [parseArray, toCSSRule]
+const pseudoHandler = [parsePseudo]
+const nil = null
+
 const defaultProps = (): Props => [
     // SVG presentational attributes
-    [['ab', 'alignment-baseline'], null, [toCSSRule]],
-    [['bls', 'baseline-shift'], null, [toCSSRule]],
-    [['cpr', 'clip-rule'], null, [toCSSRule]],
-    [['cif', 'color-interpolation-filters'], null, [toCSSRule]],
-    [['ci', 'color-interpolation'], null, [toCSSRule]],
-    [['cpf', 'color-profile'], null, [toCSSRule]],
-    [['crd', 'color-rendering'], null, [toCSSRule]],
-    [['db', 'dominant-baseline'], null, [toCSSRule]],
-    [['eb', 'enable-background'], null, [toCSSRule]],
-    [['fo', 'fill-opacity'], null, [toCSSRule]],
-    [['fr', 'fill-rule'], null, [toCSSRule]],
-    [['fi', 'fill'], null, [toCSSRule]],
-    [['fdc', 'flood-color'], null, [toCSSRule]],
-    [['fdo', 'flood-opacity'], null, [toCSSRule]],
-    [['fsa', 'font-size-adjust'], null, [toCSSRule]],
-    [['goh', 'glyph-orientation-horizontal'], null, [toCSSRule]],
-    [['ir', 'image-rendering'], null, [toCSSRule]],
-    [['k', 'kerning'], null, [toCSSRule]],
-    [['lc', 'lighting-color'], null, [toCSSRule]],
-    [['me', 'marker-end'], null, [toCSSRule]],
-    [['mm', 'marker-mid'], null, [toCSSRule]],
-    [['ms', 'marker-start'], null, [toCSSRule]],
-    [['msk', 'mask'], null, [toCSSRule]],
-    [['sr', 'shape-rendering'], null, [toCSSRule]],
-    [['sc', 'stop-color'], null, [toCSSRule]],
-    [['sda', 'stroke-dasharray'], null, [toCSSRule]],
-    [['sdo', 'stroke-dashoffset'], null, [toCSSRule]],
-    [['slc', 'stroke-linecap'], null, [toCSSRule]],
-    [['slj', 'stroke-linejoin'], null, [toCSSRule]],
-    [['sml', 'stroke-miterlimit'], null, [toCSSRule]],
-    [['sop', 'stroke-opacity'], null, [toCSSRule]],
-    [['swt', 'stroke-width'], null, [toCSSRule]],
-    [['st', 'stroke'], null, [toCSSRule]],
-    [['txa', 'text-anchor'], null, [toCSSRule]],
-    [['txr', 'text-rendering'], null, [toCSSRule]],
-    [['ub', 'unicode-bidi'], null, [toCSSRule]],
-    [['wm', 'writing-mode'], null, [toCSSRule]],
+    [['ab', 'alignment-baseline'], nil, toCSSRuleHandler],
+    [['bls', 'baseline-shift'], nil, toCSSRuleHandler],
+    [['cpr', 'clip-rule'], nil, toCSSRuleHandler],
+    [['cif', 'color-interpolation-filters'], nil, toCSSRuleHandler],
+    [['ci', 'color-interpolation'], nil, toCSSRuleHandler],
+    [['cpf', 'color-profile'], nil, toCSSRuleHandler],
+    [['crd', 'color-rendering'], nil, toCSSRuleHandler],
+    [['db', 'dominant-baseline'], nil, toCSSRuleHandler],
+    [['eb', 'enable-background'], nil, toCSSRuleHandler],
+    [['fo', 'fill-opacity'], nil, toCSSRuleHandler],
+    [['fr', 'fill-rule'], nil, toCSSRuleHandler],
+    [['fi', 'fill'], nil, toCSSRuleHandler],
+    [['fdc', 'flood-color'], nil, toCSSRuleHandler],
+    [['fdo', 'flood-opacity'], nil, toCSSRuleHandler],
+    [['fsa', 'font-size-adjust'], nil, toCSSRuleHandler],
+    [['goh', 'glyph-orientation-horizontal'], nil, toCSSRuleHandler],
+    [['ir', 'image-rendering'], nil, toCSSRuleHandler],
+    [['k', 'kerning'], nil, toCSSRuleHandler],
+    [['lc', 'lighting-color'], nil, toCSSRuleHandler],
+    [['me', 'marker-end'], nil, toCSSRuleHandler],
+    [['mm', 'marker-mid'], nil, toCSSRuleHandler],
+    [['ms', 'marker-start'], nil, toCSSRuleHandler],
+    [['msk', 'mask'], nil, toCSSRuleHandler],
+    [['sr', 'shape-rendering'], nil, toCSSRuleHandler],
+    [['sc', 'stop-color'], nil, toCSSRuleHandler],
+    [['sda', 'stroke-dasharray'], nil, toCSSRuleHandler],
+    [['sdo', 'stroke-dashoffset'], nil, toCSSRuleHandler],
+    [['slc', 'stroke-linecap'], nil, toCSSRuleHandler],
+    [['slj', 'stroke-linejoin'], nil, toCSSRuleHandler],
+    [['sml', 'stroke-miterlimit'], nil, toCSSRuleHandler],
+    [['sop', 'stroke-opacity'], nil, toCSSRuleHandler],
+    [['swt', 'stroke-width'], nil, toCSSRuleHandler],
+    [['st', 'stroke'], nil, toCSSRuleHandler],
+    [['txa', 'text-anchor'], nil, toCSSRuleHandler],
+    [['txr', 'text-rendering'], nil, toCSSRuleHandler],
+    [['ub', 'unicode-bidi'], nil, toCSSRuleHandler],
+    [['wm', 'writing-mode'], nil, toCSSRuleHandler],
 
     // Animation + 3D
-    [['a', 'animation'], null, [toCSSRule]],
-    [['ad', 'animation-delay'], null, [toCSSRule]],
+    [['a', 'animation'], nil, toCSSRuleHandler],
+    [['ad', 'animation-delay'], nil, toCSSRuleHandler],
     [
         ['aDir', 'animation-direction'],
         {
@@ -95,7 +101,7 @@ const defaultProps = (): Props => [
             ar: 'alternate-reverse'
         }
     ],
-    [['aD', 'animation-duration'], null, [toCSSRule]],
+    [['aD', 'animation-duration'], nil, toCSSRuleHandler],
     [
         ['afm', 'animation-fill-mode'],
         {
@@ -105,8 +111,8 @@ const defaultProps = (): Props => [
             b: 'both'
         }
     ],
-    [['aic', 'animation-iteration-count'], null, [toCSSRule]],
-    [['an', 'animation-name'], null, [toCSSRule]],
+    [['aic', 'animation-iteration-count'], nil, toCSSRuleHandler],
+    [['an', 'animation-name'], nil, toCSSRuleHandler],
     [
         ['aps', 'animation-play-state'],
         {
@@ -114,7 +120,7 @@ const defaultProps = (): Props => [
             r: 'running'
         }
     ],
-    [['ats', 'animation-timing-function'], null, [toCSSRule]],
+    [['ats', 'animation-timing-function'], nil, toCSSRuleHandler],
     [
         ['bv', 'backface-visibility'],
         {
@@ -122,19 +128,19 @@ const defaultProps = (): Props => [
             h: 'hidden'
         }
     ],
-    [['per', 'perspective'], null, [toCSSRule]],
-    [['pero', 'perspective-origin'], null, [toCSSRule]],
-    [['tf', 'transform'], null, [toCSSRule]],
-    [['tfo', 'transform-origin'], getTfoBgpPos(), [toCSSRule]],
-    [['tfs', 'transform-style'], null, [toCSSRule]],
-    [['tr', 'transition'], null, [toCSSRule]],
-    [['trD', 'transition-delay'], null, [toCSSRule]],
-    [['trd', 'transition-duration'], null, [toCSSRule]],
-    [['trp', 'transition-property'], null, [toCSSRule]],
-    [['trt', 'transition-timing-function'], null, [toCSSRule]],
+    [['per', 'perspective'], nil, toCSSRuleHandler],
+    [['pero', 'perspective-origin'], nil, toCSSRuleHandler],
+    [['tf', 'transform'], nil, toCSSRuleHandler],
+    [['tfo', 'transform-origin'], getTfoBgpPos(), toCSSRuleHandler],
+    [['tfs', 'transform-style'], nil, toCSSRuleHandler],
+    [['tr', 'transition'], nil, toCSSRuleHandler],
+    [['trD', 'transition-delay'], nil, toCSSRuleHandler],
+    [['trd', 'transition-duration'], nil, toCSSRuleHandler],
+    [['trp', 'transition-property'], nil, toCSSRuleHandler],
+    [['trt', 'transition-timing-function'], nil, toCSSRuleHandler],
 
     // Flex
-    [['f', 'flex'], null, [toCSSRule]],
+    [['f', 'flex'], nil, toCSSRuleHandler],
     [
         ['fd', 'flex-direction'],
         {
@@ -143,31 +149,31 @@ const defaultProps = (): Props => [
             c: 'column',
             cr: 'column-reverse'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['fw', 'flex-wrap'],
         {
             w: 'wrap'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['fb', 'flex-basis'], null, [parseArray, toCSSRule]],
-    [['ff', 'flex-flow'], null, [toCSSRule]],
-    [['fg', 'flex-grow'], null, [toCSSRule]],
-    [['fs', 'flex-shrink'], null, [toCSSRule]],
-    [['ai', 'align-items'], getAligns(), [toCSSRule]],
-    [['ac', 'align-content'], getAligns(), [toCSSRule]],
-    [['ji', 'justify-items'], getAligns(), [toCSSRule]],
-    [['jc', 'justify-content'], getAligns(), [toCSSRule]],
-    [['aS', 'align-self'], null, [toCSSRule]],
-    [['jS', 'justify-self'], null, [toCSSRule]],
+    [['fb', 'flex-basis'], nil, fromArrayToCSSRuleHandler],
+    [['ff', 'flex-flow'], nil, toCSSRuleHandler],
+    [['fg', 'flex-grow'], nil, toCSSRuleHandler],
+    [['fs', 'flex-shrink'], nil, toCSSRuleHandler],
+    [['ai', 'align-items'], getAligns(), toCSSRuleHandler],
+    [['ac', 'align-content'], getAligns(), toCSSRuleHandler],
+    [['ji', 'justify-items'], getAligns(), toCSSRuleHandler],
+    [['jc', 'justify-content'], getAligns(), toCSSRuleHandler],
+    [['aS', 'align-self'], nil, toCSSRuleHandler],
+    [['jS', 'justify-self'], nil, toCSSRuleHandler],
 
     // Font + text related
-    [['ft', 'font'], null, [toCSSRule]],
-    [['ftf', 'font-family'], null, [toCSSRule]],
-    [['ftk', 'font-kerning'], null, [toCSSRule]],
-    [['fts', 'font-size'], null, [parseArray, toCSSRule]],
+    [['ft', 'font'], nil, toCSSRuleHandler],
+    [['ftf', 'font-family'], nil, toCSSRuleHandler],
+    [['ftk', 'font-kerning'], nil, toCSSRuleHandler],
+    [['fts', 'font-size'], nil, fromArrayToCSSRuleHandler],
     [
         ['ftStr', 'font-stretch'],
         {
@@ -181,7 +187,7 @@ const defaultProps = (): Props => [
             ee: 'extra-expanded',
             ue: 'ultra-expanded'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['ftSty', 'font-style'],
@@ -190,7 +196,7 @@ const defaultProps = (): Props => [
             i: 'italic',
             o: 'oblique'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['ftv', 'font-variant'],
@@ -198,7 +204,7 @@ const defaultProps = (): Props => [
             n: 'normal',
             sc: 'small-caps'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['ftw', 'font-weight'],
@@ -208,10 +214,10 @@ const defaultProps = (): Props => [
             br: 'bolder',
             l: 'lighter'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['ls', 'letter-spacing'], null, [parseArray, toCSSRule]],
-    [['lh', 'line-height'], null, [toCSSRule]],
+    [['ls', 'letter-spacing'], nil, fromArrayToCSSRuleHandler],
+    [['lh', 'line-height'], nil, toCSSRuleHandler],
 
     [
         ['ta', 'text-align'],
@@ -221,19 +227,19 @@ const defaultProps = (): Props => [
             o: 'overline',
             t: 'line-through'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['td', 'text-decoration'], null, [toCSSRule]],
-    [['ti', 'text-indent'], null, [parseArray, toCSSRule]],
+    [['td', 'text-decoration'], nil, toCSSRuleHandler],
+    [['ti', 'text-indent'], nil, fromArrayToCSSRuleHandler],
     [
         ['to', 'text-overflow'],
         {
             c: 'clip',
             e: 'ellipsis'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['ts', 'text-shadow'], null, [toCSSRule]],
+    [['ts', 'text-shadow'], nil, toCSSRuleHandler],
     [
         ['tt', 'text-transform'],
         {
@@ -242,7 +248,7 @@ const defaultProps = (): Props => [
             u: 'uppercase',
             l: 'lowercase'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['va', 'vertical-align'],
@@ -256,7 +262,7 @@ const defaultProps = (): Props => [
             bot: 'bottom',
             tb: 'text-bottom'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['ws', 'white-space'],
@@ -267,7 +273,7 @@ const defaultProps = (): Props => [
             pl: 'pre-line',
             pw: 'pre-wrap'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['wb', 'word-break'],
@@ -277,16 +283,16 @@ const defaultProps = (): Props => [
             ka: 'keep-all',
             bw: 'break-word'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['wS', 'word-spacing'], null, [parseArray, toCSSRule]],
+    [['wS', 'word-spacing'], nil, fromArrayToCSSRuleHandler],
     [
         ['ww', 'word-wrap'],
         {
             n: 'normal',
             b: 'break-word'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
 
     // List
@@ -295,25 +301,25 @@ const defaultProps = (): Props => [
         {
             ...getFalseNone()
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['li', 'list-style-image'], null, [toCSSRule]],
-    [['lp', 'list-style-position'], null, [toCSSRule]],
-    [['lt', 'list-style-type'], null, [toCSSRule]],
+    [['li', 'list-style-image'], nil, toCSSRuleHandler],
+    [['lp', 'list-style-position'], nil, toCSSRuleHandler],
+    [['lt', 'list-style-type'], nil, toCSSRuleHandler],
 
     // Margin
-    [['m', 'margin'], null, [parseArray, toCSSRule]],
-    [['mT', 'margin-top'], null, [parseArray, toCSSRule]],
-    [['mR', 'margin-right'], null, [parseArray, toCSSRule]],
-    [['mB', 'margin-bottom'], null, [parseArray, toCSSRule]],
-    [['mL', 'margin-left'], null, [parseArray, toCSSRule]],
+    [['m', 'margin'], nil, fromArrayToCSSRuleHandler],
+    [['mT', 'margin-top'], nil, fromArrayToCSSRuleHandler],
+    [['mR', 'margin-right'], nil, fromArrayToCSSRuleHandler],
+    [['mB', 'margin-bottom'], nil, fromArrayToCSSRuleHandler],
+    [['mL', 'margin-left'], nil, fromArrayToCSSRuleHandler],
 
     // Padding
-    [['p', 'pad', 'padding'], null, [parseArray, toCSSRule]],
-    [['pT', 'padding-top'], null, [parseArray, toCSSRule]],
-    [['pR', 'padding-right'], null, [parseArray, toCSSRule]],
-    [['pB', 'padding-bottom'], null, [parseArray, toCSSRule]],
-    [['pL', 'padding-left'], null, [parseArray, toCSSRule]],
+    [['p', 'pad', 'padding'], nil, fromArrayToCSSRuleHandler],
+    [['pT', 'padding-top'], nil, fromArrayToCSSRuleHandler],
+    [['pR', 'padding-right'], nil, fromArrayToCSSRuleHandler],
+    [['pB', 'padding-bottom'], nil, fromArrayToCSSRuleHandler],
+    [['pL', 'padding-left'], nil, fromArrayToCSSRuleHandler],
 
     // Background
     [
@@ -324,15 +330,15 @@ const defaultProps = (): Props => [
             // @ts-ignore
             [false]: 'none'
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
-    [['bgi', 'background-image'], null, [toCSSRule]],
+    [['bgi', 'background-image'], nil, toCSSRuleHandler],
     [
         ['bgc', 'background-color'],
         {
             t: 'transparent'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['bgs', 'background-size'],
@@ -341,7 +347,7 @@ const defaultProps = (): Props => [
             cr: 'cover',
             cn: 'contain'
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
     [
         ['bgr', 'background-repeat'],
@@ -356,9 +362,9 @@ const defaultProps = (): Props => [
             s: 'space',
             r: 'round'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['bgp', 'background-position'], getTfoBgpPos(), [parseArray, toCSSRule]],
+    [['bgp', 'background-position'], getTfoBgpPos(), fromArrayToCSSRuleHandler],
     [
         ['bga', 'background-attachment'],
         {
@@ -366,7 +372,7 @@ const defaultProps = (): Props => [
             f: 'fixed',
             l: 'local'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['bgbm', 'background-blend-mode'],
@@ -382,9 +388,9 @@ const defaultProps = (): Props => [
             c: 'color',
             lu: 'luminosity'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['bgC', 'background-clip'], null, [parseArray, toCSSRule]],
+    [['bgC', 'background-clip'], nil, fromArrayToCSSRuleHandler],
     [
         ['bgo', 'background-origin'],
         {
@@ -392,76 +398,76 @@ const defaultProps = (): Props => [
             p: 'padding-box',
             c: 'content-box'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['bf', 'backdrop-filter'], null, [parseArray, toCSSRule]],
+    [['bf', 'backdrop-filter'], nil, fromArrayToCSSRuleHandler],
 
     // Dimension
-    [['w', 'width'], null, [parseArray, toCSSRule]],
-    [['h', 'height'], null, [parseArray, toCSSRule]],
-    [['minW', 'min-width'], null, [parseArray, toCSSRule]],
-    [['minH', 'min-height'], null, [parseArray, toCSSRule]],
-    [['maxW', 'max-width'], null, [parseArray, toCSSRule]],
-    [['maxH', 'max-height'], null, [parseArray, toCSSRule]],
+    [['w', 'width'], nil, fromArrayToCSSRuleHandler],
+    [['h', 'height'], nil, fromArrayToCSSRuleHandler],
+    [['minW', 'min-width'], nil, fromArrayToCSSRuleHandler],
+    [['minH', 'min-height'], nil, fromArrayToCSSRuleHandler],
+    [['maxW', 'max-width'], nil, fromArrayToCSSRuleHandler],
+    [['maxH', 'max-height'], nil, fromArrayToCSSRuleHandler],
 
     // Grid
-    [['g', 'grid'], null, [toCSSRule]],
-    [['ga', 'grid-area'], null, [toCSSRule]],
-    [['gac', 'grid-auto-columns'], null, [parseArray, toCSSRule]],
-    [['gaf', 'grid-auto-flow'], null, [toCSSRule]],
-    [['gar', 'grid-auto-rows'], null, [parseArray, toCSSRule]],
-    [['gc', 'grid-column'], null, [parseArray, toCSSRule]],
-    [['gce', 'grid-column-end'], null, [toCSSRule]],
-    [['gcg', 'grid-column-gap'], null, [parseArray, toCSSRule]],
-    [['gcs', 'grid-column-start'], null, [toCSSRule]],
-    [['gg', 'grid-gap'], null, [parseArray, toCSSRule]],
-    [['gr', 'grid-row'], null, [parseArray, toCSSRule]],
-    [['gre', 'grid-row-end'], null, [toCSSRule]],
-    [['grg', 'grid-row-gap'], null, [parseArray, toCSSRule]],
-    [['grs', 'grid-row-start'], null, [toCSSRule]],
-    [['gt', 'grid-template'], null, [toCSSRule]],
-    [['gta', 'grid-template-areas'], null, [toCSSRule]],
-    [['gtc', 'grid-template-columns'], null, [parseArray, toCSSRule]],
-    [['gtr', 'grid-template-rows'], null, [parseArray, toCSSRule]],
+    [['g', 'grid'], nil, toCSSRuleHandler],
+    [['ga', 'grid-area'], nil, toCSSRuleHandler],
+    [['gac', 'grid-auto-columns'], nil, fromArrayToCSSRuleHandler],
+    [['gaf', 'grid-auto-flow'], nil, toCSSRuleHandler],
+    [['gar', 'grid-auto-rows'], nil, fromArrayToCSSRuleHandler],
+    [['gc', 'grid-column'], nil, fromArrayToCSSRuleHandler],
+    [['gce', 'grid-column-end'], nil, toCSSRuleHandler],
+    [['gcg', 'grid-column-gap'], nil, fromArrayToCSSRuleHandler],
+    [['gcs', 'grid-column-start'], nil, toCSSRuleHandler],
+    [['gg', 'grid-gap'], nil, fromArrayToCSSRuleHandler],
+    [['gr', 'grid-row'], nil, fromArrayToCSSRuleHandler],
+    [['gre', 'grid-row-end'], nil, toCSSRuleHandler],
+    [['grg', 'grid-row-gap'], nil, fromArrayToCSSRuleHandler],
+    [['grs', 'grid-row-start'], nil, toCSSRuleHandler],
+    [['gt', 'grid-template'], nil, toCSSRuleHandler],
+    [['gta', 'grid-template-areas'], nil, toCSSRuleHandler],
+    [['gtc', 'grid-template-columns'], nil, fromArrayToCSSRuleHandler],
+    [['gtr', 'grid-template-rows'], nil, fromArrayToCSSRuleHandler],
 
     // Border
-    [['b', 'border'], null, [parseArray, toCSSRule]],
-    [['bB', 'border-bottom'], null, [parseArray, toCSSRule]],
-    [['bBc', 'border-bottom-color'], null, [toCSSRule]],
-    [['bBlr', 'border-bottom-left-radius'], null, [parseArray, toCSSRule]],
-    [['bBrr', 'border-bottom-right-radius'], null, [parseArray, toCSSRule]],
-    [['bBs', 'border-bottom-style'], null, [toCSSRule]],
-    [['bBw', 'border-bottom-width'], null, [parseArray, toCSSRule]],
-    [['bC', 'border-collapse'], null, [toCSSRule]],
-    [['bc', 'border-color'], null, [toCSSRule]],
-    [['bi', 'border-image'], null, [toCSSRule]],
-    [['bio', 'border-image-outset'], null, [toCSSRule]],
-    [['bir', 'border-image-repeat'], null, [toCSSRule]],
-    [['bis', 'border-image-slice'], null, [toCSSRule]],
-    [['biSrc', 'border-image-source'], null, [toCSSRule]],
-    [['biw', 'border-image-width'], null, [parseArray, toCSSRule]],
-    [['bL', 'border-left'], null, [parseArray, toCSSRule]],
-    [['bLc', 'border-left-color'], null, [toCSSRule]],
-    [['bLs', 'border-left-style'], null, [toCSSRule]],
-    [['bLw', 'border-left-width'], null, [parseArray, toCSSRule]],
-    [['br', 'border-radius'], null, [parseArray, toCSSRule]],
-    [['bR', 'border-right'], null, [parseArray, toCSSRule]],
-    [['bRc', 'border-right-color'], null, [toCSSRule]],
-    [['bRs', 'border-right-style'], null, [toCSSRule]],
-    [['bRw', 'border-right-width'], null, [parseArray, toCSSRule]],
-    [['bs', 'border-spacing'], null, [parseArray, toCSSRule]],
-    [['bS', 'border-style'], null, [toCSSRule]],
-    [['bT', 'border-top'], null, [parseArray, toCSSRule]],
-    [['bTc', 'border-top-color'], null, [toCSSRule]],
-    [['bTlr', 'border-top-left-radius'], null, [parseArray, toCSSRule]],
-    [['bTrr', 'border-top-right-radius'], null, [parseArray, toCSSRule]],
-    [['bTs', 'border-top-style'], null, [toCSSRule]],
-    [['bTw', 'border-top-width'], null, [parseArray, toCSSRule]],
-    [['bw', 'border-width'], null, [parseArray, toCSSRule]],
+    [['b', 'border'], nil, fromArrayToCSSRuleHandler],
+    [['bB', 'border-bottom'], nil, fromArrayToCSSRuleHandler],
+    [['bBc', 'border-bottom-color'], nil, toCSSRuleHandler],
+    [['bBlr', 'border-bottom-left-radius'], nil, fromArrayToCSSRuleHandler],
+    [['bBrr', 'border-bottom-right-radius'], nil, fromArrayToCSSRuleHandler],
+    [['bBs', 'border-bottom-style'], nil, toCSSRuleHandler],
+    [['bBw', 'border-bottom-width'], nil, fromArrayToCSSRuleHandler],
+    [['bC', 'border-collapse'], nil, toCSSRuleHandler],
+    [['bc', 'border-color'], nil, toCSSRuleHandler],
+    [['bi', 'border-image'], nil, toCSSRuleHandler],
+    [['bio', 'border-image-outset'], nil, toCSSRuleHandler],
+    [['bir', 'border-image-repeat'], nil, toCSSRuleHandler],
+    [['bis', 'border-image-slice'], nil, toCSSRuleHandler],
+    [['biSrc', 'border-image-source'], nil, toCSSRuleHandler],
+    [['biw', 'border-image-width'], nil, fromArrayToCSSRuleHandler],
+    [['bL', 'border-left'], nil, fromArrayToCSSRuleHandler],
+    [['bLc', 'border-left-color'], nil, toCSSRuleHandler],
+    [['bLs', 'border-left-style'], nil, toCSSRuleHandler],
+    [['bLw', 'border-left-width'], nil, fromArrayToCSSRuleHandler],
+    [['br', 'border-radius'], nil, fromArrayToCSSRuleHandler],
+    [['bR', 'border-right'], nil, fromArrayToCSSRuleHandler],
+    [['bRc', 'border-right-color'], nil, toCSSRuleHandler],
+    [['bRs', 'border-right-style'], nil, toCSSRuleHandler],
+    [['bRw', 'border-right-width'], nil, fromArrayToCSSRuleHandler],
+    [['bs', 'border-spacing'], nil, fromArrayToCSSRuleHandler],
+    [['bS', 'border-style'], nil, toCSSRuleHandler],
+    [['bT', 'border-top'], nil, fromArrayToCSSRuleHandler],
+    [['bTc', 'border-top-color'], nil, toCSSRuleHandler],
+    [['bTlr', 'border-top-left-radius'], nil, fromArrayToCSSRuleHandler],
+    [['bTrr', 'border-top-right-radius'], nil, fromArrayToCSSRuleHandler],
+    [['bTs', 'border-top-style'], nil, toCSSRuleHandler],
+    [['bTw', 'border-top-width'], nil, fromArrayToCSSRuleHandler],
+    [['bw', 'border-width'], nil, fromArrayToCSSRuleHandler],
 
     // Clip
-    [['clp', 'clip'], null, [parseArray, toCSSRule]],
-    [['clpp', 'clip-path'], null, [toCSSRule]],
+    [['clp', 'clip'], nil, fromArrayToCSSRuleHandler],
+    [['clpp', 'clip-path'], nil, toCSSRuleHandler],
 
     // General
     [
@@ -477,7 +483,7 @@ const defaultProps = (): Props => [
             g: 'grid',
             t: 'table'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['P', 'position'],
@@ -488,24 +494,24 @@ const defaultProps = (): Props => [
             s: 'static',
             sy: 'sticky'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['T', 'top'], null, [parseArray, toCSSRule]],
-    [['R', 'right'], null, [parseArray, toCSSRule]],
-    [['B', 'bottom'], null, [parseArray, toCSSRule]],
-    [['L', 'left'], null, [parseArray, toCSSRule]],
-    [['zi', 'z-index'], null, [toCSSRule]],
-    [['c', 'color'], null, [toCSSRule]],
-    [['o', 'overflow'], getOverflows(), [toCSSRule]],
-    [['ox', 'overflow-x'], getOverflows(), [toCSSRule]],
-    [['oy', 'overflow-y'], getOverflows(), [toCSSRule]],
+    [['T', 'top'], nil, fromArrayToCSSRuleHandler],
+    [['R', 'right'], nil, fromArrayToCSSRuleHandler],
+    [['B', 'bottom'], nil, fromArrayToCSSRuleHandler],
+    [['L', 'left'], nil, fromArrayToCSSRuleHandler],
+    [['zi', 'z-index'], nil, toCSSRuleHandler],
+    [['c', 'color'], nil, toCSSRuleHandler],
+    [['o', 'overflow'], getOverflows(), toCSSRuleHandler],
+    [['ox', 'overflow-x'], getOverflows(), toCSSRuleHandler],
+    [['oy', 'overflow-y'], getOverflows(), toCSSRuleHandler],
     [
         ['oa', 'overflow-anchor'],
         {
             ...getFalseNone(),
             a: 'auto'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['fl', 'float'],
@@ -514,7 +520,7 @@ const defaultProps = (): Props => [
             l: 'left',
             r: 'right'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['clr', 'clear'],
@@ -525,7 +531,7 @@ const defaultProps = (): Props => [
             [true]: 'both',
             b: 'both'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['v', 'visibility'],
@@ -538,23 +544,23 @@ const defaultProps = (): Props => [
             h: 'hidden',
             c: 'collapse'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
 
     // Columns
-    [['col', 'columns'], null, [toCSSRule]],
-    [['cc', 'column-count'], null, [toCSSRule]],
-    [['cf', 'column-fill'], null, [toCSSRule]],
-    [['cg', 'column-gap'], null, [parseArray, toCSSRule]],
-    [['cr', 'column-rule'], null, [toCSSRule]],
-    [['crc', 'column-rule-color'], null, [toCSSRule]],
-    [['crs', 'column-rule-style'], null, [toCSSRule]],
-    [['crw', 'column-rule-width'], null, [parseArray, toCSSRule]],
-    [['cs', 'column-span'], null, [toCSSRule]],
-    [['cw', 'column-width'], null, [parseArray, toCSSRule]],
-    [['pba', 'page-break-after'], null, [toCSSRule]],
-    [['pbb', 'page-break-before'], null, [toCSSRule]],
-    [['pbi', 'page-break-inside'], null, [toCSSRule]],
+    [['col', 'columns'], nil, toCSSRuleHandler],
+    [['cc', 'column-count'], nil, toCSSRuleHandler],
+    [['cf', 'column-fill'], nil, toCSSRuleHandler],
+    [['cg', 'column-gap'], nil, fromArrayToCSSRuleHandler],
+    [['cr', 'column-rule'], nil, toCSSRuleHandler],
+    [['crc', 'column-rule-color'], nil, toCSSRuleHandler],
+    [['crs', 'column-rule-style'], nil, toCSSRuleHandler],
+    [['crw', 'column-rule-width'], nil, fromArrayToCSSRuleHandler],
+    [['cs', 'column-span'], nil, toCSSRuleHandler],
+    [['cw', 'column-width'], nil, fromArrayToCSSRuleHandler],
+    [['pba', 'page-break-after'], nil, toCSSRuleHandler],
+    [['pbb', 'page-break-before'], nil, toCSSRuleHandler],
+    [['pbi', 'page-break-inside'], nil, toCSSRuleHandler],
 
     // Box
     [
@@ -562,13 +568,13 @@ const defaultProps = (): Props => [
         {
             ...getFalseNone()
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
-    [['siz', 'box-sizing'], null, [toCSSRule]],
+    [['siz', 'box-sizing'], nil, toCSSRuleHandler],
 
     // Misc
-    [['cn', 'contain'], null, [toCSSRule]],
-    [['dir', 'direction'], null, [toCSSRule]],
+    [['cn', 'contain'], nil, toCSSRuleHandler],
+    [['dir', 'direction'], nil, toCSSRuleHandler],
     [
         ['of', 'object-fit'],
         {
@@ -580,9 +586,9 @@ const defaultProps = (): Props => [
             [false]: 'none',
             n: 'none'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['oP', 'object-position'], null, [toCSSRule]],
+    [['oP', 'object-position'], nil, toCSSRuleHandler],
     [
         ['op', 'opacity'],
         {
@@ -591,10 +597,10 @@ const defaultProps = (): Props => [
             // @ts-ignore
             [false]: 0
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['or', 'order'], null, [toCSSRule]],
-    [['ol', 'outline'], null, [toCSSRule]],
+    [['or', 'order'], nil, toCSSRuleHandler],
+    [['ol', 'outline'], nil, toCSSRuleHandler],
     [
         ['mbm', 'mix-blend-mode'],
         {
@@ -613,9 +619,9 @@ const defaultProps = (): Props => [
             c: 'color',
             l: 'luminosity'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['ct', 'content'], null, [toCSSRule]],
+    [['ct', 'content'], nil, toCSSRuleHandler],
     [
         ['cur', 'cursor'],
         {
@@ -656,7 +662,7 @@ const defaultProps = (): Props => [
             zi: 'zoom-in',
             zo: 'zoom-out'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['pe', 'pointer-events'],
@@ -666,30 +672,30 @@ const defaultProps = (): Props => [
             a: 'auto',
             ...getFalseNone()
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['fil', 'filter'], null, [parseArray, toCSSRule]],
+    [['fil', 'filter'], nil, fromArrayToCSSRuleHandler],
     [
         ['sb', 'scroll-behavior'],
         {
             a: 'auto',
             s: 'smooth'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['sw', 'scrollbar-width'],
         {
             n: 'none'
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
     [
         ['sh', 'scrollbar-height'],
         {
             n: 'none'
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
     [
         ['us', 'user-select'],
@@ -700,10 +706,10 @@ const defaultProps = (): Props => [
             all: 'all'
         }
     ],
-    [['cac', 'caret-color'], null, [toCSSRule]],
-    [['rs', 'resize'], null, [toCSSRule]],
-    [['raw'], null, [(i) => i]],
-    [['child'], null, [child]],
+    [['cac', 'caret-color'], nil, toCSSRuleHandler],
+    [['rs', 'resize'], nil, toCSSRuleHandler],
+    [['raw'], nil, [(i) => i]],
+    [['child'], nil, [child]],
 
     // Webkit
     [
@@ -712,7 +718,7 @@ const defaultProps = (): Props => [
             d: 'default',
             n: 'none'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['wos', 'webkit-overflow-scrolling', '-webkit-overflow-scrolling'],
@@ -720,10 +726,10 @@ const defaultProps = (): Props => [
             a: 'auto',
             t: 'touch'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
-    [['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'], null, [toCSSRule]],
-    [['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'], null, [toCSSRule]],
+    [['wthc', 'webkit-tap-highlight-color', '-webkit-tap-highlight-color'], nil, toCSSRuleHandler],
+    [['wtfc', 'webkit-text-fill-color', '-webkit-text-fill-color'], nil, toCSSRuleHandler],
     [
         ['wud', 'webkit-user-drag', '-webkit-user-drag'],
         {
@@ -731,7 +737,7 @@ const defaultProps = (): Props => [
             e: 'element',
             n: 'none'
         },
-        [toCSSRule]
+        toCSSRuleHandler
     ],
     [
         ['wbf', 'webkit-backdrop-filter', '-webkit-backdrop-filter'],
@@ -744,72 +750,72 @@ const defaultProps = (): Props => [
             st: 'style',
             p: 'paint'
         },
-        [parseArray, toCSSRule]
+        fromArrayToCSSRuleHandler
     ],
 
     // Pseudo selectors
-    [[':a', ':active'], null, [parsePseudo]],
-    [['::a', '::after'], null, [parsePseudo]],
-    [['::a, ::b', '::after, ::before'], null, [parsePseudo]],
-    [[':al', ':any-link'], null, [parsePseudo]],
-    [['::b', '::before'], null, [parsePseudo]],
-    [[':b', ':blank'], null, [parsePseudo]],
-    [[':c', ':checked'], null, [parsePseudo]],
-    [[':cur', ':current'], null, [parsePseudo]],
-    [[':def', ':default'], null, [parsePseudo]],
-    [[':Def', ':defined'], null, [parsePseudo]],
-    [[':dir', ':dir'], null, [parsePseudo]],
-    [[':dis', ':disabled'], null, [parsePseudo]],
-    [[':dr', ':drop'], null, [parsePseudo]],
-    [[':em', ':empty'], null, [parsePseudo]],
-    [[':en', ':enabled'], null, [parsePseudo]],
-    [[':f', ':first'], null, [parsePseudo]],
-    [[':fc', ':first-child'], null, [parsePseudo]],
-    [[':fot', ':first-of-type'], null, [parsePseudo]],
-    [[':fs', ':fullscreen'], null, [parsePseudo]],
-    [[':fu', ':future'], null, [parsePseudo]],
-    [[':fo', ':focus'], null, [parsePseudo]],
-    [[':fov', ':focus-visible'], null, [parsePseudo]],
-    [[':fow', ':focus-within'], null, [parsePseudo]],
-    [[':has', ':has'], null, [parsePseudo]],
-    [[':ho', ':host'], null, [parsePseudo]],
-    [[':hoc', ':host-context'], null, [parsePseudo]],
-    [[':h', ':hover'], null, [parsePseudo]],
-    [[':i', ':indeterminate'], null, [parsePseudo]],
-    [[':ir', ':in-range'], null, [parsePseudo]],
-    [[':in', ':invalid'], null, [parsePseudo]],
-    [[':is', ':is'], null, [parsePseudo]],
-    [[':l', ':lang'], null, [parsePseudo]],
-    [[':lc', ':last-child'], null, [parsePseudo]],
-    [[':lot', ':last-of-type'], null, [parsePseudo]],
-    [[':L', ':left'], null, [parsePseudo]],
-    [[':lk', ':link'], null, [parsePseudo]],
-    [[':llk', ':local-link'], null, [parsePseudo]],
-    [[':n', ':not'], null, [parsePseudo]],
-    [[':nc', ':nth-child'], null, [parsePseudo]],
-    [[':nC', ':nth-col'], null, [parsePseudo]],
-    [[':nlc', ':nth-last-child'], null, [parsePseudo]],
-    [[':nlC', ':nth-last-col'], null, [parsePseudo]],
-    [[':nlot', ':nth-last-of-type'], null, [parsePseudo]],
-    [[':not', ':nth-of-type'], null, [parsePseudo]],
-    [[':oc', ':only-child'], null, [parsePseudo]],
-    [[':oof', ':only-of-type'], null, [parsePseudo]],
-    [[':o', ':optional'], null, [parsePseudo]],
-    [[':our', ':out-of-range'], null, [parsePseudo]],
-    [[':p', ':past'], null, [parsePseudo]],
-    [[':ps', ':placeholder-shown'], null, [parsePseudo]],
-    [[':ro', ':read-only'], null, [parsePseudo]],
-    [[':rw', ':read-write'], null, [parsePseudo]],
-    [[':req', ':required'], null, [parsePseudo]],
-    [[':R', ':right'], null, [parsePseudo]],
-    [[':r', ':root'], null, [parsePseudo]],
-    [[':s', ':scope'], null, [parsePseudo]],
-    [[':t', ':target'], null, [parsePseudo]],
-    [[':tw', ':target-within'], null, [parsePseudo]],
-    [[':ui', ':user-invalid'], null, [parsePseudo]],
-    [[':v', ':valid'], null, [parsePseudo]],
-    [[':vis', ':visited'], null, [parsePseudo]],
-    [[':w', ':where'], null, [parsePseudo]]
+    [[':a', ':active'], nil, pseudoHandler],
+    [['::a', '::after'], nil, pseudoHandler],
+    [['::a, ::b', '::after, ::before'], nil, pseudoHandler],
+    [[':al', ':any-link'], nil, pseudoHandler],
+    [['::b', '::before'], nil, pseudoHandler],
+    [[':b', ':blank'], nil, pseudoHandler],
+    [[':c', ':checked'], nil, pseudoHandler],
+    [[':cur', ':current'], nil, pseudoHandler],
+    [[':def', ':default'], nil, pseudoHandler],
+    [[':Def', ':defined'], nil, pseudoHandler],
+    [[':dir', ':dir'], nil, pseudoHandler],
+    [[':dis', ':disabled'], nil, pseudoHandler],
+    [[':dr', ':drop'], nil, pseudoHandler],
+    [[':em', ':empty'], nil, pseudoHandler],
+    [[':en', ':enabled'], nil, pseudoHandler],
+    [[':f', ':first'], nil, pseudoHandler],
+    [[':fc', ':first-child'], nil, pseudoHandler],
+    [[':fot', ':first-of-type'], nil, pseudoHandler],
+    [[':fs', ':fullscreen'], nil, pseudoHandler],
+    [[':fu', ':future'], nil, pseudoHandler],
+    [[':fo', ':focus'], nil, pseudoHandler],
+    [[':fov', ':focus-visible'], nil, pseudoHandler],
+    [[':fow', ':focus-within'], nil, pseudoHandler],
+    [[':has', ':has'], nil, pseudoHandler],
+    [[':ho', ':host'], nil, pseudoHandler],
+    [[':hoc', ':host-context'], nil, pseudoHandler],
+    [[':h', ':hover'], nil, pseudoHandler],
+    [[':i', ':indeterminate'], nil, pseudoHandler],
+    [[':ir', ':in-range'], nil, pseudoHandler],
+    [[':in', ':invalid'], nil, pseudoHandler],
+    [[':is', ':is'], nil, pseudoHandler],
+    [[':l', ':lang'], nil, pseudoHandler],
+    [[':lc', ':last-child'], nil, pseudoHandler],
+    [[':lot', ':last-of-type'], nil, pseudoHandler],
+    [[':L', ':left'], nil, pseudoHandler],
+    [[':lk', ':link'], nil, pseudoHandler],
+    [[':llk', ':local-link'], nil, pseudoHandler],
+    [[':n', ':not'], nil, pseudoHandler],
+    [[':nc', ':nth-child'], nil, pseudoHandler],
+    [[':nC', ':nth-col'], nil, pseudoHandler],
+    [[':nlc', ':nth-last-child'], nil, pseudoHandler],
+    [[':nlC', ':nth-last-col'], nil, pseudoHandler],
+    [[':nlot', ':nth-last-of-type'], nil, pseudoHandler],
+    [[':not', ':nth-of-type'], nil, pseudoHandler],
+    [[':oc', ':only-child'], nil, pseudoHandler],
+    [[':oof', ':only-of-type'], nil, pseudoHandler],
+    [[':o', ':optional'], nil, pseudoHandler],
+    [[':our', ':out-of-range'], nil, pseudoHandler],
+    [[':p', ':past'], nil, pseudoHandler],
+    [[':ps', ':placeholder-shown'], nil, pseudoHandler],
+    [[':ro', ':read-only'], nil, pseudoHandler],
+    [[':rw', ':read-write'], nil, pseudoHandler],
+    [[':req', ':required'], nil, pseudoHandler],
+    [[':R', ':right'], nil, pseudoHandler],
+    [[':r', ':root'], nil, pseudoHandler],
+    [[':s', ':scope'], nil, pseudoHandler],
+    [[':t', ':target'], nil, pseudoHandler],
+    [[':tw', ':target-within'], nil, pseudoHandler],
+    [[':ui', ':user-invalid'], nil, pseudoHandler],
+    [[':v', ':valid'], nil, pseudoHandler],
+    [[':vis', ':visited'], nil, pseudoHandler],
+    [[':w', ':where'], nil, pseudoHandler]
 ]
 
 export default defaultProps
