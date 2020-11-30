@@ -39,17 +39,17 @@ export const child: CCSSParser = (input, prop, transformedFn, inputObject) => {
     for (const k in input) {
         if (Object.prototype.hasOwnProperty.call(input, k)) {
             const definition = transformedFn.registry.get(k)
-            if (definition) {
-                generated = transformedFn.outputTransformer(
-                    generated,
-                    definition.fn(input[k], k, transformedFn, inputObject, definition)
+            const isPseudo = k[0] === ':'
+            generated = transformedFn.outputTransformer(
+                generated,
+                transformedFn.outputTransformer.toChild(
+                    input[k],
+                    k,
+                    transformedFn,
+                    inputObject,
+                    isPseudo ? definition : undefined
                 )
-            } else {
-                generated = transformedFn.outputTransformer(
-                    generated,
-                    transformedFn.outputTransformer.toChild(input[k], k, transformedFn, inputObject, definition)
-                )
-            }
+            )
         }
     }
     return generated

@@ -46,13 +46,13 @@ export default class ExtractorAbstract {
     toDOM(processor) {
         processor.path.node.arguments[0] = t.stringLiteral(processor.path.node.arguments[0]?.property?.name || 'div')
     }
-    getCSSVar(prop) {
+    getCSSVar(name) {
         if (process.env.TEST) {
-            return `--v-${prop.key.name}`
+            return `--v-${name}`
         } else if (process.env.NODE_ENV === 'production') {
             return `--v-${shortest()}`
         }
-        return `--v-${prop.key.name}-${shortest()}`
+        return `--v-${name}-${shortest()}`
     }
     addClassNames(classNames) {
         const { processor } = this

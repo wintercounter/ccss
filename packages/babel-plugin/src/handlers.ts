@@ -1,21 +1,42 @@
-export const handleOnlyFullyNotComputed = (processor, prop, ccssDescriptor) => {
-    // No variables, no expressions, just extract
-    if (!processor.isValueTreeStatic(prop)) {
-        return {
-            isComputed: true
-        }
-    }
-    return handleHybrid(processor, prop, ccssDescriptor)
-}
+import * as t from '@babel/types'
+import traverse from '@babel/traverse'
 
-export const handleHybrid = (processor, prop, ccssDescriptor) => {
-    const extracted = processor.extractStaticValues(prop.value, prop)
+export const deepCSSVars = (processor, prop, extractor) => {
+    traverse(
+        prop.value,
+        {
+            ObjectExpression(path) {
+                processor.shortifyProps(path.node)
+                path.node.properties = path.node.properties.map(el => {
+                    if (
+                        !['ArrayExpression', 'ObjectExpression'].includes(el.value.type) &&
+                        processor.isValueComputed(el.value)
+                    ) {
+                        // Create CSS var
+                        const cssVarName = extractor.getCSSVar(el.key.name)
+                        const cssVar = `var(${cssVarName})`
 
-    return {
-        pureValue: extracted,
-        ccssValue: { [prop.key.name]: extracted },
-        ccssString: processor.ccss.toValue(prop.key.name, extracted),
-        isComputed: !!(prop.value.elements || prop.value.properties).length,
-        isExtracted: !!Object.keys(extracted).length
-    }
+                        // Computed, move value into variable and assign it to a CSS variable
+                        const variableId = processor.createVariable(el)
+                        extractor.styleProps.push([cssVarName, variableId])
+                        el.value = t.stringLiteral(cssVar)
+                    }
+                    return el
+                })
+            }
+        },
+        processor.path,
+        processor.path.scope
+    )
+    /*processor.walkTree(
+        prop.value,
+        v => {
+            if (!processor.isValueComputed(v)) {
+                return v
+            } else {
+                return
+            }
+        },
+        'map'
+    )*/
 }

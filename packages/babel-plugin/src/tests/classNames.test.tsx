@@ -101,7 +101,7 @@ React.createElement("div", {
         {
             title: 'can extract computed literal',
             code: '<Ui display={`blo${ck}`} />;',
-            output: `const _ref = globalThis.__ccss.toValue("d", \`blo\${ck}\`);
+            output: `const _ref = __ccss.toValue("d", \`blo\${ck}\`);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -128,6 +128,79 @@ React.createElement("div", {
     div {
         font-size: 1rem;
     }`)}"
+});`
+        },
+        {
+            title: 'can extract computed arrays',
+            code: '<Ui margin={[1,foo,3,4]} />;',
+            output: `const _ref = __ccss.toValue("m", [1, foo, 3, 4]);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`margin: var(--v-m);`)}",
+  "style": {
+    "--v-m": _ref
+  }
+});`
+        },
+        {
+            title: 'can extract computed objects',
+            code: '<Ui child={{ div: { fontSize: foo } }} />;',
+            output: `const _ref = __ccss.toValue("fts", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`
+    div {
+        font-size: var(--v-fts);
+    }`)}",
+  "style": {
+    "--v-fts": _ref
+  }
+});`
+        },
+        {
+            title: 'can extract computed objects 2',
+            code: "<Ui child={{ div: { fontSize: foo }, '> a': { margin: bar } }} />;",
+            output: `const _ref = __ccss.toValue("fts", foo);
+
+const _ref2 = __ccss.toValue("m", bar);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`
+    div {
+        font-size: var(--v-fts);
+    }
+    > a {
+        margin: var(--v-m);
+    }`)}",
+  "style": {
+    "--v-fts": _ref,
+    "--v-m": _ref2
+  }
+});`
+        },
+        {
+            title: 'can extract computed deep objects',
+            code: '<Ui child={{ div: { fontSize: foo, child: { a: { width: bar } } } }} />;',
+            output: `const _ref = __ccss.toValue("fts", foo);
+
+const _ref2 = __ccss.toValue("w", bar);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`
+    div {
+        font-size: var(--v-fts);
+    a {
+        width: var(--v-w);
+    }
+    }`)}",
+  "style": {
+    "--v-fts": _ref,
+    "--v-w": _ref2
+  }
 });`
         }
     ]

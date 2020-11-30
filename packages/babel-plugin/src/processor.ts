@@ -8,10 +8,10 @@ import {
     isPropValueSingleStringLiteral,
     isPropValueString
 } from '@/utils'
-import { handleHybrid, handleOnlyFullyNotComputed } from '@/handlers'
+import { deepCSSVars } from '@/handlers'
 
 const createCCSSToValueCallExpression = template(`
-    globalThis.__ccss.toValue(%%name%%, %%value%%)
+    __ccss.toValue(%%name%%, %%value%%)
 `)
 
 let ccssInstance
@@ -28,8 +28,8 @@ export default class Processor {
         // Cache for later use, we don't want to eval always
         ccssInstance = this.ccss
         this.path = path
-        // Set `child`'s hybrid handler
-        ccssInstance.setProps([[['child'], null, undefined, { babelPluginHandler: handleHybrid, isCCSSContext: true }]])
+        // Set `child`'s handler
+        ccssInstance.setProps([[['child'], null, undefined, { babelPluginHandler: deepCSSVars }]])
     }
 
     get properties() {
@@ -47,13 +47,13 @@ export default class Processor {
             t.isIdentifier(node.callee.object, { name: 'React' }) &&
             t.isIdentifier(node.callee.property, { name: 'createElement' }) &&
             this.componentNames.some(
-                (name) => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
+                name => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
             ) &&
             !node.callee.computed
         )
     }
 
-    isCCSSProp = (prop) => {
+    isCCSSProp = prop => {
         return !!this.ccss.registry.get(prop)
     }
 
@@ -63,7 +63,7 @@ export default class Processor {
             return ObjectExpression
         }
 
-        ObjectExpression.properties = ObjectExpression.properties.map((prop) => {
+        ObjectExpression.properties = ObjectExpression.properties.map(prop => {
             // Do nothing if prop key is not an identifier (computed prop name)
             if (!t.isIdentifier(prop.key)) return prop
 
@@ -140,11 +140,22 @@ export default class Processor {
             }
             case isPropObject(prop):
             case isPropArray(prop): {
-                const handler = ccssDescriptor.babelPluginHandler || handleOnlyFullyNotComputed
+                // Fully static, just run, extract, done
+                if (this.isValueTreeStatic(prop)) {
+                    const extracted = this.extractStaticValues(prop.value, prop)
+
+                    return {
+                        pureValue: extracted,
+                        ccssValue: { [prop.key.name]: extracted },
+                        ccssString: this.ccss.toValue(prop.key.name, extracted),
+                        isComputed: false
+                    }
+                }
 
                 return {
                     name,
-                    ...handler(this, prop, ccssDescriptor)
+                    isComputed: true,
+                    ...computedValue(prop)
                 }
             }
             case t.isBooleanLiteral(prop.value): {
@@ -190,7 +201,7 @@ export default class Processor {
         return id
     }
     getProp(name, defaultValue) {
-        const existingIndex = (this.properties || []).findIndex((prop) => prop.key.name === name)
+        const existingIndex = (this.properties || []).findIndex(prop => prop.key.name === name)
 
         // Let's create one and add
         if (existingIndex === -1 && defaultValue !== undefined) {
@@ -201,28 +212,31 @@ export default class Processor {
 
         return this.properties[existingIndex]
     }
-    isValueTreeStatic = (prop) => {
+    isValueComputed(v) {
+        return (
+            !t.isNumericLiteral(v) &&
+            !t.isStringLiteral(v) &&
+            !(t.isUnaryExpression(v) && t.isNumericLiteral(v.argument))
+        )
+    }
+    isValueTreeStatic = prop => {
         let foundDynamic = false
-        this.walkTree(prop.value, (v) => {
-            foundDynamic =
-                foundDynamic ||
-                (!t.isNumericLiteral(v) &&
-                    !t.isStringLiteral(v) &&
-                    !(t.isUnaryExpression(v) && t.isNumericLiteral(v.argument)))
+        this.walkTree(prop.value, v => {
+            foundDynamic = foundDynamic || this.isValueComputed(v)
         })
         return !foundDynamic
     }
     walkTree = (value, cb, method = 'forEach') => {
         const v = value
         if (v.type === 'ObjectExpression') {
-            const newProps = v.properties[method]((v) => {
+            const newProps = v.properties[method](v => {
                 const ret = this.walkTree(v, cb, method)
                 return ret
             })
             v.properties = (newProps || v.properties).filter(Boolean)
             return v
         } else if (v.type === 'ArrayExpression') {
-            v.elements = (v.elements[method]((v) => this.walkTree(v, cb, method)) || v.elements).filter(Boolean)
+            v.elements = (v.elements[method](v => this.walkTree(v, cb, method)) || v.elements).filter(Boolean)
             return v
         } else if (v.type === 'ObjectProperty') {
             v.value = this.walkTree(v.value, cb, method) || v.value
@@ -241,7 +255,7 @@ export default class Processor {
     extractStaticValuesFromArray = (value, prop) => {
         const extracted = []
 
-        value.elements = value.elements.filter((v) => {
+        value.elements = value.elements.filter(v => {
             if (t.isNumericLiteral(v) || t.isStringLiteral(v)) {
                 extracted.push(v.value)
                 return false
@@ -269,7 +283,7 @@ export default class Processor {
     extractStaticValuesFromObject = (value, prop) => {
         const extracted = {}
 
-        value.properties = value.properties.filter((v) => {
+        value.properties = value.properties.filter(v => {
             const _value = v.value
             const _key = v.key.name || v.key.value
 
@@ -280,28 +294,16 @@ export default class Processor {
                 extracted[_key] = v.value.argument.value * -1
                 return false
             } else if (t.isArrayExpression(_value)) {
-                if (this.isCCSSProp(_key)) {
-                    const descriptor = this.ccss.registry.get(_key)
-                    const { pureValue } = descriptor.babelPluginHandler(this, prop, descriptor)
-                    extracted[_key] = pureValue
-                } else {
-                    const ext = this.extractStaticValues(_value, prop)
-                    if (ext.length) {
-                        extracted[_key] = ext
-                    }
+                const ext = this.extractStaticValues(_value, prop)
+                if (ext.length) {
+                    extracted[_key] = ext
                 }
                 return _value.elements.length
             } else if (t.isObjectExpression(_value)) {
-                if (this.isCCSSProp(_key)) {
-                    const descriptor = this.ccss.registry.get(_key)
-                    const { pureValue } = descriptor.babelPluginHandler(this, prop, descriptor)
-                    extracted[_key] = pureValue
-                } else {
-                    // If there is no such ccss prop but this is a ccss context, pass it
-                    const ext = this.extractStaticValues(_value, prop)
-                    if (Object.keys(ext).length) {
-                        extracted[_key] = ext
-                    }
+                // If there is no such ccss prop but this is a ccss context, pass it
+                const ext = this.extractStaticValues(_value, prop)
+                if (Object.keys(ext).length) {
+                    extracted[_key] = ext
                 }
                 return _value.properties.length
             }
