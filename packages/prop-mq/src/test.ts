@@ -1,12 +1,10 @@
 // @ts-nocheck
 
 import { createCCSS, objectOutputTransformer } from '@cryptic-css/core'
-import usePropMq from '.'
+import propMq from '.'
 
-const ccss = createCCSS()
-const ccssObject = createCCSS({ outputTransformer: objectOutputTransformer })
-usePropMq(ccss)
-usePropMq(ccssObject)
+const ccss = createCCSS().use(propMq)
+const ccssObject = createCCSS({ outputTransformer: objectOutputTransformer }).use(propMq)
 
 describe('prop-mq', () => {
     it('should run ccss through values', () => {

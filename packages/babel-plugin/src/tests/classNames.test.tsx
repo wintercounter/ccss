@@ -7,6 +7,11 @@
 import pluginTester from 'babel-plugin-tester/pure'
 import plugin from '@'
 import { MurmurHash2 } from '@/classNameStrategies'
+import ccss, { toCSSRule } from '@cryptic-css/core'
+import propMq from '../../../prop-mq'
+
+// Set a non-ccss context prop
+ccss.setProps([[['non'], null, [toCSSRule], { ccssContext: false }]]).use(propMq)
 
 process.env.TEST = 1
 
@@ -201,6 +206,80 @@ React.createElement("div", {
     "--v-fts": _ref,
     "--v-w": _ref2
   }
+});`
+        },
+        {
+            title: 'can extract computed deep arrays',
+            code: `<Ui mq={[['mobile', { fontSize: foo }], ['small', { margin: bar, child: { div: { width: baz } } }]]} />;`,
+            output: `const _ref = __ccss.toValue("fts", foo);
+
+const _ref2 = __ccss.toValue("m", bar);
+
+const _ref3 = __ccss.toValue("w", baz);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`@media screen and (min-width: 376px) and (max-width: 639px) { font-size: var(--v-fts); }@media screen and (min-width: 1024px) and (max-width: 1439px) { margin: var(--v-m);
+    div {
+        width: var(--v-w);
+    } }`)}",
+  "style": {
+    "--v-fts": _ref,
+    "--v-m": _ref2,
+    "--v-w": _ref3
+  }
+});`
+        },
+        {
+            title: 'can extract computed deep arrays with non-ccss context static',
+            code: `<Ui mq={[['mobile', { fontSize: foo }], ['small', { margin: bar, child: { div: { non: 12 } } }]]} />;`,
+            output: `const _ref = __ccss.toValue("fts", foo);
+
+const _ref2 = __ccss.toValue("m", bar);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`@media screen and (min-width: 376px) and (max-width: 639px) { font-size: var(--v-fts); }@media screen and (min-width: 1024px) and (max-width: 1439px) { margin: var(--v-m);
+    div {
+        non: 12;
+    } }`)}",
+  "style": {
+    "--v-fts": _ref,
+    "--v-m": _ref2
+  }
+});`
+        },
+        {
+            title: 'can extract computed deep arrays with non-ccss context dynamic',
+            code: `<Ui mq={[['mobile', { fontSize: foo }], ['small', { margin: bar, child: { div: { non: baz } } }]]} />;`,
+            output: `/*#__PURE__*/
+React.createElement(Ui, {
+  mq: [['mobile', {
+    fontSize: foo
+  }], ['small', {
+    margin: bar,
+    child: {
+      div: {
+        non: baz
+      }
+    }
+  }]]
+});`
+        },
+        {
+            title: 'can extract boolean props',
+            code: `<Ui display={false} />;`,
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`display: none;`)}"
+});`
+        },
+        {
+            title: 'can extract negative values',
+            code: `<Ui width={-1} />;`,
+            output: `/*#__PURE__*/
+React.createElement("div", {
+  "className": " ${MurmurHash2(`width: -1rem;`)}"
 });`
         }
     ]

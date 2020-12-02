@@ -35,47 +35,15 @@ const handler = (input, prop, transformedFn): string => {
     return mediaQuery(generated, transformedFn.outputTransformer.type) as string
 }
 
-const descriptorOptions = {}
-
-/* develblock:start */
-const handleMqElem = (value, state, t, api) => {
-    const extracted = api.extractStaticValues(value.elements[1], state, t, true)
-
-    if (extracted && Object.keys(extracted).length) {
-        return [value.elements[0].value, extracted]
-    }
-}
-
-const babelPluginHandler = (attr, state, t, api) => {
-    let extracted
-    let isStatic
-
-    if (attr.realValue.elements[0] && !t.isArrayExpression(attr.realValue.elements[0])) {
-        extracted = handleMqElem(attr.realValue, state, t, api)
-        isStatic = !attr.realValue.elements[1]?.properties?.length
-    } else {
-        extracted = []
-        attr.realValue.elements = attr.realValue.elements.filter((el) => {
-            const ext = handleMqElem(el, state, t, api)
-            ext && extracted.push(ext)
-            return el.elements[1].properties.length
-        })
-        isStatic = !attr.realValue.elements.length
-    }
-
-    return {
-        pureValue: extracted,
-        ccssValue: { [attr.name.name]: extracted },
-        isStatic,
-        isExtracted: !!extracted
-    }
-}
-// @ts-ignore
-descriptorOptions.babelPluginHandler = babelPluginHandler
-/* develblock:end */
-
-const useProp = (transformedFn) => {
-    transformedFn.setProps(['mq', 'mediaQuery'].map((prop) => [[prop], null, [handler], descriptorOptions]))
+const useProp = transformedFn => {
+    transformedFn.setProps(
+        ['mq', 'at', 'media', 'mediaQuery'].map(prop => [
+            [prop],
+            null,
+            [handler],
+            { babelPluginHandler: 'deepCSSVars', ccssContext: false }
+        ])
+    )
 }
 
 export default useProp

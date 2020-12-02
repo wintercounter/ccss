@@ -9,7 +9,11 @@ export const deepCSSVars = (processor, prop, extractor) => {
                 processor.shortifyProps(path.node)
                 path.node.properties = path.node.properties.map(el => {
                     if (
+                        // ArrayExpressions and ObjectExpressions are handled by visitor
                         !['ArrayExpression', 'ObjectExpression'].includes(el.value.type) &&
+                        // Deep nesting with the same key should be skipped, it'll be handled by the next visitor
+                        el.key.name !== prop.key.name &&
+                        // We only need to extract if value is computed
                         processor.isValueComputed(el.value)
                     ) {
                         // Create CSS var

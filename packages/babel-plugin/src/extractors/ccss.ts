@@ -1,6 +1,8 @@
 import * as t from '@babel/types'
+import traverse from '@babel/traverse'
 import ExtractorAbstract from './abstract'
 import Processor from '@/processor'
+import * as handlers from '@/handlers'
 
 export default class CCSSExtractor extends ExtractorAbstract {
     classNames: string[] = []
@@ -37,9 +39,43 @@ export default class CCSSExtractor extends ExtractorAbstract {
 
         const ccssDescriptor = processor.ccss.registry.get(propName)
 
+        // Check all properties
+        // If we find a non-CSS context property with dynamic value, we skip, we cannot extract that
+        traverse(
+            prop.value,
+            {
+                ObjectProperty(path) {
+                    const propName = path.node.key.name
+                    const ccssDescriptor = processor.ccss.registry.get(propName)
+
+                    if (
+                        ccssDescriptor &&
+                        ccssDescriptor.ccssContext === false &&
+                        !processor.isValueTreeStatic(path.node)
+                    ) {
+                        prop.noExtract = true
+                        path.stop()
+                    }
+                }
+            },
+            processor.path,
+            processor.path.scope
+        )
+
+        // Leave this prop as is
+        if (prop.noExtract) {
+            // Flag it as computed so dom won't be converted
+            processor.setComputed(true)
+            return true
+        }
+
         // Prop has its own extractor
         if (ccssDescriptor.babelPluginHandler) {
-            ccssDescriptor.babelPluginHandler(processor, prop, this)
+            const handler =
+                typeof ccssDescriptor.babelPluginHandler === 'string'
+                    ? handlers[ccssDescriptor.babelPluginHandler]
+                    : ccssDescriptor.babelPluginHandler
+            handler(processor, prop, this)
         }
 
         const { isComputed, ccssString, pureValue, cssVarName } = processor.getPropDescriptor(prop, () => {
@@ -53,7 +89,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 ccssString: processor.ccss.toValue(propName, cssVar)
             }
         })
-        console.log(ccssString)
+        //console.log(ccssString)
         const className = this.getClassName(propName, pureValue, ccssString)
         this.classNames.push(className)
 

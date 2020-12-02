@@ -95,7 +95,6 @@ export default class Processor {
 
     getPropDescriptor(prop, computedValue) {
         const name = prop.key.name
-        const ccssDescriptor = this.ccss.registry.get(prop.key.name)
 
         switch (true) {
             case isPropValueString(prop): {
@@ -129,12 +128,12 @@ export default class Processor {
                 }
             }
             case t.isUnaryExpression(prop.value) && t.isNumericLiteral(prop.value.argument): {
-                const pureValue = prop.realValue.argument.value
+                const pureValue = prop.value.argument.value
                 return {
                     name,
                     pureValue: pureValue * -1,
                     ccssValue: { [name]: pureValue * -1 },
-                    ccssString: this.ccss.toValue(name, pureValue),
+                    ccssString: this.ccss.toValue(name, pureValue * -1),
                     isComputed: false
                 }
             }
@@ -161,9 +160,9 @@ export default class Processor {
             case t.isBooleanLiteral(prop.value): {
                 return {
                     name,
-                    pureValue: realValue.value,
-                    ccssValue: { [name]: realValue.value },
-                    ccssString: this.ccss.toValue(name, pureValue),
+                    pureValue: prop.value.value,
+                    ccssValue: { [name]: prop.value.value },
+                    ccssString: this.ccss.toValue(name, prop.value.value),
                     isComputed: false
                 }
             }
@@ -269,7 +268,7 @@ export default class Processor {
                 }
                 return !!v.elements.length
             } else if (t.isObjectExpression(v)) {
-                const ext = extractStaticValues(v, prop)
+                const ext = this.extractStaticValues(v, prop)
                 if (Object.keys(ext).length) {
                     extracted.push(ext)
                 }

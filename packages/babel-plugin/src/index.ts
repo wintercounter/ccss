@@ -6,7 +6,6 @@ import * as extractors from '@/extractors'
 import { getIdentifierByValueType } from '@/utils'
 
 const defaultOpts = {
-    pragmas: ['React.createElement', '_jsx', '_jsxs'],
     components: {
         Ui: true
     },
@@ -14,10 +13,11 @@ const defaultOpts = {
     shortify: true,
     ccss: `require('@cryptic-css/core').default || require('@cryptic-css/core')`,
     extract: {
-        output: '__css.[contenthash].css',
-        outputFormat: 'ccss',
-        classNameStrategy: 'MurmurHash2'
+        output: '__[filename].[contenthash].css',
+        classNameStrategy: 'MurmurHash2',
+        module: false
     },
+    // TODO: re-implement
     stats: false,
     // TODO: implement
     strict: false
@@ -29,11 +29,29 @@ export default (api, pluginOptions) => {
     options.constantNames = Object.keys(options.constants)
     let extractor
     if (options.extract) {
-        extractor = new extractors[options.extract.outputFormat](options.extract)
+        // We only have this extractor for now
+        extractor = new extractors['ccss'](options.extract)
     }
+    let program
 
     return {
+        pre(state) {
+            if (options?.extract?.classNameStrategy === 'unicode') {
+                // This will stop converting unicode characters to entities
+                state.opts.generatorOpts.jsescOption = {
+                    minimal: true
+                }
+            }
+        },
+        post(state) {
+            if (options.extract) {
+                extractor.writeFile(state.opts.generatorOpts.filename, program)
+            }
+        },
         visitor: {
+            Program(path) {
+                program = path
+            },
             ObjectProperty(path) {
                 if (
                     path.node.value.type === 'Identifier' &&

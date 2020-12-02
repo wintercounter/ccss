@@ -1,12 +1,20 @@
+import path from 'path'
+import crypto from 'crypto'
+import fg from 'fast-glob'
+import fs from 'fs'
+import { compile, serialize, stringify } from 'stylis'
+import template from '@babel/template'
 import * as t from '@babel/types'
 import { unicode, shortest, MurmurHash2, testing } from '@/classNameStrategies'
-import { getIdentifierByValueType } from '@/utils'
+import Processor from '@/processor'
+import { convertCharStr2CSS } from '@/utils'
 
 export default class ExtractorAbstract {
     cache = new Map()
     entries
     options
-    processor
+    // @ts-ignore
+    processor: Processor
     constructor(options) {
         this.options = options
         this.resetEntries()
@@ -39,7 +47,7 @@ export default class ExtractorAbstract {
         }
 
         this.cache.set(css, className)
-        this.entries.add(className)
+        this.entries.add([css, className])
 
         return className
     }
@@ -74,6 +82,48 @@ export default class ExtractorAbstract {
         const styleProp = processor.getProp('style', {})
         for (const [k, v] of props) {
             styleProp.value.properties.push(t.objectProperty(t.stringLiteral(k), v))
+        }
+    }
+    writeFile(filename, program) {
+        if (!filename) return
+
+        const { classNameStrategy, output, module } = this.options
+        const folderPath = filename.split(path.sep)
+        const file = folderPath.pop()
+        let content = ''
+        for (const [rules, className] of this.entries) {
+            content += `.${className}{${
+                // If it's unicode, we'll keep as is,
+                // if not, we will convert all character into a safe CSS form
+                classNameStrategy === 'unicode'
+                    ? rules
+                    : rules.replace(/content:.?"([^\\"]+?|.+)"/g, (full, content) => {
+                          return full.replace(content, convertCharStr2CSS(content))
+                      })
+            }}`
+        }
+        const style = serialize(compile(content), stringify)
+        const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
+        //  __[filename].[contenthash].css
+        const cssFilename = output
+            .replace('[filename]', module ? file : 'styles')
+            .replace('[contenthash]', module ? checksum : 'global')
+
+        const cssPath = module
+            ? `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
+            : path.resolve(process.cwd(), path.dirname(cssFilename), cssFilename)
+
+        // Delete old files
+        fg.sync([...folderPath, `__${filename}*.css`].join('/')).forEach(p => fs.unlinkSync(p))
+
+        fs.writeFileSync(cssPath, style, { mode: 0o755 })
+
+        if (module) {
+            const buildImport = template(`import './${cssFilename}'`)
+            program.unshiftContainer('body', buildImport())
+
+            // We need to remove entries after it's written when using modules
+            this.resetEntries()
         }
     }
 }
