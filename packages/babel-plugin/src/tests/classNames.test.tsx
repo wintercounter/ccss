@@ -255,9 +255,9 @@ React.createElement("div", {
             output: `/*#__PURE__*/
 React.createElement(Ui, {
   mq: [['mobile', {
-    fontSize: foo
+    fts: foo
   }], ['small', {
-    margin: bar,
+    m: bar,
     child: {
       div: {
         non: baz
@@ -281,6 +281,32 @@ React.createElement("div", {
 React.createElement("div", {
   "className": " ${MurmurHash2(`width: -1rem;`)}"
 });`
+        },
+        {
+            title: 'can handle spread',
+            code: `<Ui {...props} />;`,
+            output: `/*#__PURE__*/
+React.createElement(Ui, props);`
+        },
+        {
+            title: 'can handle spread with existing prop',
+            code: `<Ui width={1} {...props} />;`,
+            output: `function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+/*#__PURE__*/
+React.createElement("div", _extends({
+  "className": " ${MurmurHash2(`width: 1rem;`)}"
+}, props));`
+        },
+        {
+            title: 'can handle spread with existing prop and existing className',
+            code: `<Ui width={1} {...props} className="csurma" />;`,
+            output: `function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+/*#__PURE__*/
+React.createElement("div", _extends({}, props, {
+  className: "csurma ${MurmurHash2(`width: 1rem;`)}"
+}));`
         }
     ]
 })

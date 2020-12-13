@@ -62,9 +62,9 @@ export default class ExtractorAbstract {
         }
         return `--v-${name}-${shortest()}`
     }
-    addClassNames(classNames) {
+    addClassNames(classNames, classNameProp?) {
         const { processor } = this
-        const classNameProp = processor.getProp('className', '')
+        classNameProp ??= processor.addProp('className', '')
         if (classNames.length) {
             if (t.isStringLiteral(classNameProp.value)) {
                 classNameProp.value.value += ` ${classNames.join(' ')}`
@@ -77,9 +77,9 @@ export default class ExtractorAbstract {
             }
         }
     }
-    addStyleProps(props) {
+    addStyleProps(props, styleProp) {
         const { processor } = this
-        const styleProp = processor.getProp('style', {})
+        styleProp ??= processor.addProp('style', {})
         for (const [k, v] of props) {
             styleProp.value.properties.push(t.objectProperty(t.stringLiteral(k), v))
         }

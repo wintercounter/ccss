@@ -35,13 +35,13 @@ const handler = (input, prop, transformedFn): string => {
     return mediaQuery(generated, transformedFn.outputTransformer.type) as string
 }
 
-const useProp = transformedFn => {
+const useProp = (transformedFn) => {
     transformedFn.setProps(
-        ['mq', 'at', 'media', 'mediaQuery'].map(prop => [
+        ['mq', 'at', 'media', 'mediaQuery'].map((prop) => [
             [prop],
             null,
             [handler],
-            { babelPluginHandler: 'deepCSSVars', ccssContext: false }
+            { babelPluginHandler: 'deepCSSVars' }
         ])
     )
 }

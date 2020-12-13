@@ -1,5 +1,5 @@
 // @ts-nocheck
-
+import traverse from '@babel/traverse'
 import merge from 'lodash/merge'
 import Processor from '@/processor'
 import * as extractors from '@/extractors'
@@ -93,7 +93,7 @@ export default (api, pluginOptions) => {
 
                 // Start with shortifying
                 if (options.shortify) {
-                    processor.shortifyProps()
+                    processor.shortifyProps(path)
                 }
 
                 // Do extraction

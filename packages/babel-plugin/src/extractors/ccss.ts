@@ -7,6 +7,8 @@ import * as handlers from '@/handlers'
 export default class CCSSExtractor extends ExtractorAbstract {
     classNames: string[] = []
     styleProps: [string, string][] = []
+    classNameProp
+    styleProp
 
     onCallExpression(processor: Processor) {
         super.onCallExpression(processor)
@@ -15,27 +17,33 @@ export default class CCSSExtractor extends ExtractorAbstract {
         this.classNames = []
         this.styleProps = []
 
-        // Only loop of it has props
-        if (processor.properties) {
-            // Filter and remove CCSS Props
-            processor.properties = processor.properties.filter(this.processProp)
-            // Save classNames
-            this.classNames.length && this.addClassNames(this.classNames)
-            // Save style props
-            this.styleProps.length && this.addStyleProps(this.styleProps)
-        }
+        // Filter and remove CCSS Props
+        processor.walkProperties('filter', this.processProp)
+        // Save classNames
+        this.classNames.length && this.addClassNames(this.classNames, this.classNameProp)
+        // Save style props
+        this.styleProps.length && this.addStyleProps(this.styleProps, this.styleProp)
 
-        // Convert from component to DOM element
-        if (!processor.path.isComputed) {
+        // Convert from component to DOM element (only if prop is not a variable either)
+        if (!processor.path.isComputed && !t.isIdentifier(processor.path.node.arguments[1])) {
             this.toDOM(processor)
         }
     }
-    processProp = prop => {
+    processProp = (path, prop) => {
         const propName = prop.key.name
         const { processor } = this
 
+        if (propName === 'style') {
+            this.styleProp = prop
+        } else if (propName === 'className') {
+            this.classNameProp = prop
+        }
+
         // Not a CCSSProp, we need to keep it as-is
-        if (!processor.isCCSSProp(propName)) return true
+        if (!processor.isCCSSProp(propName)) {
+            path.skip()
+            return true
+        }
 
         const ccssDescriptor = processor.ccss.registry.get(propName)
 
@@ -44,17 +52,17 @@ export default class CCSSExtractor extends ExtractorAbstract {
         traverse(
             prop.value,
             {
-                ObjectProperty(path) {
-                    const propName = path.node.key.name
+                ObjectProperty(p) {
+                    const propName = p.node.key.name
                     const ccssDescriptor = processor.ccss.registry.get(propName)
 
                     if (
                         ccssDescriptor &&
                         ccssDescriptor.ccssContext === false &&
-                        !processor.isValueTreeStatic(path.node)
+                        !processor.isValueTreeStatic(p.node)
                     ) {
                         prop.noExtract = true
-                        path.stop()
+                        p.stop()
                     }
                 }
             },
@@ -66,6 +74,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
         if (prop.noExtract) {
             // Flag it as computed so dom won't be converted
             processor.setComputed(true)
+            path.skip()
             return true
         }
 

@@ -6,8 +6,8 @@ export const deepCSSVars = (processor, prop, extractor) => {
         prop.value,
         {
             ObjectExpression(path) {
-                processor.shortifyProps(path.node)
-                path.node.properties = path.node.properties.map(el => {
+                processor.shortifyProps(path)
+                path.node.properties = path.node.properties.map((el) => {
                     if (
                         // ArrayExpressions and ObjectExpressions are handled by visitor
                         !['ArrayExpression', 'ObjectExpression'].includes(el.value.type) &&
