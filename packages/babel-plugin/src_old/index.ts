@@ -173,7 +173,7 @@ export default (api, opts) => {
             const cssPath = `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
 
             // Delete old files
-            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach(p => fs.unlinkSync(p))
+            fg.sync([...folderPath, `__${filename}.*.css`].join('/')).forEach((p) => fs.unlinkSync(p))
 
             fs.writeFileSync(cssPath, style, { mode: 0o755 })
 
@@ -193,7 +193,7 @@ export default (api, opts) => {
             },
             JSXOpeningElement(path, state) {
                 const classNames: string[] = []
-                const classNameNode = path.node.attributes.find(node => node.name && node.name.name === 'className')
+                const classNameNode = path.node.attributes.find((node) => node.name && node.name.name === 'className')
                 const identifier = isCCSSTag(path, state)
                 // Use our own options
                 state.opts = opts
@@ -209,7 +209,7 @@ export default (api, opts) => {
 
                 // Filter will remove unnecessary attributes
                 path.node.attributes = path.node.attributes
-                    .map(attr => {
+                    .map((attr) => {
                         // Not supported attr, keep it as is
                         if (!attr?.name?.name || !ccssPropMap[attr.name.name]) {
                             // We don't know what will be there...

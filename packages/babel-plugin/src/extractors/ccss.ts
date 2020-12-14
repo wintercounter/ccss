@@ -30,7 +30,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
         }
     }
     processProp = (path, prop) => {
-        const propName = prop.key.name
+        const propName = prop.key.name || prop.key.value
         const { processor } = this
 
         if (propName === 'style') {
@@ -53,7 +53,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
             prop.value,
             {
                 ObjectProperty(p) {
-                    const propName = p.node.key.name
+                    const propName = p.node.key.name || p.node.key.value
                     const ccssDescriptor = processor.ccss.registry.get(propName)
 
                     if (
@@ -88,7 +88,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
         }
 
         const { isComputed, ccssString, pureValue, cssVarName } = processor.getPropDescriptor(prop, () => {
-            const cssVarName = this.getCSSVar(prop.key.name)
+            const cssVarName = this.getCSSVar(prop.key.name || prop.key.value)
             const cssVar = `var(${cssVarName})`
             return {
                 cssVar,
@@ -98,7 +98,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 ccssString: processor.ccss.toValue(propName, cssVar)
             }
         })
-        //console.log(ccssString)
+        console.log(ccssString)
         const className = this.getClassName(propName, pureValue, ccssString)
         this.classNames.push(className)
 

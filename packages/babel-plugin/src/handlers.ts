@@ -12,12 +12,12 @@ export const deepCSSVars = (processor, prop, extractor) => {
                         // ArrayExpressions and ObjectExpressions are handled by visitor
                         !['ArrayExpression', 'ObjectExpression'].includes(el.value.type) &&
                         // Deep nesting with the same key should be skipped, it'll be handled by the next visitor
-                        el.key.name !== prop.key.name &&
+                        el.key.name !== (prop.key.name || prop.key.value) &&
                         // We only need to extract if value is computed
                         processor.isValueComputed(el.value)
                     ) {
                         // Create CSS var
-                        const cssVarName = extractor.getCSSVar(el.key.name)
+                        const cssVarName = extractor.getCSSVar(el.key.name || el.key.value)
                         const cssVar = `var(${cssVarName})`
 
                         // Computed, move value into variable and assign it to a CSS variable

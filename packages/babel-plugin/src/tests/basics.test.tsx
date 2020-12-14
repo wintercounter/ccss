@@ -41,6 +41,14 @@ React.createElement(Ui, {
   p: 1,
   d: "f"
 });`
+        },
+        {
+            title: 'handles string literals',
+            code: '<Ui display={`flex`} />;',
+            output: `/*#__PURE__*/
+React.createElement(Ui, {
+  d: \`flex\`
+});`
         }
     ]
 })

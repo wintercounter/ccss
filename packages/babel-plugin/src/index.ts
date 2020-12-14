@@ -1,5 +1,4 @@
 // @ts-nocheck
-import traverse from '@babel/traverse'
 import merge from 'lodash/merge'
 import Processor from '@/processor'
 import * as extractors from '@/extractors'
@@ -87,12 +86,20 @@ export default (api, pluginOptions) => {
             },
             CallExpression(path) {
                 const processor = new Processor({ options, api, path })
+                const cmpName = processor.isCCSSElement()
 
                 // Handle CCSS components
-                if (!processor.isCCSSElement()) return
+                if (!cmpName) return
 
-                // Start with shortifying
+                // Add default props
+                if (options.components?.[cmpName]?.defaultProps) {
+                    for (const [name, value] of Object.entries(options.components?.[cmpName]?.defaultProps)) {
+                        processor.addProp(name, value, 'unshift')
+                    }
+                }
+
                 if (options.shortify) {
+                    // Start with shortifying
                     processor.shortifyProps(path)
                 }
 

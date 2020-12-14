@@ -18,9 +18,11 @@ const createCCSSToValueCallExpression = template(`
 let ccssInstance
 
 export default class Processor {
+    api
     options
     ccss
     path
+    componentNames
     constructor({ options, api, path }) {
         this.api = api
         this.options = options
@@ -35,16 +37,18 @@ export default class Processor {
 
     isCCSSElement = () => {
         const { node } = this.path
-        return (
+        const compare = (name) =>
+            t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
+        if (
             t.isCallExpression(node) &&
             t.isMemberExpression(node.callee) &&
             t.isIdentifier(node.callee.object, { name: 'React' }) &&
             t.isIdentifier(node.callee.property, { name: 'createElement' }) &&
-            this.componentNames.some(
-                (name) => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
-            ) &&
+            this.componentNames.some(compare) &&
             !node.callee.computed
-        )
+        ) {
+            return this.componentNames.find(compare)
+        }
     }
 
     isCCSSProp = (prop) => {
@@ -63,14 +67,20 @@ export default class Processor {
                     // Do nothing if prop key is not an identifier (computed prop name)
                     if (!t.isIdentifier(prop.key)) return
 
-                    const name = prop.key.name
+                    const name = prop.key.name || prop.key.value
                     const definition = this.ccss.registry.get(name)
 
                     // this is a CCSS prop
                     if (definition && definition.ccssContext !== false) {
                         // Let's find the shortest key
-                        prop.key.name = definition.keys.reduce((a, b) => (a.length <= b.length ? a : b))
+                        const shortestPropName = definition.keys.reduce((a, b) => (a.length <= b.length ? a : b))
+                        if (prop.key.name) {
+                            prop.key.name = shortestPropName
+                        } else {
+                            prop.key.value = shortestPropName
+                        }
                         if (prop.value.value !== undefined && definition.map) {
+                            console.log('prop.value.value)', prop.value.value)
                             const entry = Object.entries(definition.map).find(([k, v]) => v === prop.value.value)
                             if (entry) {
                                 prop.value = getIdentifierByValueType(entry[0])
@@ -94,7 +104,7 @@ export default class Processor {
     }
 
     getPropDescriptor(prop, computedValue) {
-        const name = prop.key.name
+        const name = prop.key.name || prop.key.value
 
         switch (true) {
             case isPropValueString(prop): {
@@ -145,8 +155,8 @@ export default class Processor {
 
                     return {
                         pureValue: extracted,
-                        ccssValue: { [prop.key.name]: extracted },
-                        ccssString: this.ccss.toValue(prop.key.name, extracted),
+                        ccssValue: { [name]: extracted },
+                        ccssString: this.ccss.toValue(name, extracted),
                         isComputed: false
                     }
                 }
@@ -194,12 +204,15 @@ export default class Processor {
 
         const nodeIndex = body.indexOf(path.container)
         const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id)
-        const { expression } = createCCSSToValueCallExpression({ name: t.stringLiteral(prop.key.name), value })
+        const { expression } = createCCSSToValueCallExpression({
+            name: t.stringLiteral(prop.key.name || prop.key.value),
+            value
+        })
         body.splice(nodeIndex, 0, t.variableDeclaration('const', [t.variableDeclarator(id, expression)]))
 
         return id
     }
-    addProp(name, value) {
+    addProp(name, value, method = 'push') {
         // It's null, let's create an object
         if (t.isNullLiteral(this.path.node.arguments[1])) {
             this.path.node.arguments[1] = t.objectExpression([])
@@ -223,7 +236,7 @@ export default class Processor {
         }
 
         const newProp = t.objectProperty(t.stringLiteral(name), getIdentifierByValueType(value))
-        properties.push(newProp)
+        properties[method](newProp)
         return newProp
     }
     isValueComputed(v) {
