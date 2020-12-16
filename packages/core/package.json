@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/core",
-    "version": "5.0.0-alpha.1",
+    "version": "5.0.0-alpha.2",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
@@ -18,8 +18,7 @@
         "test": "mhy tsc && mhy jest",
         "jest": "mhy jest",
         "jest:watch": "mhy jest --watchAll",
-        "build": "npm run gen:props && npm run build:pure && npm run prop-doc:prod",
-        "build:pure": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs",
+        "build": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs",
         "build:watch": "mhy bb --watch",
         "config": "mhy config typescript -io",
         "gen:props": "mhy node scripts/generateCCSSProps",

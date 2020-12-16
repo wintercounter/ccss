@@ -9,6 +9,10 @@ import { unicode, shortest, MurmurHash2, testing } from '@/classNameStrategies'
 import Processor from '@/processor'
 import { convertCharStr2CSS } from '@/utils'
 
+const ObjectAssign = template(`
+    Object.assign(%%target%%, %%source%%)
+`)
+
 export default class ExtractorAbstract {
     cache = new Map()
     entries
@@ -80,8 +84,27 @@ export default class ExtractorAbstract {
     addStyleProps(props, styleProp) {
         const { processor } = this
         styleProp ??= processor.addProp('style', {})
+        let properties
+
+        // style={foo} => style={Object.assign({myProp: 1}, foo)}
+        if (t.isIdentifier(styleProp.value)) {
+            const obj = t.objectExpression([])
+            properties = obj.properties
+            styleProp.value = ObjectAssign({ target: obj, source: styleProp.value }).expression
+        }
+        // style={_extend({...}, foo)} => style={_extend({..., myProp: 1}, foo)}
+        else if (t.isCallExpression(styleProp.value)) {
+            const obj = t.objectExpression([])
+            properties = obj.properties
+            styleProp.value.arguments.unshift(obj)
+        }
+        // Already a normal object
+        else {
+            properties = styleProp.value.properties
+        }
+
         for (const [k, v] of props) {
-            styleProp.value.properties.push(t.objectProperty(t.stringLiteral(k), v))
+            properties.push(t.objectProperty(t.stringLiteral(k), v))
         }
     }
     writeFile(filename, program) {

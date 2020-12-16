@@ -16,6 +16,8 @@ export default class CCSSExtractor extends ExtractorAbstract {
         // Clear
         this.classNames = []
         this.styleProps = []
+        this.styleProp = undefined
+        this.classNameProp = undefined
 
         // Filter and remove CCSS Props
         processor.walkProperties('filter', this.processProp)
@@ -98,7 +100,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 ccssString: processor.ccss.toValue(propName, cssVar)
             }
         })
-        console.log(ccssString)
+        //console.log(ccssString)
         const className = this.getClassName(propName, pureValue, ccssString)
         this.classNames.push(className)
 

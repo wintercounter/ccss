@@ -62,8 +62,6 @@ export default class Processor {
                 ObjectProperty: (p) => {
                     const prop = p.node
 
-                    ///console.log(prop.key)
-
                     // Do nothing if prop key is not an identifier (computed prop name)
                     if (!t.isIdentifier(prop.key)) return
 
@@ -80,7 +78,6 @@ export default class Processor {
                             prop.key.value = shortestPropName
                         }
                         if (prop.value.value !== undefined && definition.map) {
-                            console.log('prop.value.value)', prop.value.value)
                             const entry = Object.entries(definition.map).find(([k, v]) => v === prop.value.value)
                             if (entry) {
                                 prop.value = getIdentifierByValueType(entry[0])
@@ -258,6 +255,11 @@ export default class Processor {
             this.path.node,
             {
                 ObjectExpression(path) {
+                    if (path.ccssWalkProperties) {
+                        path.stop()
+                        return
+                    }
+                    path.ccssWalkProperties = true
                     path.node.properties =
                         path.node.properties[method]((...i) => cb(path, ...i), ...rest) || path.node.properties
                 }

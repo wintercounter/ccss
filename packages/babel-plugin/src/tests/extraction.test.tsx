@@ -24,7 +24,14 @@ pluginTester({
         }
     },
     babelOptions: {
-        presets: [require.resolve('@babel/preset-react')],
+        presets: [
+            [
+                require.resolve('@babel/preset-react'),
+                {
+                    //runtime: 'automatic'
+                }
+            ]
+        ],
         plugins: [require.resolve('@babel/plugin-syntax-jsx/lib/index.js')]
     },
     filename: __filename,
@@ -307,6 +314,48 @@ React.createElement("div", _extends({
 React.createElement("div", _extends({}, props, {
   className: "csurma ${MurmurHash2(`width: 1rem;`)}"
 }));`
+        },
+        {
+            title: 'can add styles to existing style object',
+            code: `<Ui width={foo} style={{ top: 1 }} />;`,
+            output: `const _ref = __ccss.toValue("w", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  style: {
+    top: 1,
+    "--v-w": _ref
+  },
+  "className": " ${MurmurHash2(`width: var(--v-w);`)}"
+});`
+        },
+        {
+            title: 'can add styles to existing variable style object',
+            code: `<Ui width={foo} style={purminator} />;`,
+            output: `const _ref = __ccss.toValue("w", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  style: Object.assign({
+    "--v-w": _ref
+  }, purminator),
+  "className": " ${MurmurHash2(`width: var(--v-w);`)}"
+});`
+        },
+        {
+            title: 'can add styles to existing extended style object',
+            code: `<Ui width={foo} style={_extend(purminator, { top: 1 })} />;`,
+            output: `const _ref = __ccss.toValue("w", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  style: _extend({
+    "--v-w": _ref
+  }, purminator, {
+    top: 1
+  }),
+  "className": " ${MurmurHash2(`width: var(--v-w);`)}"
+});`
         }
     ]
 })

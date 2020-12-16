@@ -52,6 +52,26 @@ React.createElement("div", {
 });`
         },
         {
+            title: 'can handle children',
+            code: `<Ui height={foo}><Ui width={bar} /></Ui>`,
+            output: `const _ref = __ccss.toValue("w", bar);
+
+const _ref2 = __ccss.toValue("h", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  "className": " jmgd96",
+  "style": {
+    "--v-h": _ref2
+  }
+}, /*#__PURE__*/React.createElement("div", {
+  "className": " 9sb9sl",
+  "style": {
+    "--v-w": _ref
+  }
+}));`
+        },
+        {
             title: 'can handle scopes',
             code: `<Ui width={foo} style={{ height: 100 }}>
     {elements.map(() => <Ui.a height={bar} width={foo}>Click me</Ui.a>)}
