@@ -27,7 +27,7 @@ pluginTester({
         {
             title: 'can do variable declaration',
             code: '<Ui width={foo} />;',
-            output: `const _ref = __ccss.toValue("w", foo);
+            output: `var _ref = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -40,7 +40,7 @@ React.createElement("div", {
         {
             title: 'can do variable declaration with existing style object',
             code: '<Ui width={foo} style={{ height: 100 }} />;',
-            output: `const _ref = __ccss.toValue("w", foo);
+            output: `var _ref = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -54,9 +54,9 @@ React.createElement("div", {
         {
             title: 'can handle children',
             code: `<Ui height={foo}><Ui width={bar} /></Ui>`,
-            output: `const _ref = __ccss.toValue("w", bar);
+            output: `var _ref = __ccss.toValue("w", bar);
 
-const _ref2 = __ccss.toValue("h", foo);
+var _ref2 = __ccss.toValue("h", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -76,7 +76,7 @@ React.createElement("div", {
             code: `<Ui width={foo} style={{ height: 100 }}>
     {elements.map(() => <Ui.a height={bar} width={foo}>Click me</Ui.a>)}
 </Ui>;`,
-            output: `const _ref3 = __ccss.toValue("w", foo);
+            output: `var _ref3 = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -85,10 +85,10 @@ React.createElement("div", {
     "--v-w": _ref3
   },
   "className": " ${MurmurHash2('width: var(--v-w);')}"
-}, elements.map(() => {
-  const _ref = __ccss.toValue("h", bar);
+}, elements.map(function () {
+  var _ref = __ccss.toValue("h", bar);
 
-  const _ref2 = __ccss.toValue("w", foo);
+  var _ref2 = __ccss.toValue("w", foo);
 
   return /*#__PURE__*/React.createElement("a", {
     "className": " jmgd96 9sb9sl",

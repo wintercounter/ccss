@@ -1,5 +1,6 @@
 // @ts-nocheck
 import merge from 'lodash/merge'
+import get from 'lodash/get'
 import Processor from '@/processor'
 import * as extractors from '@/extractors'
 import { getIdentifierByValueType } from '@/utils'
@@ -51,38 +52,27 @@ export default (api, pluginOptions) => {
             Program(path) {
                 program = path
             },
-            ObjectProperty(path) {
-                if (
-                    path.node.value.type === 'Identifier' &&
-                    options.constantNames.includes(path.node.value.name) &&
-                    // Skip react createClass calls, this is maybe our component, not a constant to resolve
-                    path.parentPath.type !== 'CallExpression'
-                ) {
-                    path.node.value = getIdentifierByValueType(options.constants[path.node.value.name])
-                }
-            },
             MemberExpression(path) {
-                const o = path.get('object')
-                // Resolve constants
-                if (options.constantNames.includes(o.node.name)) {
-                    let value = options.constants[o.node.name]
-                    let parent = o
-                    let prevParent = o
+                const keys = []
+                let parent = path
+                let lastParent
+                const object = path.get('object')
 
-                    while (true) {
-                        parent = parent.parentPath
+                if (!object.node.name || !options.constantNames.includes(object.node.name)) return
 
-                        const tmp = value?.[parent.node?.property?.name]
-                        if (tmp !== undefined) {
-                            value = tmp
-                            prevParent = parent
-                        } else {
-                            break
-                        }
-                    }
-                    // Const we replace to
-                    prevParent.replaceWith(getIdentifierByValueType(value))
+                do {
+                    if (parent.node.computed || parent.key === 'left') return
+                    keys.push(parent.node.property.name)
+                    lastParent = parent
+                } while ((parent = parent.findParent(p => p.isMemberExpression())))
+
+                const key = [object.node.name, ...keys].join('.')
+                const value = get(options.constants, key)
+                if (value === undefined) {
+                    console.warn(`Constant key not found: ${key}`)
+                    return
                 }
+                lastParent.replaceWith(getIdentifierByValueType(value))
             },
             CallExpression(path) {
                 const processor = new Processor({ options, api, path })

@@ -23,3 +23,4 @@ babel-plugin:
 -   complete rewrite
 -   strict mode
 -   extracting dynamic values
+-   Single constant resolve not supported anymore

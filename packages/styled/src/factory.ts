@@ -49,7 +49,7 @@ export const createCreator: CreateCreator = (
     const defaultTag = isNative ? 'View' : 'div'
 
     // Just don't do anything with styled stuff
-    transformedFn.setProps([[['theme', 'children'], null, [noop]]])
+    transformedFn.setProps([[['theme', 'children'], null, [noop], { ccssContext: false }]])
 
     const Ui = styled[defaultTag](transformedFn)
     Ui.defaultProps = defaultProps

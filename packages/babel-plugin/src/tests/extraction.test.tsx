@@ -113,7 +113,7 @@ React.createElement("div", {
         {
             title: 'can extract computed literal',
             code: '<Ui display={`blo${ck}`} />;',
-            output: `const _ref = __ccss.toValue("d", \`blo\${ck}\`);
+            output: `var _ref = __ccss.toValue("d", \`blo\${ck}\`);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -145,7 +145,7 @@ React.createElement("div", {
         {
             title: 'can extract computed arrays',
             code: '<Ui margin={[1,foo,3,4]} />;',
-            output: `const _ref = __ccss.toValue("m", [1, foo, 3, 4]);
+            output: `var _ref = __ccss.toValue("m", [1, foo, 3, 4]);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -158,7 +158,7 @@ React.createElement("div", {
         {
             title: 'can extract computed objects',
             code: '<Ui child={{ div: { fontSize: foo } }} />;',
-            output: `const _ref = __ccss.toValue("fts", foo);
+            output: `var _ref = __ccss.toValue("fts", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -174,9 +174,9 @@ React.createElement("div", {
         {
             title: 'can extract computed objects 2',
             code: "<Ui child={{ div: { fontSize: foo }, '> a': { margin: bar } }} />;",
-            output: `const _ref = __ccss.toValue("fts", foo);
+            output: `var _ref = __ccss.toValue("fts", foo);
 
-const _ref2 = __ccss.toValue("m", bar);
+var _ref2 = __ccss.toValue("m", bar);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -196,9 +196,9 @@ React.createElement("div", {
         {
             title: 'can extract computed deep objects',
             code: '<Ui child={{ div: { fontSize: foo, child: { a: { width: bar } } } }} />;',
-            output: `const _ref = __ccss.toValue("fts", foo);
+            output: `var _ref = __ccss.toValue("fts", foo);
 
-const _ref2 = __ccss.toValue("w", bar);
+var _ref2 = __ccss.toValue("w", bar);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -218,11 +218,11 @@ React.createElement("div", {
         {
             title: 'can extract computed deep arrays',
             code: `<Ui mq={[['mobile', { fontSize: foo }], ['small', { margin: bar, child: { div: { width: baz } } }]]} />;`,
-            output: `const _ref = __ccss.toValue("fts", foo);
+            output: `var _ref = __ccss.toValue("fts", foo);
 
-const _ref2 = __ccss.toValue("m", bar);
+var _ref2 = __ccss.toValue("m", bar);
 
-const _ref3 = __ccss.toValue("w", baz);
+var _ref3 = __ccss.toValue("w", baz);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -240,9 +240,9 @@ React.createElement("div", {
         {
             title: 'can extract computed deep arrays with non-ccss context static',
             code: `<Ui mq={[['mobile', { fontSize: foo }], ['small', { margin: bar, child: { div: { non: 12 } } }]]} />;`,
-            output: `const _ref = __ccss.toValue("fts", foo);
+            output: `var _ref = __ccss.toValue("fts", foo);
 
-const _ref2 = __ccss.toValue("m", bar);
+var _ref2 = __ccss.toValue("m", bar);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -318,7 +318,7 @@ React.createElement("div", _extends({}, props, {
         {
             title: 'can add styles to existing style object',
             code: `<Ui width={foo} style={{ top: 1 }} />;`,
-            output: `const _ref = __ccss.toValue("w", foo);
+            output: `var _ref = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -332,7 +332,7 @@ React.createElement("div", {
         {
             title: 'can add styles to existing variable style object',
             code: `<Ui width={foo} style={purminator} />;`,
-            output: `const _ref = __ccss.toValue("w", foo);
+            output: `var _ref = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
@@ -345,7 +345,7 @@ React.createElement("div", {
         {
             title: 'can add styles to existing extended style object',
             code: `<Ui width={foo} style={_extend(purminator, { top: 1 })} />;`,
-            output: `const _ref = __ccss.toValue("w", foo);
+            output: `var _ref = __ccss.toValue("w", foo);
 
 /*#__PURE__*/
 React.createElement("div", {

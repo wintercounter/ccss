@@ -1,5 +1,4 @@
 import * as t from '@babel/types'
-import traverse from '@babel/traverse'
 import ExtractorAbstract from './abstract'
 import Processor from '@/processor'
 import * as handlers from '@/handlers'
@@ -51,26 +50,17 @@ export default class CCSSExtractor extends ExtractorAbstract {
 
         // Check all properties
         // If we find a non-CSS context property with dynamic value, we skip, we cannot extract that
-        traverse(
-            prop.value,
-            {
-                ObjectProperty(p) {
-                    const propName = p.node.key.name || p.node.key.value
-                    const ccssDescriptor = processor.ccss.registry.get(propName)
+        path.traverse({
+            ObjectProperty(p) {
+                const propName = p.node.key.name || p.node.key.value
+                const ccssDescriptor = processor.ccss.registry.get(propName)
 
-                    if (
-                        ccssDescriptor &&
-                        ccssDescriptor.ccssContext === false &&
-                        !processor.isValueTreeStatic(p.node)
-                    ) {
-                        prop.noExtract = true
-                        p.stop()
-                    }
+                if (ccssDescriptor && ccssDescriptor.ccssContext === false && !processor.isValueTreeStatic(p.node)) {
+                    prop.noExtract = true
+                    p.skip()
                 }
-            },
-            processor.path,
-            processor.path.scope
-        )
+            }
+        })
 
         // Leave this prop as is
         if (prop.noExtract) {
@@ -86,7 +76,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 typeof ccssDescriptor.babelPluginHandler === 'string'
                     ? handlers[ccssDescriptor.babelPluginHandler]
                     : ccssDescriptor.babelPluginHandler
-            handler(processor, prop, this)
+            handler(processor, prop, path, this)
         }
 
         const { isComputed, ccssString, pureValue, cssVarName } = processor.getPropDescriptor(prop, () => {
