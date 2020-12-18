@@ -356,6 +356,47 @@ React.createElement("div", {
   }),
   "className": " ${MurmurHash2(`width: var(--v-w);`)}"
 });`
+        },
+        {
+            title: 'can handle scopes v2',
+            code: `const x = () => {
+    return React.createElement(
+        Ui,
+        null,
+        React.createElement(
+            Ui,
+            null,
+            posts.map((_ref, i) => React.createElement(Ui, { gridArea: areaMap[i] }))
+        )
+    )
+}`,
+            output: ` const x = () => {
+  return React.createElement("div", null, React.createElement("div", null, posts.map(function (_ref, i) {
+    var _ref2 = __ccss.toValue("ga", areaMap[i]);
+
+    return React.createElement("div", {
+      "className": " 1f9ii0v",
+      "style": {
+        "--v-ga": _ref2
+      }
+    });
+  })));
+};`
+        },
+        {
+            title: 'can handle existing expression based style prop',
+            code: `<Ui width={foo} style={loading ? { color: 'transparent' } : undefined} />`,
+            output: `var _ref = __ccss.toValue("w", foo);
+
+/*#__PURE__*/
+React.createElement("div", {
+  style: Object.assign({
+    "--v-w": _ref
+  }, loading ? {
+    color: 'transparent'
+  } : undefined),
+  "className": " 9sb9sl"
+});`
         }
     ]
 })

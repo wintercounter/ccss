@@ -51,28 +51,43 @@ export default (api, pluginOptions) => {
         visitor: {
             Program(path) {
                 program = path
-            },
-            MemberExpression(path) {
-                const keys = []
-                let parent = path
-                let lastParent
-                const object = path.get('object')
 
-                if (!object.node.name || !options.constantNames.includes(object.node.name)) return
+                // Force constant replacement before anything else runs
+                path.traverse({
+                    Identifier(path) {
+                        if (
+                            !options.constants.hasOwnProperty(path.node.name) ||
+                            path.parentPath.isCallExpression() ||
+                            path.parentPath.isObjectProperty() ||
+                            path.parentPath.isArrayPattern() ||
+                            t.isAssignmentExpression(path.parent)
+                        )
+                            return
 
-                do {
-                    if (parent.node.computed || parent.key === 'left') return
-                    keys.push(parent.node.property.name)
-                    lastParent = parent
-                } while ((parent = parent.findParent(p => p.isMemberExpression())))
+                        const keys = [path.node.name]
+                        let parent = path.parentPath
+                        let lastParent = parent
 
-                const key = [object.node.name, ...keys].join('.')
-                const value = get(options.constants, key)
-                if (value === undefined) {
-                    console.warn(`Constant key not found: ${key}`)
-                    return
-                }
-                lastParent.replaceWith(getIdentifierByValueType(value))
+                        do {
+                            if (parent.node.computed || parent.key === 'left') return
+                            if (!t.isMemberExpression(parent.node)) break
+
+                            keys.push(parent.node.property.name)
+                            lastParent = parent
+                        } while ((parent = parent.parentPath))
+
+                        // It was a destructive assigment, skip
+                        if (parent.node.key === parent.node.value) return
+
+                        const key = keys.join('.')
+                        const value = get(options.constants, key)
+                        if (value === undefined) {
+                            console.warn(`Constant key not found: ${key}`)
+                            return
+                        }
+                        lastParent.replaceWith(getIdentifierByValueType(value))
+                    }
+                })
             },
             CallExpression(path) {
                 const processor = new Processor({ options, api, path })

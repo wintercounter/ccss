@@ -34,6 +34,18 @@ pluginTester({
     }
   }));
 };`
+        },
+        {
+            title: 'cuk',
+            code: `React.createElement(Ui, {
+  height: foo,
+  style: {
+    wow: 1
+  },
+  "className": " c17m4bmy c1s0kfvh c1enkoy"
+});
+`,
+            output: 'poc'
         }
     ]
 })

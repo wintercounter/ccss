@@ -87,7 +87,7 @@ export default class CCSSExtractor extends ExtractorAbstract {
                 cssVarName,
                 pureValue: cssVar,
                 ccssValue: { [propName]: cssVar },
-                ccssString: processor.ccss.toValue(propName, cssVar)
+                ccssString: processor.ccss({ [propName]: cssVar })
             }
         })
         //console.log(ccssString)

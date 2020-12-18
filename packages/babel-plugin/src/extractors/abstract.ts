@@ -87,7 +87,7 @@ export default class ExtractorAbstract {
         let properties
 
         // style={foo} => style={Object.assign({myProp: 1}, foo)}
-        if (t.isIdentifier(styleProp.value)) {
+        if (t.isIdentifier(styleProp.value) || t.isConditionalExpression(styleProp.value)) {
             const obj = t.objectExpression([])
             properties = obj.properties
             styleProp.value = ObjectAssign({ target: obj, source: styleProp.value }).expression
@@ -101,6 +101,10 @@ export default class ExtractorAbstract {
         // Already a normal object
         else {
             properties = styleProp.value.properties
+        }
+
+        if (!properties) {
+            console.log(props, styleProp.value)
         }
 
         for (const [k, v] of props) {
@@ -126,6 +130,7 @@ export default class ExtractorAbstract {
             }}`
         }
         const style = serialize(compile(content), stringify)
+
         const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
         //  __[filename].[contenthash].css
         const cssFilename = output
@@ -134,7 +139,7 @@ export default class ExtractorAbstract {
 
         const cssPath = module
             ? `${folderPath.join(path.sep)}${path.sep}${cssFilename}`
-            : path.resolve(process.cwd(), path.dirname(cssFilename), cssFilename)
+            : path.resolve(process.cwd(), path.dirname(cssFilename), path.basename(cssFilename))
 
         // Delete old files
         fg.sync([...folderPath, `__${filename}*.css`].join('/')).forEach(p => fs.unlinkSync(p))

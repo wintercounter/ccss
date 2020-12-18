@@ -24,6 +24,8 @@ export const parseArray: CCSSParser = (input, prop, transformedFn) => {
 
 export const toCSSRule: CCSSParser = (input, prop, transformedFn, inputObject, definition) => {
     const cssProp = definition ? definition.keys[definition.keys.length - 1] : prop
+    // We only need value
+    if (!inputObject) return input
     return transformedFn.outputTransformer.toCSSRule(cssProp, input, prop, transformedFn)
 }
 

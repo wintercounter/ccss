@@ -104,7 +104,7 @@ export default class Processor {
                     name,
                     pureValue,
                     ccssValue: { [name]: pureValue },
-                    ccssString: this.ccss.toValue(name, pureValue),
+                    ccssString: this.ccss({ [name]: pureValue }),
                     isComputed: false
                 }
             }
@@ -114,7 +114,7 @@ export default class Processor {
                     name,
                     pureValue,
                     ccssValue: { [name]: pureValue },
-                    ccssString: this.ccss.toValue(name, pureValue),
+                    ccssString: this.ccss({ [name]: pureValue }),
                     isComputed: false
                 }
             }
@@ -124,7 +124,7 @@ export default class Processor {
                     name,
                     pureValue,
                     ccssValue: { [name]: pureValue },
-                    ccssString: this.ccss.toValue(name, pureValue),
+                    ccssString: this.ccss({ [name]: pureValue }),
                     isComputed: false
                 }
             }
@@ -134,7 +134,7 @@ export default class Processor {
                     name,
                     pureValue: pureValue * -1,
                     ccssValue: { [name]: pureValue * -1 },
-                    ccssString: this.ccss.toValue(name, pureValue * -1),
+                    ccssString: this.ccss({ [name]: pureValue * -1 }),
                     isComputed: false
                 }
             }
@@ -147,7 +147,7 @@ export default class Processor {
                     return {
                         pureValue: extracted,
                         ccssValue: { [name]: extracted },
-                        ccssString: this.ccss.toValue(name, extracted),
+                        ccssString: this.ccss({ [name]: extracted }),
                         isComputed: false
                     }
                 }
@@ -163,7 +163,7 @@ export default class Processor {
                     name,
                     pureValue: prop.value.value,
                     ccssValue: { [name]: prop.value.value },
-                    ccssString: this.ccss.toValue(name, prop.value.value),
+                    ccssString: this.ccss({ [name]: prop.value.value }),
                     isComputed: false
                 }
             }
@@ -252,8 +252,10 @@ export default class Processor {
         return !foundDynamic
     }
     walkProperties = (method, cb, ...rest) => {
+        const scope = this.path.scope
         this.path.traverse({
             ObjectExpression(path) {
+                if (path.scope !== scope) return
                 if (path.ccssWalkProperties) {
                     path.stop()
                     return

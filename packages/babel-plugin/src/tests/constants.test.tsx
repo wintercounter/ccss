@@ -14,6 +14,9 @@ pluginTester({
         extract: false,
         constants: {
             Ui: {
+                Dim: {
+                    HeaderHeight: 50
+                },
                 FontSize: {
                     Small: 10,
                     Extras: {
@@ -57,7 +60,7 @@ React.createElement(Ui, {
 });`
         },
         {
-            title: 'can resolve constants :: array',
+            title: 'can resolve constants :: object',
             code: '<Ui width={Ui.Theme.Foo.Bar.Baz.Object} />;',
             output: `/*#__PURE__*/
 React.createElement(Ui, {
@@ -68,10 +71,11 @@ React.createElement(Ui, {
         },
         {
             title: 'can skip Ui non-ccss Ui calls',
-            code: 'const { Ui } = foo',
-            output: `const {
+            code: 'var { Ui } = foo; var [ Ui ] = foo',
+            output: `var {
   Ui
-} = foo;`
+} = foo;
+var [Ui] = foo;`
         },
         {
             title: 'can skip handling assignments',
@@ -84,6 +88,142 @@ React.createElement(Ui, {
             output: `const x = Ui.Theme[theme].Signs;`
         },
         {
+            title: 'can resolve transpiled code',
+            code: `const SiteHeader = () => {
+    const [
+        { headerState: state = EHeaderState.GHOST, isSiteMenuOpen, isCelebrityPage, HeaderMainContent },
+        setLayoutState
+    ] = useContext(LayoutContext)
+    const [ref, inView, entry] = useInView({
+        triggerOnce: false,
+        threshold: 0
+    })
+    const {
+        background,
+        jasminLogoColor,
+        hamburgerFill,
+        lineBackground,
+        contentState,
+        mainOrder,
+        lineOrder
+    } = getSiteHeaderColors(state, filledColorProps, ghostColorProps, inView, entry, isCelebrityPage)
+
+    const [uiBurgerState, setUiBurgerState] = useState(UiBurger.STATE.DEFAULT)
+
+    useEffect(() => {
+        !isSiteMenuOpen && setUiBurgerState(UiBurger.STATE.DEFAULT)
+    }, [isSiteMenuOpen])
+
+    const { placeBanner } = useWarningNotification()
+
+    console.log(SiteHeader.toString())
+
+    return (
+        <Ui.header height="var(--dim-HeaderHeight)" position="relative" width="100%">
+            <div
+                ref={ref}
+                style={{
+                    position: 'absolute',
+                    height: Ui.Dim.HeaderHeight,
+                    width: '100%'
+                }}
+            />
+            <Ui flexDirection="column" position="fixed" width="100%" zIndex="50">
+                {placeBanner()}
+                <Ui
+                    data-banner
+                    alignItems="center"
+                    background={background}
+                    flexDirection="column"
+                    height={Ui.Dim.HeaderHeight}
+                    transition="background var(--transition-duration) var(--transition-timing)"
+                    style={{ paraszt: 4 }}
+                >
+                    <Ui.nav
+                        width="100%"
+                        display="grid"
+                        gridTemplateColumns={Ui.Theme.SiteHeader.GridDesktopTemplate}
+                        height="100%"
+                        gridGap={Ui.Theme.SiteHeader.GridGap}
+                        mq={[
+                            't-',
+                            {
+                                gridTemplateColumns: HeaderMainContent
+                                    ? Ui.Theme.SiteHeader.GridMainContentHeaderTemplate
+                                    : Ui.Theme.SiteHeader.GridMobileTemplate
+                            }
+                        ]}
+                        style={{
+                            order: mainOrder
+                        }}
+                    >
+                        <Ui height="100%">
+                            <UiBurger
+                                data-testid="site-header-hamburger"
+                                fill={hamburgerFill}
+                                onClick={() =>
+                                    setLayoutState(prevState => ({ ...prevState, isSiteMenuOpen: !isSiteMenuOpen }))
+                                }
+                                state={uiBurgerState}
+                                pad={[0, 1.5]}
+                                mq={[
+                                    't-',
+                                    {
+                                        pad: [0, 1]
+                                    }
+                                ]}
+                                height="100%"
+                                cursor="pointer"
+                            />
+                            {isSiteMenuOpen && (
+                                <SiteSideMenu onAnimationComplete={() => setUiBurgerState(UiBurger.STATE.ACTIVE)} />
+                            )}
+                        </Ui>
+                        <Ui
+                            justifyContent={Ui.Theme.SiteHeader.LogoDirection}
+                            alignItems="center"
+                            height="100%"
+                            data-testid="site-header-logo"
+                        >
+                            {HeaderMainContent && <HeaderMainContent />}
+                            {!HeaderMainContent && (
+                                <Link to={ROOT} data-testid="site-header-logo">
+                                    <Ui
+                                        icon={Ui.Icon.JasminCom}
+                                        color={jasminLogoColor}
+                                        fontSize={Ui.Font.Size.XL}
+                                        transition="color var(--transition-duration) var(--transition-timing)"
+                                    />
+                                </Link>
+                            )}
+                        </Ui>
+                        <Ui display="grid" gridTemplateColumns="2fr auto auto" gridGap={1}>
+                            <Ui />
+                            <HeaderButtons state={contentState} />
+                            <Authorization state={contentState} />
+                        </Ui>
+                    </Ui.nav>
+                    {Ui.Theme.SiteHeader.allowHeaderBorder && (
+                        <Ui
+                            background={lineBackground}
+                            order={lineOrder}
+                            width="100%"
+                            height="var(--dim-HeaderBorderHeight)"
+                            transition="background var(--transition-duration) var(--transition-timing)"
+                            data-testid="site-header-line"
+                        />
+                    )}
+                </Ui>
+            </Ui>
+        </Ui.header>
+    )
+}`,
+            output: `/*#__PURE__*/
+React.createElement(Ui, {
+  fts: 10
+});`
+        }
+        /*{
             title: 'can skip mehehe',
             code: `import { merge } from 'lodash-es'
 
@@ -185,6 +325,6 @@ export const applyTheme = Ui => {
 }
 `,
             output: `const x = Ui.Theme[theme].Signs;`
-        }
+        }*/
     ]
 })
