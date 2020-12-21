@@ -316,10 +316,10 @@ const defaultProps = (): Props => [
 
     // Padding
     [['p', 'pad', 'padding'], nil, fromArrayToCSSRuleHandler],
-    [['pT', 'padding-top'], nil, fromArrayToCSSRuleHandler],
-    [['pR', 'padding-right'], nil, fromArrayToCSSRuleHandler],
-    [['pB', 'padding-bottom'], nil, fromArrayToCSSRuleHandler],
-    [['pL', 'padding-left'], nil, fromArrayToCSSRuleHandler],
+    [['pT', 'pad-top', 'padding-top'], nil, fromArrayToCSSRuleHandler],
+    [['pR', 'pad-right', 'padding-right'], nil, fromArrayToCSSRuleHandler],
+    [['pB', 'pad-bottom', 'padding-bottom'], nil, fromArrayToCSSRuleHandler],
+    [['pL', 'pad-left', 'padding-left'], nil, fromArrayToCSSRuleHandler],
 
     // Background
     [
@@ -708,7 +708,7 @@ const defaultProps = (): Props => [
     ],
     [['cac', 'caret-color'], nil, toCSSRuleHandler],
     [['rs', 'resize'], nil, toCSSRuleHandler],
-    [['raw'], nil, [(i) => i]],
+    [['raw'], nil, [i => i]],
     [['child'], nil, [child]],
 
     // Webkit

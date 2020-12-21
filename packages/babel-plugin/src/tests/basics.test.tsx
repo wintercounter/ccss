@@ -49,6 +49,22 @@ React.createElement(Ui, {
 React.createElement(Ui, {
   d: \`flex\`
 });`
+        },
+        {
+            title: 'can skip shortifying non-ccss contexts',
+            code: `<Ui>
+    {posts.map(({
+        content: { foo }
+        }) => null
+    )}
+</Ui>`,
+            output: `/*#__PURE__*/
+React.createElement(Ui, null, posts.map(({
+  content: {
+    foo
+  }
+}) => null));
+`
         }
     ]
 })

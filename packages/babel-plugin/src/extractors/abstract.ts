@@ -3,6 +3,7 @@ import crypto from 'crypto'
 import fg from 'fast-glob'
 import fs from 'fs'
 import { compile, serialize, stringify } from 'stylis'
+import mqpacker from 'mqpacker'
 import template from '@babel/template'
 import * as t from '@babel/types'
 import { unicode, shortest, MurmurHash2, testing } from '@/classNameStrategies'
@@ -129,7 +130,10 @@ export default class ExtractorAbstract {
                       })
             }}`
         }
-        const style = serialize(compile(content), stringify)
+        const serialized = serialize(compile(content), stringify)
+        const style = mqpacker.pack(serialized, {
+            sort: true
+        }).css
 
         const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
         //  __[filename].[contenthash].css

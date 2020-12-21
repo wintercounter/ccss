@@ -5,12 +5,19 @@
 // @ts-nocheck
 
 import pluginTester from 'babel-plugin-tester/pure'
+import { MurmurHash2 } from '@/classNameStrategies'
 import plugin from '@'
 
 pluginTester({
     pluginName: 'babel-plugin-ccss',
     plugin,
-    pluginOptions: {},
+    pluginOptions: {
+        constants: {
+            Ui: {
+                Hurkanoid: 1
+            }
+        }
+    },
     babelOptions: {
         presets: [require.resolve('@babel/preset-react')],
         plugins: [require.resolve('@babel/plugin-syntax-jsx/lib/index.js')]
@@ -28,24 +35,12 @@ pluginTester({
   var _ref = __ccss.toValue("p", bar);
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
-    "className": " g2tnwn",
+    "className": " ${MurmurHash2('padding: var(--v-p-c);')}",
     "style": {
       "--v-p-c": _ref
     }
   }));
 };`
-        },
-        {
-            title: 'cuk',
-            code: `React.createElement(Ui, {
-  height: foo,
-  style: {
-    wow: 1
-  },
-  "className": " c17m4bmy c1s0kfvh c1enkoy"
-});
-`,
-            output: 'poc'
         }
     ]
 })

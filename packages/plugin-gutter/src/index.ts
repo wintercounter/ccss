@@ -20,7 +20,7 @@ const gutter = (input, prop, transformedFn) => {
 
 const usePlugin = transformedFn => {
     transformedFn.setProps(
-        ['p', 'pT', 'pR', 'pB', 'pL', 'm', 'mT', 'mR', 'mB', 'mL'].map(prop => [[prop], null, [gutter, '...']])
+        ['p', 'pT', 'pR', 'pB', 'pL', 'm', 'mT', 'mR', 'mB', 'mL', 'gg'].map(prop => [[prop], null, [gutter, '...']])
     )
 }
 

@@ -60,12 +60,12 @@ var _ref2 = __ccss.toValue("h", foo);
 
 /*#__PURE__*/
 React.createElement("div", {
-  "className": " jmgd96",
+  "className": " ${MurmurHash2('height: var(--v-h);')}",
   "style": {
     "--v-h": _ref2
   }
 }, /*#__PURE__*/React.createElement("div", {
-  "className": " 9sb9sl",
+  "className": " ${MurmurHash2('width: var(--v-w);')}",
   "style": {
     "--v-w": _ref
   }
@@ -91,7 +91,7 @@ React.createElement("div", {
   var _ref2 = __ccss.toValue("w", foo);
 
   return /*#__PURE__*/React.createElement("a", {
-    "className": " jmgd96 9sb9sl",
+    "className": " ${MurmurHash2('height: var(--v-h);')} ${MurmurHash2('width: var(--v-w);')}",
     "style": {
       "--v-h": _ref,
       "--v-w": _ref2

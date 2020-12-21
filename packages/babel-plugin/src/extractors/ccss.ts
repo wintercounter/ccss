@@ -25,8 +25,15 @@ export default class CCSSExtractor extends ExtractorAbstract {
         // Save style props
         this.styleProps.length && this.addStyleProps(this.styleProps, this.styleProp)
 
-        // Convert from component to DOM element (only if prop is not a variable either)
-        if (!processor.path.isComputed && !t.isIdentifier(processor.path.node.arguments[1])) {
+        // Convert from component to DOM element if
+        // - path not flagged computed
+        // - prop is not a variable
+        // prop is not a call expression (eg. _extends)
+        if (
+            !processor.path.isComputed &&
+            !t.isIdentifier(processor.path.node.arguments[1]) &&
+            !t.isCallExpression(processor.path.node.arguments[1])
+        ) {
             this.toDOM(processor)
         }
     }
@@ -52,10 +59,16 @@ export default class CCSSExtractor extends ExtractorAbstract {
         // If we find a non-CSS context property with dynamic value, we skip, we cannot extract that
         path.traverse({
             ObjectProperty(p) {
-                const propName = p.node.key.name || p.node.key.value
-                const ccssDescriptor = processor.ccss.registry.get(propName)
+                if (!p.find(p => p.node?.key?.name === propName)) return
 
-                if (ccssDescriptor && ccssDescriptor.ccssContext === false && !processor.isValueTreeStatic(p.node)) {
+                const pName = p.node.key.name || p.node.key.value
+                const subDescriptor = processor.ccss.registry.get(pName)
+
+                if (
+                    ((ccssDescriptor && ccssDescriptor.ccssContext === false) ||
+                        (subDescriptor && subDescriptor.ccssContext === false)) &&
+                    !processor.isValueTreeStatic(p.node)
+                ) {
                     prop.noExtract = true
                     p.skip()
                 }

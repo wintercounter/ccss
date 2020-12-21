@@ -3,7 +3,10 @@ import * as t from '@babel/types'
 export const deepCSSVars = (processor, prop, p, extractor) => {
     p.traverse({
         ObjectExpression(path) {
+            // Only if this expression is child of the prop
+            if (!path.findParent(p => p.node === prop)) return
             processor.shortifyProps(path)
+
             path.node.properties = path.node.properties.map(el => {
                 if (
                     // ArrayExpressions and ObjectExpressions are handled by visitor

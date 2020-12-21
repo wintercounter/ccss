@@ -72,12 +72,32 @@ export default (api, pluginOptions) => {
                             if (parent.node.computed || parent.key === 'left') return
                             if (!t.isMemberExpression(parent.node)) break
 
-                            keys.push(parent.node.property.name)
+                            const key = parent.node.property.name
+                            // No capital/number
+                            if (!/[A-Z0-9$]/.test(key[0])) return
+                            keys.push(key)
                             lastParent = parent
                         } while ((parent = parent.parentPath))
 
-                        // It was a destructive assigment, skip
-                        if (parent.node.key === parent.node.value) return
+                        // No process:
+                        // - only single member
+                        // - destructive assigment
+                        // - import/export specifier
+                        // - function argument
+                        // - Same checks as the beginning
+                        if (
+                            keys.length < 2 ||
+                            (parent.node.key && parent.node.key === parent.node.value) ||
+                            parent.node?.extra?.shorthand ||
+                            parent.isImportSpecifier() ||
+                            parent.isExportSpecifier() ||
+                            // It's a fn :)
+                            parent.node.hasOwnProperty('async') ||
+                            parent.isCallExpression() ||
+                            parent.isArrayPattern() ||
+                            t.isAssignmentExpression(parent.parent)
+                        )
+                            return
 
                         const key = keys.join('.')
                         const value = get(options.constants, key)
@@ -105,7 +125,8 @@ export default (api, pluginOptions) => {
 
                 if (options.shortify) {
                     // Start with shortifying
-                    processor.shortifyProps(path)
+                    const argPath = path.get('arguments')[1]
+                    argPath && processor.shortifyProps(argPath)
                 }
 
                 // Do extraction

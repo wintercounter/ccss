@@ -290,6 +290,23 @@ React.createElement("div", {
 });`
         },
         {
+            title: 'can handle transpiled children',
+            code: `const Burger = (_ref) => {
+  return React.createElement(Ui.button, _extends({
+    background: "transparent"
+  }, props), React.createElement(Ui.figure, {
+    width: 24
+  }));
+};`,
+            output: `const Burger = _ref => {
+  return React.createElement(Ui.button, _extends({
+    "className": " ${MurmurHash2('background: transparent;')}"
+  }, props), React.createElement("figure", {
+    "className": " ${MurmurHash2('width: 24rem;')}"
+  }));
+};`
+        },
+        {
             title: 'can handle spread',
             code: `<Ui {...props} />;`,
             output: `/*#__PURE__*/
@@ -301,7 +318,7 @@ React.createElement(Ui, props);`
             output: `function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /*#__PURE__*/
-React.createElement("div", _extends({
+React.createElement(Ui, _extends({
   "className": " ${MurmurHash2(`width: 1rem;`)}"
 }, props));`
         },
@@ -311,7 +328,7 @@ React.createElement("div", _extends({
             output: `function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 /*#__PURE__*/
-React.createElement("div", _extends({}, props, {
+React.createElement(Ui, _extends({}, props, {
   className: "csurma ${MurmurHash2(`width: 1rem;`)}"
 }));`
         },
@@ -375,7 +392,7 @@ React.createElement("div", {
     var _ref2 = __ccss.toValue("ga", areaMap[i]);
 
     return React.createElement("div", {
-      "className": " 1f9ii0v",
+      "className": " ${MurmurHash2('grid-area: var(--v-ga);')}",
       "style": {
         "--v-ga": _ref2
       }
@@ -395,8 +412,57 @@ React.createElement("div", {
   }, loading ? {
     color: 'transparent'
   } : undefined),
-  "className": " 9sb9sl"
+  "className": " ${MurmurHash2('width: var(--v-w);')}"
 });`
+        },
+        {
+            title: 'can handle deepCSSVars only on its own child',
+            code: `React.createElement(Ui, {
+    child: {
+        'div': {
+            position: 'absolute'
+        }
+    },
+    style: {
+        backgroundImage: foo
+    }
+})`,
+            output: `React.createElement("div", {
+  style: {
+    backgroundImage: foo
+  },
+  "className": " ${MurmurHash2(`
+    div {
+        position: absolute;
+    }`)}"
+});`
+        },
+        {
+            title: 'can handle multiple return expressions',
+            code: `const x = () => {
+    return <Ui width={foo} />
+    
+    return <Ui width={bar} />
+}`,
+            output: ` const x = () => {
+  var _ref = __ccss.toValue("w", foo);
+
+  return /*#__PURE__*/React.createElement("div", {
+    "className": " ${MurmurHash2('width: var(--v-w);')}",
+    "style": {
+      "--v-w": _ref
+    }
+  });
+
+  var _ref2 = __ccss.toValue("w", bar);
+
+  return /*#__PURE__*/React.createElement("div", {
+    "className": " ${MurmurHash2('width: var(--v-w);')}",
+    "style": {
+      "--v-w": _ref2
+    }
+  });
+};`
         }
     ]
 })

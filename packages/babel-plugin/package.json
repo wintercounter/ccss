@@ -68,7 +68,7 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^5.0.0-alpha.2"
+        "@cryptic-css/core": "^5.0.0-alpha.1"
     },
     "devDependencies": {
         "ccss": "^5.0.0-alpha.2",
@@ -80,6 +80,7 @@
         "@emotion/hash": "^0.8.0",
         "fast-glob": "^3.2.4",
         "lodash": "^4.17.20",
+        "mqpacker": "^7.0.0",
         "shortest": "0.0.0",
         "stylis": "^4.0.2"
     }

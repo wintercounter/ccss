@@ -202,6 +202,8 @@ export default class Processor {
             }
         }
 
+        const returnPath = path.findParent(p => p.isReturnStatement())
+
         const fnBody =
             (path.getFunctionParent() || path.getStatementParent()).get('body')?.node?.body || path.scope.block.body
         const returnStatementIndex = fnBody.findIndex(n => t.isReturnStatement(n))
@@ -211,9 +213,21 @@ export default class Processor {
             name: t.stringLiteral(prop.key.name || prop.key.value),
             value
         })
-        fnBody.splice(returnStatementIndex, 0, t.variableDeclaration('var', [t.variableDeclarator(id, expression)]))
+
+        const variableDeclaration = t.variableDeclaration('var', [t.variableDeclarator(id, expression)])
+        if (returnPath) {
+            returnPath.insertBefore(variableDeclaration)
+        } else {
+            fnBody.splice(returnStatementIndex, 0, variableDeclaration)
+        }
 
         return id
+    }
+    isSameCallExpressionNode(path, originPath = this.path) {
+        return (
+            this.path.node ===
+            path.findParent(p => p.isCallExpression() && p.node.callee?.property?.name === 'createElement').node
+        )
     }
     addProp(name, value, method = 'push') {
         // It's null, let's create an object
@@ -221,14 +235,17 @@ export default class Processor {
             this.path.node.arguments[1] = t.objectExpression([])
         }
         let properties = this.path.node.arguments?.[1]?.properties
+        const that = this
 
         // Maybe it's an _extend helper?
         // Lets find the first ObjectExpression to use then.
         if (!properties) {
             this.path.traverse({
                 ObjectExpression(path) {
-                    properties = path.node.properties
-                    path.stop()
+                    if (that.isSameCallExpressionNode(path)) {
+                        properties = path.node.properties
+                        path.stop()
+                    }
                 }
             })
         }
@@ -252,11 +269,12 @@ export default class Processor {
         return !foundDynamic
     }
     walkProperties = (method, cb, ...rest) => {
-        const scope = this.path.scope
+        const { scope } = this.path
+        const that = this
+
         this.path.traverse({
             ObjectExpression(path) {
-                if (path.scope !== scope) return
-                if (path.ccssWalkProperties) {
+                if (path.scope !== scope || !that.isSameCallExpressionNode(path) || path.ccssWalkProperties) {
                     path.stop()
                     return
                 }
