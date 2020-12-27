@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/wintercounter/ccss/compare/v3.18.0...v3.19.0) (2020-12-27)
+
+**Note:** Version bump only for package @cryptic-css/prop-scroll
+
+
+
+
+
 # [3.18.0](https://github.com/wintercounter/ccss/compare/v3.17.0...v3.18.0) (2020-10-12)
 
 **Note:** Version bump only for package @cryptic-css/prop-scroll
