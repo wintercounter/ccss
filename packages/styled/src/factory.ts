@@ -45,7 +45,7 @@ interface CreateCreator {
 export const createCreator: CreateCreator = (
     styled,
     isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative'
-) => ({ defaultProps = undefined, ...rest }) => {
+) => ({ defaultProps = undefined, id = 0, ...rest }) => {
     const __ccss = rest.__ccss as CCSSFunction
     const props = rest.props as CCSSProps
     const defaultTag = isNative ? 'View' : 'div'
@@ -56,11 +56,17 @@ export const createCreator: CreateCreator = (
     // @ts-ignore
     props.children = props.children || noop
 
-    const Ui = styled[defaultTag](__ccss)
+    // withConfig(id: ${tagName || 'ui'}${idCounter++})
+
+    const Ui = styled[defaultTag].withConfig({
+        componentId: `sc-ui${id}`
+    })(__ccss)
     Ui.defaultProps = defaultProps
     const tagged = (tag = defaultTag) => (p: CCSSProps) => {
         const css = __ccss(p)
-        const cmp = styled[tag]<CCSSProps>(() => css, __ccss)
+        const cmp = styled[tag].withConfig({
+            componentId: `sc-t${tag}${id}`
+        })<CCSSProps>(() => css, __ccss)
         cmp.defaultProps = defaultProps
         return cmp
     }
@@ -71,7 +77,9 @@ export const createCreator: CreateCreator = (
     for (const tag in styled) {
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
             try {
-                Ui[tag] = styled[tag](__ccss)
+                Ui[tag] = styled[tag].withConfig({
+                    componentId: `sc-${tag}${id}`
+                })(__ccss)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
                 ccssd[tag] = tagged(tag)
