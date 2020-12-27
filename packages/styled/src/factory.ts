@@ -59,7 +59,8 @@ export const createCreator: CreateCreator = (
     // withConfig(id: ${tagName || 'ui'}${idCounter++})
 
     const Ui = styled[defaultTag].withConfig({
-        componentId: `sc-ui${id}`
+        componentId: `sc-ui${id}`,
+        displayName: 'Ui'
     })(__ccss)
     Ui.defaultProps = defaultProps
     const tagged = (tag = defaultTag) => (p: CCSSProps) => {
@@ -78,7 +79,8 @@ export const createCreator: CreateCreator = (
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
             try {
                 Ui[tag] = styled[tag].withConfig({
-                    componentId: `sc-${tag}${id}`
+                    componentId: `sc-${tag}${id}`,
+                    displayName: `Ui.${tag}`
                 })(__ccss)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
