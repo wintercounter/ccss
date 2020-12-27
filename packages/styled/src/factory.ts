@@ -12,6 +12,8 @@ export type UiType = UiComponent & UiComponentFactories
 
 const noop = () => {}
 
+const shouldForwardProp = props => prop => prop === 'children' || prop === 'theme' || !props.hasOwnProperty(prop)
+
 // Do not use deprecated stuff please
 const skipNativeTags = ['DatePickerIOS', 'DatePickerAndroid']
 
@@ -60,13 +62,15 @@ export const createCreator: CreateCreator = (
 
     const Ui = styled[defaultTag].withConfig({
         componentId: `sc-ui${id}`,
-        displayName: 'Ui'
+        displayName: 'Ui',
+        shouldForwardProp: shouldForwardProp(props)
     })(__ccss)
     Ui.defaultProps = defaultProps
     const tagged = (tag = defaultTag) => (p: CCSSProps) => {
         const css = __ccss(p)
         const cmp = styled[tag].withConfig({
-            componentId: `sc-t${tag}${id}`
+            componentId: `sc-t${tag}${id}`,
+            shouldForwardProp: shouldForwardProp(props)
         })<CCSSProps>(() => css, __ccss)
         cmp.defaultProps = defaultProps
         return cmp
@@ -80,7 +84,8 @@ export const createCreator: CreateCreator = (
             try {
                 Ui[tag] = styled[tag].withConfig({
                     componentId: `sc-${tag}${id}`,
-                    displayName: `Ui.${tag}`
+                    displayName: `Ui.${tag}`,
+                    shouldForwardProp: shouldForwardProp(props)
                 })(__ccss)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
