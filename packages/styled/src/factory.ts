@@ -58,8 +58,6 @@ export const createCreator: CreateCreator = (
     // @ts-ignore
     props.children = props.children || noop
 
-    // withConfig(id: ${tagName || 'ui'}${idCounter++})
-
     const Ui = styled[defaultTag].withConfig({
         componentId: `sc-ui${id}`,
         displayName: 'Ui',
