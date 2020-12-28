@@ -15,7 +15,9 @@ const defaultOpts = {
     extract: {
         output: '__[filename].[contenthash].css',
         classNameStrategy: 'MurmurHash2',
-        module: false
+        module: false,
+        prepend: () => '',
+        append: () => ''
     },
     // TODO: re-implement
     stats: false,

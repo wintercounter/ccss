@@ -115,7 +115,7 @@ export default class ExtractorAbstract {
     writeFile(filename, program) {
         if (!filename) return
 
-        const { classNameStrategy, output, module } = this.options
+        const { classNameStrategy, output, module, prepend, append } = this.options
         const folderPath = filename.split(path.sep)
         const file = folderPath.pop()
         let content = ''
@@ -131,9 +131,18 @@ export default class ExtractorAbstract {
             }}`
         }
         const serialized = serialize(compile(content), stringify)
-        const style = mqpacker.pack(serialized, {
-            sort: true
-        }).css
+        let style
+        try {
+            style =
+                prepend() +
+                mqpacker.pack(serialized, {
+                    sort: true
+                }).css +
+                append()
+        } catch (e) {
+            console.error(e)
+            process.exit(0)
+        }
 
         const checksum = crypto.createHash('md5').update(style, 'utf8').digest('hex')
         //  __[filename].[contenthash].css

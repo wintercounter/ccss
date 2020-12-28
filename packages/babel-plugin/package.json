@@ -70,13 +70,14 @@
     "peerDependencies": {
         "@cryptic-css/core": "^5.0.0-alpha.1"
     },
-    "devDependencies": {
+    "devDependenciess": {
         "ccss": "^5.0.0-alpha.2",
         "@cryptic-css/core": "^5.0.0-alpha.2"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
     "dependencies": {
         "@babel/template": "^7.10.4",
+        "@babel/traverse": "^7.12.12",
         "@emotion/hash": "^0.8.0",
         "fast-glob": "^3.2.4",
         "lodash": "^4.17.20",
