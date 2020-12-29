@@ -12,6 +12,8 @@ export type UiType = UiComponent & UiComponentFactories
 
 const noop = () => {}
 
+const shouldForwardProp = transformedFn => prop => prop === 'children' || prop === 'theme' || !transformedFn.registry.has(prop)
+
 // Do not use deprecated stuff please
 const skipNativeTags = ['DatePickerIOS', 'DatePickerAndroid']
 
@@ -44,14 +46,18 @@ interface CreateCreator {
 export const createCreator: CreateCreator = (
     styled,
     isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative'
-) => (transformedFn: CCSSTransformedFn) => {
+) => (transformedFn: CCSSTransformedFn, id = 0) => {
     const { defaultProps = undefined } = transformedFn.options
     const defaultTag = isNative ? 'View' : 'div'
 
     // Just don't do anything with styled stuff
     transformedFn.setProps([[['theme', 'children'], null, [noop], { ccssContext: false }]])
 
-    const Ui = styled[defaultTag](transformedFn)
+    const Ui = styled[defaultTag].withConfig({
+        componentId: `sc-ui${id}`,
+        displayName: 'Ui',
+        shouldForwardProp: shouldForwardProp(transformed)
+    })(transformedFn)
     Ui.defaultProps = defaultProps
 
     // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
@@ -59,7 +65,11 @@ export const createCreator: CreateCreator = (
     for (const tag in styled) {
         if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
             try {
-                Ui[tag] = styled[tag](transformedFn)
+                Ui[tag] = styled[tag].withConfig({
+                    componentId: `sc-${tag}${id}`,
+                    displayName: `Ui.${tag}`,
+                    shouldForwardProp: shouldForwardProp(transformedFn)
+                })(transformedFn)
                 // @ts-ignore
                 Ui[tag].defaultProps = defaultProps
             } catch {}

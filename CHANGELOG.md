@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/wintercounter/ccss/compare/v3.18.0...v3.19.0) (2020-12-27)
+
+
+### Features
+
+* **styled:** added support for `displayName`. `ccssd` does not support it. ([ebe857d](https://github.com/wintercounter/ccss/commit/ebe857d46902a12eaa1f022055702d00c5d5cd4a))
+* **styled:** added support for `shouldForwardProp`. ([a967a11](https://github.com/wintercounter/ccss/commit/a967a11308a520b59b0c2db44f0e76e2fd63e06d))
+* **styled:** added support for nextjs with the `componentId` ([0b71d40](https://github.com/wintercounter/ccss/commit/0b71d40f3a05e7f543e429f2492497fca1479df5))
+
+
+
+
+
 # [3.18.0](https://github.com/wintercounter/ccss/compare/v3.17.0...v3.18.0) (2020-10-12)
 
 
