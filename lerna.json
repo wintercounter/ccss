@@ -1,6 +1,6 @@
 {
     "packages": [
-        "packages/ccss/*",
+        "packages/cryptic-css/*",
         "packages/tailwind/*",
         "packages/youeye/*"
     ],
