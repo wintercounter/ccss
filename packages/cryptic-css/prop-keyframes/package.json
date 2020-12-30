@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/prop-keyframes",
-    "version": "3.19.0",
+    "version": "5.0.0-alpha.3",
     "description": "Adds support for the `keyframes` prop to easily define animations.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
