@@ -1,8 +1,9 @@
 {
-    "name": "@cryptic-css/extension-tailwind",
-    "version": "1.0.0",
+    "name": "tailwindccss",
+    "version": "5.0.0-alpha.3",
     "description": "not tied to rem",
     "main": "dist/cjs/index.js",
+    "private": true,
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.3](https://github.com/wintercounter/ccss/compare/v3.19.0...v5.0.0-alpha.3) (2020-12-30)
+
+**Note:** Version bump only for package @you-eye/babel-plugin-react
+
+
+
+
+
 # [3.19.0](https://github.com/wintercounter/ccss/compare/v3.18.0...v3.19.0) (2020-12-27)
 
 **Note:** Version bump only for package @cryptic-css/babel-plugin-styled

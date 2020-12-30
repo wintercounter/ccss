@@ -1,9 +1,9 @@
 {
     "packages": [
         "packages/ccss/*",
-        "packages/youeye/*",
-        "packages/tailwind/*"
+        "packages/tailwind/*",
+        "packages/youeye/*"
     ],
-    "version": "3.19.0",
+    "version": "5.0.0-alpha.3",
     "conventionalCommits": true
 }
