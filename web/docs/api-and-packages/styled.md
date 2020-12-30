@@ -20,8 +20,8 @@ const WithExtend = styled(Ui)`
 `
 
 // ccssd
-const Normal = ccssd({ d: 'f' })
-const WithTagHelper = ccssd.ul({ d: 'f' })
+const Normal = ccssd({ dp: 'f' })
+const WithTagHelper = ccssd.ul({ dp: 'f' })
 ```
 
 ## Exported modules

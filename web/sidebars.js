@@ -11,7 +11,6 @@ module.exports = {
             'getting-started/installation',
             'getting-started/configuration',
             'getting-started/basic-usage',
-            'getting-started/cli',
             'getting-started/faq'
         ],
         'API and Packages': [

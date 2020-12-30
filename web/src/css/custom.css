@@ -44,9 +44,13 @@
     --ifm-line-height-base: 1.75;
     --ifm-code-border-radius: 4px;
     --ifm-global-radius: 4px;
+    --ifm-container-width: 1060px;
 
     scroll-behavior: smooth;
 }
+
+/*@media (max-width: 1320px) and (min-width: 997px)
+    .docItemWrapper_*/
 
 .footer--dark {
     --ifm-footer-background-color: var(--color-site-blue);
@@ -124,11 +128,21 @@ html[data-theme='dark'] {
 .home-tabs ul {
     display: flex;
     font-size: 20px;
-    box-shadow: 0 -3px 0 #e3e3e3 inset;
 }
 
 .home-tabs ul li {
-    margin-right: 5px;
+    margin-right: 30px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.home-tabs ul li:not(.tabs__item--active):hover {
+    border-bottom-color: var(--ifm-tabs-color);
+}
+
+.home-tabs ul li:hover {
+    background: none;
+    transition: all 0.3s ease-out;
 }
 
 [class^='mdxCodeBlock'] {
@@ -197,6 +211,10 @@ html[data-theme='dark'] {
     color: rgb(17, 24, 39);
 }
 
+.menu__list > .menu__list-item:first-child > .menu__link:not([href]):first-of-type {
+    margin-top: 0;
+}
+
 .menu__link[href] {
     font-size: 14px;
     font-weight: 500;
@@ -235,9 +253,10 @@ html[data-theme='dark'] {
     padding: 0;
 }
 
-.navbar__inner {
+.navbar__inner, .myContainer {
     max-width: 1398px;
     margin: 0 auto;
+    padding: 0 30px;
 }
 
 code {
@@ -246,7 +265,7 @@ code {
     padding: 0 0.3em 0.06em;
 }
 
-thin-scrollbar::-webkit-scrollbar {
+.thin-scrollbar::-webkit-scrollbar {
     width: var(--ifm-scrollbar-size);
     height: var(--ifm-scrollbar-size);
 }
@@ -267,6 +286,7 @@ thin-scrollbar::-webkit-scrollbar {
 }
 
 [class*=' docItemCol_'] {
+    width: 100vw !important;
     padding: 0 35px;
 }
 
@@ -310,17 +330,11 @@ button.DocSearch:hover::after {
     font-weight: bold;
     color: #6c7482;
     font-size: 14px;
+    padding: 0 !important;
 }
 
-[class^='docPage_']::after {
-    content: '';
-    position: fixed;
-    height: 0;
-    width: 100vw;
-    box-shadow: 0 5px 30px 30px #fff;
-    top: var(--ifm-navbar-height);
-    z-index: 4;
-    background: #fff;
+.menu {
+    margin-top: 30px;
 }
 
 .DocSearch-Search-Icon {
@@ -328,4 +342,37 @@ button.DocSearch:hover::after {
     width: 25px;
     color: #cbcbcb !important;
     margin-right: 5px;
+}
+
+.navbar {
+    box-shadow: none;
+    border-bottom: 1px solid #ededed;
+}
+
+.DocSearch-Button-Key {
+    display: none !important;
+}
+
+button.DocSearch {
+    width: auto !important;
+}
+
+.pagination-nav__link {
+    background: #fff;
+    border-radius: 60px;
+    text-align: center;
+}
+
+@media screen and (max-width: 996px) {
+    .navbar__inner .navbar__brand {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+    }
+
+    .navbar__inner .navbar__brand img {
+        margin: 0;
+    }
 }

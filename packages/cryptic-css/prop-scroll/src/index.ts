@@ -21,7 +21,7 @@ const base = {
     '-webkit-overflow-scrolling': 'touch',
     child: {
         '::-webkit-scrollbar': {
-            d: 'n'
+            dp: 'n'
         }
     }
 }
@@ -51,8 +51,8 @@ const parser = (input, prop, transformedFn, inputObject) => {
     }
 }
 
-const useProp = transformedFn => {
-    transformedFn.setProps(['scroll'].map(prop => [[prop], null, [parser]]))
+const useProp = (transformedFn) => {
+    transformedFn.setProps(['scroll'].map((prop) => [[prop], null, [parser]]))
 }
 
 export default useProp

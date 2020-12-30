@@ -3,7 +3,7 @@ id: grid-template-columns
 title: Grid Template Columns
 ---
 
-Tailwinds version
+Tailwind's version
 
 | Tailwind version | CCSS version              | CCSS short version |
 | ---------------- | ------------------------- | ------------------ |

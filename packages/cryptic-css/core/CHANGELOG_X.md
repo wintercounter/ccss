@@ -13,6 +13,8 @@
 -   prop-mid removed
 -   faster and improved TypeScript types completely based on `csstype` supporting CCSS shorthands and CCSS shorthand values
 -   `ccssd` got removed => switch to function wrapper
+-   `d` => `dp`
+-   CLI removed
 
 babel-plugin:
 

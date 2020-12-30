@@ -11,7 +11,7 @@ so far.
 ## UiBox
 
 On a project, we started to use a `Grommet` and `styled-system`
-inspired UI System. We ended up relying on fully dynamic `styled-c1omponents`,
+inspired UI System. We ended up relying on fully dynamic `styled-components`,
 almost completely stopped writing CSS and custom `styled-components` in the regular way.
 
 A simplified example how such components did look:

@@ -10,7 +10,7 @@ and it doesn't want to be. It is simply a basic tool that you can use in your ow
 
 ```js live
 ccss({
-    d: 'f',
+    dp: 'f',
     p: 2
 })
 ```

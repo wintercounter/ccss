@@ -104,21 +104,6 @@
     width: 200px;
 }
 
-.tagLine:first-of-type {
-    font-size: 30px;
-    line-height: 1.5;
-}
-
-@media screen and (max-width: 996px) {
-    .tagLine:first-of-type {
-        font-size: 26px;
-    }
-}
-
-.tagLine {
-    font-size: 20px;
-}
-
 .getStarted span {
     font-size: 48px;
 }

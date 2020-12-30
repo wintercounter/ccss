@@ -11,9 +11,6 @@
         "type": "git",
         "url": "git+https://github.com/wintercounter/ccss.git"
     },
-    "bin": {
-        "ccss": "./dist/cjs/cli.js"
-    },
     "scripts": {
         "test": "mhy tsc && mhy jest",
         "jest": "mhy jest",

@@ -18,7 +18,7 @@ import ccss from 'ccss'
 
 ```js live
 ccss({
-    d: 'f'
+    dp: 'f'
 })
 ```
 

@@ -48,46 +48,48 @@ const toCSSRuleHandler = [toCSSRule]
 const fromArrayToCSSRuleHandler = [parseArray, toCSSRule]
 const pseudoHandler = [parsePseudo]
 const nil = null
+const htmlAttr = { htmlAttr: true }
 
 const defaultProps = (): Props => [
     // SVG presentational attributes
-    [['ab', 'alignment-baseline'], nil, toCSSRuleHandler],
-    [['bls', 'baseline-shift'], nil, toCSSRuleHandler],
-    [['cpr', 'clip-rule'], nil, toCSSRuleHandler],
-    [['cif', 'color-interpolation-filters'], nil, toCSSRuleHandler],
-    [['ci', 'color-interpolation'], nil, toCSSRuleHandler],
-    [['cpf', 'color-profile'], nil, toCSSRuleHandler],
-    [['crd', 'color-rendering'], nil, toCSSRuleHandler],
-    [['db', 'dominant-baseline'], nil, toCSSRuleHandler],
-    [['eb', 'enable-background'], nil, toCSSRuleHandler],
-    [['fo', 'fill-opacity'], nil, toCSSRuleHandler],
-    [['fr', 'fill-rule'], nil, toCSSRuleHandler],
-    [['fi', 'fill'], nil, toCSSRuleHandler],
-    [['fdc', 'flood-color'], nil, toCSSRuleHandler],
-    [['fdo', 'flood-opacity'], nil, toCSSRuleHandler],
-    [['fsa', 'font-size-adjust'], nil, toCSSRuleHandler],
-    [['goh', 'glyph-orientation-horizontal'], nil, toCSSRuleHandler],
-    [['ir', 'image-rendering'], nil, toCSSRuleHandler],
-    [['k', 'kerning'], nil, toCSSRuleHandler],
-    [['lc', 'lighting-color'], nil, toCSSRuleHandler],
-    [['me', 'marker-end'], nil, toCSSRuleHandler],
-    [['mm', 'marker-mid'], nil, toCSSRuleHandler],
-    [['ms', 'marker-start'], nil, toCSSRuleHandler],
-    [['msk', 'mask'], nil, toCSSRuleHandler],
-    [['sr', 'shape-rendering'], nil, toCSSRuleHandler],
-    [['sc', 'stop-color'], nil, toCSSRuleHandler],
-    [['sda', 'stroke-dasharray'], nil, toCSSRuleHandler],
-    [['sdo', 'stroke-dashoffset'], nil, toCSSRuleHandler],
-    [['slc', 'stroke-linecap'], nil, toCSSRuleHandler],
-    [['slj', 'stroke-linejoin'], nil, toCSSRuleHandler],
-    [['sml', 'stroke-miterlimit'], nil, toCSSRuleHandler],
-    [['sop', 'stroke-opacity'], nil, toCSSRuleHandler],
-    [['swt', 'stroke-width'], nil, toCSSRuleHandler],
-    [['st', 'stroke'], nil, toCSSRuleHandler],
-    [['txa', 'text-anchor'], nil, toCSSRuleHandler],
-    [['txr', 'text-rendering'], nil, toCSSRuleHandler],
-    [['ub', 'unicode-bidi'], nil, toCSSRuleHandler],
-    [['wm', 'writing-mode'], nil, toCSSRuleHandler],
+    [['ab', 'alignment-baseline'], nil, toCSSRuleHandler, htmlAttr],
+    [['bls', 'baseline-shift'], nil, toCSSRuleHandler, htmlAttr],
+    [['cpr', 'clip-rule'], nil, toCSSRuleHandler, htmlAttr],
+    [['cif', 'color-interpolation-filters'], nil, toCSSRuleHandler, htmlAttr],
+    [['ci', 'color-interpolation'], nil, toCSSRuleHandler, htmlAttr],
+    [['cpf', 'color-profile'], nil, toCSSRuleHandler, htmlAttr],
+    [['crd', 'color-rendering'], nil, toCSSRuleHandler, htmlAttr],
+    [['db', 'dominant-baseline'], nil, toCSSRuleHandler, htmlAttr],
+    [['d'], nil, toCSSRuleHandler, htmlAttr],
+    [['eb', 'enable-background'], nil, toCSSRuleHandler, htmlAttr],
+    [['fo', 'fill-opacity'], nil, toCSSRuleHandler, htmlAttr],
+    [['fr', 'fill-rule'], nil, toCSSRuleHandler, htmlAttr],
+    [['fi', 'fill'], nil, toCSSRuleHandler, htmlAttr],
+    [['fdc', 'flood-color'], nil, toCSSRuleHandler, htmlAttr],
+    [['fdo', 'flood-opacity'], nil, toCSSRuleHandler, htmlAttr],
+    [['fsa', 'font-size-adjust'], nil, toCSSRuleHandler, htmlAttr],
+    [['goh', 'glyph-orientation-horizontal'], nil, toCSSRuleHandler, htmlAttr],
+    [['ir', 'image-rendering'], nil, toCSSRuleHandler, htmlAttr],
+    [['k', 'kerning'], nil, toCSSRuleHandler, htmlAttr],
+    [['lc', 'lighting-color'], nil, toCSSRuleHandler, htmlAttr],
+    [['me', 'marker-end'], nil, toCSSRuleHandler, htmlAttr],
+    [['mm', 'marker-mid'], nil, toCSSRuleHandler, htmlAttr],
+    [['ms', 'marker-start'], nil, toCSSRuleHandler, htmlAttr],
+    [['msk', 'mask'], nil, toCSSRuleHandler, htmlAttr],
+    [['sr', 'shape-rendering'], nil, toCSSRuleHandler, htmlAttr],
+    [['sc', 'stop-color'], nil, toCSSRuleHandler, htmlAttr],
+    [['sda', 'stroke-dasharray'], nil, toCSSRuleHandler, htmlAttr],
+    [['sdo', 'stroke-dashoffset'], nil, toCSSRuleHandler, htmlAttr],
+    [['slc', 'stroke-linecap'], nil, toCSSRuleHandler, htmlAttr],
+    [['slj', 'stroke-linejoin'], nil, toCSSRuleHandler, htmlAttr],
+    [['sml', 'stroke-miterlimit'], nil, toCSSRuleHandler, htmlAttr],
+    [['sop', 'stroke-opacity'], nil, toCSSRuleHandler, htmlAttr],
+    [['swt', 'stroke-width'], nil, toCSSRuleHandler, htmlAttr],
+    [['st', 'stroke'], nil, toCSSRuleHandler, htmlAttr],
+    [['txa', 'text-anchor'], nil, toCSSRuleHandler, htmlAttr],
+    [['txr', 'text-rendering'], nil, toCSSRuleHandler, htmlAttr],
+    [['ub', 'unicode-bidi'], nil, toCSSRuleHandler, htmlAttr],
+    [['wm', 'writing-mode'], nil, toCSSRuleHandler, htmlAttr],
 
     // Animation + 3D
     [['a', 'animation'], nil, toCSSRuleHandler],
@@ -218,9 +220,22 @@ const defaultProps = (): Props => [
     ],
     [['ls', 'letter-spacing'], nil, fromArrayToCSSRuleHandler],
     [['lh', 'line-height'], nil, toCSSRuleHandler],
-
     [
         ['ta', 'text-align'],
+        {
+            l: 'left',
+            r: 'right',
+            c: 'center',
+            e: 'end',
+            j: 'justify',
+            re: 'revert',
+            s: 'start',
+            u: 'unset'
+        },
+        toCSSRuleHandler
+    ],
+    [
+        ['td', 'text-decoration'],
         {
             ...getFalseNone(),
             u: 'underline',
@@ -229,7 +244,6 @@ const defaultProps = (): Props => [
         },
         toCSSRuleHandler
     ],
-    [['td', 'text-decoration'], nil, toCSSRuleHandler],
     [['ti', 'text-indent'], nil, fromArrayToCSSRuleHandler],
     [
         ['to', 'text-overflow'],
@@ -471,7 +485,7 @@ const defaultProps = (): Props => [
 
     // General
     [
-        ['d', 'display'],
+        ['dp', 'display'],
         {
             ...getFalseNone(),
             i: 'inline',
@@ -704,11 +718,12 @@ const defaultProps = (): Props => [
             n: 'none',
             t: 'text',
             all: 'all'
-        }
+        },
+        toCSSRuleHandler
     ],
     [['cac', 'caret-color'], nil, toCSSRuleHandler],
     [['rs', 'resize'], nil, toCSSRuleHandler],
-    [['raw'], nil, [i => i]],
+    [['raw'], nil, [(i) => i]],
     [['child'], nil, [child]],
 
     // Webkit

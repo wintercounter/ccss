@@ -1,7 +1,6 @@
 module.exports = {
     title: 'CCSS',
-    tagline:
-        'Swiss-army knife for your custom CSS-in-JS needs. Shorthands, custom props, value maps and static extraction.',
+    tagline: 'Swiss-army knife for custom CSS-in-JS and design-system needs.',
     url: 'https://ccss.dev',
     baseUrl: '/',
     favicon: 'img/favicon.ico',

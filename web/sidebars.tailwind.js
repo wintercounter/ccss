@@ -29,8 +29,7 @@ module.exports = {
             'customization/breakpoints',
             'customization/colors',
             'customization/spacing',
-            'customization/variants',
-            'customization/plugins'
+            'customization/variants'
         ],
         'Base Styles': ['base-styles/preflight'],
         Layout: [
