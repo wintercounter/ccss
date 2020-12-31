@@ -1,6 +1,6 @@
 {
     "name": "ccss",
-    "version": "5.0.0-alpha.3",
+    "version": "5.0.0-alpha.4",
     "description": "A full version for CrypticCSS including all available official plugins, props and extensions.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",

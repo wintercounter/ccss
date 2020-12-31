@@ -1,4 +1,4 @@
-import styled, { ccss, Ui } from '@cryptic-css/styled'
+import styled, { ccss, Ui } from '@you-eye/styled'
 
 import propMq from '@cryptic-css/prop-mq'
 import propScroll from '@cryptic-css/prop-scroll'

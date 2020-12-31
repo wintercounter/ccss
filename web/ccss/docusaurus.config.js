@@ -24,11 +24,9 @@ module.exports = {
                 src: 'img/logo.png'
             },
             items: [
-                { to: 'docs/getting-started/installation', label: 'Getting started', position: 'left' },
-                { to: 'docs/api-and-packages/core', label: 'API and Packages', position: 'left' },
-                { to: 'docs/guides/quick-examples', label: 'Guides', position: 'left' },
-                { to: 'tailwind/getting-started/introduction', label: 'TailwindCCSS', position: 'left' },
-                { to: 'docs/more-about-ccss/brief-history', label: 'More about CCSS', position: 'left' },
+                { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
+                { to: 'docs/api-and-packages/core', label: 'YouEye', position: 'left' },
+                { to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },
                 {
                     href: 'https://github.com/wintercounter/ccss',
                     label: 'GitHub',

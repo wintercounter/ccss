@@ -1,6 +1,6 @@
 {
     "name": "@you-eye/styled",
-    "version": "5.0.0-alpha.3",
+    "version": "5.0.0-alpha.4",
     "description": "Re-exports styled-components with CCSS support.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/styled#readme",
