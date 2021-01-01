@@ -6,7 +6,7 @@ const defaultOptions = (): Partial<Options> => {
         // Convert CSS properties to camel case
         autoCamelCase: true,
         // CCSS options
-        unit: typeof navigator != 'undefined' && navigator.product === 'ReactNative' ? 'px' : 'rem',
+        unit: 'px',
         applyUnit(n) {
             return `${n}${this.unit}`
         }

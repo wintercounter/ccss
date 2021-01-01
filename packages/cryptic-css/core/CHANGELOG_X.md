@@ -15,6 +15,7 @@
 -   `ccssd` got removed => switch to function wrapper
 -   `d` => `dp`
 -   CLI removed
+-   `rem` => `px` by default
 
 babel-plugin:
 
