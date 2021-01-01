@@ -11,6 +11,19 @@ import CodeBlock from '@theme/CodeBlock'
 import styles from './styles.module.css'
 import { Ui } from '../js/ui'
 
+const ShowMoreLink = ({ children, ...rest }) => {
+    return (
+        <Ui>
+            <Ui.a learnMore {...rest}>
+                {children}
+            </Ui.a>
+            <Ui.span fts={15} c="var(--ifm-link-color)" P="r" T={-1} L={15}>
+                ▶
+            </Ui.span>
+        </Ui>
+    )
+}
+
 const Sandbox = () => (
     <Ui className="demo home-tabs" pB={10}>
         <Tabs
@@ -18,7 +31,7 @@ const Sandbox = () => (
             values={[
                 { label: 'Vanilla', value: 'vanilla' },
                 { label: 'Extra props', value: 'styled' },
-                { label: 'Custom values', value: 'styled' },
+                { label: 'Custom values', value: 'custe' },
                 { label: 'Custom props', value: 'long' },
                 { label: 'Shared styles', value: 'custom' }
             ]}
@@ -66,62 +79,191 @@ const Sandbox = () => (
 const features = [
     {
         title: <>Tiny core</>,
-        imageUrl: 'svg/009-benzene.svg',
+        imageUrl: 'svg/v5/atom.svg',
         description: (
             <>
                 <p>
                     <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects. It's{' '}
                     <em>not</em> an out-of-the-box styling solution. It helps you deliver your own, tailor-made tool. It
-                    is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a> which
-                    gives you great customization options to suit your own needs.
+                    is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a>{' '}
+                    <em>(3.8 kB, 1.5 kB compressed)</em> which gives you great customization options to suit your own
+                    needs.
                 </p>
-                <p>Here are some tools built with CCSS you can try now.</p>
             </>
         )
     },
     {
         title: <>Value maps</>,
-        imageUrl: 'svg/009-benzene.svg',
+        imageUrl: 'svg/v5/map.svg',
         description: (
             <>
                 <p>
-                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects. It's{' '}
-                    <em>not</em> an out-of-the-box styling solution. It helps you deliver your own, tailor-made tool. It
-                    is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a> which
-                    gives you great customization options to suit your own needs.
+                    You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom property your design
+                    system requires. Common use cases are colors, font sizes and dimensions.
                 </p>
+                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: 'auto' }]}>
+                    <Ui>
+                        <CodeBlock className="js">{`// Setup custom value maps
+
+ccss.setProps([
+  [['max-width'], { container: 1220 }],
+  [['color'], { dark: '#333', light: '#eee' }],
+  [['font-size'], { small: 12, large: 16 }]
+])`}</CodeBlock>
+                    </Ui>
+                    <Ui>
+                        <Ui editorWrapper>
+                            <CodeBlock className="js" live>{`ccss({
+    maxWidth: 'container',
+    color: 'dark',
+    ':hover': {
+        color: 'light'   
+    }
+})`}</CodeBlock>
+                        </Ui>
+                    </Ui>
+                </Ui>
             </>
         )
     },
     {
-        title: <>Custom props</>,
-        imageUrl: 'svg/009-benzene.svg',
+        title: <>Plugins</>,
+        imageUrl: 'svg/v5/puzzle-red.svg',
         description: (
             <>
                 <p>
-                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects. It's{' '}
-                    <em>not</em> an out-of-the-box styling solution. It helps you deliver your own, tailor-made tool. It
-                    is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a> which
-                    gives you great customization options to suit your own needs.
+                    Enhance the functionality of existing properties by supporting new value types and/or special rules.
+                </p>
+                <Ui className="home-tabs" mT={10}>
+                    <Tabs
+                        defaultValue="gutter"
+                        values={[
+                            { label: 'Gutter', value: 'gutter' },
+                            { label: 'Ratio', value: 'ratio' },
+                            { label: 'Custom', value: 'custom' }
+                        ]}
+                    >
+                        <TabItem value="gutter">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Apply a general gutter rule to all your <em>margin</em>, <em>padding</em> and{' '}
+                                        <em>grid-gap</em> values. Keeping consistent spacing of one key to a good design
+                                        system. The gutter plugin helps you maintain a multiply of a pre-defined unit.
+                                        Default: <code>5px</code>
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js" live>{`ccss({
+    padding: 1,
+    margin: [1, 2, 3, 4],
+    gridGap: 4
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="ratio">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Add support for <em>margin</em> and <em>padding</em> to accept ratio value. The{' '}
+                                        <em>aspect-ratio</em> CSS property is around the corner now, but before the so
+                                        called <strong>padding hack</strong> was used. This way you can avoid any manual
+                                        calculation you might need and just provide ratio directly.
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/plugin-ratio">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js" live>{`ccss({
+    paddingTop: '16:9'
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="custom">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Lets create a plugin that adds support to resolve an object path. This is a
+                                        popular solution among other libraries. In this example we will add such support
+                                        to the <code>background-color</code> property.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js">{`const colors = {
+    dark: { 0: '#000', 1: '#111' }
+}
+
+ccss.setProps([
+    ['backgroundColor'], null, [
+        v => v.split('.').reduce((acc, val) => acc[val], colors),
+        // Keep all existing handlers
+        '...'
+    ]
+])`}</CodeBlock>
+                                    </Ui>
+                                    <Ui editorWrapper mT={6}>
+                                        <CodeBlock className="js" live>{`ccss({
+    backgroundColor: 'dark.1'
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                    </Tabs>
+                </Ui>
+            </>
+        )
+    },
+    {
+        title: <>Custom properties</>,
+        imageUrl: 'svg/v5/puzzle-green.svg',
+        description: (
+            <>
+                <p>
+                    Add your own custom properties to share, compose, re-use styles and design tokens. Create amazing
+                    new features living right inside your CSS.
                 </p>
             </>
         )
     },
     {
         title: <>Shorthands</>,
-        imageUrl: 'svg/022-speedometer.svg',
+        imageUrl: 'svg/v5/arrows.svg',
         description: (
             <p>
-                CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
-                dynamically at runtime will always have its costs. During the development of <strong>CCSS</strong>{' '}
-                strict decisions and various micro-optimizations have been made to ensure it won't affect performance
-                seriously. The included features are limited to maintain speed and simplicity.
+                Work less do more! CCSS comes with shorthands for <Ui.span ftw={900}>all</Ui.span> CSS properties. Both{' '}
+                <a href="https://styled-system.com/" target="_blank">
+                    Styled System
+                </a>{' '}
+                and{' '}
+                <a href="https://tailwindcss.com/" target="_blank">
+                    Tailwind CSS
+                </a>{' '}
+                are coming with some shorthands out of the box. CCSS gives you the ability to use shorthands for both
+                property names and/or values. Mix to your liking for rapid development.
             </p>
         )
     },
     {
         title: <>Plug n' Play</>,
-        imageUrl: 'svg/022-speedometer.svg',
+        imageUrl: 'svg/v5/plug.svg',
+        description: (
+            <p>
+                Use CCSS in any existing codebase where you can apply CSS string/objects in JS. No matter what unit
+                system (em, rem, px, etc.) you use, CCSS supports any unit you need.
+            </p>
+        )
+    },
+    {
+        title: <>Performance</>,
+        imageUrl: 'svg/v5/speed.svg',
         description: (
             <p>
                 CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
@@ -132,8 +274,20 @@ const features = [
         )
     },
     {
-        title: <>Performance</>,
-        imageUrl: 'svg/022-speedometer.svg',
+        title: <>Tooling</>,
+        imageUrl: 'svg/v5/hammer.svg',
+        description: (
+            <p>
+                CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
+                dynamically at runtime will always have its costs. During the development of <strong>CCSS</strong>{' '}
+                strict decisions and various micro-optimizations have been made to ensure it won't affect performance
+                seriously. The included features are limited to maintain speed and simplicity.
+            </p>
+        )
+    },
+    {
+        title: <>Made with CCSS</>,
+        imageUrl: 'svg/v5/made.svg',
         description: (
             <p>
                 CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
@@ -379,7 +533,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                     <div className="row">
                         <div className="col col--12">
                             <div className="row">
-                                <div className={`col col--1 ${styles.paragraphImage}`}>
+                                <Ui.div mR={6} mL={3}>
                                     <Ui.div
                                         dp="ib"
                                         P="r"
@@ -402,9 +556,10 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                         )}
                                         {icon}
                                     </Ui.div>
-                                </div>
-                                <div
-                                    className={`col col--10`}
+                                </Ui.div>
+                                <Ui.div
+                                    flex="1 0"
+                                    width="100%"
                                     ref={contentRef}
                                     style={{
                                         transition: 'all .3s ease-out',
@@ -416,7 +571,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                         {title}
                                     </Ui.h3>
                                     {description}
-                                </div>
+                                </Ui.div>
                             </div>
                         </div>
                     </div>
@@ -429,6 +584,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
 function Home() {
     const context = useDocusaurusContext()
     const { siteConfig = {} } = context
+
     return (
         <Layout title="Home" description="Your companion to the journey of your next CSS-in-JS solution.">
             <Ui.header position="relative" paddingTop="clamp(30px, calc(100vh - 1112px), 220px)">
@@ -440,7 +596,8 @@ function Home() {
                         {siteConfig.tagline}
                     </Ui.p>
                     <Ui.p fts={24} lh={1.5} mB={10} fontWeight={500}>
-                        Shorthands, custom properties, value maps, design tokens, static extraction, and much more...
+                        Shorthands, custom properties, value maps, design tokens, static/dynamic extraction, and much
+                        more...
                     </Ui.p>
                     <Sandbox />
                     <div style={{ display: 'none' }}>

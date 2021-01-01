@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -45,6 +45,10 @@ function Footer() {
     const { copyright, links = [], logo = {} } = footer || {}
     const logoUrl = useBaseUrl(logo.src)
 
+    useEffect(() => {
+        document.body.classList.add('loaded')
+    }, [])
+
     if (!footer) {
         return null
     }
@@ -56,6 +60,16 @@ function Footer() {
                 <br />
                 Styled Components, Styled System, Grommet, Linaria and Tailwind CSS
             </Ui.span>
+            <div>
+                Icons made by{' '}
+                <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+                    Freepik
+                </a>{' '}
+                from{' '}
+                <a href="https://www.flaticon.com/" title="Flaticon">
+                    www.flaticon.com
+                </a>
+            </div>
             <Ui.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1440 320"
@@ -70,7 +84,7 @@ function Footer() {
                 zi={-1}
                 child={{
                     path: {
-                        keyframes: {
+                        /* keyframes: {
                             '0%, 100%': {
                                 d: `path('M0,256L60,240C120,224,240,192,360,186.7C480,181,600,203,720,197.3C840,192,960,160,1080,138.7C1200,117,1320,107,1380,101.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z')`
                             },
@@ -83,14 +97,14 @@ function Footer() {
                         },
                         animationDuration: '60s',
                         animationIterationCount: 'infinite',
-                        animationTimingFunction: 'linear',
-                        fill: 'url(#waveGradient)'
+                        animationTimingFunction: 'linear',*/
+                        fill: 'url(#waveGradientFooter)'
                     }
                 }}
             >
                 <defs>
-                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <animateTransform
+                    <linearGradient id="waveGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
+                        {/*  <animateTransform
                             attributeName="gradientTransform"
                             attributeType="XML"
                             type="rotate"
@@ -98,7 +112,7 @@ function Footer() {
                             repeatCount="indefinite"
                             dur="30s"
                             additive="sum"
-                        />
+                        />*/}
                         <stop offset="0%" stopColor="#B5179E" />
                         <stop offset="25%" stopColor="#7209B7" />
                         <stop offset="50%" stopColor="#560BAD" />

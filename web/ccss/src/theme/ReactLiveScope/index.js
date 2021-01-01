@@ -13,10 +13,10 @@ import { ccss, Ui, styled } from '../../js/ui'
 
 const assignee = {
     CCSS: ccss,
-    ccss: (p) => {
+    ccss: Object.assign((p) => {
         const output = scssfmt(ccss(p))
         return p.hasOwnProperty('children') ? output : <CodeBlock className="scss">{output}</CodeBlock>
-    },
+    }, ccss),
     styled,
     Ui,
     options: ccss.options,

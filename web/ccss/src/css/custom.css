@@ -45,8 +45,22 @@
     --ifm-code-border-radius: 4px;
     --ifm-global-radius: 4px;
     --ifm-container-width: 1060px;
+    --ifm-navbar-height: 5rem;
 
     scroll-behavior: smooth;
+}
+
+[hidden] iframe {
+    display: none;
+}
+
+body {
+    opacity: 0;
+    transition: opacity 1s linear !important;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 /*@media (max-width: 1320px) and (min-width: 997px)
@@ -181,7 +195,7 @@ html[data-theme='dark'] {
     content: '✏️ live editor';
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 10px;
     color: #fff;
     font-size: 12px;
     white-space: nowrap;
