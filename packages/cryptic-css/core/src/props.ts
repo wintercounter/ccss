@@ -43,6 +43,10 @@ const getFalseNone = () => ({
     [false]: 'none'
 })
 
+const auto = () => ({
+    a: 'auto'
+})
+
 // Minify and optimize
 const toCSSRuleHandler = [toCSSRule]
 const fromArrayToCSSRuleHandler = [parseArray, toCSSRule]
@@ -441,8 +445,8 @@ const defaultProps = (): Props => [
     [['grs', 'grid-row-start'], nil, toCSSRuleHandler],
     [['gt', 'grid-template'], nil, toCSSRuleHandler],
     [['gta', 'grid-template-areas'], nil, toCSSRuleHandler],
-    [['gtc', 'grid-template-columns'], nil, fromArrayToCSSRuleHandler],
-    [['gtr', 'grid-template-rows'], nil, fromArrayToCSSRuleHandler],
+    [['gtc', 'grid-template-columns'], auto(), fromArrayToCSSRuleHandler],
+    [['gtr', 'grid-template-rows'], auto(), fromArrayToCSSRuleHandler],
 
     // Border
     [['b', 'border'], nil, fromArrayToCSSRuleHandler],
