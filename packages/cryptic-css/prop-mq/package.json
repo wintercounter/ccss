@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/prop-mq",
-    "version": "5.0.0-alpha.3",
+    "version": "5.0.0",
     "description": "Adds support for the `mq` prop to write media queries using `@w11r/use-breakpoint`.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mq#readme",
@@ -68,10 +68,10 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "dependencies": {
-        "@w11r/use-breakpoint": "^1.7.0"
+        "@w11r/use-breakpoint": "^1.7.1"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^3.12.0"
+        "@cryptic-css/core": "^3.19.0"
     },
     "devDependencies": {
         "@cryptic-css/core": "^3.19.0"

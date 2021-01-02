@@ -4,6 +4,6 @@
         "packages/tailwind/*",
         "packages/youeye/*"
     ],
-    "version": "5.0.0-alpha.3",
+    "version": "5.0.0",
     "conventionalCommits": true
 }

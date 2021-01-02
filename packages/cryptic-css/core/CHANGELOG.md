@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/wintercounter/ccss/compare/v5.0.0-alpha.3...v5.0.0) (2021-01-02)
+
+
+### Bug Fixes
+
+* missing grid template value maps ([fd9cb77](https://github.com/wintercounter/ccss/commit/fd9cb774b4b6e28ffee5d2b0da4c66d7f80e70b9))
+
+
+### Features
+
+* use px instead of rem by default ([e4d59b3](https://github.com/wintercounter/ccss/commit/e4d59b3868bf7ad1ff3dec29416c9eec1b3202dc))
+
+
+
+
+
 
 
 **Note:** Version bump only for package @cryptic-css/core

@@ -3,25 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-
-
-**Note:** Version bump only for package ccss
-
-
-
-
-
-
+# [5.0.0](https://github.com/wintercounter/ccss/compare/v5.0.0-alpha.3...v5.0.0) (2021-01-02)
 
 **Note:** Version bump only for package ccss
 
 
 
 
-
-
-
-**Note:** Version bump only for package ccss
 
 
 

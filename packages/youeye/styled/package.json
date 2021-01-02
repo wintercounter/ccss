@@ -1,6 +1,6 @@
 {
     "name": "@you-eye/styled",
-    "version": "5.0.0-alpha.4",
+    "version": "5.0.0",
     "description": "Re-exports styled-components with CCSS support.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/styled#readme",
@@ -68,11 +68,11 @@
         "url": "https://github.com/wintercounter/ccss/issues"
     },
     "peerDependencies": {
-        "@cryptic-css/core": "^3.12.0",
-        "styled-components": "^5.1.1"
+        "@cryptic-css/core": "^3.19.0",
+        "styled-components": "^5.2.1"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^5.0.0-alpha.3"
+        "@cryptic-css/core": "^5.0.0"
     },
     "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
 }

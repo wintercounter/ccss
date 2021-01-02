@@ -1,6 +1,6 @@
 {
     "name": "tailwindccss",
-    "version": "5.0.0-alpha.3",
+    "version": "5.0.0",
     "description": "not tied to rem",
     "main": "dist/cjs/index.js",
     "private": true,
@@ -10,9 +10,9 @@
     "author": "",
     "license": "MIT",
     "peerDependencies": {
-        "@cryptic-css/core": "^3.18.0"
+        "@cryptic-css/core": "^3.19.0"
     },
     "devDependencies": {
-        "@cryptic-css/core": "^3.18.0"
+        "@cryptic-css/core": "^3.19.0"
     }
 }
