@@ -36,12 +36,17 @@ export default class Processor {
 
     isCCSSElement = () => {
         const { node } = this.path
-        const compare = name => t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
+        const compare = (name) =>
+            t.isIdentifier(node.arguments[0], { name }) || node.arguments[0]?.object?.name === name
+
         if (
             t.isCallExpression(node) &&
-            t.isMemberExpression(node.callee) &&
-            t.isIdentifier(node.callee.object, { name: 'React' }) &&
-            t.isIdentifier(node.callee.property, { name: 'createElement' }) &&
+            // runtime: classic
+            ((t.isMemberExpression(node.callee) &&
+                t.isIdentifier(node.callee.object, { name: 'React' }) &&
+                t.isIdentifier(node.callee.property, { name: 'createElement' })) ||
+                // Automatic
+                t.isIdentifier(node.callee, { name: '_jsx' })) &&
             this.componentNames.some(compare) &&
             !node.callee.computed
         ) {
@@ -49,11 +54,11 @@ export default class Processor {
         }
     }
 
-    isCCSSProp = prop => {
+    isCCSSProp = (prop) => {
         return !!this.ccss.registry.get(prop)
     }
 
-    shortifyProps = path => {
+    shortifyProps = (path) => {
         const { ccss } = this
         path.traverse({
             ObjectProperty(p) {
@@ -183,7 +188,7 @@ export default class Processor {
         const { path } = this
         if (path.arrowConverted) return
 
-        const p = path.findParent(p => p.isArrowFunctionExpression())
+        const p = path.findParent((p) => p.isArrowFunctionExpression())
 
         if (p && !t.isBlockStatement(p.node.body)) {
             p.get('body').replaceWith(t.blockStatement([t.returnStatement(p.get('body').node)]))
@@ -195,18 +200,18 @@ export default class Processor {
         const { path } = this
         const { value } = prop
 
-        const arrowParent = path.findParent(p => p.isArrowFunctionExpression())
+        const arrowParent = path.findParent((p) => p.isArrowFunctionExpression())
         if (arrowParent) {
             if (!arrowParent.get('body').isBlockStatement()) {
                 arrowParent.arrowFunctionToExpression()
             }
         }
 
-        const returnPath = path.findParent(p => p.isReturnStatement())
+        const returnPath = path.findParent((p) => p.isReturnStatement())
 
         const fnBody =
             (path.getFunctionParent() || path.getStatementParent()).get('body')?.node?.body || path.scope.block.body
-        const returnStatementIndex = fnBody.findIndex(n => t.isReturnStatement(n))
+        const returnStatementIndex = fnBody.findIndex((n) => t.isReturnStatement(n))
 
         const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id)
         const { expression } = createCCSSToValueCallExpression({
@@ -226,7 +231,12 @@ export default class Processor {
     isSameCallExpressionNode(path, originPath = this.path) {
         return (
             this.path.node ===
-            path.findParent(p => p.isCallExpression() && p.node.callee?.property?.name === 'createElement').node
+            path.findParent((p) => {
+                return (
+                    p.isCallExpression() &&
+                    (p.node.callee?.property?.name === 'createElement' || p.node.callee.name === '_jsx')
+                )
+            }).node
         )
     }
     addProp(name, value, method = 'push') {
@@ -261,9 +271,9 @@ export default class Processor {
             !(t.isUnaryExpression(v) && t.isNumericLiteral(v.argument))
         )
     }
-    isValueTreeStatic = prop => {
+    isValueTreeStatic = (prop) => {
         let foundDynamic = false
-        this.walkTree(prop.value, v => {
+        this.walkTree(prop.value, (v) => {
             foundDynamic = foundDynamic || this.isValueComputed(v)
         })
         return !foundDynamic
@@ -287,14 +297,14 @@ export default class Processor {
     walkTree = (value, cb, method = 'forEach') => {
         const v = value
         if (v.type === 'ObjectExpression') {
-            const newProps = v.properties[method](v => {
+            const newProps = v.properties[method]((v) => {
                 const ret = this.walkTree(v, cb, method)
                 return ret
             })
             v.properties = (newProps || v.properties).filter(Boolean)
             return v
         } else if (v.type === 'ArrayExpression') {
-            v.elements = (v.elements[method](v => this.walkTree(v, cb, method)) || v.elements).filter(Boolean)
+            v.elements = (v.elements[method]((v) => this.walkTree(v, cb, method)) || v.elements).filter(Boolean)
             return v
         } else if (v.type === 'ObjectProperty') {
             v.value = this.walkTree(v.value, cb, method) || v.value
@@ -313,7 +323,7 @@ export default class Processor {
     extractStaticValuesFromArray = (value, prop) => {
         const extracted = []
 
-        value.elements = value.elements.filter(v => {
+        value.elements = value.elements.filter((v) => {
             if (t.isNumericLiteral(v) || t.isStringLiteral(v)) {
                 extracted.push(v.value)
                 return false
@@ -341,7 +351,7 @@ export default class Processor {
     extractStaticValuesFromObject = (value, prop) => {
         const extracted = {}
 
-        value.properties = value.properties.filter(v => {
+        value.properties = value.properties.filter((v) => {
             const _value = v.value
             const _key = v.key.name || v.key.value
 

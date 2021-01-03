@@ -11,28 +11,20 @@ import { MurmurHash2 } from '@/classNameStrategies'
 pluginTester({
     pluginName: 'babel-plugin-ccss',
     plugin,
-    pluginOptions: {
-        components: {
-            DP: {
-                defaultProps: {
-                    'data-ui': true,
-                    display: 'flex'
-                }
-            }
-        }
-    },
+    pluginOptions: {},
     babelOptions: {
-        presets: [require.resolve('@babel/preset-react')],
+        presets: [[require.resolve('@babel/preset-react'), { runtime: 'automatic' }]],
         plugins: [require.resolve('@babel/plugin-syntax-jsx/lib/index.js')]
     },
     filename: __filename,
     tests: [
         {
-            title: 'can add default prop',
-            code: '<DP />;',
-            output: `/*#__PURE__*/
-React.createElement("div", {
-  "data-ui": true,
+            title: 'can handle jsx pragma',
+            code: '<Ui dp="f" />;',
+            output: `import { jsx as _jsx } from "react/jsx-runtime";
+
+/*#__PURE__*/
+_jsx("div", {
   "className": " ${MurmurHash2(`display: flex;`)}"
 });`
         }

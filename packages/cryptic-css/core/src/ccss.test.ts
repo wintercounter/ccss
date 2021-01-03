@@ -47,34 +47,34 @@ describe('ccss tests', () => {
             })
         })
         it('parseSingle', () => {
-            expect(ccss({ ti: 2 })).toBe('text-indent: 2rem;')
+            expect(ccss({ ti: 2 })).toBe('text-indent: 2px;')
         })
         it('parseSingle:object', () => {
-            expect(ccssObject({ ti: 2 })).toStrictEqual({ textIndent: '2rem' })
+            expect(ccssObject({ ti: 2 })).toStrictEqual({ textIndent: '2px' })
         })
         it('parseMultipart', () => {
-            expect(ccss({ m: [1, 2, 3, 4] })).toBe('margin: 1rem 2rem 3rem 4rem ;')
-            expect(ccss({ m: [1, '1:3'] })).toBe('margin: 1rem 1:3 ;')
-            expect(ccss({ m: 10 })).toBe('margin: 10rem;')
+            expect(ccss({ m: [1, 2, 3, 4] })).toBe('margin: 1px 2px 3px 4px ;')
+            expect(ccss({ m: [1, '1:3'] })).toBe('margin: 1px 1:3 ;')
+            expect(ccss({ m: 10 })).toBe('margin: 10px;')
         })
         it('parseMultipart:object', () => {
-            expect(ccssObject({ m: [1, 2, 3, 4] })).toStrictEqual({ margin: '1rem 2rem 3rem 4rem ' })
-            expect(ccssObject({ m: [1, '1:3'] })).toStrictEqual({ margin: '1rem 1:3 ' })
-            expect(ccssObject({ m: 10 })).toStrictEqual({ margin: '10rem' })
+            expect(ccssObject({ m: [1, 2, 3, 4] })).toStrictEqual({ margin: '1px 2px 3px 4px ' })
+            expect(ccssObject({ m: [1, '1:3'] })).toStrictEqual({ margin: '1px 1:3 ' })
+            expect(ccssObject({ m: 10 })).toStrictEqual({ margin: '10px' })
         })
         it('pipe', () => {
-            expect(ccss({ br: 'global' })).toBe('border-radius: 6rem;')
+            expect(ccss({ br: 'global' })).toBe('border-radius: 6px;')
         })
         it('pipe:object', () => {
-            expect(ccssObject({ br: 'global' })).toStrictEqual({ borderRadius: '6rem' })
+            expect(ccssObject({ br: 'global' })).toStrictEqual({ borderRadius: '6px' })
         })
         it('pipe:object with long name', () => {
-            expect(ccssObject({ borderRadius: 'global' })).toStrictEqual({ borderRadius: '6rem' })
+            expect(ccssObject({ borderRadius: 'global' })).toStrictEqual({ borderRadius: '6px' })
         })
         it('pseudo', () => {
             expect(
                 ccss({
-                    '::b': { d: 'b' }
+                    '::b': { dp: 'b' }
                 }).trim()
             ).toBe(`&::before {
         display: block;
@@ -83,7 +83,7 @@ describe('ccss tests', () => {
         it('pseudo:object', () => {
             expect(
                 ccssObject({
-                    '::b': { d: 'b' }
+                    '::b': { dp: 'b' }
                 })
             ).toStrictEqual({
                 '&::before': {
@@ -94,7 +94,7 @@ describe('ccss tests', () => {
         it('pseudo:long', () => {
             expect(
                 ccss({
-                    '::before': { d: 'b' }
+                    '::before': { dp: 'b' }
                 }).trim()
             ).toBe(`&::before {
         display: block;
@@ -103,7 +103,7 @@ describe('ccss tests', () => {
         it('pseudo:long 2', () => {
             expect(
                 ccss({
-                    ':hover': { d: 'b' }
+                    ':hover': { dp: 'b' }
                 }).trim()
             ).toBe(`&:hover {
         display: block;
@@ -151,7 +151,7 @@ describe('ccss tests', () => {
                 ccss({
                     size: 'large'
                 }).trim()
-            ).toBe(`font-size: 32rem;`)
+            ).toBe(`font-size: 32px;`)
         })
 
         it('can use custom prop:object', () => {
@@ -159,7 +159,7 @@ describe('ccss tests', () => {
                 ccssObject({
                     size: 'large'
                 })
-            ).toStrictEqual({ fontSize: '32rem' })
+            ).toStrictEqual({ fontSize: '32px' })
         })
 
         it('can handle disabled unsupported props', () => {
@@ -219,7 +219,7 @@ describe('ccss tests', () => {
         it('can handle functions as value', () => {
             expect(
                 ccssObject({
-                    d: () => 'b'
+                    dp: () => 'b'
                 })
             ).toStrictEqual({ display: 'block' })
         })
@@ -227,9 +227,22 @@ describe('ccss tests', () => {
         it('can handle functions as value:object', () => {
             expect(
                 ccss({
-                    d: () => 'b'
+                    dp: () => 'b'
                 })
             ).toBe(`display: block;`)
+        })
+
+        it('can handle true/false maps', () => {
+            expect(
+                ccss({
+                    op: true
+                })
+            ).toBe(`opacity: 1;`)
+            expect(
+                ccss({
+                    op: false
+                })
+            ).toBe(`opacity: 0;`)
         })
     })
 })

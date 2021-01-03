@@ -54,13 +54,13 @@ function Footer() {
     }
 
     return (
-        <Ui.footer position="r" bg={false} textAlign="center" pB={5} height={80}>
+        <Ui.footer position="r" bg={false} textAlign="center" p={[40, 5, 5, 5]} mq={['d', { o: 'h' }]}>
             <Ui.span c="#fff">
                 CCSS is built with ❤ and inspired by
                 <br />
                 Styled Components, Styled System, Grommet, Linaria and Tailwind CSS
             </Ui.span>
-            <div>
+            <Ui c="white">
                 Icons made by{' '}
                 <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
                     Freepik
@@ -69,7 +69,19 @@ function Footer() {
                 <a href="https://www.flaticon.com/" title="Flaticon">
                     www.flaticon.com
                 </a>
-            </div>
+            </Ui>
+            <Ui
+                P="a"
+                h={1000}
+                w="100%"
+                maxW={2500}
+                margin="0 auto"
+                B={0}
+                L={0}
+                R={0}
+                bg="linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,0), rgba(255,255,255,1) 90%, rgba(255,255,255,1) 100%)"
+                zi={-1}
+            ></Ui>
             <Ui.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1440 320"
@@ -78,10 +90,11 @@ function Footer() {
                 width="100%"
                 left={0}
                 right={0}
-                maxWidth={1920}
+                maxWidth={2500}
                 bottom={0}
                 margin="0 auto"
-                zi={-1}
+                zi={-2}
+                mq={['d', { h: 500, w: 'auto', L: -300, maxW: 10000 }]}
                 child={{
                     path: {
                         /* keyframes: {
@@ -115,7 +128,7 @@ function Footer() {
                         />*/}
                         <stop offset="0%" stopColor="#B5179E" />
                         <stop offset="25%" stopColor="#7209B7" />
-                        <stop offset="50%" stopColor="#560BAD" />
+                        <stop offset="50%" stopColor="#B5179E" />
                         <stop offset="75%" stopColor="#480CA8" />
                         <stop offset="100%" stopColor="#560BAD" />
                     </linearGradient>

@@ -10,15 +10,12 @@ export interface CCSSOutputTransformer extends OutputTransformer {
 
 export declare interface CCSSOptions extends Options {
     /**
-     * Unit to use globally for number values.
-     */
-    unit?: string
-    /**
      * Function the applies unit to a value
      */
     applyUnit?: (value: number) => string
 }
 export declare interface CCSSTransformedFn extends TransformedFn {
+    (InputObject: CCSSProps): Whatever
     options: CCSSOptions
     outputTransformer: CCSSOutputTransformer
 }
@@ -64,7 +61,7 @@ export interface CCSSProps extends Properties {
      * @example
      * ```js
      * child({
-     *   h: { d: 'b' },
+     *   h: { dp: 'b' },
      *   '.childDiv': { p: 10 }
      * })
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'

@@ -39,7 +39,7 @@ React.createElement(Ui, {
             output: `/*#__PURE__*/
 React.createElement(Ui, {
   p: 1,
-  d: "f"
+  dp: "f"
 });`
         },
         {
@@ -47,7 +47,7 @@ React.createElement(Ui, {
             code: '<Ui display={`flex`} />;',
             output: `/*#__PURE__*/
 React.createElement(Ui, {
-  d: \`flex\`
+  dp: \`flex\`
 });`
         },
         {

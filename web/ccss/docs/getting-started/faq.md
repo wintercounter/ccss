@@ -9,7 +9,7 @@ Because it's making your CSS/React components/etc. look _Cryptic_.
 
 ```js live
 ccss({
-    d: 'b',
+    dp: 'b',
     p: 2,
     mt: 3,
     bg: 't'

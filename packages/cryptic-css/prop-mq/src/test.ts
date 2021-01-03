@@ -17,7 +17,7 @@ describe('prop-mq', () => {
                 ]
             })
         ).toBe(
-            'margin: 1rem;@media screen and (min-width: 376px) and (max-width: 639px) { margin: 2rem; }@media screen and (min-width: 640px) and (max-width: 1023px) { margin: 3rem; }'
+            'margin: 1px;@media screen and (min-width: 376px) and (max-width: 639px) { margin: 2px; }@media screen and (min-width: 640px) and (max-width: 1023px) { margin: 3px; }'
         )
     })
 
@@ -31,11 +31,11 @@ describe('prop-mq', () => {
                 ]
             })
         ).toStrictEqual({
-            margin: '1rem',
+            margin: '1px',
             '@media screen and (min-width: 376px) and (max-width: 639px) ': {
-                margin: '2rem'
+                margin: '2px'
             },
-            '@media screen and (min-width: 640px) and (max-width: 1023px) ': { margin: '3rem' }
+            '@media screen and (min-width: 640px) and (max-width: 1023px) ': { margin: '3px' }
         })
     })
 })

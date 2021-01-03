@@ -16,6 +16,8 @@
 -   `d` => `dp`
 -   CLI removed
 -   `rem` => `px` by default
+-   unit option removed
+-   automatic react runtime support
 
 babel-plugin:
 

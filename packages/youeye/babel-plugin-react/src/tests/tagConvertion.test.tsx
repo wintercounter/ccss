@@ -47,7 +47,7 @@ React.createElement("aside", null, "X");`
 
 /*#__PURE__*/
 React.createElement(Ui.aside, _extends({
-  "className": " c1yff5kp"
+  "className": " ${MurmurHash2(`font-size: 1px;`)}"
 }, props), "X");`
         }
     ]

@@ -6,7 +6,7 @@
  */
 import React from 'react'
 
-function TabItem({ children, hidden, className }) {
+function TabItem({ children, hidden, className, lazy }) {
     return (
         <div
             role="tabpanel"
@@ -15,7 +15,7 @@ function TabItem({ children, hidden, className }) {
                 className
             }}
         >
-            {!hidden ? children : null}
+            {(lazy && !hidden) || !lazy ? children : null}
         </div>
     )
 }

@@ -172,8 +172,8 @@ const defaultProps = (): Props => [
     [['ac', 'align-content'], getAligns(), toCSSRuleHandler],
     [['ji', 'justify-items'], getAligns(), toCSSRuleHandler],
     [['jc', 'justify-content'], getAligns(), toCSSRuleHandler],
-    [['aS', 'align-self'], nil, toCSSRuleHandler],
-    [['jS', 'justify-self'], nil, toCSSRuleHandler],
+    [['aS', 'align-self'], getAligns(), toCSSRuleHandler],
+    [['jS', 'justify-self'], getAligns(), toCSSRuleHandler],
 
     // Font + text related
     [['ft', 'font'], nil, toCSSRuleHandler],
@@ -613,7 +613,7 @@ const defaultProps = (): Props => [
             // @ts-ignore
             [true]: 1,
             // @ts-ignore
-            [false]: 0
+            false: 0
         },
         toCSSRuleHandler
     ],

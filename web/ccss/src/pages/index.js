@@ -17,7 +17,7 @@ const ShowMoreLink = ({ children, ...rest }) => {
             <Ui.a learnMore {...rest}>
                 {children}
             </Ui.a>
-            <Ui.span fts={15} c="var(--ifm-link-color)" P="r" T={-1} L={15}>
+            <Ui.span fts={14} c="var(--ifm-link-color)" P="r" T={-2} L={15}>
                 ▶
             </Ui.span>
         </Ui>
@@ -27,16 +27,15 @@ const ShowMoreLink = ({ children, ...rest }) => {
 const Sandbox = () => (
     <Ui className="demo home-tabs" pB={10}>
         <Tabs
-            defaultValue="vanilla"
+            defaultValue="simple"
             values={[
-                { label: 'Vanilla', value: 'vanilla' },
-                { label: 'Extra props', value: 'styled' },
-                { label: 'Custom values', value: 'custe' },
-                { label: 'Custom props', value: 'long' },
-                { label: 'Shared styles', value: 'custom' }
+                { label: 'Simple', value: 'simple' },
+                { label: 'Custom Props and Values', value: 'custom' },
+                { label: 'Shared styles', value: 'shared' },
+                { label: 'YouEye/React', value: 'youeye' }
             ]}
         >
-            <TabItem value="vanilla">
+            <TabItem value="simple">
                 <iframe
                     loading="lazy"
                     src="https://codesandbox.io/embed/ccss-demo-vanilla-js-bhw3z?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
@@ -45,16 +44,16 @@ const Sandbox = () => (
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
             </TabItem>
-            <TabItem value="styled">
+            <TabItem value="custom" lazy>
                 <iframe
                     loading="lazy"
-                    src="https://codesandbox.io/embed/ccss-homepage-demo-05m1v?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                    src="https://codesandbox.io/embed/ccss-demo-custom-props-and-values-1i13q?fontsize=14&hidenavigation=1&theme=dark"
                     title="CCSS Demo - Styled-Components"
                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
             </TabItem>
-            <TabItem value="long">
+            <TabItem value="shared" lazy>
                 <iframe
                     loading="lazy"
                     src="https://codesandbox.io/embed/ccss-homepage-demo-longnames-ehyzg?fontsize=14&hidenavigation=1&theme=dark"
@@ -63,7 +62,7 @@ const Sandbox = () => (
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
             </TabItem>
-            <TabItem value="custom">
+            <TabItem value="youeye" lazy>
                 <iframe
                     loading="lazy"
                     src="https://codesandbox.io/embed/ccss-demo-custom-props-and-values-1i13q?fontsize=14&hidenavigation=1&theme=dark"
@@ -101,7 +100,7 @@ const features = [
                     You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom property your design
                     system requires. Common use cases are colors, font sizes and dimensions.
                 </p>
-                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: 'auto' }]}>
+                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
                     <Ui>
                         <CodeBlock className="js">{`// Setup custom value maps
 
@@ -144,7 +143,7 @@ ccss.setProps([
                         ]}
                     >
                         <TabItem value="gutter">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
                                         Apply a general gutter rule to all your <em>margin</em>, <em>padding</em> and{' '}
@@ -166,33 +165,41 @@ ccss.setProps([
                             </Ui>
                         </TabItem>
                         <TabItem value="ratio">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
                                         Add support for <em>margin</em> and <em>padding</em> to accept ratio value. The{' '}
                                         <em>aspect-ratio</em> CSS property is around the corner now, but before the so
-                                        called <strong>padding hack</strong> was used. This way you can avoid any manual
-                                        calculation you might need and just provide ratio directly.
+                                        called{' '}
+                                        <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank">
+                                            <strong>padding hack</strong>
+                                        </a>{' '}
+                                        was used. Using this plugin you can avoid any manual calculation you might need
+                                        and just provide ratio directly.
                                     </Ui.p>
                                     <ShowMoreLink href="/docs/api-and-packages/plugin-ratio">Learn more</ShowMoreLink>
                                 </Ui>
                                 <Ui>
                                     <Ui editorWrapper>
                                         <CodeBlock className="js" live>{`ccss({
-    paddingTop: '16:9'
+    paddingTop: '16:9',
+    margin: ['4:3', 0, 0, '24:9']
 })`}</CodeBlock>
                                     </Ui>
                                 </Ui>
                             </Ui>
                         </TabItem>
                         <TabItem value="custom">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: 'auto' }]}>
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
                                         Lets create a plugin that adds support to resolve an object path. This is a
                                         popular solution among other libraries. In this example we will add such support
                                         to the <code>background-color</code> property.
                                     </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">
+                                        Check documentation
+                                    </ShowMoreLink>
                                 </Ui>
                                 <Ui>
                                     <Ui editorWrapper>
@@ -203,7 +210,6 @@ ccss.setProps([
 ccss.setProps([
     ['backgroundColor'], null, [
         v => v.split('.').reduce((acc, val) => acc[val], colors),
-        // Keep all existing handlers
         '...'
     ]
 ])`}</CodeBlock>
@@ -230,6 +236,157 @@ ccss.setProps([
                     Add your own custom properties to share, compose, re-use styles and design tokens. Create amazing
                     new features living right inside your CSS.
                 </p>
+                <Ui className="home-tabs" mT={10}>
+                    <Tabs
+                        defaultValue="keyframes"
+                        values={[
+                            { label: 'Keyframes', value: 'keyframes' },
+                            { label: 'Media Query', value: 'mq' },
+                            { label: 'Scroll', value: 'scroll' },
+                            { label: 'Custom', value: 'custom' }
+                        ]}
+                    >
+                        <TabItem value="keyframes">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Using the <code>keyframes</code> prop you can add animation keyframes without
+                                        hassle and worrying about the naming. The generated names with the same values
+                                        are cached to make it reusable.
+                                    </Ui.p>
+                                    <Ui.p
+                                        animation="3s infinite linear"
+                                        keyframes={{
+                                            from: { color: '#000' },
+                                            to: { color: '#fff' }
+                                        }}
+                                    >
+                                        Animated text
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/prop-keyframes">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js" live>{`ccss({
+    animation: '3s infinite',
+    keyframes: {
+        from: { color: '#000' },
+        to: { color: '#fff' }
+    }
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="mq">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        The <code>mediaQuery</code> <em>(shorthands: mq, at)</em> property adds support
+                                        for{' '}
+                                        <a href="https://www.npmjs.com/package/@w11r/use-breakpoint" target="_blank">
+                                            @w11r/use-breakpoint
+                                        </a>
+                                        's breakpoint mechanism. It's an array based solution to maintain the order you
+                                        want for specificity. It comes with built-in, customizable breakpoints for
+                                        various screen sizes and common queries.
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/prop-mq">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js" live>{`ccss({
+    fontSize: 24,
+    at: [
+        ['tablet', { fontSize: 20 }],
+        ['mobile-', { fontSize: 16 }]
+    ]
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="scroll">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        The <code>scroll</code> property can help you to easily make a container
+                                        scrollable. It's a common use-case nowadays on devices to apply horizontal
+                                        scroll to a container of items without any scrollbars.
+                                    </Ui.p>
+                                    <Ui scroll="x" h={150} mq={['small+', { dp: false }]}>
+                                        <Ui dp="grid" gtc="repeat(10, 1fr)">
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                            <Ui fts={80}>🍔</Ui>
+                                        </Ui>
+                                    </Ui>
+                                    <ShowMoreLink href="/docs/api-and-packages/prop-scroll">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper mT={6}>
+                                        <CodeBlock className="js" live>{`ccss({
+    scroll: 'x'
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="custom">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        This code will will add a property named <code>icon</code>. It has 2 parts: a
+                                        value map that will resolve the icon's character code, and a handler that will
+                                        emit the necessary CSS.
+                                        <br />
+                                        <br />
+                                        In this example we're using UTF-8 icons, but the method can work with icon fonts
+                                        or any other way, it's up to you to define how it works.
+                                    </Ui.p>
+                                    <Ui.p>
+                                        I always eat a <Ui.span icon="hamburger" /> before I ride my{' '}
+                                        <Ui.span icon="rocket" />!
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">
+                                        Check documentation
+                                    </ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js">{`const icons = {
+    hamburger: '🍔',
+    rocket: '🚀'
+}
+
+const handler = (value, key, transformedFn) =>
+    transformedFn({
+        '::before': {
+            content: \`"\${value}"\`
+        }
+    })
+
+ccss.setProps([
+    [['icon'], icons, [handler]]
+])`}</CodeBlock>
+                                    </Ui>
+                                    <Ui editorWrapper mT={6}>
+                                        <CodeBlock className="js" live>{`ccss({
+    icon: 'rocket'
+})`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                    </Tabs>
+                </Ui>
             </>
         )
     },
@@ -237,43 +394,109 @@ ccss.setProps([
         title: <>Shorthands</>,
         imageUrl: 'svg/v5/arrows.svg',
         description: (
-            <p>
-                Work less do more! CCSS comes with shorthands for <Ui.span ftw={900}>all</Ui.span> CSS properties. Both{' '}
-                <a href="https://styled-system.com/" target="_blank">
-                    Styled System
-                </a>{' '}
-                and{' '}
-                <a href="https://tailwindcss.com/" target="_blank">
-                    Tailwind CSS
-                </a>{' '}
-                are coming with some shorthands out of the box. CCSS gives you the ability to use shorthands for both
-                property names and/or values. Mix to your liking for rapid development.
-            </p>
+            <>
+                <p>
+                    Work less do more! CCSS comes with shorthands for <Ui.span ftw={900}>all</Ui.span> CSS properties.
+                    Both{' '}
+                    <a href="https://styled-system.com/" target="_blank">
+                        Styled System
+                    </a>{' '}
+                    and{' '}
+                    <a href="https://tailwindcss.com/" target="_blank">
+                        Tailwind CSS
+                    </a>{' '}
+                    are coming with some shorthands out of the box. CCSS gives you the ability to use shorthands for
+                    both property names and/or values. Mix to your liking for rapid development.
+                </p>
+                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
+                    <Ui>
+                        <Ui editorWrapper>
+                            <CodeBlock className="js" live>{`ccss({ p: 1, m: 2, f: 1, ai: 'c' })`}</CodeBlock>
+                        </Ui>
+                    </Ui>
+                    <Ui>
+                        <Ui editorWrapper>
+                            <CodeBlock className="js" live>{`ccss({
+    position: 'r',
+    alignItems: 'c'
+})`}</CodeBlock>
+                        </Ui>
+                    </Ui>
+                </Ui>
+            </>
         )
     },
     {
         title: <>Plug n' Play</>,
         imageUrl: 'svg/v5/plug.svg',
         description: (
-            <p>
-                Use CCSS in any existing codebase where you can apply CSS string/objects in JS. No matter what unit
-                system (em, rem, px, etc.) you use, CCSS supports any unit you need.
-            </p>
+            <>
+                <p>
+                    Use CCSS in any existing codebase where you can apply CSS string or Style object in JS. No matter
+                    what unit system (em, rem, px, etc.) you use, CCSS supports any unit you need.
+                </p>
+                <p>You may introduce design tokens to a monolithic codebase using multiple styling solutions.</p>
+                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
+                    <Ui>
+                        <Ui editorWrapper>
+                            <CodeBlock className="js">{`import styled from 'styled-components'
+
+const MyComponent = styled.div\`
+    \${ccss({
+        width: 'site-container',
+        color: 'dark',
+        icon: 'rocket'
+    })}
+\``}</CodeBlock>
+                        </Ui>
+                    </Ui>
+                    <Ui>
+                        <Ui editorWrapper>
+                            <CodeBlock className="js">{`import jss from 'jss'
+
+const styles = {
+  button: ccss({
+    color: 'dark',
+    ':hover': {
+      color: 'light'
+    }
+  })
+}
+
+const { classes } = jss.createStyleSheet(styles).attach()
+
+document.body.innerHTML = \`
+  <button class="\${classes.button}">Button</button>
+\``}</CodeBlock>
+                        </Ui>
+                    </Ui>
+                </Ui>
+            </>
         )
     },
     {
         title: <>Performance</>,
         imageUrl: 'svg/v5/speed.svg',
         description: (
-            <p>
-                CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
-                dynamically at runtime will always have its costs. During the development of <strong>CCSS</strong>{' '}
-                strict decisions and various micro-optimizations have been made to ensure it won't affect performance
-                seriously. The included features are limited to maintain speed and simplicity.
-            </p>
+            <>
+                <p>
+                    CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling
+                    CSS dynamically at runtime will always have its costs.
+                </p>
+                <p>
+                    During the development of <strong>CCSS</strong> strict decisions and various micro-optimizations
+                    have been made to ensure it won't affect performance seriously. The included features are limited to
+                    maintain speed and simplicity.
+                </p>
+                <p>
+                    Another area kept in mind is static extraction. Using <code>@you-eye/babel-plugin-react</code>{' '}
+                    you're able to static <b>(and even dynamic)</b> extract your <code>Ui</code> components, and replace
+                    them with native DOM elements with CSS classes in your production bundle.
+                </p>
+            </>
         )
-    },
-    {
+    }
+    /*{
         title: <>Tooling</>,
         imageUrl: 'svg/v5/hammer.svg',
         description: (
@@ -284,8 +507,8 @@ ccss.setProps([
                 seriously. The included features are limited to maintain speed and simplicity.
             </p>
         )
-    },
-    {
+    }*/
+    /* {
         title: <>Made with CCSS</>,
         imageUrl: 'svg/v5/made.svg',
         description: (
@@ -296,9 +519,9 @@ ccss.setProps([
                 seriously. The included features are limited to maintain speed and simplicity.
             </p>
         )
-    },
+    }*/
     // hmm
-    {
+    /*{
         title: <>What CCSS means?</>,
         imageUrl: 'svg/018-magnifying-glass.svg',
         description: (
@@ -506,7 +729,7 @@ ccss.setProps([
                 </div>
             </>
         )
-    }
+    }*/
 ]
 
 function Feature({ id, imageUrl, title, description, icon, i }) {
@@ -528,23 +751,28 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
     }, [inView])
     return (
         <>
-            <Ui.div ref={ref} id={id || `feature${i}`} mT={35} child={{ p: { fts: 24, ftw: 500, maxWidth: 900 } }}>
+            <Ui.div
+                ref={ref}
+                id={id || `feature${i}`}
+                o="h"
+                mT={35}
+                child={{ p: { fts: 24, ftw: 500, maxWidth: 900 } }}
+                pT={3}
+            >
                 <div className="myContainer">
                     <div className="row">
                         <div className="col col--12">
                             <div className="row">
-                                <Ui.div mR={6} mL={3}>
+                                <Ui.div mR={6} mL={3} mq={['d', { mL: 0 }]}>
                                     <Ui.div
                                         dp="ib"
                                         P="r"
                                         T={-7}
                                         ref={imgRef}
-                                        style={{
-                                            transition: 'all .3s ease-out',
-                                            opacity: 0,
-                                            transform: 'translateX(-200px) rotate(-180deg)',
-                                            transformOrigin: '50% 50%'
-                                        }}
+                                        transition={'all .3s ease-out'}
+                                        opacity={0}
+                                        transform={'translateX(-200px) rotate(-180deg)'}
+                                        transformOrigin={'50% 50%'}
                                     >
                                         {imageUrl && (
                                             <Ui.img
@@ -561,11 +789,10 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                     flex="1 0"
                                     width="100%"
                                     ref={contentRef}
-                                    style={{
-                                        transition: 'all .3s ease-out',
-                                        opacity: 0,
-                                        transform: 'translateX(200px)'
-                                    }}
+                                    transition={'all .3s ease-out'}
+                                    opacity={0}
+                                    transform={'translateX(200px)'}
+                                    mq={['d', { flex: 'none' }]}
                                 >
                                     <Ui.h3 color="#000" fts={52} ftw={900} mB={6} ta="l">
                                         {title}
@@ -587,12 +814,12 @@ function Home() {
 
     return (
         <Layout title="Home" description="Your companion to the journey of your next CSS-in-JS solution.">
-            <Ui.header position="relative" paddingTop="clamp(30px, calc(100vh - 1112px), 220px)">
+            <Ui.header P="relative" pT="clamp(30px, calc(100vh - 1112px), 220px)" o="h" mq={['d', { pT: 10 }]}>
                 <Ui className="myContainer" width="100%" maxWidth={1398} margin="0 auto">
                     <Ui.h1 mB={10}>
                         <img width={300} src="img/logo.png" alt="CrypticCSS" title="CCSS" />
                     </Ui.h1>
-                    <Ui.p fts={54} fontWeight={900} lh={1.25} mB={5} color="black">
+                    <Ui.p fts={54} fontWeight={900} lh={1.25} mB={5} color="black" mq={['d', { fts: 38 }]}>
                         {siteConfig.tagline}
                     </Ui.p>
                     <Ui.p fts={24} lh={1.5} mB={10} fontWeight={500}>
@@ -664,6 +891,7 @@ function Home() {
                     maxWidth={3520}
                     margin="0 auto"
                     zIndex={-1}
+                    at={['d', { h: 700 }]}
                     child={{
                         path: {
                             keyframes: {

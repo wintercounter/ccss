@@ -20,7 +20,7 @@ export interface CCSSProps extends AnyProp {
      * @example
      * ```js
      * child({
-     *   h: { d: 'b' },
+     *   h: { dp: 'b' },
      *   '.childDiv': { p: 10 }
      * })
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'

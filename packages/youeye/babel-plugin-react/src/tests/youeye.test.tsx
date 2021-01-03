@@ -2061,7 +2061,7 @@ pluginTester({
                         black: 900
                     },
                     Family: {
-                        Global: "1.4rem / 1 'Roboto', sans-serif"
+                        Global: "1.4px / 1 'Roboto', sans-serif"
                     }
                 },
                 Color: {
@@ -2216,7 +2216,7 @@ pluginTester({
                     SiteOffset: 16,
                     HeaderHeight: 50,
                     HeaderBorderHeight: 2,
-                    LoaderContainerHeight: 'calc(100vh - var(--dim-HeaderHeight) - 5rem - var(--dim-FooterHeight))',
+                    LoaderContainerHeight: 'calc(100vh - var(--dim-HeaderHeight) - 5px - var(--dim-FooterHeight))',
                     ModelPageMinHeight: '100vh'
                 },
                 CssVars: {
@@ -2236,8 +2236,8 @@ pluginTester({
                     },
                     Input: {
                         None: '',
-                        Default: '4.0rem',
-                        Full: '50rem'
+                        Default: '4.0px',
+                        Full: '50px'
                     }
                 },
                 StatusIndicator: {
@@ -3475,7 +3475,7 @@ pluginTester({
                         GridGap: 0,
                         GridDesktopTemplate: '4fr 4fr 4fr',
                         GridMobileTemplate: '4fr 4fr 4fr',
-                        GridMainContentHeaderTemplate: '6.6rem 11fr 2fr'
+                        GridMainContentHeaderTemplate: '6.6px 11fr 2fr'
                     },
                     SiteFooter: {
                         Primary: {
@@ -3547,12 +3547,12 @@ pluginTester({
                             Layout: {
                                 Send: 16,
                                 SendTextTransform: 'capitalize',
-                                InputRadius: '0.4rem 0rem 0rem 0.4rem',
+                                InputRadius: '0.4px 0px 0px 0.4px',
                                 InputRadiusUnfocused: 4
                             },
                             SendButton: {
                                 Background: 'rgba(0,0,0,0.25) !important',
-                                Radius: '0rem 0.4rem 0.4rem 0rem'
+                                Radius: '0px 0.4px 0.4px 0px'
                             }
                         },
                         ControlOverlay: {

@@ -159,6 +159,18 @@ html[data-theme='dark'] {
     transition: all 0.3s ease-out;
 }
 
+
+@media screen and (max-width: 996px) {
+    .home-tabs ul {
+        flex-wrap: wrap;
+        font-size: 20px;
+    }
+    .home-tabs ul li {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+}
+
 [class^='mdxCodeBlock'] {
     overflow: hidden;
     border-radius: 4px;

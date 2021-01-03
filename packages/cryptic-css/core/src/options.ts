@@ -1,17 +1,14 @@
-import { Options } from 'transformed'
+import { CCSSOptions } from './types'
 
-const defaultOptions = (): Partial<Options> => {
-    const options = {
-        // InOut options
-        // Convert CSS properties to camel case
+const defaultOptions = (): Partial<CCSSOptions> => {
+    return {
         autoCamelCase: true,
-        // CCSS options
-        unit: 'px',
+
+        // CCSS Options
         applyUnit(n) {
-            return `${n}${this.unit}`
+            return `${n}px`
         }
     }
-    return options
 }
 
 export default defaultOptions

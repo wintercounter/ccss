@@ -11,6 +11,6 @@ describe('ccss', () => {
                 ftw: 'b',
                 m: [10, 0]
             })
-        ).toBe('text-align: center;color: #fff;font-size: 40rem;font-weight: bold;margin: 50rem 0 ;')
+        ).toBe('text-align: center;color: #fff;font-size: 40px;font-weight: bold;margin: 50px 0 ;')
     })
 })

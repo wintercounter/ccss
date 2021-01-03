@@ -22,7 +22,7 @@ describe('prop-keyframes tests', () => {
     width: 0;
 }
 to {
-    width: 100rem;
+    width: 100px;
 }
 
 }`)
@@ -42,7 +42,7 @@ to {
     width: 0;
 }
 to {
-    width: 100rem;
+    width: 100px;
 }
 
 }`)
@@ -62,7 +62,7 @@ to {
     width: 0;
 }
 to {
-    width: 101rem;
+    width: 101px;
 }
 
 }`)

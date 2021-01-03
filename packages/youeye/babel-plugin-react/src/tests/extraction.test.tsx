@@ -8,7 +8,7 @@ import pluginTester from 'babel-plugin-tester/pure'
 import plugin from '@'
 import { MurmurHash2 } from '@/classNameStrategies'
 import ccss, { toCSSRule } from '@cryptic-css/core'
-import propMq from '../../../prop-mq'
+import propMq from '../../../../cryptic-css/prop-mq'
 
 // Set a non-ccss context prop
 ccss.setProps([[['non'], null, [toCSSRule], { ccssContext: false }]]).use(propMq)
@@ -59,7 +59,7 @@ React.createElement("aside", null, "X");`
             code: '<Ui fontSize={1} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  "className": " ${MurmurHash2(`font-size: 1rem;`)}"
+  "className": " ${MurmurHash2(`font-size: 1px;`)}"
 });`
         },
         {
@@ -67,7 +67,7 @@ React.createElement("div", {
             code: '<Ui fontSize={1} className="foo" />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  className: "foo ${MurmurHash2(`font-size: 1rem;`)}"
+  className: "foo ${MurmurHash2(`font-size: 1px;`)}"
 });`
         },
         {
@@ -75,7 +75,7 @@ React.createElement("div", {
             code: '<Ui fontSize={1} className={foo} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  className: "${MurmurHash2(`font-size: 1rem;`)} " + foo
+  className: "${MurmurHash2(`font-size: 1px;`)} " + foo
 });`
         },
         {
@@ -83,7 +83,7 @@ React.createElement("div", {
             code: '<Ui fontSize={1} className={foo || bar} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  className: "${MurmurHash2(`font-size: 1rem;`)} " + (foo || bar)
+  className: "${MurmurHash2(`font-size: 1px;`)} " + (foo || bar)
 });`
         },
         {
@@ -91,7 +91,7 @@ React.createElement("div", {
             code: '<Ui fontSize={1} className={`hur${ka}`} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  className: "${MurmurHash2(`font-size: 1rem;`)} " + \`hur\${ka}\`
+  className: "${MurmurHash2(`font-size: 1px;`)} " + \`hur\${ka}\`
 });`
         },
         {
@@ -99,7 +99,7 @@ React.createElement("div", {
             code: '<Ui fontSize={1} width={100} className={foo} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  className: "${MurmurHash2(`font-size: 1rem;`)} ${MurmurHash2(`width: 100rem;`)} " + foo
+  className: "${MurmurHash2(`font-size: 1px;`)} ${MurmurHash2(`width: 100px;`)} " + foo
 });`
         },
         {
@@ -113,13 +113,13 @@ React.createElement("div", {
         {
             title: 'can extract computed literal',
             code: '<Ui display={`blo${ck}`} />;',
-            output: `var _ref = __ccss.toValue("d", \`blo\${ck}\`);
+            output: `var _ref = __ccss.toValue("dp", \`blo\${ck}\`);
 
 /*#__PURE__*/
 React.createElement("div", {
-  "className": " ${MurmurHash2(`display: var(--v-d);`)}",
+  "className": " ${MurmurHash2(`display: var(--v-dp);`)}",
   "style": {
-    "--v-d": _ref
+    "--v-dp": _ref
   }
 });`
         },
@@ -128,7 +128,7 @@ React.createElement("div", {
             code: '<Ui margin={[1,2,3,4]} />;',
             output: `/*#__PURE__*/
 React.createElement("div", {
-  "className": " ${MurmurHash2(`margin: 1rem 2rem 3rem 4rem ;`)}"
+  "className": " ${MurmurHash2(`margin: 1px 2px 3px 4px ;`)}"
 });`
         },
         {
@@ -138,7 +138,7 @@ React.createElement("div", {
 React.createElement("div", {
   "className": " ${MurmurHash2(`
     div {
-        font-size: 1rem;
+        font-size: 1px;
     }`)}"
 });`
         },
@@ -286,7 +286,7 @@ React.createElement("div", {
             code: `<Ui width={-1} />;`,
             output: `/*#__PURE__*/
 React.createElement("div", {
-  "className": " ${MurmurHash2(`width: -1rem;`)}"
+  "className": " ${MurmurHash2(`width: -1px;`)}"
 });`
         },
         {
@@ -302,7 +302,7 @@ React.createElement("div", {
   return React.createElement(Ui.button, _extends({
     "className": " ${MurmurHash2('background: transparent;')}"
   }, props), React.createElement("figure", {
-    "className": " ${MurmurHash2('width: 24rem;')}"
+    "className": " ${MurmurHash2('width: 24px;')}"
   }));
 };`
         },
@@ -319,7 +319,7 @@ React.createElement(Ui, props);`
 
 /*#__PURE__*/
 React.createElement(Ui, _extends({
-  "className": " ${MurmurHash2(`width: 1rem;`)}"
+  "className": " ${MurmurHash2(`width: 1px;`)}"
 }, props));`
         },
         {
@@ -329,7 +329,7 @@ React.createElement(Ui, _extends({
 
 /*#__PURE__*/
 React.createElement(Ui, _extends({}, props, {
-  className: "csurma ${MurmurHash2(`width: 1rem;`)}"
+  className: "csurma ${MurmurHash2(`width: 1px;`)}"
 }));`
         },
         {

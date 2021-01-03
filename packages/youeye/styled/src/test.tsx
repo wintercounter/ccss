@@ -11,7 +11,6 @@ const objectStyled = createStyledCCSS(ccssObject)
 
 export const objectCcss = objectStyled.ccss
 export const ObjectUi = objectStyled.Ui
-export const objectCcssd = objectStyled.ccssd
 
 describe('styled-components', () => {
     it('support native styled components', () => {
@@ -22,7 +21,7 @@ describe('styled-components', () => {
                 }),
             ccss
         )
-        const wrapper = mount(<Cmp d="f" />)
+        const wrapper = mount(<Cmp dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('color', 'white')
@@ -37,7 +36,7 @@ describe('styled-components', () => {
                 }),
             objectCcss
         )
-        const wrapper = mount(<Cmp d="f" />)
+        const wrapper = mount(<Cmp dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('color', 'white')
@@ -45,14 +44,14 @@ describe('styled-components', () => {
     })
 
     it('works as prepared Ui component', () => {
-        const wrapper = mount(<Ui d="f" />)
+        const wrapper = mount(<Ui dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('display', 'flex')
     })
 
     it('works as prepared Ui component:object', () => {
-        const wrapper = mount(<ObjectUi d="f" />)
+        const wrapper = mount(<ObjectUi dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('display', 'flex')
@@ -64,7 +63,7 @@ describe('styled-components', () => {
                 c: 'white'
             })
         )
-        const wrapper = mount(<Cmp d="f" />)
+        const wrapper = mount(<Cmp dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('color', 'white')
@@ -77,55 +76,7 @@ describe('styled-components', () => {
                 c: 'white'
             })
         )
-        const wrapper = mount(<Cmp d="f" />)
-        const div = wrapper.find('div')
-
-        expect(div).toHaveStyleRule('color', 'white')
-        expect(div).toHaveStyleRule('display', 'flex')
-    })
-
-    it('works as prepared ccssd component', () => {
-        const Cmp = ccssd({
-            c: 'white'
-        })
-
-        const wrapper = mount(<Cmp d="f" />)
-        const div = wrapper.find('div')
-
-        expect(div).toHaveStyleRule('color', 'white')
-        expect(div).toHaveStyleRule('display', 'flex')
-    })
-
-    it('works as prepared ccssd component:object', () => {
-        const Cmp = objectCcssd({
-            c: 'white'
-        })
-
-        const wrapper = mount(<Cmp d="f" />)
-        const div = wrapper.find('div')
-
-        expect(div).toHaveStyleRule('color', 'white')
-        expect(div).toHaveStyleRule('display', 'flex')
-    })
-
-    it('works as prepared, tagged ccssd component', () => {
-        const Cmp = ccssd.div({
-            c: 'white'
-        })
-
-        const wrapper = mount(<Cmp d="f" />)
-        const div = wrapper.find('div')
-
-        expect(div).toHaveStyleRule('color', 'white')
-        expect(div).toHaveStyleRule('display', 'flex')
-    })
-
-    it('works as prepared, tagged ccssd component:object', () => {
-        const Cmp = objectCcssd.div({
-            c: 'white'
-        })
-
-        const wrapper = mount(<Cmp d="f" />)
+        const wrapper = mount(<Cmp dp="f" />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('color', 'white')
@@ -133,14 +84,14 @@ describe('styled-components', () => {
     })
 
     it('can use child', () => {
-        const wrapper = mount(<Ui child={{ ':h': { d: 'f' } }} />)
+        const wrapper = mount(<Ui child={{ ':h': { dp: 'f' } }} />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('display', 'flex', { modifier: ':hover' })
     })
 
     it('can use child:object', () => {
-        const wrapper = mount(<ObjectUi child={{ ':h': { d: 'f' } }} />)
+        const wrapper = mount(<ObjectUi child={{ ':h': { dp: 'f' } }} />)
         const div = wrapper.find('div')
 
         expect(div).toHaveStyleRule('display', 'flex', { modifier: ':hover' })
