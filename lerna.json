@@ -1,9 +1,8 @@
 {
     "packages": [
         "packages/cryptic-css/*",
-        "packages/tailwind/*",
         "packages/youeye/*"
     ],
-    "version": "5.0.0",
+    "version": "5.0.1",
     "conventionalCommits": true
 }

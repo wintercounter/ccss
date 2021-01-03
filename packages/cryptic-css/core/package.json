@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/core",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
@@ -78,6 +78,6 @@
     "dependencies": {
         "@ungap/global-this": "^0.4.3",
         "csstype": "^3.0.5",
-        "transformed": "^1.1.1"
+        "transformed": "^1.1.4"
     }
 }
