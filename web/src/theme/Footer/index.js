@@ -54,13 +54,13 @@ function Footer() {
     }
 
     return (
-        <Ui.footer position="r" bg={false} textAlign="center" p={[40, 5, 5, 5]} mq={['d', { o: 'h' }]}>
-            <Ui.span c="#fff">
-                CCSS is built with ❤ and inspired by
+        <Ui.footer position="r" textAlign="center" p={[40, 5, 5, 5]} mq={['d', { o: 'h' }]}>
+            <Ui.span c="#888">
+                built with ❤ and inspired by
                 <br />
                 Styled Components, Styled System, Grommet, Linaria and Tailwind CSS
             </Ui.span>
-            <Ui c="white">
+            <Ui c="#888">
                 Icons made by{' '}
                 <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
                     Freepik
@@ -70,75 +70,6 @@ function Footer() {
                     www.flaticon.com
                 </a>
             </Ui>
-            <Ui
-                P="a"
-                h={1000}
-                w="100%"
-                maxW={2500}
-                margin="0 auto"
-                B={0}
-                L={0}
-                R={0}
-                bg="linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,0), rgba(255,255,255,1) 90%, rgba(255,255,255,1) 100%)"
-                zi={-1}
-            ></Ui>
-            <Ui.svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1440 320"
-                objectFit="cover"
-                position="absolute"
-                width="100%"
-                left={0}
-                right={0}
-                maxWidth={2500}
-                bottom={0}
-                margin="0 auto"
-                zi={-2}
-                mq={['d', { h: 500, w: 'auto', L: -300, maxW: 10000 }]}
-                child={{
-                    path: {
-                        /* keyframes: {
-                            '0%, 100%': {
-                                d: `path('M0,256L60,240C120,224,240,192,360,186.7C480,181,600,203,720,197.3C840,192,960,160,1080,138.7C1200,117,1320,107,1380,101.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z')`
-                            },
-                            '30%': {
-                                d: `path('M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,90.7C840,85,960,107,1080,122.7C1200,139,1320,149,1380,154.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z')`
-                            },
-                            '60%': {
-                                d: `path('M0,128L60,138.7C120,149,240,171,360,176C480,181,600,171,720,192C840,213,960,267,1080,261.3C1200,256,1320,192,1380,160L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z')`
-                            }
-                        },
-                        animationDuration: '60s',
-                        animationIterationCount: 'infinite',
-                        animationTimingFunction: 'linear',*/
-                        fill: 'url(#waveGradientFooter)'
-                    }
-                }}
-            >
-                <defs>
-                    <linearGradient id="waveGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
-                        {/*  <animateTransform
-                            attributeName="gradientTransform"
-                            attributeType="XML"
-                            type="rotate"
-                            values="0;-360"
-                            repeatCount="indefinite"
-                            dur="30s"
-                            additive="sum"
-                        />*/}
-                        <stop offset="0%" stopColor="#B5179E" />
-                        <stop offset="25%" stopColor="#7209B7" />
-                        <stop offset="50%" stopColor="#B5179E" />
-                        <stop offset="75%" stopColor="#480CA8" />
-                        <stop offset="100%" stopColor="#560BAD" />
-                    </linearGradient>
-                </defs>
-                <path
-                    d="M0,256L60,240C120,224,240,192,360,186.7C480,181,600,203,720,197.3C840,192,960,160,1080,138.7C1200,117,1320,107,1380,101.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                    fill="#0099ff"
-                    fillOpacity="1"
-                />
-            </Ui.svg>
         </Ui.footer>
     )
 }
