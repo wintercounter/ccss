@@ -28,8 +28,8 @@ const configs = {
                 },
                 items: [
                     { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
-                    { to: 'docs/api-and-packages/core', label: 'YouEye', position: 'left' },
-                    { to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },
+                    /*  { to: 'docs/api-and-packages/core', label: 'YouEye', position: 'left' },
+                    { to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },*/
                     {
                         href: 'https://github.com/wintercounter/ccss',
                         label: 'GitHub',
@@ -62,6 +62,7 @@ const configs = {
                 '@docusaurus/preset-classic',
                 {
                     docs: false,
+                    pages: false,
                     theme: {
                         customCss: require.resolve('./src/css/custom.css')
                     }
@@ -81,6 +82,13 @@ const configs = {
                     sidebarPath: require.resolve('./docs/ccss/sidebars.js'),
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true
+                }
+            ],
+            [
+                '@docusaurus/plugin-content-pages',
+                {
+                    path: 'src/pages/ccss',
+                    routeBasePath: '/'
                 }
             ]
         ]
