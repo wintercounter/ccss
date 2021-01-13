@@ -50,6 +50,17 @@
     scroll-behavior: smooth;
 }
 
+.alert {
+    --ifm-alert-border-color: #a2ffd7;
+    --ifm-alert-background-color: #a2ffd7;
+    --ifm-alert-color: #000;
+}
+
+.admonition-icon svg {
+    fill: #000;
+    margin-right: 5px;
+}
+
 [hidden] iframe {
     display: none;
 }

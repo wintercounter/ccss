@@ -26,8 +26,8 @@ ccss({
 > Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
-import ccss from 'packages/cryptic-css/core/dist/cjs/index'
-import propScroll from 'packages/cryptic-css/prop-scroll/dist/index'
+import ccss from '@cryptic-css/core'
+import propScroll from '@cryptic-css/prop-scroll'
 
 ccss.use(propScroll)
 ```

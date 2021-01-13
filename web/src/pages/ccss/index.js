@@ -30,9 +30,9 @@ const Sandbox = () => (
             defaultValue="simple"
             values={[
                 { label: 'Simple', value: 'simple' },
-                { label: 'Custom Props and Values', value: 'custom' },
-                { label: 'Shared styles', value: 'shared' },
-                { label: 'YouEye/React', value: 'youeye' }
+                { label: 'Custom Props and Values', value: 'custom' }
+                /*{ label: 'Shared styles', value: 'shared' },
+                { label: 'YouEye/React', value: 'youeye' }*/
             ]}
         >
             <TabItem value="simple">
@@ -366,8 +366,8 @@ ccss.setProps([
     rocket: '🚀'
 }
 
-const handler = (value, key, transformedFn) =>
-    transformedFn({
+const handler = value =>
+    ccss({
         '::before': {
             content: \`"\${value}"\`
         }

@@ -16,20 +16,25 @@ ccss({
 })
 ```
 
+## Why should I use this instead of normal style objects/CSS?
+
+CCSS does look useless by default on its own. It's usefulness comes in cases you need to implement design systems,
+shared design tokens, need custom properties/values, want to use shorthands, want to build a custom CSS-in-JS tool,
+and other advanced scenarios.
+
 ## What is the approach?
 
-The simplified answer: We have a property- and a value-map where we can apply our own handler functions
+The simplified answer: a property- and a value-map where you can apply your own handler functions
 on each value, generating a final output.
 
-## Won't be this hard to understand?
+## Isn't using short names being an anti-pattern?
 
-We think that you need a relatively short time to get comfortable with it.
-If you know CSS, you know the shorthands as well.
-However, we also have a focus on developer experience. We're providing
-TypeScript definitions and TSDoc for all props to help your work.
-You'll have nice autocomplete and a list of possible options.
+We think that you need a relatively short time to get comfortable with it, but anyway, it's optional.
+If you know CSS, you know the shorthands as well. Many tools out in the wild already provide shorthands for some
+popular CSS properties (margin, padding, etc.). We want to have this option for all.
 
-## What is the difference between plugins and props?
+## What is the difference between plugins, props and extensions?
 
--   **Plugins**: Manipulating values on existing props.
--   **Props**: Adding support for new custom props.
+-   **Plugins**: Manipulates values of existing props.
+-   **Props**: Adds support for new custom props.
+-   **Extensions**: Adds new features by using both custom props and plugins.

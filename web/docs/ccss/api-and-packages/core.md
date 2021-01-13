@@ -3,12 +3,13 @@ id: core
 title: '@cryptic-css/core'
 ---
 
-The core of **CCSS** and APIs for extending it with new features. It includes support for all CSS properties.
+The core of **CCSS** and APIs for extending it with new features. Includes support for all CSS properties.
 
-## `ccss` (default export)
+## Exports
 
-Awaits a style object and returns a CSS string.
-Not registered keys will be ignored.
+### `ccss` (default export)
+
+Awaits a style object and returns a CSS string.  Not registered keys will be ignored by default.
 
 ```js
 import ccss from 'ccss'
@@ -20,13 +21,13 @@ ccss({
 })
 ```
 
-## `createCCSS(defaultOptions?)`
+### `createCCSS(defaultOptions?)`
 
-Creates a custom **CCSS** function with your own configuration. Calling this in most cases is completely
+Create a custom **CCSS** function with your own configuration. Calling this in most cases is completely
 unnecessary, it's only needed if you want to use multiple CCSS instances at once.
 
 ```js
-import { createCCSS } from 'packages/cryptic-css/core/dist/cjs/index'
+import { createCCSS } from '@cryptic-css/core'
 
 const ccss = createCCSS()
 ```

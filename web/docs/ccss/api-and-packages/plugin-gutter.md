@@ -24,8 +24,8 @@ Adds support to use predefined gutter values. This important in design systems f
 ## Usage
 
 ```js
-import ccss from 'packages/cryptic-css/core/dist/cjs/index'
-import pluginGutter from 'packages/cryptic-css/plugin-gutter/dist/index'
+import ccss from '@cryptic-css/core'
+import pluginGutter from '@cryptic-css/plugin-gutter'
 
 ccss.use(pluginGutter)
 ```
@@ -59,8 +59,8 @@ It defines the size of 1 gutter (uses the defined `applyUnit` core option).
 > Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
-import ccss from 'packages/cryptic-css/core/dist/cjs/index'
-import pluginGutter from 'packages/cryptic-css/plugin-gutter/dist/index'
+import ccss from '@cryptic-css/core'
+import pluginGutter from '@cryptic-css/plugin-gutter'
 
 ccss.setOptions({
     gutter: 10

@@ -32,8 +32,8 @@ ccss({
 > Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
-import ccss from 'packages/cryptic-css/core/dist/cjs/index'
-import pluginRatio from 'packages/cryptic-css/plugin-ratio/dist/index'
+import ccss from '@cryptic-css/core'
+import pluginRatio from '@cryptic-css/plugin-ratio'
 
 ccss.use(pluginRatio)
 ```

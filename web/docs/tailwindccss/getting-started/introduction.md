@@ -27,7 +27,7 @@ ccss({
 
 ```js
 import { createCCSS, createOptions } from 'packages/core/dist/cjs/index'
-import applyPropScroll from 'packages/cryptic-css/prop-scroll/dist/index'
+import applyPropScroll from '@cryptic-css/prop-scroll'
 
 const options = createOptions()
 applyPropScroll(options)

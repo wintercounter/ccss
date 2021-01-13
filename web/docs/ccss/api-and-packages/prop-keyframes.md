@@ -24,8 +24,8 @@ ccss({
 > Skip this step if you don't need custom configuration and/or **CCSS** instance.
 
 ```js
-import ccss from 'packages/cryptic-css/core/dist/cjs/index'
-import propKeyframes from 'packages/cryptic-css/prop-keyframes/dist/index'
+import ccss from '@cryptic-css/core'
+import propKeyframes from '@cryptic-css/prop-keyframes'
 
 ccss.use(propKeyframes)
 ```

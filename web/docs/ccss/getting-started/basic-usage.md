@@ -3,8 +3,6 @@ id: basic-usage
 title: Basic usage
 ---
 
-## Vanilla CCSS
-
 **CCSS** on its own will convert your style object into CSS string and that's all. It's not a complete styling solution,
 and it doesn't want to be. It is simply a basic tool that you can use in your own scenarios.
 

@@ -1,13 +1,15 @@
 // @ts-nocheck
 import merge from 'lodash/merge'
 import get from 'lodash/get'
+import has from 'lodash/has'
 import Processor from '@/processor'
 import * as extractors from '@/extractors'
 import { getIdentifierByValueType } from '@/utils'
 
 const defaultOpts = {
     components: {
-        Ui: true
+        Ui: true,
+        $: true
     },
     constants: {},
     shortify: true,
@@ -103,7 +105,7 @@ export default (api, pluginOptions) => {
 
                         const key = keys.join('.')
                         const value = get(options.constants, key)
-                        if (value === undefined) {
+                        if (!has(options.constants, key) && value === undefined) {
                             console.warn(`Constant key not found: ${key}`)
                             return
                         }
