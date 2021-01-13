@@ -82,7 +82,7 @@ const features = [
         description: (
             <>
                 <p>
-                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects. It's{' '}
+                    <strong>CCSS</strong> is an opinionated, low-level utility to deal with CSS style objects. It's{' '}
                     <em>not</em> an out-of-the-box styling solution. It helps you deliver your own, tailor-made tool. It
                     is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a>{' '}
                     <em>(3.8 kB, 1.5 kB compressed)</em> which gives you great customization options to suit your own
@@ -98,7 +98,7 @@ const features = [
             <>
                 <p>
                     You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom property your design
-                    system requires. Common use cases are colors, font sizes and dimensions.
+                    system requires. Common use cases are colors, font sizes, and dimensions.
                 </p>
                 <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
                     <Ui>
@@ -146,10 +146,10 @@ ccss.setProps([
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        Apply a general gutter rule to all your <em>margin</em>, <em>padding</em> and{' '}
-                                        <em>grid-gap</em> values. Keeping consistent spacing of one key to a good design
-                                        system. The gutter plugin helps you maintain a multiply of a pre-defined unit.
-                                        Default: <code>5px</code>
+                                        Apply a general gutter rule to all your <em>margin</em>, <em>padding</em>, and{' '}
+                                        <em>grid-gap</em> values. Keeping a consistent spacing of one key to a good
+                                        design system. The gutter plugin helps you maintain a multiply of a pre-defined
+                                        unit. Default: <code>5px</code>
                                     </Ui.p>
                                     <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">Learn more</ShowMoreLink>
                                 </Ui>
@@ -169,8 +169,8 @@ ccss.setProps([
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
                                         Add support for <em>margin</em> and <em>padding</em> to accept ratio value. The{' '}
-                                        <em>aspect-ratio</em> CSS property is around the corner now, but before the so
-                                        called{' '}
+                                        <em>aspect-ratio</em> CSS property is around the corner now, but before the
+                                        so-called{' '}
                                         <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank">
                                             <strong>padding hack</strong>
                                         </a>{' '}
@@ -193,9 +193,9 @@ ccss.setProps([
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        Lets create a plugin that adds support to resolve an object path. This is a
-                                        popular solution among other libraries. In this example we will add such support
-                                        to the <code>background-color</code> property.
+                                        Let's create a plugin that adds support to resolve an object path. This is a
+                                        popular solution among other libraries. In this example, we will add such
+                                        support to the <code>background-color</code> property.
                                     </Ui.p>
                                     <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">
                                         Check documentation
@@ -233,7 +233,7 @@ ccss.setProps([
         description: (
             <>
                 <p>
-                    Add your own custom properties to share, compose, re-use styles and design tokens. Create amazing
+                    Add your own custom properties to share, compose, re-use styles, and design tokens. Create amazing
                     new features living right inside your CSS.
                 </p>
                 <Ui className="home-tabs" mT={10}>
@@ -251,8 +251,8 @@ ccss.setProps([
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
                                         Using the <code>keyframes</code> prop you can add animation keyframes without
-                                        hassle and worrying about the naming. The generated names with the same values
-                                        are cached to make it reusable.
+                                        the hassle and worrying about the naming. The generated names with the same
+                                        values are cached to make them reusable.
                                     </Ui.p>
                                     <Ui.p
                                         animation="3s infinite linear"
@@ -287,7 +287,7 @@ ccss.setProps([
                                         <a href="https://www.npmjs.com/package/@w11r/use-breakpoint" target="_blank">
                                             @w11r/use-breakpoint
                                         </a>
-                                        's breakpoint mechanism. It's an array based solution to maintain the order you
+                                        's breakpoint mechanism. It's an array-based solution to maintain the order you
                                         want for specificity. It comes with built-in, customizable breakpoints for
                                         various screen sizes and common queries.
                                     </Ui.p>
@@ -343,13 +343,13 @@ ccss.setProps([
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        This code will will add a property named <code>icon</code>. It has 2 parts: a
-                                        value map that will resolve the icon's character code, and a handler that will
-                                        emit the necessary CSS.
+                                        This code will add a property named <code>icon</code>. It has 2 parts: a value
+                                        map that will resolve the icon's character code, and a handler that will emit
+                                        the necessary CSS.
                                         <br />
                                         <br />
-                                        In this example we're using UTF-8 icons, but the method can work with icon fonts
-                                        or any other way, it's up to you to define how it works.
+                                        In this example, we're using UTF-8 icons, but the method can work with icon
+                                        fonts or any other way, it's up to you to define how it works.
                                     </Ui.p>
                                     <Ui.p>
                                         I always eat a <Ui.span icon="hamburger" /> before I ride my{' '}
@@ -769,10 +769,10 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                         P="r"
                                         T={-7}
                                         ref={imgRef}
-                                        transition={'all .3s ease-out'}
+                                        transition="all .3s ease-out"
                                         opacity={0}
-                                        transform={'translateX(-200px) rotate(-180deg)'}
-                                        transformOrigin={'50% 50%'}
+                                        transform="translateX(-200px) rotate(-180deg)"
+                                        transformOrigin="50% 50%"
                                     >
                                         {imageUrl && (
                                             <Ui.img
@@ -789,9 +789,9 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                                     flex="1 0"
                                     width="100%"
                                     ref={contentRef}
-                                    transition={'all .3s ease-out'}
+                                    transition="all .3s ease-out"
                                     opacity={0}
-                                    transform={'translateX(200px)'}
+                                    transform="translateX(200px)"
                                     mq={['d', { flex: 'none' }]}
                                 >
                                     <Ui.h3 color="#000" fts={52} ftw={900} mB={6} ta="l">

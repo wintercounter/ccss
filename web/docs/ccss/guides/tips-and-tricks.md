@@ -7,12 +7,12 @@ Here is a collection of some tips and tricks we've learnt by using CCSS in produ
 
 ## Mapping values and converting numbers inside shorthands
 
-A common case are shorthands where you still want to be able to use number conversion and/or resolve mapped values:
+A common case is shorthands where you still want to be able to use number conversion and/or resolve mapped values:
 
 -   `border: '1px solid #000'`
 -   `transform: 'translateX(100px)'`
 
-### Option 1: use long hand properties
+### Option 1: use longhand properties
 
 ```js live
 ccss({

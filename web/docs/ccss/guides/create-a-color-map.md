@@ -12,11 +12,11 @@ Let's define a few simple rules:
 -   **Do not use color names while naming.** You will tie your components to a color name, but what if you want
     to change it from red to yellow without refactoring the component?
 
-These are rules you can be bent to your on needs of course, it really depends on the complexity of the application.
+These are rules you can be bent to your own needs, of course, it really depends on the complexity of the application.
 
 ## 1. Define a color library
 
-A color library is nothing else, just a list of all possible color. Its purpose is to avoid redefining,
+A color library is nothing else, just a list of all possible colors. Its purpose is to avoid redefining
 and have a clear list of all available colors. Here it's allowed to use color names.
 
 ```js
@@ -30,7 +30,7 @@ const colorLibrary = {
 
 ## 2. Define a color map (scheme)
 
-A color map will define a color scheme to your application. You can easily switch between schemes without the need
+A color map will define a color scheme for your application. You can easily switch between schemes without the need
 of rewriting your components/styles.
 
 ```js

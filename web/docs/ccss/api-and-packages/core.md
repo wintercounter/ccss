@@ -9,7 +9,7 @@ The core of **CCSS** and APIs for extending it with new features. Includes suppo
 
 ### `ccss` (default export)
 
-Awaits a style object and returns a CSS string.  Not registered keys will be ignored by default.
+Awaits a style object and returns a CSS string. Not registered keys will be ignored by default.
 
 ```js
 import ccss from 'ccss'
@@ -36,13 +36,13 @@ const ccss = createCCSS()
 
 ### `applyUnit`
 
-A function that's being called with number values to apply certain unit.
+A function that's being called with number values to apply a certain unit.
 
-It receives the value as an arguments, and it should return the desired output.
+It receives the value as an argument, and it should return the desired output.
 
 ```js
 ccss.setOptions({
-    applyUnit: (x) => `${x}cm`
+    applyUnit: x => `${x}cm`
 })
 ```
 

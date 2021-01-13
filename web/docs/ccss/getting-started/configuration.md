@@ -29,7 +29,7 @@ import ccss from 'ccss'
 // Set a custom prop
 ccss.setProps([
     // Set custom property with handler
-    [['customProp'], null, (input) => makeItRock(input)],
+    [['customProp'], null, input => makeItRock(input)],
     // Create value-map for a property
     [['color'], { dark: '#000' }]
 ])
@@ -39,19 +39,20 @@ ccss({
     customProp: 'active'
 })
 ```
+
 :::info Good to know
 For more details and options see the documentation of [transformed](https://www.npmjs.com/package/transformed), the library CCSS is built on top.
 :::
 
 ### `applyUnit`
 
-A function which will transform your number values to have your desired unit.
+A function that will transform your number values to have your desired unit.
 
-Default: ``v => `${v}px` ``
+Default: `` v => `${v}px`  ``
 
 For example in case you want to use the
 [62.5% root font-size technique](https://www.sitepoint.com/understanding-and-using-rem-units-in-css/),
-you can define your function as such: ``v => `${v / 10}rem` ``
+you can define your function as such: `` v => `${v / 10}rem`  ``
 
 ### `outputTransformer`
 

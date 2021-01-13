@@ -5,7 +5,7 @@ title: F.A.Q.
 
 ## Why Cryptic?
 
-Using short names make your CSS/React components/etc. look _Cryptic_.
+Using short names makes your CSS/React components/etc. look _Cryptic_.
 
 ```js live
 ccss({
@@ -18,7 +18,7 @@ ccss({
 
 ## Why should I use this instead of normal style objects/CSS?
 
-CCSS does look useless by default on its own. It's usefulness comes in cases you need to implement design systems,
+CCSS does look useless by default on its own. Its usefulness comes in cases you need to implement design systems,
 shared design tokens, need custom properties/values, want to use shorthands, want to build a custom CSS-in-JS tool,
 and other advanced scenarios.
 
@@ -33,7 +33,7 @@ We think that you need a relatively short time to get comfortable with it, but a
 If you know CSS, you know the shorthands as well. Many tools out in the wild already provide shorthands for some
 popular CSS properties (margin, padding, etc.). We want to have this option for all.
 
-## What is the difference between plugins, props and extensions?
+## What is the difference between plugins, props, and extensions?
 
 -   **Plugins**: Manipulates values of existing props.
 -   **Props**: Adds support for new custom props.

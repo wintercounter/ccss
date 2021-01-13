@@ -52,7 +52,7 @@ ccss({
 
 ## Configuration
 
-The plugin introduces the option key `gutter`. Default value is `5`.
+The plugin introduces the option key `gutter`. The default value is `5`.
 It defines the size of 1 gutter (uses the defined `applyUnit` core option).
 
 > The plugin is included in the `ccss` package pre-configured.
