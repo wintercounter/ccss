@@ -46,7 +46,9 @@ function Footer() {
     const logoUrl = useBaseUrl(logo.src)
 
     useEffect(() => {
-        document.body.classList.add('loaded')
+        setTimeout(() => {
+            document.body.classList.add('loaded')
+        }, 1000)
     }, [])
 
     if (!footer) {
