@@ -67,10 +67,10 @@
 
 body {
     opacity: 0;
-    transition: opacity 1s linear !important;
 }
 
 body.loaded {
+    transition: opacity 1s linear !important;
     opacity: 1;
 }
 
