@@ -5,7 +5,7 @@ title: '@cryptic-css/prop-keyframes'
 
 Adds support for custom prop `keyframes` (kf). It allows you to define a keyframe
 animation for your element. You don't need to use `animationName`,
-it is automatically generated for you, simply omit.
+it is automatically generated for you, simply omit it.
 
 ## Usage
 

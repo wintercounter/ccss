@@ -48,7 +48,7 @@ ccss({
 Properties awaiting numeric values with a unit can accept
 pure numbers for built-in automatic conversion.
 
-If not a number given, the value will be used as-is.
+If not a number is given, the value will be used as-is.
 
 Example:
 
@@ -61,7 +61,7 @@ ccss({
 
 ### Array values
 
-Shorthand properties awaiting numeric values with unit can
+Shorthand properties awaiting numeric values with units can
 accept an array as an input.
 
 Example:
