@@ -8,11 +8,11 @@ const simple = styled.div`
     color: ${({ color }) => color};
 `
 
-const simpleCCSS: FC<ICCSSProps> = styled.div(props => {
+const simpleCCSS: FC<ICCSSProps> = styled.div((props) => {
     return generate(props)
 })
 
-const SimpleCCSS: FC<ICCSSProps> = styled.div(props => {
+const SimpleCCSS: FC<ICCSSProps> = styled.div((props) => {
     return generate(props)
 })
 
@@ -28,7 +28,7 @@ const advanced = styled.div`
     ${({ color }) => color && `color: ${color};`}
 `
 
-const advancedCCSS = styled.div(props => {
+const advancedCCSS = styled.div((props) => {
     return generate(props)
 })
 
@@ -86,7 +86,7 @@ const Styled = () => {
                         c: 't',
                         w: '100%',
                         h: '100%',
-                        d: 'b',
+                        dp: 'b',
                         P: 'a',
                         T: 0,
                         R: 0,

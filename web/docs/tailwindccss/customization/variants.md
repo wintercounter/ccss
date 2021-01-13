@@ -1,0 +1,4 @@
+---
+id: variants
+title: Variants
+---

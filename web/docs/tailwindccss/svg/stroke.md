@@ -1,0 +1,4 @@
+---
+id: stroke
+title: Stroke
+---

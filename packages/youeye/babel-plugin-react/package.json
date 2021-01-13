@@ -1,0 +1,88 @@
+{
+    "name": "@you-eye/babel-plugin-react",
+    "version": "5.0.1",
+    "description": "Babel plugin for Styled-components with CCSS.",
+    "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
+    "license": "MIT",
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy tsc && mhy jest",
+        "test:watch": "mhy jest --watchAll",
+        "build": "npm run build:es6 && npm run build:cjs",
+        "build:es6": "mhy bb --mhy-env=prod",
+        "build:cjs": "mhy bb --mhy-env=prod:cjs",
+        "config": "mhy config typescript -io"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "peerDependencies": {
+        "@cryptic-css/core": "^5.0.0"
+    },
+    "devDependenciess": {
+        "ccss": "^5.0.0",
+        "@cryptic-css/core": "^5.0.0"
+    },
+    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
+    "dependencies": {
+        "@babel/template": "^7.12.7",
+        "@babel/traverse": "^7.12.12",
+        "@emotion/hash": "^0.8.0",
+        "fast-glob": "^3.2.4",
+        "lodash": "^4.17.20",
+        "mqpacker": "^7.0.0",
+        "shortest": "0.0.0",
+        "stylis": "^4.0.6"
+    }
+}

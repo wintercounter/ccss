@@ -1,0 +1,83 @@
+{
+    "name": "@cryptic-css/core",
+    "version": "5.0.1",
+    "description": "> TODO: description",
+    "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
+    "license": "MIT",
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy tsc && mhy jest",
+        "jest": "mhy jest",
+        "jest:watch": "mhy jest --watchAll",
+        "build": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs",
+        "build:watch": "mhy bb --watch",
+        "config": "mhy config typescript -io",
+        "gen:props": "mhy node scripts/generateCCSSProps",
+        "prop-doc": "mhy node scripts/propDoc",
+        "prop-doc:prod": "npm run prop-doc -- --mhy-env=prod"
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.0",
+        "@types/styled-components": "^5.1.7"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226",
+    "dependencies": {
+        "@ungap/global-this": "^0.4.3",
+        "csstype": "^3.0.5",
+        "transformed": "^1.1.4"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "tailwindccss",
+    "version": "5.0.0",
+    "description": "not tied to rem",
+    "main": "dist/cjs/index.js",
+    "private": true,
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "peerDependencies": {
+        "@cryptic-css/core": "^5.0.0"
+    },
+    "devDependencies": {
+        "@cryptic-css/core": "^5.0.0"
+    }
+}

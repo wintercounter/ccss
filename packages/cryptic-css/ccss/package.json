@@ -1,0 +1,79 @@
+{
+    "name": "ccss",
+    "version": "5.0.1",
+    "description": "A full version for CrypticCSS including all available official plugins, props and extensions.",
+    "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
+    "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-mid#readme",
+    "license": "MIT",
+    "main": "dist/cjs/index.js",
+    "module": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wintercounter/ccss.git"
+    },
+    "scripts": {
+        "test": "mhy tsc && mhy jest",
+        "test:watch": "mhy jest --watchAll",
+        "build": "npm run build:es6 && npm run build:cjs",
+        "build:es6": "mhy bb --mhy-env=prod",
+        "build:cjs": "mhy bb --mhy-env=prod:cjs",
+        "config": "mhy config typescript -io"
+    },
+    "mhy": {
+        "mhy": {
+            "cjs": {
+                "distFolder": "dist/cjs"
+            }
+        },
+        "babel": {
+            "cjs": {
+                "presets": [
+                    {
+                        "$match": {
+                            "query": "$[?(@[0].includes('preset-env'))]",
+                            "value": [
+                                {
+                                    "$match": {
+                                        "index": 1,
+                                        "value": {
+                                            "modules": "commonjs",
+                                            "targets": {
+                                                "$replace": {
+                                                    "node": true,
+                                                    "browsers": false,
+                                                    "esmodules": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "plugins": [
+                    {
+                        "$prepend": {
+                            "$expression": "$params.require.resolve('babel-plugin-add-module-exports')"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "bugs": {
+        "url": "https://github.com/wintercounter/ccss/issues"
+    },
+    "dependencies": {
+        "@cryptic-css/core": "^5.0.1",
+        "@cryptic-css/plugin-gutter": "^5.0.1",
+        "@cryptic-css/plugin-ratio": "^5.0.1",
+        "@cryptic-css/prop-keyframes": "^5.0.1",
+        "@cryptic-css/prop-mq": "^5.0.1",
+        "@cryptic-css/prop-scroll": "^5.0.1"
+    },
+    "gitHead": "046c392acedba4e324349ebfa140f3c10721a226"
+}

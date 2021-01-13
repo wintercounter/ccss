@@ -1,0 +1,4 @@
+---
+id: translate
+title: Translate
+---

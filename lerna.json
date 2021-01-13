@@ -1,7 +1,8 @@
 {
     "packages": [
-        "packages/*"
+        "packages/cryptic-css/*",
+        "packages/youeye/*"
     ],
-    "version": "3.19.0",
+    "version": "5.0.1",
     "conventionalCommits": true
 }
