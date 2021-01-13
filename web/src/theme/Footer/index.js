@@ -60,7 +60,7 @@ function Footer() {
             <Ui.span c="#888">
                 built with ❤ and inspired by
                 <br />
-                Styled Components, Styled System, Grommet, Linaria, and Tailwind CSS
+                Styled Components, Styled System, Grommet, Linaria and Tailwind CSS
             </Ui.span>
             <Ui c="#888">
                 Icons made by{' '}
