@@ -78,7 +78,7 @@ const Sandbox = () => (
 const features = [
     {
         title: <>Paradigm shift</>,
-        imageUrl: 'svg/v5/map.svg',
+        imageUrl: 'svg/v5/shuffle.svg',
         description: (
             <>
                 <p>
@@ -91,9 +91,9 @@ const features = [
                         defaultValue="css-as-props"
                         values={[
                             { label: 'CSS as props', value: 'css-as-props' },
-                            { label: 'Single component approach', value: 'single' },
+                            { label: 'Maintainability', value: 'maintain' },
                             { label: 'Style sharing', value: 'style-sharing' },
-                            { label: 'Maintainability', value: 'maintain' }
+                            { label: 'Single component approach', value: 'single' }
                         ]}
                     >
                         <TabItem value="css-as-props">
@@ -123,31 +123,6 @@ const features = [
                                 </Ui>
                             </Ui>
                         </TabItem>
-                        <TabItem value="single">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
-                                    <Ui.p fts={[20, '!important']} c="#777">
-                                        <strong>YouEye</strong> uses a single component approach for all your markup
-                                        needs. This makes usage easy and comfortable, and allows you to use all its
-                                        features anywhere you want without extending functionalities of your custom
-                                        component.
-                                    </Ui.p>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js">{`<Ui
-    button
-    card={{ color: 'dark' }}
-    link="scale"
-    fontSize="large"
-    flex={1}
->
-    Card content goes brrr...
-</Ui>`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
                         <TabItem value="style-sharing">
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
@@ -162,7 +137,6 @@ const features = [
                                         implementation of the props are up to you! This approach is closer to the way of
                                         using traditional CSS.
                                     </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">Learn more</ShowMoreLink>
                                 </Ui>
                                 <Ui>
                                     <Ui editorWrapper>
@@ -258,6 +232,19 @@ const features = [
                                 </Ui>
                             </Ui>
                         </TabItem>
+                        <TabItem value="single">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        <strong>YouEye</strong> uses a single component approach for all your markup
+                                        needs. This makes usage easy and comfortable, and allows you to use all its
+                                        features anywhere you want without extending functionalities of your custom
+                                        component.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui />
+                            </Ui>
+                        </TabItem>
                     </Tabs>
                 </Ui>
             </>
@@ -269,10 +256,13 @@ const features = [
         description: (
             <>
                 <p>
-                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects.
+                    <a href="https://ccss.dev" target="_blank">
+                        <strong>CCSS</strong>
+                    </a>{' '}
+                    is an opinionated, low level utility to deal with CSS style objects.
                 </p>
                 <p>
-                    <strong>YouEye</strong> combines existing CSS-in-JS solutions with <strong>CCSS</strong> extending
+                    <strong>YouEye</strong> combines existing CSS-in-JS solutions with <strong>CCSS</strong>, extending
                     them with new features and customization options to suit your own needs.
                 </p>
                 <Ui className="home-tabs" mT={10}>
@@ -285,272 +275,157 @@ const features = [
                             { label: 'Shorthands', value: 'shorthands' }
                         ]}
                     >
-                        <TabItem value="value-maps">VM</TabItem>
-                        <TabItem value="plugins">P</TabItem>
-                        <TabItem value="custom-props">CM</TabItem>
-                        <TabItem value="shorthands">S</TabItem>
-                    </Tabs>
-                </Ui>
-            </>
-        )
-    },
-    {
-        title: <>It's all about styling</>,
-        imageUrl: 'svg/v5/puzzle-red.svg',
-        description: (
-            <>
-                <p>
-                    <strong>YouEye</strong> is only about styles. It doesn't provide components with extra functionality
-                    which are outside of the CSS realm.
-                </p>
-                <Ui className="home-tabs" mT={10}>
-                    <Tabs
-                        defaultValue="gutter"
-                        values={[
-                            { label: 'Gutter', value: 'gutter' },
-                            { label: 'Ratio', value: 'ratio' },
-                            { label: 'Custom', value: 'custom' }
-                        ]}
-                    >
-                        <TabItem value="gutter">
+                        <TabItem value="value-maps">
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        Apply a general gutter rule to all your <em>margin</em>, <em>padding</em> and{' '}
-                                        <em>grid-gap</em> values. Keeping consistent spacing of one key to a good design
-                                        system. The gutter plugin helps you maintain a multiply of a pre-defined unit.
-                                        Default: <code>5px</code>
+                                        You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom
+                                        property your design system requires. Common use cases are colors, font sizes
+                                        and dimensions.
                                     </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">Learn more</ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js" live>{`ccss({
-    padding: 1,
-    margin: [1, 2, 3, 4],
-    gridGap: 4
-})`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
-                        <TabItem value="ratio">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        Add support for <em>margin</em> and <em>padding</em> to accept ratio value. The{' '}
-                                        <em>aspect-ratio</em> CSS property is around the corner now, but before the so
-                                        called{' '}
-                                        <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank">
-                                            <strong>padding hack</strong>
-                                        </a>{' '}
-                                        was used. Using this plugin you can avoid any manual calculation you might need
-                                        and just provide ratio directly.
+                                        <strong>YouEye</strong> gives you the freedom to implement your design system
+                                        needs however it's most comfortable for you.
                                     </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/plugin-ratio">Learn more</ShowMoreLink>
                                 </Ui>
                                 <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js" live>{`ccss({
-    paddingTop: '16:9',
-    margin: ['4:3', 0, 0, '24:9']
-})`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
-                        <TabItem value="custom">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
-                                    <Ui.p fts={[20, '!important']} c="#777">
-                                        Lets create a plugin that adds support to resolve an object path. This is a
-                                        popular solution among other libraries. In this example we will add such support
-                                        to the <code>background-color</code> property.
-                                    </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">
-                                        Check documentation
-                                    </ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js">{`const colors = {
-    dark: { 0: '#000', 1: '#111' }
-}
-
-ccss.setProps([
-    ['backgroundColor'], null, [
-        v => v.split('.').reduce((acc, val) => acc[val], colors),
-        '...'
-    ]
+                                    <CodeBlock className="js">{`ccss.setProps([
+  [['width'], { demo: 300 }],
+  [['color'], { paragraph: '#c893a1' }],
+  [['font-size'], { large: 16 }]
 ])`}</CodeBlock>
-                                    </Ui>
-                                    <Ui editorWrapper mT={6}>
-                                        <CodeBlock className="js" live>{`ccss({
-    backgroundColor: 'dark.1'
-})`}</CodeBlock>
+                                    <Ui
+                                        mT={4}
+                                        editorWrapper
+                                        child={{ '[class^="playgroundPreview"] > div > div': { padding: 3 } }}
+                                    >
+                                        <CodeBlock
+                                            className="js"
+                                            live
+                                        >{`<Ui width="demo" textAlign="center" margin="0 auto">
+    <Ui.span fontSize="large" color="paragraph">
+        Memes are fun!
+    </Ui.span>
+</Ui>`}</CodeBlock>
                                     </Ui>
                                 </Ui>
                             </Ui>
                         </TabItem>
-                    </Tabs>
-                </Ui>
-            </>
-        )
-    },
-    {
-        title: <>Maintain and refactor faster</>,
-        imageUrl: 'svg/v5/puzzle-green.svg',
-        description: (
-            <>
-                <p>
-                    Add your own custom properties to share, compose, re-use styles and design tokens. Create amazing
-                    new features living right inside your CSS.
-                </p>
-                <Ui className="home-tabs" mT={10}>
-                    <Tabs
-                        defaultValue="keyframes"
-                        values={[
-                            { label: 'Keyframes', value: 'keyframes' },
-                            { label: 'Media Query', value: 'mq' },
-                            { label: 'Scroll', value: 'scroll' },
-                            { label: 'Custom', value: 'custom' }
-                        ]}
-                    >
-                        <TabItem value="keyframes">
+                        <TabItem value="plugins">
                             <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
                                 <Ui dp="f" jc="sa" fd="c">
                                     <Ui.p fts={[20, '!important']} c="#777">
-                                        Using the <code>keyframes</code> prop you can add animation keyframes without
-                                        hassle and worrying about the naming. The generated names with the same values
-                                        are cached to make it reusable.
+                                        Enhance the functionality of existing properties by supporting new value types
+                                        and/or special rules.
                                     </Ui.p>
-                                    <Ui.p
-                                        animation="3s infinite linear"
-                                        keyframes={{
-                                            from: { color: '#000' },
-                                            to: { color: '#fff' }
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Good examples are <strong>CCSS</strong>'s <code>plugin-gutter</code> for
+                                        consistent spacing, and <code>plugin-ratio</code> to support the padding ratio
+                                        "hack" out-of-the-box.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js" live>{`<Ui
+    display="grid"
+    gridTemplateColumns="1fr 1fr"
+    width="100%"
+    // 5 * 5px
+    gridGap={5}
+>
+    {/* 3 * 5px */}
+    <Ui padding={3}>Column 1</Ui>
+    <Ui padding={3}>Column 2</Ui>
+</Ui>`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="custom-props">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Add your own custom properties to share, compose, re-use styles, and design
+                                        tokens. Create amazing new features living right inside your CSS.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Good examples are <strong>CCSS</strong>'s <code>prop-keyframes</code> to
+                                        simplify animation creation, and <code>prop-mq</code> to support prepared custom
+                                        breakpoints instead of manually constructing them.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui
+                                        editorWrapper
+                                        child={{
+                                            '[class^="playgroundPreview"] > div > div': {
+                                                color: 'white',
+                                                pad: 3,
+                                                textAlign: 'c',
+                                                width: '100%'
+                                            }
                                         }}
                                     >
-                                        Animated text
-                                    </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/prop-keyframes">Learn more</ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js" live>{`ccss({
-    animation: '3s infinite',
-    keyframes: {
-        from: { color: '#000' },
-        to: { color: '#fff' }
-    }
-})`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
-                        <TabItem value="mq">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
-                                    <Ui.p fts={[20, '!important']} c="#777">
-                                        The <code>mediaQuery</code> <em>(shorthands: mq, at)</em> property adds support
-                                        for{' '}
-                                        <a href="https://www.npmjs.com/package/@w11r/use-breakpoint" target="_blank">
-                                            @w11r/use-breakpoint
-                                        </a>
-                                        's breakpoint mechanism. It's an array based solution to maintain the order you
-                                        want for specificity. It comes with built-in, customizable breakpoints for
-                                        various screen sizes and common queries.
-                                    </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/prop-mq">Learn more</ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js" live>{`ccss({
-    fontSize: 24,
-    at: [
-        ['tablet', { fontSize: 20 }],
-        ['mobile-', { fontSize: 16 }]
-    ]
-})`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
-                        <TabItem value="scroll">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
-                                    <Ui.p fts={[20, '!important']} c="#777">
-                                        The <code>scroll</code> property can help you to easily make a container
-                                        scrollable. It's a common use-case nowadays on devices to apply horizontal
-                                        scroll to a container of items without any scrollbars.
-                                    </Ui.p>
-                                    <Ui scroll="x" h={150} mq={['small+', { dp: false }]}>
-                                        <Ui dp="grid" gtc="repeat(10, 1fr)">
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                            <Ui fts={80}>🍔</Ui>
-                                        </Ui>
-                                    </Ui>
-                                    <ShowMoreLink href="/docs/api-and-packages/prop-scroll">Learn more</ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper mT={6}>
-                                        <CodeBlock className="js" live>{`ccss({
-    scroll: 'x'
-})`}</CodeBlock>
-                                    </Ui>
-                                </Ui>
-                            </Ui>
-                        </TabItem>
-                        <TabItem value="custom">
-                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
-                                <Ui dp="f" jc="sa" fd="c">
-                                    <Ui.p fts={[20, '!important']} c="#777">
-                                        This code will will add a property named <code>icon</code>. It has 2 parts: a
-                                        value map that will resolve the icon's character code, and a handler that will
-                                        emit the necessary CSS.
-                                        <br />
-                                        <br />
-                                        In this example we're using UTF-8 icons, but the method can work with icon fonts
-                                        or any other way, it's up to you to define how it works.
-                                    </Ui.p>
-                                    <Ui.p>
-                                        I always eat a <Ui.span icon="hamburger" /> before I ride my{' '}
-                                        <Ui.span icon="rocket" />!
-                                    </Ui.p>
-                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">
-                                        Check documentation
-                                    </ShowMoreLink>
-                                </Ui>
-                                <Ui>
-                                    <Ui editorWrapper>
-                                        <CodeBlock className="js">{`const icons = {
-    hamburger: '🍔',
-    rocket: '🚀'
-}
-
-const handler = (value, key, transformedFn) =>
-    transformedFn({
-        '::before': {
-            content: \`"\${value}"\`
+                                        <CodeBlock className="js" live>{`<Ui
+    animation="1s linear infinite"
+    keyframes={{
+        from: { opacity: 0 },
+        to: { opacity: 1 }
+    }}
+    at={['tablet-', {
+        keyframes: {
+            from: { opacity: 0, transform: 'scale(1)' },
+            to: { opacity: 1, transform: 'scale(2)' }
         }
-    })
-
-ccss.setProps([
-    [['icon'], icons, [handler]]
-])`}</CodeBlock>
+    }]}
+    >
+    Current size:
+    <Ui.span at={['tablet-', { display: 'none' }]}>Desktop</Ui.span>
+    <Ui.span at={['small+', { display: 'none' }]}>Tablet</Ui.span>
+</Ui>`}</CodeBlock>
                                     </Ui>
-                                    <Ui editorWrapper mT={6}>
-                                        <CodeBlock className="js" live>{`ccss({
-    icon: 'rocket'
-})`}</CodeBlock>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="shorthands">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Many libraries offer some sort of shorthands for popular, frequently used cases.
+                                        By <strong>CCSS</strong> shorthands are provided for all CSS properties and
+                                        values.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Shorthands enable faster prototyping and development, and removes a lot of
+                                        clutter from your screen. It is easy to get used to and get along with after a
+                                        short period of time.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Shorthands are completely <strong>optional</strong> to use. It is a very
+                                        opinionated approach, it's always up to the developer's/team's taste. You may
+                                        also combine long names with short values for better readability.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <Ui.h4>Long names, long values</Ui.h4>
+                                        <CodeBlock className="js">{`<Ui
+    display="grid"
+    gridTemplateColumns="1fr 1fr"
+    margin={10}
+    textAlign="center"
+    backgroundColor="transparent"
+/>`}</CodeBlock>
+                                        <Ui.h4 mT={5}>Long names, short values</Ui.h4>
+                                        <CodeBlock className="js">{`<Ui
+    display="g"
+    gridTemplateColumns="1fr 1fr"
+    margin={10}
+    textAlign="c"
+    backgroundColor="t"
+/>`}</CodeBlock>
+                                        <Ui.h4 mT={5}>Short names, short values</Ui.h4>
+                                        <CodeBlock className="js">{`<Ui dp="g" gtc="1fr 1fr" m={10} ta="c" bgc="t" />`}</CodeBlock>
                                     </Ui>
                                 </Ui>
                             </Ui>
@@ -595,89 +470,7 @@ ccss.setProps([
                 </Ui>
             </>
         )
-    },
-    {
-        title: <>Plug n' Play</>,
-        imageUrl: 'svg/v5/plug.svg',
-        description: (
-            <>
-                <p>
-                    Use CCSS in any existing codebase where you can apply CSS string or Style object in JS. No matter
-                    what unit system (em, rem, px, etc.) you use, CCSS supports any unit you need.
-                </p>
-                <p>You may introduce design tokens to a monolithic codebase using multiple styling solutions.</p>
-                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
-                    <Ui>
-                        <Ui editorWrapper>
-                            <CodeBlock className="js">{`import styled from 'styled-components'
-
-const MyComponent = styled.div\`
-    \${ccss({
-        width: 'site-container',
-        color: 'dark',
-        icon: 'rocket'
-    })}
-\``}</CodeBlock>
-                        </Ui>
-                    </Ui>
-                    <Ui>
-                        <Ui editorWrapper>
-                            <CodeBlock className="js">{`import jss from 'jss'
-
-const styles = {
-  button: ccss({
-    color: 'dark',
-    ':hover': {
-      color: 'light'
     }
-  })
-}
-
-const { classes } = jss.createStyleSheet(styles).attach()
-
-document.body.innerHTML = \`
-  <button class="\${classes.button}">Button</button>
-\``}</CodeBlock>
-                        </Ui>
-                    </Ui>
-                </Ui>
-            </>
-        )
-    },
-    {
-        title: <>Performance</>,
-        imageUrl: 'svg/v5/speed.svg',
-        description: (
-            <>
-                <p>
-                    CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling
-                    CSS dynamically at runtime will always have its costs.
-                </p>
-                <p>
-                    During the development of <strong>CCSS</strong> strict decisions and various micro-optimizations
-                    have been made to ensure it won't affect performance seriously. The included features are limited to
-                    maintain speed and simplicity.
-                </p>
-                <p>
-                    Another area kept in mind is static extraction. Using <code>@you-eye/babel-plugin-react</code>{' '}
-                    you're able to static <b>(and even dynamic)</b> extract your <code>Ui</code> components, and replace
-                    them with native DOM elements with CSS classes in your production bundle.
-                </p>
-            </>
-        )
-    }
-    /*{
-        title: <>Tooling</>,
-        imageUrl: 'svg/v5/hammer.svg',
-        description: (
-            <p>
-                CSS-in-JS by default is a trade-off on performance, no matter which library you choose. Compiling CSS
-                dynamically at runtime will always have its costs. During the development of <strong>CCSS</strong>{' '}
-                strict decisions and various micro-optimizations have been made to ensure it won't affect performance
-                seriously. The included features are limited to maintain speed and simplicity.
-            </p>
-        )
-    }*/
     /* {
         title: <>Made with CCSS</>,
         imageUrl: 'svg/v5/made.svg',
@@ -688,216 +481,6 @@ document.body.innerHTML = \`
                 strict decisions and various micro-optimizations have been made to ensure it won't affect performance
                 seriously. The included features are limited to maintain speed and simplicity.
             </p>
-        )
-    }*/
-    // hmm
-    /*{
-        title: <>What CCSS means?</>,
-        imageUrl: 'svg/018-magnifying-glass.svg',
-        description: (
-            <>
-                <p>
-                    <strong>Cryptic</strong>CSS. The initial source of the idea was using <em>short names</em> for all
-                    CSS properties and their values in a React props based environment, like <code>v="h"</code> instead
-                    of <code>visiblity="hidden"</code>.
-                </p>
-                <p>
-                    There were 3 goals with this approach:
-                    <ul>
-                        <li>to be able to define styles in a single row of a component;</li>
-                        <li>
-                            to achieve <strong>true CSS mangling</strong> to optimize file size;
-                        </li>
-                        <li>to speed up development.</li>
-                    </ul>
-                    This makes our code look a bit... err... <em>Cryptic</em>, but it's optional to use short names.
-                </p>
-                <h4>Using the CCSS function</h4>
-                <div className="row">
-                    <div className="col col--6">
-                        <CodeBlock className="js">
-                            {`ccss({
-    display: 'flex',
-    width: '100%',
-    backgroundColor: '#fff'
-})`}
-                        </CodeBlock>
-                    </div>
-                    <div className="col col--6">
-                        <pre>
-                            <code>{`ccss({ dp: 'f', w: '100%', bgc: '#fff' })`}</code>
-                        </pre>
-                    </div>
-                </div>
-                <h4>Using the @cryptic-css/styled</h4>
-                <div className="row">
-                    <div className="col col--6">
-                        <pre>
-                            <code>
-                                {`<Ui
-    display="flex"
-    width="100%"
-    backgroundColor="#fff"
->
-    My Content
-</Ui>`}
-                            </code>
-                        </pre>
-                    </div>
-                    <div className="col col--6">
-                        <pre>
-                            <code>
-                                {`<Ui dp="f" w="100%" bgc="#fff">
-    My Content
-</Ui>`}
-                            </code>
-                        </pre>
-                    </div>
-                </div>
-            </>
-        )
-    },
-    {
-        title: <>@cryptic-css/styled</>,
-        icon: <span style={{ fontSize: '110px' }}>💅</span>,
-        description: (
-            <>
-                <p>
-                    On the top of <strong>styled-components</strong> we released a solution to utilize{' '}
-                    <strong>CCSS</strong>. Using it there are multiple ways to apply styles. You can either use prepared
-                    components or the much more preferred* <strong>Ui</strong> component that's provided by the package.
-                </p>
-                <div className="row p">
-                    <div className="col col--6">
-                        <pre>
-                            <code>
-                                {`<Ui
-    display="flex"
-    width="100%"
-    backgroundColor="#fff"
->
-    My Content
-</Ui>`}
-                            </code>
-                        </pre>
-                    </div>
-                    <div className="col col--6">
-                        <pre>
-                            <code>
-                                {`const View = ccssd({
-    display: 'flex',
-    width: '100%',
-    backgroundColor: '#fff'
-})
-
-<View>My Content</View>
-`}
-                            </code>
-                        </pre>
-                    </div>
-                </div>
-                * the provided Babel plugin only supports static extraction of <code>{`<Ui>`}</code> components
-                currently.
-            </>
-        )
-    },
-    {
-        title: <>@cryptic-css/babel-plugin-styled</>,
-        imageUrl: 'svg/014-experiments.svg',
-        description: (
-            <div className={styles.p}>
-                Using the provided (optional) Babel plugin you are able to automatically:
-                <ul>
-                    <li>
-                        <strong>extract all non-computed</strong> values in a static CSS file;
-                    </li>
-                    <li>
-                        <strong>mangle prop names</strong> for smaller production bundles;
-                    </li>
-                    <li>
-                        convert <code>{`<Ui>`}</code> declarations to static HTML tags completely{' '}
-                        <strong>
-                            eliminating <em>styled-components</em>
-                        </strong>
-                        ;
-                    </li>
-                    <li>
-                        single character selectors for <strong>smaller CSS and JS output</strong>;
-                    </li>
-                    <li>
-                        have an output based on <strong>Utility-first</strong> and <strong>AtomicCSS</strong> principles
-                        where you only have to ship code in your bundle what you actually use.
-                    </li>
-                </ul>
-            </div>
-        )
-    },
-    {
-        title: <>Static extraction</>,
-        imageUrl: 'svg/017-funnel.svg',
-        description: (
-            <>
-                <p>
-                    Using <em>styled-components</em> dynamically will always come with extra performance costs.{' '}
-                    <strong>CCSS</strong> is a completely dynamic approach, but it enables us apply some next level
-                    optimizations.
-                </p>
-                <div className={styles.p}>
-                    A highly oversimplified performance comparison between different solutions:
-                    <ul>
-                        <li>
-                            🐢 <progress max={100} value={25} /> Dynamic styled-components: slow
-                        </li>
-                        <li>
-                            🐢 <progress max={100} value={25} /> CCSS + styled-components: slow
-                        </li>
-                        <li>
-                            🐒 <progress max={100} value={50} /> Static styled-components: normal
-                        </li>
-                        <li>
-                            🐇 <progress max={100} value={100} /> CCSS + styled-components + Babel plugin: fast
-                        </li>
-                    </ul>
-                    On a production codebase we managed to save <em>800-1200ms</em> in average on our initial rendering
-                    performance.
-                </div>
-            </>
-        )
-    },
-    {
-        title: <>And there's more...</>,
-        imageUrl: 'svg/005-bacterium.svg',
-        description: (
-            <>
-                <p>
-                    There are other tools and features helping your work. <strong>@cryptic-css/styled</strong> comes
-                    with <strong>⚛React-Native</strong> support out of the box, mostly thanks to{' '}
-                    <strong>styled-components</strong>.
-                </p>
-                <p>
-                    <strong>CCSS</strong> does not only provide TypeScript types, but also helps you with an almost
-                    complete <em>CSS reference</em> using Doc comments. This is extremely useful, especially when using
-                    short names.
-                </p>
-                <div className="row">
-                    <div className="col col--6">
-                        <img
-                            className={styles.contentImg}
-                            src="img/marginDocBlock.png"
-                            alt="CrypticCSS - DocBlock"
-                            title="Showcasing DocBlock using CCSS in WebStorm"
-                        />
-                    </div>
-                    <div className="col col--6">
-                        <img
-                            className={styles.contentImg}
-                            src="img/marginDocBlockUi.png"
-                            alt="CrypticCSS - DocBlock"
-                            title="Showcasing DocBlock using CCSS with Ui in VSCode"
-                        />
-                    </div>
-                </div>
-            </>
         )
     }*/
 ]
@@ -984,7 +567,7 @@ function Home() {
 
     return (
         <Layout title="Home" description="Your companion to the journey of your next CSS-in-JS solution.">
-            <Ui.header P="relative" pT="clamp(30px, calc(100vh - 1112px), 220px)" o="h" mq={['d', { pT: 10 }]}>
+            <Ui.header P="relative" pT="clamp(30px, calc(100vh - 971px), 220px)" o="h" mq={['d', { pT: 10 }]}>
                 <Ui className="myContainer" width="100%" maxWidth={1398} margin="0 auto">
                     <Ui.h1 mB={10}>
                         <img width={300} src="img/youEyeLogo.png" alt="CrypticCSS" title="YouEye" />

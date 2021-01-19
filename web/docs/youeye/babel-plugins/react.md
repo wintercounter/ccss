@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-react
-title: '@cryptic-css/babel-plugin-react'
+title: '@you-eye/babel-plugin-react'
 ---
 
 A `babel-plugin` that is capable of:
@@ -173,3 +173,14 @@ See source code child/mq for examples.
 ## Know limitations
 
 The plugin currently doesn't handle pre-defined components, such as created using `ccssd`.
+
+## How big the size saving is?
+
+We do not have any case studies in practice. Due to the fact that **CCSS**
+also requires some extra code, you first need to reach the point where
+`your **CCSS** + compiler = original CSS`. This is fairly easy to reach as
+the compiler itself is small. The bigger your codebase, the bigger the
+savings are, should be _40-60%_ approx.
+
+We were already running a highly dynamic system using values from props,
+**CCSS** is not different in such regards from any similar solutions.

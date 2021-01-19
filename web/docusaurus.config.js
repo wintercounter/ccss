@@ -28,8 +28,8 @@ const configs = {
                 },
                 items: [
                     { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
-                    /*  { to: 'docs/api-and-packages/core', label: 'YouEye', position: 'left' },
-                    { to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },*/
+                    { to: 'https://youeye.dev', label: 'YouEye', position: 'left' },
+                    /*{ to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },*/
                     {
                         href: 'https://github.com/wintercounter/ccss',
                         label: 'GitHub',
@@ -119,7 +119,7 @@ const configs = {
                     src: 'img/youEyeLogoMini.png'
                 },
                 items: [
-                    { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
+                    { to: 'docs/getting-started/basic-usage', label: 'Documentation', position: 'left' },
                     { to: 'https://ccss.dev', label: 'CCSS', position: 'left' },
                     {
                         href: 'https://github.com/wintercounter/ccss',

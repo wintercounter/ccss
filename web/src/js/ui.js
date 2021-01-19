@@ -23,7 +23,8 @@ const iconHandler = (value, key, transformedFn) => {
 
 ccss.setProps([
     [['maxWidth'], { container: 1220 }],
-    [['color'], { dark: '#333', light: '#eee' }],
+    [['width'], { demo: 300 }],
+    [['color'], { dark: '#333', light: '#eee', paragraph: '#c893a1' }],
     [['editorWrapper'], null, [(v, k, tf) => tf({ br: 4, P: 'r', o: 'h' })]],
     [['learnMore'], null, [(v, k, tf) => tf({ fts: 24 })]],
     [['bgc'], null, [(v) => v.split('.').reduce((acc, val) => acc[val] || v, bgc), '...']],

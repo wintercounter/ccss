@@ -1,6 +1,6 @@
 ---
 id: vue
-title: '@cryptic-css/vue'
+title: '@you-eye/vue'
 ---
 
 Coming soon

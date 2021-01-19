@@ -1,6 +1,6 @@
 ---
 id: web-components
-title: '@cryptic-css/web-components'
+title: '@you-eye/web-components'
 ---
 
 Coming soon

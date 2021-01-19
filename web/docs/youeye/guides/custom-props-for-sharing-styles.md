@@ -12,12 +12,12 @@ import { Ui } from './Ui'
 
 const App = () => {
     const [loading, setLoading] = useState(false)
-    const styl = loading ? 'skeleton' : undefined
+    const is = loading ? 'skeleton' : undefined
 
     return (
         <>
-            <Ui.h1 styl={styl}>Breaking news</Ui.h1>
-            <Ui.p styl={styl}>This is a dummy content for you!</Ui.p>
+            <Ui.h1 is={styl}>Breaking news</Ui.h1>
+            <Ui.p is={styl}>This is a dummy content for you!</Ui.p>
             <Ui.button onClick={() => setLoading(!loading)}>Toggle</Ui.button>
         </>
     )

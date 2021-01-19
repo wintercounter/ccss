@@ -1,3 +1,8 @@
+---
+id: tips-and-tricks
+title: Tips and Tricks
+---
+
 ### Handling hover cases
 
 It's a really common use case that you need to style an element based on its parent context.

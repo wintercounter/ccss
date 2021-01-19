@@ -1,11 +1,6 @@
 module.exports = {
     docs: {
-        'Getting started': [
-            'getting-started/installation',
-            'getting-started/basic-usage',
-            'getting-started/faq',
-            'getting-started/brief-history'
-        ],
+        'Getting started': ['getting-started/basic-usage', 'getting-started/faq', 'getting-started/brief-history'],
         Implementations: [
             'implementations/styled',
             'implementations/vue',

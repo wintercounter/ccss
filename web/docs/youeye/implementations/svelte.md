@@ -1,6 +1,6 @@
 ---
 id: svelte
-title: '@cryptic-css/svelte'
+title: '@you-eye/svelte'
 ---
 
 Coming soon
