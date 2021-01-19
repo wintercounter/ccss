@@ -95,10 +95,10 @@ const configs = {
     },
     youeye: {
         title: 'YouEye',
-        tagline: 'Single component UI kit.',
+        tagline: 'The single component UI kit.',
         url: 'https://youeye.dev',
         baseUrl: '/',
-        favicon: 'img/favicon.ico',
+        favicon: 'img/youEyeFavicon.ico',
         organizationName: 'wintercounter', // Usually your GitHub org/user name.
         projectName: 'ccss', // Usually your repo name.
         themeConfig: {
@@ -115,8 +115,8 @@ const configs = {
             navbar: {
                 title: '',
                 logo: {
-                    alt: 'CrypticCSS Logo',
-                    src: 'img/logo.png'
+                    alt: 'YouEye Logo',
+                    src: 'img/youEyeLogoMini.png'
                 },
                 items: [
                     { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },

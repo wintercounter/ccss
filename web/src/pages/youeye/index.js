@@ -77,61 +77,231 @@ const Sandbox = () => (
 
 const features = [
     {
-        title: <>Tiny core</>,
-        imageUrl: 'svg/v5/atom.svg',
-        description: (
-            <>
-                <p>
-                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects. It's{' '}
-                    <em>not</em> an out-of-the-box styling solution. It helps you deliver your own, tailor-made tool. It
-                    is built on the top of <a href="https://www.npmjs.com/package/transformed">transformed</a>{' '}
-                    <em>(3.8 kB, 1.5 kB compressed)</em> which gives you great customization options to suit your own
-                    needs.
-                </p>
-            </>
-        )
-    },
-    {
-        title: <>Value maps</>,
+        title: <>Paradigm shift</>,
         imageUrl: 'svg/v5/map.svg',
         description: (
             <>
                 <p>
-                    You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom property your design
-                    system requires. Common use cases are colors, font sizes and dimensions.
+                    <strong>YouEye</strong> works differently than what you've got used to. It has close relations to
+                    inline styling solutions, such the <code>css</code> prop, the <code>style</code> prop, custom props
+                    and utility class based approaches.
                 </p>
-                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
-                    <Ui>
-                        <CodeBlock className="js">{`// Setup custom value maps
+                <Ui className="home-tabs" mT={10} child={{ '> div > ul': { pB: 4 } }}>
+                    <Tabs
+                        defaultValue="css-as-props"
+                        values={[
+                            { label: 'CSS as props', value: 'css-as-props' },
+                            { label: 'Single component approach', value: 'single' },
+                            { label: 'Style sharing', value: 'style-sharing' },
+                            { label: 'Maintainability', value: 'maintain' }
+                        ]}
+                    >
+                        <TabItem value="css-as-props">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Many UI solutions providing a subset of some CSS and/or CSS like properties.{' '}
+                                        <strong>YouEye</strong> is all about CSS, it let's you use any CSS property.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Some libraries give you shorthands for some of the props.{' '}
+                                        <strong>YouEye</strong> comes with <strong>optional</strong> shorthands for{' '}
+                                        <Ui.strong tt="uppercase">all</Ui.strong> CSS properties and values.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js">{`<Ui
+    display="grid"
+    gridTemplateColumns="2fr 1fr"
+    backgrondColor="red"
+>
+    <Ui fontSize={12}>Cell One</Ui>
+    <Ui fontSize={10} color="#333">Cell Two</Ui>
+</Ui>`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="single">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        <strong>YouEye</strong> uses a single component approach for all your markup
+                                        needs. This makes usage easy and comfortable, and allows you to use all its
+                                        features anywhere you want without extending functionalities of your custom
+                                        component.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js">{`<Ui
+    button
+    card={{ color: 'dark' }}
+    link="scale"
+    fontSize="large"
+    flex={1}
+>
+    Card content goes brrr...
+</Ui>`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="style-sharing">
+                            <Ui dp="g" gtc="1fr 1fr" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Create components for each elements separately: Button, Link and Card. How do
+                                        you make an element Card, Button and Link at the same time? With a component
+                                        based approach this can become messy, a component do not necessarily handle all
+                                        cases children can be.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Using custom props <strong>your elements can become anything</strong>, the
+                                        implementation of the props are up to you! This approach is closer to the way of
+                                        using traditional CSS.
+                                    </Ui.p>
+                                    <ShowMoreLink href="/docs/api-and-packages/plugin-gutter">Learn more</ShowMoreLink>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <CodeBlock className="js">{`<Ui
+    button
+    card={{ color: 'dark' }}
+    link="scale"
+    fontSize="large"
+    flex={1}
+>
+    Card content goes brrr...
+</Ui>`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                        <TabItem value="maintain">
+                            <Ui dp="g" gtc="1fr 50%" gg={6} mq={['d', { gtc: '100%' }]}>
+                                <Ui dp="f" jc="sa" fd="c">
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        It is taught that separating concerns is a good practice. Markup and styles
+                                        however are the same concern: <strong>Presentation</strong>.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Coupling markup with styles is not a new idea, it was how webpages were styled
+                                        before CSS. HTML needed an interface to connect to this new technology:{' '}
+                                        <strong>Selectors</strong>.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Maintaining selectors require rules, naming systems - which none them are
+                                        flawless -, it forces new tools and workarounds to handle dynamic cases, but
+                                        first and foremost:{' '}
+                                        <strong>
+                                            selectors make hard to understand the results by looking at the markup
+                                        </strong>
+                                        .
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        <strong>YouEye</strong>/inline styles/utility classes are removing this
+                                        overhead. You can <em>understand the layout immediately</em> just by looking at
+                                        the code, without the need to construct the possible outcome in your mind
+                                        checking through multiple files and separate code segments. These are especially
+                                        important if the codebase is managed by multiple members.
+                                    </Ui.p>
+                                    <Ui.p fts={[20, '!important']} c="#777">
+                                        Not following/understanding the conventions/layout of a project correctly will
+                                        cause frictions in the design-system. <strong>YouEye</strong> is getting rid of
+                                        a lot of variables, improves consistency and enforces a less error prone
+                                        approach.
+                                    </Ui.p>
+                                </Ui>
+                                <Ui>
+                                    <Ui editorWrapper>
+                                        <h3>Examples of handling dynamic cases</h3>
+                                        <CodeBlock className="css">{`.item {
+    list-style-type: none;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+.item--active { font-weight: bold }
+.item--highlighted { border-color: yellow }`}</CodeBlock>
+                                        <Ui.h4 mT={5}>Class names</Ui.h4>
+                                        <CodeBlock className="js">{`// String concatenation
+<li className={\`item \${isActive ? 'item---active' : ''} \${isTop10 ? 'item--highlighted' : ''}\`} />
 
-ccss.setProps([
-  [['max-width'], { container: 1220 }],
-  [['color'], { dark: '#333', light: '#eee' }],
-  [['font-size'], { small: 12, large: 16 }]
-])`}</CodeBlock>
-                    </Ui>
-                    <Ui>
-                        <Ui editorWrapper>
-                            <CodeBlock className="js" live>{`ccss({
-    maxWidth: 'container',
-    color: 'dark',
-    ':hover': {
-        color: 'light'   
-    }
-})`}</CodeBlock>
-                        </Ui>
-                    </Ui>
+// String concatenation + CSS Modules
+<li className={\`\${styles.item} \${isActive ? styles.itemActive : ''} \${isTop10 ? styles.itemHighlighted : ''}\`} />
+
+// 'classnames' 3rd party tool
+<li className={classNames(['item', { 'item--active': isActive, 'item--highlighted': isTop10 }])} />
+
+// 'classnames' 3rd party tool + CSS Modules
+<li className={classNames([styles.item, { [styles.itemActive]: isActive, [styles.itemHighlighted]: isTop10 }])} />`}</CodeBlock>
+                                        <Ui.h4 mT={5}>Styled Components</Ui.h4>
+                                        <CodeBlock className="jsx">{`const StyledItem = styled.div\`
+    list-style-type: none;
+    margin-left: 10px;
+    border: 1px solid black;
+    \${({ active }) => active && 'font-weight: bold'}
+    \${({ highlighted }) => highlighted && 'border-color: yellow'}
+\``}</CodeBlock>
+                                        <Ui.h4 mT={5}>YouEye props</Ui.h4>
+                                        <CodeBlock className="js">{`<Ui.li
+    listStyleType="none"
+    marginLeft={2}
+    borderWidth={1}
+    borderColor={isTop10 ? 'yellow' : 'black'}
+    fontWeight={isActive ? 'normal' : 'bold'}
+/>`}</CodeBlock>
+                                        <Ui.h4 mT={5}>YouEye custom prop</Ui.h4>
+                                        <CodeBlock className="js">{`<Ui.li item={{ active: isActive, highlighted: isTop10 }} />`}</CodeBlock>
+                                    </Ui>
+                                </Ui>
+                            </Ui>
+                        </TabItem>
+                    </Tabs>
                 </Ui>
             </>
         )
     },
     {
-        title: <>Plugins</>,
+        title: <>Super-charged by CCSS</>,
+        imageUrl: 'img/ccssLogoMini.png',
+        description: (
+            <>
+                <p>
+                    <strong>CCSS</strong> is an opinionated, low level utility to deal with CSS style objects.
+                </p>
+                <p>
+                    <strong>YouEye</strong> combines existing CSS-in-JS solutions with <strong>CCSS</strong> extending
+                    them with new features and customization options to suit your own needs.
+                </p>
+                <Ui className="home-tabs" mT={10}>
+                    <Tabs
+                        defaultValue="value-maps"
+                        values={[
+                            { label: 'Value maps', value: 'value-maps' },
+                            { label: 'Plugins', value: 'plugins' },
+                            { label: 'Custom props', value: 'custom-props' },
+                            { label: 'Shorthands', value: 'shorthands' }
+                        ]}
+                    >
+                        <TabItem value="value-maps">VM</TabItem>
+                        <TabItem value="plugins">P</TabItem>
+                        <TabItem value="custom-props">CM</TabItem>
+                        <TabItem value="shorthands">S</TabItem>
+                    </Tabs>
+                </Ui>
+            </>
+        )
+    },
+    {
+        title: <>It's all about styling</>,
         imageUrl: 'svg/v5/puzzle-red.svg',
         description: (
             <>
                 <p>
-                    Enhance the functionality of existing properties by supporting new value types and/or special rules.
+                    <strong>YouEye</strong> is only about styles. It doesn't provide components with extra functionality
+                    which are outside of the CSS realm.
                 </p>
                 <Ui className="home-tabs" mT={10}>
                     <Tabs
@@ -228,7 +398,7 @@ ccss.setProps([
         )
     },
     {
-        title: <>Custom properties</>,
+        title: <>Maintain and refactor faster</>,
         imageUrl: 'svg/v5/puzzle-green.svg',
         description: (
             <>
@@ -391,7 +561,7 @@ ccss.setProps([
         )
     },
     {
-        title: <>Shorthands</>,
+        title: <>Static extraction</>,
         imageUrl: 'svg/v5/arrows.svg',
         description: (
             <>
@@ -763,7 +933,7 @@ function Feature({ id, imageUrl, title, description, icon, i }) {
                     <div className="row">
                         <div className="col col--12">
                             <div className="row">
-                                <Ui.div mR={6} mL={3} mq={['d', { mL: 0 }]}>
+                                <Ui.div mR={6}>
                                     <Ui.div
                                         dp="ib"
                                         P="r"
@@ -817,13 +987,13 @@ function Home() {
             <Ui.header P="relative" pT="clamp(30px, calc(100vh - 1112px), 220px)" o="h" mq={['d', { pT: 10 }]}>
                 <Ui className="myContainer" width="100%" maxWidth={1398} margin="0 auto">
                     <Ui.h1 mB={10}>
-                        <img width={300} src="img/logo.png" alt="CrypticCSS" title="CCSS" />
+                        <img width={300} src="img/youEyeLogo.png" alt="CrypticCSS" title="YouEye" />
                     </Ui.h1>
                     <Ui.p fts={54} fontWeight={900} lh={1.25} mB={5} color="black" mq={['d', { fts: 38 }]}>
                         {siteConfig.tagline}
                     </Ui.p>
-                    <Ui.p fts={24} lh={1.5} mB={10} fontWeight={500}>
-                        A replacement for all HTML tags with styling needs.
+                    <Ui.p fts={24} lh={1.8} mB={10} fontWeight={500}>
+                        Comfortable, prop based styling combining the advantages of traditional and CSS-in-JS solutions.
                     </Ui.p>
                     <Sandbox />
                     <div style={{ display: 'none' }}>
@@ -874,7 +1044,7 @@ function Home() {
                         <a href="https://github.com/wintercounter/ccss">
                             <img
                                 src="https://flat.badgen.net/github/stars/wintercounter/ccss?scale=1.5&label=Star%20on%20GitHub&color=00cf9b"
-                                alt="CCSS on GitHub"
+                                alt="YouEye on GitHub"
                             />
                         </a>
                     </div>
@@ -929,11 +1099,11 @@ function Home() {
                                 dur="30s"
                                 additive="sum"
                             />
-                            <stop offset="0%" stopColor="#B5179E" />
-                            <stop offset="25%" stopColor="#7209B7" />
-                            <stop offset="50%" stopColor="#560BAD" />
-                            <stop offset="75%" stopColor="#480CA8" />
-                            <stop offset="100%" stopColor="#560BAD" />
+                            <stop offset="0%" stopColor="#ff007e" />
+                            <stop offset="25%" stopColor="#B5179E" />
+                            <stop offset="25%" stopColor="#ff007e" />
+                            <stop offset="25%" stopColor="#B5179E" />
+                            <stop offset="100%" stopColor="#ff007e" />
                         </linearGradient>
                     </defs>
                     <path
