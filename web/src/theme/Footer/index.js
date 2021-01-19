@@ -58,7 +58,7 @@ function Footer() {
     return (
         <Ui.footer position="r" textAlign="center" p={[40, 5, 5, 5]} mq={['d', { o: 'h' }]}>
             <Ui.span c="#888">
-                built with ❤ and inspired by
+                Built with ❤ and inspired by
                 <br />
                 Styled Components, Styled System, Grommet, Linaria and Tailwind CSS
             </Ui.span>
