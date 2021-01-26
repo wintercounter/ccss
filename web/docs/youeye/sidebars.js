@@ -8,6 +8,6 @@ module.exports = {
             'implementations/web-components'
         ],
         'Babel plugins': ['babel-plugins/babel-plugin-react'],
-        Guides: ['guides/quick-examples', 'guides/custom-props-for-sharing-styles', 'guides/tips-and-tricks']
+        Guides: ['guides/custom-props-for-sharing-styles', 'guides/tips-and-tricks']
     }
 }

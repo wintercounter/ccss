@@ -3,8 +3,7 @@ id: custom-props-for-sharing-styles
 title: Custom props for sharing styles
 ---
 
-We're simply creating a button which you can use to toggle a "loading state"
-on/off to render a skeleton UI.
+We're simply creating a button which you can use to toggle a "loading state" on/off to render a skeleton UI.
 
 ```jsx
 import React, { useState } from 'react'
@@ -16,8 +15,8 @@ const App = () => {
 
     return (
         <>
-            <Ui.h1 is={styl}>Breaking news</Ui.h1>
-            <Ui.p is={styl}>This is a dummy content for you!</Ui.p>
+            <Ui.h1 is={is}>Breaking news</Ui.h1>
+            <Ui.p is={is}>This is a dummy content for you!</Ui.p>
             <Ui.button onClick={() => setLoading(!loading)}>Toggle</Ui.button>
         </>
     )
