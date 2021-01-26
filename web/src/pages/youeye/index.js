@@ -574,58 +574,6 @@ function Home() {
                         into a single, flexible component.
                     </Ui.p>
                     <Sandbox />
-                    <div style={{ display: 'none' }}>
-                        <Link
-                            className={classnames(
-                                'button button--outline button--secondary button--lg',
-                                styles.getStarted
-                            )}
-                            to={useBaseUrl('/docs/guides/quick-examples')}
-                        >
-                            <span>🎌</span>
-                            <br />
-                            Get Started
-                        </Link>
-                        <Link
-                            className={classnames(
-                                'button button--outline button--secondary button--lg',
-                                styles.getStarted
-                            )}
-                            to={useBaseUrl('/docs/getting-started/basic-usage')}
-                        >
-                            <span>📚</span>
-                            <br />
-                            Documentation
-                        </Link>
-                        <Link
-                            className={classnames(
-                                'button button--outline button--secondary button--lg',
-                                styles.getStarted
-                            )}
-                            to="#sandbox"
-                        >
-                            <span>🤾‍♀</span>
-                            <br />
-                            Playground
-                        </Link>
-                    </div>
-                    <div
-                        className={styles.socialButtons}
-                        style={{ marginTop: '1rem', marginBottom: 0, display: 'none' }}
-                    >
-                        <a href="https://github.com/wintercounter/ccss">
-                            <img
-                                src="https://flat.badgen.net/npm/v/ccss?scale=1.5&label=Latest%Version%20&color=d11141"
-                                alt="Current stable CCSS version"
-                            />
-                        </a>
-                        <a href="https://github.com/wintercounter/ccss">
-                            <img
-                                src="https://flat.badgen.net/github/stars/wintercounter/ccss?scale=1.5&label=Star%20on%20GitHub&color=00cf9b"
-                                alt="YouEye on GitHub"
-                            />
-                        </a>
-                    </div>
                 </Ui>
 
                 <Ui.svg
