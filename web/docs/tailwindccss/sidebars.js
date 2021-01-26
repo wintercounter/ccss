@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-    tailwind: {
+    docs: {
         'Getting started': [
             'getting-started/introduction',
             'getting-started/differences',

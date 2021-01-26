@@ -27,46 +27,26 @@ const ShowMoreLink = ({ children, ...rest }) => {
 const Sandbox = () => (
     <Ui className="demo home-tabs" pB={10}>
         <Tabs
-            defaultValue="simple"
+            defaultValue="normal"
             values={[
-                { label: 'Simple', value: 'simple' },
-                { label: 'Custom Props and Values', value: 'custom' },
-                { label: 'Shared styles', value: 'shared' },
-                { label: 'YouEye/React', value: 'youeye' }
+                { label: 'GitHub Trending Widget', value: 'normal' },
+                { label: 'With shorthands', value: 'shorthands' }
             ]}
         >
-            <TabItem value="simple">
+            <TabItem value="normal">
                 <iframe
                     loading="lazy"
-                    src="https://codesandbox.io/embed/ccss-demo-vanilla-js-bhw3z?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-                    title="CCSS Demo - Vanilla JS"
+                    src="https://codesandbox.io/embed/youeye-github-trending-widget-shorthands-2v19n?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                    title="YouEye GitHub Trending widget - shorthands"
                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
             </TabItem>
-            <TabItem value="custom" lazy>
+            <TabItem value="shorthands" lazy>
                 <iframe
                     loading="lazy"
-                    src="https://codesandbox.io/embed/ccss-demo-custom-props-and-values-1i13q?fontsize=14&hidenavigation=1&theme=dark"
-                    title="CCSS Demo - Styled-Components"
-                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-                />
-            </TabItem>
-            <TabItem value="shared" lazy>
-                <iframe
-                    loading="lazy"
-                    src="https://codesandbox.io/embed/ccss-homepage-demo-longnames-ehyzg?fontsize=14&hidenavigation=1&theme=dark"
-                    title="CCSS Demo - LongNames"
-                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-                    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-                />
-            </TabItem>
-            <TabItem value="youeye" lazy>
-                <iframe
-                    loading="lazy"
-                    src="https://codesandbox.io/embed/ccss-demo-custom-props-and-values-1i13q?fontsize=14&hidenavigation=1&theme=dark"
-                    title="CCSS Demo - Custom Props and Values"
+                    src="https://codesandbox.io/embed/youeye-github-trending-widget-shorthands-2v19n?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                    title="YouEye GitHub Trending widget - shorthands"
                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
@@ -436,8 +416,8 @@ const features = [
         )
     },
     {
-        title: <>Static extraction</>,
-        imageUrl: 'svg/v5/arrows.svg',
+        title: <>Static and Dynamic extraction</>,
+        imageUrl: 'svg/v5/extract.svg',
         description: (
             <>
                 <p>
