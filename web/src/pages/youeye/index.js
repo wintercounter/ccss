@@ -24,6 +24,12 @@ const ShowMoreLink = ({ children, ...rest }) => {
     )
 }
 
+const ConvertIcon = () => (
+    <Ui dp="f" width={70} height={70} ai="c" jc="c" m={[3, 0]} mq={['d', { tf: 'rotate(90deg)' }]}>
+        <Ui.img src={useBaseUrl('svg/v5/convert.svg')} />
+    </Ui>
+)
+
 const Sandbox = () => (
     <Ui className="demo home-tabs" pB={10}>
         <Tabs
@@ -36,8 +42,8 @@ const Sandbox = () => (
             <TabItem value="normal">
                 <iframe
                     loading="lazy"
-                    src="https://codesandbox.io/embed/youeye-github-trending-widget-shorthands-2v19n?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-                    title="YouEye GitHub Trending widget - shorthands"
+                    src="https://codesandbox.io/embed/youeye-github-trending-widget-default-odvtj?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+                    title="YouEye GitHub Trending widget - default"
                     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
@@ -47,7 +53,7 @@ const Sandbox = () => (
                     loading="lazy"
                     src="https://codesandbox.io/embed/youeye-github-trending-widget-shorthands-2v19n?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
                     title="YouEye GitHub Trending widget - shorthands"
-                    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+                    allow="geolocation; microphone; camera; midi; vr; accelerometeStatic and Dynamic extractionr; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
                     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
                 />
             </TabItem>
@@ -94,7 +100,7 @@ const features = [
                                         <CodeBlock className="js">{`<Ui
     display="grid"
     gridTemplateColumns="2fr 1fr"
-    backgrondColor="red"
+    background="red"
 >
     <Ui fontSize={12}>Cell One</Ui>
     <Ui fontSize={10} color="#333">Cell Two</Ui>
@@ -421,30 +427,38 @@ const features = [
         description: (
             <>
                 <p>
-                    Work less do more! CCSS comes with shorthands for <Ui.span ftw={900}>all</Ui.span> CSS properties.
-                    Both{' '}
-                    <a href="https://styled-system.com/" target="_blank">
-                        Styled System
-                    </a>{' '}
-                    and{' '}
-                    <a href="https://tailwindcss.com/" target="_blank">
-                        Tailwind CSS
-                    </a>{' '}
-                    are coming with some shorthands out of the box. CCSS gives you the ability to use shorthands for
-                    both property names and/or values. Mix to your liking for rapid development.
+                    For increased performance <strong>YouEye</strong> supports static and dynamic extraction.{' '}
+                    <strong>@you-eye/babel-plugin-react</strong> will
                 </p>
-                <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
+                <Ui.ul fts={20}>
+                    <li>Extract styles into static CSS files;</li>
+                    <li>Convert component calls to native DOM elements with class names;</li>
+                    <li>Replace dynamic calls with CSS variables;</li>
+                    <li>Resolve constants at build time;</li>
+                    <li>Achieves Atomic CSS extraction strategy;</li>
+                    <li>Minify prop names and values.</li>
+                </Ui.ul>
+                <Ui dp="g" gtc={['1fr', 120, '1fr']} mT={10} mq={['d', { gtc: '100%' }]}>
                     <Ui>
                         <Ui editorWrapper>
-                            <CodeBlock className="js" live>{`ccss({ p: 1, m: 2, f: 1, ai: 'c' })`}</CodeBlock>
+                            <CodeBlock className="jsx">{`<Ui
+    paddingTop={10}
+    display="flex"
+    color="light0"
+/>`}</CodeBlock>
                         </Ui>
+                    </Ui>
+                    <Ui dp="f" ai="c" jc="c">
+                        <ConvertIcon />
                     </Ui>
                     <Ui>
                         <Ui editorWrapper>
-                            <CodeBlock className="js" live>{`ccss({
-    position: 'r',
-    alignItems: 'c'
-})`}</CodeBlock>
+                            <CodeBlock className="css">{`.cxg4hb { padding-top: 50px }
+.c5th36 { display: flex }
+.cy34hg { color: #fff }`}</CodeBlock>
+                            <Ui mT={3}>
+                                <CodeBlock className="jsx">{`<div className="cxg4hb c5th36 cy34hg" />`}</CodeBlock>
+                            </Ui>
                         </Ui>
                     </Ui>
                 </Ui>
@@ -556,7 +570,8 @@ function Home() {
                         {siteConfig.tagline}
                     </Ui.p>
                     <Ui.p fts={24} lh={1.8} mB={10} fontWeight={500}>
-                        Comfortable, prop based styling combining the advantages of traditional and CSS-in-JS solutions.
+                        Comfortable, prop based styling combining the advantages of traditional and CSS-in-JS solutions
+                        into a single, flexible component.
                     </Ui.p>
                     <Sandbox />
                     <div style={{ display: 'none' }}>

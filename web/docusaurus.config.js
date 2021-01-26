@@ -13,7 +13,7 @@ const configs = {
             sidebarCollapsible: false,
             disableDarkTheme: true,
             googleAnalytics: {
-                trackingID: 'UA-141789564-1'
+                trackingID: 'G-532X4YG3X1'
             },
             algolia: {
                 apiKey: '4fdab68bf474090efe74ceaf220db37e',
@@ -105,7 +105,7 @@ const configs = {
             sidebarCollapsible: false,
             disableDarkTheme: true,
             googleAnalytics: {
-                trackingID: 'UA-141789564-1'
+                trackingID: 'G-TRD8225XQZ'
             },
             algolia: {
                 apiKey: '4fdab68bf474090efe74ceaf220db37e',
