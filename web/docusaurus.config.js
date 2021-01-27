@@ -13,7 +13,7 @@ const configs = {
             sidebarCollapsible: false,
             disableDarkTheme: true,
             googleAnalytics: {
-                trackingID: 'UA-141789564-1'
+                trackingID: 'G-532X4YG3X1'
             },
             algolia: {
                 apiKey: '4fdab68bf474090efe74ceaf220db37e',
@@ -28,8 +28,8 @@ const configs = {
                 },
                 items: [
                     { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
-                    /*  { to: 'docs/api-and-packages/core', label: 'YouEye', position: 'left' },
-                    { to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },*/
+                    { to: 'https://youeye.dev', label: 'YouEye', position: 'left' },
+                    /*{ to: 'tailwind/getting-started/introduction', label: 'Tailwind CCSS', position: 'left' },*/
                     {
                         href: 'https://github.com/wintercounter/ccss',
                         label: 'GitHub',
@@ -95,17 +95,17 @@ const configs = {
     },
     youeye: {
         title: 'YouEye',
-        tagline: 'Single component UI kit.',
+        tagline: 'Single component UI toolbox.',
         url: 'https://youeye.dev',
         baseUrl: '/',
-        favicon: 'img/favicon.ico',
+        favicon: 'img/youEyeFavicon.ico',
         organizationName: 'wintercounter', // Usually your GitHub org/user name.
         projectName: 'ccss', // Usually your repo name.
         themeConfig: {
             sidebarCollapsible: false,
             disableDarkTheme: true,
             googleAnalytics: {
-                trackingID: 'UA-141789564-1'
+                trackingID: 'G-TRD8225XQZ'
             },
             algolia: {
                 apiKey: '4fdab68bf474090efe74ceaf220db37e',
@@ -115,11 +115,11 @@ const configs = {
             navbar: {
                 title: '',
                 logo: {
-                    alt: 'CrypticCSS Logo',
-                    src: 'img/logo.png'
+                    alt: 'YouEye Logo',
+                    src: 'img/youEyeLogoMini.png'
                 },
                 items: [
-                    { to: 'docs/getting-started/installation', label: 'Documentation', position: 'left' },
+                    { to: 'docs/getting-started/basic-usage', label: 'Documentation', position: 'left' },
                     { to: 'https://ccss.dev', label: 'CCSS', position: 'left' },
                     {
                         href: 'https://github.com/wintercounter/ccss',
@@ -170,6 +170,96 @@ const configs = {
                     path: 'docs/youeye',
                     routeBasePath: 'docs',
                     sidebarPath: require.resolve('./docs/youeye/sidebars.js'),
+                    showLastUpdateAuthor: true,
+                    showLastUpdateTime: true
+                }
+            ],
+            [
+                '@docusaurus/plugin-content-pages',
+                {
+                    path: 'src/pages/youeye',
+                    routeBasePath: '/'
+                }
+            ]
+        ]
+    },
+    tailwindccss: {
+        title: 'YouEye',
+        tagline: 'Single component UI toolbox.',
+        url: 'https://youeye.dev',
+        baseUrl: '/',
+        favicon: 'img/youEyeFavicon.ico',
+        organizationName: 'wintercounter', // Usually your GitHub org/user name.
+        projectName: 'ccss', // Usually your repo name.
+        themeConfig: {
+            sidebarCollapsible: false,
+            disableDarkTheme: true,
+            googleAnalytics: {
+                trackingID: 'UA-141789564-1'
+            },
+            algolia: {
+                apiKey: '4fdab68bf474090efe74ceaf220db37e',
+                indexName: 'ccss_dev',
+                searchParameters: {} // Optional (if provided by Algolia)
+            },
+            navbar: {
+                title: '',
+                logo: {
+                    alt: 'YouEye Logo',
+                    src: 'img/youEyeLogoMini.png'
+                },
+                items: [
+                    { to: 'docs/getting-started/basic-usage', label: 'Documentation', position: 'left' },
+                    { to: 'https://ccss.dev', label: 'CCSS', position: 'left' },
+                    {
+                        href: 'https://github.com/wintercounter/ccss',
+                        label: 'GitHub',
+                        position: 'left'
+                    }
+                    /*{ to: 'blog', label: 'Blog', position: 'left' },*/
+                    /*{
+                        href: 'https://github.com/wintercounter/ccss',
+                        label: 'GitHub',
+                        position: 'right'
+                    }*/
+                ]
+            },
+            footer: {},
+            colorMode: {
+                // "light" | "dark"
+                defaultMode: 'light',
+
+                // Hides the switch in the navbar
+                // Useful if you want to support a single color mode
+                disableSwitch: true,
+
+                // Should we use the prefers-color-scheme media-query,
+                // using user system preferences, instead of the hardcoded defaultMode
+                respectPrefersColorScheme: false
+            }
+        },
+        presets: [
+            [
+                '@docusaurus/preset-classic',
+                {
+                    docs: false,
+                    pages: false,
+                    theme: {
+                        customCss: require.resolve('./src/css/custom.css')
+                    }
+                }
+            ]
+        ],
+        themes: ['@docusaurus/theme-live-codeblock'],
+        plugins: [
+            //'@docusaurus/plugin-google-analytics',
+            [
+                '@docusaurus/plugin-content-docs',
+                {
+                    id: 'docs',
+                    path: 'docs/tailwindccss',
+                    routeBasePath: 'docs',
+                    sidebarPath: require.resolve('./docs/tailwindccss/sidebars.js'),
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true
                 }

@@ -1,6 +1,6 @@
 ---
 id: babel-plugin-react
-title: '@cryptic-css/babel-plugin-react'
+title: '@you-eye/babel-plugin-react'
 ---
 
 A `babel-plugin` that is capable of:
@@ -11,16 +11,16 @@ A `babel-plugin` that is capable of:
 -   Converting prop names to short version;
 -   Converting values to short version.
 
-All-in-all, it is a huge performance boost to your application, and a significant size saving,
-especially on long-term thanks to the extreme level of AtomicCSS extraction.
+All-in-all, it is a huge performance boost to your application, and a significant size saving, especially on long-term
+thanks to the extreme level of Atomic CSS extraction strategy.
 
 ## Usage
 
-Add `@cryptic-css/babel-plugin-styled` to your Babel config in the plugins section.
+Add `@you-eye/babel-plugin-react` to your Babel config in the plugins section.
 
 ```json
 {
-    "plugins": ["@cryptic-css/babel-plugin-styled", "..."]
+    "plugins": ["...", "@you-eye/babel-plugin-react"]
 }
 ```
 
@@ -32,39 +32,69 @@ Default options
 {
     "plugins": [
         [
-            "@cryptic-css/babel-plugin-styled",
+            "@you-eye/babel-plugin-react",
             {
-                "identifiers": {
-                    "Ui": true
+                "components": {
+                    "Ui": true,
+                    "$": true
                 },
                 "constants": {},
+                "shortify": true,
+                "ccss": "require('@cryptic-css/core').default || require('@cryptic-css/core')",
                 "classNameStrategy": "unicode",
                 "expressions": {
                     "ccss": "require('ccss').default || require('ccss')",
                     "options": "require('ccss').defaultOptions"
                 },
-                "stats": false
+                "stats": false,
+                "extract": {
+                    "output": "__[filename].[contenthash].css",
+                    "classNameStrategy": "MurmurHash2",
+                    "module": false,
+                    "prepend": null,
+                    "append": null
+                }
             }
-        ],
-        "..."
+        ]
     ]
 }
 ```
 
-#### `identifiers`
+#### `component`
 
-JSX tag names you want to match as a CCSS component.
+React component names you want to match as a CCSS component. You may also define `defaultProps` to be used during
+extraction. `Ui.defaultProps = {}` does work during runtime, but build time these cannot be resolved.
+
+```json
+{
+    "components": {
+        "Ui": {
+            "display": "flex"
+        }
+    }
+}
+```
 
 #### `constants`
 
-The plugin is able to resolve constants for you as static value. You need to pass these constants.
+The plugin is able to resolve constants for you as static value. You need to pass these constants. To avoid certain
+issues, passing single constant value is no longer allowed, eg. `prop={Single}`. There are 2 rules of how constants are
+resolved:
+
+-   It needs at least 1 level of member expression, eg: `Const.SiteWidth`
+-   Each name **must** start with **Capital** letter.
+
+> These rules are needed because the plugin is parsing JSX to support running extraction on an already minified
+> codebase.
 
 Example config
 
 ```json
 {
-    "FontSize": {
-        "Small": 10
+    "constants": {
+        "FontSize": {
+            "Small": 10
+        }
     }
 }
 ```
@@ -81,95 +111,120 @@ Output
 <div className="font-size_small" />
 ```
 
-#### `classNameStrategy`
+#### `ccss`
 
-The goal is to have the shortest possible class name.
+In order to make the plugin able to compile CCSS, you need to provide your CCSS instance. Usually you re-configure the
+default instance, no need to change this value. This is only needed usually in case you use 2 different CCSS instances
+at the same time.
+
+By default, the plugin will load the default's from the `@cryptic-css/core` package. In case you have your own custom
+props, short values, etc., you need to provide your own instance. You can do this 2 ways:
+
+-   Provide a `string` as value, this will be evaluated (see default).
+-   Use a JavaScript file as your Babel config where you can import/require your own instance.
+
+#### `extract`
+
+Options to pass to the _extractor_. Using `false` you can turn off extraction.
+
+```json
+{
+    "extract": {
+        "output": "__[filename].[contenthash].css",
+        "classNameStrategy": "MurmurHash2",
+        "module": false,
+        "prepend": null,
+        "append": null
+    }
+}
+```
+
+##### `output`
+
+Output filename for extracted CSS to be used.
+
+Available placeholders:
+
+-   `filename`: name of the source file;
+-   `contenthash`: md5 hash that changes based on content.
+
+```
+__AvatarComponent.4a3c4a4.css
+```
+
+However, in case of `module: false`, these values automatically become fixed:
+
+-   `filename`: **styles**
+-   `contentHash`: **global**
+
+```
+__styles.global.css
+```
+
+##### `classNameStrategy`
+
+There are multiple strategies available for different use cases.
 
 Available values:
 
+-   `MurmurHash2` (default): using the `MurmurHash2` hashing algorithm it'll generate a deterministic selector based on
+    the CSS content. This is useful when working on shared packages.
 -   `unicode`: generate a single character unicode selector.
 -   `shorthest`: use the shortest possible selector generating from a pre-defined list of letters.
--   `MurmurHash2`: using the `MurmurHash2` hashing algorithm it'll generate a deterministic selector based on the
-    CSS content. This is useful when working on shared packages.
-
-#### `expressions`
-
-In order to make the plugin able to compile CCSS, you need to provide a CCSS instance and its options object.
-
-By default, the plugin will load the default's from the `ccss` package. In case you have your own custom props,
-short values, etc., you need to provide your own instance. You can do this 2 ways:
-
--   Provide a `string` as value, this will be evaluated (see default).
--   Use a JavaScript file as your Babel config where you can import/require your own instance and options, and provide
-    those.
-
-#### `stats` boolean
-
-Default: `false`
-
-The plugin is able to provide you some stats, such as:
-
--   `total`: total number of CCSS identifiers found;
--   `totalStatic`: total number of elements could be converted to 100% static;
--   `nonStatic`: an array of original source codes that couldn't not be transformed fully static.
-
-A file called `babelPluginStyledCcssStats.json` will be created where you run your compilation process.
-
-#### `colorConstantsToCSSVars` boolean
-
-Default: `false`
-
-The plugin is able to automatically search for color values in the provided constants, replacing them with
-CSS variables to enable theming of static extreacted components.
 
 ## How it works?
 
 Steps:
 
-1. Find JSX identifier (eg. <Ui />)
-2. Loops through all CCSS attributes.
-3. Extract value if static, shorten prop name if dynamic.
-4. Generate classNames and CSS for all static values.
-5. If all CCSS props could be extracted as static, convert to HTML tag.
-6. Generate `__{filename}.css` files next to the source file.
-7. Add `import '__{filename}.css` at the top of the file.
+1. Find all `React.createElement` calls.
+1. Resolve all constants.
+1. Shortify props and values.
+1. Extract value if static, create CSS variable if dynamic and prop supports it.
+1. Generate classNames and CSS.
+1. If all CCSS props could be extracted, convert to HTML tag.
 
-By default, all props are extracted only if values are fully static. However the plugin is also able to separate
-static expressions in some other cases, like the `child` or `mq` prop.
+##### `module`
 
-Input
+Turn module mode on/off. Using module will generate CSS modules next to the source file adding import statements on the
+top. In this case you need to handle possible duplications of CSS and Media Query ordering on your own.
 
-```js
-<Ui
-    child={{
-        a: {
-            fontSize: foo,
-            color: '#fff'
-        }
-    }}
-/>
-```
-
-Output
-
-```js
-<Ui
-    className="child_a_color_fff"
-    child={{
-        a: {
-            fontSize: foo
-        }
-    }}
-/>
-```
+Using `module: false` will generate a single CSS file as output. It won't have duplicates, does proper Media Query
+sorting and minifies the output.
 
 ## How to handle custom props?
 
-You can have your own `babelPluginHandler` attached to your prop handler function. Simply add
-`myHandler.babelPluginHandler = function(){}`. However, all fully static props extracted by default.
+-   Static values: always extracted since it's possible to resolve them during build time.
+-   Dynamic values: only CSS values are extracted, so it's possible to pass runtime values as CSS variable. However, you
+    can create a customized handler to tell CCSS/Babel how to handle your own case.
 
-See source code child/mq for examples.
+During registration of your custom property you can specify an additional `babelPluginHandler` option. This a function
+that will be called babel when the property has been found. It allows you to manipulate the AST tree of the source code
+as you need.
+
+```js
+ccss.setProps([
+    [
+        propNames,
+        valueMap,
+        handlers,
+        {
+            babelPluginHandler: (processorInstance, propertyDescriptor, babelASTPath, extractorInstance) => {
+                // do it
+            }
+        }
+    ]
+])
+```
 
 ## Know limitations
 
-The plugin currently doesn't handle pre-defined components, such as created using `ccssd`.
+The Babel plugin cannot extract component calls using property spread (`<Ui {...styles} />`) due to not being able to
+resolve at build time. These cases should be avoided at places where performance is crucial, especially if this element
+is rendered a lot of times on the same page. Actually, if all these cases are prevented, the underlying CSS runtime (eg.
+Styled Components) can be completely removed from the codebase.
+
+## How big the size saving is?
+
+We do not have any case studies in practice. Due to the fact that **CCSS** also requires some extra code, you first need
+to reach the point where `your **CCSS** + runtime = original CSS`. This is fairly easy to reach as the runtime itself is
+small. The bigger your codebase, the bigger the savings are.

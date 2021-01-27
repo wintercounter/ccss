@@ -14,11 +14,6 @@ module.exports = {
             'api-and-packages/prop-mq',
             'api-and-packages/prop-scroll'
         ],
-        Guides: [
-            'guides/quick-examples',
-            'guides/create-a-color-map',
-            'guides/custom-props-for-sharing-styles',
-            'guides/tips-and-tricks'
-        ]
+        Guides: ['guides/quick-examples', 'guides/custom-props-for-sharing-styles', 'guides/tips-and-tricks']
     }
 }

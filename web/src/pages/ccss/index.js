@@ -98,7 +98,7 @@ const features = [
             <>
                 <p>
                     You can assign value maps to <Ui.span ftw={900}>any</Ui.span> CSS or custom property your design
-                    system requires. Common use cases are colors, font sizes, and dimensions.
+                    system requires. Common use cases are colors, font sizes and dimensions.
                 </p>
                 <Ui dp="g" gtc="1fr 1fr" gg={6} mT={10} mq={['d', { gtc: '100%' }]}>
                     <Ui>

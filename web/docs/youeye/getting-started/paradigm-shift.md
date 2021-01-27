@@ -68,4 +68,4 @@ After a while we realized we actually need to twist this logic and look at the p
 
 **We just need one component simply supporting all CSS properties.**
 
-CCSS and the **single component Ui kit** approach was born.
+CCSS and the **single component** UI approach was born.
