@@ -10,7 +10,7 @@
         "build": "npm run build:es6 && npm run build:cjs",
         "build:es6": "mhy bb --mhy-env=prod",
         "build:cjs": "mhy bb --mhy-env=prod:cjs",
-        "publish": "lerna exec \"rimraf node_modules\" && lerna exec \"npm i --force\" && lerna link && lerna run build && lerna run test && lerna publish --conventional-commits --forcePublish",
+        "publish": "lerna exec \"rimraf node_modules\" && lerna exec \"npm i --force\" && lerna link && lerna run build && lerna exec \"mhy tsc\" && lerna run build && lerna publish --conventional-commits --forcePublish",
         "config": "mhy config eslint prettier -io && lerna run config"
     },
     "mhy": {
