@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/wintercounter/ccss/compare/v3.19.0...v5.0.3) (2021-01-28)
+
+
+### Bug Fixes
+
+* **babel-plugin-react:** support undefined constants ([5639978](https://github.com/wintercounter/ccss/commit/563997849a96cf46c8f69fb6c55695e10f6532e7))
+
+
+
+
+
+
 ## [5.0.2](https://github.com/wintercounter/ccss/compare/v5.0.1...v5.0.2) (2021-01-26)
 
 **Note:** Version bump only for package @you-eye/babel-plugin-react
