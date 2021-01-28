@@ -63,6 +63,10 @@ export function convertCharStr2CSS(str) {
 }
 
 export const getIdentifierByValueType = (value) => {
+    if (typeof value === 'undefined') {
+        return t.identifier('undefined')
+    }
+
     if (typeof value === 'string') {
         return t.stringLiteral(value)
     }
