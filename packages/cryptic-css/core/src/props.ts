@@ -144,6 +144,7 @@ const defaultProps = (): Props => [
     [['trd', 'transition-duration'], nil, toCSSRuleHandler],
     [['trp', 'transition-property'], nil, toCSSRuleHandler],
     [['trt', 'transition-timing-function'], nil, toCSSRuleHandler],
+    [['wc', 'will-change'], nil, toCSSRuleHandler],
 
     // Flex
     [['f', 'flex'], nil, toCSSRuleHandler],
