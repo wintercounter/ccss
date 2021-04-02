@@ -108,8 +108,8 @@ const configs = {
                 trackingID: 'G-TRD8225XQZ'
             },
             algolia: {
-                apiKey: '4fdab68bf474090efe74ceaf220db37e',
-                indexName: 'ccss_dev',
+                apiKey: 'ad1681cef58f072684e265bdb493a62b',
+                indexName: 'youeye',
                 searchParameters: {} // Optional (if provided by Algolia)
             },
             navbar: {
