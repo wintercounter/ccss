@@ -244,5 +244,15 @@ describe('ccss tests', () => {
                 })
             ).toBe(`opacity: 0;`)
         })
+
+        it('can handle self parser', () => {
+            expect(
+                ccss({
+                    ccss: {
+                        width: 10
+                    }
+                })
+            ).toBe(`width: 10px;`)
+        })
     })
 })

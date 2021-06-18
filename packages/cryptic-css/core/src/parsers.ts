@@ -56,3 +56,7 @@ export const child: CCSSParser = (input, prop, transformedFn, inputObject) => {
     }
     return generated
 }
+
+export const self: CCSSParser = (input, prop, transformedFn, inputObject) => {
+    return transformedFn(input, prop, transformedFn, inputObject)
+}

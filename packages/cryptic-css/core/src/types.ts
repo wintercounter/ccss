@@ -70,4 +70,10 @@ export interface CCSSProps extends Properties {
     child?: {
         [key: string]: CCSSProps
     }
+
+    /**
+     * This prop provides simple support for the `ccss` prop for different implementations. The same top-level values
+     * are accepted here.
+     */
+    ccss?: CCSSProps
 }
