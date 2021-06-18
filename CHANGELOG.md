@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/wintercounter/ccss/compare/v5.0.3...v5.1.0) (2021-06-18)
+
+
+### Bug Fixes
+
+* algolia api key for youeye ([8704df2](https://github.com/wintercounter/ccss/commit/8704df2abbf2c853722d849e65b6ad58f87dea7e))
+* lock docusaurus version ([fc7fcdd](https://github.com/wintercounter/ccss/commit/fc7fcdd097dc65ccb1ba9525073a9e5dfa50b13e))
+
+
+### Features
+
+* add support for `ccss` props which enables simple support for `ccss` prop with all implementations ([742f87f](https://github.com/wintercounter/ccss/commit/742f87fcd5db9b37d9150cc7eac235ae0e8cb64c))
+* **core:** add support for `will-change` property ([d31ed68](https://github.com/wintercounter/ccss/commit/d31ed68c9dbe6364ffff321eb1793600c5f98583))
+
+
+
+
+
 ## [5.0.3](https://github.com/wintercounter/ccss/compare/v3.19.0...v5.0.3) (2021-01-28)
 
 
