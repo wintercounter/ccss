@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/wintercounter/ccss/compare/v5.2.0...v5.2.1) (2021-06-21)
+
+
+### Bug Fixes
+
+* add missing css prop to the CCSSProps interface ([#24](https://github.com/wintercounter/ccss/issues/24)) ([ae9f3a5](https://github.com/wintercounter/ccss/commit/ae9f3a5ba86a34c6e9ce34b58dbf26def15d528b))
+
+
+
+
+
 # [5.2.0](https://github.com/wintercounter/ccss/compare/v5.1.0...v5.2.0) (2021-06-21)
 
 
