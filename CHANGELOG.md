@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/wintercounter/ccss/compare/v5.1.0...v5.2.0) (2021-06-21)
+
+
+### Features
+
+* add support for `overflow-wrap` ([f33fab8](https://github.com/wintercounter/ccss/commit/f33fab86ea2966b3164e8c80e767a2f77b97b2ec))
+
+
+
+
+
 # [5.1.0](https://github.com/wintercounter/ccss/compare/v5.0.3...v5.1.0) (2021-06-18)
 
 
