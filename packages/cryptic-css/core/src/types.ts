@@ -76,4 +76,10 @@ export interface CCSSProps extends Properties {
      * are accepted here.
      */
     ccss?: CCSSProps
+
+    /**
+     * This is an synonym to the `ccss` prop, this prop provides simple support for the `css` prop for different 
+     * implementations. The same top-level values are accepted here.
+     */
+    css?: CCSSProps
 }
