@@ -533,6 +533,15 @@ const defaultProps = (): Props => [
         toCSSRuleHandler
     ],
     [
+        ['ow', 'overflow-wrap'],
+        {
+            n: 'normal',
+            bw: 'break-word',
+            a: 'anywhere'
+        },
+        toCSSRuleHandler
+    ],
+    [
         ['fl', 'float'],
         {
             ...getFalseNone(),
@@ -730,7 +739,7 @@ const defaultProps = (): Props => [
     [['rs', 'resize'], nil, toCSSRuleHandler],
     [['raw'], nil, [(i) => i]],
     [['child'], nil, [child]],
-    [['ccss'], nil, [self]],
+    [['ccss', 'css'], nil, [self]],
 
     // Webkit
     [
