@@ -601,6 +601,7 @@ const defaultProps = (): Props => [
     [['siz', 'box-sizing'], nil, toCSSRuleHandler],
 
     // Misc
+    [['appearance'], nil, toCSSRuleHandler],
     [['cn', 'contain'], nil, toCSSRuleHandler],
     [['dir', 'direction'], nil, toCSSRuleHandler],
     [
