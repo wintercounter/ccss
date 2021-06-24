@@ -242,7 +242,7 @@ const defaultProps = (): Props => [
         },
         toCSSRuleHandler
     ],
-    [['lb', 'line-break', nil, toCSSRuleHandler]],
+    [['lb', 'line-break'], nil, toCSSRuleHandler],
     [
         ['td', 'text-decoration'],
         {
@@ -257,17 +257,17 @@ const defaultProps = (): Props => [
     [['tec', 'text-emphasis-color'], nil, toCSSRuleHandler],
     [['tep', 'text-emphasis-position'], nil, fromArrayToCSSRuleHandler],
     [
-        ['tes', 'text-emphasis-style'], 
-        { 
-            f: 'filled', 
-            o: 'open', 
-            d: 'dot', 
-            c: 'circle', 
-            dc: 'double-circle', 
-            t: 'triangle', 
-            fs: 'filled-sesame', 
+        ['tes', 'text-emphasis-style'],
+        {
+            f: 'filled',
+            o: 'open',
+            d: 'dot',
+            c: 'circle',
+            dc: 'double-circle',
+            t: 'triangle',
+            fs: 'filled-sesame',
             os: 'open-sesame'
-        }, 
+        },
         toCSSRuleHandler
     ],
     [['ti', 'text-indent'], nil, fromArrayToCSSRuleHandler],
@@ -654,7 +654,7 @@ const defaultProps = (): Props => [
     [['olc', 'outline-color'], nil, toCSSRuleHandler],
     [['olo', 'outline-offset'], nil, fromArrayToCSSRuleHandler],
     [
-        ['ols', 'outline-style'], 
+        ['ols', 'outline-style'],
         {
             a: 'auto',
             n: 'none',
@@ -667,7 +667,8 @@ const defaultProps = (): Props => [
             i: 'inset',
             o: 'outset'
         },
-        toCSSRuleHandler],
+        toCSSRuleHandler
+    ],
     [['olw', 'outline-width'], nil, fromArrayToCSSRuleHandler],
     [
         ['mbm', 'mix-blend-mode'],
