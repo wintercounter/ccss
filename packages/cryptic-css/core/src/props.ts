@@ -175,6 +175,9 @@ const defaultProps = (): Props => [
     [['jc', 'justify-content'], getAligns(), toCSSRuleHandler],
     [['aS', 'align-self'], getAligns(), toCSSRuleHandler],
     [['jS', 'justify-self'], getAligns(), toCSSRuleHandler],
+    [['pc', 'place-content'], nil, toCSSRuleHandler],
+    [['pi', 'place-items'], nil, toCSSRuleHandler],
+    [['ps', 'place-self'], nil, toCSSRuleHandler],
 
     // Font + text related
     [['ft', 'font'], nil, toCSSRuleHandler],
@@ -239,6 +242,7 @@ const defaultProps = (): Props => [
         },
         toCSSRuleHandler
     ],
+    [['lb', 'line-break', nil, toCSSRuleHandler]],
     [
         ['td', 'text-decoration'],
         {
@@ -247,6 +251,23 @@ const defaultProps = (): Props => [
             o: 'overline',
             t: 'line-through'
         },
+        toCSSRuleHandler
+    ],
+    [['te', 'text-emphasis'], nil, fromArrayToCSSRuleHandler],
+    [['tec', 'text-emphasis-color'], nil, toCSSRuleHandler],
+    [['tep', 'text-emphasis-position'], nil, fromArrayToCSSRuleHandler],
+    [
+        ['tes', 'text-emphasis-style'], 
+        { 
+            f: 'filled', 
+            o: 'open', 
+            d: 'dot', 
+            c: 'circle', 
+            dc: 'double-circle', 
+            t: 'triangle', 
+            fs: 'filled-sesame', 
+            os: 'open-sesame'
+        }, 
         toCSSRuleHandler
     ],
     [['ti', 'text-indent'], nil, fromArrayToCSSRuleHandler],
@@ -630,6 +651,24 @@ const defaultProps = (): Props => [
     ],
     [['or', 'order'], nil, toCSSRuleHandler],
     [['ol', 'outline'], nil, toCSSRuleHandler],
+    [['olc', 'outline-color'], nil, toCSSRuleHandler],
+    [['olo', 'outline-offset'], nil, fromArrayToCSSRuleHandler],
+    [
+        ['ols', 'outline-style'], 
+        {
+            a: 'auto',
+            n: 'none',
+            d: 'dotted',
+            da: 'dashed',
+            s: 'solid',
+            db: 'double',
+            g: 'groove',
+            r: 'ridge',
+            i: 'inset',
+            o: 'outset'
+        },
+        toCSSRuleHandler],
+    [['olw', 'outline-width'], nil, fromArrayToCSSRuleHandler],
     [
         ['mbm', 'mix-blend-mode'],
         {
@@ -711,6 +750,38 @@ const defaultProps = (): Props => [
             s: 'smooth'
         },
         toCSSRuleHandler
+    ],
+    [
+        ['ssa', 'scroll-snap-align'],
+        {
+            n: 'none',
+            s: 'start',
+            e: 'end',
+            c: 'center'
+        },
+        fromArrayToCSSRuleHandler
+    ],
+    [
+        ['sss', 'scroll-snap-stop'],
+        {
+            n: 'normal',
+            a: 'always'
+        },
+        toCSSRuleHandler
+    ],
+    [
+        ['sst', 'scroll-snap-type'],
+        {
+            n: 'none',
+            x: 'x',
+            y: 'y',
+            b: 'block',
+            i: 'inline',
+            bo: 'both',
+            m: 'mandatory',
+            p: 'proximity'
+        },
+        fromArrayToCSSRuleHandler
     ],
     [
         ['sw', 'scrollbar-width'],
