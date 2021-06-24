@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/wintercounter/ccss/compare/v5.3.0...v5.4.0) (2021-06-24)
+
+
+### Features
+
+* added multiple css props ([#25](https://github.com/wintercounter/ccss/issues/25)) ([bc43044](https://github.com/wintercounter/ccss/commit/bc430445ec1dc3f37854d960031eea0fbfdcdd62))
+
+
+
+
+
 # [5.3.0](https://github.com/wintercounter/ccss/compare/v5.2.1...v5.3.0) (2021-06-22)
 
 
