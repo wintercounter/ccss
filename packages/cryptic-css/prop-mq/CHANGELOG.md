@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/wintercounter/ccss/compare/v5.4.0...v5.5.0) (2021-06-25)
+
+
+### Bug Fixes
+
+* **ts:** type fixes across several packages ([333e807](https://github.com/wintercounter/ccss/commit/333e807d808c3a84a99f95b358ae174df606e37c))
+* generate npmignore for packages ([8e10905](https://github.com/wintercounter/ccss/commit/8e10905275244e52dd50252b3eac50e497609bd8))
+
+
+
+
+
 # [5.4.0](https://github.com/wintercounter/ccss/compare/v5.3.0...v5.4.0) (2021-06-24)
 
 **Note:** Version bump only for package @cryptic-css/prop-mq
