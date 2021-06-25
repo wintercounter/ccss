@@ -2,7 +2,7 @@ import { CCSSProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
 type MediaQueryItem = [string, CCSSProps]
-type MediaQueryItems = MediaQueryItem[]
+type MediaQueryItems = MediaQueryItem | MediaQueryItem[]
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
@@ -64,5 +64,7 @@ const useProp = (transformedFn) => {
         ])
     )
 }
+
+const x: CCSSProps = {}
 
 export default useProp

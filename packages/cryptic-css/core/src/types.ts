@@ -1,4 +1,4 @@
-import { Properties } from 'csstype'
+import CSS from 'csstype'
 import { TransformedFn, Options, OutputTransformer, Whatever, Parser, InputObject, Definition } from 'transformed'
 
 export interface CCSSOutputTransformer extends OutputTransformer {
@@ -26,7 +26,7 @@ export declare type CCSSToCSSRule = (
     input: CCSSProps,
     prop: string,
     options: CCSSOptions
-) => Properties | string
+) => CSS.Properties | string
 
 export interface CCSSParser extends Parser {
     (
@@ -38,10 +38,21 @@ export interface CCSSParser extends Parser {
     ): unknown
 }
 
-export declare type CCSSPropValue = string | number | boolean | (string | number | boolean)[] | undefined
 export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
+export declare type CCSSPropValue =
+    | string
+    | number
+    | boolean
+    | (string | number | boolean)[]
+    | undefined
+    | CCSSPropFunction
 
-export interface CCSSProps extends Properties {
+type Pseudos = { [P in CSS.Pseudos]?: CCSSProps }
+
+export interface CCSSProps
+    extends CSS.PropertiesFallback<CCSSPropValue>,
+        CSS.PropertiesHyphenFallback<CCSSPropValue>,
+        Pseudos {
     /**
      * Tells CCSS should let through unsupported properties in the output.
      * In an array you can specify a list of a properties should be let through.
@@ -67,7 +78,7 @@ export interface CCSSProps extends Properties {
      * // Output: ':hover{ display: block; } .childDiv { padding: 10rem; }'
      * ```
      */
-    child?: {
+    child?: Pseudos & {
         [key: string]: CCSSProps
     }
 
@@ -78,8 +89,49 @@ export interface CCSSProps extends Properties {
     ccss?: CCSSProps
 
     /**
-     * This is an synonym to the `ccss` prop, this prop provides simple support for the `css` prop for different 
-     * implementations. The same top-level values are accepted here.
+     * CSS variables support
+     *
+     * @example
+     * ```js
+     * {
+     *     '--': {
+     *         'site-background': '#333'
+     *     }
+     * }
+     * ```
      */
-    css?: CCSSProps
+    ['--']?: {
+        [key: string]: CCSSPropValue
+    }
+
+    /**
+     * CSS variables support. Alias for `--`
+     *
+     * @example
+     * ```js
+     * {
+     *     var: {
+     *         'site-background': '#333'
+     *     }
+     * }
+     * ```
+     */
+    var?: {
+        [key: string]: CCSSPropValue
+    }
 }
+
+// Quick Tester
+
+/*const x: CCSSProps = {
+    padding: [1, 2, 3, 'str'],
+    clipRule: 'unset',
+    ':hover': {
+        width: 3
+    },
+    child: {
+        kakakakaa: {
+            padding: 0
+        }
+    }
+}*/

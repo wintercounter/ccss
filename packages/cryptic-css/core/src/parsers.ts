@@ -29,6 +29,20 @@ export const toCSSRule: CCSSParser = (input, prop, transformedFn, inputObject, d
     return transformedFn.outputTransformer.toCSSRule(cssProp, input, prop, transformedFn)
 }
 
+export const varsHandler: CCSSParser = (input, prop, transformedFn, inputObject, definition) => {
+    let generated = transformedFn.outputTransformer.defaultOutput()
+
+    for (const k in input) {
+        if (Object.prototype.hasOwnProperty.call(input, k)) {
+            generated = transformedFn.outputTransformer(
+                generated,
+                transformedFn.outputTransformer.toCSSRule(`--${k}`, parseArray(input[k], k, transformedFn))
+            )
+        }
+    }
+    return generated
+}
+
 export const parseCCSS: CCSSParser = (input, prop, transformedFn) => transformedFn(input)
 
 export const parsePseudo: CCSSParser = (input, prop, transformedFn, inputObject, definition) => {

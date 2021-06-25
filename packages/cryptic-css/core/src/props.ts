@@ -1,5 +1,5 @@
 import { Props } from 'transformed'
-import { parseArray, child, parsePseudo, toCSSRule, self } from './parsers'
+import { parseArray, child, parsePseudo, toCSSRule, self, varsHandler } from './parsers'
 
 const getAligns = () => ({
     s: 'start',
@@ -829,6 +829,7 @@ const defaultProps = (): Props => [
     [['raw'], nil, [(i) => i]],
     [['child'], nil, [child]],
     [['ccss', 'css'], nil, [self]],
+    [['--', 'var'], nil, [varsHandler]],
 
     // Webkit
     [

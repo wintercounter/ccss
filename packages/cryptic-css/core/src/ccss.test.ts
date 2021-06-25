@@ -254,5 +254,32 @@ describe('ccss tests', () => {
                 })
             ).toBe(`width: 10px;`)
         })
+
+        it('can handle css vars: string', () => {
+            expect(
+                ccss({
+                    '--': {
+                        foo: 'bar',
+                        baz: 12,
+                        calc: [`calc(100px -`, 10, ')']
+                    },
+                    var: {
+                        mi: 'ma'
+                    }
+                })
+            ).toBe(`--foo: bar;--baz: 12px;--calc: calc(100px - 10px ) ;--mi: ma;`)
+        })
+
+        it('can handle css vars: object', () => {
+            expect(
+                ccssObject({
+                    '--': {
+                        foo: 'bar',
+                        baz: 12,
+                        calc: [`calc(100px -`, 10, ')']
+                    }
+                })
+            ).toStrictEqual({ '--baz': '12px', '--calc': 'calc(100px - 10px ) ', '--foo': 'bar' })
+        })
     })
 })
