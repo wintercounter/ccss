@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/wintercounter/ccss/compare/v5.5.0...v5.6.0) (2021-06-25)
+
+
+### Features
+
+* add support for `--`/`var` prop for CSS variables ([36bddd1](https://github.com/wintercounter/ccss/commit/36bddd1c9380d3a78aac77f496f20487d686b61f))
+
+
+
+
+
 # [5.5.0](https://github.com/wintercounter/ccss/compare/v5.4.0...v5.5.0) (2021-06-25)
 
 
