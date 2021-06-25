@@ -20,7 +20,7 @@
         "build": "npm run build:es6 && npm run build:cjs",
         "build:es6": "mhy bb --mhy-env=prod",
         "build:cjs": "mhy bb --mhy-env=prod:cjs",
-        "config": "mhy config typescript -io"
+        "config": "mhy config typescript npmignore -io"
     },
     "mhy": {
         "mhy": {

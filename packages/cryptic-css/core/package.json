@@ -17,7 +17,7 @@
         "jest:watch": "mhy jest --watchAll",
         "build": "mhy tsc && mhy bb --mhy-env=prod && mhy bb --mhy-env=prod:cjs",
         "build:watch": "mhy bb --watch",
-        "config": "mhy config typescript -io",
+        "config": "mhy config typescript npmignore -io",
         "gen:props": "mhy node scripts/generateCCSSProps",
         "prop-doc": "mhy node scripts/propDoc",
         "prop-doc:prod": "npm run prop-doc -- --mhy-env=prod"

@@ -6,7 +6,7 @@
     "scripts": {
         "test": "mhy jest",
         "start": "mhy wds",
-        "config": "mhy config typescript -io"
+        "config": "mhy config typescript npmignore -io"
     },
     "author": "",
     "license": "MIT",
