@@ -509,6 +509,22 @@ const defaultProps = (): Props => [
     [['clp', 'clip'], nil, fromArrayToCSSRuleHandler],
     [['clpp', 'clip-path'], nil, toCSSRuleHandler],
 
+    // Mask
+    [['mskImg', 'mask-image'], nil, fromArrayToCSSRuleHandler],
+    [['mskT', 'mask-type'], nil, toCSSRuleHandler],
+    [['mskB', 'mask-border'], nil, fromArrayToCSSRuleHandler],
+    [['mskBS', 'mask-border-slice'], nil, toCSSRuleHandler],
+    [['mskBR', 'mask-border-repeat'], nil, toCSSRuleHandler],
+    [['mskBSrc', 'mask-border-source'], nil, fromArrayToCSSRuleHandler],
+    [['mskBM', 'mask-border-mode'], nil, toCSSRuleHandler],
+    [['mskBW', 'mask-border-width'], nil, toCSSRuleHandler],
+    [['mskBO', 'mask-border-outset'], nil, toCSSRuleHandler],
+    [['mskR', 'mask-repeat'], nil, toCSSRuleHandler],
+    [['mskP', 'mask-position'], nil, toCSSRuleHandler],
+    [['mskC', 'mask-clip'], nil, toCSSRuleHandler],
+    [['mskO', 'mask-origin'], nil, toCSSRuleHandler],
+    [['mskCom', 'mask-composite'], nil, toCSSRuleHandler],
+
     // General
     [
         ['dp', 'display'],
