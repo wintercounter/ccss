@@ -1,23 +1,27 @@
-import { CCSSProp, CCSSOptions } from '@cryptic-css/core'
+import { CCSSProps } from '@cryptic-css/core'
+
+interface Keyframes {
+    [key: string | number]: CCSSProps
+}
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
         /**
-         * # keyframes (mb)
+         * # keyframes
          *
          * Helps you to create CCSS based keyframe animations.
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-keyframes
          */
-        kf?: CCSSProp
+        kf?: Keyframes
         /**
-         * # keyframes (mb)
+         * # keyframes
          *
          * Helps you to create CCSS based keyframe animations.
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-keyframes
          */
-        keyframes?: CCSSProp
+        keyframes?: Keyframes
     }
 }
 
@@ -53,10 +57,10 @@ const stringOutputHandler = (input, prop, transformedFn) => {
 }`
 }
 
-const useProp = transformedFn => {
+const useProp = (transformedFn) => {
     // TODO: support for object output would be nice also
     const keyframes = stringOutputHandler
-    transformedFn.setProps(['kf', 'keyframes'].map(prop => [[prop], null, [keyframes]]))
+    transformedFn.setProps(['kf', 'keyframes'].map((prop) => [[prop], null, [keyframes]]))
 }
 
 export default useProp

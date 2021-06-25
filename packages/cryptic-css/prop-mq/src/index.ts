@@ -1,24 +1,43 @@
-import { CCSSProp } from '@cryptic-css/core'
+import { CCSSProps } from '@cryptic-css/core'
 import { mediaQuery } from '@w11r/use-breakpoint'
+
+type MediaQueryItem = [string, CCSSProps]
+type MediaQueryItems = MediaQueryItem[]
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
         /**
-         * # mediaQuery (mb)
+         * # mediaQuery
          *
-         * Helps you to apply CCSS rules based on screen sizes.
+         * Helps you to apply CCSS rules based on screen sizes, and use query (@ based rules).
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        mq?: CCSSProp
+        mq?: MediaQueryItems
         /**
-         * # mediaQuery (mb)
+         * # mediaQuery
          *
-         * Helps you to apply CCSS rules based on screen sizes.
+         * Helps you to apply CCSS rules based on screen sizes, and use query (@ based rules).
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        mediaQuery?: CCSSProp
+        mediaQuery?: MediaQueryItems
+        /**
+         * # mediaQuery
+         *
+         * Helps you to apply CCSS rules based on screen sizes, and use query (@ based rules).
+         *
+         * @see https://ccss.dev/docs/api-and-packages/prop-mq
+         */
+        at?: MediaQueryItems
+        /**
+         * # mediaQuery
+         *
+         * Helps you to apply CCSS rules based on screen sizes, and use query (@ based rules).
+         *
+         * @see https://ccss.dev/docs/api-and-packages/prop-mq
+         */
+        media?: MediaQueryItems
     }
 }
 
