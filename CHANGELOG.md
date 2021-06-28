@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.1](https://github.com/wintercounter/ccss/compare/v5.6.0...v5.6.1) (2021-06-28)
+
+
+### Bug Fixes
+
+* workaround for babel bug around type re-exports ([7bbba60](https://github.com/wintercounter/ccss/commit/7bbba60978bdc330be6a36a5189722ebb5388694))
+
+
+
+
+
 # [5.6.0](https://github.com/wintercounter/ccss/compare/v5.5.0...v5.6.0) (2021-06-25)
 
 
