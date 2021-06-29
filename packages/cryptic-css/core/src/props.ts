@@ -472,6 +472,7 @@ const defaultProps = (): Props => [
     [['gta', 'grid-template-areas'], nil, toCSSRuleHandler],
     [['gtc', 'grid-template-columns'], auto(), fromArrayToCSSRuleHandler],
     [['gtr', 'grid-template-rows'], auto(), fromArrayToCSSRuleHandler],
+    
     // Border
     [['b', 'border'], nil, fromArrayToCSSRuleHandler],
     [['bB', 'border-bottom'], nil, fromArrayToCSSRuleHandler],
