@@ -1,7 +1,8 @@
 import { CCSSProps } from '@cryptic-css/core'
 
-interface Keyframes {
-    [key: string | number]: CCSSProps
+type StringOrNumber = string | number
+type Keyframes = {
+    [key in StringOrNumber]: CCSSProps
 }
 
 declare module '@cryptic-css/core' {

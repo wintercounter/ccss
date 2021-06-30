@@ -1,4 +1,4 @@
-import { CCSSProp } from '@cryptic-css/core'
+import { CCSSProps } from '@cryptic-css/core'
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
@@ -9,7 +9,7 @@ declare module '@cryptic-css/core' {
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-scroll
          */
-        scroll?: CCSSProp
+        scroll?: 'x' | 'y' | boolean | CCSSProps
     }
 }
 
