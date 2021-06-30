@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/wintercounter/ccss/compare/v5.6.1...v5.7.0) (2021-06-30)
+
+
+### Features
+
+* add support for shorthand gap props ([c837162](https://github.com/wintercounter/ccss/commit/c8371626cf07fd208d9b32eacd1778d511e2f8dd))
+
+
+
+
+
 ## [5.6.1](https://github.com/wintercounter/ccss/compare/v5.6.0...v5.6.1) (2021-06-28)
 
 **Note:** Version bump only for package @cryptic-css/plugin-gutter
