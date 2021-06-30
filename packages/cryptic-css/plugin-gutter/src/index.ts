@@ -5,7 +5,7 @@ const gutter = (input, prop, transformedFn) => {
 
     switch (true) {
         case Array.isArray(input):
-            return input.map(i => gutter(i, prop, transformedFn))
+            return input.map((i) => gutter(i, prop, transformedFn))
         case input:
             return g
         // @ts-ignore
@@ -18,9 +18,13 @@ const gutter = (input, prop, transformedFn) => {
     }
 }
 
-const usePlugin = transformedFn => {
+const usePlugin = (transformedFn) => {
     transformedFn.setProps(
-        ['p', 'pT', 'pR', 'pB', 'pL', 'm', 'mT', 'mR', 'mB', 'mL', 'gg'].map(prop => [[prop], null, [gutter, '...']])
+        ['p', 'pT', 'pR', 'pB', 'pL', 'm', 'mT', 'mR', 'mB', 'mL', 'gg', 'cg', 'gp', 'gr'].map((prop) => [
+            [prop],
+            null,
+            [gutter, '...']
+        ])
     )
 }
 

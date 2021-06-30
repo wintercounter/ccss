@@ -168,6 +168,7 @@ const defaultProps = (): Props => [
     [['fb', 'flex-basis'], nil, fromArrayToCSSRuleHandler],
     [['ff', 'flex-flow'], nil, toCSSRuleHandler],
     [['fg', 'flex-grow'], nil, toCSSRuleHandler],
+    [['fgp', 'flex-gap'], nil, toCSSRuleHandler],
     [['fs', 'flex-shrink'], nil, toCSSRuleHandler],
     [['ai', 'align-items'], getAligns(), toCSSRuleHandler],
     [['ac', 'align-content'], getAligns(), toCSSRuleHandler],

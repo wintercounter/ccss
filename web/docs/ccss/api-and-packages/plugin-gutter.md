@@ -20,6 +20,10 @@ Adds support to use predefined gutter values. This important in design systems f
 -   grid-gap (gg)
 -   grid-row-gap (grg)
 -   grid-column-gap (gcg)
+-   column-gap (cg)
+-   gap (gp)
+-   row-gap (rg)
+-   flex-gap (fgp)
 
 ## Usage
 
@@ -40,8 +44,8 @@ ccss({
 
 ### Opt-out
 
-Sometimes you still want to use the supported props without gutter values.
-For such cases simply pass your value as string.
+Sometimes you still want to use the supported props without gutter values. For such cases simply pass your value as
+string.
 
 ```js live
 ccss({
@@ -52,11 +56,11 @@ ccss({
 
 ## Configuration
 
-The plugin introduces the option key `gutter`. The default value is `5`.
-It defines the size of 1 gutter (uses the defined `applyUnit` core option).
+The plugin introduces the option key `gutter`. The default value is `5`. It defines the size of 1 gutter (uses the
+defined `applyUnit` core option).
 
-> The plugin is included in the `ccss` package pre-configured.
-> Skip this step if you don't need custom configuration and/or **CCSS** instance.
+> The plugin is included in the `ccss` package pre-configured. Skip this step if you don't need custom configuration
+> and/or **CCSS** instance.
 
 ```js
 import ccss from '@cryptic-css/core'
