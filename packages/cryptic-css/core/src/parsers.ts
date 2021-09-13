@@ -72,5 +72,11 @@ export const child: CCSSParser = (input, prop, transformedFn, inputObject) => {
 }
 
 export const self: CCSSParser = (input, prop, transformedFn, inputObject) => {
-    return transformedFn(input, prop, transformedFn, inputObject)
+    const inputWithPreservedProps = {
+        ...input,
+        theme: inputObject.theme,
+        children: inputObject.children
+    }
+
+    return transformedFn(inputWithPreservedProps, prop, transformedFn, inputObject)
 }
