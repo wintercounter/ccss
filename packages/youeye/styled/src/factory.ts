@@ -95,15 +95,11 @@ export const createCreator: CreateCreator = (
 
     // Just don't do anything with styled stuff
     transformedFn
-        .setProps([[['theme', 'children'], null, [noop], {
-            ccssContext: false
-        }]])
-        .setProps([[['ccss', 'css'], null, [preservePropsOnCCss, '...'], {
-            ccssContext: false
-        }]])
-        .setProps([[['child'], null, [preservePropsOnChild, '...'], {
-            ccssContext: false
-        }]])
+        .setProps([
+            [['theme', 'children'], null, [noop], { ccssContext: false }],
+            [['ccss', 'css'], null, [preservePropsOnCCss, '...'], { ccssContext: false }],
+            [['child'], null, [preservePropsOnChild, '...'], { ccssContext: false }]
+        ])
 
     const Ui = styled[defaultTag].withConfig({
         componentId: `sc-ui${id}`,
