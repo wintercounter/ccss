@@ -38,7 +38,7 @@ export interface CCSSParser extends Parser {
     ): unknown
 }
 
-export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T) => string
+export declare type CCSSPropFunction = <T>(v: CCSSPropValue, o?: T, p?: InputObject) => string
 export declare type CCSSPropValue =
     | string
     | number
