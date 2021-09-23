@@ -1,8 +1,9 @@
 import { CCSSProps, CCSSTransformedFn } from '@cryptic-css/core'
 // @ts-ignore
-import { StyledComponent, StyledProps, StyledInterface } from '@types/styled-components'
+import { StyledComponent, StyledProps, ThemeProviderProps, StyledInterface } from '@types/styled-components'
 
 export type UiProps = StyledProps<CCSSProps>
+export type UiPropsWithThemeProviderProps = UiProps & { children: ThemeProviderProps<any>["children"] }
 export type UiComponent = StyledComponent<'div', any, UiProps>
 export type UiComponentFactories = {
     [TTag in keyof JSX.IntrinsicElements]: StyledComponent<TTag, any, UiProps>
@@ -53,6 +54,27 @@ const isSupportedTag = (styled, tag, isNative) => {
     }
 }
 
+const preserveStyledProps = (target: UiPropsWithThemeProviderProps, source: UiPropsWithThemeProviderProps) => {
+    target.theme = source.theme
+    target.children = source.children
+
+    return target
+}
+
+const preservePropsOnCCss = (input, prop, transformedFn, inputObject) => {
+    return preserveStyledProps(input, inputObject)
+};
+
+const preservePropsOnChild = (input, prop, transformedFn, inputObject) => {
+    for (const k in inputObject.child) {
+        if (inputObject.child.hasOwnProperty(k)) {
+            preserveStyledProps(inputObject.child[k], inputObject)
+        }
+    }
+
+    return inputObject
+}
+
 type StyledCCSS = {
     Ui: UiType
     ccss: CCSSTransformedFn
@@ -72,7 +94,12 @@ export const createCreator: CreateCreator = (
     const defaultTag = isNative ? 'View' : 'div'
 
     // Just don't do anything with styled stuff
-    transformedFn.setProps([[['theme', 'children'], null, [noop], { ccssContext: false }]])
+    transformedFn
+        .setProps([
+            [['theme', 'children'], null, [noop], { ccssContext: false }],
+            [['ccss', 'css'], null, [preservePropsOnCCss, '...'], { ccssContext: false }],
+            [['child'], null, [preservePropsOnChild, '...'], { ccssContext: false }]
+        ])
 
     const Ui = styled[defaultTag].withConfig({
         componentId: `sc-ui${id}`,

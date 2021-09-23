@@ -1,8 +1,11 @@
-import { CCSSProps } from '@cryptic-css/core'
+import { CCSSProps, CCSSPropValue } from '@cryptic-css/core'
+import { InputObject } from 'transformed'
 import { mediaQuery } from '@w11r/use-breakpoint'
 
-type MediaQueryItem = [string, CCSSProps]
-type MediaQueryItems = MediaQueryItem | MediaQueryItem[]
+export type MediaQueryItem = [string, CCSSProps]
+export type MediaQueryItems = MediaQueryItem | MediaQueryItem[]
+export type MediaQueryPropFunction = <T>(v: CCSSPropValue, o?: T, p?: InputObject) => MediaQueryItems
+export type MediaQueryValue = MediaQueryItem | MediaQueryItem[] | MediaQueryPropFunction
 
 declare module '@cryptic-css/core' {
     interface CCSSProps {
@@ -13,7 +16,7 @@ declare module '@cryptic-css/core' {
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        mq?: MediaQueryItems
+        mq?: MediaQueryValue
         /**
          * # mediaQuery
          *
@@ -21,7 +24,7 @@ declare module '@cryptic-css/core' {
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        mediaQuery?: MediaQueryItems
+        mediaQuery?: MediaQueryValue
         /**
          * # mediaQuery
          *
@@ -29,7 +32,7 @@ declare module '@cryptic-css/core' {
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        at?: MediaQueryItems
+        at?: MediaQueryValue
         /**
          * # mediaQuery
          *
@@ -37,7 +40,7 @@ declare module '@cryptic-css/core' {
          *
          * @see https://ccss.dev/docs/api-and-packages/prop-mq
          */
-        media?: MediaQueryItems
+        media?: MediaQueryValue
     }
 }
 
