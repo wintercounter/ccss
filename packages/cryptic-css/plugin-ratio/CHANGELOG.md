@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/wintercounter/ccss/compare/v5.7.0...v5.8.0) (2021-09-23)
+
+**Note:** Version bump only for package @cryptic-css/plugin-ratio
+
+
+
+
+
+
 # [5.7.0](https://github.com/wintercounter/ccss/compare/v5.6.1...v5.7.0) (2021-06-30)
 
 **Note:** Version bump only for package @cryptic-css/plugin-ratio
