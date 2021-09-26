@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/wintercounter/ccss/compare/v5.8.0...v5.8.1) (2021-09-26)
+
+
+### Bug Fixes
+
+* **styled:** wrong parser return value ([565ea85](https://github.com/wintercounter/ccss/commit/565ea85f7bdedb8a3b2b89d1f990c70324324cbc))
+
+
+
+
+
+
 # [5.8.0](https://github.com/wintercounter/ccss/compare/v5.7.0...v5.8.0) (2021-09-23)
 
 
