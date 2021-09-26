@@ -3,7 +3,7 @@ import { CCSSProps, CCSSTransformedFn } from '@cryptic-css/core'
 import { StyledComponent, StyledProps, ThemeProviderProps, StyledInterface } from '@types/styled-components'
 
 export type UiProps = StyledProps<CCSSProps>
-export type UiPropsWithThemeProviderProps = UiProps & { children: ThemeProviderProps<any>["children"] }
+export type UiPropsWithThemeProviderProps = UiProps & { children: ThemeProviderProps<any>['children'] }
 export type UiComponent = StyledComponent<'div', any, UiProps>
 export type UiComponentFactories = {
     [TTag in keyof JSX.IntrinsicElements]: StyledComponent<TTag, any, UiProps>
@@ -63,7 +63,7 @@ const preserveStyledProps = (target: UiPropsWithThemeProviderProps, source: UiPr
 
 const preservePropsOnCCss = (input, prop, transformedFn, inputObject) => {
     return preserveStyledProps(input, inputObject)
-};
+}
 
 const preservePropsOnChild = (input, prop, transformedFn, inputObject) => {
     for (const k in inputObject.child) {
@@ -72,7 +72,7 @@ const preservePropsOnChild = (input, prop, transformedFn, inputObject) => {
         }
     }
 
-    return inputObject
+    return input
 }
 
 type StyledCCSS = {
@@ -86,46 +86,44 @@ interface CreateCreator {
     (styled: StyledInterface, isNative?: boolean): CreateStyledCCSS
 }
 
-export const createCreator: CreateCreator = (
-    styled,
-    isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative'
-) => (transformedFn: CCSSTransformedFn, id = 0) => {
-    const { defaultProps = undefined } = transformedFn.options
-    const defaultTag = isNative ? 'View' : 'div'
+export const createCreator: CreateCreator =
+    (styled, isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative') =>
+    (transformedFn: CCSSTransformedFn, id = 0) => {
+        const { defaultProps = undefined } = transformedFn.options
+        const defaultTag = isNative ? 'View' : 'div'
 
-    // Just don't do anything with styled stuff
-    transformedFn
-        .setProps([
+        // Just don't do anything with styled stuff
+        transformedFn.setProps([
             [['theme', 'children'], null, [noop], { ccssContext: false }],
             [['ccss', 'css'], null, [preservePropsOnCCss, '...'], { ccssContext: false }],
             [['child'], null, [preservePropsOnChild, '...'], { ccssContext: false }]
         ])
 
-    const Ui = styled[defaultTag].withConfig({
-        componentId: `sc-ui${id}`,
-        displayName: 'Ui',
-        shouldForwardProp: shouldForwardProp(transformedFn)
-    })(transformedFn)
-    Ui.defaultProps = defaultProps
+        const Ui = styled[defaultTag].withConfig({
+            componentId: `sc-ui${id}`,
+            displayName: 'Ui',
+            shouldForwardProp: shouldForwardProp(transformedFn)
+        })(transformedFn)
+        Ui.defaultProps = defaultProps
 
-    // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
-    // eslint-disable-next-line no-restricted-syntax
-    for (const tag in styled) {
-        if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
-            try {
-                Ui[tag] = styled[tag].withConfig({
-                    componentId: `sc-${tag}${id}`,
-                    displayName: `Ui.${tag}`,
-                    shouldForwardProp: shouldForwardProp(transformedFn, exceptionalTags[tag])
-                })(transformedFn)
-                // @ts-ignore
-                Ui[tag].defaultProps = defaultProps
-            } catch {}
+        // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
+        // eslint-disable-next-line no-restricted-syntax
+        for (const tag in styled) {
+            if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
+                try {
+                    Ui[tag] = styled[tag].withConfig({
+                        componentId: `sc-${tag}${id}`,
+                        displayName: `Ui.${tag}`,
+                        shouldForwardProp: shouldForwardProp(transformedFn, exceptionalTags[tag])
+                    })(transformedFn)
+                    // @ts-ignore
+                    Ui[tag].defaultProps = defaultProps
+                } catch {}
+            }
+        }
+
+        return {
+            Ui,
+            ccss: transformedFn
         }
     }
-
-    return {
-        Ui,
-        ccss: transformedFn
-    }
-}
