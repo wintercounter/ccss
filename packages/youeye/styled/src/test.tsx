@@ -1,8 +1,12 @@
 // @ts-nocheck
 
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
 import 'jest-styled-components'
-import styled, { Ui, ccssd, ccss, createCCSS, createStyledCCSS, objectOutputTransformer } from '.'
+import { styled, Ui, ccss, createCCSS, createStyledCCSS, objectOutputTransformer } from '.'
 
 const ccssObject = createCCSS({
     outputTransformer: objectOutputTransformer
@@ -13,6 +17,26 @@ export const objectCcss = objectStyled.ccss
 export const ObjectUi = objectStyled.Ui
 
 describe('styled-components', () => {
+    it('meho', () => {
+        console.log(
+            objectCcss({
+                child: {
+                    ':root': {
+                        color: '#fff',
+                        '--hmm': 12,
+                        width: function () {
+                            console.log(this.theme)
+                        },
+                        unsupported: true
+                    }
+                },
+                theme: {
+                    x: 2
+                }
+            })
+        )
+    })
+
     it('support native styled components', () => {
         const Cmp = styled.div(
             () =>
