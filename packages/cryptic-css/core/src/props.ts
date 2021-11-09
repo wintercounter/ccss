@@ -830,10 +830,27 @@ const defaultProps = (): Props => [
     ],
     [['cac', 'caret-color'], nil, toCSSRuleHandler],
     [['rs', 'resize'], nil, toCSSRuleHandler],
-    [['raw'], nil, [(i) => i]],
+    [['raw'], nil, [i => i]],
     [['child'], nil, [child]],
     [['ccss', 'css'], nil, [self]],
     [['--', 'var'], nil, [varsHandler]],
+
+    [
+        ['tac', 'touch-action'],
+        {
+            a: 'auto',
+            n: 'none',
+            px: 'pan-x',
+            pl: 'pan-left',
+            pr: 'pan-right',
+            py: 'pan-y',
+            pu: 'pan-up',
+            pd: 'pan-down',
+            pz: 'pinch-zoom',
+            m: 'manipulation'
+        },
+        toCSSRuleHandler
+    ],
 
     // Webkit
     [
