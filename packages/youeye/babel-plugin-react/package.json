@@ -1,6 +1,6 @@
 {
     "name": "@you-eye/babel-plugin-react",
-    "version": "5.8.1",
+    "version": "5.9.0",
     "description": "Babel plugin for Styled-components with CCSS.",
     "author": "Victor Vincent <wintercounter+ccss@gmail.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/prop-scroll#readme",
