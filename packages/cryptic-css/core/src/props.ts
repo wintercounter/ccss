@@ -229,6 +229,7 @@ const defaultProps = (): Props => [
     ],
     [['ls', 'letter-spacing'], nil, fromArrayToCSSRuleHandler],
     [['lh', 'line-height'], nil, toCSSRuleHandler],
+    [['lcp', 'line-clamp'], nil, toCSSRuleHandler],
     [
         ['ta', 'text-align'],
         {
@@ -354,6 +355,9 @@ const defaultProps = (): Props => [
     [['mR', 'margin-right'], nil, fromArrayToCSSRuleHandler],
     [['mB', 'margin-bottom'], nil, fromArrayToCSSRuleHandler],
     [['mL', 'margin-left'], nil, fromArrayToCSSRuleHandler],
+    [['mBl', 'margin-block'], nil, fromArrayToCSSRuleHandler],
+    [['mBs', 'margin-block-start'], nil, fromArrayToCSSRuleHandler],
+    [['mBe', 'margin-block-end'], nil, fromArrayToCSSRuleHandler],
 
     // Padding
     [['p', 'pad', 'padding'], nil, fromArrayToCSSRuleHandler],
@@ -361,6 +365,9 @@ const defaultProps = (): Props => [
     [['pR', 'pad-right', 'padding-right'], nil, fromArrayToCSSRuleHandler],
     [['pB', 'pad-bottom', 'padding-bottom'], nil, fromArrayToCSSRuleHandler],
     [['pL', 'pad-left', 'padding-left'], nil, fromArrayToCSSRuleHandler],
+    [['pBl', 'padding-block'], nil, fromArrayToCSSRuleHandler],
+    [['pBs', 'padding-block-start'], nil, fromArrayToCSSRuleHandler],
+    [['pBe', 'padding-block-end'], nil, fromArrayToCSSRuleHandler],
 
     // Background
     [
@@ -560,6 +567,7 @@ const defaultProps = (): Props => [
     [['R', 'right'], nil, fromArrayToCSSRuleHandler],
     [['B', 'bottom'], nil, fromArrayToCSSRuleHandler],
     [['L', 'left'], nil, fromArrayToCSSRuleHandler],
+    [['I', 'inset'], nil, fromArrayToCSSRuleHandler],
     [['zi', 'z-index'], nil, toCSSRuleHandler],
     [['c', 'color'], nil, toCSSRuleHandler],
     [['o', 'overflow'], getOverflows(), toCSSRuleHandler],
@@ -644,6 +652,15 @@ const defaultProps = (): Props => [
     // Misc
     [['appearance'], nil, toCSSRuleHandler],
     [['cn', 'contain'], nil, toCSSRuleHandler],
+    [
+        ['cv', 'content-visibility'],
+        {
+            v: 'visible',
+            h: 'hidden'
+        },
+        toCSSRuleHandler
+    ],
+    [['cis', 'contain-intrinsic-size'], nil, fromArrayToCSSRuleHandler],
     [['dir', 'direction'], nil, toCSSRuleHandler],
     [
         ['of', 'object-fit'],
