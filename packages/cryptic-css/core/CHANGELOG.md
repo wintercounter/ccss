@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/wintercounter/ccss/compare/v5.9.0...v5.10.0) (2021-11-29)
+
+
+### Features
+
+* **props:** add padding-, margin-block, line-clamp, content-visibility, contain-intrinsic-size ([1b5782d](https://github.com/wintercounter/ccss/commit/1b5782d33f016590896a82f86013cad361031fab))
+
+
+
+
+
 # [5.9.0](https://github.com/wintercounter/ccss/compare/v5.8.1...v5.9.0) (2021-11-09)
 
 
