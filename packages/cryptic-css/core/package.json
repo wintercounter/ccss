@@ -1,6 +1,6 @@
 {
     "name": "@cryptic-css/core",
-    "version": "5.7.0",
+    "version": "5.9.0",
     "description": "> TODO: description",
     "author": "Viktor Vincze <viktor.vincze@doclerholding.com>",
     "homepage": "https://github.com/wintercounter/ccss/tree/master/packages/core#readme",
@@ -53,7 +53,6 @@
                                             "targets": {
                                                 "$replace": {
                                                     "node": true,
-                                                    "browsers": false,
                                                     "esmodules": true
                                                 }
                                             }

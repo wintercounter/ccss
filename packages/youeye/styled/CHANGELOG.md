@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/wintercounter/ccss/compare/v5.8.1...v5.9.0) (2021-11-09)
+
+**Note:** Version bump only for package @you-eye/styled
+
+
+
+
+
+## [5.8.1](https://github.com/wintercounter/ccss/compare/v5.8.0...v5.8.1) (2021-09-26)
+
+
+### Bug Fixes
+
+* **styled:** wrong parser return value ([565ea85](https://github.com/wintercounter/ccss/commit/565ea85f7bdedb8a3b2b89d1f990c70324324cbc))
+
+
+
+
+
+
+# [5.8.0](https://github.com/wintercounter/ccss/compare/v5.7.0...v5.8.0) (2021-09-23)
+
+
+### Features
+
+* **styled:** pass theme and children props to function props ([#27](https://github.com/wintercounter/ccss/issues/27)) ([6014a80](https://github.com/wintercounter/ccss/commit/6014a80cf85da6017bdb3f6fc1dc74f743b54878))
+
+
+
+
+
+
 # [5.7.0](https://github.com/wintercounter/ccss/compare/v5.6.1...v5.7.0) (2021-06-30)
 
 **Note:** Version bump only for package @you-eye/styled

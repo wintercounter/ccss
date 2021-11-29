@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/wintercounter/ccss/compare/v5.8.1...v5.9.0) (2021-11-09)
+
+
+### Features
+
+* **props:** add support for `touch-action` prop ([19685ea](https://github.com/wintercounter/ccss/commit/19685ea102bbf7ee9a4474ca4583a5a0ede20e23))
+
+
+
+
+
+## [5.8.1](https://github.com/wintercounter/ccss/compare/v5.8.0...v5.8.1) (2021-09-26)
+
+**Note:** Version bump only for package @cryptic-css/core
+
+
+
+
+
+
+# [5.8.0](https://github.com/wintercounter/ccss/compare/v5.7.0...v5.8.0) (2021-09-23)
+
+
+### Features
+
+* **styled:** pass theme and children props to function props ([#27](https://github.com/wintercounter/ccss/issues/27)) ([6014a80](https://github.com/wintercounter/ccss/commit/6014a80cf85da6017bdb3f6fc1dc74f743b54878))
+
+
+
+
+
+
 # [5.7.0](https://github.com/wintercounter/ccss/compare/v5.6.1...v5.7.0) (2021-06-30)
 
 
