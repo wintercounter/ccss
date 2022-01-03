@@ -1,3 +1,3 @@
-# `@cryptic-css/babel-plugin-styled`
+# `@you-eye/babel-plugin-react`
 
-See: https://ccss.dev/docs/api-and-packages/babel-plugin-styled
+See: https://youeye.dev/docs/babel-plugins/babel-plugin-react
