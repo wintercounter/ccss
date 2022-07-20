@@ -1,129 +1,124 @@
-import { CCSSProps, CCSSTransformedFn } from '@cryptic-css/core'
-// @ts-ignore
-import { StyledComponent, StyledProps, ThemeProviderProps, StyledInterface } from '@types/styled-components'
+import type { StyledComponent, StyledProps, ThemeProviderProps, StyledInterface } from "styled-components";
 
-export type UiProps = StyledProps<CCSSProps>
-export type UiPropsWithThemeProviderProps = UiProps & { children: ThemeProviderProps<any>['children'] }
-export type UiComponent = StyledComponent<'div', any, UiProps>
+import { CCSSProps, CCSSTransformedFn, Props } from "@cryptic-css/core";
+
+export type UiProps = StyledProps<CCSSProps>;
+export type UiPropsWithThemeProviderProps = UiProps & { children: ThemeProviderProps<object>["children"] };
+export type UiComponent = StyledComponent<"div", object, UiProps>;
 export type UiComponentFactories = {
-    [TTag in keyof JSX.IntrinsicElements]: StyledComponent<TTag, any, UiProps>
-}
+	[TTag in keyof JSX.IntrinsicElements]: StyledComponent<TTag, object, UiProps>;
+};
 
-export type UiType = UiComponent & UiComponentFactories
-
-const noop = () => {}
+export type UiType = UiComponent & UiComponentFactories;
 
 // For these we will let through width and height
-const widthHeight = ['w', 'h', 'width', 'height']
+const widthHeight = ["w", "h", "width", "height"] as const;
 const exceptionalTags = {
-    svg: widthHeight,
-    img: widthHeight,
-    object: widthHeight,
-    iframe: widthHeight,
-    canvas: widthHeight,
-    embed: widthHeight,
-    video: widthHeight,
-    input: widthHeight
-}
+	svg: widthHeight,
+	img: widthHeight,
+	object: widthHeight,
+	iframe: widthHeight,
+	canvas: widthHeight,
+	embed: widthHeight,
+	video: widthHeight,
+	input: widthHeight,
+};
 
-const shouldForwardProp = (transformedFn, exceptions?) => (prop) => {
-    return (
-        (exceptions && exceptions.includes(prop)) ||
-        prop === 'children' ||
-        prop === 'theme' ||
-        !transformedFn.registry.has(prop) ||
-        transformedFn.registry.get(prop).htmlAttr
-    )
-}
-
-// Do not use deprecated stuff please
-const skipNativeTags = ['DatePickerIOS', 'DatePickerAndroid']
-
-const isSupportedTag = (styled, tag, isNative) => {
-    if (!isNative) return true
-    else if (skipNativeTags.includes(tag)) {
-        return false
-    }
-
-    // Non supported tags will simply fail to initialize
-    try {
-        styled[tag]('')
-        return true
-    } catch {
-        return false
-    }
-}
+const shouldForwardProp = (transformedFn, exceptions?) => (prop) =>
+	(exceptions && exceptions.includes(prop)) ||
+	prop === "children" ||
+	prop === "theme" ||
+	!transformedFn.registry.has(prop) ||
+	transformedFn.registry.get(prop).htmlAttr;
+const isSupportedTag = (styled, tag) => {
+	// Non supported tags will simply fail to initialize
+	try {
+		styled[tag]("");
+		return true;
+	} catch {
+		return false;
+	}
+};
 
 const preserveStyledProps = (target: UiPropsWithThemeProviderProps, source: UiPropsWithThemeProviderProps) => {
-    target.theme = source.theme
-    target.children = source.children
+	Object.assign(target, { theme: source.theme, children: source.children });
+	return target;
+};
 
-    return target
-}
+const preservePropsOnCCSS: (
+	input: UiPropsWithThemeProviderProps,
+	prop: string,
+	transformedFn: CCSSTransformedFn,
+	inputObject: UiPropsWithThemeProviderProps
+) => UiPropsWithThemeProviderProps = (input, prop, transformedFn, inputObject) =>
+	preserveStyledProps(input, inputObject);
 
-const preservePropsOnCCss = (input, prop, transformedFn, inputObject) => {
-    return preserveStyledProps(input, inputObject)
-}
+const preservePropsOnChild: typeof preservePropsOnCCSS = (input, prop, transformedFn, inputObject) => {
+	Object.keys(inputObject.child).forEach((k) => {
+		// for children with multiple comma-separated pseudo-selectors
+		if (k.includes(",")) {
+			k.split(",").forEach((subKey) => {
+				const trimmedKey = subKey.trim();
+				Object.assign(input, { [trimmedKey]: inputObject.child[k] });
+				preserveStyledProps(inputObject.child[trimmedKey] as UiPropsWithThemeProviderProps, inputObject);
+			});
+		} else {
+			preserveStyledProps(inputObject.child[k] as UiPropsWithThemeProviderProps, inputObject);
+		}
+	});
 
-const preservePropsOnChild = (input, prop, transformedFn, inputObject) => {
-    for (const k in inputObject.child) {
-        if (inputObject.child.hasOwnProperty(k)) {
-            preserveStyledProps(inputObject.child[k], inputObject)
-        }
-    }
-
-    return input
-}
+	return input;
+};
 
 type StyledCCSS = {
-    Ui: UiType
-    ccss: CCSSTransformedFn
-}
+	Ui: UiType;
+	ccss: CCSSTransformedFn;
+};
 
-type CreateStyledCCSS = (transformedFn: CCSSTransformedFn) => StyledCCSS
+type CreateStyledCCSS = (transformedFn: CCSSTransformedFn) => StyledCCSS;
 
 interface CreateCreator {
-    (styled: StyledInterface, isNative?: boolean): CreateStyledCCSS
+	(styled: StyledInterface): CreateStyledCCSS;
 }
 
-export const createCreator: CreateCreator =
-    (styled, isNative = typeof navigator != 'undefined' && navigator.product == 'ReactNative') =>
-    (transformedFn: CCSSTransformedFn, id = 0) => {
-        const { defaultProps = undefined } = transformedFn.options
-        const defaultTag = isNative ? 'View' : 'div'
+const noop = () => undefined;
 
-        // Just don't do anything with styled stuff
-        transformedFn.setProps([
-            [['theme', 'children'], null, [noop], { ccssContext: false }],
-            [['ccss', 'css'], null, [preservePropsOnCCss, '...'], { ccssContext: false }],
-            [['child'], null, [preservePropsOnChild, '...'], { ccssContext: false }]
-        ])
+export const createCreator: CreateCreator = (styled) => (transformedFn: CCSSTransformedFn, id = 42) => {
+	const { defaultProps = undefined } = transformedFn.options;
+	const defaultTag = "div";
 
-        const Ui = styled[defaultTag].withConfig({
-            componentId: `sc-ui${id}`,
-            displayName: 'Ui',
-            shouldForwardProp: shouldForwardProp(transformedFn)
-        })(transformedFn)
-        Ui.defaultProps = defaultProps
+	// Just don't do anything with styled stuff
+	transformedFn.setProps([
+		[["children"], null, [noop], { ccssContext: false }],
+		[["ccss", "css"], null, [preservePropsOnCCSS, "..."], { ccssContext: false }],
+		[["child"], null, [preservePropsOnChild, "..."], { ccssContext: false }],
+	] as Props);
 
-        // Recreates supported HTML tags (eg: Ui.section, Ui.ul)
-        // eslint-disable-next-line no-restricted-syntax
-        for (const tag in styled) {
-            if (Object.prototype.hasOwnProperty.call(styled, tag) && isSupportedTag(styled, tag, isNative)) {
-                try {
-                    Ui[tag] = styled[tag].withConfig({
-                        componentId: `sc-${tag}${id}`,
-                        displayName: `Ui.${tag}`,
-                        shouldForwardProp: shouldForwardProp(transformedFn, exceptionalTags[tag])
-                    })(transformedFn)
-                    // @ts-ignore
-                    Ui[tag].defaultProps = defaultProps
-                } catch {}
-            }
-        }
+	const Ui = (styled[defaultTag].withConfig({
+		componentId: `${id}`,
+		displayName: "1FE",
+		shouldForwardProp: shouldForwardProp(transformedFn),
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	}) as any)(transformedFn);
+	Ui.defaultProps = defaultProps;
 
-        return {
-            Ui,
-            ccss: transformedFn
-        }
-    }
+	// Recreates supported HTML tags (eg: Ui.section, Ui.ul)
+	Object.keys(styled).forEach((tag) => {
+		if (isSupportedTag(styled, tag)) {
+			try {
+				Ui[tag] = styled[tag].withConfig({
+					componentId: `${tag}.${id}`,
+					displayName: `1FE.${tag}`,
+					shouldForwardProp: shouldForwardProp(transformedFn, exceptionalTags[tag]),
+				})(transformedFn);
+				Ui[tag].defaultProps = defaultProps;
+			} catch {
+				console.info(`you-eye: "${tag}" is not supported`);
+			}
+		}
+	});
+	return {
+		Ui,
+		ccss: transformedFn,
+	};
+};
